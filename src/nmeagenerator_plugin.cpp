@@ -36,6 +36,12 @@ NmeaGeneratorPlugin::NmeaGeneratorPlugin(void* ppimgr) : opencpn_plugin_120(ppim
 
   //Logo for plugin catalog (SVG only)
   g_pluginBitmap = GetBitmapFromSVGFile(pluginFolder + "icon_nmea_catalog.svg", 32, 32);
+
+  // Get a pointer to the opencpn display canvas, to use as a parent for the POI Manager dialog
+  m_parent_window = GetOCPNCanvasWindow();
+
+  //Main GUI
+  myGUI = new DialogMainGui(m_parent_window);
 }
 
 NmeaGeneratorPlugin::~NmeaGeneratorPlugin()
@@ -135,17 +141,21 @@ void NmeaGeneratorPlugin::OnToolbarToolCallback(int id)
 {
   if (id == toolbarId)
   {
-    // Toggle on
     isToolbarActive = !isToolbarActive;
     SetToolbarItemState(id, isToolbarActive);
-    wxMessageBox(wxString::Format("NmeaGenerator Toolbar GUI"), "NmeaGenerator Plugin");
 
-    //Toggle off
-    isToolbarActive = !isToolbarActive;
-    SetToolbarItemState(id, isToolbarActive);
+    if (isToolbarActive)
+    {
+      myGUI->Show();
+      myGUI->Raise();
+      myGUI->SetFocus();
+    }
+    else
+    {
+      myGUI->Hide();
+    }
   }
 }
-
 
 
 ////////////////
@@ -174,4 +184,3 @@ void NmeaGeneratorPlugin::SaveSettings()
     configSettings->Write("A_String_Value", g_someStringValue);
   }
 }
-

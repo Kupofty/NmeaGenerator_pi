@@ -23,6 +23,9 @@
 // Bundled OpenCPN NMEA 0183 libraries
 #include "nmea0183.h"
 
+//GUI
+#include "main_ui_derived.h"
+
 
 class NmeaGeneratorPlugin : public opencpn_plugin_120, public wxEvtHandler
 {
@@ -49,6 +52,10 @@ class NmeaGeneratorPlugin : public opencpn_plugin_120, public wxEvtHandler
     void OnToolbarToolCallback(int id) override;
 
   private:
+    //GUI
+    DialogMainGui *myGUI;
+    wxWindow *m_parent_window;
+
     //Settings
     void LoadSettings();
     void SaveSettings();
