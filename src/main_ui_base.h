@@ -38,6 +38,10 @@ class MyDialog : public wxDialog
 		wxTextCtrl* m_textCtrl3;
 		wxButton* m_button3;
 
+		// Virtual event handlers, override them in your derived class
+		virtual void OnClose( wxCloseEvent& event ) { event.Skip(); }
+
+
 	public:
 
 		MyDialog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("NMEA Generator Plugin"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 290,109 ), long style = wxDEFAULT_DIALOG_STYLE );

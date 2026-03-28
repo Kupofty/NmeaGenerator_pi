@@ -51,6 +51,10 @@ class NmeaGeneratorPlugin : public opencpn_plugin_120, public wxEvtHandler
     void ShowPreferencesDialog(wxWindow* parent) override;
     void OnToolbarToolCallback(int id) override;
 
+    //Main GUI wxEvent
+    void OnGuiClosed();
+
+
   private:
     //GUI
     DialogMainGui *myGUI;

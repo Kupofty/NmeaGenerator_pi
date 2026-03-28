@@ -42,6 +42,7 @@ NmeaGeneratorPlugin::NmeaGeneratorPlugin(void* ppimgr) : opencpn_plugin_120(ppim
 
   //Main GUI
   myGUI = new DialogMainGui(m_parent_window);
+  myGUI->plugin = this;
 }
 
 NmeaGeneratorPlugin::~NmeaGeneratorPlugin()
@@ -183,4 +184,13 @@ void NmeaGeneratorPlugin::SaveSettings()
     configSettings->Write("An_Integer_Value", g_someIntegerValue);
     configSettings->Write("A_String_Value", g_someStringValue);
   }
+}
+
+
+
+void NmeaGeneratorPlugin::OnGuiClosed()
+{
+  isToolbarActive = false;
+  SetToolbarItemState(toolbarId, false);
+  myGUI->Hide();
 }
