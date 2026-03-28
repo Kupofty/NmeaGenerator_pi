@@ -1,0 +1,34 @@
+#ifndef DIALOG_SETTINGS_H
+#define DIALOG_SETTINGS_H
+
+// wxWidgets Precompiled Headers
+#include "wx/wxprec.h"
+
+#ifndef  WX_PRECOMP
+#include "wx/wx.h"
+#endif
+
+
+#include "settings_ui_base.h"
+#include "globals.h"
+
+class DialogSettings : public DialogSettingsBase
+{
+  public:
+    DialogSettings(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("NmeaGenerator Plugin Preferences"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE);
+    ~DialogSettings();
+
+  protected:
+    // Overridden methods from the base class
+    void OnInit(wxInitDialogEvent& event) override;
+    void OnOK(wxCommandEvent& event) override;
+    void OnCancel(wxCommandEvent& event) override;
+    void OnApply(wxCommandEvent& event) override;
+
+  private:
+    bool originalBooleanValue;
+    int originalIntegerValue;
+    wxString originalStringValue;
+};
+
+#endif //DIALOG_SETTINGS_H
