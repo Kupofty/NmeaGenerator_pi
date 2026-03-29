@@ -1,6 +1,9 @@
 ﻿#include "settings_ui_derived.h"
 
-// Constructor and destructor implementation
+
+////////////////////////////
+/// Class Initialization ///
+////////////////////////////
 DialogSettings::DialogSettings(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style) : DialogSettingsBase(parent, id, title, pos, size, style)
 {
 }
@@ -24,6 +27,10 @@ void DialogSettings::OnInit(wxInitDialogEvent& event)
   Fit();
 }
 
+
+////////////////////
+/// wxGUI Events ///
+////////////////////
 void DialogSettings::OnOK(wxCommandEvent& event)
 {
   g_someBooleanValue = checkBoxBoolean->IsChecked();

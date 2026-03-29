@@ -6,7 +6,7 @@
 
 
 ///////////////////////
-/// INCLUDE HEADERS ///
+/// Include Headers ///
 ///////////////////////
 #include "nmeagenerator_plugin.h"
 #include "globals.h"
@@ -15,7 +15,7 @@
 
 
 ///////////////////////
-/// CLASS FACTORIES ///
+/// Class Factories ///
 ///////////////////////
 extern "C" DECL_EXP opencpn_plugin* create_pi(void *ppimgr) {
   return new NmeaGeneratorPlugin(ppimgr);
@@ -77,7 +77,7 @@ bool NmeaGeneratorPlugin::DeInit()
 
 
 ////////////////////////////////////////
-/// OCPN REQUIRED PLUGIN INFORMATION ///
+/// OCPN Required Plugin Information ///
 ////////////////////////////////////////
 int NmeaGeneratorPlugin::GetAPIVersionMajor()
 {
@@ -129,7 +129,7 @@ wxBitmap* NmeaGeneratorPlugin::GetPlugInBitmap()
 
 
 /////////////////////////////////
-/// OCPN INTERACTIONS METHODS ///
+/// OCPN Interactions Methods ///
 /////////////////////////////////
 void NmeaGeneratorPlugin::ShowPreferencesDialog(wxWindow* parent)
 {
@@ -160,7 +160,7 @@ void NmeaGeneratorPlugin::OnToolbarToolCallback(int id)
 
 
 ////////////////
-/// SETTINGS ///
+/// Settings ///
 ////////////////
 void NmeaGeneratorPlugin::LoadSettings()
 {
@@ -188,9 +188,17 @@ void NmeaGeneratorPlugin::SaveSettings()
 
 
 
+////////////////////
+/// wxGUI Events ///
+////////////////////
 void NmeaGeneratorPlugin::OnGuiClosed()
 {
   isToolbarActive = false;
   SetToolbarItemState(toolbarId, false);
   myGUI->Hide();
+}
+
+void NmeaGeneratorPlugin::sendNmeaSentence(wxString sentence)
+{
+  PushNMEABuffer(sentence); //using old API
 }

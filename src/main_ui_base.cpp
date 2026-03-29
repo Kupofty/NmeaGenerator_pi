@@ -23,10 +23,10 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText3->Wrap( -1 );
 	bSizer4->Add( m_staticText3, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
-	m_textCtrl3 = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	m_textCtrl3->SetMinSize( wxSize( 200,-1 ) );
+	m_textCtrl_sentenceInput = new wxTextCtrl( this, wxID_ANY, _("$GPRMC,123519,A,0.000,N,0.000,E,022.4,084.4,230394,003.1,W*58"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_textCtrl_sentenceInput->SetMinSize( wxSize( 200,-1 ) );
 
-	bSizer4->Add( m_textCtrl3, 0, wxALL|wxEXPAND, 5 );
+	bSizer4->Add( m_textCtrl_sentenceInput, 1, wxALL|wxEXPAND, 5 );
 
 
 	bSizer3->Add( bSizer4, 1, wxEXPAND, 5 );
@@ -37,8 +37,11 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer5->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_button3 = new wxButton( this, wxID_ANY, _("Send"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer5->Add( m_button3, 0, wxALL, 5 );
+	m_button_sendSentence = new wxButton( this, wxID_ANY, _("Send"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer5->Add( m_button_sendSentence, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+	m_button_clearInput = new wxButton( this, wxID_ANY, _("Clear"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer5->Add( m_button_clearInput, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
 
 	bSizer5->Add( 0, 0, 1, wxEXPAND, 5 );
@@ -54,6 +57,8 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	// Connect Events
 	this->Connect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( MyDialog::OnClose ) );
+	m_button_sendSentence->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnSendSentence ), NULL, this );
+	m_button_clearInput->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnClearInput ), NULL, this );
 }
 
 MyDialog::~MyDialog()

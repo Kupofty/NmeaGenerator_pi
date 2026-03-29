@@ -35,16 +35,19 @@ class MyDialog : public wxDialog
 
 	protected:
 		wxStaticText* m_staticText3;
-		wxTextCtrl* m_textCtrl3;
-		wxButton* m_button3;
+		wxTextCtrl* m_textCtrl_sentenceInput;
+		wxButton* m_button_sendSentence;
+		wxButton* m_button_clearInput;
 
 		// Virtual event handlers, override them in your derived class
 		virtual void OnClose( wxCloseEvent& event ) { event.Skip(); }
+		virtual void OnSendSentence( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnClearInput( wxCommandEvent& event ) { event.Skip(); }
 
 
 	public:
 
-		MyDialog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("NMEA Generator Plugin"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 290,109 ), long style = wxDEFAULT_DIALOG_STYLE );
+		MyDialog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("NMEA Generator Plugin"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 473,109 ), long style = wxDEFAULT_DIALOG_STYLE );
 
 		~MyDialog();
 

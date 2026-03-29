@@ -17,6 +17,8 @@ class DialogMainGui : public MyDialog
 
   protected:
     void OnClose(wxCloseEvent& event) override;
+    void OnSendSentence(wxCommandEvent& event) override;
+    void OnClearInput(wxCommandEvent& event) override;
 };
 
 #endif //DIALOG_MAIN_GUI
