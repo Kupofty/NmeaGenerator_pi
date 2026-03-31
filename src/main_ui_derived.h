@@ -3,6 +3,7 @@
 
 
 #include "main_ui_base.h"
+#include <wx/timer.h>
 
 class NmeaGeneratorPlugin;
 
@@ -13,12 +14,24 @@ class DialogMainGui : public MyDialog
                   const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE);
     ~DialogMainGui();
 
+    void stopTimer();
+
     NmeaGeneratorPlugin* plugin = nullptr;
 
   protected:
     void OnClose(wxCloseEvent& event) override;
-    void OnSendSentence(wxCommandEvent& event) override;
+    void OnButtonClick_manualSend(wxCommandEvent& event) override;
     void OnClearInput(wxCommandEvent& event) override;
+    void OnInputTextChanged(wxCommandEvent& event) override;
+    void OnAutoChecksumChecked(wxCommandEvent& event) override;
+    void OnCheckBox_AutomaticSend( wxCommandEvent& event ) override;
+    void OnSpinCtrlDouble_AutomaticSendFreq(wxSpinDoubleEvent& event) override;
+    void OnTimer_autoSendNmea(wxTimerEvent& event) override;
+
+  private:
+    void sendNmea();
+
+    bool addAutoChecksum;
 };
 
 #endif //DIALOG_MAIN_GUI

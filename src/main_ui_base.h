@@ -18,10 +18,14 @@
 #include <wx/settings.h>
 #include <wx/textctrl.h>
 #include <wx/sizer.h>
+#include <wx/checkbox.h>
+#include <wx/statline.h>
 #include <wx/button.h>
 #include <wx/bitmap.h>
 #include <wx/image.h>
 #include <wx/icon.h>
+#include <wx/spinctrl.h>
+#include <wx/timer.h>
 #include <wx/dialog.h>
 
 ///////////////////////////////////////////////////////////////////////////
@@ -36,18 +40,30 @@ class MyDialog : public wxDialog
 	protected:
 		wxStaticText* m_staticText3;
 		wxTextCtrl* m_textCtrl_sentenceInput;
+		wxStaticText* m_staticText_checksum;
+		wxCheckBox* m_checkBox_autoChecksum;
+		wxStaticLine* m_staticline1;
 		wxButton* m_button_sendSentence;
 		wxButton* m_button_clearInput;
+		wxCheckBox* m_checkBox_automaticSend;
+		wxSpinCtrlDouble* m_spinCtrlDouble_automaticSendFreq;
+		wxStaticText* m_staticText4;
+		wxTimer m_timer_autoSendNmea;
 
 		// Virtual event handlers, override them in your derived class
 		virtual void OnClose( wxCloseEvent& event ) { event.Skip(); }
-		virtual void OnSendSentence( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnInputTextChanged( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnAutoChecksumChecked( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_manualSend( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnClearInput( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnCheckBox_AutomaticSend( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnSpinCtrlDouble_AutomaticSendFreq( wxSpinDoubleEvent& event ) { event.Skip(); }
+		virtual void OnTimer_autoSendNmea( wxTimerEvent& event ) { event.Skip(); }
 
 
 	public:
 
-		MyDialog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("NMEA Generator Plugin"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 473,109 ), long style = wxDEFAULT_DIALOG_STYLE );
+		MyDialog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("NMEA Generator Plugin"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 610,194 ), long style = wxDEFAULT_DIALOG_STYLE );
 
 		~MyDialog();
 
