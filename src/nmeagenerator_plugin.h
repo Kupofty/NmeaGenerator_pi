@@ -46,6 +46,7 @@ class NmeaGeneratorPlugin : public opencpn_plugin_120, public wxEvtHandler
     wxString GetShortDescription() override;
     wxString GetLongDescription() override;
     wxBitmap* GetPlugInBitmap() override;
+    int GetToolbarToolCount() override;
 
     //OCPN Interactions
     void ShowPreferencesDialog(wxWindow* parent) override;
@@ -58,7 +59,8 @@ class NmeaGeneratorPlugin : public opencpn_plugin_120, public wxEvtHandler
   private:
     //GUI
     DialogMainGui *myGUI;
-    wxWindow *m_parent_window;
+    wxWindow *parentWindow;
+    wxFileConfig *configSettings;
 
     //Settings
     void LoadSettings();

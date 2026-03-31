@@ -32,17 +32,12 @@ extern "C" DECL_EXP void destroy_pi(opencpn_plugin* p) {
 ////////////////////////////
 NmeaGeneratorPlugin::NmeaGeneratorPlugin(void* ppimgr) : opencpn_plugin_120(ppimgr), wxEvtHandler()
 {
-  wxString pluginFolder = GetPluginDataDir(PKG_NAME) + wxFileName::GetPathSeparator() + "data" + wxFileName::GetPathSeparator();
-
   //Logo for plugin catalog (SVG only)
+  wxString pluginFolder = GetPluginDataDir(PKG_NAME) + wxFileName::GetPathSeparator() + "data" + wxFileName::GetPathSeparator();
   g_pluginBitmap = GetBitmapFromSVGFile(pluginFolder + "icon_nmea_catalog.svg", 32, 32);
 
-  // Get a pointer to the opencpn display canvas, to use as a parent for the POI Manager dialog
-  m_parent_window = GetOCPNCanvasWindow();
-
-  //Main GUI
-  myGUI = new DialogMainGui(m_parent_window);
-  myGUI->plugin = this;
+  // A flag used to indicate the toggled/untoggled state of the toolbar button
+  isToolbarActive = false;
 }
 
 NmeaGeneratorPlugin::~NmeaGeneratorPlugin()
@@ -51,20 +46,20 @@ NmeaGeneratorPlugin::~NmeaGeneratorPlugin()
 
 int NmeaGeneratorPlugin::Init()
 {
+  parentWindow = GetOCPNCanvasWindow();
+  configSettings = GetOCPNConfigObject();
+
   LoadSettings();
 
+  // Add the toolbar button (SVG only)
   wxString pluginFolder = GetPluginDataDir(PKG_NAME) + wxFileName::GetPathSeparator() + "data" + wxFileName::GetPathSeparator();
-
-  // Logo for toolbar (SVG only)
   wxString normalIcon   = pluginFolder + "icon_nmea_toolbar_default.svg";
   wxString rolloverIcon = pluginFolder + "icon_nmea_toolbar_toggled.svg"; //BUG : rollover state not working in OpenCPN
   wxString toggledIcon  = pluginFolder + "icon_nmea_toolbar_toggled.svg";
-
-  // Add the toolbar button
   toolbarId = InsertPlugInToolSVG("NmeaGenerator", normalIcon, rolloverIcon, toggledIcon, wxITEM_CHECK, "NmeaGenerator", "NmeaGenerator Plugin Toolbar", NULL, -1, 0, this);
 
-  // A flag used to indicate the toggled/untoggled state of the toolbar button
-  isToolbarActive = false;
+  //Init main GUI to NULL
+  myGUI = NULL;
 
   // Notify OpenCPN what callbacks the plugin registers to receive
   return (INSTALLS_TOOLBAR_TOOL);
@@ -72,6 +67,16 @@ int NmeaGeneratorPlugin::Init()
 
 bool NmeaGeneratorPlugin::DeInit()
 {
+  if (NULL != myGUI)
+  {
+    myGUI->Close();
+    delete myGUI;
+    myGUI = NULL;
+
+    isToolbarActive = false;
+    SetToolbarItemState(toolbarId, isToolbarActive);
+  }
+
   return true;
 }
 
@@ -126,6 +131,37 @@ wxBitmap* NmeaGeneratorPlugin::GetPlugInBitmap()
   return &g_pluginBitmap;
 }
 
+int NmeaGeneratorPlugin::GetToolbarToolCount() {
+  return 1;
+}
+
+
+
+////////////////
+/// Settings ///
+////////////////
+void NmeaGeneratorPlugin::LoadSettings()
+{
+  if (configSettings)
+  {
+    configSettings->SetPath("/PlugIns/NmeaGeneratorPlugin");
+    configSettings->Read("A_Boolean_Value", &g_someBooleanValue, false);
+    configSettings->Read("An_Integer_Value", &g_someIntegerValue, 0);
+    configSettings->Read("A_String_Value", &g_someStringValue, wxEmptyString);
+  }
+}
+
+void NmeaGeneratorPlugin::SaveSettings()
+{
+  if (configSettings)
+  {
+    configSettings->SetPath("/PlugIns/NmeaGeneratorPlugin");
+    configSettings->Write("A_Boolean_Value", g_someBooleanValue);
+    configSettings->Write("An_Integer_Value", g_someIntegerValue);
+    configSettings->Write("A_String_Value", g_someStringValue);
+  }
+}
+
 
 
 /////////////////////////////////
@@ -140,50 +176,34 @@ void NmeaGeneratorPlugin::ShowPreferencesDialog(wxWindow* parent)
 
 void NmeaGeneratorPlugin::OnToolbarToolCallback(int id)
 {
-  if (id == toolbarId)
+  if (id != toolbarId)
   {
-    isToolbarActive = !isToolbarActive;
-    SetToolbarItemState(id, isToolbarActive);
-
-    if (isToolbarActive)
-    {
-      myGUI->Show();
-      myGUI->Raise();
-      myGUI->SetFocus();
-    }
-    else
-    {
-      myGUI->Hide();
-    }
+    return;
   }
-}
 
-
-////////////////
-/// Settings ///
-////////////////
-void NmeaGeneratorPlugin::LoadSettings()
-{
-  wxFileConfig* configSettings = GetOCPNConfigObject();
-  if (configSettings)
+  //Create GUI first time
+  if(myGUI == NULL)
   {
-    configSettings->SetPath("/PlugIns/NmeaGeneratorPlugin");
-    configSettings->Read("A_Boolean_Value", &g_someBooleanValue, false);
-    configSettings->Read("An_Integer_Value", &g_someIntegerValue, 0);
-    configSettings->Read("A_String_Value", &g_someStringValue, wxEmptyString);
+    myGUI = new DialogMainGui(parentWindow);
+    myGUI->plugin = this;
   }
-}
 
-void NmeaGeneratorPlugin::SaveSettings()
-{
-  wxFileConfig* configSettings = GetOCPNConfigObject();
-  if (configSettings)
+  //Toggle UI & toolbar icon state
+  isToolbarActive = !isToolbarActive;
+  SetToolbarItemState(id, isToolbarActive);
+  if (isToolbarActive)
   {
-    configSettings->SetPath("/PlugIns/NmeaGeneratorPlugin");
-    configSettings->Write("A_Boolean_Value", g_someBooleanValue);
-    configSettings->Write("An_Integer_Value", g_someIntegerValue);
-    configSettings->Write("A_String_Value", g_someStringValue);
+    myGUI->Show();
+    myGUI->Raise();
+    myGUI->SetFocus();
   }
+  else
+  {
+    myGUI->Hide();
+  }
+
+  //Refresh screen
+  RequestRefresh(parentWindow);
 }
 
 
@@ -196,6 +216,8 @@ void NmeaGeneratorPlugin::OnGuiClosed()
   isToolbarActive = false;
   SetToolbarItemState(toolbarId, false);
   myGUI->Hide();
+
+  RequestRefresh(parentWindow);
 }
 
 void NmeaGeneratorPlugin::sendNmeaSentence(wxString sentence)
