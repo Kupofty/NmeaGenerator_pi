@@ -34,8 +34,8 @@ set(PKG_PRERELEASE "") # Empty, or a tag like 'beta'
 
 set(DISPLAY_NAME NmeaGenerator)    # Dialogs, installer artifacts, ...
 set(PLUGIN_API_NAME NmeaGenerator) # As of GetCommonName() in plugin API
-set(PKG_SUMMARY "NMEA generator plugin for OpenCPN")
-set(PKG_DESCRIPTION "Generate and send custom NMEA sentences for testing and debugging")
+set(PKG_SUMMARY "NMEA sentence generator for testing and debugging")
+set(PKG_DESCRIPTION "Generate, edit, and transmit custom NMEA0183 sentences to test and validate navigation and sensor-related plugins")
 set(PKG_AUTHOR "Kupofty")
 set(PKG_IS_OPEN_SOURCE "yes")
 set(PKG_HOMEPAGE https://github.com/Kupofty/NmeaGenerator_pi)
