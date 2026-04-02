@@ -40,7 +40,7 @@ endif ()
 project(${PKG_NAME} VERSION ${PKG_VERSION})
 include(PluginCompiler)
 
-add_library(${CMAKE_PROJECT_NAME} SHARED EXCLUDE_FROM_ALL cmake/dummy.cpp)
+add_library(${CMAKE_PROJECT_NAME} SHARED)
 include_directories(BEFORE ${CMAKE_BINARY_DIR}/include)
 
 add_subdirectory("opencpn-libs/${PKG_API_LIB}")

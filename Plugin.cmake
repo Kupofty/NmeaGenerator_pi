@@ -53,6 +53,10 @@ set(SRC
     ${CMAKE_SOURCE_DIR}/src/globals.h
     ${CMAKE_SOURCE_DIR}/src/globals.cpp
 
+    # Utils functions
+    ${CMAKE_SOURCE_DIR}/src/utils.h
+    ${CMAKE_SOURCE_DIR}/src/utils.cpp
+
     # Main UI
     ${CMAKE_SOURCE_DIR}/src/main_ui_base.h
     ${CMAKE_SOURCE_DIR}/src/main_ui_base.cpp

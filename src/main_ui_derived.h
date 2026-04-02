@@ -14,7 +14,7 @@ class DialogMainGui : public MyDialog
                   const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE);
     ~DialogMainGui();
 
-    void stopTimer();
+    void stopTimers();
 
     NmeaGeneratorPlugin* plugin = nullptr;
 
@@ -29,7 +29,8 @@ class DialogMainGui : public MyDialog
     void OnTimer_autoSendNmea(wxTimerEvent& event) override;
 
   private:
-    void sendNmea();
+    void sendNmeaToOCPN(wxString sentence);
+    void sendManualInput();
 
     bool addAutoChecksum;
 };

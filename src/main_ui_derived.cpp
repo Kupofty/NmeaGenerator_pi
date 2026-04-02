@@ -1,6 +1,6 @@
 #include "main_ui_derived.h"
 #include "nmeagenerator_plugin.h"
-
+#include "utils.h"
 
 ////////////////////////////
 /// Class Initialization ///
@@ -13,7 +13,7 @@ DialogMainGui::DialogMainGui(wxWindow* parent, wxWindowID id, const wxString& ti
 
 DialogMainGui::~DialogMainGui()
 {
-  stopTimer();
+  stopTimers();
 }
 
 
@@ -22,7 +22,40 @@ DialogMainGui::~DialogMainGui()
 //////////////
 /// Others ///
 //////////////
-void DialogMainGui::sendNmea()
+void DialogMainGui::OnClose(wxCloseEvent& event)
+{
+  if (plugin)
+  {
+    stopTimers();
+    plugin->OnGuiClosed();
+  }
+}
+
+void DialogMainGui::sendNmeaToOCPN(wxString sentence)
+{
+  //Securities
+  if (sentence.IsEmpty())
+    return;
+  if (!sentence.StartsWith("$"))
+    return;
+
+  if (plugin){
+    plugin->sendNmeaSentence(sentence);
+  }
+}
+
+void DialogMainGui::stopTimers()
+{
+  m_timer_autoSendNmea.Stop();
+  m_checkBox_automaticSend->SetValue(false);
+}
+
+
+
+////////////////////
+/// Manual Input ///
+////////////////////
+void DialogMainGui::sendManualInput()
 {
   wxString sentenceStr = m_textCtrl_sentenceInput->GetValue();
 
@@ -39,39 +72,18 @@ void DialogMainGui::sendNmea()
     sentenceStr += checksumStr;
   }
 
-  if (plugin){
-    plugin->sendNmeaSentence(sentenceStr);
-  }
-}
-
-void DialogMainGui::stopTimer()
-{
-  m_timer_autoSendNmea.Stop();
-  m_checkBox_automaticSend->SetValue(false);
-}
-
-
-
-//////////////////////////////
-/// wxGUI Events - Actions ///
-//////////////////////////////
-void DialogMainGui::OnClose(wxCloseEvent& event)
-{
-  if (plugin)
-  {
-    stopTimer();
-    plugin->OnGuiClosed();
-  }
+  //Send
+  sendNmeaToOCPN(sentenceStr);
 }
 
 void DialogMainGui::OnButtonClick_manualSend(wxCommandEvent& event)
 {
-  sendNmea();
+  sendManualInput();
 }
 
 void DialogMainGui::OnTimer_autoSendNmea(wxTimerEvent& event)
 {
-  sendNmea();
+  sendManualInput();
 }
 
 void DialogMainGui::OnClearInput(wxCommandEvent& event)
@@ -79,11 +91,6 @@ void DialogMainGui::OnClearInput(wxCommandEvent& event)
   m_textCtrl_sentenceInput->Clear();
 }
 
-
-
-/////////////////////////////
-/// wxGUI Events - Update ///
-/////////////////////////////
 void DialogMainGui::OnInputTextChanged(wxCommandEvent& event)
 {
   wxString input = m_textCtrl_sentenceInput->GetValue();
@@ -98,15 +105,10 @@ void DialogMainGui::OnInputTextChanged(wxCommandEvent& event)
   wxString payload = input.Mid(1);
 
   //Calculate checksum
-  unsigned char checksum = 0;
-  for (size_t i = 0; i < payload.length(); ++i)
-  {
-    checksum ^= static_cast<unsigned char>(payload[i]);
-  }
+  unsigned char checksum = utils::calculateChecksum(payload);
+  wxString checksumStr = utils::checksumToString(checksum);
 
   //Update checksum text
-  wxString checksumStr;
-  checksumStr.Printf("*%02X", checksum);
   m_staticText_checksum->SetLabel(checksumStr);
 }
 
