@@ -200,7 +200,7 @@ void NmeaGeneratorPlugin::OnToolbarToolCallback(int id)
   else
   {
     myGUI->Hide();
-    myGUI->stopAutomaticSendTimers();
+    myGUI->stopTimer();
   }
 
   //Refresh screen

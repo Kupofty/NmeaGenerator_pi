@@ -7,17 +7,6 @@
 
 class NmeaGeneratorPlugin;
 
-struct ManualLine
-{
-  wxCheckBox* checkBox;
-  wxTextCtrl* textCtrl;
-  wxStaticText* checksumLabel;
-  wxButton* sendBtn;
-  wxButton* deleteBtn;
-  wxBoxSizer* rowSizer;
-};
-
-
 class DialogMainGui : public MyDialog
 {
   public:
@@ -25,24 +14,24 @@ class DialogMainGui : public MyDialog
                   const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE);
     ~DialogMainGui();
 
-    void stopAutomaticSendTimers();
+    void stopTimer();
 
     NmeaGeneratorPlugin* plugin = nullptr;
 
   protected:
     void OnClose(wxCloseEvent& event) override;
-    void OnCheckBox_AutomaticSendManual( wxCommandEvent& event ) override;
-    void OnSpinCtrlDouble_UpdateManualTimerFreq(wxSpinDoubleEvent& event) override;
-    void OnTimer_AutoSendNmea(wxTimerEvent& event) override;
-    void OnButtonClick_AddNewInput(wxCommandEvent& event) override;
-    void OnButtonClick_DeleteAllManualInputs(wxCommandEvent& event) override;
+    void OnButtonClick_manualSend(wxCommandEvent& event) override;
+    void OnClearInput(wxCommandEvent& event) override;
+    void OnInputTextChanged(wxCommandEvent& event) override;
+    void OnAutoChecksumChecked(wxCommandEvent& event) override;
+    void OnCheckBox_AutomaticSend( wxCommandEvent& event ) override;
+    void OnSpinCtrlDouble_AutomaticSendFreq(wxSpinDoubleEvent& event) override;
+    void OnTimer_autoSendNmea(wxTimerEvent& event) override;
 
   private:
-    void sendNmea(wxString sentenceStr);
-    void AddNewManualLine();
+    void sendNmea();
 
-    std::vector<ManualLine> m_lines;
-
+    bool addAutoChecksum;
 };
 
 #endif //DIALOG_MAIN_GUI
