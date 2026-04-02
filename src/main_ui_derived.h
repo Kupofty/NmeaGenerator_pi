@@ -19,7 +19,9 @@ class DialogMainGui : public MyDialog
     NmeaGeneratorPlugin* plugin = nullptr;
 
   protected:
+    //window
     void OnClose(wxCloseEvent& event) override;
+
     void OnButtonClick_manualSend(wxCommandEvent& event) override;
     void OnClearInput(wxCommandEvent& event) override;
     void OnInputTextChanged(wxCommandEvent& event) override;
@@ -28,9 +30,18 @@ class DialogMainGui : public MyDialog
     void OnSpinCtrlDouble_AutomaticSendFreq(wxSpinDoubleEvent& event) override;
     void OnTimer_autoSendNmea(wxTimerEvent& event) override;
 
+    void OnButtonClick_SendGLL(wxCommandEvent& event) override;
+    void OnButtonClick_CheckAllBuilder(wxCommandEvent& event) override;
+    void OnButtonClick_UncheckAllBuilder(wxCommandEvent& event) override;
+    void OnCheckBox_AutomaticSendBuilder(wxCommandEvent& event) override;
+    void OnSpinCtrlDouble_AutomaticSendFreqBuilder(wxSpinDoubleEvent& event) override;
+    void OnTimer_autoSendBuilder(wxTimerEvent& event) override;
+
   private:
     void sendNmeaToOCPN(wxString sentence);
     void sendManualInput();
+
+    void sendGLL();
 
     bool addAutoChecksum;
 };

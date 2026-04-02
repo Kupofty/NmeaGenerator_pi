@@ -10,6 +10,9 @@ namespace utils
 
   //Convert checksum to "*XX" wxString format
   wxString checksumToString(uint8_t checksum);
+
+  //Calculate the checksum from NMEA payload
+  wxString calculateChecksumString(const wxString s);
 }
 
 #endif  // UTILS_H

@@ -10,6 +10,7 @@
 #include <wx/artprov.h>
 #include <wx/xrc/xmlres.h>
 #include <wx/intl.h>
+#include <wx/timer.h>
 #include <wx/string.h>
 #include <wx/stattext.h>
 #include <wx/gdicmn.h>
@@ -25,7 +26,10 @@
 #include <wx/image.h>
 #include <wx/icon.h>
 #include <wx/spinctrl.h>
-#include <wx/timer.h>
+#include <wx/panel.h>
+#include <wx/choice.h>
+#include <wx/scrolwin.h>
+#include <wx/notebook.h>
 #include <wx/dialog.h>
 
 ///////////////////////////////////////////////////////////////////////////
@@ -38,6 +42,10 @@ class MyDialog : public wxDialog
 	private:
 
 	protected:
+		wxTimer m_timer_autoSendNmea;
+		wxTimer m_timer_autoSendBuilder;
+		wxNotebook* m_notebook;
+		wxPanel* m_panel_manual;
 		wxStaticText* m_staticText3;
 		wxTextCtrl* m_textCtrl_sentenceInput;
 		wxStaticText* m_staticText_checksum;
@@ -48,22 +56,55 @@ class MyDialog : public wxDialog
 		wxCheckBox* m_checkBox_automaticSend;
 		wxSpinCtrlDouble* m_spinCtrlDouble_automaticSendFreq;
 		wxStaticText* m_staticText4;
-		wxTimer m_timer_autoSendNmea;
+		wxPanel* m_panel2;
+		wxScrolledWindow* m_scrolledWindow_sentenceBuilder;
+		wxStaticText* m_staticText19;
+		wxStaticText* m_staticText9;
+		wxStaticText* m_staticText11;
+		wxStaticText* m_staticText14;
+		wxStaticText* m_staticText15;
+		wxStaticText* m_staticText18;
+		wxCheckBox* m_checkBox_autoSendGLL;
+		wxTextCtrl* m_textCtrl_idGLL;
+		wxStaticText* m_staticText5;
+		wxTextCtrl* m_textCtrl_latitudeGLL;
+		wxChoice* m_choice_latDirGLL;
+		wxTextCtrl* m_textCtrl_longitudeGLL;
+		wxChoice* m_choice_lonDirGLL;
+		wxTextCtrl* m_textCtrl_timeGLL;
+		wxChoice* m_choice_statusGLL;
+		wxChoice* m_choice_modeGLL;
+		wxButton* m_button_sendGLL;
+		wxStaticLine* m_staticline3;
+		wxButton* m_button_checkAllBuilder;
+		wxButton* m_button_uncheckAllBuilder;
+		wxStaticLine* m_staticline4;
+		wxCheckBox* m_checkBox_automaticSendBuilder;
+		wxSpinCtrlDouble* m_spinCtrlDouble_autoSendFreqBuilder;
+		wxStaticText* m_staticText20;
+		wxPanel* m_panel3;
+		wxStaticText* m_staticText41;
 
 		// Virtual event handlers, override them in your derived class
 		virtual void OnClose( wxCloseEvent& event ) { event.Skip(); }
+		virtual void OnTimer_autoSendNmea( wxTimerEvent& event ) { event.Skip(); }
+		virtual void OnTimer_autoSendBuilder( wxTimerEvent& event ) { event.Skip(); }
 		virtual void OnInputTextChanged( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnAutoChecksumChecked( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_manualSend( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnClearInput( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnCheckBox_AutomaticSend( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnSpinCtrlDouble_AutomaticSendFreq( wxSpinDoubleEvent& event ) { event.Skip(); }
-		virtual void OnTimer_autoSendNmea( wxTimerEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_SendGLL( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_CheckAllBuilder( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_UncheckAllBuilder( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnCheckBox_AutomaticSendBuilder( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnSpinCtrlDouble_AutomaticSendFreqBuilder( wxSpinDoubleEvent& event ) { event.Skip(); }
 
 
 	public:
 
-		MyDialog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("NMEA Generator Plugin"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 610,194 ), long style = wxDEFAULT_DIALOG_STYLE );
+		MyDialog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("NMEA Generator Plugin"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
 
 		~MyDialog();
 

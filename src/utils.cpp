@@ -20,4 +20,9 @@ namespace utils
     return str;
   }
 
+  wxString calculateChecksumString(const wxString s)
+  {
+    return checksumToString(calculateChecksum(s));
+  }
+
 }
