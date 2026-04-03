@@ -30,6 +30,7 @@
 #include <wx/choice.h>
 #include <wx/statbox.h>
 #include <wx/scrolwin.h>
+#include <wx/srchctrl.h>
 #include <wx/notebook.h>
 #include <wx/dialog.h>
 
@@ -58,6 +59,8 @@ class MyDialog : public wxDialog
 		wxStaticText* m_staticText4;
 		wxPanel* m_panel2;
 		wxScrolledWindow* m_scrolledWindow_sentenceBuilder;
+		wxBoxSizer* bSizer_NmeaList;
+		wxStaticBoxSizer* sbSizer_RMC;
 		wxButton* m_button_sendRMC;
 		wxCheckBox* m_checkBox_autoSendRMC;
 		wxStaticLine* m_staticline6;
@@ -83,6 +86,7 @@ class MyDialog : public wxDialog
 		wxTextCtrl* m_textCtrl_dateRMC;
 		wxSpinCtrlDouble* m_spinCtrlDouble_magRMC;
 		wxChoice* m_choice_magDirRMC;
+		wxStaticBoxSizer* sbSizer_GGA;
 		wxButton* m_button_sendGGA;
 		wxCheckBox* m_checkBox_autoSendGGA;
 		wxStaticLine* m_staticline8;
@@ -109,6 +113,7 @@ class MyDialog : public wxDialog
 		wxStaticText* m_staticText411;
 		wxSpinCtrlDouble* m_spinCtrlDouble_geoidSeparationGGA;
 		wxStaticText* m_staticText42;
+		wxStaticBoxSizer* sbSizer_GLL;
 		wxButton* m_button_sendGLL;
 		wxCheckBox* m_checkBox_autoSendGLL;
 		wxStaticLine* m_staticline5;
@@ -130,6 +135,7 @@ class MyDialog : public wxDialog
 		wxStaticLine* m_staticline3;
 		wxButton* m_button_checkAllBuilder;
 		wxButton* m_button_uncheckAllBuilder;
+		wxSearchCtrl* m_searchCtrl_sentencesBuilder;
 		wxCheckBox* m_checkBox_automaticSendBuilder;
 		wxSpinCtrlDouble* m_spinCtrlDouble_autoSendFreqBuilder;
 		wxStaticText* m_staticText20;
@@ -151,6 +157,7 @@ class MyDialog : public wxDialog
 		virtual void OnButtonClick_SendGLL( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_CheckAllBuilder( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_UncheckAllBuilder( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnText_SearchSentenceBuilder( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnCheckBox_AutomaticSendBuilder( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnSpinCtrlDouble_AutomaticSendFreqBuilder( wxSpinDoubleEvent& event ) { event.Skip(); }
 

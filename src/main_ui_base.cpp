@@ -113,10 +113,8 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	m_scrolledWindow_sentenceBuilder = new wxScrolledWindow( m_panel2, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxHSCROLL|wxVSCROLL );
 	m_scrolledWindow_sentenceBuilder->SetScrollRate( 5, 5 );
-	wxBoxSizer* bSizer_NmeaList;
 	bSizer_NmeaList = new wxBoxSizer( wxVERTICAL );
 
-	wxStaticBoxSizer* sbSizer_RMC;
 	sbSizer_RMC = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("RMC") ), wxHORIZONTAL );
 
 	wxBoxSizer* bSizer14;
@@ -297,7 +295,6 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer_NmeaList->Add( sbSizer_RMC, 0, wxEXPAND, 5 );
 
-	wxStaticBoxSizer* sbSizer_GGA;
 	sbSizer_GGA = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("GGA") ), wxHORIZONTAL );
 
 	wxBoxSizer* bSizer15;
@@ -448,7 +445,6 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer_NmeaList->Add( sbSizer_GGA, 0, wxEXPAND, 5 );
 
-	wxStaticBoxSizer* sbSizer_GLL;
 	sbSizer_GLL = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("GLL") ), wxHORIZONTAL );
 
 	wxBoxSizer* bSizer121;
@@ -617,6 +613,16 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer12->Add( 0, 0, 1, wxEXPAND, 5 );
 
+	m_searchCtrl_sentencesBuilder = new wxSearchCtrl( m_panel2, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	#ifndef __WXMAC__
+	m_searchCtrl_sentencesBuilder->ShowSearchButton( true );
+	#endif
+	m_searchCtrl_sentencesBuilder->ShowCancelButton( true );
+	bSizer12->Add( m_searchCtrl_sentencesBuilder, 0, wxALL, 5 );
+
+
+	bSizer12->Add( 0, 0, 1, wxEXPAND, 5 );
+
 	m_checkBox_automaticSendBuilder = new wxCheckBox( m_panel2, wxID_ANY, _("Automatic send at"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer12->Add( m_checkBox_automaticSendBuilder, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -682,6 +688,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_button_sendGLL->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendGLL ), NULL, this );
 	m_button_checkAllBuilder->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CheckAllBuilder ), NULL, this );
 	m_button_uncheckAllBuilder->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_UncheckAllBuilder ), NULL, this );
+	m_searchCtrl_sentencesBuilder->Connect( wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( MyDialog::OnText_SearchSentenceBuilder ), NULL, this );
 	m_checkBox_automaticSendBuilder->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( MyDialog::OnCheckBox_AutomaticSendBuilder ), NULL, this );
 	m_spinCtrlDouble_autoSendFreqBuilder->Connect( wxEVT_COMMAND_SPINCTRLDOUBLE_UPDATED, wxSpinDoubleEventHandler( MyDialog::OnSpinCtrlDouble_AutomaticSendFreqBuilder ), NULL, this );
 }

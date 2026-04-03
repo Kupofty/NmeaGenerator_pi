@@ -7,6 +7,12 @@
 
 class NmeaGeneratorPlugin;
 
+struct SectionItem
+{
+  wxString name;
+  wxStaticBoxSizer* sizer;
+};
+
 class DialogMainGui : public MyDialog
 {
   public:
@@ -29,16 +35,15 @@ class DialogMainGui : public MyDialog
     void OnCheckBox_AutomaticSend( wxCommandEvent& event ) override;
     void OnSpinCtrlDouble_AutomaticSendFreq(wxSpinDoubleEvent& event) override;
     void OnTimer_autoSendNmea(wxTimerEvent& event) override;
-
     void OnButtonClick_SendGLL(wxCommandEvent& event) override;
     void OnButtonClick_SendRMC(wxCommandEvent& event) override;
     void OnButtonClick_SendGGA(wxCommandEvent& event) override;
-
     void OnButtonClick_CheckAllBuilder(wxCommandEvent& event) override;
     void OnButtonClick_UncheckAllBuilder(wxCommandEvent& event) override;
     void OnCheckBox_AutomaticSendBuilder(wxCommandEvent& event) override;
     void OnSpinCtrlDouble_AutomaticSendFreqBuilder(wxSpinDoubleEvent& event) override;
     void OnTimer_autoSendBuilder(wxTimerEvent& event) override;
+    void OnText_SearchSentenceBuilder(wxCommandEvent& event) override;
 
   private:
     void sendNmeaToOCPN(wxString sentence);
@@ -50,6 +55,7 @@ class DialogMainGui : public MyDialog
     void sendGGA();
 
     bool addAutoChecksum;
+    std::vector<SectionItem> sbSizerListSentenceBuilder;
 };
 
 #endif //DIALOG_MAIN_GUI

@@ -13,6 +13,13 @@ DialogMainGui::DialogMainGui(wxWindow* parent, wxWindowID id, const wxString& ti
 
   //Open first tab by default
   m_notebook->SetSelection(0);
+
+  //List for search box
+  sbSizerListSentenceBuilder = {
+      {sbSizer_RMC->GetStaticBox()->GetLabel(), sbSizer_RMC},
+      {sbSizer_GGA->GetStaticBox()->GetLabel(), sbSizer_GGA},
+      {sbSizer_GLL->GetStaticBox()->GetLabel(), sbSizer_GLL}
+  };
 }
 
 DialogMainGui::~DialogMainGui()
@@ -158,6 +165,25 @@ void DialogMainGui::OnSpinCtrlDouble_AutomaticSendFreq(wxSpinDoubleEvent& event)
 ////////////////////////
 /// Sentence Builder ///
 ////////////////////////
+
+//Search specific sentences
+void DialogMainGui::OnText_SearchSentenceBuilder(wxCommandEvent& event)
+{
+  wxString filter = m_searchCtrl_sentencesBuilder->GetValue().Upper();
+  bool showAll = filter.IsEmpty();
+
+  for (auto& item : sbSizerListSentenceBuilder)
+  {
+    bool show = showAll ||
+                item.name.Upper().StartsWith(filter);
+
+    item.sizer->ShowItems(show);
+  }
+
+  bSizer_NmeaList->Layout();
+  m_scrolledWindow_sentenceBuilder->FitInside();
+}
+
 
 //Autosend checkboxes
 void DialogMainGui::OnButtonClick_CheckAllBuilder(wxCommandEvent& event)
