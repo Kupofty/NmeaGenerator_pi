@@ -185,6 +185,27 @@ void DialogMainGui::OnText_SearchSentenceBuilder(wxCommandEvent& event)
 }
 
 
+//Help button
+void DialogMainGui::OnButtonClick_OpenSentenceBuilderHelp(wxCommandEvent& event)
+{
+  wxMessageDialog dlg(
+      this,
+      "This help explains the expected NMEA units and formats required in this tool:\n\n" //title
+      "UTC Time: hhmmss\n"
+      "Latitude: ddmm.mm\n"
+      "Longitude: dddmm.mm\n"
+      "SOG: knots\n"
+      "COG: degrees\n"
+      "Date: ddmmyy\n"
+      "Mag var: degrees",
+      "NMEA Format Help (Units & Field Structure)", //window's name
+      wxOK | wxICON_INFORMATION
+      );
+
+  dlg.ShowModal();
+}
+
+
 //Autosend checkboxes
 void DialogMainGui::OnButtonClick_CheckAllBuilder(wxCommandEvent& event)
 {

@@ -44,6 +44,7 @@ class DialogMainGui : public MyDialog
     void OnSpinCtrlDouble_AutomaticSendFreqBuilder(wxSpinDoubleEvent& event) override;
     void OnTimer_autoSendBuilder(wxTimerEvent& event) override;
     void OnText_SearchSentenceBuilder(wxCommandEvent& event) override;
+    void OnButtonClick_OpenSentenceBuilderHelp(wxCommandEvent& event) override;
 
   private:
     void sendNmeaToOCPN(wxString sentence);

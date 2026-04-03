@@ -139,6 +139,7 @@ class MyDialog : public wxDialog
 		wxCheckBox* m_checkBox_automaticSendBuilder;
 		wxSpinCtrlDouble* m_spinCtrlDouble_autoSendFreqBuilder;
 		wxStaticText* m_staticText20;
+		wxButton* m_button_sentenceBuilderHelp;
 		wxPanel* m_panel3;
 		wxStaticText* m_staticText41;
 
@@ -160,6 +161,7 @@ class MyDialog : public wxDialog
 		virtual void OnText_SearchSentenceBuilder( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnCheckBox_AutomaticSendBuilder( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnSpinCtrlDouble_AutomaticSendFreqBuilder( wxSpinDoubleEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_OpenSentenceBuilderHelp( wxCommandEvent& event ) { event.Skip(); }
 
 
 	public:
