@@ -43,7 +43,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	bSizer4->Add( m_staticText_checksum, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
-	bSizer3->Add( bSizer4, 1, wxEXPAND, 5 );
+	bSizer3->Add( bSizer4, 0, wxEXPAND, 5 );
 
 	m_checkBox_autoChecksum = new wxCheckBox( m_panel_manual, wxID_ANY, _("Automatic checksum calculation"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_checkBox_autoChecksum->SetValue(true);
@@ -85,7 +85,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_checkBox_automaticSend = new wxCheckBox( m_panel_manual, wxID_ANY, _("Automatic send at"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer7->Add( m_checkBox_automaticSend, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_spinCtrlDouble_automaticSendFreq = new wxSpinCtrlDouble( m_panel_manual, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 60,-1 ), wxSP_ARROW_KEYS, 0.1, 10, 10.000000, 0.25 );
+	m_spinCtrlDouble_automaticSendFreq = new wxSpinCtrlDouble( m_panel_manual, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 60,-1 ), wxSP_ARROW_KEYS, 0.1, 10, 1, 0.25 );
 	m_spinCtrlDouble_automaticSendFreq->SetDigits( 1 );
 	bSizer7->Add( m_spinCtrlDouble_automaticSendFreq, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -115,151 +115,6 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_scrolledWindow_sentenceBuilder->SetScrollRate( 5, 5 );
 	wxBoxSizer* bSizer_NmeaList;
 	bSizer_NmeaList = new wxBoxSizer( wxVERTICAL );
-
-	wxStaticBoxSizer* sbSizer_GLL;
-	sbSizer_GLL = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("GLL") ), wxHORIZONTAL );
-
-	wxBoxSizer* bSizer121;
-	bSizer121 = new wxBoxSizer( wxVERTICAL );
-
-
-	bSizer121->Add( 0, 0, 1, wxEXPAND, 5 );
-
-	m_button_sendGLL = new wxButton( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("Send"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_button_sendGLL->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxEmptyString ) );
-
-	bSizer121->Add( m_button_sendGLL, 0, wxALL, 5 );
-
-	m_checkBox_autoSendGLL = new wxCheckBox( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_checkBox_autoSendGLL->SetValue(true);
-	bSizer121->Add( m_checkBox_autoSendGLL, 0, wxALIGN_CENTER|wxALL, 5 );
-
-
-	bSizer121->Add( 0, 0, 1, wxEXPAND, 5 );
-
-
-	sbSizer_GLL->Add( bSizer121, 0, wxEXPAND, 5 );
-
-	m_staticline5 = new wxStaticLine( sbSizer_GLL->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL|wxLI_VERTICAL );
-	sbSizer_GLL->Add( m_staticline5, 0, wxEXPAND | wxALL, 5 );
-
-	wxFlexGridSizer* fgSizer_GLL;
-	fgSizer_GLL = new wxFlexGridSizer( 2, 9, 0, 0 );
-	fgSizer_GLL->SetFlexibleDirection( wxBOTH );
-	fgSizer_GLL->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
-
-	m_staticText19 = new wxStaticText( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("ID"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText19->Wrap( -1 );
-	fgSizer_GLL->Add( m_staticText19, 0, wxALIGN_CENTER|wxALL, 5 );
-
-
-	fgSizer_GLL->Add( 0, 0, 1, wxEXPAND, 5 );
-
-	m_staticText9 = new wxStaticText( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("Latitude\n(ddmm.mm)"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
-	m_staticText9->Wrap( -1 );
-	m_staticText9->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
-
-	fgSizer_GLL->Add( m_staticText9, 0, wxALIGN_CENTER|wxALL, 5 );
-
-
-	fgSizer_GLL->Add( 0, 0, 1, wxEXPAND, 5 );
-
-	m_staticText11 = new wxStaticText( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("Longitude\n(dddmm.mm)"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
-	m_staticText11->Wrap( -1 );
-	fgSizer_GLL->Add( m_staticText11, 0, wxALIGN_CENTER|wxALL, 5 );
-
-
-	fgSizer_GLL->Add( 0, 0, 1, wxEXPAND, 5 );
-
-	m_staticText14 = new wxStaticText( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("UTC time\n(hhmmss:ss)"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
-	m_staticText14->Wrap( -1 );
-	fgSizer_GLL->Add( m_staticText14, 0, wxALIGN_CENTER|wxALL, 5 );
-
-	m_staticText15 = new wxStaticText( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("Status"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText15->Wrap( -1 );
-	fgSizer_GLL->Add( m_staticText15, 0, wxALIGN_CENTER|wxALL, 5 );
-
-	m_staticText18 = new wxStaticText( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("Mode"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText18->Wrap( -1 );
-	fgSizer_GLL->Add( m_staticText18, 0, wxALIGN_CENTER|wxALL, 5 );
-
-	m_textCtrl_idGLL = new wxTextCtrl( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 30,-1 ), 0 );
-	#ifdef __WXGTK__
-	if ( !m_textCtrl_idGLL->HasFlag( wxTE_MULTILINE ) )
-	{
-	m_textCtrl_idGLL->SetMaxLength( 2 );
-	}
-	#else
-	m_textCtrl_idGLL->SetMaxLength( 2 );
-	#endif
-	fgSizer_GLL->Add( m_textCtrl_idGLL, 0, wxALL, 5 );
-
-	m_staticText5 = new wxStaticText( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("GLL"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText5->Wrap( -1 );
-	fgSizer_GLL->Add( m_staticText5, 0, wxALIGN_CENTER|wxALL, 5 );
-
-	m_textCtrl_latitudeGLL = new wxTextCtrl( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("0000.0000000"), wxDefaultPosition, wxSize( 90,-1 ), 0 );
-	#ifdef __WXGTK__
-	if ( !m_textCtrl_latitudeGLL->HasFlag( wxTE_MULTILINE ) )
-	{
-	m_textCtrl_latitudeGLL->SetMaxLength( 12 );
-	}
-	#else
-	m_textCtrl_latitudeGLL->SetMaxLength( 12 );
-	#endif
-	fgSizer_GLL->Add( m_textCtrl_latitudeGLL, 0, wxALL, 5 );
-
-	wxString m_choice_latDirGLLChoices[] = { _("N"), _("S") };
-	int m_choice_latDirGLLNChoices = sizeof( m_choice_latDirGLLChoices ) / sizeof( wxString );
-	m_choice_latDirGLL = new wxChoice( sbSizer_GLL->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_latDirGLLNChoices, m_choice_latDirGLLChoices, 0 );
-	m_choice_latDirGLL->SetSelection( 0 );
-	fgSizer_GLL->Add( m_choice_latDirGLL, 0, wxALL, 5 );
-
-	m_textCtrl_longitudeGLL = new wxTextCtrl( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("00000.0000000"), wxDefaultPosition, wxSize( 90,-1 ), 0 );
-	#ifdef __WXGTK__
-	if ( !m_textCtrl_longitudeGLL->HasFlag( wxTE_MULTILINE ) )
-	{
-	m_textCtrl_longitudeGLL->SetMaxLength( 13 );
-	}
-	#else
-	m_textCtrl_longitudeGLL->SetMaxLength( 13 );
-	#endif
-	fgSizer_GLL->Add( m_textCtrl_longitudeGLL, 0, wxALL, 5 );
-
-	wxString m_choice_lonDirGLLChoices[] = { _("E"), _("W") };
-	int m_choice_lonDirGLLNChoices = sizeof( m_choice_lonDirGLLChoices ) / sizeof( wxString );
-	m_choice_lonDirGLL = new wxChoice( sbSizer_GLL->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_lonDirGLLNChoices, m_choice_lonDirGLLChoices, 0 );
-	m_choice_lonDirGLL->SetSelection( 0 );
-	fgSizer_GLL->Add( m_choice_lonDirGLL, 0, wxALL, 5 );
-
-	m_textCtrl_timeGLL = new wxTextCtrl( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("000000:00"), wxDefaultPosition, wxSize( 80,-1 ), 0 );
-	#ifdef __WXGTK__
-	if ( !m_textCtrl_timeGLL->HasFlag( wxTE_MULTILINE ) )
-	{
-	m_textCtrl_timeGLL->SetMaxLength( 9 );
-	}
-	#else
-	m_textCtrl_timeGLL->SetMaxLength( 9 );
-	#endif
-	fgSizer_GLL->Add( m_textCtrl_timeGLL, 0, wxALL, 5 );
-
-	wxString m_choice_statusGLLChoices[] = { _("A"), _("V") };
-	int m_choice_statusGLLNChoices = sizeof( m_choice_statusGLLChoices ) / sizeof( wxString );
-	m_choice_statusGLL = new wxChoice( sbSizer_GLL->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxSize( -1,-1 ), m_choice_statusGLLNChoices, m_choice_statusGLLChoices, 0 );
-	m_choice_statusGLL->SetSelection( 0 );
-	fgSizer_GLL->Add( m_choice_statusGLL, 0, wxALL, 5 );
-
-	wxString m_choice_modeGLLChoices[] = { _("A"), _("D"), _("E"), _("M"), _("S"), _("N") };
-	int m_choice_modeGLLNChoices = sizeof( m_choice_modeGLLChoices ) / sizeof( wxString );
-	m_choice_modeGLL = new wxChoice( sbSizer_GLL->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_modeGLLNChoices, m_choice_modeGLLChoices, 0 );
-	m_choice_modeGLL->SetSelection( 4 );
-	fgSizer_GLL->Add( m_choice_modeGLL, 0, wxALL, 5 );
-
-
-	sbSizer_GLL->Add( fgSizer_GLL, 1, wxEXPAND, 5 );
-
-
-	bSizer_NmeaList->Add( sbSizer_GLL, 0, wxEXPAND, 5 );
 
 	wxStaticBoxSizer* sbSizer_RMC;
 	sbSizer_RMC = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("RMC") ), wxHORIZONTAL );
@@ -442,6 +297,302 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer_NmeaList->Add( sbSizer_RMC, 0, wxEXPAND, 5 );
 
+	wxStaticBoxSizer* sbSizer_GGA;
+	sbSizer_GGA = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("GGA") ), wxHORIZONTAL );
+
+	wxBoxSizer* bSizer15;
+	bSizer15 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer15->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_button_sendGGA = new wxButton( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("Send"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_button_sendGGA->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxEmptyString ) );
+
+	bSizer15->Add( m_button_sendGGA, 0, wxALL, 5 );
+
+	m_checkBox_autoSendGGA = new wxCheckBox( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_checkBox_autoSendGGA->SetValue(true);
+	bSizer15->Add( m_checkBox_autoSendGGA, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	bSizer15->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	sbSizer_GGA->Add( bSizer15, 0, wxEXPAND, 5 );
+
+	m_staticline8 = new wxStaticLine( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_VERTICAL );
+	sbSizer_GGA->Add( m_staticline8, 0, wxEXPAND | wxALL, 5 );
+
+	wxFlexGridSizer* fgSizer_GGA;
+	fgSizer_GGA = new wxFlexGridSizer( 0, 14, 0, 0 );
+	fgSizer_GGA->SetFlexibleDirection( wxBOTH );
+	fgSizer_GGA->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
+
+	m_staticText29 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("ID"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText29->Wrap( -1 );
+	fgSizer_GGA->Add( m_staticText29, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer_GGA->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText30 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("UTC time\n(hhmmss:ss)"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_staticText30->Wrap( -1 );
+	fgSizer_GGA->Add( m_staticText30, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText31 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("Latitude"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_staticText31->Wrap( -1 );
+	fgSizer_GGA->Add( m_staticText31, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer_GGA->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText32 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("Longitude"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_staticText32->Wrap( -1 );
+	fgSizer_GGA->Add( m_staticText32, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer_GGA->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText33 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("GPS\nquality"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_staticText33->Wrap( -1 );
+	fgSizer_GGA->Add( m_staticText33, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText34 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("Satellites\nin view"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_staticText34->Wrap( -1 );
+	fgSizer_GGA->Add( m_staticText34, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText35 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("HDOP"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText35->Wrap( -1 );
+	fgSizer_GGA->Add( m_staticText35, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText36 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("Altitude"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText36->Wrap( -1 );
+	fgSizer_GGA->Add( m_staticText36, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer_GGA->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText37 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("Geoid\nseparation"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_staticText37->Wrap( -1 );
+	fgSizer_GGA->Add( m_staticText37, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer_GGA->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_textCtrl_idGGA = new wxTextCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 30,-1 ), 0 );
+	#ifdef __WXGTK__
+	if ( !m_textCtrl_idGGA->HasFlag( wxTE_MULTILINE ) )
+	{
+	m_textCtrl_idGGA->SetMaxLength( 2 );
+	}
+	#else
+	m_textCtrl_idGGA->SetMaxLength( 2 );
+	#endif
+	fgSizer_GGA->Add( m_textCtrl_idGGA, 0, wxALL, 5 );
+
+	m_staticText40 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("GGA"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText40->Wrap( -1 );
+	fgSizer_GGA->Add( m_staticText40, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_textCtrl_timeGGA = new wxTextCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("000000:00"), wxDefaultPosition, wxSize( 70,-1 ), 0 );
+	fgSizer_GGA->Add( m_textCtrl_timeGGA, 0, wxALL, 5 );
+
+	m_textCtrl_latitudeGGA = new wxTextCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("0000.0000000"), wxDefaultPosition, wxSize( 90,-1 ), 0 );
+	fgSizer_GGA->Add( m_textCtrl_latitudeGGA, 0, wxALL, 5 );
+
+	wxString m_choice_latDirGGAChoices[] = { _("N"), _("S") };
+	int m_choice_latDirGGANChoices = sizeof( m_choice_latDirGGAChoices ) / sizeof( wxString );
+	m_choice_latDirGGA = new wxChoice( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_latDirGGANChoices, m_choice_latDirGGAChoices, 0 );
+	m_choice_latDirGGA->SetSelection( 0 );
+	fgSizer_GGA->Add( m_choice_latDirGGA, 0, wxALL, 5 );
+
+	m_textCtrl_longitudeGGA = new wxTextCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("00000.0000000"), wxDefaultPosition, wxSize( 90,-1 ), 0 );
+	fgSizer_GGA->Add( m_textCtrl_longitudeGGA, 0, wxALL, 5 );
+
+	wxString m_choice_lonDirGGAChoices[] = { _("E"), _("W") };
+	int m_choice_lonDirGGANChoices = sizeof( m_choice_lonDirGGAChoices ) / sizeof( wxString );
+	m_choice_lonDirGGA = new wxChoice( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_lonDirGGANChoices, m_choice_lonDirGGAChoices, 0 );
+	m_choice_lonDirGGA->SetSelection( 0 );
+	fgSizer_GGA->Add( m_choice_lonDirGGA, 0, wxALL, 5 );
+
+	m_spinCtrl_gpsQualityGGA = new wxSpinCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 6, 1 );
+	fgSizer_GGA->Add( m_spinCtrl_gpsQualityGGA, 0, wxALL, 5 );
+
+	m_spinCtrl_satellitesGGA = new wxSpinCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxT("12"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 99, 12 );
+	fgSizer_GGA->Add( m_spinCtrl_satellitesGGA, 0, wxALL, 5 );
+
+	m_spinCtrlDouble_hdopGGA = new wxSpinCtrlDouble( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 60,-1 ), wxSP_ARROW_KEYS, 0, 100, 0, 1 );
+	m_spinCtrlDouble_hdopGGA->SetDigits( 1 );
+	fgSizer_GGA->Add( m_spinCtrlDouble_hdopGGA, 0, wxALL, 5 );
+
+	m_spinCtrlDouble_altitude_GGA = new wxSpinCtrlDouble( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 60,-1 ), wxSP_ARROW_KEYS, 0, 100, 0, 1 );
+	m_spinCtrlDouble_altitude_GGA->SetDigits( 1 );
+	fgSizer_GGA->Add( m_spinCtrlDouble_altitude_GGA, 0, wxALL, 5 );
+
+	m_staticText411 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("M"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText411->Wrap( -1 );
+	fgSizer_GGA->Add( m_staticText411, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_spinCtrlDouble_geoidSeparationGGA = new wxSpinCtrlDouble( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 60,-1 ), wxSP_ARROW_KEYS, 0, 100, 0, 1 );
+	m_spinCtrlDouble_geoidSeparationGGA->SetDigits( 1 );
+	fgSizer_GGA->Add( m_spinCtrlDouble_geoidSeparationGGA, 0, wxALL, 5 );
+
+	m_staticText42 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("M,,"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText42->Wrap( -1 );
+	fgSizer_GGA->Add( m_staticText42, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	sbSizer_GGA->Add( fgSizer_GGA, 0, wxEXPAND, 5 );
+
+
+	bSizer_NmeaList->Add( sbSizer_GGA, 0, wxEXPAND, 5 );
+
+	wxStaticBoxSizer* sbSizer_GLL;
+	sbSizer_GLL = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("GLL") ), wxHORIZONTAL );
+
+	wxBoxSizer* bSizer121;
+	bSizer121 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer121->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_button_sendGLL = new wxButton( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("Send"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_button_sendGLL->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxEmptyString ) );
+
+	bSizer121->Add( m_button_sendGLL, 0, wxALL, 5 );
+
+	m_checkBox_autoSendGLL = new wxCheckBox( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_checkBox_autoSendGLL->SetValue(true);
+	bSizer121->Add( m_checkBox_autoSendGLL, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	bSizer121->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	sbSizer_GLL->Add( bSizer121, 0, wxEXPAND, 5 );
+
+	m_staticline5 = new wxStaticLine( sbSizer_GLL->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL|wxLI_VERTICAL );
+	sbSizer_GLL->Add( m_staticline5, 0, wxEXPAND | wxALL, 5 );
+
+	wxFlexGridSizer* fgSizer_GLL;
+	fgSizer_GLL = new wxFlexGridSizer( 2, 9, 0, 0 );
+	fgSizer_GLL->SetFlexibleDirection( wxBOTH );
+	fgSizer_GLL->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
+
+	m_staticText19 = new wxStaticText( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("ID"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText19->Wrap( -1 );
+	fgSizer_GLL->Add( m_staticText19, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer_GLL->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText9 = new wxStaticText( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("Latitude\n(ddmm.mm)"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_staticText9->Wrap( -1 );
+	m_staticText9->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
+
+	fgSizer_GLL->Add( m_staticText9, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer_GLL->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText11 = new wxStaticText( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("Longitude\n(dddmm.mm)"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_staticText11->Wrap( -1 );
+	fgSizer_GLL->Add( m_staticText11, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer_GLL->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText14 = new wxStaticText( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("UTC time\n(hhmmss:ss)"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_staticText14->Wrap( -1 );
+	fgSizer_GLL->Add( m_staticText14, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText15 = new wxStaticText( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("Status"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText15->Wrap( -1 );
+	fgSizer_GLL->Add( m_staticText15, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText18 = new wxStaticText( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("Mode"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText18->Wrap( -1 );
+	fgSizer_GLL->Add( m_staticText18, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_textCtrl_idGLL = new wxTextCtrl( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 30,-1 ), 0 );
+	#ifdef __WXGTK__
+	if ( !m_textCtrl_idGLL->HasFlag( wxTE_MULTILINE ) )
+	{
+	m_textCtrl_idGLL->SetMaxLength( 2 );
+	}
+	#else
+	m_textCtrl_idGLL->SetMaxLength( 2 );
+	#endif
+	fgSizer_GLL->Add( m_textCtrl_idGLL, 0, wxALL, 5 );
+
+	m_staticText5 = new wxStaticText( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("GLL"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText5->Wrap( -1 );
+	fgSizer_GLL->Add( m_staticText5, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_textCtrl_latitudeGLL = new wxTextCtrl( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("0000.0000000"), wxDefaultPosition, wxSize( 90,-1 ), 0 );
+	#ifdef __WXGTK__
+	if ( !m_textCtrl_latitudeGLL->HasFlag( wxTE_MULTILINE ) )
+	{
+	m_textCtrl_latitudeGLL->SetMaxLength( 12 );
+	}
+	#else
+	m_textCtrl_latitudeGLL->SetMaxLength( 12 );
+	#endif
+	fgSizer_GLL->Add( m_textCtrl_latitudeGLL, 0, wxALL, 5 );
+
+	wxString m_choice_latDirGLLChoices[] = { _("N"), _("S") };
+	int m_choice_latDirGLLNChoices = sizeof( m_choice_latDirGLLChoices ) / sizeof( wxString );
+	m_choice_latDirGLL = new wxChoice( sbSizer_GLL->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_latDirGLLNChoices, m_choice_latDirGLLChoices, 0 );
+	m_choice_latDirGLL->SetSelection( 0 );
+	fgSizer_GLL->Add( m_choice_latDirGLL, 0, wxALL, 5 );
+
+	m_textCtrl_longitudeGLL = new wxTextCtrl( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("00000.0000000"), wxDefaultPosition, wxSize( 90,-1 ), 0 );
+	#ifdef __WXGTK__
+	if ( !m_textCtrl_longitudeGLL->HasFlag( wxTE_MULTILINE ) )
+	{
+	m_textCtrl_longitudeGLL->SetMaxLength( 13 );
+	}
+	#else
+	m_textCtrl_longitudeGLL->SetMaxLength( 13 );
+	#endif
+	fgSizer_GLL->Add( m_textCtrl_longitudeGLL, 0, wxALL, 5 );
+
+	wxString m_choice_lonDirGLLChoices[] = { _("E"), _("W") };
+	int m_choice_lonDirGLLNChoices = sizeof( m_choice_lonDirGLLChoices ) / sizeof( wxString );
+	m_choice_lonDirGLL = new wxChoice( sbSizer_GLL->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_lonDirGLLNChoices, m_choice_lonDirGLLChoices, 0 );
+	m_choice_lonDirGLL->SetSelection( 0 );
+	fgSizer_GLL->Add( m_choice_lonDirGLL, 0, wxALL, 5 );
+
+	m_textCtrl_timeGLL = new wxTextCtrl( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("000000:00"), wxDefaultPosition, wxSize( 80,-1 ), 0 );
+	#ifdef __WXGTK__
+	if ( !m_textCtrl_timeGLL->HasFlag( wxTE_MULTILINE ) )
+	{
+	m_textCtrl_timeGLL->SetMaxLength( 9 );
+	}
+	#else
+	m_textCtrl_timeGLL->SetMaxLength( 9 );
+	#endif
+	fgSizer_GLL->Add( m_textCtrl_timeGLL, 0, wxALL, 5 );
+
+	wxString m_choice_statusGLLChoices[] = { _("A"), _("V") };
+	int m_choice_statusGLLNChoices = sizeof( m_choice_statusGLLChoices ) / sizeof( wxString );
+	m_choice_statusGLL = new wxChoice( sbSizer_GLL->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxSize( -1,-1 ), m_choice_statusGLLNChoices, m_choice_statusGLLChoices, 0 );
+	m_choice_statusGLL->SetSelection( 0 );
+	fgSizer_GLL->Add( m_choice_statusGLL, 0, wxALL, 5 );
+
+	wxString m_choice_modeGLLChoices[] = { _("A"), _("D"), _("E"), _("M"), _("S"), _("N") };
+	int m_choice_modeGLLNChoices = sizeof( m_choice_modeGLLChoices ) / sizeof( wxString );
+	m_choice_modeGLL = new wxChoice( sbSizer_GLL->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_modeGLLNChoices, m_choice_modeGLLChoices, 0 );
+	m_choice_modeGLL->SetSelection( 4 );
+	fgSizer_GLL->Add( m_choice_modeGLL, 0, wxALL, 5 );
+
+
+	sbSizer_GLL->Add( fgSizer_GLL, 0, wxEXPAND, 5 );
+
+
+	bSizer_NmeaList->Add( sbSizer_GLL, 0, wxEXPAND, 5 );
+
 
 	m_scrolledWindow_sentenceBuilder->SetSizer( bSizer_NmeaList );
 	m_scrolledWindow_sentenceBuilder->Layout();
@@ -526,8 +677,9 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_button_clearInput->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnClearInput ), NULL, this );
 	m_checkBox_automaticSend->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( MyDialog::OnCheckBox_AutomaticSend ), NULL, this );
 	m_spinCtrlDouble_automaticSendFreq->Connect( wxEVT_COMMAND_SPINCTRLDOUBLE_UPDATED, wxSpinDoubleEventHandler( MyDialog::OnSpinCtrlDouble_AutomaticSendFreq ), NULL, this );
-	m_button_sendGLL->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendGLL ), NULL, this );
 	m_button_sendRMC->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendRMC ), NULL, this );
+	m_button_sendGGA->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendGGA ), NULL, this );
+	m_button_sendGLL->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendGLL ), NULL, this );
 	m_button_checkAllBuilder->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CheckAllBuilder ), NULL, this );
 	m_button_uncheckAllBuilder->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_UncheckAllBuilder ), NULL, this );
 	m_checkBox_automaticSendBuilder->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( MyDialog::OnCheckBox_AutomaticSendBuilder ), NULL, this );

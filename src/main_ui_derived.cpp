@@ -50,9 +50,11 @@ void DialogMainGui::sendNmeaToOCPN(wxString sentence)
 
 void DialogMainGui::stopTimers()
 {
+  //Manual input
   m_timer_autoSendNmea.Stop();
   m_checkBox_automaticSend->SetValue(false);
 
+  //Sentence builder
   m_timer_autoSendBuilder.Stop();
   m_checkBox_automaticSendBuilder->SetValue(false);
 }
@@ -156,15 +158,25 @@ void DialogMainGui::OnSpinCtrlDouble_AutomaticSendFreq(wxSpinDoubleEvent& event)
 ////////////////////////
 /// Sentence Builder ///
 ////////////////////////
+
+//Autosend checkboxes
 void DialogMainGui::OnButtonClick_CheckAllBuilder(wxCommandEvent& event)
 {
-  m_checkBox_autoSendGLL->SetValue(true);
+  updateAutoSendBuildersCheckboxes(true);
 }
 
 void DialogMainGui::OnButtonClick_UncheckAllBuilder(wxCommandEvent& event)
 {
-  m_checkBox_autoSendGLL->SetValue(false);
+  updateAutoSendBuildersCheckboxes(false);
 }
+
+void DialogMainGui::updateAutoSendBuildersCheckboxes(bool check)
+{
+  m_checkBox_autoSendGLL->SetValue(check);
+  m_checkBox_autoSendRMC->SetValue(check);
+  m_checkBox_autoSendGGA->SetValue(check);
+}
+
 
 //Auto-send timer
 void DialogMainGui::OnCheckBox_AutomaticSendBuilder(wxCommandEvent& event)
@@ -198,6 +210,9 @@ void DialogMainGui::OnTimer_autoSendBuilder(wxTimerEvent& event)
 
   if(m_checkBox_autoSendRMC->GetValue())
     sendRMC();
+
+  if(m_checkBox_autoSendGGA->GetValue())
+    sendGGA();
 }
 
 
@@ -210,6 +225,11 @@ void DialogMainGui::OnButtonClick_SendGLL(wxCommandEvent& event)
 void DialogMainGui::OnButtonClick_SendRMC(wxCommandEvent& event)
 {
   sendRMC();
+}
+
+void DialogMainGui::OnButtonClick_SendGGA(wxCommandEvent& event)
+{
+  sendGGA();
 }
 
 
@@ -251,6 +271,29 @@ void DialogMainGui::sendRMC()
   payload += wxString::Format("%.1f", m_spinCtrlDouble_magRMC->GetValue()) + ",";
   payload += m_choice_magDirRMC->GetStringSelection();
 
+
+  wxString checksum = utils::calculateChecksumString(payload);
+
+  wxString sentence = "$" + payload + checksum;
+
+  sendNmeaToOCPN(sentence);
+}
+
+void DialogMainGui::sendGGA()
+{
+  wxString payload;
+  payload = m_textCtrl_idGGA->GetValue();
+  payload += "GGA,";
+  payload += m_textCtrl_timeGGA->GetValue() + ",";
+  payload += m_textCtrl_latitudeGGA->GetValue() + ",";
+  payload += m_choice_latDirGGA->GetStringSelection() + ",";
+  payload += m_textCtrl_longitudeGGA->GetValue() + ",";
+  payload += m_choice_lonDirGGA->GetStringSelection() + ",";
+  payload += wxString::Format("%d", m_spinCtrl_gpsQualityGGA->GetValue()) + ",";
+  payload += wxString::Format("%d", m_spinCtrl_satellitesGGA->GetValue()) + ",";
+  payload += wxString::Format("%.1f", m_spinCtrlDouble_hdopGGA->GetValue()) + ",";
+  payload += wxString::Format("%.1f", m_spinCtrlDouble_altitude_GGA->GetValue()) + ",M,";
+  payload += wxString::Format("%.1f", m_spinCtrlDouble_geoidSeparationGGA->GetValue()) + ",M,,";
 
   wxString checksum = utils::calculateChecksumString(payload);
 

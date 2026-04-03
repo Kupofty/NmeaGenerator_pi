@@ -58,24 +58,6 @@ class MyDialog : public wxDialog
 		wxStaticText* m_staticText4;
 		wxPanel* m_panel2;
 		wxScrolledWindow* m_scrolledWindow_sentenceBuilder;
-		wxButton* m_button_sendGLL;
-		wxCheckBox* m_checkBox_autoSendGLL;
-		wxStaticLine* m_staticline5;
-		wxStaticText* m_staticText19;
-		wxStaticText* m_staticText9;
-		wxStaticText* m_staticText11;
-		wxStaticText* m_staticText14;
-		wxStaticText* m_staticText15;
-		wxStaticText* m_staticText18;
-		wxTextCtrl* m_textCtrl_idGLL;
-		wxStaticText* m_staticText5;
-		wxTextCtrl* m_textCtrl_latitudeGLL;
-		wxChoice* m_choice_latDirGLL;
-		wxTextCtrl* m_textCtrl_longitudeGLL;
-		wxChoice* m_choice_lonDirGLL;
-		wxTextCtrl* m_textCtrl_timeGLL;
-		wxChoice* m_choice_statusGLL;
-		wxChoice* m_choice_modeGLL;
 		wxButton* m_button_sendRMC;
 		wxCheckBox* m_checkBox_autoSendRMC;
 		wxStaticLine* m_staticline6;
@@ -101,6 +83,50 @@ class MyDialog : public wxDialog
 		wxTextCtrl* m_textCtrl_dateRMC;
 		wxSpinCtrlDouble* m_spinCtrlDouble_magRMC;
 		wxChoice* m_choice_magDirRMC;
+		wxButton* m_button_sendGGA;
+		wxCheckBox* m_checkBox_autoSendGGA;
+		wxStaticLine* m_staticline8;
+		wxStaticText* m_staticText29;
+		wxStaticText* m_staticText30;
+		wxStaticText* m_staticText31;
+		wxStaticText* m_staticText32;
+		wxStaticText* m_staticText33;
+		wxStaticText* m_staticText34;
+		wxStaticText* m_staticText35;
+		wxStaticText* m_staticText36;
+		wxStaticText* m_staticText37;
+		wxTextCtrl* m_textCtrl_idGGA;
+		wxStaticText* m_staticText40;
+		wxTextCtrl* m_textCtrl_timeGGA;
+		wxTextCtrl* m_textCtrl_latitudeGGA;
+		wxChoice* m_choice_latDirGGA;
+		wxTextCtrl* m_textCtrl_longitudeGGA;
+		wxChoice* m_choice_lonDirGGA;
+		wxSpinCtrl* m_spinCtrl_gpsQualityGGA;
+		wxSpinCtrl* m_spinCtrl_satellitesGGA;
+		wxSpinCtrlDouble* m_spinCtrlDouble_hdopGGA;
+		wxSpinCtrlDouble* m_spinCtrlDouble_altitude_GGA;
+		wxStaticText* m_staticText411;
+		wxSpinCtrlDouble* m_spinCtrlDouble_geoidSeparationGGA;
+		wxStaticText* m_staticText42;
+		wxButton* m_button_sendGLL;
+		wxCheckBox* m_checkBox_autoSendGLL;
+		wxStaticLine* m_staticline5;
+		wxStaticText* m_staticText19;
+		wxStaticText* m_staticText9;
+		wxStaticText* m_staticText11;
+		wxStaticText* m_staticText14;
+		wxStaticText* m_staticText15;
+		wxStaticText* m_staticText18;
+		wxTextCtrl* m_textCtrl_idGLL;
+		wxStaticText* m_staticText5;
+		wxTextCtrl* m_textCtrl_latitudeGLL;
+		wxChoice* m_choice_latDirGLL;
+		wxTextCtrl* m_textCtrl_longitudeGLL;
+		wxChoice* m_choice_lonDirGLL;
+		wxTextCtrl* m_textCtrl_timeGLL;
+		wxChoice* m_choice_statusGLL;
+		wxChoice* m_choice_modeGLL;
 		wxStaticLine* m_staticline3;
 		wxButton* m_button_checkAllBuilder;
 		wxButton* m_button_uncheckAllBuilder;
@@ -120,8 +146,9 @@ class MyDialog : public wxDialog
 		virtual void OnClearInput( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnCheckBox_AutomaticSend( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnSpinCtrlDouble_AutomaticSendFreq( wxSpinDoubleEvent& event ) { event.Skip(); }
-		virtual void OnButtonClick_SendGLL( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendRMC( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_SendGGA( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_SendGLL( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_CheckAllBuilder( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_UncheckAllBuilder( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnCheckBox_AutomaticSendBuilder( wxCommandEvent& event ) { event.Skip(); }
@@ -131,7 +158,7 @@ class MyDialog : public wxDialog
 	public:
 		wxNotebook* m_notebook;
 
-		MyDialog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("NMEA Generator Plugin"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 957,371 ), long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
+		MyDialog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("NMEA Generator Plugin"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 971,401 ), long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
 
 		~MyDialog();
 
