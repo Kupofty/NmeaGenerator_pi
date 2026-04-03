@@ -76,7 +76,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_checkBox_automaticSend = new wxCheckBox( m_panel_manual, wxID_ANY, _("Automatic send at"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer7->Add( m_checkBox_automaticSend, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_spinCtrlDouble_automaticSendFreq = new wxSpinCtrlDouble( m_panel_manual, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 50,-1 ), wxSP_ARROW_KEYS, 0.1, 10, 1.000000, 0.5 );
+	m_spinCtrlDouble_automaticSendFreq = new wxSpinCtrlDouble( m_panel_manual, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 50,-1 ), wxSP_ARROW_KEYS, 0.1, 10, 1.000000, 0.25 );
 	m_spinCtrlDouble_automaticSendFreq->SetDigits( 1 );
 	bSizer7->Add( m_spinCtrlDouble_automaticSendFreq, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -94,7 +94,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_panel_manual->SetSizer( bSizer3 );
 	m_panel_manual->Layout();
 	bSizer3->Fit( m_panel_manual );
-	m_notebook->AddPage( m_panel_manual, _("Manual Input"), true );
+	m_notebook->AddPage( m_panel_manual, _("Manual Input"), false );
 	m_panel2 = new wxPanel( m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer9;
 	bSizer9 = new wxBoxSizer( wxVERTICAL );
@@ -119,7 +119,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	fgSizer_GLL->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_staticText9 = new wxStaticText( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("Latitude\n(ddmm.mmmm)"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_staticText9 = new wxStaticText( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("Latitude\n(ddmm.mm)"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
 	m_staticText9->Wrap( -1 );
 	m_staticText9->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
 
@@ -128,7 +128,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	fgSizer_GLL->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_staticText11 = new wxStaticText( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("Longitude\n(dddmm.mmmm)"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_staticText11 = new wxStaticText( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("Longitude\n(dddmm.mm)"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
 	m_staticText11->Wrap( -1 );
 	fgSizer_GLL->Add( m_staticText11, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -169,7 +169,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText5->Wrap( -1 );
 	fgSizer_GLL->Add( m_staticText5, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_textCtrl_latitudeGLL = new wxTextCtrl( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("0000.0000000"), wxDefaultPosition, wxSize( 110,-1 ), 0 );
+	m_textCtrl_latitudeGLL = new wxTextCtrl( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("0000.0000000"), wxDefaultPosition, wxSize( 90,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_latitudeGLL->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -186,7 +186,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_choice_latDirGLL->SetSelection( 0 );
 	fgSizer_GLL->Add( m_choice_latDirGLL, 0, wxALL, 5 );
 
-	m_textCtrl_longitudeGLL = new wxTextCtrl( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("00000.0000000"), wxDefaultPosition, wxSize( 110,-1 ), 0 );
+	m_textCtrl_longitudeGLL = new wxTextCtrl( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("00000.0000000"), wxDefaultPosition, wxSize( 90,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_longitudeGLL->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -267,7 +267,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_checkBox_automaticSendBuilder = new wxCheckBox( m_panel2, wxID_ANY, _("Automatic send at"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer12->Add( m_checkBox_automaticSendBuilder, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_spinCtrlDouble_autoSendFreqBuilder = new wxSpinCtrlDouble( m_panel2, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 50,-1 ), wxSP_ARROW_KEYS, 0.1, 10, 1, 1 );
+	m_spinCtrlDouble_autoSendFreqBuilder = new wxSpinCtrlDouble( m_panel2, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 50,-1 ), wxSP_ARROW_KEYS, 0.1, 10, 1, 0.25 );
 	m_spinCtrlDouble_autoSendFreqBuilder->SetDigits( 1 );
 	bSizer12->Add( m_spinCtrlDouble_autoSendFreqBuilder, 0, wxALL, 5 );
 
@@ -285,7 +285,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_panel2->SetSizer( bSizer9 );
 	m_panel2->Layout();
 	bSizer9->Fit( m_panel2 );
-	m_notebook->AddPage( m_panel2, _("Sentence Builder"), false );
+	m_notebook->AddPage( m_panel2, _("Sentence Builder"), true );
 	m_panel3 = new wxPanel( m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer8;
 	bSizer8 = new wxBoxSizer( wxVERTICAL );
@@ -311,7 +311,6 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	this->SetSizer( bSizer_main );
 	this->Layout();
-	bSizer_main->Fit( this );
 
 	this->Centre( wxBOTH );
 

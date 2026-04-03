@@ -19,22 +19,21 @@ DialogSettingsBase::DialogSettingsBase( wxWindow* parent, wxWindowID id, const w
 	wxBoxSizer* sizerSettings;
 	sizerSettings = new wxBoxSizer( wxVERTICAL );
 
-	checkBoxBoolean = new wxCheckBox( this, wxID_ANY, _("Some Boolean Value"), wxDefaultPosition, wxDefaultSize, 0 );
-	sizerSettings->Add( checkBoxBoolean, 0, wxALL, 5 );
+	wxBoxSizer* bSizer4;
+	bSizer4 = new wxBoxSizer( wxHORIZONTAL );
 
-	labelInteger = new wxStaticText( this, wxID_ANY, _("Some Integer Value"), wxDefaultPosition, wxDefaultSize, 0 );
-	labelInteger->Wrap( -1 );
-	sizerSettings->Add( labelInteger, 0, wxALL, 5 );
+	m_staticText3 = new wxStaticText( this, wxID_ANY, _("Always open GUI on tab:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText3->Wrap( -1 );
+	bSizer4->Add( m_staticText3, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	sliderInteger = new wxSlider( this, wxID_ANY, 50, 0, 100, wxDefaultPosition, wxDefaultSize, wxSL_HORIZONTAL|wxSL_MIN_MAX_LABELS|wxSL_VALUE_LABEL );
-	sizerSettings->Add( sliderInteger, 0, wxALL|wxEXPAND, 5 );
+	wxString m_choice_notebookPageChoices[] = { _("Manual input"), _("Sentence builder"), _("Simulation") };
+	int m_choice_notebookPageNChoices = sizeof( m_choice_notebookPageChoices ) / sizeof( wxString );
+	m_choice_notebookPage = new wxChoice( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_notebookPageNChoices, m_choice_notebookPageChoices, 0 );
+	m_choice_notebookPage->SetSelection( 0 );
+	bSizer4->Add( m_choice_notebookPage, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	labelString = new wxStaticText( this, wxID_ANY, _("Some String Value"), wxDefaultPosition, wxDefaultSize, 0 );
-	labelString->Wrap( -1 );
-	sizerSettings->Add( labelString, 0, wxALL, 5 );
 
-	textString = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	sizerSettings->Add( textString, 0, wxALL|wxEXPAND, 5 );
+	sizerSettings->Add( bSizer4, 1, wxEXPAND, 5 );
 
 
 	sizerDialog->Add( sizerSettings, 1, wxEXPAND, 5 );
@@ -60,22 +59,12 @@ DialogSettingsBase::DialogSettingsBase( wxWindow* parent, wxWindowID id, const w
 
 	this->SetSizer( sizerDialog );
 	this->Layout();
+	sizerDialog->Fit( this );
 
 	this->Centre( wxBOTH );
 
 	// Connect Events
 	this->Connect( wxEVT_INIT_DIALOG, wxInitDialogEventHandler( DialogSettingsBase::OnInit ) );
-	checkBoxBoolean->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( DialogSettingsBase::OnCheckBoolean ), NULL, this );
-	sliderInteger->Connect( wxEVT_SCROLL_TOP, wxScrollEventHandler( DialogSettingsBase::OnSliderChanged ), NULL, this );
-	sliderInteger->Connect( wxEVT_SCROLL_BOTTOM, wxScrollEventHandler( DialogSettingsBase::OnSliderChanged ), NULL, this );
-	sliderInteger->Connect( wxEVT_SCROLL_LINEUP, wxScrollEventHandler( DialogSettingsBase::OnSliderChanged ), NULL, this );
-	sliderInteger->Connect( wxEVT_SCROLL_LINEDOWN, wxScrollEventHandler( DialogSettingsBase::OnSliderChanged ), NULL, this );
-	sliderInteger->Connect( wxEVT_SCROLL_PAGEUP, wxScrollEventHandler( DialogSettingsBase::OnSliderChanged ), NULL, this );
-	sliderInteger->Connect( wxEVT_SCROLL_PAGEDOWN, wxScrollEventHandler( DialogSettingsBase::OnSliderChanged ), NULL, this );
-	sliderInteger->Connect( wxEVT_SCROLL_THUMBTRACK, wxScrollEventHandler( DialogSettingsBase::OnSliderChanged ), NULL, this );
-	sliderInteger->Connect( wxEVT_SCROLL_THUMBRELEASE, wxScrollEventHandler( DialogSettingsBase::OnSliderChanged ), NULL, this );
-	sliderInteger->Connect( wxEVT_SCROLL_CHANGED, wxScrollEventHandler( DialogSettingsBase::OnSliderChanged ), NULL, this );
-	textString->Connect( wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( DialogSettingsBase::OnTextChanged ), NULL, this );
 	buttonOK->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogSettingsBase::OnOK ), NULL, this );
 	buttonApply->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogSettingsBase::OnApply ), NULL, this );
 	buttonCancel->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogSettingsBase::OnCancel ), NULL, this );

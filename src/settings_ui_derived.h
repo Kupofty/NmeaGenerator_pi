@@ -26,9 +26,12 @@ class DialogSettings : public DialogSettingsBase
     void OnApply(wxCommandEvent& event) override;
 
   private:
+    void updateSettings();
+
     bool originalBooleanValue;
     int originalIntegerValue;
     wxString originalStringValue;
+    int originalNotebookPage;
 };
 
 #endif //DIALOG_SETTINGS_H

@@ -15,17 +15,25 @@ DialogSettings::~DialogSettings()
 void DialogSettings::OnInit(wxInitDialogEvent& event)
 {
   // Save the original settings in case user changes values, hits apply, but then cancels...
-  originalBooleanValue = g_someBooleanValue;
-  originalIntegerValue = g_someIntegerValue;
-  originalStringValue = g_someStringValue;
+  originalNotebookPage = g_notebookPage;
 
-  checkBoxBoolean->SetValue(g_someBooleanValue);
-  sliderInteger->SetValue(g_someIntegerValue);
-  textString->SetValue(g_someStringValue);
+  //Update UI
+  m_choice_notebookPage->SetSelection(g_notebookPage);
 
   Layout();
   Fit();
 }
+
+
+
+//////////////
+/// Others ///
+//////////////
+void DialogSettings::updateSettings()
+{
+  g_notebookPage = m_choice_notebookPage->GetSelection();
+}
+
 
 
 ////////////////////
@@ -33,24 +41,19 @@ void DialogSettings::OnInit(wxInitDialogEvent& event)
 ////////////////////
 void DialogSettings::OnOK(wxCommandEvent& event)
 {
-  g_someBooleanValue = checkBoxBoolean->IsChecked();
-  g_someIntegerValue = sliderInteger->GetValue();
-  g_someStringValue = textString->GetValue();
+  updateSettings();
   EndModal(wxID_OK);
+}
+
+void DialogSettings::OnApply(wxCommandEvent& event)
+{
+  updateSettings();
 }
 
 void DialogSettings::OnCancel(wxCommandEvent& event)
 {
   // Restore the original settings
-  g_someBooleanValue = originalBooleanValue;
-  g_someIntegerValue = originalIntegerValue;
-  g_someStringValue = originalStringValue;
+  g_notebookPage = originalNotebookPage;
   EndModal(wxID_CANCEL);
 }
 
-void DialogSettings::OnApply(wxCommandEvent& event)
-{
-  g_someBooleanValue = checkBoxBoolean->IsChecked();
-  g_someIntegerValue = sliderInteger->GetValue();
-  g_someStringValue = textString->GetValue();
-}

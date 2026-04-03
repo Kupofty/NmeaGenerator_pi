@@ -11,7 +11,7 @@ DialogMainGui::DialogMainGui(wxWindow* parent, wxWindowID id, const wxString& ti
   addAutoChecksum = m_checkBox_autoChecksum->GetValue();
   m_staticText_checksum->Show(addAutoChecksum);
 
-  //Always open on first tab of notebook
+  //Open first tab by default
   m_notebook->SetSelection(0);
 }
 

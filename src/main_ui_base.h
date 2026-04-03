@@ -44,7 +44,6 @@ class MyDialog : public wxDialog
 	protected:
 		wxTimer m_timer_autoSendNmea;
 		wxTimer m_timer_autoSendBuilder;
-		wxNotebook* m_notebook;
 		wxPanel* m_panel_manual;
 		wxStaticText* m_staticText3;
 		wxTextCtrl* m_textCtrl_sentenceInput;
@@ -103,8 +102,9 @@ class MyDialog : public wxDialog
 
 
 	public:
+		wxNotebook* m_notebook;
 
-		MyDialog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("NMEA Generator Plugin"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
+		MyDialog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("NMEA Generator Plugin"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 700,200 ), long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
 
 		~MyDialog();
 

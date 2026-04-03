@@ -10,8 +10,7 @@
 
 // Globally accessible variables used by the plugin, dialogs etc.
 extern wxBitmap g_pluginBitmap;
-extern bool g_someBooleanValue;
-extern int g_someIntegerValue;
-extern wxString g_someStringValue;
+
+extern int g_notebookPage;
 
 #endif //GLOBALS_H

@@ -62,7 +62,8 @@ int NmeaGeneratorPlugin::Init()
   myGUI = NULL;
 
   // Notify OpenCPN what callbacks the plugin registers to receive
-  return (INSTALLS_TOOLBAR_TOOL);
+  return (INSTALLS_TOOLBAR_TOOL //Add toolbar icon
+          | WANTS_PREFERENCES); //Add "Preferences" button in plugin catalogue
 }
 
 bool NmeaGeneratorPlugin::DeInit()
@@ -145,9 +146,7 @@ void NmeaGeneratorPlugin::LoadSettings()
   if (configSettings)
   {
     configSettings->SetPath("/PlugIns/NmeaGeneratorPlugin");
-    configSettings->Read("A_Boolean_Value", &g_someBooleanValue, false);
-    configSettings->Read("An_Integer_Value", &g_someIntegerValue, 0);
-    configSettings->Read("A_String_Value", &g_someStringValue, wxEmptyString);
+    configSettings->Read("NotebookPage", &g_notebookPage, 0);
   }
 }
 
@@ -156,9 +155,7 @@ void NmeaGeneratorPlugin::SaveSettings()
   if (configSettings)
   {
     configSettings->SetPath("/PlugIns/NmeaGeneratorPlugin");
-    configSettings->Write("A_Boolean_Value", g_someBooleanValue);
-    configSettings->Write("An_Integer_Value", g_someIntegerValue);
-    configSettings->Write("A_String_Value", g_someStringValue);
+    configSettings->Write("NotebookPage", g_notebookPage);
   }
 }
 
@@ -186,6 +183,9 @@ void NmeaGeneratorPlugin::OnToolbarToolCallback(int id)
   {
     myGUI = new DialogMainGui(parentWindow);
     myGUI->plugin = this;
+
+    //Apply settings to UI
+    myGUI->m_notebook->SetSelection(g_notebookPage);
   }
 
   //Toggle UI & toolbar icon state
