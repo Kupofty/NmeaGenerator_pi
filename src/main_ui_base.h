@@ -28,6 +28,7 @@
 #include <wx/spinctrl.h>
 #include <wx/panel.h>
 #include <wx/choice.h>
+#include <wx/statbox.h>
 #include <wx/scrolwin.h>
 #include <wx/notebook.h>
 #include <wx/dialog.h>
@@ -57,13 +58,15 @@ class MyDialog : public wxDialog
 		wxStaticText* m_staticText4;
 		wxPanel* m_panel2;
 		wxScrolledWindow* m_scrolledWindow_sentenceBuilder;
+		wxButton* m_button_sendGLL;
+		wxCheckBox* m_checkBox_autoSendGLL;
+		wxStaticLine* m_staticline5;
 		wxStaticText* m_staticText19;
 		wxStaticText* m_staticText9;
 		wxStaticText* m_staticText11;
 		wxStaticText* m_staticText14;
 		wxStaticText* m_staticText15;
 		wxStaticText* m_staticText18;
-		wxCheckBox* m_checkBox_autoSendGLL;
 		wxTextCtrl* m_textCtrl_idGLL;
 		wxStaticText* m_staticText5;
 		wxTextCtrl* m_textCtrl_latitudeGLL;
@@ -73,11 +76,34 @@ class MyDialog : public wxDialog
 		wxTextCtrl* m_textCtrl_timeGLL;
 		wxChoice* m_choice_statusGLL;
 		wxChoice* m_choice_modeGLL;
-		wxButton* m_button_sendGLL;
+		wxButton* m_button_sendRMC;
+		wxCheckBox* m_checkBox_autoSendRMC;
+		wxStaticLine* m_staticline6;
+		wxStaticText* m_staticText13;
+		wxStaticText* m_staticText141;
+		wxStaticText* m_staticText151;
+		wxStaticText* m_staticText16;
+		wxStaticText* m_staticText181;
+		wxStaticText* m_staticText201;
+		wxStaticText* m_staticText26;
+		wxStaticText* m_staticText27;
+		wxStaticText* m_staticText28;
+		wxTextCtrl* m_textCtrl_idRMC;
+		wxStaticText* m_staticText22;
+		wxTextCtrl* m_textCtrl_timeRMC;
+		wxChoice* m_choice_statusRMC;
+		wxTextCtrl* m_textCtrl_latitudeRMC;
+		wxChoice* m_choice_latDirRMC;
+		wxTextCtrl* m_textCtrl_longitudeRMC;
+		wxChoice* m_choice_lonDirRMC;
+		wxSpinCtrlDouble* m_spinCtrlDouble_sogRMC;
+		wxSpinCtrlDouble* m_spinCtrlDouble_cogRMC;
+		wxTextCtrl* m_textCtrl_dateRMC;
+		wxSpinCtrlDouble* m_spinCtrlDouble_magRMC;
+		wxChoice* m_choice_magDirRMC;
 		wxStaticLine* m_staticline3;
 		wxButton* m_button_checkAllBuilder;
 		wxButton* m_button_uncheckAllBuilder;
-		wxStaticLine* m_staticline4;
 		wxCheckBox* m_checkBox_automaticSendBuilder;
 		wxSpinCtrlDouble* m_spinCtrlDouble_autoSendFreqBuilder;
 		wxStaticText* m_staticText20;
@@ -95,6 +121,7 @@ class MyDialog : public wxDialog
 		virtual void OnCheckBox_AutomaticSend( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnSpinCtrlDouble_AutomaticSendFreq( wxSpinDoubleEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendGLL( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_SendRMC( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_CheckAllBuilder( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_UncheckAllBuilder( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnCheckBox_AutomaticSendBuilder( wxCommandEvent& event ) { event.Skip(); }
@@ -104,7 +131,7 @@ class MyDialog : public wxDialog
 	public:
 		wxNotebook* m_notebook;
 
-		MyDialog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("NMEA Generator Plugin"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 700,200 ), long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
+		MyDialog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("NMEA Generator Plugin"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 957,371 ), long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
 
 		~MyDialog();
 

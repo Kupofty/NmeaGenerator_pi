@@ -195,13 +195,23 @@ void DialogMainGui::OnTimer_autoSendBuilder(wxTimerEvent& event)
 {
   if(m_checkBox_autoSendGLL->GetValue())
     sendGLL();
+
+  if(m_checkBox_autoSendRMC->GetValue())
+    sendRMC();
 }
+
 
 //Send buttons
 void DialogMainGui::OnButtonClick_SendGLL(wxCommandEvent& event)
 {
   sendGLL();
 }
+
+void DialogMainGui::OnButtonClick_SendRMC(wxCommandEvent& event)
+{
+  sendRMC();
+}
+
 
 //NMEA sentences construction
 void DialogMainGui::sendGLL()
@@ -216,6 +226,31 @@ void DialogMainGui::sendGLL()
   payload += m_textCtrl_timeGLL->GetValue() + ",";
   payload += m_choice_statusGLL->GetStringSelection() + ",";
   payload += m_choice_modeGLL->GetStringSelection();
+
+  wxString checksum = utils::calculateChecksumString(payload);
+
+  wxString sentence = "$" + payload + checksum;
+
+  sendNmeaToOCPN(sentence);
+}
+
+void DialogMainGui::sendRMC()
+{
+  wxString payload;
+  payload = m_textCtrl_idRMC->GetValue();
+  payload += "RMC,";
+  payload += m_textCtrl_timeRMC->GetValue() + ",";
+  payload += m_choice_statusRMC->GetStringSelection() + ",";
+  payload += m_textCtrl_latitudeRMC->GetValue() + ",";
+  payload += m_choice_latDirRMC->GetStringSelection() + ",";
+  payload += m_textCtrl_longitudeRMC->GetValue() + ",";
+  payload += m_choice_lonDirRMC->GetStringSelection() + ",";
+  payload += wxString::Format("%.1f", m_spinCtrlDouble_sogRMC->GetValue()) + ",";
+  payload += wxString::Format("%.1f", m_spinCtrlDouble_cogRMC->GetValue()) + ",";
+  payload += m_textCtrl_dateRMC->GetValue() + ",";
+  payload += wxString::Format("%.1f", m_spinCtrlDouble_magRMC->GetValue()) + ",";
+  payload += m_choice_magDirRMC->GetStringSelection();
+
 
   wxString checksum = utils::calculateChecksumString(payload);
 

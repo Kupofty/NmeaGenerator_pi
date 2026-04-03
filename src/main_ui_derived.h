@@ -31,6 +31,7 @@ class DialogMainGui : public MyDialog
     void OnTimer_autoSendNmea(wxTimerEvent& event) override;
 
     void OnButtonClick_SendGLL(wxCommandEvent& event) override;
+    void OnButtonClick_SendRMC(wxCommandEvent& event) override;
     void OnButtonClick_CheckAllBuilder(wxCommandEvent& event) override;
     void OnButtonClick_UncheckAllBuilder(wxCommandEvent& event) override;
     void OnCheckBox_AutomaticSendBuilder(wxCommandEvent& event) override;
@@ -42,6 +43,7 @@ class DialogMainGui : public MyDialog
     void sendManualInput();
 
     void sendGLL();
+    void sendRMC();
 
     bool addAutoChecksum;
 };
