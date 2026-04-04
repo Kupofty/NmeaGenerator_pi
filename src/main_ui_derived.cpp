@@ -365,163 +365,217 @@ void DialogMainGui::OnButtonClick_SendRSA(wxCommandEvent& event)
 //NMEA sentences construction
 void DialogMainGui::sendGLL()
 {
-  wxString payload;
-  payload = m_textCtrl_idGLL->GetValue();
-  payload += "GLL,";
-  payload += m_textCtrl_latitudeGLL->GetValue() +",";
-  payload += m_choice_latDirGLL->GetStringSelection() + ",";
-  payload += m_textCtrl_longitudeGLL->GetValue() + ",";
-  payload += m_choice_lonDirGLL->GetStringSelection() + ",";
-  payload += m_textCtrl_timeGLL->GetValue() + ",";
-  payload += m_choice_statusGLL->GetStringSelection() + ",";
-  payload += m_choice_modeGLL->GetStringSelection();
+  wxString talker = m_textCtrl_talkerGLL->GetValue();
+  wxString type   = "GLL";
+  wxString lat    = m_textCtrl_latitudeGLL->GetValue();
+  wxString latDir = m_choice_latDirGLL->GetStringSelection();
+  wxString lon    = m_textCtrl_longitudeGLL->GetValue();
+  wxString lonDir = m_choice_lonDirGLL->GetStringSelection();
+  wxString time   = m_textCtrl_timeGLL->GetValue();
+  wxString status = m_choice_statusGLL->GetStringSelection();
+  wxString mode   = m_choice_modeGLL->GetStringSelection();
+
+  wxString payload =
+      talker + type + "," +
+      lat + "," +
+      latDir + "," +
+      lon + "," +
+      lonDir + "," +
+      time + "," +
+      status + "," +
+      mode;
 
   wxString checksum = utils::calculateChecksumString(payload);
 
   wxString sentence = "$" + payload + checksum;
-
   sendNmeaToOCPN(sentence);
 }
 
 void DialogMainGui::sendRMC()
 {
-  wxString payload;
-  payload = m_textCtrl_idRMC->GetValue();
-  payload += "RMC,";
-  payload += m_textCtrl_timeRMC->GetValue() + ",";
-  payload += m_choice_statusRMC->GetStringSelection() + ",";
-  payload += m_textCtrl_latitudeRMC->GetValue() + ",";
-  payload += m_choice_latDirRMC->GetStringSelection() + ",";
-  payload += m_textCtrl_longitudeRMC->GetValue() + ",";
-  payload += m_choice_lonDirRMC->GetStringSelection() + ",";
-  payload += wxString::Format("%.1f", m_spinCtrlDouble_sogRMC->GetValue()) + ",";
-  payload += wxString::Format("%.1f", m_spinCtrlDouble_cogRMC->GetValue()) + ",";
-  payload += m_textCtrl_dateRMC->GetValue() + ",";
-  payload += wxString::Format("%.1f", m_spinCtrlDouble_magRMC->GetValue()) + ",";
-  payload += m_choice_magDirRMC->GetStringSelection();
+  wxString talker = m_textCtrl_talkerRMC->GetValue();
+  wxString type   = "RMC";
+  wxString time   = m_textCtrl_timeRMC->GetValue();
+  wxString status = m_choice_statusRMC->GetStringSelection();
+  wxString lat    = m_textCtrl_latitudeRMC->GetValue();
+  wxString latDir = m_choice_latDirRMC->GetStringSelection();
+  wxString lon    = m_textCtrl_longitudeRMC->GetValue();
+  wxString lonDir = m_choice_lonDirRMC->GetStringSelection();
+  wxString sog    = wxString::Format("%.1f", m_spinCtrlDouble_sogRMC->GetValue());
+  wxString cog    = wxString::Format("%.1f", m_spinCtrlDouble_cogRMC->GetValue());
+  wxString date   = m_textCtrl_dateRMC->GetValue();
+  wxString magVar = wxString::Format("%.1f",  m_spinCtrlDouble_magRMC->GetValue());
+  wxString magVarDir = m_choice_magDirRMC->GetStringSelection();
 
+  wxString payload =
+      talker + type + "," +
+      time + "," +
+      status + "," +
+      lat + "," +
+      latDir + "," +
+      lon + "," +
+      lonDir + "," +
+      sog + "," +
+      cog + "," +
+      date + "," +
+      magVar + "," +
+      magVarDir;
 
   wxString checksum = utils::calculateChecksumString(payload);
 
   wxString sentence = "$" + payload + checksum;
-
   sendNmeaToOCPN(sentence);
 }
 
 void DialogMainGui::sendGGA()
 {
-  wxString payload;
-  payload = m_textCtrl_idGGA->GetValue();
-  payload += "GGA,";
-  payload += m_textCtrl_timeGGA->GetValue() + ",";
-  payload += m_textCtrl_latitudeGGA->GetValue() + ",";
-  payload += m_choice_latDirGGA->GetStringSelection() + ",";
-  payload += m_textCtrl_longitudeGGA->GetValue() + ",";
-  payload += m_choice_lonDirGGA->GetStringSelection() + ",";
-  payload += wxString::Format("%d", m_spinCtrl_gpsQualityGGA->GetValue()) + ",";
-  payload += wxString::Format("%d", m_spinCtrl_satellitesGGA->GetValue()) + ",";
-  payload += wxString::Format("%.1f", m_spinCtrlDouble_hdopGGA->GetValue()) + ",";
-  payload += wxString::Format("%.1f", m_spinCtrlDouble_altitude_GGA->GetValue()) + ",M,";
-  payload += wxString::Format("%.1f", m_spinCtrlDouble_geoidSeparationGGA->GetValue()) + ",M,,";
+  wxString talker   = m_textCtrl_talkerGGA->GetValue();
+  wxString type     = "GGA";
+  wxString time     = m_textCtrl_timeGGA->GetValue();
+  wxString lat      = m_textCtrl_latitudeGGA->GetValue();
+  wxString latDir   = m_choice_latDirGGA->GetStringSelection();
+  wxString lon      = m_textCtrl_longitudeGGA->GetValue();
+  wxString lonDir   = m_choice_lonDirGGA->GetStringSelection();
+  wxString gpsFix   = wxString::Format("%d", m_spinCtrl_gpsQualityGGA->GetValue());
+  wxString sats     = wxString::Format("%d", m_spinCtrl_satellitesGGA->GetValue());
+  wxString hdop     = wxString::Format("%.1f", m_spinCtrlDouble_hdopGGA->GetValue());
+  wxString altitude = wxString::Format("%.1f", m_spinCtrlDouble_altitude_GGA->GetValue());
+  wxString geoid    = wxString::Format("%.1f", m_spinCtrlDouble_geoidSeparationGGA->GetValue());
+
+  wxString payload =
+      talker + type + "," +
+      time + "," +
+      lat + "," +
+      latDir + "," +
+      lon + "," +
+      lonDir + "," +
+      gpsFix + "," +
+      sats + "," +
+      hdop + "," +
+      altitude + ",M," +
+      geoid + ",M,,";
 
   wxString checksum = utils::calculateChecksumString(payload);
 
   wxString sentence = "$" + payload + checksum;
-
   sendNmeaToOCPN(sentence);
 }
 
 void DialogMainGui::sendHDT()
 {
-  wxString payload;
-  payload = m_textCtrl_idHDT->GetValue();
-  payload += "HDT,";
-  payload += wxString::Format("%.1f", m_spinCtrlDouble_headingHDT->GetValue()) + ",T";
+  wxString talker  = m_textCtrl_talkerHDT->GetValue();
+  wxString type    = "HDT";
+  wxString heading = wxString::Format("%.1f", m_spinCtrlDouble_headingHDT->GetValue());
+
+  wxString payload =
+      talker + type + "," +
+      heading + ",T";
 
   wxString checksum = utils::calculateChecksumString(payload);
 
   wxString sentence = "$" + payload + checksum;
-
   sendNmeaToOCPN(sentence);
 }
 
 void DialogMainGui::sendHDM()
 {
-  wxString payload;
-  payload = m_textCtrl_idHDM->GetValue();
-  payload += "HDM,";
-  payload += wxString::Format("%.1f", m_spinCtrlDouble_headingHDM->GetValue()) + ",M";
+  wxString talker  = m_textCtrl_talkerHDM->GetValue();
+  wxString type    = "HDM";
+  wxString heading = wxString::Format("%.1f", m_spinCtrlDouble_headingHDM->GetValue());
+
+  wxString payload =
+      talker + type + "," +
+      heading + ",M";
 
   wxString checksum = utils::calculateChecksumString(payload);
 
   wxString sentence = "$" + payload + checksum;
-
   sendNmeaToOCPN(sentence);
 }
 
 void DialogMainGui::sendMTW()
 {
-  wxString payload;
-  payload = m_textCtrl_idMTW->GetValue();
-  payload += "MTW,";
-  payload += wxString::Format("%.1f", m_spinCtrlDouble_tempMTW->GetValue()) + ",C";
+  wxString talker = m_textCtrl_talkerMTW->GetValue();
+  wxString type   = "MTW";
+  wxString temp   = wxString::Format("%.1f", m_spinCtrlDouble_tempMTW->GetValue());
+
+  wxString payload =
+      talker + type + "," +
+      temp + ",C";
 
   wxString checksum = utils::calculateChecksumString(payload);
 
   wxString sentence = "$" + payload + checksum;
-
   sendNmeaToOCPN(sentence);
 }
 
 void DialogMainGui::sendTLL()
 {
-  wxString payload;
-  payload = m_textCtrl_idTLL->GetValue();
-  payload += "TLL,";
-  payload += wxString::Format("%.1f", m_spinCtrlDouble_numberTLL->GetValue()) + ",";
-  payload += m_textCtrl_latitudeTLL->GetValue() + ",";
-  payload += m_choice_latDirTLL->GetStringSelection() + ",";
-  payload += m_textCtrl_longitudeTLL->GetValue() + ",";
-  payload += m_choice_lonDirTLL->GetStringSelection() + ",";
-  payload += m_textCtrl_nameTLL->GetValue() + ",";
-  payload += m_textCtrl_timeTLL->GetValue() + ",";
-  payload += m_choice_statusTLL->GetStringSelection() + ",R";
+  wxString talker   = m_textCtrl_talkerTLL->GetValue();
+  wxString type     = "TLL";
+  wxString targetID = wxString::Format("%d", m_spinCtrl_idTLL->GetValue());
+  wxString lat      = m_textCtrl_latitudeTLL->GetValue();
+  wxString latDir   = m_choice_latDirTLL->GetStringSelection();
+  wxString lon      = m_textCtrl_longitudeTLL->GetValue();
+  wxString lonDir   = m_choice_lonDirTLL->GetStringSelection();
+  wxString name     = m_textCtrl_nameTLL->GetValue();
+  wxString time     = m_textCtrl_timeTLL->GetValue();
+  wxString status   = m_choice_statusTLL->GetStringSelection();
+  wxString ref      = "R";
+
+  wxString payload =
+      talker + type + "," +
+      targetID + "," +
+      lat + "," +
+      latDir + "," +
+      lon + "," +
+      lonDir + "," +
+      name + "," +
+      time + "," +
+      status + "," +
+      ref;
 
   wxString checksum = utils::calculateChecksumString(payload);
 
   wxString sentence = "$" + payload + checksum;
-
   sendNmeaToOCPN(sentence);
 }
 
 void DialogMainGui::sendROT()
 {
-  wxString payload;
-  payload = m_textCtrl_idROT->GetValue();
-  payload += "ROT,";
-  payload += wxString::Format("%.1f", m_spinCtrlDouble_rateROT->GetValue()) + ",";
-  payload += m_choice_statusROT->GetStringSelection();
+  wxString talker = m_textCtrl_talkerROT->GetValue();
+  wxString type   = "ROT";
+  wxString rate   = wxString::Format("%.1f", m_spinCtrlDouble_rateROT->GetValue());
+  wxString status = m_choice_statusROT->GetStringSelection();
+
+  wxString payload =
+      talker + type + "," +
+      rate + "," +
+      status;
 
   wxString checksum = utils::calculateChecksumString(payload);
 
   wxString sentence = "$" + payload + checksum;
-
   sendNmeaToOCPN(sentence);
 }
 
 void DialogMainGui::sendRSA()
 {
-  wxString payload;
-  payload = m_textCtrl_idRSA->GetValue();
-  payload += "RSA,";
-  payload += wxString::Format("%.1f", m_spinCtrlDouble_starboardRSA->GetValue()) + ",";
-  payload += m_choice_starboardStatusRSA->GetStringSelection();
-  payload += wxString::Format("%.1f", m_spinCtrlDouble_portRSA->GetValue()) + ",";
-  payload += m_choice_statusPortRSA->GetStringSelection();
+  wxString talker = m_textCtrl_talkerRSA->GetValue();
+  wxString type   = "RSA";
+  wxString stbdAngle = wxString::Format("%.1f", m_spinCtrlDouble_starboardRSA->GetValue());
+  wxString stbdStatus = m_choice_starboardStatusRSA->GetStringSelection();
+  wxString portAngle = wxString::Format("%.1f", m_spinCtrlDouble_portRSA->GetValue());
+  wxString portStatus = m_choice_statusPortRSA->GetStringSelection();
+
+  wxString payload = talker + type + "," +
+                     stbdAngle + "," +
+                     stbdStatus + "," +
+                     portAngle + "," +
+                     portStatus;
 
   wxString checksum = utils::calculateChecksumString(payload);
 
   wxString sentence = "$" + payload + checksum;
-
   sendNmeaToOCPN(sentence);
 }

@@ -73,7 +73,7 @@ class MyDialog : public wxDialog
 		wxStaticText* m_staticText26;
 		wxStaticText* m_staticText27;
 		wxStaticText* m_staticText28;
-		wxTextCtrl* m_textCtrl_idRMC;
+		wxTextCtrl* m_textCtrl_talkerRMC;
 		wxStaticText* m_staticText22;
 		wxTextCtrl* m_textCtrl_timeRMC;
 		wxChoice* m_choice_statusRMC;
@@ -99,7 +99,7 @@ class MyDialog : public wxDialog
 		wxStaticText* m_staticText35;
 		wxStaticText* m_staticText36;
 		wxStaticText* m_staticText37;
-		wxTextCtrl* m_textCtrl_idGGA;
+		wxTextCtrl* m_textCtrl_talkerGGA;
 		wxStaticText* m_staticText40;
 		wxTextCtrl* m_textCtrl_timeGGA;
 		wxTextCtrl* m_textCtrl_latitudeGGA;
@@ -124,9 +124,9 @@ class MyDialog : public wxDialog
 		wxStaticText* m_staticText65;
 		wxStaticText* m_staticText66;
 		wxStaticText* m_staticText67;
-		wxTextCtrl* m_textCtrl_idTLL;
+		wxTextCtrl* m_textCtrl_talkerTLL;
 		wxStaticText* m_staticText371111;
-		wxSpinCtrlDouble* m_spinCtrlDouble_numberTLL;
+		wxSpinCtrl* m_spinCtrl_idTLL;
 		wxTextCtrl* m_textCtrl_latitudeTLL;
 		wxChoice* m_choice_latDirTLL;
 		wxTextCtrl* m_textCtrl_longitudeTLL;
@@ -145,7 +145,7 @@ class MyDialog : public wxDialog
 		wxStaticText* m_staticText14;
 		wxStaticText* m_staticText15;
 		wxStaticText* m_staticText18;
-		wxTextCtrl* m_textCtrl_idGLL;
+		wxTextCtrl* m_textCtrl_talkerGLL;
 		wxStaticText* m_staticText5;
 		wxTextCtrl* m_textCtrl_latitudeGLL;
 		wxChoice* m_choice_latDirGLL;
@@ -160,7 +160,7 @@ class MyDialog : public wxDialog
 		wxStaticLine* m_staticline61;
 		wxStaticText* m_staticText351;
 		wxStaticText* m_staticText361;
-		wxTextCtrl* m_textCtrl_idHDT;
+		wxTextCtrl* m_textCtrl_talkerHDT;
 		wxStaticText* m_staticText371;
 		wxSpinCtrlDouble* m_spinCtrlDouble_headingHDT;
 		wxStaticText* m_staticText38;
@@ -170,7 +170,7 @@ class MyDialog : public wxDialog
 		wxStaticLine* m_staticline611;
 		wxStaticText* m_staticText3511;
 		wxStaticText* m_staticText3611;
-		wxTextCtrl* m_textCtrl_idHDM;
+		wxTextCtrl* m_textCtrl_talkerHDM;
 		wxStaticText* m_staticText3711;
 		wxSpinCtrlDouble* m_spinCtrlDouble_headingHDM;
 		wxStaticText* m_staticText381;
@@ -180,7 +180,7 @@ class MyDialog : public wxDialog
 		wxStaticLine* m_staticline6111;
 		wxStaticText* m_staticText35111;
 		wxStaticText* m_staticText36111;
-		wxTextCtrl* m_textCtrl_idMTW;
+		wxTextCtrl* m_textCtrl_talkerMTW;
 		wxStaticText* m_staticText37111;
 		wxSpinCtrlDouble* m_spinCtrlDouble_tempMTW;
 		wxStaticText* m_staticText3811;
@@ -191,7 +191,7 @@ class MyDialog : public wxDialog
 		wxStaticText* m_staticText351112;
 		wxStaticText* m_staticText361112;
 		wxStaticText* m_staticText77;
-		wxTextCtrl* m_textCtrl_idROT;
+		wxTextCtrl* m_textCtrl_talkerROT;
 		wxStaticText* m_staticText371112;
 		wxSpinCtrlDouble* m_spinCtrlDouble_rateROT;
 		wxChoice* m_choice_statusROT;
@@ -204,7 +204,7 @@ class MyDialog : public wxDialog
 		wxStaticText* m_staticText771;
 		wxStaticText* m_staticText86;
 		wxStaticText* m_staticText87;
-		wxTextCtrl* m_textCtrl_idRSA;
+		wxTextCtrl* m_textCtrl_talkerRSA;
 		wxStaticText* m_staticText3711121;
 		wxSpinCtrlDouble* m_spinCtrlDouble_starboardRSA;
 		wxChoice* m_choice_starboardStatusRSA;

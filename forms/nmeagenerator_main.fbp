@@ -1392,7 +1392,7 @@
                                     <property name="gripper">0</property>
                                     <property name="hidden">0</property>
                                     <property name="id">wxID_ANY</property>
-                                    <property name="label">ID</property>
+                                    <property name="label">Talker</property>
                                     <property name="markup">0</property>
                                     <property name="max_size"></property>
                                     <property name="maximize_button">0</property>
@@ -1998,7 +1998,7 @@
                                     <property name="minimize_button">0</property>
                                     <property name="minimum_size"></property>
                                     <property name="moveable">1</property>
-                                    <property name="name">m_textCtrl_idRMC</property>
+                                    <property name="name">m_textCtrl_talkerRMC</property>
                                     <property name="pane_border">1</property>
                                     <property name="pane_position"></property>
                                     <property name="pane_size"></property>
@@ -2328,7 +2328,7 @@
                                     <property name="pin_button">1</property>
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
-                                    <property name="selection">1</property>
+                                    <property name="selection">0</property>
                                     <property name="show">1</property>
                                     <property name="size"></property>
                                     <property name="style"></property>
@@ -2704,7 +2704,7 @@
                                     <property name="hidden">0</property>
                                     <property name="id">wxID_ANY</property>
                                     <property name="inc">1</property>
-                                    <property name="initial">5.000000</property>
+                                    <property name="initial">3.000000</property>
                                     <property name="max">180</property>
                                     <property name="max_size"></property>
                                     <property name="maximize_button">0</property>
@@ -2728,7 +2728,7 @@
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
                                     <property name="tooltip"></property>
-                                    <property name="value">3.5</property>
+                                    <property name="value">3</property>
                                     <property name="window_extra_style"></property>
                                     <property name="window_name"></property>
                                     <property name="window_style"></property>
@@ -3094,7 +3094,7 @@
                                     <property name="gripper">0</property>
                                     <property name="hidden">0</property>
                                     <property name="id">wxID_ANY</property>
-                                    <property name="label">ID</property>
+                                    <property name="label">Talker</property>
                                     <property name="markup">0</property>
                                     <property name="max_size"></property>
                                     <property name="maximize_button">0</property>
@@ -3372,7 +3372,7 @@
                                     <property name="gripper">0</property>
                                     <property name="hidden">0</property>
                                     <property name="id">wxID_ANY</property>
-                                    <property name="label">GPS quality</property>
+                                    <property name="label">GPS fix</property>
                                     <property name="markup">0</property>
                                     <property name="max_size"></property>
                                     <property name="maximize_button">0</property>
@@ -3710,7 +3710,7 @@
                                     <property name="minimize_button">0</property>
                                     <property name="minimum_size"></property>
                                     <property name="moveable">1</property>
-                                    <property name="name">m_textCtrl_idGGA</property>
+                                    <property name="name">m_textCtrl_talkerGGA</property>
                                     <property name="pane_border">1</property>
                                     <property name="pane_position"></property>
                                     <property name="pane_size"></property>
@@ -3975,7 +3975,7 @@
                                     <property name="pin_button">1</property>
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
-                                    <property name="selection">1</property>
+                                    <property name="selection">0</property>
                                     <property name="show">1</property>
                                     <property name="size"></property>
                                     <property name="style"></property>
@@ -4863,7 +4863,7 @@
                                     <property name="gripper">0</property>
                                     <property name="hidden">0</property>
                                     <property name="id">wxID_ANY</property>
-                                    <property name="label">ID</property>
+                                    <property name="label">Talker</property>
                                     <property name="markup">0</property>
                                     <property name="max_size"></property>
                                     <property name="maximize_button">0</property>
@@ -4935,7 +4935,7 @@
                                     <property name="gripper">0</property>
                                     <property name="hidden">0</property>
                                     <property name="id">wxID_ANY</property>
-                                    <property name="label">Number</property>
+                                    <property name="label">ID</property>
                                     <property name="markup">0</property>
                                     <property name="max_size"></property>
                                     <property name="maximize_button">0</property>
@@ -5345,7 +5345,7 @@
                                     <property name="minimize_button">0</property>
                                     <property name="minimum_size"></property>
                                     <property name="moveable">1</property>
-                                    <property name="name">m_textCtrl_idTLL</property>
+                                    <property name="name">m_textCtrl_talkerTLL</property>
                                     <property name="pane_border">1</property>
                                     <property name="pane_position"></property>
                                     <property name="pane_size"></property>
@@ -5431,11 +5431,11 @@
                                     <property name="wrap">-1</property>
                                   </object>
                                 </object>
-                                <object class="sizeritem" expanded="false">
+                                <object class="sizeritem" expanded="true">
                                   <property name="border">5</property>
                                   <property name="flag">wxALL</property>
                                   <property name="proportion">0</property>
-                                  <object class="wxSpinCtrlDouble" expanded="false">
+                                  <object class="wxSpinCtrl" expanded="true">
                                     <property name="BottomDockable">1</property>
                                     <property name="LeftDockable">1</property>
                                     <property name="RightDockable">1</property>
@@ -5453,7 +5453,6 @@
                                     <property name="context_help"></property>
                                     <property name="context_menu">1</property>
                                     <property name="default_pane">0</property>
-                                    <property name="digits">0</property>
                                     <property name="dock">Dock</property>
                                     <property name="dock_fixed">0</property>
                                     <property name="docking">Left</property>
@@ -5465,9 +5464,8 @@
                                     <property name="gripper">0</property>
                                     <property name="hidden">0</property>
                                     <property name="id">wxID_ANY</property>
-                                    <property name="inc">1</property>
                                     <property name="initial">0</property>
-                                    <property name="max">99</property>
+                                    <property name="max">10</property>
                                     <property name="max_size"></property>
                                     <property name="maximize_button">0</property>
                                     <property name="maximum_size"></property>
@@ -5476,7 +5474,7 @@
                                     <property name="minimize_button">0</property>
                                     <property name="minimum_size"></property>
                                     <property name="moveable">1</property>
-                                    <property name="name">m_spinCtrlDouble_numberTLL</property>
+                                    <property name="name">m_spinCtrl_idTLL</property>
                                     <property name="pane_border">1</property>
                                     <property name="pane_position"></property>
                                     <property name="pane_size"></property>
@@ -5490,7 +5488,7 @@
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
                                     <property name="tooltip"></property>
-                                    <property name="value">0</property>
+                                    <property name="value"></property>
                                     <property name="window_extra_style"></property>
                                     <property name="window_name"></property>
                                     <property name="window_style"></property>
@@ -6308,7 +6306,7 @@
                                     <property name="gripper">0</property>
                                     <property name="hidden">0</property>
                                     <property name="id">wxID_ANY</property>
-                                    <property name="label">ID</property>
+                                    <property name="label">Talker</property>
                                     <property name="markup">0</property>
                                     <property name="max_size"></property>
                                     <property name="maximize_button">0</property>
@@ -6718,7 +6716,7 @@
                                     <property name="minimize_button">0</property>
                                     <property name="minimum_size"></property>
                                     <property name="moveable">1</property>
-                                    <property name="name">m_textCtrl_idGLL</property>
+                                    <property name="name">m_textCtrl_talkerGLL</property>
                                     <property name="pane_border">1</property>
                                     <property name="pane_position"></property>
                                     <property name="pane_size"></property>
@@ -7534,7 +7532,7 @@
                                     <property name="gripper">0</property>
                                     <property name="hidden">0</property>
                                     <property name="id">wxID_ANY</property>
-                                    <property name="label">ID</property>
+                                    <property name="label">Talker</property>
                                     <property name="markup">0</property>
                                     <property name="max_size"></property>
                                     <property name="maximize_button">0</property>
@@ -7686,7 +7684,7 @@
                                     <property name="minimize_button">0</property>
                                     <property name="minimum_size"></property>
                                     <property name="moveable">1</property>
-                                    <property name="name">m_textCtrl_idHDT</property>
+                                    <property name="name">m_textCtrl_talkerHDT</property>
                                     <property name="pane_border">1</property>
                                     <property name="pane_position"></property>
                                     <property name="pane_size"></property>
@@ -8174,7 +8172,7 @@
                                     <property name="gripper">0</property>
                                     <property name="hidden">0</property>
                                     <property name="id">wxID_ANY</property>
-                                    <property name="label">ID</property>
+                                    <property name="label">Talker</property>
                                     <property name="markup">0</property>
                                     <property name="max_size"></property>
                                     <property name="maximize_button">0</property>
@@ -8326,7 +8324,7 @@
                                     <property name="minimize_button">0</property>
                                     <property name="minimum_size"></property>
                                     <property name="moveable">1</property>
-                                    <property name="name">m_textCtrl_idHDM</property>
+                                    <property name="name">m_textCtrl_talkerHDM</property>
                                     <property name="pane_border">1</property>
                                     <property name="pane_position"></property>
                                     <property name="pane_size"></property>
@@ -8814,7 +8812,7 @@
                                     <property name="gripper">0</property>
                                     <property name="hidden">0</property>
                                     <property name="id">wxID_ANY</property>
-                                    <property name="label">ID</property>
+                                    <property name="label">Talker</property>
                                     <property name="markup">0</property>
                                     <property name="max_size"></property>
                                     <property name="maximize_button">0</property>
@@ -8966,7 +8964,7 @@
                                     <property name="minimize_button">0</property>
                                     <property name="minimum_size"></property>
                                     <property name="moveable">1</property>
-                                    <property name="name">m_textCtrl_idMTW</property>
+                                    <property name="name">m_textCtrl_talkerMTW</property>
                                     <property name="pane_border">1</property>
                                     <property name="pane_position"></property>
                                     <property name="pane_size"></property>
@@ -9454,7 +9452,7 @@
                                     <property name="gripper">0</property>
                                     <property name="hidden">0</property>
                                     <property name="id">wxID_ANY</property>
-                                    <property name="label">ID</property>
+                                    <property name="label">Talker</property>
                                     <property name="markup">0</property>
                                     <property name="max_size"></property>
                                     <property name="maximize_button">0</property>
@@ -9658,7 +9656,7 @@
                                     <property name="minimize_button">0</property>
                                     <property name="minimum_size"></property>
                                     <property name="moveable">1</property>
-                                    <property name="name">m_textCtrl_idROT</property>
+                                    <property name="name">m_textCtrl_talkerROT</property>
                                     <property name="pane_border">1</property>
                                     <property name="pane_position"></property>
                                     <property name="pane_size"></property>
@@ -10149,7 +10147,7 @@
                                     <property name="gripper">0</property>
                                     <property name="hidden">0</property>
                                     <property name="id">wxID_ANY</property>
-                                    <property name="label">ID</property>
+                                    <property name="label">Talker</property>
                                     <property name="markup">0</property>
                                     <property name="max_size"></property>
                                     <property name="maximize_button">0</property>
@@ -10477,7 +10475,7 @@
                                     <property name="minimize_button">0</property>
                                     <property name="minimum_size"></property>
                                     <property name="moveable">1</property>
-                                    <property name="name">m_textCtrl_idRSA</property>
+                                    <property name="name">m_textCtrl_talkerRSA</property>
                                     <property name="pane_border">1</property>
                                     <property name="pane_position"></property>
                                     <property name="pane_size"></property>
@@ -10597,13 +10595,13 @@
                                     <property name="gripper">0</property>
                                     <property name="hidden">0</property>
                                     <property name="id">wxID_ANY</property>
-                                    <property name="inc">5</property>
+                                    <property name="inc">15</property>
                                     <property name="initial">5</property>
-                                    <property name="max">180</property>
+                                    <property name="max">360</property>
                                     <property name="max_size"></property>
                                     <property name="maximize_button">0</property>
                                     <property name="maximum_size"></property>
-                                    <property name="min">-180</property>
+                                    <property name="min">-360</property>
                                     <property name="min_size"></property>
                                     <property name="minimize_button">0</property>
                                     <property name="minimum_size"></property>
@@ -10727,13 +10725,13 @@
                                     <property name="gripper">0</property>
                                     <property name="hidden">0</property>
                                     <property name="id">wxID_ANY</property>
-                                    <property name="inc">5</property>
+                                    <property name="inc">15</property>
                                     <property name="initial">10</property>
-                                    <property name="max">180</property>
+                                    <property name="max">360</property>
                                     <property name="max_size"></property>
                                     <property name="maximize_button">0</property>
                                     <property name="maximum_size"></property>
-                                    <property name="min">-180</property>
+                                    <property name="min">-360</property>
                                     <property name="min_size"></property>
                                     <property name="minimize_button">0</property>
                                     <property name="minimum_size"></property>

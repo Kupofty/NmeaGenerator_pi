@@ -146,7 +146,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	fgSizer_RMC->SetFlexibleDirection( wxBOTH );
 	fgSizer_RMC->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 
-	m_staticText13 = new wxStaticText( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("ID"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText13 = new wxStaticText( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("Talker"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText13->Wrap( -1 );
 	fgSizer_RMC->Add( m_staticText13, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -194,16 +194,16 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	fgSizer_RMC->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_textCtrl_idRMC = new wxTextCtrl( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 30,-1 ), 0 );
+	m_textCtrl_talkerRMC = new wxTextCtrl( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 30,-1 ), 0 );
 	#ifdef __WXGTK__
-	if ( !m_textCtrl_idRMC->HasFlag( wxTE_MULTILINE ) )
+	if ( !m_textCtrl_talkerRMC->HasFlag( wxTE_MULTILINE ) )
 	{
-	m_textCtrl_idRMC->SetMaxLength( 2 );
+	m_textCtrl_talkerRMC->SetMaxLength( 2 );
 	}
 	#else
-	m_textCtrl_idRMC->SetMaxLength( 2 );
+	m_textCtrl_talkerRMC->SetMaxLength( 2 );
 	#endif
-	fgSizer_RMC->Add( m_textCtrl_idRMC, 0, wxALL, 5 );
+	fgSizer_RMC->Add( m_textCtrl_talkerRMC, 0, wxALL, 5 );
 
 	m_staticText22 = new wxStaticText( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("RMC"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText22->Wrap( -1 );
@@ -240,7 +240,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	wxString m_choice_latDirRMCChoices[] = { _("N"), _("S") };
 	int m_choice_latDirRMCNChoices = sizeof( m_choice_latDirRMCChoices ) / sizeof( wxString );
 	m_choice_latDirRMC = new wxChoice( sbSizer_RMC->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_latDirRMCNChoices, m_choice_latDirRMCChoices, 0 );
-	m_choice_latDirRMC->SetSelection( 1 );
+	m_choice_latDirRMC->SetSelection( 0 );
 	fgSizer_RMC->Add( m_choice_latDirRMC, 0, wxALL, 5 );
 
 	m_textCtrl_longitudeRMC = new wxTextCtrl( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("00000.0000000"), wxDefaultPosition, wxSize( 90,-1 ), 0 );
@@ -279,7 +279,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	#endif
 	fgSizer_RMC->Add( m_textCtrl_dateRMC, 0, wxALL, 5 );
 
-	m_spinCtrlDouble_magRMC = new wxSpinCtrlDouble( sbSizer_RMC->GetStaticBox(), wxID_ANY, wxT("3.5"), wxDefaultPosition, wxSize( 60,-1 ), wxSP_ARROW_KEYS, 0, 180, 5.000000, 1 );
+	m_spinCtrlDouble_magRMC = new wxSpinCtrlDouble( sbSizer_RMC->GetStaticBox(), wxID_ANY, wxT("3"), wxDefaultPosition, wxSize( 60,-1 ), wxSP_ARROW_KEYS, 0, 180, 3.000000, 1 );
 	m_spinCtrlDouble_magRMC->SetDigits( 1 );
 	fgSizer_RMC->Add( m_spinCtrlDouble_magRMC, 0, wxALL, 5 );
 
@@ -326,7 +326,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	fgSizer_GGA->SetFlexibleDirection( wxBOTH );
 	fgSizer_GGA->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 
-	m_staticText29 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("ID"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText29 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("Talker"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText29->Wrap( -1 );
 	fgSizer_GGA->Add( m_staticText29, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -351,7 +351,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	fgSizer_GGA->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_staticText33 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("GPS quality"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_staticText33 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("GPS fix"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
 	m_staticText33->Wrap( -1 );
 	fgSizer_GGA->Add( m_staticText33, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -377,16 +377,16 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	fgSizer_GGA->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_textCtrl_idGGA = new wxTextCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 30,-1 ), 0 );
+	m_textCtrl_talkerGGA = new wxTextCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 30,-1 ), 0 );
 	#ifdef __WXGTK__
-	if ( !m_textCtrl_idGGA->HasFlag( wxTE_MULTILINE ) )
+	if ( !m_textCtrl_talkerGGA->HasFlag( wxTE_MULTILINE ) )
 	{
-	m_textCtrl_idGGA->SetMaxLength( 2 );
+	m_textCtrl_talkerGGA->SetMaxLength( 2 );
 	}
 	#else
-	m_textCtrl_idGGA->SetMaxLength( 2 );
+	m_textCtrl_talkerGGA->SetMaxLength( 2 );
 	#endif
-	fgSizer_GGA->Add( m_textCtrl_idGGA, 0, wxALL, 5 );
+	fgSizer_GGA->Add( m_textCtrl_talkerGGA, 0, wxALL, 5 );
 
 	m_staticText40 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("GGA"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText40->Wrap( -1 );
@@ -401,7 +401,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	wxString m_choice_latDirGGAChoices[] = { _("N"), _("S") };
 	int m_choice_latDirGGANChoices = sizeof( m_choice_latDirGGAChoices ) / sizeof( wxString );
 	m_choice_latDirGGA = new wxChoice( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_latDirGGANChoices, m_choice_latDirGGAChoices, 0 );
-	m_choice_latDirGGA->SetSelection( 1 );
+	m_choice_latDirGGA->SetSelection( 0 );
 	fgSizer_GGA->Add( m_choice_latDirGGA, 0, wxALL, 5 );
 
 	m_textCtrl_longitudeGGA = new wxTextCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("00000.0000000"), wxDefaultPosition, wxSize( 90,-1 ), 0 );
@@ -482,14 +482,14 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	fgSizer4111->SetFlexibleDirection( wxBOTH );
 	fgSizer4111->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 
-	m_staticText351111 = new wxStaticText( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("ID"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText351111 = new wxStaticText( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("Talker"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText351111->Wrap( -1 );
 	fgSizer4111->Add( m_staticText351111, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
 	fgSizer4111->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_staticText361111 = new wxStaticText( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("Number"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText361111 = new wxStaticText( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("ID"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText361111->Wrap( -1 );
 	fgSizer4111->Add( m_staticText361111, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -522,16 +522,15 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	fgSizer4111->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_textCtrl_idTLL = new wxTextCtrl( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 30,-1 ), 0 );
-	fgSizer4111->Add( m_textCtrl_idTLL, 0, wxALL, 5 );
+	m_textCtrl_talkerTLL = new wxTextCtrl( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 30,-1 ), 0 );
+	fgSizer4111->Add( m_textCtrl_talkerTLL, 0, wxALL, 5 );
 
 	m_staticText371111 = new wxStaticText( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("TLL"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText371111->Wrap( -1 );
 	fgSizer4111->Add( m_staticText371111, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_spinCtrlDouble_numberTLL = new wxSpinCtrlDouble( sbSizer_TLL->GetStaticBox(), wxID_ANY, wxT("0"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 99, 0, 1 );
-	m_spinCtrlDouble_numberTLL->SetDigits( 0 );
-	fgSizer4111->Add( m_spinCtrlDouble_numberTLL, 0, wxALL, 5 );
+	m_spinCtrl_idTLL = new wxSpinCtrl( sbSizer_TLL->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 0 );
+	fgSizer4111->Add( m_spinCtrl_idTLL, 0, wxALL, 5 );
 
 	m_textCtrl_latitudeTLL = new wxTextCtrl( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("0000.0000000"), wxDefaultPosition, wxSize( 90,-1 ), 0 );
 	fgSizer4111->Add( m_textCtrl_latitudeTLL, 0, wxALL, 5 );
@@ -604,7 +603,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	fgSizer_GLL->SetFlexibleDirection( wxBOTH );
 	fgSizer_GLL->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 
-	m_staticText19 = new wxStaticText( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("ID"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText19 = new wxStaticText( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("Talker"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText19->Wrap( -1 );
 	fgSizer_GLL->Add( m_staticText19, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -639,16 +638,16 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText18->Wrap( -1 );
 	fgSizer_GLL->Add( m_staticText18, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_textCtrl_idGLL = new wxTextCtrl( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 30,-1 ), 0 );
+	m_textCtrl_talkerGLL = new wxTextCtrl( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 30,-1 ), 0 );
 	#ifdef __WXGTK__
-	if ( !m_textCtrl_idGLL->HasFlag( wxTE_MULTILINE ) )
+	if ( !m_textCtrl_talkerGLL->HasFlag( wxTE_MULTILINE ) )
 	{
-	m_textCtrl_idGLL->SetMaxLength( 2 );
+	m_textCtrl_talkerGLL->SetMaxLength( 2 );
 	}
 	#else
-	m_textCtrl_idGLL->SetMaxLength( 2 );
+	m_textCtrl_talkerGLL->SetMaxLength( 2 );
 	#endif
-	fgSizer_GLL->Add( m_textCtrl_idGLL, 0, wxALL, 5 );
+	fgSizer_GLL->Add( m_textCtrl_talkerGLL, 0, wxALL, 5 );
 
 	m_staticText5 = new wxStaticText( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("GLL"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText5->Wrap( -1 );
@@ -742,7 +741,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	fgSizer4->SetFlexibleDirection( wxBOTH );
 	fgSizer4->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 
-	m_staticText351 = new wxStaticText( sbSizer_HDT->GetStaticBox(), wxID_ANY, _("ID"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText351 = new wxStaticText( sbSizer_HDT->GetStaticBox(), wxID_ANY, _("Talker"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText351->Wrap( -1 );
 	fgSizer4->Add( m_staticText351, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -756,8 +755,8 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	fgSizer4->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_textCtrl_idHDT = new wxTextCtrl( sbSizer_HDT->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 30,-1 ), 0 );
-	fgSizer4->Add( m_textCtrl_idHDT, 0, wxALL, 5 );
+	m_textCtrl_talkerHDT = new wxTextCtrl( sbSizer_HDT->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 30,-1 ), 0 );
+	fgSizer4->Add( m_textCtrl_talkerHDT, 0, wxALL, 5 );
 
 	m_staticText371 = new wxStaticText( sbSizer_HDT->GetStaticBox(), wxID_ANY, _("HDT"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText371->Wrap( -1 );
@@ -802,7 +801,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	fgSizer41->SetFlexibleDirection( wxBOTH );
 	fgSizer41->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 
-	m_staticText3511 = new wxStaticText( sbSizer_HDM->GetStaticBox(), wxID_ANY, _("ID"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText3511 = new wxStaticText( sbSizer_HDM->GetStaticBox(), wxID_ANY, _("Talker"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText3511->Wrap( -1 );
 	fgSizer41->Add( m_staticText3511, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -816,8 +815,8 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	fgSizer41->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_textCtrl_idHDM = new wxTextCtrl( sbSizer_HDM->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 30,-1 ), 0 );
-	fgSizer41->Add( m_textCtrl_idHDM, 0, wxALL, 5 );
+	m_textCtrl_talkerHDM = new wxTextCtrl( sbSizer_HDM->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 30,-1 ), 0 );
+	fgSizer41->Add( m_textCtrl_talkerHDM, 0, wxALL, 5 );
 
 	m_staticText3711 = new wxStaticText( sbSizer_HDM->GetStaticBox(), wxID_ANY, _("HDM"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText3711->Wrap( -1 );
@@ -862,7 +861,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	fgSizer411->SetFlexibleDirection( wxBOTH );
 	fgSizer411->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 
-	m_staticText35111 = new wxStaticText( sbSizer_MTW->GetStaticBox(), wxID_ANY, _("ID"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText35111 = new wxStaticText( sbSizer_MTW->GetStaticBox(), wxID_ANY, _("Talker"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText35111->Wrap( -1 );
 	fgSizer411->Add( m_staticText35111, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -876,8 +875,8 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	fgSizer411->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_textCtrl_idMTW = new wxTextCtrl( sbSizer_MTW->GetStaticBox(), wxID_ANY, _("IN"), wxDefaultPosition, wxSize( 30,-1 ), 0 );
-	fgSizer411->Add( m_textCtrl_idMTW, 0, wxALL, 5 );
+	m_textCtrl_talkerMTW = new wxTextCtrl( sbSizer_MTW->GetStaticBox(), wxID_ANY, _("IN"), wxDefaultPosition, wxSize( 30,-1 ), 0 );
+	fgSizer411->Add( m_textCtrl_talkerMTW, 0, wxALL, 5 );
 
 	m_staticText37111 = new wxStaticText( sbSizer_MTW->GetStaticBox(), wxID_ANY, _("MTW"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText37111->Wrap( -1 );
@@ -922,7 +921,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	fgSizer4112->SetFlexibleDirection( wxBOTH );
 	fgSizer4112->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 
-	m_staticText351112 = new wxStaticText( sbSizer_ROT->GetStaticBox(), wxID_ANY, _("ID"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText351112 = new wxStaticText( sbSizer_ROT->GetStaticBox(), wxID_ANY, _("Talker"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText351112->Wrap( -1 );
 	fgSizer4112->Add( m_staticText351112, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -937,8 +936,8 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText77->Wrap( -1 );
 	fgSizer4112->Add( m_staticText77, 0, wxALL, 5 );
 
-	m_textCtrl_idROT = new wxTextCtrl( sbSizer_ROT->GetStaticBox(), wxID_ANY, _("HE"), wxDefaultPosition, wxSize( 30,-1 ), 0 );
-	fgSizer4112->Add( m_textCtrl_idROT, 0, wxALL, 5 );
+	m_textCtrl_talkerROT = new wxTextCtrl( sbSizer_ROT->GetStaticBox(), wxID_ANY, _("HE"), wxDefaultPosition, wxSize( 30,-1 ), 0 );
+	fgSizer4112->Add( m_textCtrl_talkerROT, 0, wxALL, 5 );
 
 	m_staticText371112 = new wxStaticText( sbSizer_ROT->GetStaticBox(), wxID_ANY, _("ROT"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText371112->Wrap( -1 );
@@ -985,7 +984,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	fgSizer41121->SetFlexibleDirection( wxBOTH );
 	fgSizer41121->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 
-	m_staticText3511121 = new wxStaticText( sbSizer_RSA->GetStaticBox(), wxID_ANY, _("ID"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText3511121 = new wxStaticText( sbSizer_RSA->GetStaticBox(), wxID_ANY, _("Talker"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText3511121->Wrap( -1 );
 	fgSizer41121->Add( m_staticText3511121, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -1008,14 +1007,14 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText87->Wrap( -1 );
 	fgSizer41121->Add( m_staticText87, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_textCtrl_idRSA = new wxTextCtrl( sbSizer_RSA->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 30,-1 ), 0 );
-	fgSizer41121->Add( m_textCtrl_idRSA, 0, wxALL, 5 );
+	m_textCtrl_talkerRSA = new wxTextCtrl( sbSizer_RSA->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 30,-1 ), 0 );
+	fgSizer41121->Add( m_textCtrl_talkerRSA, 0, wxALL, 5 );
 
 	m_staticText3711121 = new wxStaticText( sbSizer_RSA->GetStaticBox(), wxID_ANY, _("RSA"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText3711121->Wrap( -1 );
 	fgSizer41121->Add( m_staticText3711121, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_spinCtrlDouble_starboardRSA = new wxSpinCtrlDouble( sbSizer_RSA->GetStaticBox(), wxID_ANY, wxT("5"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, -180, 180, 5, 5 );
+	m_spinCtrlDouble_starboardRSA = new wxSpinCtrlDouble( sbSizer_RSA->GetStaticBox(), wxID_ANY, wxT("5"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, -360, 360, 5, 15 );
 	m_spinCtrlDouble_starboardRSA->SetDigits( 1 );
 	fgSizer41121->Add( m_spinCtrlDouble_starboardRSA, 0, wxALL, 5 );
 
@@ -1025,7 +1024,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_choice_starboardStatusRSA->SetSelection( 0 );
 	fgSizer41121->Add( m_choice_starboardStatusRSA, 0, wxALL, 5 );
 
-	m_spinCtrlDouble_portRSA = new wxSpinCtrlDouble( sbSizer_RSA->GetStaticBox(), wxID_ANY, wxT("10"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, -180, 180, 10, 5 );
+	m_spinCtrlDouble_portRSA = new wxSpinCtrlDouble( sbSizer_RSA->GetStaticBox(), wxID_ANY, wxT("10"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, -360, 360, 10, 15 );
 	m_spinCtrlDouble_portRSA->SetDigits( 1 );
 	fgSizer41121->Add( m_spinCtrlDouble_portRSA, 0, wxALL, 5 );
 
