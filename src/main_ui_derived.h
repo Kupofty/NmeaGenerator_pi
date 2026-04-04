@@ -41,15 +41,6 @@ class DialogMainGui : public MyDialog
     void OnCheckBox_AutomaticSend( wxCommandEvent& event ) override;
     void OnSpinCtrlDouble_AutomaticSendFreq(wxSpinDoubleEvent& event) override;
     void OnTimer_autoSendNmea(wxTimerEvent& event) override;
-    void OnButtonClick_SendGLL(wxCommandEvent& event) override;
-    void OnButtonClick_SendRMC(wxCommandEvent& event) override;
-    void OnButtonClick_SendGGA(wxCommandEvent& event) override;
-    void OnButtonClick_SendHDT(wxCommandEvent& event) override;
-    void OnButtonClick_SendHDM(wxCommandEvent& event) override;
-    void OnButtonClick_SendMTW(wxCommandEvent& event) override;
-    void OnButtonClick_SendTLL(wxCommandEvent& event) override;
-    void OnButtonClick_SendROT(wxCommandEvent& event) override;
-    void OnButtonClick_SendRSA(wxCommandEvent& event) override;
     void OnButtonClick_CheckAllBuilder(wxCommandEvent& event) override;
     void OnButtonClick_UncheckAllBuilder(wxCommandEvent& event) override;
     void OnCheckBox_AutomaticSendBuilder(wxCommandEvent& event) override;
@@ -57,6 +48,19 @@ class DialogMainGui : public MyDialog
     void OnTimer_autoSendBuilder(wxTimerEvent& event) override;
     void OnText_SearchSentenceBuilder(wxCommandEvent& event) override;
     void OnButtonClick_OpenSentenceBuilderHelp(wxCommandEvent& event) override;
+
+    void OnButtonClick_SendGLL(wxCommandEvent& event) override;
+    void OnButtonClick_SendRMC(wxCommandEvent& event) override;
+    void OnButtonClick_SendGGA(wxCommandEvent& event) override;
+    void OnButtonClick_SendHDT(wxCommandEvent& event) override;
+    void OnButtonClick_SendHDM(wxCommandEvent& event) override;
+    void OnButtonClick_SendHDG(wxCommandEvent& event) override;
+    void OnButtonClick_SendMTW(wxCommandEvent& event) override;
+    void OnButtonClick_SendTLL(wxCommandEvent& event) override;
+    void OnButtonClick_SendROT(wxCommandEvent& event) override;
+    void OnButtonClick_SendRSA(wxCommandEvent& event) override;
+    void OnButtonClick_SendDPT(wxCommandEvent& event) override;
+    void OnButtonClick_SendDBx(wxCommandEvent& event) override;
 
   private:
     void sendNmeaToOCPN(wxString sentence);
@@ -68,10 +72,13 @@ class DialogMainGui : public MyDialog
     void sendGGA();
     void sendHDT();
     void sendHDM();
+    void sendHDG();
     void sendMTW();
     void sendTLL();
     void sendROT();
     void sendRSA();
+    void sendDPT();
+    void sendDBx();
 
     bool addAutoChecksum;
     std::vector<SectionItem> sbSizerListSentenceBuilder;

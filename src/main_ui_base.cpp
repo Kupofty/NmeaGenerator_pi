@@ -836,6 +836,93 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer_NmeaList->Add( sbSizer_HDM, 0, wxEXPAND, 5 );
 
+	sbSizer_HDG = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("HDG") ), wxHORIZONTAL );
+
+	wxBoxSizer* bSizer17112;
+	bSizer17112 = new wxBoxSizer( wxVERTICAL );
+
+	m_button_sendHDG = new wxButton( sbSizer_HDG->GetStaticBox(), wxID_ANY, _("Send"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_button_sendHDG->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxEmptyString ) );
+
+	bSizer17112->Add( m_button_sendHDG, 0, wxALL, 5 );
+
+	m_checkBox_autoSendHDG = new wxCheckBox( sbSizer_HDG->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_checkBox_autoSendHDG->SetValue(true);
+	bSizer17112->Add( m_checkBox_autoSendHDG, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	sbSizer_HDG->Add( bSizer17112, 0, wxEXPAND, 5 );
+
+	m_staticline6112 = new wxStaticLine( sbSizer_HDG->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_VERTICAL );
+	sbSizer_HDG->Add( m_staticline6112, 0, wxEXPAND | wxALL, 5 );
+
+	wxFlexGridSizer* fgSizer412;
+	fgSizer412 = new wxFlexGridSizer( 2, 7, 0, 0 );
+	fgSizer412->SetFlexibleDirection( wxBOTH );
+	fgSizer412->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
+
+	m_staticText35112 = new wxStaticText( sbSizer_HDG->GetStaticBox(), wxID_ANY, _("Talker"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText35112->Wrap( -1 );
+	fgSizer412->Add( m_staticText35112, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer412->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText36112 = new wxStaticText( sbSizer_HDG->GetStaticBox(), wxID_ANY, _("Heading"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText36112->Wrap( -1 );
+	fgSizer412->Add( m_staticText36112, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText96 = new wxStaticText( sbSizer_HDG->GetStaticBox(), wxID_ANY, _("Deviation"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText96->Wrap( -1 );
+	fgSizer412->Add( m_staticText96, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer412->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText97 = new wxStaticText( sbSizer_HDG->GetStaticBox(), wxID_ANY, _("Variation"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText97->Wrap( -1 );
+	fgSizer412->Add( m_staticText97, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer412->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_textCtrl_talkerHDG = new wxTextCtrl( sbSizer_HDG->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 30,-1 ), 0 );
+	fgSizer412->Add( m_textCtrl_talkerHDG, 0, wxALL, 5 );
+
+	m_staticText37112 = new wxStaticText( sbSizer_HDG->GetStaticBox(), wxID_ANY, _("HDG"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText37112->Wrap( -1 );
+	fgSizer412->Add( m_staticText37112, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_spinCtrlDouble_headingHDG = new wxSpinCtrlDouble( sbSizer_HDG->GetStaticBox(), wxID_ANY, wxT("180"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 360, 180.000000, 45 );
+	m_spinCtrlDouble_headingHDG->SetDigits( 1 );
+	fgSizer412->Add( m_spinCtrlDouble_headingHDG, 0, wxALL, 5 );
+
+	m_spinCtrlDouble_deviationHDG = new wxSpinCtrlDouble( sbSizer_HDG->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 180, 0, 1 );
+	m_spinCtrlDouble_deviationHDG->SetDigits( 1 );
+	fgSizer412->Add( m_spinCtrlDouble_deviationHDG, 0, wxALL, 5 );
+
+	wxString m_choice_deviationDirHDGChoices[] = { _("E"), _("W") };
+	int m_choice_deviationDirHDGNChoices = sizeof( m_choice_deviationDirHDGChoices ) / sizeof( wxString );
+	m_choice_deviationDirHDG = new wxChoice( sbSizer_HDG->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_deviationDirHDGNChoices, m_choice_deviationDirHDGChoices, 0 );
+	m_choice_deviationDirHDG->SetSelection( 0 );
+	fgSizer412->Add( m_choice_deviationDirHDG, 0, wxALL, 5 );
+
+	m_spinCtrlDouble_variationHDG = new wxSpinCtrlDouble( sbSizer_HDG->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 180, 0, 1 );
+	m_spinCtrlDouble_variationHDG->SetDigits( 1 );
+	fgSizer412->Add( m_spinCtrlDouble_variationHDG, 0, wxALL, 5 );
+
+	wxString m_choice_variationDirHDGChoices[] = { _("E"), _("W") };
+	int m_choice_variationDirHDGNChoices = sizeof( m_choice_variationDirHDGChoices ) / sizeof( wxString );
+	m_choice_variationDirHDG = new wxChoice( sbSizer_HDG->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_variationDirHDGNChoices, m_choice_variationDirHDGChoices, 0 );
+	m_choice_variationDirHDG->SetSelection( 1 );
+	fgSizer412->Add( m_choice_variationDirHDG, 0, wxALL, 5 );
+
+
+	sbSizer_HDG->Add( fgSizer412, 1, wxEXPAND, 5 );
+
+
+	bSizer_NmeaList->Add( sbSizer_HDG, 1, wxEXPAND, 5 );
+
 	sbSizer_MTW = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("MTW") ), wxHORIZONTAL );
 
 	wxBoxSizer* bSizer17111;
@@ -1040,6 +1127,159 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer_NmeaList->Add( sbSizer_RSA, 0, wxEXPAND, 5 );
 
+	sbSizer_DPT = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("DPT") ), wxHORIZONTAL );
+
+	wxBoxSizer* bSizer171113;
+	bSizer171113 = new wxBoxSizer( wxVERTICAL );
+
+	m_button_sendDPT = new wxButton( sbSizer_DPT->GetStaticBox(), wxID_ANY, _("Send"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_button_sendDPT->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxEmptyString ) );
+
+	bSizer171113->Add( m_button_sendDPT, 0, wxALL, 5 );
+
+	m_checkBox_autoSendDPT = new wxCheckBox( sbSizer_DPT->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_checkBox_autoSendDPT->SetValue(true);
+	bSizer171113->Add( m_checkBox_autoSendDPT, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	sbSizer_DPT->Add( bSizer171113, 0, wxEXPAND, 5 );
+
+	m_staticline61113 = new wxStaticLine( sbSizer_DPT->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_VERTICAL );
+	sbSizer_DPT->Add( m_staticline61113, 0, wxEXPAND | wxALL, 5 );
+
+	wxFlexGridSizer* fgSizer4113;
+	fgSizer4113 = new wxFlexGridSizer( 2, 4, 0, 0 );
+	fgSizer4113->SetFlexibleDirection( wxBOTH );
+	fgSizer4113->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
+
+	m_staticText351113 = new wxStaticText( sbSizer_DPT->GetStaticBox(), wxID_ANY, _("Talker"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText351113->Wrap( -1 );
+	fgSizer4113->Add( m_staticText351113, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer4113->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText361113 = new wxStaticText( sbSizer_DPT->GetStaticBox(), wxID_ANY, _("Depth"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText361113->Wrap( -1 );
+	fgSizer4113->Add( m_staticText361113, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText106 = new wxStaticText( sbSizer_DPT->GetStaticBox(), wxID_ANY, _("Offset"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText106->Wrap( -1 );
+	fgSizer4113->Add( m_staticText106, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_textCtrl_talkerDPT = new wxTextCtrl( sbSizer_DPT->GetStaticBox(), wxID_ANY, _("IN"), wxDefaultPosition, wxSize( 30,-1 ), 0 );
+	fgSizer4113->Add( m_textCtrl_talkerDPT, 0, wxALL, 5 );
+
+	m_staticText371113 = new wxStaticText( sbSizer_DPT->GetStaticBox(), wxID_ANY, _("DPT"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText371113->Wrap( -1 );
+	fgSizer4113->Add( m_staticText371113, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_spinCtrlDouble_depthDPT = new wxSpinCtrlDouble( sbSizer_DPT->GetStaticBox(), wxID_ANY, wxT("10"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 2000, 80.000000, 5 );
+	m_spinCtrlDouble_depthDPT->SetDigits( 1 );
+	fgSizer4113->Add( m_spinCtrlDouble_depthDPT, 0, wxALL, 5 );
+
+	m_spinCtrlDouble_offsetDPT = new wxSpinCtrlDouble( sbSizer_DPT->GetStaticBox(), wxID_ANY, wxT("2"), wxDefaultPosition, wxSize( -1,-1 ), wxSP_ARROW_KEYS, -100, 100, 2, 1 );
+	m_spinCtrlDouble_offsetDPT->SetDigits( 1 );
+	fgSizer4113->Add( m_spinCtrlDouble_offsetDPT, 0, wxALL, 5 );
+
+
+	sbSizer_DPT->Add( fgSizer4113, 0, wxEXPAND, 5 );
+
+
+	bSizer_NmeaList->Add( sbSizer_DPT, 1, wxEXPAND, 5 );
+
+	sbSizer_DBx = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("DBT/S/K") ), wxHORIZONTAL );
+
+	wxBoxSizer* bSizer1711131;
+	bSizer1711131 = new wxBoxSizer( wxVERTICAL );
+
+	m_button_sendDBx = new wxButton( sbSizer_DBx->GetStaticBox(), wxID_ANY, _("Send"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_button_sendDBx->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxEmptyString ) );
+
+	bSizer1711131->Add( m_button_sendDBx, 0, wxALL, 5 );
+
+	m_checkBox_autoSendDBx = new wxCheckBox( sbSizer_DBx->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_checkBox_autoSendDBx->SetValue(true);
+	bSizer1711131->Add( m_checkBox_autoSendDBx, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	sbSizer_DBx->Add( bSizer1711131, 0, wxEXPAND, 5 );
+
+	m_staticline611131 = new wxStaticLine( sbSizer_DBx->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_VERTICAL );
+	sbSizer_DBx->Add( m_staticline611131, 0, wxEXPAND | wxALL, 5 );
+
+	wxFlexGridSizer* fgSizer41131;
+	fgSizer41131 = new wxFlexGridSizer( 2, 8, 0, 0 );
+	fgSizer41131->SetFlexibleDirection( wxBOTH );
+	fgSizer41131->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
+
+	m_staticText3511131 = new wxStaticText( sbSizer_DBx->GetStaticBox(), wxID_ANY, _("Talker"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText3511131->Wrap( -1 );
+	fgSizer41131->Add( m_staticText3511131, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer41131->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText3611131 = new wxStaticText( sbSizer_DBx->GetStaticBox(), wxID_ANY, _("Depth"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText3611131->Wrap( -1 );
+	fgSizer41131->Add( m_staticText3611131, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer41131->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText1061 = new wxStaticText( sbSizer_DBx->GetStaticBox(), wxID_ANY, _("Depth"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText1061->Wrap( -1 );
+	fgSizer41131->Add( m_staticText1061, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer41131->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText115 = new wxStaticText( sbSizer_DBx->GetStaticBox(), wxID_ANY, _("Depth"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText115->Wrap( -1 );
+	fgSizer41131->Add( m_staticText115, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer41131->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_textCtrl_talkerDBx = new wxTextCtrl( sbSizer_DBx->GetStaticBox(), wxID_ANY, _("IN"), wxDefaultPosition, wxSize( 30,-1 ), 0 );
+	fgSizer41131->Add( m_textCtrl_talkerDBx, 0, wxALL, 5 );
+
+	wxString m_choice_sentenceDBxChoices[] = { _("DBT"), _("DBS"), _("DBK") };
+	int m_choice_sentenceDBxNChoices = sizeof( m_choice_sentenceDBxChoices ) / sizeof( wxString );
+	m_choice_sentenceDBx = new wxChoice( sbSizer_DBx->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_sentenceDBxNChoices, m_choice_sentenceDBxChoices, 0 );
+	m_choice_sentenceDBx->SetSelection( 0 );
+	fgSizer41131->Add( m_choice_sentenceDBx, 0, wxALL, 5 );
+
+	m_spinCtrlDouble_depthFeetDBx = new wxSpinCtrlDouble( sbSizer_DBx->GetStaticBox(), wxID_ANY, wxT("32.8"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 2000, 32.8, 10 );
+	m_spinCtrlDouble_depthFeetDBx->SetDigits( 1 );
+	fgSizer41131->Add( m_spinCtrlDouble_depthFeetDBx, 0, wxALL, 5 );
+
+	m_staticText116 = new wxStaticText( sbSizer_DBx->GetStaticBox(), wxID_ANY, _("f"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText116->Wrap( -1 );
+	fgSizer41131->Add( m_staticText116, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_spinCtrlDouble_depthMeterDBx = new wxSpinCtrlDouble( sbSizer_DBx->GetStaticBox(), wxID_ANY, wxT("10"), wxDefaultPosition, wxSize( -1,-1 ), wxSP_ARROW_KEYS, 0, 2000, 10, 10 );
+	m_spinCtrlDouble_depthMeterDBx->SetDigits( 1 );
+	fgSizer41131->Add( m_spinCtrlDouble_depthMeterDBx, 0, wxALL, 5 );
+
+	m_staticText117 = new wxStaticText( sbSizer_DBx->GetStaticBox(), wxID_ANY, _("M"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText117->Wrap( -1 );
+	fgSizer41131->Add( m_staticText117, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_spinCtrlDouble_depthFathomDBx = new wxSpinCtrlDouble( sbSizer_DBx->GetStaticBox(), wxID_ANY, wxT("5.5"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 2000, 5.5, 10 );
+	m_spinCtrlDouble_depthFathomDBx->SetDigits( 1 );
+	fgSizer41131->Add( m_spinCtrlDouble_depthFathomDBx, 0, wxALL, 5 );
+
+	m_staticText118 = new wxStaticText( sbSizer_DBx->GetStaticBox(), wxID_ANY, _("F"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText118->Wrap( -1 );
+	fgSizer41131->Add( m_staticText118, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	sbSizer_DBx->Add( fgSizer41131, 0, wxEXPAND, 5 );
+
+
+	bSizer_NmeaList->Add( sbSizer_DBx, 1, wxEXPAND, 5 );
+
 
 	m_scrolledWindow_sentenceBuilder->SetSizer( bSizer_NmeaList );
 	m_scrolledWindow_sentenceBuilder->Layout();
@@ -1158,9 +1398,12 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_button_sendGLL->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendGLL ), NULL, this );
 	m_button_sendHDT->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendHDT ), NULL, this );
 	m_button_sendHDM->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendHDM ), NULL, this );
+	m_button_sendHDG->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendHDG ), NULL, this );
 	m_button_sendMTW->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendMTW ), NULL, this );
 	m_button_sendROT->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendROT ), NULL, this );
 	m_button_sendRSA->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendRSA ), NULL, this );
+	m_button_sendDPT->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendDPT ), NULL, this );
+	m_button_sendDBx->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendDBx ), NULL, this );
 	m_button_checkAllBuilder->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CheckAllBuilder ), NULL, this );
 	m_button_uncheckAllBuilder->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_UncheckAllBuilder ), NULL, this );
 	m_searchCtrl_sentencesBuilder->Connect( wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( MyDialog::OnText_SearchSentenceBuilder ), NULL, this );

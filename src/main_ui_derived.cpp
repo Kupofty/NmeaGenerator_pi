@@ -7,6 +7,11 @@
 ////////////////////////////
 DialogMainGui::DialogMainGui(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style) : MyDialog( parent )
 {
+  //Dialog size
+  int dialogWidth = 1000;
+  int dialogHeight = 400;
+  this->SetSize(dialogWidth, dialogHeight);
+
   //Hide/show checkbox autoChecksum
   addAutoChecksum = m_checkBox_autoChecksum->GetValue();
   m_staticText_checksum->Show(addAutoChecksum);
@@ -21,10 +26,13 @@ DialogMainGui::DialogMainGui(wxWindow* parent, wxWindowID id, const wxString& ti
       {sbSizer_GLL->GetStaticBox()->GetLabel(), sbSizer_GLL},
       {sbSizer_HDT->GetStaticBox()->GetLabel(), sbSizer_HDT},
       {sbSizer_HDM->GetStaticBox()->GetLabel(), sbSizer_HDM},
+      {sbSizer_HDG->GetStaticBox()->GetLabel(), sbSizer_HDG},
       {sbSizer_MTW->GetStaticBox()->GetLabel(), sbSizer_MTW},
       {sbSizer_TLL->GetStaticBox()->GetLabel(), sbSizer_TLL},
       {sbSizer_ROT->GetStaticBox()->GetLabel(), sbSizer_ROT},
-      {sbSizer_RSA->GetStaticBox()->GetLabel(), sbSizer_RSA}
+      {sbSizer_RSA->GetStaticBox()->GetLabel(), sbSizer_RSA},
+      {sbSizer_DPT->GetStaticBox()->GetLabel(), sbSizer_DPT},
+      {sbSizer_DBx->GetStaticBox()->GetLabel(), sbSizer_DBx}
   };
 
   //Timers list
@@ -259,10 +267,13 @@ void DialogMainGui::updateAutoSendBuildersCheckboxes(bool check)
   m_checkBox_autoSendGGA->SetValue(check);
   m_checkBox_autoSendHDT->SetValue(check);
   m_checkBox_autoSendHDM->SetValue(check);
+  m_checkBox_autoSendHDG->SetValue(check);
   m_checkBox_autoSendMTW->SetValue(check);
   m_checkBox_autoSendTLL->SetValue(check);
   m_checkBox_autoSendROT->SetValue(check);
   m_checkBox_autoSendRSA->SetValue(check);
+  m_checkBox_autoSendDPT->SetValue(check);
+  m_checkBox_autoSendDBx->SetValue(check);
 }
 
 
@@ -304,6 +315,8 @@ void DialogMainGui::OnTimer_autoSendBuilder(wxTimerEvent& event)
     sendHDT();
   if(m_checkBox_autoSendHDM->GetValue())
     sendHDM();
+  if(m_checkBox_autoSendHDG->GetValue())
+    sendHDG();
   if(m_checkBox_autoSendMTW->GetValue())
     sendMTW();
   if(m_checkBox_autoSendTLL->GetValue())
@@ -312,6 +325,10 @@ void DialogMainGui::OnTimer_autoSendBuilder(wxTimerEvent& event)
     sendROT();
   if(m_checkBox_autoSendRSA->GetValue())
     sendRSA();
+  if(m_checkBox_autoSendDPT->GetValue())
+    sendDPT();
+  if(m_checkBox_autoSendDBx->GetValue())
+    sendDBx();
 }
 
 
@@ -341,6 +358,11 @@ void DialogMainGui::OnButtonClick_SendHDM(wxCommandEvent& event)
   sendHDM();
 }
 
+void DialogMainGui::OnButtonClick_SendHDG(wxCommandEvent& event)
+{
+  sendHDG();
+}
+
 void DialogMainGui::OnButtonClick_SendMTW(wxCommandEvent& event)
 {
   sendMTW();
@@ -359,6 +381,16 @@ void DialogMainGui::OnButtonClick_SendROT(wxCommandEvent& event)
 void DialogMainGui::OnButtonClick_SendRSA(wxCommandEvent& event)
 {
   sendRSA();
+}
+
+void DialogMainGui::OnButtonClick_SendDPT(wxCommandEvent& event)
+{
+  sendDPT();
+}
+
+void DialogMainGui::OnButtonClick_SendDBx(wxCommandEvent& event)
+{
+  sendDBx();
 }
 
 
@@ -493,6 +525,30 @@ void DialogMainGui::sendHDM()
   sendNmeaToOCPN(sentence);
 }
 
+void DialogMainGui::sendHDG()
+{
+  wxString talker       = m_textCtrl_talkerHDG->GetValue();
+  wxString type         = "HDG";
+  wxString heading      = wxString::Format("%.1f", m_spinCtrlDouble_headingHDG->GetValue());
+  wxString deviation    = wxString::Format("%.1f", m_spinCtrlDouble_deviationHDG->GetValue());
+  wxString deviationDir = m_choice_deviationDirHDG->GetStringSelection();
+  wxString variation    = wxString::Format("%.1f", m_spinCtrlDouble_variationHDG->GetValue());
+  wxString variationDir = m_choice_variationDirHDG->GetStringSelection();
+
+  wxString payload =
+      talker + type + "," +
+      heading + "," +
+      deviation + "," +
+      deviationDir + "," +
+      variation + "," +
+      variationDir;
+
+  wxString checksum = utils::calculateChecksumString(payload);
+
+  wxString sentence = "$" + payload + checksum;
+  sendNmeaToOCPN(sentence);
+}
+
 void DialogMainGui::sendMTW()
 {
   wxString talker = m_textCtrl_talkerMTW->GetValue();
@@ -561,11 +617,11 @@ void DialogMainGui::sendROT()
 
 void DialogMainGui::sendRSA()
 {
-  wxString talker = m_textCtrl_talkerRSA->GetValue();
-  wxString type   = "RSA";
-  wxString stbdAngle = wxString::Format("%.1f", m_spinCtrlDouble_starboardRSA->GetValue());
+  wxString talker     = m_textCtrl_talkerRSA->GetValue();
+  wxString type       = "RSA";
+  wxString stbdAngle  = wxString::Format("%.1f", m_spinCtrlDouble_starboardRSA->GetValue());
   wxString stbdStatus = m_choice_starboardStatusRSA->GetStringSelection();
-  wxString portAngle = wxString::Format("%.1f", m_spinCtrlDouble_portRSA->GetValue());
+  wxString portAngle  = wxString::Format("%.1f", m_spinCtrlDouble_portRSA->GetValue());
   wxString portStatus = m_choice_statusPortRSA->GetStringSelection();
 
   wxString payload = talker + type + "," +
@@ -579,3 +635,42 @@ void DialogMainGui::sendRSA()
   wxString sentence = "$" + payload + checksum;
   sendNmeaToOCPN(sentence);
 }
+
+void DialogMainGui::sendDPT()
+{
+  wxString talker = m_textCtrl_talkerDPT->GetValue();
+  wxString type   = "DPT";
+  wxString depth  = wxString::Format("%.1f", m_spinCtrlDouble_depthDPT->GetValue());
+  wxString offset = wxString::Format("%.1f", m_spinCtrlDouble_offsetDPT->GetValue());
+
+  wxString payload =
+      talker + type + "," +
+      depth + "," +
+      offset;
+
+  wxString checksum = utils::calculateChecksumString(payload);
+
+  wxString sentence = "$" + payload + checksum;
+  sendNmeaToOCPN(sentence);
+}
+
+void DialogMainGui::sendDBx()
+{
+  wxString talker      = m_textCtrl_talkerDBx->GetValue();
+  wxString type        = m_choice_sentenceDBx->GetStringSelection(); //can be DBT, DBS, DBK
+  wxString depthFeet   = wxString::Format("%.1f", m_spinCtrlDouble_depthFeetDBx->GetValue());
+  wxString depthMeter  = wxString::Format("%.1f", m_spinCtrlDouble_depthMeterDBx->GetValue());
+  wxString depthFathom = wxString::Format("%.1f", m_spinCtrlDouble_depthFathomDBx->GetValue());
+
+  wxString payload =
+      talker + type + "," +
+      depthFeet + ",f," +
+      depthMeter + ",M," +
+      depthFathom + ",F";
+
+  wxString checksum = utils::calculateChecksumString(payload);
+
+  wxString sentence = "$" + payload + checksum;
+  sendNmeaToOCPN(sentence);
+}
+
