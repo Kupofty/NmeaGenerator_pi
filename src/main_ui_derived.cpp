@@ -11,7 +11,7 @@ DialogMainGui::DialogMainGui(wxWindow* parent, wxWindowID id, const wxString& ti
   addAutoChecksum = m_checkBox_autoChecksum->GetValue();
   m_staticText_checksum->Show(addAutoChecksum);
 
-  //Open first tab by default
+  //Open first tab by default (can be different due to settings loaded)
   m_notebook->SetSelection(0);
 
   //List for search box
@@ -19,6 +19,12 @@ DialogMainGui::DialogMainGui(wxWindow* parent, wxWindowID id, const wxString& ti
       {sbSizer_RMC->GetStaticBox()->GetLabel(), sbSizer_RMC},
       {sbSizer_GGA->GetStaticBox()->GetLabel(), sbSizer_GGA},
       {sbSizer_GLL->GetStaticBox()->GetLabel(), sbSizer_GLL}
+  };
+
+  //Timers list
+  m_timers = {
+      { &m_timer_autoSendNmea,    m_checkBox_automaticSend },
+      { &m_timer_autoSendBuilder, m_checkBox_automaticSendBuilder }
   };
 }
 
@@ -57,13 +63,14 @@ void DialogMainGui::sendNmeaToOCPN(wxString sentence)
 
 void DialogMainGui::stopTimers()
 {
-  //Manual input
-  m_timer_autoSendNmea.Stop();
-  m_checkBox_automaticSend->SetValue(false);
+  for (auto& t : m_timers)
+  {
+    if (t.timer)
+      t.timer->Stop();
 
-  //Sentence builder
-  m_timer_autoSendBuilder.Stop();
-  m_checkBox_automaticSendBuilder->SetValue(false);
+    if (t.checkbox)
+      t.checkbox->SetValue(false);
+  }
 }
 
 

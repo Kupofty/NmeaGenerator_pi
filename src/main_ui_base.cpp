@@ -662,9 +662,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	bSizer12->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	m_button_sentenceBuilderHelp = new wxButton( m_panel2, wxID_ANY, _("Help"), wxDefaultPosition, wxDefaultSize, 0 );
-
-	m_button_sentenceBuilderHelp->SetBitmap( wxNullBitmap );
-	bSizer12->Add( m_button_sentenceBuilderHelp, 0, wxALL, 5 );
+	bSizer12->Add( m_button_sentenceBuilderHelp, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
 	bSizer12->Add( 0, 0, 1, wxEXPAND, 5 );

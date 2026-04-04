@@ -13,6 +13,12 @@ struct SectionItem
   wxStaticBoxSizer* sizer;
 };
 
+struct TimerItem
+{
+  wxTimer* timer;
+  wxCheckBox* checkbox;
+};
+
 class DialogMainGui : public MyDialog
 {
   public:
@@ -57,6 +63,7 @@ class DialogMainGui : public MyDialog
 
     bool addAutoChecksum;
     std::vector<SectionItem> sbSizerListSentenceBuilder;
+    std::vector<TimerItem> m_timers;
 };
 
 #endif //DIALOG_MAIN_GUI
