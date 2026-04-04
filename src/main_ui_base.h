@@ -113,6 +113,28 @@ class MyDialog : public wxDialog
 		wxStaticText* m_staticText411;
 		wxSpinCtrlDouble* m_spinCtrlDouble_geoidSeparationGGA;
 		wxStaticText* m_staticText42;
+		wxStaticBoxSizer* sbSizer_TLL;
+		wxButton* m_button_sendTLL;
+		wxCheckBox* m_checkBox_autoSendTLL;
+		wxStaticLine* m_staticline61111;
+		wxStaticText* m_staticText351111;
+		wxStaticText* m_staticText361111;
+		wxStaticText* m_staticText63;
+		wxStaticText* m_staticText64;
+		wxStaticText* m_staticText65;
+		wxStaticText* m_staticText66;
+		wxStaticText* m_staticText67;
+		wxTextCtrl* m_textCtrl_idTLL;
+		wxStaticText* m_staticText371111;
+		wxSpinCtrlDouble* m_spinCtrlDouble_numberTLL;
+		wxTextCtrl* m_textCtrl_latitudeTLL;
+		wxChoice* m_choice_latDirTLL;
+		wxTextCtrl* m_textCtrl_longitudeTLL;
+		wxChoice* m_choice_lonDirTLL;
+		wxTextCtrl* m_textCtrl_nameTLL;
+		wxTextCtrl* m_textCtrl_timeTLL;
+		wxChoice* m_choice_statusTLL;
+		wxStaticText* m_staticText68;
 		wxStaticBoxSizer* sbSizer_GLL;
 		wxButton* m_button_sendGLL;
 		wxCheckBox* m_checkBox_autoSendGLL;
@@ -132,6 +154,62 @@ class MyDialog : public wxDialog
 		wxTextCtrl* m_textCtrl_timeGLL;
 		wxChoice* m_choice_statusGLL;
 		wxChoice* m_choice_modeGLL;
+		wxStaticBoxSizer* sbSizer_HDT;
+		wxButton* m_button_sendHDT;
+		wxCheckBox* m_checkBox_autoSendHDT;
+		wxStaticLine* m_staticline61;
+		wxStaticText* m_staticText351;
+		wxStaticText* m_staticText361;
+		wxTextCtrl* m_textCtrl_idHDT;
+		wxStaticText* m_staticText371;
+		wxSpinCtrlDouble* m_spinCtrlDouble_headingHDT;
+		wxStaticText* m_staticText38;
+		wxStaticBoxSizer* sbSizer_HDM;
+		wxButton* m_button_sendHDM;
+		wxCheckBox* m_checkBox_autoSendHDM;
+		wxStaticLine* m_staticline611;
+		wxStaticText* m_staticText3511;
+		wxStaticText* m_staticText3611;
+		wxTextCtrl* m_textCtrl_idHDM;
+		wxStaticText* m_staticText3711;
+		wxSpinCtrlDouble* m_spinCtrlDouble_headingHDM;
+		wxStaticText* m_staticText381;
+		wxStaticBoxSizer* sbSizer_MTW;
+		wxButton* m_button_sendMTW;
+		wxCheckBox* m_checkBox_autoSendMTW;
+		wxStaticLine* m_staticline6111;
+		wxStaticText* m_staticText35111;
+		wxStaticText* m_staticText36111;
+		wxTextCtrl* m_textCtrl_idMTW;
+		wxStaticText* m_staticText37111;
+		wxSpinCtrlDouble* m_spinCtrlDouble_tempMTW;
+		wxStaticText* m_staticText3811;
+		wxStaticBoxSizer* sbSizer_ROT;
+		wxButton* m_button_sendROT;
+		wxCheckBox* m_checkBox_autoSendROT;
+		wxStaticLine* m_staticline61112;
+		wxStaticText* m_staticText351112;
+		wxStaticText* m_staticText361112;
+		wxStaticText* m_staticText77;
+		wxTextCtrl* m_textCtrl_idROT;
+		wxStaticText* m_staticText371112;
+		wxSpinCtrlDouble* m_spinCtrlDouble_rateROT;
+		wxChoice* m_choice_statusROT;
+		wxStaticBoxSizer* sbSizer_RSA;
+		wxButton* m_button_sendRSA;
+		wxCheckBox* m_checkBox_autoSendRSA;
+		wxStaticLine* m_staticline611121;
+		wxStaticText* m_staticText3511121;
+		wxStaticText* m_staticText3611121;
+		wxStaticText* m_staticText771;
+		wxStaticText* m_staticText86;
+		wxStaticText* m_staticText87;
+		wxTextCtrl* m_textCtrl_idRSA;
+		wxStaticText* m_staticText3711121;
+		wxSpinCtrlDouble* m_spinCtrlDouble_starboardRSA;
+		wxChoice* m_choice_starboardStatusRSA;
+		wxSpinCtrlDouble* m_spinCtrlDouble_portRSA;
+		wxChoice* m_choice_statusPortRSA;
 		wxStaticLine* m_staticline3;
 		wxButton* m_button_checkAllBuilder;
 		wxButton* m_button_uncheckAllBuilder;
@@ -155,7 +233,13 @@ class MyDialog : public wxDialog
 		virtual void OnSpinCtrlDouble_AutomaticSendFreq( wxSpinDoubleEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendRMC( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendGGA( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_SendTLL( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendGLL( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_SendHDT( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_SendHDM( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_SendMTW( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_SendROT( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_SendRSA( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_CheckAllBuilder( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_UncheckAllBuilder( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnText_SearchSentenceBuilder( wxCommandEvent& event ) { event.Skip(); }
@@ -167,7 +251,7 @@ class MyDialog : public wxDialog
 	public:
 		wxNotebook* m_notebook;
 
-		MyDialog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("NMEA Generator Plugin"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 971,401 ), long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
+		MyDialog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("NMEA Generator Plugin"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 1008,378 ), long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
 
 		~MyDialog();
 

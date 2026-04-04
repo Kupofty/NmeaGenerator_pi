@@ -18,7 +18,13 @@ DialogMainGui::DialogMainGui(wxWindow* parent, wxWindowID id, const wxString& ti
   sbSizerListSentenceBuilder = {
       {sbSizer_RMC->GetStaticBox()->GetLabel(), sbSizer_RMC},
       {sbSizer_GGA->GetStaticBox()->GetLabel(), sbSizer_GGA},
-      {sbSizer_GLL->GetStaticBox()->GetLabel(), sbSizer_GLL}
+      {sbSizer_GLL->GetStaticBox()->GetLabel(), sbSizer_GLL},
+      {sbSizer_HDT->GetStaticBox()->GetLabel(), sbSizer_HDT},
+      {sbSizer_HDM->GetStaticBox()->GetLabel(), sbSizer_HDM},
+      {sbSizer_MTW->GetStaticBox()->GetLabel(), sbSizer_MTW},
+      {sbSizer_TLL->GetStaticBox()->GetLabel(), sbSizer_TLL},
+      {sbSizer_ROT->GetStaticBox()->GetLabel(), sbSizer_ROT},
+      {sbSizer_RSA->GetStaticBox()->GetLabel(), sbSizer_RSA}
   };
 
   //Timers list
@@ -195,21 +201,43 @@ void DialogMainGui::OnText_SearchSentenceBuilder(wxCommandEvent& event)
 //Help button
 void DialogMainGui::OnButtonClick_OpenSentenceBuilderHelp(wxCommandEvent& event)
 {
-  wxMessageDialog dlg(
+  wxDialog* dlg = new wxDialog(
       this,
-      "This help explains the expected NMEA units and formats required in this tool:\n\n" //title
+      wxID_ANY,
+      "NMEA Format Help (Units & Field Structure)",
+      wxDefaultPosition,
+      wxSize(400, 300),
+      wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER
+      );
+
+  wxBoxSizer* sizer = new wxBoxSizer(wxVERTICAL);
+
+  wxTextCtrl* text = new wxTextCtrl(
+      dlg,
+      wxID_ANY,
+      "This help explains the expected NMEA units and formats required in this tool:\n\n"
       "UTC Time: hhmmss\n"
-      "Latitude: ddmm.mm\n"
-      "Longitude: dddmm.mm\n"
+      "Latitude: ddmm.mmmm\n"
+      "Longitude: dddmm.mmmm\n"
       "SOG: knots\n"
       "COG: degrees\n"
       "Date: ddmmyy\n"
-      "Mag var: degrees",
-      "NMEA Format Help (Units & Field Structure)", //window's name
-      wxOK | wxICON_INFORMATION
+      "Mag Var: degrees\n"
+      "Heading: degrees\n"
+      "ROT: degrees per minute",
+      wxDefaultPosition,
+      wxDefaultSize,
+      wxTE_MULTILINE | wxTE_READONLY | wxTE_RICH2
       );
 
-  dlg.ShowModal();
+  sizer->Add(text, 1, wxEXPAND | wxALL, 10);
+
+  dlg->SetSizer(sizer);
+  dlg->Layout();
+  dlg->Centre();
+
+  dlg->ShowModal();
+  dlg->Destroy();
 }
 
 
@@ -229,6 +257,12 @@ void DialogMainGui::updateAutoSendBuildersCheckboxes(bool check)
   m_checkBox_autoSendGLL->SetValue(check);
   m_checkBox_autoSendRMC->SetValue(check);
   m_checkBox_autoSendGGA->SetValue(check);
+  m_checkBox_autoSendHDT->SetValue(check);
+  m_checkBox_autoSendHDM->SetValue(check);
+  m_checkBox_autoSendMTW->SetValue(check);
+  m_checkBox_autoSendTLL->SetValue(check);
+  m_checkBox_autoSendROT->SetValue(check);
+  m_checkBox_autoSendRSA->SetValue(check);
 }
 
 
@@ -259,14 +293,25 @@ void DialogMainGui::OnSpinCtrlDouble_AutomaticSendFreqBuilder(wxSpinDoubleEvent&
 
 void DialogMainGui::OnTimer_autoSendBuilder(wxTimerEvent& event)
 {
+  //Only send sentence if auto-checkbox is checked
   if(m_checkBox_autoSendGLL->GetValue())
     sendGLL();
-
   if(m_checkBox_autoSendRMC->GetValue())
     sendRMC();
-
   if(m_checkBox_autoSendGGA->GetValue())
     sendGGA();
+  if(m_checkBox_autoSendHDT->GetValue())
+    sendHDT();
+  if(m_checkBox_autoSendHDM->GetValue())
+    sendHDM();
+  if(m_checkBox_autoSendMTW->GetValue())
+    sendMTW();
+  if(m_checkBox_autoSendTLL->GetValue())
+    sendTLL();
+  if(m_checkBox_autoSendROT->GetValue())
+    sendROT();
+  if(m_checkBox_autoSendRSA->GetValue())
+    sendRSA();
 }
 
 
@@ -284,6 +329,36 @@ void DialogMainGui::OnButtonClick_SendRMC(wxCommandEvent& event)
 void DialogMainGui::OnButtonClick_SendGGA(wxCommandEvent& event)
 {
   sendGGA();
+}
+
+void DialogMainGui::OnButtonClick_SendHDT(wxCommandEvent& event)
+{
+  sendHDT();
+}
+
+void DialogMainGui::OnButtonClick_SendHDM(wxCommandEvent& event)
+{
+  sendHDM();
+}
+
+void DialogMainGui::OnButtonClick_SendMTW(wxCommandEvent& event)
+{
+  sendMTW();
+}
+
+void DialogMainGui::OnButtonClick_SendTLL(wxCommandEvent& event)
+{
+  sendTLL();
+}
+
+void DialogMainGui::OnButtonClick_SendROT(wxCommandEvent& event)
+{
+  sendROT();
+}
+
+void DialogMainGui::OnButtonClick_SendRSA(wxCommandEvent& event)
+{
+  sendRSA();
 }
 
 
@@ -348,6 +423,101 @@ void DialogMainGui::sendGGA()
   payload += wxString::Format("%.1f", m_spinCtrlDouble_hdopGGA->GetValue()) + ",";
   payload += wxString::Format("%.1f", m_spinCtrlDouble_altitude_GGA->GetValue()) + ",M,";
   payload += wxString::Format("%.1f", m_spinCtrlDouble_geoidSeparationGGA->GetValue()) + ",M,,";
+
+  wxString checksum = utils::calculateChecksumString(payload);
+
+  wxString sentence = "$" + payload + checksum;
+
+  sendNmeaToOCPN(sentence);
+}
+
+void DialogMainGui::sendHDT()
+{
+  wxString payload;
+  payload = m_textCtrl_idHDT->GetValue();
+  payload += "HDT,";
+  payload += wxString::Format("%.1f", m_spinCtrlDouble_headingHDT->GetValue()) + ",T";
+
+  wxString checksum = utils::calculateChecksumString(payload);
+
+  wxString sentence = "$" + payload + checksum;
+
+  sendNmeaToOCPN(sentence);
+}
+
+void DialogMainGui::sendHDM()
+{
+  wxString payload;
+  payload = m_textCtrl_idHDM->GetValue();
+  payload += "HDM,";
+  payload += wxString::Format("%.1f", m_spinCtrlDouble_headingHDM->GetValue()) + ",M";
+
+  wxString checksum = utils::calculateChecksumString(payload);
+
+  wxString sentence = "$" + payload + checksum;
+
+  sendNmeaToOCPN(sentence);
+}
+
+void DialogMainGui::sendMTW()
+{
+  wxString payload;
+  payload = m_textCtrl_idMTW->GetValue();
+  payload += "MTW,";
+  payload += wxString::Format("%.1f", m_spinCtrlDouble_tempMTW->GetValue()) + ",C";
+
+  wxString checksum = utils::calculateChecksumString(payload);
+
+  wxString sentence = "$" + payload + checksum;
+
+  sendNmeaToOCPN(sentence);
+}
+
+void DialogMainGui::sendTLL()
+{
+  wxString payload;
+  payload = m_textCtrl_idTLL->GetValue();
+  payload += "TLL,";
+  payload += wxString::Format("%.1f", m_spinCtrlDouble_numberTLL->GetValue()) + ",";
+  payload += m_textCtrl_latitudeTLL->GetValue() + ",";
+  payload += m_choice_latDirTLL->GetStringSelection() + ",";
+  payload += m_textCtrl_longitudeTLL->GetValue() + ",";
+  payload += m_choice_lonDirTLL->GetStringSelection() + ",";
+  payload += m_textCtrl_nameTLL->GetValue() + ",";
+  payload += m_textCtrl_timeTLL->GetValue() + ",";
+  payload += m_choice_statusTLL->GetStringSelection() + ",R";
+
+  wxString checksum = utils::calculateChecksumString(payload);
+
+  wxString sentence = "$" + payload + checksum;
+
+  sendNmeaToOCPN(sentence);
+}
+
+void DialogMainGui::sendROT()
+{
+  wxString payload;
+  payload = m_textCtrl_idROT->GetValue();
+  payload += "ROT,";
+  payload += wxString::Format("%.1f", m_spinCtrlDouble_rateROT->GetValue()) + ",";
+  payload += m_choice_statusROT->GetStringSelection();
+
+  wxString checksum = utils::calculateChecksumString(payload);
+
+  wxString sentence = "$" + payload + checksum;
+
+  sendNmeaToOCPN(sentence);
+}
+
+void DialogMainGui::sendRSA()
+{
+  wxString payload;
+  payload = m_textCtrl_idRSA->GetValue();
+  payload += "RSA,";
+  payload += wxString::Format("%.1f", m_spinCtrlDouble_starboardRSA->GetValue()) + ",";
+  payload += m_choice_starboardStatusRSA->GetStringSelection();
+  payload += wxString::Format("%.1f", m_spinCtrlDouble_portRSA->GetValue()) + ",";
+  payload += m_choice_statusPortRSA->GetStringSelection();
 
   wxString checksum = utils::calculateChecksumString(payload);
 

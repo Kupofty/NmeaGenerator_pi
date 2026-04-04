@@ -44,6 +44,12 @@ class DialogMainGui : public MyDialog
     void OnButtonClick_SendGLL(wxCommandEvent& event) override;
     void OnButtonClick_SendRMC(wxCommandEvent& event) override;
     void OnButtonClick_SendGGA(wxCommandEvent& event) override;
+    void OnButtonClick_SendHDT(wxCommandEvent& event) override;
+    void OnButtonClick_SendHDM(wxCommandEvent& event) override;
+    void OnButtonClick_SendMTW(wxCommandEvent& event) override;
+    void OnButtonClick_SendTLL(wxCommandEvent& event) override;
+    void OnButtonClick_SendROT(wxCommandEvent& event) override;
+    void OnButtonClick_SendRSA(wxCommandEvent& event) override;
     void OnButtonClick_CheckAllBuilder(wxCommandEvent& event) override;
     void OnButtonClick_UncheckAllBuilder(wxCommandEvent& event) override;
     void OnCheckBox_AutomaticSendBuilder(wxCommandEvent& event) override;
@@ -60,6 +66,12 @@ class DialogMainGui : public MyDialog
     void sendGLL();
     void sendRMC();
     void sendGGA();
+    void sendHDT();
+    void sendHDM();
+    void sendMTW();
+    void sendTLL();
+    void sendROT();
+    void sendRSA();
 
     bool addAutoChecksum;
     std::vector<SectionItem> sbSizerListSentenceBuilder;
