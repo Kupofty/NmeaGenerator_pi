@@ -2,6 +2,7 @@
 #define UTILS_H
 
 #include <wx/string.h>
+#include <cstdint>
 
 namespace utils
 {
