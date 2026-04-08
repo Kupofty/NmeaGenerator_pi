@@ -1,6 +1,8 @@
 #include "main_ui_derived.h"
 #include "nmeagenerator_plugin.h"
 #include "utils.h"
+#include <cmath>
+#include <ctime>
 
 ////////////////////////////
 /// Class Initialization ///
@@ -8,8 +10,8 @@
 DialogMainGui::DialogMainGui(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style) : MyDialog( parent )
 {
   //Dialog size
-  int dialogWidth = 1000;
-  int dialogHeight = 400;
+  int dialogWidth = 700;
+  int dialogHeight = 450;
   this->SetSize(dialogWidth, dialogHeight);
 
   //Hide/show checkbox autoChecksum
@@ -35,11 +37,13 @@ DialogMainGui::DialogMainGui(wxWindow* parent, wxWindowID id, const wxString& ti
       {sbSizer_DBx->GetStaticBox()->GetLabel(), sbSizer_DBx}
   };
 
-  //Timers list
-  m_timers = {
-      { &m_timer_autoSendNmea,    m_checkBox_automaticSend },
-      { &m_timer_autoSendBuilder, m_checkBox_automaticSendBuilder }
-  };
+  //Init simu data
+  latSim = 0;
+  lonSim = 0;
+  headingSim = 0;
+  rudderAngleSim = 0;
+  directionSignSim = 1;
+  speedSim = 0;
 }
 
 DialogMainGui::~DialogMainGui()
@@ -77,14 +81,207 @@ void DialogMainGui::sendNmeaToOCPN(wxString sentence)
 
 void DialogMainGui::stopTimers()
 {
-  for (auto& t : m_timers)
-  {
-    if (t.timer)
-      t.timer->Stop();
+  m_timer_autoSendNmea.Stop();
+  m_checkBox_automaticSend->SetValue(false);
 
-    if (t.checkbox)
-      t.checkbox->SetValue(false);
-  }
+  m_timer_autoSendBuilder.Stop();
+  m_checkBox_automaticSendBuilder->SetValue(false);
+
+  m_timer_autoSendSim.Stop();
+}
+
+
+
+/////////////////////////////////////////
+/// NMEA Sentence Construction + Send ///
+/////////////////////////////////////////
+void DialogMainGui::sendGLL(wxString talker, wxString lat, wxString latDir, wxString lon, wxString lonDir, wxString time, wxString status, wxString mode)
+{
+  wxString payload =
+      talker + "GLL" + "," +
+      lat + "," +
+      latDir + "," +
+      lon + "," +
+      lonDir + "," +
+      time + "," +
+      status + "," +
+      mode;
+
+  wxString checksum = utils::calculateChecksumString(payload);
+
+  wxString sentence = "$" + payload + checksum;
+  sendNmeaToOCPN(sentence);
+}
+
+void DialogMainGui::sendRMC(wxString talker, wxString time, wxString status, wxString lat, wxString latDir, wxString lon, wxString lonDir, wxString sogKnot, wxString cogDeg, wxString date, wxString magVarDeg, wxString magVarDir)
+{
+  wxString payload =
+      talker + "RMC" + "," +
+      time + "," +
+      status + "," +
+      lat + "," +
+      latDir + "," +
+      lon + "," +
+      lonDir + "," +
+      sogKnot + "," +
+      cogDeg + "," +
+      date + "," +
+      magVarDeg + "," +
+      magVarDir;
+
+  wxString checksum = utils::calculateChecksumString(payload);
+
+  wxString sentence = "$" + payload + checksum;
+  sendNmeaToOCPN(sentence);
+}
+
+void DialogMainGui::sendGGA(wxString talker, wxString time, wxString lat, wxString latDir, wxString lon, wxString lonDir, wxString gpsFix, wxString satellitesNb, wxString hdop, wxString altitudeMeter, wxString geoid)
+{
+  wxString payload =
+      talker + "GGA" + "," +
+      time + "," +
+      lat + "," +
+      latDir + "," +
+      lon + "," +
+      lonDir + "," +
+      gpsFix + "," +
+      satellitesNb + "," +
+      hdop + "," +
+      altitudeMeter + ",M," +
+      geoid + ",M,,";
+
+  wxString checksum = utils::calculateChecksumString(payload);
+
+  wxString sentence = "$" + payload + checksum;
+  sendNmeaToOCPN(sentence);
+}
+
+void DialogMainGui::sendHDT(wxString talker, wxString headingDeg)
+{
+  wxString payload =
+      talker + "HDT" + "," +
+      headingDeg + ",T";
+
+  wxString checksum = utils::calculateChecksumString(payload);
+
+  wxString sentence = "$" + payload + checksum;
+  sendNmeaToOCPN(sentence);
+}
+
+void DialogMainGui::sendHDM(wxString talker, wxString headingDeg)
+{
+  wxString payload =
+      talker + "HDM" + "," +
+      headingDeg + ",M";
+
+  wxString checksum = utils::calculateChecksumString(payload);
+
+  wxString sentence = "$" + payload + checksum;
+  sendNmeaToOCPN(sentence);
+}
+
+void DialogMainGui::sendHDG(wxString talker, wxString headingDeg, wxString deviationDeg, wxString deviationDir, wxString variationDeg, wxString variationDir)
+{
+  wxString payload =
+      talker + "HDG" + "," +
+      headingDeg + "," +
+      deviationDeg + "," +
+      deviationDir + "," +
+      variationDeg + "," +
+      variationDir;
+
+  wxString checksum = utils::calculateChecksumString(payload);
+
+  wxString sentence = "$" + payload + checksum;
+  sendNmeaToOCPN(sentence);
+}
+
+void DialogMainGui::sendMTW(wxString talker, wxString tempCelsius)
+{
+  wxString payload =
+      talker + "MTW" + "," +
+      tempCelsius + ",C";
+
+  wxString checksum = utils::calculateChecksumString(payload);
+
+  wxString sentence = "$" + payload + checksum;
+  sendNmeaToOCPN(sentence);
+}
+
+void DialogMainGui::sendTLL(wxString talker, wxString targetID, wxString lat, wxString latDir, wxString lon, wxString lonDir, wxString name, wxString time, wxString status, wxString ref)
+{
+  wxString payload =
+      talker + "TLL" + "," +
+      targetID + "," +
+      lat + "," +
+      latDir + "," +
+      lon + "," +
+      lonDir + "," +
+      name + "," +
+      time + "," +
+      status + "," +
+      ref;
+
+  wxString checksum = utils::calculateChecksumString(payload);
+
+  wxString sentence = "$" + payload + checksum;
+  sendNmeaToOCPN(sentence);
+}
+
+void DialogMainGui::sendROT(wxString talker, wxString rateDegPerMin, wxString status)
+{
+  wxString payload =
+      talker + "ROT" + "," +
+      rateDegPerMin + "," +
+      status;
+
+  wxString checksum = utils::calculateChecksumString(payload);
+
+  wxString sentence = "$" + payload + checksum;
+  sendNmeaToOCPN(sentence);
+}
+
+void DialogMainGui::sendRSA(wxString talker, wxString stbdAngleDeg, wxString stbdStatus, wxString portAngleDeg, wxString portStatus)
+{
+  wxString payload =
+      talker + "RSA" + "," +
+      stbdAngleDeg + "," +
+      stbdStatus + "," +
+      portAngleDeg + "," +
+      portStatus;
+
+  wxString checksum = utils::calculateChecksumString(payload);
+
+  wxString sentence = "$" + payload + checksum;
+  sendNmeaToOCPN(sentence);
+}
+
+void DialogMainGui::sendDPT(wxString talker, wxString depthMeter, wxString offsetMeter)
+{
+  wxString payload =
+      talker + "DPT" + "," +
+      depthMeter + "," +
+      offsetMeter;
+
+  wxString checksum = utils::calculateChecksumString(payload);
+
+  wxString sentence = "$" + payload + checksum;
+  sendNmeaToOCPN(sentence);
+}
+
+void DialogMainGui::sendDBx(wxString talker, wxString nmeaType, wxString depthFeet, wxString depthMeter, wxString depthFathom)
+{
+  wxString payload =
+      talker +
+      nmeaType + "," + //same structure for DBT/DBS/DBK
+      depthFeet + ",f," +
+      depthMeter + ",M," +
+      depthFathom + ",F";
+
+  wxString checksum = utils::calculateChecksumString(payload);
+
+  wxString sentence = "$" + payload + checksum;
+  sendNmeaToOCPN(sentence);
 }
 
 
@@ -205,7 +402,6 @@ void DialogMainGui::OnText_SearchSentenceBuilder(wxCommandEvent& event)
   m_scrolledWindow_sentenceBuilder->FitInside();
 }
 
-
 //Help button
 void DialogMainGui::OnButtonClick_OpenSentenceBuilderHelp(wxCommandEvent& event)
 {
@@ -250,14 +446,16 @@ void DialogMainGui::OnButtonClick_OpenSentenceBuilderHelp(wxCommandEvent& event)
 
 
 //Autosend checkboxes
-void DialogMainGui::OnButtonClick_CheckAllBuilder(wxCommandEvent& event)
+void DialogMainGui::OnToggleButton_CheckAllBuilders(wxCommandEvent& event)
 {
-  updateAutoSendBuildersCheckboxes(true);
-}
+  bool checked = m_toggleBtn_checkAllBuilder->GetValue();
 
-void DialogMainGui::OnButtonClick_UncheckAllBuilder(wxCommandEvent& event)
-{
-  updateAutoSendBuildersCheckboxes(false);
+  updateAutoSendBuildersCheckboxes(checked);
+
+  if (checked)
+    m_toggleBtn_checkAllBuilder->SetLabel("Uncheck All");
+  else
+    m_toggleBtn_checkAllBuilder->SetLabel("Check All");
 }
 
 void DialogMainGui::updateAutoSendBuildersCheckboxes(bool check)
@@ -306,99 +504,98 @@ void DialogMainGui::OnTimer_autoSendBuilder(wxTimerEvent& event)
 {
   //Only send sentence if auto-checkbox is checked
   if(m_checkBox_autoSendGLL->GetValue())
-    sendGLL();
+    sendSentenceBuilderGLL();
   if(m_checkBox_autoSendRMC->GetValue())
-    sendRMC();
+    sendSentenceBuilderRMC();
   if(m_checkBox_autoSendGGA->GetValue())
-    sendGGA();
+    sendSentenceBuilderGGA();
   if(m_checkBox_autoSendHDT->GetValue())
-    sendHDT();
+    sendSentenceBuilderHDT();
   if(m_checkBox_autoSendHDM->GetValue())
-    sendHDM();
+    sendSentenceBuilderHDM();
   if(m_checkBox_autoSendHDG->GetValue())
-    sendHDG();
+    sendSentenceBuilderHDG();
   if(m_checkBox_autoSendMTW->GetValue())
-    sendMTW();
+    sendSentenceBuilderMTW();
   if(m_checkBox_autoSendTLL->GetValue())
-    sendTLL();
+    sendSentenceBuilderTLL();
   if(m_checkBox_autoSendROT->GetValue())
-    sendROT();
+    sendSentenceBuilderROT();
   if(m_checkBox_autoSendRSA->GetValue())
-    sendRSA();
+    sendSentenceBuilderRSA();
   if(m_checkBox_autoSendDPT->GetValue())
-    sendDPT();
+    sendSentenceBuilderDPT();
   if(m_checkBox_autoSendDBx->GetValue())
-    sendDBx();
+    sendSentenceBuilderDBx();
 }
 
 
 //Send buttons
 void DialogMainGui::OnButtonClick_SendGLL(wxCommandEvent& event)
 {
-  sendGLL();
+  sendSentenceBuilderGLL();
 }
 
 void DialogMainGui::OnButtonClick_SendRMC(wxCommandEvent& event)
 {
-  sendRMC();
+  sendSentenceBuilderRMC();
 }
 
 void DialogMainGui::OnButtonClick_SendGGA(wxCommandEvent& event)
 {
-  sendGGA();
+  sendSentenceBuilderGGA();
 }
 
 void DialogMainGui::OnButtonClick_SendHDT(wxCommandEvent& event)
 {
-  sendHDT();
+  sendSentenceBuilderHDT();
 }
 
 void DialogMainGui::OnButtonClick_SendHDM(wxCommandEvent& event)
 {
-  sendHDM();
+  sendSentenceBuilderHDM();
 }
 
 void DialogMainGui::OnButtonClick_SendHDG(wxCommandEvent& event)
 {
-  sendHDG();
+  sendSentenceBuilderHDG();
 }
 
 void DialogMainGui::OnButtonClick_SendMTW(wxCommandEvent& event)
 {
-  sendMTW();
+  sendSentenceBuilderMTW();
 }
 
 void DialogMainGui::OnButtonClick_SendTLL(wxCommandEvent& event)
 {
-  sendTLL();
+  sendSentenceBuilderTLL();
 }
 
 void DialogMainGui::OnButtonClick_SendROT(wxCommandEvent& event)
 {
-  sendROT();
+  sendSentenceBuilderROT();
 }
 
 void DialogMainGui::OnButtonClick_SendRSA(wxCommandEvent& event)
 {
-  sendRSA();
+  sendSentenceBuilderRSA();
 }
 
 void DialogMainGui::OnButtonClick_SendDPT(wxCommandEvent& event)
 {
-  sendDPT();
+  sendSentenceBuilderDPT();
 }
 
 void DialogMainGui::OnButtonClick_SendDBx(wxCommandEvent& event)
 {
-  sendDBx();
+  sendSentenceBuilderDBx();
 }
 
 
-//NMEA sentences construction
-void DialogMainGui::sendGLL()
+//Send SentenceBuilder tab sentences
+void DialogMainGui::sendSentenceBuilderGLL()
 {
   wxString talker = m_textCtrl_talkerGLL->GetValue();
-  wxString type   = "GLL";
   wxString lat    = m_textCtrl_latitudeGLL->GetValue();
   wxString latDir = m_choice_latDirGLL->GetStringSelection();
   wxString lon    = m_textCtrl_longitudeGLL->GetValue();
@@ -407,26 +604,12 @@ void DialogMainGui::sendGLL()
   wxString status = m_choice_statusGLL->GetStringSelection();
   wxString mode   = m_choice_modeGLL->GetStringSelection();
 
-  wxString payload =
-      talker + type + "," +
-      lat + "," +
-      latDir + "," +
-      lon + "," +
-      lonDir + "," +
-      time + "," +
-      status + "," +
-      mode;
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  sendNmeaToOCPN(sentence);
+  sendGLL(talker, lat, latDir, lon, lonDir, time, status, mode);
 }
 
-void DialogMainGui::sendRMC()
+void DialogMainGui::sendSentenceBuilderRMC()
 {
   wxString talker = m_textCtrl_talkerRMC->GetValue();
-  wxString type   = "RMC";
   wxString time   = m_textCtrl_timeRMC->GetValue();
   wxString status = m_choice_statusRMC->GetStringSelection();
   wxString lat    = m_textCtrl_latitudeRMC->GetValue();
@@ -439,30 +622,12 @@ void DialogMainGui::sendRMC()
   wxString magVar = wxString::Format("%.1f",  m_spinCtrlDouble_magRMC->GetValue());
   wxString magVarDir = m_choice_magDirRMC->GetStringSelection();
 
-  wxString payload =
-      talker + type + "," +
-      time + "," +
-      status + "," +
-      lat + "," +
-      latDir + "," +
-      lon + "," +
-      lonDir + "," +
-      sog + "," +
-      cog + "," +
-      date + "," +
-      magVar + "," +
-      magVarDir;
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  sendNmeaToOCPN(sentence);
+  sendRMC(talker, time, status, lat, latDir, lon, lonDir, sog, cog, date, magVar, magVarDir);
 }
 
-void DialogMainGui::sendGGA()
+void DialogMainGui::sendSentenceBuilderGGA()
 {
   wxString talker   = m_textCtrl_talkerGGA->GetValue();
-  wxString type     = "GGA";
   wxString time     = m_textCtrl_timeGGA->GetValue();
   wxString lat      = m_textCtrl_latitudeGGA->GetValue();
   wxString latDir   = m_choice_latDirGGA->GetStringSelection();
@@ -474,101 +639,48 @@ void DialogMainGui::sendGGA()
   wxString altitude = wxString::Format("%.1f", m_spinCtrlDouble_altitude_GGA->GetValue());
   wxString geoid    = wxString::Format("%.1f", m_spinCtrlDouble_geoidSeparationGGA->GetValue());
 
-  wxString payload =
-      talker + type + "," +
-      time + "," +
-      lat + "," +
-      latDir + "," +
-      lon + "," +
-      lonDir + "," +
-      gpsFix + "," +
-      sats + "," +
-      hdop + "," +
-      altitude + ",M," +
-      geoid + ",M,,";
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  sendNmeaToOCPN(sentence);
+  sendGGA(talker, time, lat, latDir, lon, lonDir, gpsFix, sats, hdop, altitude, geoid);
 }
 
-void DialogMainGui::sendHDT()
+void DialogMainGui::sendSentenceBuilderHDT()
 {
   wxString talker  = m_textCtrl_talkerHDT->GetValue();
-  wxString type    = "HDT";
   wxString heading = wxString::Format("%.1f", m_spinCtrlDouble_headingHDT->GetValue());
 
-  wxString payload =
-      talker + type + "," +
-      heading + ",T";
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  sendNmeaToOCPN(sentence);
+  sendHDT(talker, heading);
 }
 
-void DialogMainGui::sendHDM()
+void DialogMainGui::sendSentenceBuilderHDM()
 {
   wxString talker  = m_textCtrl_talkerHDM->GetValue();
-  wxString type    = "HDM";
   wxString heading = wxString::Format("%.1f", m_spinCtrlDouble_headingHDM->GetValue());
 
-  wxString payload =
-      talker + type + "," +
-      heading + ",M";
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  sendNmeaToOCPN(sentence);
+  sendHDM(talker, heading);
 }
 
-void DialogMainGui::sendHDG()
+void DialogMainGui::sendSentenceBuilderHDG()
 {
   wxString talker       = m_textCtrl_talkerHDG->GetValue();
-  wxString type         = "HDG";
   wxString heading      = wxString::Format("%.1f", m_spinCtrlDouble_headingHDG->GetValue());
   wxString deviation    = wxString::Format("%.1f", m_spinCtrlDouble_deviationHDG->GetValue());
   wxString deviationDir = m_choice_deviationDirHDG->GetStringSelection();
   wxString variation    = wxString::Format("%.1f", m_spinCtrlDouble_variationHDG->GetValue());
   wxString variationDir = m_choice_variationDirHDG->GetStringSelection();
 
-  wxString payload =
-      talker + type + "," +
-      heading + "," +
-      deviation + "," +
-      deviationDir + "," +
-      variation + "," +
-      variationDir;
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  sendNmeaToOCPN(sentence);
+  sendHDG(talker, heading, deviation, deviationDir, variation, variationDir);
 }
 
-void DialogMainGui::sendMTW()
+void DialogMainGui::sendSentenceBuilderMTW()
 {
   wxString talker = m_textCtrl_talkerMTW->GetValue();
-  wxString type   = "MTW";
   wxString temp   = wxString::Format("%.1f", m_spinCtrlDouble_tempMTW->GetValue());
 
-  wxString payload =
-      talker + type + "," +
-      temp + ",C";
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  sendNmeaToOCPN(sentence);
+  sendMTW(talker, temp);
 }
 
-void DialogMainGui::sendTLL()
+void DialogMainGui::sendSentenceBuilderTLL()
 {
   wxString talker   = m_textCtrl_talkerTLL->GetValue();
-  wxString type     = "TLL";
   wxString targetID = wxString::Format("%d", m_spinCtrl_idTLL->GetValue());
   wxString lat      = m_textCtrl_latitudeTLL->GetValue();
   wxString latDir   = m_choice_latDirTLL->GetStringSelection();
@@ -579,82 +691,39 @@ void DialogMainGui::sendTLL()
   wxString status   = m_choice_statusTLL->GetStringSelection();
   wxString ref      = "R";
 
-  wxString payload =
-      talker + type + "," +
-      targetID + "," +
-      lat + "," +
-      latDir + "," +
-      lon + "," +
-      lonDir + "," +
-      name + "," +
-      time + "," +
-      status + "," +
-      ref;
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  sendNmeaToOCPN(sentence);
+  sendTLL(talker, targetID, lat, latDir, lon, lonDir, name, time, status, ref);
 }
 
-void DialogMainGui::sendROT()
+void DialogMainGui::sendSentenceBuilderROT()
 {
   wxString talker = m_textCtrl_talkerROT->GetValue();
-  wxString type   = "ROT";
   wxString rate   = wxString::Format("%.1f", m_spinCtrlDouble_rateROT->GetValue());
   wxString status = m_choice_statusROT->GetStringSelection();
 
-  wxString payload =
-      talker + type + "," +
-      rate + "," +
-      status;
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  sendNmeaToOCPN(sentence);
+  sendROT(talker, rate, status);
 }
 
-void DialogMainGui::sendRSA()
+void DialogMainGui::sendSentenceBuilderRSA()
 {
   wxString talker     = m_textCtrl_talkerRSA->GetValue();
-  wxString type       = "RSA";
   wxString stbdAngle  = wxString::Format("%.1f", m_spinCtrlDouble_starboardRSA->GetValue());
   wxString stbdStatus = m_choice_starboardStatusRSA->GetStringSelection();
   wxString portAngle  = wxString::Format("%.1f", m_spinCtrlDouble_portRSA->GetValue());
   wxString portStatus = m_choice_statusPortRSA->GetStringSelection();
 
-  wxString payload = talker + type + "," +
-                     stbdAngle + "," +
-                     stbdStatus + "," +
-                     portAngle + "," +
-                     portStatus;
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  sendNmeaToOCPN(sentence);
+  sendRSA(talker, stbdAngle, stbdStatus, portAngle, portStatus);
 }
 
-void DialogMainGui::sendDPT()
+void DialogMainGui::sendSentenceBuilderDPT()
 {
   wxString talker = m_textCtrl_talkerDPT->GetValue();
-  wxString type   = "DPT";
   wxString depth  = wxString::Format("%.1f", m_spinCtrlDouble_depthDPT->GetValue());
   wxString offset = wxString::Format("%.1f", m_spinCtrlDouble_offsetDPT->GetValue());
 
-  wxString payload =
-      talker + type + "," +
-      depth + "," +
-      offset;
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  sendNmeaToOCPN(sentence);
+  sendDPT(talker, depth, offset);
 }
 
-void DialogMainGui::sendDBx()
+void DialogMainGui::sendSentenceBuilderDBx()
 {
   wxString talker      = m_textCtrl_talkerDBx->GetValue();
   wxString type        = m_choice_sentenceDBx->GetStringSelection(); //can be DBT, DBS, DBK
@@ -662,15 +731,139 @@ void DialogMainGui::sendDBx()
   wxString depthMeter  = wxString::Format("%.1f", m_spinCtrlDouble_depthMeterDBx->GetValue());
   wxString depthFathom = wxString::Format("%.1f", m_spinCtrlDouble_depthFathomDBx->GetValue());
 
-  wxString payload =
-      talker + type + "," +
-      depthFeet + ",f," +
-      depthMeter + ",M," +
-      depthFathom + ",F";
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  sendNmeaToOCPN(sentence);
+  sendDBx(talker, type, depthFeet, depthMeter, depthFathom);
 }
 
+
+
+//////////////////
+/// Simulation ///
+//////////////////
+void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
+{
+  //Update position
+  GeoPos pos = utils::updatePosition(latSim, lonSim, speedSim, headingSim, m_timer_autoSendSim.GetInterval());
+  latSim = pos.lat;
+  lonSim = pos.lon;
+
+  //Get date & time
+  std::time_t now = std::time(nullptr);
+  std::tm utc = *std::gmtime(&now);
+
+  //Update heading & cog
+  double dt = 1;
+  headingSim = fmod(headingSim + (rudderAngleSim * directionSignSim) * dt, 360.0);
+  if (headingSim < 0)
+    headingSim += 360.0;
+
+  double cogSim = headingSim;
+  if (directionSignSim < 0)
+    cogSim = fmod(headingSim + 180.0, 360.0);
+
+  //Convert data to wxString
+  wxString latDir = utils::getLatDir(latSim);
+  wxString lonDir = utils::getLonDir(lonSim);
+  wxString latStr = utils::toNMEA_lat(fabs(latSim));
+  wxString lonStr = utils::toNMEA_lon(fabs(lonSim));
+
+  wxString speedStr = wxString::Format("%.1f", fabs(speedSim));
+  wxString headingStr = wxString::Format("%.1f", headingSim);
+  wxString cogStr = wxString::Format("%.1f", cogSim);
+  wxString rudderStr = wxString::Format("%.1f", rudderAngleSim);
+
+  wxString timeStr = wxString::Format("%02d%02d%02d", utc.tm_hour, utc.tm_min, utc.tm_sec);
+  wxString dateStr = wxString::Format("%02d%02d%02d", utc.tm_mday, utc.tm_mon + 1, utc.tm_year % 100);
+
+  //Update UI
+  m_staticText_headingSim->SetLabel(wxString::Format("%.0f", headingSim));
+  m_staticText_cogSim->SetLabel(wxString::Format("%.0f", cogSim));
+
+  //Send NMEA
+  if(m_choice_shipType->GetCurrentSelection() == 0) //own ship
+  {
+    sendRMC("GP", timeStr, "A", latStr, latDir, lonStr, lonDir, speedStr, cogStr, dateStr, "0", "E");
+    sendHDT("II", headingStr);
+    sendRSA("II", rudderStr, "A", "0", "V");
+  }
+  else if(m_choice_shipType->GetCurrentSelection() == 1) //AIS target
+  {
+    sendTLL("II", "99", latStr, latDir, lonStr, lonDir, "DUMMY", timeStr, "T", "R");
+  }
+}
+
+// Start/stop timer
+void DialogMainGui::OnButtonClick_StartSim(wxCommandEvent& event)
+{
+  m_timer_autoSendSim.Start(1000);
+}
+
+void DialogMainGui::OnButtonClick_StopSim(wxCommandEvent& event)
+{
+  m_timer_autoSendSim.Stop();
+}
+
+
+//Update values from GUI
+void DialogMainGui::OnButtonClick_UpdateSimPos(wxCommandEvent& event)
+{
+  wxString latStr = m_textCtrl_latSim->GetValue();
+  wxString lonStr = m_textCtrl_lonSim->GetValue();
+
+  wxString latDirStr = m_choice_latDirSim->GetStringSelection();
+  wxString lonDirStr = m_choice_lonDirSim->GetStringSelection();
+
+  double latNmea = 0.0;
+  double lonNmea = 0.0;
+
+  if (!latStr.ToDouble(&latNmea) || !lonStr.ToDouble(&lonNmea))
+    return;
+
+  double lat = utils::NMEA_to_decimal(latNmea);
+  double lon = utils::NMEA_to_decimal(lonNmea);
+
+  if (latDirStr == "S")
+    lat = -lat;
+
+  if (lonDirStr == "W")
+    lon = -lon;
+
+  latSim = lat;
+  lonSim = lon;
+}
+
+void DialogMainGui::OnScroll_UpdateThrottleSim(wxScrollEvent& event)
+{
+  double throttle = m_slider_throttleSim->GetValue();
+  speedSim = throttle; //speed = throttle
+  directionSignSim = (throttle >= 0) ? 1 : -1; //heading is decremented when boat is going reverse
+
+  wxString throttleStr = wxString::Format("%.0f", speedSim);
+  m_staticText_throttleSim->SetLabel(throttleStr);
+  wxString speedStr = wxString::Format("%.0f", fabs(speedSim));
+  m_staticText_speedSim->SetLabel(speedStr);
+}
+
+void DialogMainGui::OnScroll_UpdateRudderAngleSim(wxScrollEvent& event)
+{
+  rudderAngleSim = m_slider_rudderSim->GetValue();
+
+  wxString rudderStr = wxString::Format("%.0f", rudderAngleSim);
+  m_staticText_rudderAngleSim->SetLabel(rudderStr);
+}
+
+void DialogMainGui::OnButtonClick_ResetRudder(wxCommandEvent& event)
+{
+  rudderAngleSim = 0;
+
+  m_slider_rudderSim->SetValue(0);
+  m_staticText_rudderAngleSim->SetLabel("0");
+}
+
+void DialogMainGui::OnButtonClick_ResetThrottle(wxCommandEvent& event)
+{
+  speedSim = 0;
+
+  m_slider_throttleSim->SetValue(0);
+  m_staticText_throttleSim->SetLabel("0");
+  m_staticText_speedSim->SetLabel("0");
+}
