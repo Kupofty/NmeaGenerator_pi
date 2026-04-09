@@ -86,7 +86,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_checkBox_automaticSend = new wxCheckBox( m_panel_manual, wxID_ANY, _("Automatic send at"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer7->Add( m_checkBox_automaticSend, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_spinCtrlDouble_automaticSendFreq = new wxSpinCtrlDouble( m_panel_manual, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( -1,-1 ), wxSP_ARROW_KEYS, 0.1, 10, 1, 0.25 );
+	m_spinCtrlDouble_automaticSendFreq = new wxSpinCtrlDouble( m_panel_manual, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( -1,-1 ), wxSP_ARROW_KEYS, 0.1, 10, 1, 0.2 );
 	m_spinCtrlDouble_automaticSendFreq->SetDigits( 1 );
 	bSizer7->Add( m_spinCtrlDouble_automaticSendFreq, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -174,7 +174,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	wxString m_choice_sentenceDBxChoices[] = { _("DBT"), _("DBS"), _("DBK") };
 	int m_choice_sentenceDBxNChoices = sizeof( m_choice_sentenceDBxChoices ) / sizeof( wxString );
 	m_choice_sentenceDBx = new wxChoice( sbSizer_DBx->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_sentenceDBxNChoices, m_choice_sentenceDBxChoices, 0 );
-	m_choice_sentenceDBx->SetSelection( 0 );
+	m_choice_sentenceDBx->SetSelection( 2 );
 	fgSizer41131->Add( m_choice_sentenceDBx, 0, wxALL, 5 );
 
 	m_spinCtrlDouble_depthFeetDBx = new wxSpinCtrlDouble( sbSizer_DBx->GetStaticBox(), wxID_ANY, wxT("32.8"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 2000, 32.8, 10 );
@@ -205,7 +205,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	sbSizer_DBx->Add( fgSizer41131, 0, wxEXPAND, 5 );
 
 
-	bSizer_NmeaList->Add( sbSizer_DBx, 1, wxEXPAND, 5 );
+	bSizer_NmeaList->Add( sbSizer_DBx, 0, wxEXPAND, 5 );
 
 	sbSizer_DPT = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("DPT") ), wxHORIZONTAL );
 
@@ -265,7 +265,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	sbSizer_DPT->Add( fgSizer4113, 0, wxEXPAND, 5 );
 
 
-	bSizer_NmeaList->Add( sbSizer_DPT, 1, wxEXPAND, 5 );
+	bSizer_NmeaList->Add( sbSizer_DPT, 0, wxEXPAND, 5 );
 
 	sbSizer_GGA = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("GGA") ), wxHORIZONTAL );
 
@@ -565,6 +565,118 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer_NmeaList->Add( sbSizer_GLL, 0, wxEXPAND, 5 );
 
+	sbSizer_GSV = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("GSV") ), wxHORIZONTAL );
+
+	wxBoxSizer* bSizer1213;
+	bSizer1213 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer1213->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_button_sendGSV = new wxButton( sbSizer_GSV->GetStaticBox(), wxID_ANY, _("Send"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_button_sendGSV->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxEmptyString ) );
+
+	bSizer1213->Add( m_button_sendGSV, 0, wxALL, 5 );
+
+	m_checkBox_autoSendGSV = new wxCheckBox( sbSizer_GSV->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer1213->Add( m_checkBox_autoSendGSV, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	bSizer1213->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	sbSizer_GSV->Add( bSizer1213, 0, wxEXPAND, 5 );
+
+	m_staticline53 = new wxStaticLine( sbSizer_GSV->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL|wxLI_VERTICAL );
+	sbSizer_GSV->Add( m_staticline53, 0, wxEXPAND | wxALL, 5 );
+
+	wxFlexGridSizer* fgSizer_GSV;
+	fgSizer_GSV = new wxFlexGridSizer( 2, 9, 0, 0 );
+	fgSizer_GSV->SetFlexibleDirection( wxBOTH );
+	fgSizer_GSV->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
+
+	m_staticText193 = new wxStaticText( sbSizer_GSV->GetStaticBox(), wxID_ANY, _("Talker"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText193->Wrap( -1 );
+	fgSizer_GSV->Add( m_staticText193, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer_GSV->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText910 = new wxStaticText( sbSizer_GSV->GetStaticBox(), wxID_ANY, _("Total sentences"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_staticText910->Wrap( -1 );
+	m_staticText910->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
+
+	fgSizer_GSV->Add( m_staticText910, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText138 = new wxStaticText( sbSizer_GSV->GetStaticBox(), wxID_ANY, _("Sentence ID"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText138->Wrap( -1 );
+	fgSizer_GSV->Add( m_staticText138, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText113 = new wxStaticText( sbSizer_GSV->GetStaticBox(), wxID_ANY, _("Satellites in view"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_staticText113->Wrap( -1 );
+	fgSizer_GSV->Add( m_staticText113, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText1391 = new wxStaticText( sbSizer_GSV->GetStaticBox(), wxID_ANY, _("PRN"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText1391->Wrap( -1 );
+	fgSizer_GSV->Add( m_staticText1391, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText137 = new wxStaticText( sbSizer_GSV->GetStaticBox(), wxID_ANY, _("Elevation"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText137->Wrap( -1 );
+	fgSizer_GSV->Add( m_staticText137, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText144 = new wxStaticText( sbSizer_GSV->GetStaticBox(), wxID_ANY, _("Azimuth"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_staticText144->Wrap( -1 );
+	fgSizer_GSV->Add( m_staticText144, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText152 = new wxStaticText( sbSizer_GSV->GetStaticBox(), wxID_ANY, _("SNR"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText152->Wrap( -1 );
+	fgSizer_GSV->Add( m_staticText152, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_textCtrl_talkerGSV = new wxTextCtrl( sbSizer_GSV->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	#ifdef __WXGTK__
+	if ( !m_textCtrl_talkerGSV->HasFlag( wxTE_MULTILINE ) )
+	{
+	m_textCtrl_talkerGSV->SetMaxLength( 2 );
+	}
+	#else
+	m_textCtrl_talkerGSV->SetMaxLength( 2 );
+	#endif
+	fgSizer_GSV->Add( m_textCtrl_talkerGSV, 0, wxALL, 5 );
+
+	m_staticText53 = new wxStaticText( sbSizer_GSV->GetStaticBox(), wxID_ANY, _("GSV"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText53->Wrap( -1 );
+	fgSizer_GSV->Add( m_staticText53, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_spinCtrl_totalSentencesGSV = new wxSpinCtrl( sbSizer_GSV->GetStaticBox(), wxID_ANY, wxT("1"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 1, 1 );
+	fgSizer_GSV->Add( m_spinCtrl_totalSentencesGSV, 0, wxALL, 5 );
+
+	m_spinCtrl_sentenceIdGSV = new wxSpinCtrl( sbSizer_GSV->GetStaticBox(), wxID_ANY, wxT("1"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 1, 0 );
+	fgSizer_GSV->Add( m_spinCtrl_sentenceIdGSV, 0, wxALL, 5 );
+
+	m_spinCtrl_satellitesGSV = new wxSpinCtrl( sbSizer_GSV->GetStaticBox(), wxID_ANY, wxT("12"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 99, 12 );
+	fgSizer_GSV->Add( m_spinCtrl_satellitesGSV, 0, wxALL, 5 );
+
+	m_spinCtrl_prnGSV = new wxSpinCtrl( sbSizer_GSV->GetStaticBox(), wxID_ANY, wxT("1"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 1 );
+	fgSizer_GSV->Add( m_spinCtrl_prnGSV, 0, wxALL, 5 );
+
+	m_spinCtrlDouble_elevationGSV = new wxSpinCtrlDouble( sbSizer_GSV->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, -90, 90, 0, 10 );
+	m_spinCtrlDouble_elevationGSV->SetDigits( 1 );
+	fgSizer_GSV->Add( m_spinCtrlDouble_elevationGSV, 0, wxALL, 5 );
+
+	m_spinCtrlDouble_azimuthGSV = new wxSpinCtrlDouble( sbSizer_GSV->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 360, 0, 45 );
+	m_spinCtrlDouble_azimuthGSV->SetDigits( 1 );
+	fgSizer_GSV->Add( m_spinCtrlDouble_azimuthGSV, 0, wxALL, 5 );
+
+	m_spinCtrlDouble_snrGSV = new wxSpinCtrlDouble( sbSizer_GSV->GetStaticBox(), wxID_ANY, wxT("70"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 99, 70, 5 );
+	m_spinCtrlDouble_snrGSV->SetDigits( 1 );
+	fgSizer_GSV->Add( m_spinCtrlDouble_snrGSV, 0, wxALL, 5 );
+
+
+	sbSizer_GSV->Add( fgSizer_GSV, 0, wxEXPAND, 5 );
+
+
+	bSizer_NmeaList->Add( sbSizer_GSV, 0, wxEXPAND, 5 );
+
 	sbSizer_HDG = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("HDG") ), wxHORIZONTAL );
 
 	wxBoxSizer* bSizer17112;
@@ -649,7 +761,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	sbSizer_HDG->Add( fgSizer412, 1, wxEXPAND, 5 );
 
 
-	bSizer_NmeaList->Add( sbSizer_HDG, 1, wxEXPAND, 5 );
+	bSizer_NmeaList->Add( sbSizer_HDG, 0, wxEXPAND, 5 );
 
 	sbSizer_HDM = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("HDM") ), wxHORIZONTAL );
 
@@ -828,6 +940,218 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer_NmeaList->Add( sbSizer_MTW, 0, wxEXPAND, 5 );
 
+	sbSizer_MWV = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("MWV") ), wxHORIZONTAL );
+
+	wxBoxSizer* bSizer17111211;
+	bSizer17111211 = new wxBoxSizer( wxVERTICAL );
+
+	m_button_sendMWV = new wxButton( sbSizer_MWV->GetStaticBox(), wxID_ANY, _("Send"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_button_sendMWV->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxEmptyString ) );
+
+	bSizer17111211->Add( m_button_sendMWV, 0, wxALL, 5 );
+
+	m_checkBox_autoSendMWV = new wxCheckBox( sbSizer_MWV->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer17111211->Add( m_checkBox_autoSendMWV, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	sbSizer_MWV->Add( bSizer17111211, 0, wxEXPAND, 5 );
+
+	m_staticline6111211 = new wxStaticLine( sbSizer_MWV->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_VERTICAL );
+	sbSizer_MWV->Add( m_staticline6111211, 0, wxEXPAND | wxALL, 5 );
+
+	wxFlexGridSizer* fgSizer411211;
+	fgSizer411211 = new wxFlexGridSizer( 2, 7, 0, 0 );
+	fgSizer411211->SetFlexibleDirection( wxBOTH );
+	fgSizer411211->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
+
+	m_staticText35111211 = new wxStaticText( sbSizer_MWV->GetStaticBox(), wxID_ANY, _("Talker"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText35111211->Wrap( -1 );
+	fgSizer411211->Add( m_staticText35111211, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer411211->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText36111211 = new wxStaticText( sbSizer_MWV->GetStaticBox(), wxID_ANY, _("Angle"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText36111211->Wrap( -1 );
+	fgSizer411211->Add( m_staticText36111211, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer411211->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText7711 = new wxStaticText( sbSizer_MWV->GetStaticBox(), wxID_ANY, _("Speed"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText7711->Wrap( -1 );
+	fgSizer411211->Add( m_staticText7711, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer411211->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText872 = new wxStaticText( sbSizer_MWV->GetStaticBox(), wxID_ANY, _("Status"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText872->Wrap( -1 );
+	fgSizer411211->Add( m_staticText872, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_textCtrl_talkerMWV = new wxTextCtrl( sbSizer_MWV->GetStaticBox(), wxID_ANY, _("WI"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	fgSizer411211->Add( m_textCtrl_talkerMWV, 0, wxALL, 5 );
+
+	m_staticText37111211 = new wxStaticText( sbSizer_MWV->GetStaticBox(), wxID_ANY, _("MWV"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText37111211->Wrap( -1 );
+	fgSizer411211->Add( m_staticText37111211, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_spinCtrlDouble_angleMWV = new wxSpinCtrlDouble( sbSizer_MWV->GetStaticBox(), wxID_ANY, wxT("0"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 360, 0, 15 );
+	m_spinCtrlDouble_angleMWV->SetDigits( 1 );
+	fgSizer411211->Add( m_spinCtrlDouble_angleMWV, 0, wxALL, 5 );
+
+	wxString m_choice_refMWVChoices[] = { _("R"), _("T") };
+	int m_choice_refMWVNChoices = sizeof( m_choice_refMWVChoices ) / sizeof( wxString );
+	m_choice_refMWV = new wxChoice( sbSizer_MWV->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_refMWVNChoices, m_choice_refMWVChoices, 0 );
+	m_choice_refMWV->SetSelection( 0 );
+	fgSizer411211->Add( m_choice_refMWV, 0, wxALL, 5 );
+
+	m_spinCtrlDouble_speedMWV = new wxSpinCtrlDouble( sbSizer_MWV->GetStaticBox(), wxID_ANY, wxT("0"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 100, 0, 5 );
+	m_spinCtrlDouble_speedMWV->SetDigits( 1 );
+	fgSizer411211->Add( m_spinCtrlDouble_speedMWV, 0, wxALL, 5 );
+
+	wxString m_choice_unitMWVChoices[] = { _("N"), _("K"), _("M") };
+	int m_choice_unitMWVNChoices = sizeof( m_choice_unitMWVChoices ) / sizeof( wxString );
+	m_choice_unitMWV = new wxChoice( sbSizer_MWV->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_unitMWVNChoices, m_choice_unitMWVChoices, 0 );
+	m_choice_unitMWV->SetSelection( 0 );
+	fgSizer411211->Add( m_choice_unitMWV, 0, wxALL, 5 );
+
+	wxString m_choice_statusMWVChoices[] = { _("A"), _("V") };
+	int m_choice_statusMWVNChoices = sizeof( m_choice_statusMWVChoices ) / sizeof( wxString );
+	m_choice_statusMWV = new wxChoice( sbSizer_MWV->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_statusMWVNChoices, m_choice_statusMWVChoices, 0 );
+	m_choice_statusMWV->SetSelection( 0 );
+	fgSizer411211->Add( m_choice_statusMWV, 0, wxALL, 5 );
+
+
+	sbSizer_MWV->Add( fgSizer411211, 0, wxEXPAND, 5 );
+
+
+	bSizer_NmeaList->Add( sbSizer_MWV, 0, wxEXPAND, 5 );
+
+	sbSizer_OSD = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("OSD") ), wxHORIZONTAL );
+
+	wxBoxSizer* bSizer17111311;
+	bSizer17111311 = new wxBoxSizer( wxVERTICAL );
+
+	m_button_sendOSD = new wxButton( sbSizer_OSD->GetStaticBox(), wxID_ANY, _("Send"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_button_sendOSD->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxEmptyString ) );
+
+	bSizer17111311->Add( m_button_sendOSD, 0, wxALL, 5 );
+
+	m_checkBox_autoSendOSD = new wxCheckBox( sbSizer_OSD->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer17111311->Add( m_checkBox_autoSendOSD, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	sbSizer_OSD->Add( bSizer17111311, 0, wxEXPAND, 5 );
+
+	m_staticline6111311 = new wxStaticLine( sbSizer_OSD->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_VERTICAL );
+	sbSizer_OSD->Add( m_staticline6111311, 0, wxEXPAND | wxALL, 5 );
+
+	wxFlexGridSizer* fgSizer411311;
+	fgSizer411311 = new wxFlexGridSizer( 2, 11, 0, 0 );
+	fgSizer411311->SetFlexibleDirection( wxBOTH );
+	fgSizer411311->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
+
+	m_staticText35111311 = new wxStaticText( sbSizer_OSD->GetStaticBox(), wxID_ANY, _("Talker"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText35111311->Wrap( -1 );
+	fgSizer411311->Add( m_staticText35111311, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer411311->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText36111311 = new wxStaticText( sbSizer_OSD->GetStaticBox(), wxID_ANY, _("Heading"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText36111311->Wrap( -1 );
+	fgSizer411311->Add( m_staticText36111311, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText167 = new wxStaticText( sbSizer_OSD->GetStaticBox(), wxID_ANY, _("Status"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText167->Wrap( -1 );
+	fgSizer411311->Add( m_staticText167, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText10611 = new wxStaticText( sbSizer_OSD->GetStaticBox(), wxID_ANY, _("Course"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText10611->Wrap( -1 );
+	fgSizer411311->Add( m_staticText10611, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText168 = new wxStaticText( sbSizer_OSD->GetStaticBox(), wxID_ANY, _("Reference"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText168->Wrap( -1 );
+	fgSizer411311->Add( m_staticText168, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText1151 = new wxStaticText( sbSizer_OSD->GetStaticBox(), wxID_ANY, _("Speed"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText1151->Wrap( -1 );
+	fgSizer411311->Add( m_staticText1151, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText169 = new wxStaticText( sbSizer_OSD->GetStaticBox(), wxID_ANY, _("Reference"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText169->Wrap( -1 );
+	fgSizer411311->Add( m_staticText169, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText170 = new wxStaticText( sbSizer_OSD->GetStaticBox(), wxID_ANY, _("Drift angle"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText170->Wrap( -1 );
+	fgSizer411311->Add( m_staticText170, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText171 = new wxStaticText( sbSizer_OSD->GetStaticBox(), wxID_ANY, _("Drift speed"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText171->Wrap( -1 );
+	fgSizer411311->Add( m_staticText171, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText174 = new wxStaticText( sbSizer_OSD->GetStaticBox(), wxID_ANY, _("Speed unit"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText174->Wrap( -1 );
+	fgSizer411311->Add( m_staticText174, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_textCtrl_talkerOSD = new wxTextCtrl( sbSizer_OSD->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	fgSizer411311->Add( m_textCtrl_talkerOSD, 0, wxALL, 5 );
+
+	m_staticText172 = new wxStaticText( sbSizer_OSD->GetStaticBox(), wxID_ANY, _("OSD"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText172->Wrap( -1 );
+	fgSizer411311->Add( m_staticText172, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_spinCtrlDouble_headingOSD = new wxSpinCtrlDouble( sbSizer_OSD->GetStaticBox(), wxID_ANY, wxT("0"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 360, 0, 45 );
+	m_spinCtrlDouble_headingOSD->SetDigits( 1 );
+	fgSizer411311->Add( m_spinCtrlDouble_headingOSD, 0, wxALL, 5 );
+
+	wxString m_choice_statusOSDChoices[] = { _("A"), _("V") };
+	int m_choice_statusOSDNChoices = sizeof( m_choice_statusOSDChoices ) / sizeof( wxString );
+	m_choice_statusOSD = new wxChoice( sbSizer_OSD->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_statusOSDNChoices, m_choice_statusOSDChoices, 0 );
+	m_choice_statusOSD->SetSelection( 0 );
+	fgSizer411311->Add( m_choice_statusOSD, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_spinCtrlDouble_courseOSD = new wxSpinCtrlDouble( sbSizer_OSD->GetStaticBox(), wxID_ANY, wxT("0"), wxDefaultPosition, wxSize( -1,-1 ), wxSP_ARROW_KEYS, 0, 360, 0, 45 );
+	m_spinCtrlDouble_courseOSD->SetDigits( 1 );
+	fgSizer411311->Add( m_spinCtrlDouble_courseOSD, 0, wxALL, 5 );
+
+	wxString m_choice_courseRefOSDChoices[] = { _("B"), _("M"), _("W"), _("R"), _("P"), wxEmptyString };
+	int m_choice_courseRefOSDNChoices = sizeof( m_choice_courseRefOSDChoices ) / sizeof( wxString );
+	m_choice_courseRefOSD = new wxChoice( sbSizer_OSD->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_courseRefOSDNChoices, m_choice_courseRefOSDChoices, 0 );
+	m_choice_courseRefOSD->SetSelection( 1 );
+	fgSizer411311->Add( m_choice_courseRefOSD, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_spinCtrlDouble_speedOSD = new wxSpinCtrlDouble( sbSizer_OSD->GetStaticBox(), wxID_ANY, wxT("0"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 100, 0, 5 );
+	m_spinCtrlDouble_speedOSD->SetDigits( 1 );
+	fgSizer411311->Add( m_spinCtrlDouble_speedOSD, 0, wxALL, 5 );
+
+	wxString m_choice_speedRefOSDChoices[] = { _("B"), _("M"), _("W"), _("R"), _("P") };
+	int m_choice_speedRefOSDNChoices = sizeof( m_choice_speedRefOSDChoices ) / sizeof( wxString );
+	m_choice_speedRefOSD = new wxChoice( sbSizer_OSD->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_speedRefOSDNChoices, m_choice_speedRefOSDChoices, 0 );
+	m_choice_speedRefOSD->SetSelection( 1 );
+	fgSizer411311->Add( m_choice_speedRefOSD, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_spinCtrlDouble_driftAngleOSD = new wxSpinCtrlDouble( sbSizer_OSD->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 360, 0, 45 );
+	m_spinCtrlDouble_driftAngleOSD->SetDigits( 1 );
+	fgSizer411311->Add( m_spinCtrlDouble_driftAngleOSD, 0, wxALL, 5 );
+
+	m_spinCtrlDouble_driftSpeedOSD = new wxSpinCtrlDouble( sbSizer_OSD->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 100, 0, 5 );
+	m_spinCtrlDouble_driftSpeedOSD->SetDigits( 1 );
+	fgSizer411311->Add( m_spinCtrlDouble_driftSpeedOSD, 0, wxALL, 5 );
+
+	wxString m_choice_speedUnitOSDChoices[] = { _("N"), _("K") };
+	int m_choice_speedUnitOSDNChoices = sizeof( m_choice_speedUnitOSDChoices ) / sizeof( wxString );
+	m_choice_speedUnitOSD = new wxChoice( sbSizer_OSD->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_speedUnitOSDNChoices, m_choice_speedUnitOSDChoices, 0 );
+	m_choice_speedUnitOSD->SetSelection( 0 );
+	fgSizer411311->Add( m_choice_speedUnitOSD, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	sbSizer_OSD->Add( fgSizer411311, 0, wxEXPAND, 5 );
+
+
+	bSizer_NmeaList->Add( sbSizer_OSD, 0, wxEXPAND, 5 );
+
 	sbSizer_RMC = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("RMC") ), wxHORIZONTAL );
 
 	wxBoxSizer* bSizer14;
@@ -976,7 +1300,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_spinCtrlDouble_sogRMC->SetDigits( 1 );
 	fgSizer_RMC->Add( m_spinCtrlDouble_sogRMC, 0, wxALL, 5 );
 
-	m_spinCtrlDouble_cogRMC = new wxSpinCtrlDouble( sbSizer_RMC->GetStaticBox(), wxID_ANY, wxT("60"), wxDefaultPosition, wxSize( 60,-1 ), wxSP_ARROW_KEYS, 0, 360, 45.000000, 45 );
+	m_spinCtrlDouble_cogRMC = new wxSpinCtrlDouble( sbSizer_RMC->GetStaticBox(), wxID_ANY, wxT("60"), wxDefaultPosition, wxSize( 60,-1 ), wxSP_ARROW_KEYS, 0, 360, 0.000000, 45 );
 	m_spinCtrlDouble_cogRMC->SetDigits( 1 );
 	fgSizer_RMC->Add( m_spinCtrlDouble_cogRMC, 0, wxALL, 5 );
 
@@ -1263,6 +1587,407 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer_NmeaList->Add( sbSizer_TLL, 0, wxEXPAND, 5 );
 
+	sbSizer_THS = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("THS") ), wxHORIZONTAL );
+
+	wxBoxSizer* bSizer1711122;
+	bSizer1711122 = new wxBoxSizer( wxVERTICAL );
+
+	m_button_sendTHS = new wxButton( sbSizer_THS->GetStaticBox(), wxID_ANY, _("Send"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_button_sendTHS->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxEmptyString ) );
+
+	bSizer1711122->Add( m_button_sendTHS, 0, wxALL, 5 );
+
+	m_checkBox_autoSendTHS = new wxCheckBox( sbSizer_THS->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer1711122->Add( m_checkBox_autoSendTHS, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	sbSizer_THS->Add( bSizer1711122, 0, wxEXPAND, 5 );
+
+	m_staticline611122 = new wxStaticLine( sbSizer_THS->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_VERTICAL );
+	sbSizer_THS->Add( m_staticline611122, 0, wxEXPAND | wxALL, 5 );
+
+	wxFlexGridSizer* fgSizer41122;
+	fgSizer41122 = new wxFlexGridSizer( 2, 4, 0, 0 );
+	fgSizer41122->SetFlexibleDirection( wxBOTH );
+	fgSizer41122->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
+
+	m_staticText3511122 = new wxStaticText( sbSizer_THS->GetStaticBox(), wxID_ANY, _("Talker"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText3511122->Wrap( -1 );
+	fgSizer41122->Add( m_staticText3511122, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer41122->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText3611122 = new wxStaticText( sbSizer_THS->GetStaticBox(), wxID_ANY, _("Heading"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText3611122->Wrap( -1 );
+	fgSizer41122->Add( m_staticText3611122, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText772 = new wxStaticText( sbSizer_THS->GetStaticBox(), wxID_ANY, _("Mode"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText772->Wrap( -1 );
+	fgSizer41122->Add( m_staticText772, 0, wxALL, 5 );
+
+	m_textCtrl_talkerTHS = new wxTextCtrl( sbSizer_THS->GetStaticBox(), wxID_ANY, _("HE"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	fgSizer41122->Add( m_textCtrl_talkerTHS, 0, wxALL, 5 );
+
+	m_staticText3711122 = new wxStaticText( sbSizer_THS->GetStaticBox(), wxID_ANY, _("THS"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText3711122->Wrap( -1 );
+	fgSizer41122->Add( m_staticText3711122, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_spinCtrlDouble_headingTHS = new wxSpinCtrlDouble( sbSizer_THS->GetStaticBox(), wxID_ANY, wxT("0"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 360, 0, 15 );
+	m_spinCtrlDouble_headingTHS->SetDigits( 1 );
+	fgSizer41122->Add( m_spinCtrlDouble_headingTHS, 0, wxALL, 5 );
+
+	wxString m_choice_modeTHSChoices[] = { _("A"), _("V") };
+	int m_choice_modeTHSNChoices = sizeof( m_choice_modeTHSChoices ) / sizeof( wxString );
+	m_choice_modeTHS = new wxChoice( sbSizer_THS->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_modeTHSNChoices, m_choice_modeTHSChoices, 0 );
+	m_choice_modeTHS->SetSelection( 0 );
+	fgSizer41122->Add( m_choice_modeTHS, 0, wxALL, 5 );
+
+
+	sbSizer_THS->Add( fgSizer41122, 0, wxEXPAND, 5 );
+
+
+	bSizer_NmeaList->Add( sbSizer_THS, 0, wxEXPAND, 5 );
+
+	sbSizer_VTG = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("VTG") ), wxHORIZONTAL );
+
+	wxBoxSizer* bSizer1212;
+	bSizer1212 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer1212->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_button_sendVTG = new wxButton( sbSizer_VTG->GetStaticBox(), wxID_ANY, _("Send"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_button_sendVTG->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxEmptyString ) );
+
+	bSizer1212->Add( m_button_sendVTG, 0, wxALL, 5 );
+
+	m_checkBox_autoSendVTG = new wxCheckBox( sbSizer_VTG->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer1212->Add( m_checkBox_autoSendVTG, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	bSizer1212->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	sbSizer_VTG->Add( bSizer1212, 0, wxEXPAND, 5 );
+
+	m_staticline52 = new wxStaticLine( sbSizer_VTG->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL|wxLI_VERTICAL );
+	sbSizer_VTG->Add( m_staticline52, 0, wxEXPAND | wxALL, 5 );
+
+	wxFlexGridSizer* fgSizer_VTG;
+	fgSizer_VTG = new wxFlexGridSizer( 2, 11, 0, 0 );
+	fgSizer_VTG->SetFlexibleDirection( wxBOTH );
+	fgSizer_VTG->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
+
+	m_staticText192 = new wxStaticText( sbSizer_VTG->GetStaticBox(), wxID_ANY, _("Talker"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText192->Wrap( -1 );
+	fgSizer_VTG->Add( m_staticText192, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer_VTG->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText94 = new wxStaticText( sbSizer_VTG->GetStaticBox(), wxID_ANY, _("COG"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_staticText94->Wrap( -1 );
+	m_staticText94->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
+
+	fgSizer_VTG->Add( m_staticText94, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer_VTG->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText148 = new wxStaticText( sbSizer_VTG->GetStaticBox(), wxID_ANY, _("COG"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText148->Wrap( -1 );
+	fgSizer_VTG->Add( m_staticText148, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer_VTG->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText112 = new wxStaticText( sbSizer_VTG->GetStaticBox(), wxID_ANY, _("SOG"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_staticText112->Wrap( -1 );
+	fgSizer_VTG->Add( m_staticText112, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer_VTG->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText143 = new wxStaticText( sbSizer_VTG->GetStaticBox(), wxID_ANY, _("SOG"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_staticText143->Wrap( -1 );
+	fgSizer_VTG->Add( m_staticText143, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer_VTG->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText182 = new wxStaticText( sbSizer_VTG->GetStaticBox(), wxID_ANY, _("Mode"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText182->Wrap( -1 );
+	fgSizer_VTG->Add( m_staticText182, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_textCtrl_talkerVTG = new wxTextCtrl( sbSizer_VTG->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	#ifdef __WXGTK__
+	if ( !m_textCtrl_talkerVTG->HasFlag( wxTE_MULTILINE ) )
+	{
+	m_textCtrl_talkerVTG->SetMaxLength( 2 );
+	}
+	#else
+	m_textCtrl_talkerVTG->SetMaxLength( 2 );
+	#endif
+	fgSizer_VTG->Add( m_textCtrl_talkerVTG, 0, wxALL, 5 );
+
+	m_staticText52 = new wxStaticText( sbSizer_VTG->GetStaticBox(), wxID_ANY, _("VTG"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText52->Wrap( -1 );
+	fgSizer_VTG->Add( m_staticText52, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_spinCtrlDouble_cogTrueVTG = new wxSpinCtrlDouble( sbSizer_VTG->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 360, 0, 15 );
+	m_spinCtrlDouble_cogTrueVTG->SetDigits( 0 );
+	fgSizer_VTG->Add( m_spinCtrlDouble_cogTrueVTG, 0, wxALL, 5 );
+
+	m_staticText139 = new wxStaticText( sbSizer_VTG->GetStaticBox(), wxID_ANY, _("T"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText139->Wrap( -1 );
+	fgSizer_VTG->Add( m_staticText139, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_spinCtrlDouble_cogMagVTG = new wxSpinCtrlDouble( sbSizer_VTG->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 360, 0, 15 );
+	m_spinCtrlDouble_cogMagVTG->SetDigits( 0 );
+	fgSizer_VTG->Add( m_spinCtrlDouble_cogMagVTG, 0, wxALL, 5 );
+
+	m_staticText147 = new wxStaticText( sbSizer_VTG->GetStaticBox(), wxID_ANY, _("M"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText147->Wrap( -1 );
+	fgSizer_VTG->Add( m_staticText147, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_spinCtrlDouble_sogKnotVTG = new wxSpinCtrlDouble( sbSizer_VTG->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 100, 0, 5 );
+	m_spinCtrlDouble_sogKnotVTG->SetDigits( 0 );
+	fgSizer_VTG->Add( m_spinCtrlDouble_sogKnotVTG, 0, wxALL, 5 );
+
+	m_staticText149 = new wxStaticText( sbSizer_VTG->GetStaticBox(), wxID_ANY, _("N"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText149->Wrap( -1 );
+	fgSizer_VTG->Add( m_staticText149, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_spinCtrlDouble_sogKphVTG = new wxSpinCtrlDouble( sbSizer_VTG->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 200, 0, 5 );
+	m_spinCtrlDouble_sogKphVTG->SetDigits( 0 );
+	fgSizer_VTG->Add( m_spinCtrlDouble_sogKphVTG, 0, wxALL, 5 );
+
+	m_staticText150 = new wxStaticText( sbSizer_VTG->GetStaticBox(), wxID_ANY, _("K"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText150->Wrap( -1 );
+	fgSizer_VTG->Add( m_staticText150, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	wxString m_choice_modeVTGChoices[] = { _("A"), _("V") };
+	int m_choice_modeVTGNChoices = sizeof( m_choice_modeVTGChoices ) / sizeof( wxString );
+	m_choice_modeVTG = new wxChoice( sbSizer_VTG->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxSize( -1,-1 ), m_choice_modeVTGNChoices, m_choice_modeVTGChoices, 0 );
+	m_choice_modeVTG->SetSelection( 0 );
+	fgSizer_VTG->Add( m_choice_modeVTG, 0, wxALL, 5 );
+
+
+	sbSizer_VTG->Add( fgSizer_VTG, 0, wxEXPAND, 5 );
+
+
+	bSizer_NmeaList->Add( sbSizer_VTG, 0, wxEXPAND, 5 );
+
+	sbSizer_WPL = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("WPL") ), wxHORIZONTAL );
+
+	wxBoxSizer* bSizer1211;
+	bSizer1211 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer1211->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_button_sendWPL = new wxButton( sbSizer_WPL->GetStaticBox(), wxID_ANY, _("Send"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_button_sendWPL->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxEmptyString ) );
+
+	bSizer1211->Add( m_button_sendWPL, 0, wxALL, 5 );
+
+	m_checkBox_autoSendWPL = new wxCheckBox( sbSizer_WPL->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer1211->Add( m_checkBox_autoSendWPL, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	bSizer1211->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	sbSizer_WPL->Add( bSizer1211, 0, wxEXPAND, 5 );
+
+	m_staticline51 = new wxStaticLine( sbSizer_WPL->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL|wxLI_VERTICAL );
+	sbSizer_WPL->Add( m_staticline51, 0, wxEXPAND | wxALL, 5 );
+
+	wxFlexGridSizer* fgSizer_WPL;
+	fgSizer_WPL = new wxFlexGridSizer( 2, 7, 0, 0 );
+	fgSizer_WPL->SetFlexibleDirection( wxBOTH );
+	fgSizer_WPL->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
+
+	m_staticText191 = new wxStaticText( sbSizer_WPL->GetStaticBox(), wxID_ANY, _("Talker"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText191->Wrap( -1 );
+	fgSizer_WPL->Add( m_staticText191, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer_WPL->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText91 = new wxStaticText( sbSizer_WPL->GetStaticBox(), wxID_ANY, _("Latitude"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_staticText91->Wrap( -1 );
+	m_staticText91->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
+
+	fgSizer_WPL->Add( m_staticText91, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer_WPL->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText111 = new wxStaticText( sbSizer_WPL->GetStaticBox(), wxID_ANY, _("Longitude"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_staticText111->Wrap( -1 );
+	fgSizer_WPL->Add( m_staticText111, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer_WPL->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText142 = new wxStaticText( sbSizer_WPL->GetStaticBox(), wxID_ANY, _("Waypoint name"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_staticText142->Wrap( -1 );
+	fgSizer_WPL->Add( m_staticText142, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_textCtrl_talkerWPL = new wxTextCtrl( sbSizer_WPL->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	#ifdef __WXGTK__
+	if ( !m_textCtrl_talkerWPL->HasFlag( wxTE_MULTILINE ) )
+	{
+	m_textCtrl_talkerWPL->SetMaxLength( 2 );
+	}
+	#else
+	m_textCtrl_talkerWPL->SetMaxLength( 2 );
+	#endif
+	fgSizer_WPL->Add( m_textCtrl_talkerWPL, 0, wxALL, 5 );
+
+	m_staticText51 = new wxStaticText( sbSizer_WPL->GetStaticBox(), wxID_ANY, _("GLL"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText51->Wrap( -1 );
+	fgSizer_WPL->Add( m_staticText51, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_textCtrl_latitudeWPL = new wxTextCtrl( sbSizer_WPL->GetStaticBox(), wxID_ANY, _("0000.0000000"), wxDefaultPosition, wxSize( 95,-1 ), 0 );
+	#ifdef __WXGTK__
+	if ( !m_textCtrl_latitudeWPL->HasFlag( wxTE_MULTILINE ) )
+	{
+	m_textCtrl_latitudeWPL->SetMaxLength( 12 );
+	}
+	#else
+	m_textCtrl_latitudeWPL->SetMaxLength( 12 );
+	#endif
+	fgSizer_WPL->Add( m_textCtrl_latitudeWPL, 0, wxALL, 5 );
+
+	wxString m_choice_latDirWPLChoices[] = { _("N"), _("S") };
+	int m_choice_latDirWPLNChoices = sizeof( m_choice_latDirWPLChoices ) / sizeof( wxString );
+	m_choice_latDirWPL = new wxChoice( sbSizer_WPL->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_latDirWPLNChoices, m_choice_latDirWPLChoices, 0 );
+	m_choice_latDirWPL->SetSelection( 0 );
+	fgSizer_WPL->Add( m_choice_latDirWPL, 0, wxALL, 5 );
+
+	m_textCtrl_longitudeWPL = new wxTextCtrl( sbSizer_WPL->GetStaticBox(), wxID_ANY, _("00000.0000000"), wxDefaultPosition, wxSize( 95,-1 ), 0 );
+	#ifdef __WXGTK__
+	if ( !m_textCtrl_longitudeWPL->HasFlag( wxTE_MULTILINE ) )
+	{
+	m_textCtrl_longitudeWPL->SetMaxLength( 13 );
+	}
+	#else
+	m_textCtrl_longitudeWPL->SetMaxLength( 13 );
+	#endif
+	fgSizer_WPL->Add( m_textCtrl_longitudeWPL, 0, wxALL, 5 );
+
+	wxString m_choice_lonDirWPLChoices[] = { _("E"), _("W") };
+	int m_choice_lonDirWPLNChoices = sizeof( m_choice_lonDirWPLChoices ) / sizeof( wxString );
+	m_choice_lonDirWPL = new wxChoice( sbSizer_WPL->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_lonDirWPLNChoices, m_choice_lonDirWPLChoices, 0 );
+	m_choice_lonDirWPL->SetSelection( 0 );
+	fgSizer_WPL->Add( m_choice_lonDirWPL, 0, wxALL, 5 );
+
+	m_textCtrl_nameWPL = new wxTextCtrl( sbSizer_WPL->GetStaticBox(), wxID_ANY, _("WP099"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
+	fgSizer_WPL->Add( m_textCtrl_nameWPL, 0, wxALL, 5 );
+
+
+	sbSizer_WPL->Add( fgSizer_WPL, 0, wxEXPAND, 5 );
+
+
+	bSizer_NmeaList->Add( sbSizer_WPL, 0, wxEXPAND, 5 );
+
+	sbSizer_XDR = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("XDR") ), wxHORIZONTAL );
+
+	wxBoxSizer* bSizer12111;
+	bSizer12111 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer12111->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_button_sendXDR = new wxButton( sbSizer_XDR->GetStaticBox(), wxID_ANY, _("Send"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_button_sendXDR->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxEmptyString ) );
+
+	bSizer12111->Add( m_button_sendXDR, 0, wxALL, 5 );
+
+	m_checkBox_autoSendXDR = new wxCheckBox( sbSizer_XDR->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer12111->Add( m_checkBox_autoSendXDR, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	bSizer12111->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	sbSizer_XDR->Add( bSizer12111, 0, wxEXPAND, 5 );
+
+	m_staticline511 = new wxStaticLine( sbSizer_XDR->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL|wxLI_VERTICAL );
+	sbSizer_XDR->Add( m_staticline511, 0, wxEXPAND | wxALL, 5 );
+
+	wxFlexGridSizer* fgSizer_XDR;
+	fgSizer_XDR = new wxFlexGridSizer( 2, 6, 0, 0 );
+	fgSizer_XDR->SetFlexibleDirection( wxBOTH );
+	fgSizer_XDR->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
+
+	m_staticText1911 = new wxStaticText( sbSizer_XDR->GetStaticBox(), wxID_ANY, _("Talker"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText1911->Wrap( -1 );
+	fgSizer_XDR->Add( m_staticText1911, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer_XDR->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText911 = new wxStaticText( sbSizer_XDR->GetStaticBox(), wxID_ANY, _("Type"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_staticText911->Wrap( -1 );
+	m_staticText911->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
+
+	fgSizer_XDR->Add( m_staticText911, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText1111 = new wxStaticText( sbSizer_XDR->GetStaticBox(), wxID_ANY, _("Measure"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_staticText1111->Wrap( -1 );
+	fgSizer_XDR->Add( m_staticText1111, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText1501 = new wxStaticText( sbSizer_XDR->GetStaticBox(), wxID_ANY, _("Unit"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText1501->Wrap( -1 );
+	fgSizer_XDR->Add( m_staticText1501, 0, wxALL, 5 );
+
+	m_staticText1421 = new wxStaticText( sbSizer_XDR->GetStaticBox(), wxID_ANY, _("Name"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_staticText1421->Wrap( -1 );
+	fgSizer_XDR->Add( m_staticText1421, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_textCtrl_talkerXDR = new wxTextCtrl( sbSizer_XDR->GetStaticBox(), wxID_ANY, _("II"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	#ifdef __WXGTK__
+	if ( !m_textCtrl_talkerXDR->HasFlag( wxTE_MULTILINE ) )
+	{
+	m_textCtrl_talkerXDR->SetMaxLength( 2 );
+	}
+	#else
+	m_textCtrl_talkerXDR->SetMaxLength( 2 );
+	#endif
+	fgSizer_XDR->Add( m_textCtrl_talkerXDR, 0, wxALL, 5 );
+
+	m_staticText511 = new wxStaticText( sbSizer_XDR->GetStaticBox(), wxID_ANY, _("XDR"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText511->Wrap( -1 );
+	fgSizer_XDR->Add( m_staticText511, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText_typeXDR = new wxStaticText( sbSizer_XDR->GetStaticBox(), wxID_ANY, _("P"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText_typeXDR->Wrap( -1 );
+	fgSizer_XDR->Add( m_staticText_typeXDR, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_spinCtrlDouble_measureXDR = new wxSpinCtrlDouble( sbSizer_XDR->GetStaticBox(), wxID_ANY, wxT("1"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0.85, 1.1, 1, 0.01 );
+	m_spinCtrlDouble_measureXDR->SetDigits( 2 );
+	fgSizer_XDR->Add( m_spinCtrlDouble_measureXDR, 0, wxALL, 5 );
+
+	m_staticText_unitXDR = new wxStaticText( sbSizer_XDR->GetStaticBox(), wxID_ANY, _("B"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText_unitXDR->Wrap( -1 );
+	fgSizer_XDR->Add( m_staticText_unitXDR, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	wxString m_choice_nameXDRChoices[] = { _("Barometer"), _("TempAir"), _("TempWater"), _("PITCH"), _("ROLL") };
+	int m_choice_nameXDRNChoices = sizeof( m_choice_nameXDRChoices ) / sizeof( wxString );
+	m_choice_nameXDR = new wxChoice( sbSizer_XDR->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_nameXDRNChoices, m_choice_nameXDRChoices, 0 );
+	m_choice_nameXDR->SetSelection( 0 );
+	fgSizer_XDR->Add( m_choice_nameXDR, 0, wxALL, 5 );
+
+
+	sbSizer_XDR->Add( fgSizer_XDR, 0, wxEXPAND, 5 );
+
+
+	bSizer_NmeaList->Add( sbSizer_XDR, 0, wxEXPAND, 5 );
+
 
 	m_scrolledWindow_sentenceBuilder->SetSizer( bSizer_NmeaList );
 	m_scrolledWindow_sentenceBuilder->Layout();
@@ -1300,7 +2025,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_checkBox_automaticSendBuilder = new wxCheckBox( m_panel_list, wxID_ANY, _("Automatic send at"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer17->Add( m_checkBox_automaticSendBuilder, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_spinCtrlDouble_autoSendFreqBuilder = new wxSpinCtrlDouble( m_panel_list, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( -1,-1 ), wxSP_ARROW_KEYS, 0.1, 10, 1, 0.25 );
+	m_spinCtrlDouble_autoSendFreqBuilder = new wxSpinCtrlDouble( m_panel_list, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( -1,-1 ), wxSP_ARROW_KEYS, 0.1, 10, 1, 0.2 );
 	m_spinCtrlDouble_autoSendFreqBuilder->SetDigits( 1 );
 	bSizer17->Add( m_spinCtrlDouble_autoSendFreqBuilder, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -1669,14 +2394,22 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_button_sendDPT->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendDPT ), NULL, this );
 	m_button_sendGGA->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendGGA ), NULL, this );
 	m_button_sendGLL->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendGLL ), NULL, this );
+	m_button_sendGSV->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendGSV ), NULL, this );
 	m_button_sendHDG->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendHDG ), NULL, this );
 	m_button_sendHDM->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendHDM ), NULL, this );
 	m_button_sendHDT->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendHDT ), NULL, this );
 	m_button_sendMTW->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendMTW ), NULL, this );
+	m_button_sendMWV->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendMWV ), NULL, this );
+	m_button_sendOSD->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendOSD ), NULL, this );
 	m_button_sendRMC->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendRMC ), NULL, this );
 	m_button_sendROT->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendROT ), NULL, this );
 	m_button_sendRSA->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendRSA ), NULL, this );
 	m_button_sendTLL->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendTLL ), NULL, this );
+	m_button_sendTHS->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendTHS ), NULL, this );
+	m_button_sendVTG->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendVTG ), NULL, this );
+	m_button_sendWPL->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendWPL ), NULL, this );
+	m_button_sendXDR->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendXDR ), NULL, this );
+	m_choice_nameXDR->Connect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( MyDialog::OnChoice_UpdateXDR ), NULL, this );
 	m_toggleBtn_checkAllBuilder->Connect( wxEVT_COMMAND_TOGGLEBUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnToggleButton_CheckAllBuilders ), NULL, this );
 	m_searchCtrl_sentencesBuilder->Connect( wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( MyDialog::OnText_SearchSentenceBuilder ), NULL, this );
 	m_checkBox_automaticSendBuilder->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( MyDialog::OnCheckBox_AutomaticSendBuilder ), NULL, this );

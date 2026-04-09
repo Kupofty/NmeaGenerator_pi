@@ -54,6 +54,7 @@ class DialogMainGui : public MyDialog
     void OnScroll_UpdateRudderAngleSim(wxScrollEvent& event) override;
     void OnButtonClick_ResetRudder(wxCommandEvent& event) override;
     void OnButtonClick_ResetThrottle(wxCommandEvent& event) override;
+    void OnChoice_UpdateXDR(wxCommandEvent& event) override;
 
     void OnButtonClick_SendGLL(wxCommandEvent& event) override;
     void OnButtonClick_SendRMC(wxCommandEvent& event) override;
@@ -67,6 +68,13 @@ class DialogMainGui : public MyDialog
     void OnButtonClick_SendRSA(wxCommandEvent& event) override;
     void OnButtonClick_SendDPT(wxCommandEvent& event) override;
     void OnButtonClick_SendDBx(wxCommandEvent& event) override;
+    void OnButtonClick_SendTHS(wxCommandEvent& event) override;
+    void OnButtonClick_SendWPL(wxCommandEvent& event) override;
+    void OnButtonClick_SendVTG(wxCommandEvent& event) override;
+    void OnButtonClick_SendGSV(wxCommandEvent& event) override;
+    void OnButtonClick_SendXDR(wxCommandEvent& event) override;
+    void OnButtonClick_SendOSD(wxCommandEvent& event) override;
+    void OnButtonClick_SendMWV(wxCommandEvent& event) override;
 
   private:
     void sendNmeaToOCPN(wxString sentence);
@@ -86,6 +94,13 @@ class DialogMainGui : public MyDialog
     void sendRSA(wxString talker, wxString stbdAngleDeg, wxString stbdStatus, wxString portAngleDeg, wxString portStatus);
     void sendDPT(wxString talker, wxString depthMeter, wxString offsetMeter);
     void sendDBx(wxString talker, wxString nmeaType, wxString depthFeet, wxString depthMeter, wxString depthFathom);
+    void sendTHS(wxString talker, wxString heading, wxString mode);
+    void sendWPL(wxString talker, wxString latitude, wxString latDir, wxString longitude, wxString lonDir, wxString wpName);
+    void sendVTG(wxString talker, wxString cogTrue, wxString cogMag, wxString sogKnot, wxString sogKph, wxString mode);
+    void sendGSV(wxString talker, wxString totalSentences, wxString sentenceNumber, wxString totalSatellites, wxString PRN, wxString elevationDeg, wxString azimuthDeg, wxString SNR);
+    void sendXDR(wxString talker, wxString type, wxString measurement, wxString unit, wxString name);
+    void sendOSD(wxString talker, wxString heading, wxString status, wxString course, wxString courseRef, wxString speed, wxString speedRef, wxString driftAngle, wxString driftSpeed, wxString speedUnit);
+    void sendMWV(wxString talker, wxString angle, wxString reference, wxString speed, wxString unit, wxString status);
 
     //Send nmea from SentenceBuilder tab
     void sendSentenceBuilderGLL();
@@ -100,6 +115,13 @@ class DialogMainGui : public MyDialog
     void sendSentenceBuilderRSA();
     void sendSentenceBuilderDPT();
     void sendSentenceBuilderDBx();
+    void sendSentenceBuilderTHS();
+    void sendSentenceBuilderWPL();
+    void sendSentenceBuilderVTG();
+    void sendSentenceBuilderGSV();
+    void sendSentenceBuilderXDR();
+    void sendSentenceBuilderOSD();
+    void sendSentenceBuilderMWV();
 
     bool addAutoChecksum;
     std::vector<SectionItem> sbSizerListSentenceBuilder;
