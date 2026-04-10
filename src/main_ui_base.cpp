@@ -1116,7 +1116,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_spinCtrlDouble_courseOSD->SetDigits( 1 );
 	fgSizer411311->Add( m_spinCtrlDouble_courseOSD, 0, wxALL, 5 );
 
-	wxString m_choice_courseRefOSDChoices[] = { _("B"), _("M"), _("W"), _("R"), _("P"), wxEmptyString };
+	wxString m_choice_courseRefOSDChoices[] = { _("B"), _("M"), _("W"), _("R"), _("P") };
 	int m_choice_courseRefOSDNChoices = sizeof( m_choice_courseRefOSDChoices ) / sizeof( wxString );
 	m_choice_courseRefOSD = new wxChoice( sbSizer_OSD->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_courseRefOSDNChoices, m_choice_courseRefOSDChoices, 0 );
 	m_choice_courseRefOSD->SetSelection( 1 );
@@ -2052,7 +2052,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_panel_list->SetSizer( bSizer9 );
 	m_panel_list->Layout();
 	bSizer9->Fit( m_panel_list );
-	m_notebook->AddPage( m_panel_list, _("Sentence Builder"), true );
+	m_notebook->AddPage( m_panel_list, _("Sentence Builder"), false );
 	m_panel_sim = new wxPanel( m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer8;
 	bSizer8 = new wxBoxSizer( wxVERTICAL );
@@ -2369,7 +2369,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_panel_sim->SetSizer( bSizer8 );
 	m_panel_sim->Layout();
 	bSizer8->Fit( m_panel_sim );
-	m_notebook->AddPage( m_panel_sim, _("Simulation"), false );
+	m_notebook->AddPage( m_panel_sim, _("Simulation"), true );
 
 	bSizer_main->Add( m_notebook, 1, wxEXPAND, 5 );
 

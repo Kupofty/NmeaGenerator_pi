@@ -78,4 +78,22 @@ namespace utils
     return degrees + minutes / 60.0;
   }
 
+  double decimalToDDMM(double value)
+  {
+    double absVal = std::abs(value);
+    int degrees = static_cast<int>(absVal);
+    double minutes = (absVal - degrees) * 60.0;
+
+    return degrees * 100.0 + minutes;
+  }
+
+  wxString formatDDMM(double value, bool isLat)
+  {
+    double ddmm = decimalToDDMM(value);
+
+    if (isLat)
+      return wxString::Format("%02d%07.4f", (int)(ddmm / 100), fmod(ddmm, 100.0));
+    else
+      return wxString::Format("%03d%07.4f", (int)(ddmm / 100), fmod(ddmm, 100.0));
+  }
 }

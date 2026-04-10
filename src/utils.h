@@ -40,6 +40,10 @@ namespace utils
 
   //Convert ddmm.mmmm to dd.dddd
   double NMEA_to_decimal(double nmea);
+
+  //Convert decimal to DDMM
+  double decimalToDDMM(double value);
+  wxString formatDDMM(double value, bool isLat);
 }
 
 #endif  // UTILS_H

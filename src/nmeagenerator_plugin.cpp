@@ -61,15 +61,22 @@ int NmeaGeneratorPlugin::Init()
   //Init main GUI to NULL
   myGUI = NULL;
 
+  //Right-click menu entry
+  wxMenu simPositionMenu;
+  positionMenuID = AddCanvasContextMenuItem(new wxMenuItem(&simPositionMenu, -1, _("Simulation: Update ship position")), this);
+  SetCanvasContextMenuItemViz(positionMenuID, false);
+
   // Notify OpenCPN what callbacks the plugin registers to receive
-  return (INSTALLS_TOOLBAR_TOOL //Add toolbar icon
-          | WANTS_PREFERENCES); //Add "Preferences" button in plugin catalogue
+  return  ( INSTALLS_TOOLBAR_TOOL  //Add toolbar icon
+          | WANTS_PREFERENCES      //Add "Preferences" button in plugin catalogue
+          | WANTS_CURSOR_LATLON);  //Enable SetCursorLatLon()
 }
 
 bool NmeaGeneratorPlugin::DeInit()
 {
-  if (NULL != myGUI)
+  if (myGUI != NULL)
   {
+    myGUI->stopTimers();
     myGUI->Close();
     delete myGUI;
     myGUI = NULL;
@@ -80,6 +87,7 @@ bool NmeaGeneratorPlugin::DeInit()
 
   return true;
 }
+
 
 
 ////////////////////////////////////////
@@ -161,6 +169,17 @@ void NmeaGeneratorPlugin::SaveSettings()
 
 
 
+/////////////////////////////
+/// OCPN Automatic Update ///
+/////////////////////////////
+void NmeaGeneratorPlugin::SetCursorLatLon(double lat, double lon)
+{
+  m_cursor_lat = lat;
+  m_cursor_lon = lon;
+}
+
+
+
 /////////////////////////////////
 /// OCPN Interactions Methods ///
 /////////////////////////////////
@@ -174,9 +193,7 @@ void NmeaGeneratorPlugin::ShowPreferencesDialog(wxWindow* parent)
 void NmeaGeneratorPlugin::OnToolbarToolCallback(int id)
 {
   if (id != toolbarId)
-  {
     return;
-  }
 
   //Create GUI first time
   if(myGUI == NULL)
@@ -196,15 +213,26 @@ void NmeaGeneratorPlugin::OnToolbarToolCallback(int id)
     myGUI->Show();
     myGUI->Raise();
     myGUI->SetFocus();
+    SetCanvasContextMenuItemViz(positionMenuID, true);
   }
   else
   {
     myGUI->Hide();
     myGUI->stopTimers();
+    SetCanvasContextMenuItemViz(positionMenuID, false);
   }
 
   //Refresh screen
   RequestRefresh(parentWindow);
+}
+
+void NmeaGeneratorPlugin::OnContextMenuItemCallback(int id)
+{
+  if (myGUI == NULL)
+    return;
+
+  if (id == positionMenuID)
+    myGUI->updateSimStartPosition(m_cursor_lat, m_cursor_lon);
 }
 
 
@@ -217,6 +245,7 @@ void NmeaGeneratorPlugin::OnGuiClosed()
   isToolbarActive = false;
   SetToolbarItemState(toolbarId, false);
   myGUI->Hide();
+  SetCanvasContextMenuItemViz(positionMenuID, false);
 
   //Refresh screen
   RequestRefresh(parentWindow);

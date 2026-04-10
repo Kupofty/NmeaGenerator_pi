@@ -1044,6 +1044,23 @@ void DialogMainGui::sendSentenceBuilderMWV()
 //////////////////
 /// Simulation ///
 //////////////////
+
+//Update ship position from cursor position
+void DialogMainGui::updateSimStartPosition(double lat, double lon)
+{
+  // Store raw values
+  latSim = lat;
+  lonSim = lon;
+
+  // Convert + display
+  m_textCtrl_latSim->SetValue(utils::formatDDMM(lat, true));
+  m_textCtrl_lonSim->SetValue(utils::formatDDMM(lon, false));
+
+  // Update direction selectors
+  m_choice_latDirSim->SetSelection(lat < 0); // N/S
+  m_choice_lonDirSim->SetSelection(lon < 0); // E/W
+}
+
 void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
 {
   //Update position

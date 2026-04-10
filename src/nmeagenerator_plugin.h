@@ -48,9 +48,13 @@ class NmeaGeneratorPlugin : public opencpn_plugin_120, public wxEvtHandler
     wxBitmap* GetPlugInBitmap() override;
     int GetToolbarToolCount() override;
 
+    //Plugin sets
+    void SetCursorLatLon(double lat, double lon) override;
+
     //OCPN Interactions
     void ShowPreferencesDialog(wxWindow* parent) override;
     void OnToolbarToolCallback(int id) override;
+    void OnContextMenuItemCallback(int id) override;
 
     //Main GUI wxEvent
     void OnGuiClosed();
@@ -69,6 +73,10 @@ class NmeaGeneratorPlugin : public opencpn_plugin_120, public wxEvtHandler
     // Toolbar button Id & state
     int toolbarId;
     bool isToolbarActive;
+    int positionMenuID;
+
+    double m_cursor_lat;
+    double m_cursor_lon;
 };
 
 #endif //NMEAGENERATOR_PLUGIN_H

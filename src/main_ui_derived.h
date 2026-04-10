@@ -26,6 +26,7 @@ class DialogMainGui : public MyDialog
                   const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE);
     ~DialogMainGui();
 
+    void updateSimStartPosition(double lat, double lon);
     void stopTimers();
 
     NmeaGeneratorPlugin* plugin = nullptr;
