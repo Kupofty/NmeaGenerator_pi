@@ -9,7 +9,7 @@
 ////////////////////////////
 DialogMainGui::DialogMainGui(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style) : MyDialog( parent )
 {
-  //Dialog size
+  //Dialog size ((can be different due to settings loaded))
   int dialogWidth = 700;
   int dialogHeight = 450;
   this->SetSize(dialogWidth, dialogHeight);

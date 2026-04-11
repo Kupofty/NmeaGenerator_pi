@@ -14,11 +14,11 @@ DialogSettings::~DialogSettings()
 
 void DialogSettings::OnInit(wxInitDialogEvent& event)
 {
-  // Save the original settings in case user changes values, hits apply, but then cancels...
-  originalNotebookPage = g_notebookPage;
-
   //Update UI
-  m_choice_notebookPage->SetSelection(g_notebookPage);
+  m_choice_notebookPage->SetSelection(g_defaultNotebookPage);
+  m_checkBox_restoreLastTab->SetValue(g_restoreLastTab);
+  m_checkBox_restoreWindowPos->SetValue(g_restoreWindowPos);
+  m_checkBox_restoreWindowSize->SetValue(g_restoreWindowSize);
 
   Layout();
   Fit();
@@ -31,7 +31,10 @@ void DialogSettings::OnInit(wxInitDialogEvent& event)
 //////////////
 void DialogSettings::updateSettings()
 {
-  g_notebookPage = m_choice_notebookPage->GetSelection();
+  g_defaultNotebookPage = m_choice_notebookPage->GetSelection();
+  g_restoreLastTab = m_checkBox_restoreLastTab->IsChecked();
+  g_restoreWindowPos = m_checkBox_restoreWindowPos->IsChecked();
+  g_restoreWindowSize = m_checkBox_restoreWindowSize->IsChecked();
 }
 
 
@@ -49,11 +52,3 @@ void DialogSettings::OnApply(wxCommandEvent& event)
 {
   updateSettings();
 }
-
-void DialogSettings::OnCancel(wxCommandEvent& event)
-{
-  // Restore the original settings
-  g_notebookPage = originalNotebookPage;
-  EndModal(wxID_CANCEL);
-}
-

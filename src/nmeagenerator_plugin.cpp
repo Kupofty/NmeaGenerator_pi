@@ -74,6 +74,8 @@ int NmeaGeneratorPlugin::Init()
 
 bool NmeaGeneratorPlugin::DeInit()
 {
+  SaveSettings();
+
   if (myGUI != NULL)
   {
     myGUI->stopTimers();
@@ -154,16 +156,51 @@ void NmeaGeneratorPlugin::LoadSettings()
   if (configSettings)
   {
     configSettings->SetPath("/PlugIns/NmeaGeneratorPlugin");
-    configSettings->Read("NotebookPage", &g_notebookPage, 0);
+    configSettings->Read("NotebookPage", &g_defaultNotebookPage, 0);
+    configSettings->Read("RestoreLastTab", &g_restoreLastTab, 1);
+    configSettings->Read("LastOpenTab", &g_lastOpenTab, 0);
+
+    configSettings->Read("RestoreWindowSize", &g_restoreWindowSize, 1);
+    configSettings->Read("WindowWidth", &g_windowWidth, 750);
+    configSettings->Read("WindowHeight", &g_windowHeight, 450);
+
+    configSettings->Read("RestoreWindowPos", &g_restoreWindowPos, 1);
+    configSettings->Read("WindowPosX", &g_windowPosX, 0);
+    configSettings->Read("WindowPosY", &g_windowPosY, 0);
   }
 }
 
 void NmeaGeneratorPlugin::SaveSettings()
 {
+  //Update settings variables
+  if (myGUI != NULL)
+  {
+    g_lastOpenTab = myGUI->m_notebook->GetSelection();
+
+    wxSize size = myGUI->GetSize();
+    g_windowWidth = size.GetWidth();
+    g_windowHeight = size.GetHeight();
+
+    wxPoint pos = myGUI->GetPosition();
+    g_windowPosX = pos.x;
+    g_windowPosY = pos.y;
+  }
+
   if (configSettings)
   {
     configSettings->SetPath("/PlugIns/NmeaGeneratorPlugin");
-    configSettings->Write("NotebookPage", g_notebookPage);
+    configSettings->Write("NotebookPage", g_defaultNotebookPage);
+    configSettings->Write("RestoreLastTab", g_restoreLastTab);
+    configSettings->Write("LastOpenTab", g_lastOpenTab);
+
+
+    configSettings->Write("RestoreWindowSize", g_restoreWindowSize);
+    configSettings->Write("WindowWidth", g_windowWidth);
+    configSettings->Write("WindowHeight", g_windowHeight);
+
+    configSettings->Write("RestoreWindowPos", g_restoreWindowPos);
+    configSettings->Write("WindowPosX", g_windowPosX);
+    configSettings->Write("WindowPosY", g_windowPosY);
   }
 }
 
@@ -202,7 +239,15 @@ void NmeaGeneratorPlugin::OnToolbarToolCallback(int id)
     myGUI->plugin = this;
 
     //Apply settings to UI
-    myGUI->m_notebook->SetSelection(g_notebookPage);
+    if(g_restoreLastTab)
+      myGUI->m_notebook->SetSelection(g_lastOpenTab);
+    else
+      myGUI->m_notebook->SetSelection(g_defaultNotebookPage);
+
+    if(g_restoreWindowSize)
+      myGUI->SetSize(g_windowWidth, g_windowHeight);
+    if(g_restoreWindowPos)
+      myGUI->Move(wxPoint(g_windowPosX, g_windowPosY));
   }
 
   //Toggle UI & toolbar icon state

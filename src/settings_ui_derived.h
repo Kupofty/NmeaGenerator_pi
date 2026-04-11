@@ -22,16 +22,10 @@ class DialogSettings : public DialogSettingsBase
     // Overridden methods from the base class
     void OnInit(wxInitDialogEvent& event) override;
     void OnOK(wxCommandEvent& event) override;
-    void OnCancel(wxCommandEvent& event) override;
     void OnApply(wxCommandEvent& event) override;
 
   private:
     void updateSettings();
-
-    bool originalBooleanValue;
-    int originalIntegerValue;
-    wxString originalStringValue;
-    int originalNotebookPage;
 };
 
 #endif //DIALOG_SETTINGS_H
