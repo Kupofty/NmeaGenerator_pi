@@ -182,7 +182,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	wxString m_choice_sentenceDBxChoices[] = { _("DBT"), _("DBS"), _("DBK") };
 	int m_choice_sentenceDBxNChoices = sizeof( m_choice_sentenceDBxChoices ) / sizeof( wxString );
 	m_choice_sentenceDBx = new wxChoice( sbSizer_DBx->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_sentenceDBxNChoices, m_choice_sentenceDBxChoices, 0 );
-	m_choice_sentenceDBx->SetSelection( 2 );
+	m_choice_sentenceDBx->SetSelection( 0 );
 	fgSizer41131->Add( m_choice_sentenceDBx, 0, wxALL, 5 );
 
 	m_spinCtrlDouble_depthFeetDBx = new wxSpinCtrlDouble( sbSizer_DBx->GetStaticBox(), wxID_ANY, wxT("32.8"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 2000, 32.8, 10 );
