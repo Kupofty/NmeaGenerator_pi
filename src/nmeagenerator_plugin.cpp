@@ -161,8 +161,8 @@ void NmeaGeneratorPlugin::LoadSettings()
     configSettings->Read("LastOpenTab", &g_lastOpenTab, 0);
 
     configSettings->Read("RestoreWindowSize", &g_restoreWindowSize, 1);
-    configSettings->Read("WindowWidth", &g_windowWidth, 750);
-    configSettings->Read("WindowHeight", &g_windowHeight, 450);
+    configSettings->Read("WindowWidth", &g_windowWidth, 650);
+    configSettings->Read("WindowHeight", &g_windowHeight, 400);
 
     configSettings->Read("RestoreWindowPos", &g_restoreWindowPos, 1);
     configSettings->Read("WindowPosX", &g_windowPosX, 0);

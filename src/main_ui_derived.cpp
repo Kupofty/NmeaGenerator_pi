@@ -3,23 +3,17 @@
 #include "utils.h"
 #include <cmath>
 #include <ctime>
+#include <wx/hyperlink.h>
+
 
 ////////////////////////////
 /// Class Initialization ///
 ////////////////////////////
 DialogMainGui::DialogMainGui(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style) : MyDialog( parent )
 {
-  //Dialog size ((can be different due to settings loaded))
-  int dialogWidth = 700;
-  int dialogHeight = 450;
-  this->SetSize(dialogWidth, dialogHeight);
-
   //Hide/show checkbox autoChecksum
   addAutoChecksum = m_checkBox_autoChecksum->GetValue();
   m_staticText_checksum->Show(addAutoChecksum);
-
-  //Open first tab by default (can be different due to settings loaded)
-  m_notebook->SetSelection(0);
 
   //List for search box
   sbSizerListSentenceBuilder = {
@@ -607,7 +601,6 @@ void DialogMainGui::OnText_SearchSentenceBuilder(wxCommandEvent& event)
   m_scrolledWindow_sentenceBuilder->FitInside();
 }
 
-
 //Help button
 void DialogMainGui::OnButtonClick_OpenSentenceBuilderHelp(wxCommandEvent& event)
 {
@@ -629,18 +622,27 @@ void DialogMainGui::OnButtonClick_OpenSentenceBuilderHelp(wxCommandEvent& event)
       "UTC Time: hhmmss\n"
       "Latitude: ddmm.mmmm\n"
       "Longitude: dddmm.mmmm\n"
-      "SOG: knots\n"
       "COG: degrees\n"
       "Date: ddmmyy\n"
       "Mag Var: degrees\n"
       "Heading: degrees\n"
-      "ROT: degrees per minute",
+      "ROT: deg/min",
       wxDefaultPosition,
       wxDefaultSize,
       wxTE_MULTILINE | wxTE_READONLY | wxTE_RICH2
       );
 
   sizer->Add(text, 1, wxEXPAND | wxALL, 10);
+
+  // Clickable link
+  wxHyperlinkCtrl* link = new wxHyperlinkCtrl(
+      dlg,
+      wxID_ANY,
+      "Open full NMEA reference",
+      "https://gpsd.gitlab.io/gpsd/NMEA.html"
+      );
+
+  sizer->Add(link, 0, wxALIGN_CENTER | wxLEFT | wxRIGHT | wxBOTTOM, 10);
 
   dlg->SetSizer(sizer);
   dlg->Layout();
@@ -649,7 +651,6 @@ void DialogMainGui::OnButtonClick_OpenSentenceBuilderHelp(wxCommandEvent& event)
   dlg->ShowModal();
   dlg->Destroy();
 }
-
 
 //Autosend checkboxes
 void DialogMainGui::OnToggleButton_CheckAllBuilders(wxCommandEvent& event)
