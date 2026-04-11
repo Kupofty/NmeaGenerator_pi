@@ -76,6 +76,11 @@ class DialogMainGui : public MyDialog
     void OnButtonClick_SendXDR(wxCommandEvent& event) override;
     void OnButtonClick_SendOSD(wxCommandEvent& event) override;
     void OnButtonClick_SendMWV(wxCommandEvent& event) override;
+    void OnButtonClick_SendMWD(wxCommandEvent& event) override;
+    void OnButtonClick_SendVDR(wxCommandEvent& event) override;
+    void OnButtonClick_SendVHW(wxCommandEvent& event) override;
+    void OnButtonClick_SendVWR(wxCommandEvent& event) override;
+    void OnButtonClick_SendZDA(wxCommandEvent& event) override;
 
   private:
     void sendNmeaToOCPN(wxString sentence);
@@ -102,6 +107,11 @@ class DialogMainGui : public MyDialog
     void sendXDR(wxString talker, wxString type, wxString measurement, wxString unit, wxString name);
     void sendOSD(wxString talker, wxString heading, wxString status, wxString course, wxString courseRef, wxString speed, wxString speedRef, wxString driftAngle, wxString driftSpeed, wxString speedUnit);
     void sendMWV(wxString talker, wxString angle, wxString reference, wxString speed, wxString unit, wxString status);
+    void sendMWD(wxString talker, wxString directionTrue, wxString directionMag, wxString speedKnot, wxString speedMph);
+    void sendVDR(wxString talker, wxString directionTrue, wxString directionMag, wxString currentSpeedKnot);
+    void sendVHW(wxString talker, wxString headingTrue, wxString headingMag, wxString stwKnot, wxString stwKph);
+    void sendVWR(wxString talker, wxString angle, wxString direction, wxString speedKnot, wxString speedMps, wxString speedKph);
+    void sendZDA(wxString talker, wxString time, wxString day, wxString month, wxString year, wxString hourOffset, wxString minuteOffset);
 
     //Send nmea from SentenceBuilder tab
     void sendSentenceBuilderGLL();
@@ -123,6 +133,11 @@ class DialogMainGui : public MyDialog
     void sendSentenceBuilderXDR();
     void sendSentenceBuilderOSD();
     void sendSentenceBuilderMWV();
+    void sendSentenceBuilderMWD();
+    void sendSentenceBuilderVDR();
+    void sendSentenceBuilderVHW();
+    void sendSentenceBuilderVWR();
+    void sendSentenceBuilderZDA();
 
     bool addAutoChecksum;
     std::vector<SectionItem> sbSizerListSentenceBuilder;

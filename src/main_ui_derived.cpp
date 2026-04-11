@@ -41,7 +41,12 @@ DialogMainGui::DialogMainGui(wxWindow* parent, wxWindowID id, const wxString& ti
       {sbSizer_GSV->GetStaticBox()->GetLabel(), sbSizer_GSV},
       {sbSizer_XDR->GetStaticBox()->GetLabel(), sbSizer_XDR},
       {sbSizer_OSD->GetStaticBox()->GetLabel(), sbSizer_OSD},
-      {sbSizer_MWV->GetStaticBox()->GetLabel(), sbSizer_MWV}
+      {sbSizer_MWV->GetStaticBox()->GetLabel(), sbSizer_MWV},
+      {sbSizer_MWD->GetStaticBox()->GetLabel(), sbSizer_MWD},
+      {sbSizer_VDR->GetStaticBox()->GetLabel(), sbSizer_VDR},
+      {sbSizer_VHW->GetStaticBox()->GetLabel(), sbSizer_VHW},
+      {sbSizer_VWR->GetStaticBox()->GetLabel(), sbSizer_VWR},
+      {sbSizer_ZDA->GetStaticBox()->GetLabel(), sbSizer_ZDA}
   };
 
   //Init simu data
@@ -96,6 +101,7 @@ void DialogMainGui::stopTimers()
 
   m_timer_autoSendSim.Stop();
 }
+
 
 
 
@@ -405,6 +411,83 @@ void DialogMainGui::sendMWV(wxString talker, wxString angle, wxString reference,
   sendNmeaToOCPN(sentence);
 }
 
+void DialogMainGui::sendMWD(wxString talker, wxString direction1, wxString direction2, wxString speed1, wxString speed2)
+{
+  wxString payload =
+      talker + "MWD" + "," +
+      direction1 + ",T," +
+      direction2 + ",M," +
+      speed1 + ",N," +
+      speed2 + ",M";
+
+  wxString checksum = utils::calculateChecksumString(payload);
+
+  wxString sentence = "$" + payload + checksum;
+  sendNmeaToOCPN(sentence);
+}
+
+void DialogMainGui::sendVDR(wxString talker, wxString directionTrue, wxString directionMag, wxString currentSpeedKnot)
+{
+  wxString payload =
+      talker + "VDR" + "," +
+      directionTrue + ",T," +
+      directionMag + ",M," +
+      currentSpeedKnot + ",N";
+
+  wxString checksum = utils::calculateChecksumString(payload);
+
+  wxString sentence = "$" + payload + checksum;
+  sendNmeaToOCPN(sentence);
+}
+
+void DialogMainGui::sendVHW(wxString talker, wxString headingTrue, wxString headingMag, wxString stwKnot, wxString stwKph)
+{
+  wxString payload =
+      talker + "VHW" + "," +
+      headingTrue + ",T," +
+      headingMag + ",M," +
+      stwKnot + ",N," +
+      stwKph + ",K";
+
+  wxString checksum = utils::calculateChecksumString(payload);
+
+  wxString sentence = "$" + payload + checksum;
+  sendNmeaToOCPN(sentence);
+}
+
+void DialogMainGui::sendVWR(wxString talker, wxString angle, wxString direction, wxString speedKnot, wxString speedMps, wxString speedKph)
+{
+  wxString payload =
+      talker + "VWR" + "," +
+      angle + "," +
+      direction + "," +
+      speedKnot + ",N," +
+      speedMps + ",M," +
+      speedKph + ",K";
+
+  wxString checksum = utils::calculateChecksumString(payload);
+
+  wxString sentence = "$" + payload + checksum;
+  sendNmeaToOCPN(sentence);
+}
+
+void DialogMainGui::sendZDA(wxString talker, wxString time, wxString day, wxString month, wxString year, wxString hourOffset, wxString minuteOffset)
+{
+  wxString payload =
+      talker + "ZDA" + "," +
+      time + "," +
+      day + "," +
+      month + "," +
+      year + "," +
+      hourOffset + "," +
+      minuteOffset;
+
+  wxString checksum = utils::calculateChecksumString(payload);
+
+  wxString sentence = "$" + payload + checksum;
+  sendNmeaToOCPN(sentence);
+}
+
 
 
 
@@ -602,6 +685,11 @@ void DialogMainGui::updateAutoSendBuildersCheckboxes(bool check)
   m_checkBox_autoSendXDR->SetValue(check);
   m_checkBox_autoSendOSD->SetValue(check);
   m_checkBox_autoSendMWV->SetValue(check);
+  m_checkBox_autoSendMWD->SetValue(check);
+  m_checkBox_autoSendVDR->SetValue(check);
+  m_checkBox_autoSendVHW->SetValue(check);
+  m_checkBox_autoSendVWR->SetValue(check);
+  m_checkBox_autoSendZDA->SetValue(check);
 }
 
 
@@ -671,6 +759,16 @@ void DialogMainGui::OnTimer_autoSendBuilder(wxTimerEvent& event)
     sendSentenceBuilderOSD();
   if(m_checkBox_autoSendMWV->GetValue())
     sendSentenceBuilderMWV();
+  if(m_checkBox_autoSendMWD->GetValue())
+    sendSentenceBuilderMWD();
+  if(m_checkBox_autoSendVDR->GetValue())
+    sendSentenceBuilderVDR();
+  if(m_checkBox_autoSendVHW->GetValue())
+    sendSentenceBuilderVHW();
+  if(m_checkBox_autoSendVWR->GetValue())
+    sendSentenceBuilderVWR();
+  if(m_checkBox_autoSendZDA->GetValue())
+    sendSentenceBuilderZDA();
 }
 
 
@@ -808,6 +906,26 @@ void DialogMainGui::OnButtonClick_SendOSD(wxCommandEvent& event)
 void DialogMainGui::OnButtonClick_SendMWV(wxCommandEvent& event)
 {
   sendSentenceBuilderMWV();
+}
+void DialogMainGui::OnButtonClick_SendMWD(wxCommandEvent& event)
+{
+  sendSentenceBuilderMWD();
+}
+void DialogMainGui::OnButtonClick_SendVDR(wxCommandEvent& event)
+{
+  sendSentenceBuilderVDR();
+}
+void DialogMainGui::OnButtonClick_SendVHW(wxCommandEvent& event)
+{
+  sendSentenceBuilderVHW();
+}
+void DialogMainGui::OnButtonClick_SendVWR(wxCommandEvent& event)
+{
+  sendSentenceBuilderVWR();
+}
+void DialogMainGui::OnButtonClick_SendZDA(wxCommandEvent& event)
+{
+  sendSentenceBuilderZDA();
 }
 
 
@@ -1029,7 +1147,7 @@ void DialogMainGui::sendSentenceBuilderOSD()
 
 void DialogMainGui::sendSentenceBuilderMWV()
 {
-  wxString talker = m_textCtrl_talkerRSA->GetValue();
+  wxString talker = m_textCtrl_talkerMWV->GetValue();
   wxString angle  = wxString::Format("%.1f", m_spinCtrlDouble_angleMWV->GetValue());
   wxString ref    = m_choice_refMWV->GetStringSelection();
   wxString speed  = wxString::Format("%.1f", m_spinCtrlDouble_speedMWV->GetValue());
@@ -1038,6 +1156,64 @@ void DialogMainGui::sendSentenceBuilderMWV()
 
   sendMWV(talker, angle, ref, speed, unit, status);
 }
+
+void DialogMainGui::sendSentenceBuilderMWD()
+{
+  wxString talker = m_textCtrl_talkerMWD->GetValue();
+  wxString dir1   = wxString::Format("%.1f", m_spinCtrlDouble_windDirection1MWD->GetValue());
+  wxString dir2   = wxString::Format("%.1f", m_spinCtrlDouble_windDirection2MWD->GetValue());
+  wxString speed1 = wxString::Format("%.1f", m_spinCtrlDouble_speed1MWD->GetValue());
+  wxString speed2 = wxString::Format("%.1f", m_spinCtrlDouble_speed2MWD->GetValue());
+
+  sendMWD(talker, dir1, dir2, speed1, speed2);
+}
+
+void DialogMainGui::sendSentenceBuilderVDR()
+{
+  wxString talker       = m_textCtrl_talkerVDR->GetValue();
+  wxString dirTrue      = wxString::Format("%.1f", m_spinCtrlDouble_directionTrueVDR->GetValue());
+  wxString dirMag       = wxString::Format("%.1f", m_spinCtrlDouble_directionMagVDR->GetValue());
+  wxString currentSpeed = wxString::Format("%.1f", m_spinCtrlDouble_currentSpeedVDR->GetValue());
+
+  sendVDR(talker, dirTrue, dirMag, currentSpeed);
+}
+
+void DialogMainGui::sendSentenceBuilderVHW()
+{
+  wxString talker      = m_textCtrl_talkerVHW->GetValue();
+  wxString headingTrue = wxString::Format("%.1f", m_spinCtrlDouble_headingTrueVHW->GetValue());
+  wxString headingMag  = wxString::Format("%.1f", m_spinCtrlDouble_headingMagVHW->GetValue());
+  wxString stwKnot     = wxString::Format("%.1f", m_spinCtrlDouble_stwKnotVHW->GetValue());
+  wxString stwKph      = wxString::Format("%.1f", m_spinCtrlDouble_stwKphVHW->GetValue());
+
+  sendVHW(talker, headingTrue, headingMag, stwKnot, stwKph);
+}
+
+void DialogMainGui::sendSentenceBuilderVWR()
+{
+  wxString talker    = m_textCtrl_talkerVWR->GetValue();
+  wxString angle     = wxString::Format("%.1f", m_spinCtrlDouble_angleVWR->GetValue());
+  wxString direction = m_choice_dirVWR->GetStringSelection();
+  wxString speedKnot = wxString::Format("%.1f", m_spinCtrlDouble_speedKnotVWR->GetValue());
+  wxString speedMps  = wxString::Format("%.1f", m_spinCtrlDouble_speedMpsVWR->GetValue());
+  wxString speedKph  = wxString::Format("%.1f", m_spinCtrlDouble_speedKphVWR->GetValue());
+
+  sendVWR(talker, angle, direction, speedKnot, speedMps, speedKph);
+}
+
+void DialogMainGui::sendSentenceBuilderZDA()
+{
+  wxString talker       = m_textCtrl_talkerZDA->GetValue();
+  wxString time         = m_textCtrl_timeZDA->GetValue();
+  wxString day          = wxString::Format("%d", m_spinCtrl_dayZDA->GetValue());
+  wxString month        = wxString::Format("%d", m_spinCtrl_monthZDA->GetValue());
+  wxString year         = wxString::Format("%d", m_spinCtrl_yearZDA->GetValue());
+  wxString hourOffset   = wxString::Format("%d", m_spinCtrl_hourOffsetZDA->GetValue());
+  wxString minuteOffset = wxString::Format("%d", m_spinCtrl_minuteOffsetZDA->GetValue());
+
+  sendZDA(talker, time, day, month, year, hourOffset, minuteOffset);
+}
+
 
 
 
