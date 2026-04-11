@@ -1,0 +1,14 @@
+src/settings_ui_base.cpp
+src/nmeagenerator_plugin.cpp
+src/main_ui_base.cpp
+src/settings_ui_derived.h
+src/utils.cpp
+src/settings_ui_derived.cpp
+src/utils.h
+src/main_ui_derived.h
+src/nmeagenerator_plugin.h
+src/main_ui_base.h
+src/settings_ui_base.h
+src/globals.h
+src/main_ui_derived.cpp
+src/globals.cpp

@@ -42,7 +42,7 @@ cd ..
 # The resulting file list is written to:
 #   po/POTFILES.in
 # --------------------------------------------------------------
-find src/ inc/ \( -name "*.cpp" -o -name "*.h" -o -name "*.hpp" \) > po/POTFILES.in
+find src/ \( -name "*.cpp" -o -name "*.h" -o -name "*.hpp" \) > po/POTFILES.in
 
 
 # --------------------------------------------------------------

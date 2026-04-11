@@ -607,7 +607,7 @@ void DialogMainGui::OnButtonClick_OpenSentenceBuilderHelp(wxCommandEvent& event)
   wxDialog* dlg = new wxDialog(
       this,
       wxID_ANY,
-      "NMEA Format Help (Units & Field Structure)",
+      _("NMEA Format Help (Units & Field Structure)"),
       wxDefaultPosition,
       wxSize(400, 300),
       wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER
@@ -618,7 +618,7 @@ void DialogMainGui::OnButtonClick_OpenSentenceBuilderHelp(wxCommandEvent& event)
   wxTextCtrl* text = new wxTextCtrl(
       dlg,
       wxID_ANY,
-      "This help explains the expected NMEA units and formats required in this tool:\n\n"
+      _("This help explains the expected NMEA units and formats required in this tool:")+"\n\n"
       "UTC Time: hhmmss\n"
       "Latitude: ddmm.mmmm\n"
       "Longitude: dddmm.mmmm\n"
@@ -638,7 +638,7 @@ void DialogMainGui::OnButtonClick_OpenSentenceBuilderHelp(wxCommandEvent& event)
   wxHyperlinkCtrl* link = new wxHyperlinkCtrl(
       dlg,
       wxID_ANY,
-      "Open full NMEA reference",
+      _("Open full NMEA reference"),
       "https://gpsd.gitlab.io/gpsd/NMEA.html"
       );
 
@@ -660,9 +660,9 @@ void DialogMainGui::OnToggleButton_CheckAllBuilders(wxCommandEvent& event)
   updateAutoSendBuildersCheckboxes(checked);
 
   if (checked)
-    m_toggleBtn_checkAllBuilder->SetLabel("Uncheck All");
+    m_toggleBtn_checkAllBuilder->SetLabel(_("Uncheck All"));
   else
-    m_toggleBtn_checkAllBuilder->SetLabel("Check All");
+    m_toggleBtn_checkAllBuilder->SetLabel(_("Check All"));
 }
 
 void DialogMainGui::updateAutoSendBuildersCheckboxes(bool check)
