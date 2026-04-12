@@ -21,7 +21,7 @@
 #include "ocpn_plugin.h"
 
 // Bundled OpenCPN NMEA 0183 libraries
-#include "nmea0183.h"
+//#include "nmea0183.h"
 
 //GUI
 #include "main_ui_derived.h"
