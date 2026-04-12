@@ -9,7 +9,6 @@ cache
 cmake-build-*
 local_config.cmake
 plugins
-*.bat
 *.bak
 buildwin/*.7z
 *.user
