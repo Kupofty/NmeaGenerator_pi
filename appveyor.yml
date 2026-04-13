@@ -12,6 +12,11 @@ platform:
 configuration: RelWithDebInfo
 test: false
 
+branches:
+  only:
+    - main
+    - tests_ci
+
 before_build:
   - git submodule update --init opencpn-libs
   - set "VS_HOME=C:\Program Files\Microsoft Visual Studio\2022"
