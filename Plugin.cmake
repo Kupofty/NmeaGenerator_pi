@@ -12,18 +12,13 @@
 
 # -------- Options ----------
 set(OCPN_TEST_REPO
-    "opencpn/nmeagenerator-alpha"
+    "kupoftyopencpn/nmeagenerator-unstable"
     CACHE STRING "Default repository for untagged builds"
 )
-set(OCPN_BETA_REPO
-    "opencpn/nmeagenerator-beta"
-    CACHE STRING
-    "Default repository for tagged builds matching 'beta'"
-)
 set(OCPN_RELEASE_REPO
-    "opencpn/nmeagenerator-prod"
+    "kupoftyopencpn/nmeagenerator-stable"
     CACHE STRING
-    "Default repository for tagged builds not matching 'beta'"
+    "Default repository for tagged builds"
 )
 
 
