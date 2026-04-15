@@ -1,10 +1,148 @@
-= NmeaGenerator Plugin
+:imagesdir: ../images/
+
+image::banner.png[width=700]
+
+
+== Overview
+NmeaGenerator is a plugin for https://opencpn.org[OpenCPN] which generates and transmits NMEA0183 sentences.
+
+The plugin can be used as a lightweight ship simulator to reproduce realistic navigation behavior inside OpenCPN or for testing UI, other plugins, instruments, etc.
+
+=== Capabilities
+- Generates standard NMEA0183 sentences
+- Produces real-time data streams
+- Simulates vessel movement (position, speed, heading)
+- Supports AIS target simulation
+
+=== Use cases
+- Testing OpenCPN UI with live data
+- Validating instruments and dashboards
+- Developing and debugging NMEA-based plugins
+- Simulating navigation scenarios without hardware
+
+
+
 
 == Links
+Sources: 
 
-Source: https://github.com/Kupofty/NmeaGenerator_pi [Github Repository]
+- link:https://github.com/Kupofty/NmeaGenerator_pi[Github Repository]
 
-Forum: [Cruiser's Forum NmeaGenerator Plugin Thread]
+- link:https://cloudsmith.io/~kupoftyopencpn/repos/[Cloudsmith Packages]
 
 
-== 1. TODO
+Discussions :
+
+- link:https://www.cruisersforum.com/forums/f134/[Cruisers&Sailing Forum] 
+
+- link:https://github.com/Kupofty/NmeaGenerator_pi/discussions[Github Discussions]
+
+
+
+
+== Installation
+
+=== Method 1: Plugin Manager (Recommended)
+1. Open OpenCPN
+2. Go to *Options → Plugins*
+3. Update catalog and search for the *NmeaGenerator* plugin
+4. Click *Install* then *Enable*
+
+=== Method 2: Manual Install (Cloudsmith)
+1. Download the latest tarball from Cloudsmith
+2. Click on *Options → Plugins → Import plugin...*
+3. Enable plugin in *Options → Plugins*
+
+=== Method 3: Build from Source (Github)
+Clone repository:
+----
+git clone https://github.com/Kupofty/NmeaGenerator_pi.git
+----
+
+Build using CMake:
+----
+mkdir build
+cd build
+cmake ..
+make
+----
+
+Import tarball in OpenCPN *Options → Plugins → Import plugin...* and enable it.
+
+More information in the INSTALL.md file.
+
+
+
+
+== User Interface
+To open the plugin, click on the toolbar icon : 
+
+image::logo_toolbar.png[width=50]
+
+The plugin is divided into multiple tabs:
+
+=== Manual Input
+image::tab1.png[]
+
+- Directly enter and send custom NMEA sentences
+- Allows testing of specific messages independently of simulation
+- Useful for validation and debugging
+
+=== Sentence Builder
+image::tab2.png[]
+
+- Select which NMEA sentences to send
+- Edit fields using combo boxes and text inputs
+- Search box to quickly find a sentence
+
+=== Simulation
+image::tab3.png[]
+
+The simulation can mimic:
+
+- Own ship 
+- AIS target
+
+
+Controls vessel movement:
+
+- Throttle (speed control)
+- Rudder angle (turn rate)
+- Initial position (lat/lon)
+
+
+Buttons:
+
+- Start simulation (timer-based)
+- Stop simulation
+
+
+Right-click menu on map:
+
+- Update ship position 
+
+
+
+
+== Settings
+The plugin configuration can be accessed via *Options → Plugins → NmeaGenerator → Preferences*, where all available settings can be adjusted.
+
+image::settings.png[]
+
+
+
+
+== Notes
+- Multiple NMEA sources may cause conflicts in OpenCPN
+- Ensure sensor inputs and generated data do not overlap
+- Do not use the plugin during real navigation, as it may interfere with critical navigation data and affect system reliability
+- More information on the available NMEA sentences and their structures link:https://gpsd.gitlab.io/gpsd/NMEA.html[here].
+- The outputs of the 3 tabs (in auto-send mode) are automatically stopped when the plugin window is closed
+- Output of the plugin can be checked in the Data Monitor window:
+
+image::data_monitor.png[]
+
+
+
+== Author
+Plugin created by ©link:https://github.com/Kupofty[Kupofty] 2026

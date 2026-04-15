@@ -39,7 +39,7 @@ set(PKG_DESCRIPTION "Generate, edit and transmit custom NMEA0183 sentences for t
 set(PKG_AUTHOR "Kupofty")
 set(PKG_IS_OPEN_SOURCE "yes")
 set(PKG_HOMEPAGE https://github.com/Kupofty/NmeaGenerator_pi)
-set(PKG_INFO_URL https://github.com/Kupofty/NmeaGenerator_pi)
+set(PKG_INFO_URL https://opencpn.org/OpenCPN/plugins/nmeagenerator.html) #Used in the website button
 
 
 
