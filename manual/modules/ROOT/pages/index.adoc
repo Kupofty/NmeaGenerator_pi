@@ -33,7 +33,7 @@ Sources:
 
 Discussions :
 
-- link:https://www.cruisersforum.com/forums/f134/[Cruisers&Sailing Forum] 
+- link:https://www.cruisersforum.com/forums/f134/nmeagenerator-plugin-299761.html[Cruisers&Sailing Forum] 
 
 - link:https://github.com/Kupofty/NmeaGenerator_pi/discussions[Github Discussions]
 
