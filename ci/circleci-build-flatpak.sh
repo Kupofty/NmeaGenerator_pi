@@ -16,12 +16,21 @@ MANIFEST=$(cd flatpak; ls org.opencpn.OpenCPN.Plugin*yaml)
 echo "Using manifest file: $MANIFEST"
 set -x
 
-if [[ "$BRANCH" == beta ]]; then
-  export SDK=24.08
-  export FLATHUB_REPO=flathub-beta
-else
+if [[ "$BRANCH" == 2208 ]]; then
   export SDK=22.08
   export FLATHUB_REPO=flathub
+  export FLATHUB_BRANCH=stable
+elif [[ "$BRANCH" == 2408 ]]; then
+  export SDK=24.08
+  export FLATHUB_REPO=flathub
+  export FLATHUB_BRANCH=stable
+elif [[  "$BRANCH" == 2508 ]]; then
+  export SDK=25.08
+  export FLATHUB_REPO=flathub-beta
+  export FLATHUB_BRANCH=beta
+else
+  echo "Wrong branch: \"$BRANCH\""
+  exit 1
 fi
 
 
