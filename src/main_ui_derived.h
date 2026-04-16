@@ -3,6 +3,7 @@
 
 
 #include "main_ui_base.h"
+#include <vector>
 #include <wx/timer.h>
 
 class NmeaGeneratorPlugin;
