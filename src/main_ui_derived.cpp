@@ -77,7 +77,7 @@ void DialogMainGui::sendNmeaToOCPN(wxString sentence)
   //Securities
   if (sentence.IsEmpty())
     return;
-  if (!sentence.StartsWith("$"))
+  if (!sentence.StartsWith("$") && !sentence.StartsWith("!"))
     return;
 
   if (plugin){
@@ -492,12 +492,6 @@ void DialogMainGui::sendManualInput()
 {
   wxString sentenceStr = m_textCtrl_sentenceInput->GetValue();
 
-  //Securities
-  if (sentenceStr.IsEmpty())
-    return;
-  if (!sentenceStr.StartsWith("$"))
-    return;
-
   // Add checksum to string
   if(addAutoChecksum)
   {
@@ -528,9 +522,30 @@ void DialogMainGui::OnInputTextChanged(wxCommandEvent& event)
 {
   wxString input = m_textCtrl_sentenceInput->GetValue();
 
-  if (!input.StartsWith("$"))
+  //AIS : no auto checksum
+  if(input.StartsWith("!") )
   {
-    m_staticText_checksum->SetLabel("*00");
+    m_checkBox_autoChecksum->SetValue(false);
+    m_checkBox_autoChecksum->Enable(false);
+    m_staticText_checksum->Hide();
+    addAutoChecksum = false;
+
+    return;
+  }
+
+  //NMEA : auto checksum allowed
+  else if(input.StartsWith("$") )
+  {
+    addAutoChecksum = m_checkBox_autoChecksum->GetValue();
+    m_staticText_checksum->Show(addAutoChecksum);
+    m_checkBox_autoChecksum->Enable(true);
+  }
+
+  //Invalid prefix
+  else
+  {
+    m_checkBox_autoChecksum->Enable(false);
+    m_staticText_checksum->Hide();
     return;
   }
 
@@ -540,8 +555,6 @@ void DialogMainGui::OnInputTextChanged(wxCommandEvent& event)
   //Calculate checksum
   unsigned char checksum = utils::calculateChecksum(payload);
   wxString checksumStr = utils::checksumToString(checksum);
-
-  //Update checksum text
   m_staticText_checksum->SetLabel(checksumStr);
 }
 
