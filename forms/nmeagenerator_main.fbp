@@ -51,7 +51,7 @@
       <property name="name">MyDialog</property>
       <property name="pos"></property>
       <property name="size">1029,663</property>
-      <property name="style">wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER</property>
+      <property name="style">wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxMINIMIZE_BOX|wxRESIZE_BORDER</property>
       <property name="subclass">; ; forward_declare</property>
       <property name="title">NMEA Generator Plugin</property>
       <property name="tooltip"></property>

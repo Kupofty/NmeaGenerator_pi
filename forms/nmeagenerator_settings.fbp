@@ -51,7 +51,7 @@
       <property name="name">DialogSettingsBase</property>
       <property name="pos"></property>
       <property name="size">352,282</property>
-      <property name="style">wxDEFAULT_DIALOG_STYLE</property>
+      <property name="style">wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER</property>
       <property name="subclass">; ; forward_declare</property>
       <property name="title">NmeaGenerator Plugin Preferences</property>
       <property name="tooltip"></property>
