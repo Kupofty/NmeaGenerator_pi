@@ -94,6 +94,9 @@ void DialogMainGui::stopTimers()
   m_checkBox_automaticSendBuilder->SetValue(false);
 
   m_timer_autoSendSim.Stop();
+
+  m_toggleBtn_startStopSim->SetValue(false);
+  m_toggleBtn_startStopSim->SetLabel(_("START"));
 }
 
 
@@ -1304,16 +1307,21 @@ void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
 }
 
 // Start/stop timer
-void DialogMainGui::OnButtonClick_StartSim(wxCommandEvent& event)
+void DialogMainGui::OnToggleButton_StartStopSim(wxCommandEvent& event)
 {
-  m_timer_autoSendSim.Start(1000);
-}
+  bool isPressed = event.IsChecked();
 
-void DialogMainGui::OnButtonClick_StopSim(wxCommandEvent& event)
-{
-  m_timer_autoSendSim.Stop();
+  if (isPressed)
+  {
+    m_timer_autoSendSim.Start(1000);
+    m_toggleBtn_startStopSim->SetLabel(_("STOP"));
+  }
+  else
+  {
+    m_timer_autoSendSim.Stop();
+    m_toggleBtn_startStopSim->SetLabel(_("START"));
+  }
 }
-
 
 //Update values from GUI
 void DialogMainGui::OnButtonClick_UpdateSimPos(wxCommandEvent& event)

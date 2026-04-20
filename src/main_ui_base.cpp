@@ -2690,7 +2690,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_panel_list->SetSizer( bSizer9 );
 	m_panel_list->Layout();
 	bSizer9->Fit( m_panel_list );
-	m_notebook->AddPage( m_panel_list, _("Sentence Builder"), true );
+	m_notebook->AddPage( m_panel_list, _("Sentence Builder"), false );
 	m_panel_sim = new wxPanel( m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer8;
 	bSizer8 = new wxBoxSizer( wxVERTICAL );
@@ -2987,15 +2987,10 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer_StartStopSim->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_button_startSim = new wxButton( m_panel_sim, wxID_ANY, _("START"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_button_startSim->SetFont( wxFont( 15, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxEmptyString ) );
+	m_toggleBtn_startStopSim = new wxToggleButton( m_panel_sim, wxID_ANY, _("START"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_toggleBtn_startStopSim->SetFont( wxFont( 15, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxEmptyString ) );
 
-	bSizer_StartStopSim->Add( m_button_startSim, 0, wxALL, 5 );
-
-	m_button_stopSim = new wxButton( m_panel_sim, wxID_ANY, _("STOP"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_button_stopSim->SetFont( wxFont( 15, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxEmptyString ) );
-
-	bSizer_StartStopSim->Add( m_button_stopSim, 0, wxALL, 5 );
+	bSizer_StartStopSim->Add( m_toggleBtn_startStopSim, 0, wxALL, 5 );
 
 
 	bSizer_StartStopSim->Add( 0, 0, 1, wxEXPAND, 5 );
@@ -3007,7 +3002,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_panel_sim->SetSizer( bSizer8 );
 	m_panel_sim->Layout();
 	bSizer8->Fit( m_panel_sim );
-	m_notebook->AddPage( m_panel_sim, _("Simulation"), false );
+	m_notebook->AddPage( m_panel_sim, _("Simulation"), true );
 
 	bSizer_main->Add( m_notebook, 1, wxEXPAND, 5 );
 
@@ -3079,8 +3074,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_slider_throttleSim->Connect( wxEVT_SCROLL_THUMBRELEASE, wxScrollEventHandler( MyDialog::OnScroll_UpdateThrottleSim ), NULL, this );
 	m_slider_throttleSim->Connect( wxEVT_SCROLL_CHANGED, wxScrollEventHandler( MyDialog::OnScroll_UpdateThrottleSim ), NULL, this );
 	m_button_resetThrottle->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_ResetThrottle ), NULL, this );
-	m_button_startSim->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_StartSim ), NULL, this );
-	m_button_stopSim->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_StopSim ), NULL, this );
+	m_toggleBtn_startStopSim->Connect( wxEVT_COMMAND_TOGGLEBUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnToggleButton_StartStopSim ), NULL, this );
 }
 
 MyDialog::~MyDialog()
