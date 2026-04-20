@@ -675,17 +675,14 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_spinCtrl_prnGSV = new wxSpinCtrl( sbSizer_GSV->GetStaticBox(), wxID_ANY, wxT("1"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 1 );
 	fgSizer_GSV->Add( m_spinCtrl_prnGSV, 0, wxALL, 5 );
 
-	m_spinCtrlDouble_elevationGSV = new wxSpinCtrlDouble( sbSizer_GSV->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, -90, 90, 0, 10 );
-	m_spinCtrlDouble_elevationGSV->SetDigits( 1 );
-	fgSizer_GSV->Add( m_spinCtrlDouble_elevationGSV, 0, wxALL, 5 );
+	m_spinCtrl_elevationGSV = new wxSpinCtrl( sbSizer_GSV->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 90, 0 );
+	fgSizer_GSV->Add( m_spinCtrl_elevationGSV, 0, wxALL, 5 );
 
-	m_spinCtrlDouble_azimuthGSV = new wxSpinCtrlDouble( sbSizer_GSV->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 360, 0, 45 );
-	m_spinCtrlDouble_azimuthGSV->SetDigits( 1 );
-	fgSizer_GSV->Add( m_spinCtrlDouble_azimuthGSV, 0, wxALL, 5 );
+	m_spinCtrl_azimuthGSV = new wxSpinCtrl( sbSizer_GSV->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 359, 0 );
+	fgSizer_GSV->Add( m_spinCtrl_azimuthGSV, 0, wxALL, 5 );
 
-	m_spinCtrlDouble_snrGSV = new wxSpinCtrlDouble( sbSizer_GSV->GetStaticBox(), wxID_ANY, wxT("70"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 99, 70, 5 );
-	m_spinCtrlDouble_snrGSV->SetDigits( 1 );
-	fgSizer_GSV->Add( m_spinCtrlDouble_snrGSV, 0, wxALL, 5 );
+	m_spinCtrl_snrGSV = new wxSpinCtrl( sbSizer_GSV->GetStaticBox(), wxID_ANY, wxT("70"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 99, 70 );
+	fgSizer_GSV->Add( m_spinCtrl_snrGSV, 0, wxALL, 5 );
 
 
 	sbSizer_GSV->Add( fgSizer_GSV, 0, wxEXPAND, 5 );

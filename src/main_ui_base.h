@@ -154,9 +154,9 @@ class MyDialog : public wxDialog
 		wxSpinCtrl* m_spinCtrl_sentenceIdGSV;
 		wxSpinCtrl* m_spinCtrl_satellitesGSV;
 		wxSpinCtrl* m_spinCtrl_prnGSV;
-		wxSpinCtrlDouble* m_spinCtrlDouble_elevationGSV;
-		wxSpinCtrlDouble* m_spinCtrlDouble_azimuthGSV;
-		wxSpinCtrlDouble* m_spinCtrlDouble_snrGSV;
+		wxSpinCtrl* m_spinCtrl_elevationGSV;
+		wxSpinCtrl* m_spinCtrl_azimuthGSV;
+		wxSpinCtrl* m_spinCtrl_snrGSV;
 		wxStaticBoxSizer* sbSizer_HDG;
 		wxButton* m_button_sendHDG;
 		wxCheckBox* m_checkBox_autoSendHDG;

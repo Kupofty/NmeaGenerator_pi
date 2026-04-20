@@ -1124,10 +1124,10 @@ void DialogMainGui::sendSentenceBuilderGSV()
   wxString totalSentences  = wxString::Format("%d", m_spinCtrl_totalSentencesGSV->GetValue());
   wxString sentenceNumber  = wxString::Format("%d", m_spinCtrl_sentenceIdGSV->GetValue());
   wxString totalSatellites = wxString::Format("%d", m_spinCtrl_satellitesGSV->GetValue());
-  wxString PRN             = wxString::Format("%.1f", m_spinCtrl_prnGSV->GetValue());
-  wxString elevation       = wxString::Format("%.1f", m_spinCtrlDouble_elevationGSV->GetValue());
-  wxString azimuth         = wxString::Format("%.1f", m_spinCtrlDouble_azimuthGSV->GetValue());
-  wxString SNR             = wxString::Format("%.1f", m_spinCtrlDouble_snrGSV->GetValue());
+  wxString PRN             = wxString::Format("%d", m_spinCtrl_prnGSV->GetValue());
+  wxString elevation       = wxString::Format("%d", m_spinCtrl_elevationGSV->GetValue());
+  wxString azimuth         = wxString::Format("%d", m_spinCtrl_azimuthGSV->GetValue());
+  wxString SNR             = wxString::Format("%d", m_spinCtrl_snrGSV->GetValue());
 
   sendGSV(talker, totalSentences, sentenceNumber, totalSatellites, PRN, elevation, azimuth, SNR);
 }
