@@ -56,6 +56,7 @@ class DialogMainGui : public MyDialog
     void OnButtonClick_ResetRudder(wxCommandEvent& event) override;
     void OnButtonClick_ResetThrottle(wxCommandEvent& event) override;
     void OnChoice_UpdateXDR(wxCommandEvent& event) override;
+    void OnButtonClick_copyManualSentence(wxCommandEvent& event) override;
 
     void OnButtonClick_SendGLL(wxCommandEvent& event) override;
     void OnButtonClick_SendRMC(wxCommandEvent& event) override;
@@ -83,6 +84,7 @@ class DialogMainGui : public MyDialog
     void OnButtonClick_SendZDA(wxCommandEvent& event) override;
 
   private:
+    void copyToClipboard(wxString text);
     void sendNmeaToOCPN(wxString sentence);
     void sendManualInput();
     void updateAutoSendBuildersCheckboxes(bool check);

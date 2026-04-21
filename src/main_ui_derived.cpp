@@ -4,7 +4,7 @@
 #include <cmath>
 #include <ctime>
 #include <wx/hyperlink.h>
-
+#include <wx/clipbrd.h>
 
 ////////////////////////////
 /// Class Initialization ///
@@ -83,6 +83,15 @@ void DialogMainGui::sendNmeaToOCPN(wxString sentence)
   if (plugin){
     plugin->sendNmeaSentence(sentence);
   }
+}
+
+void DialogMainGui::copyToClipboard(wxString text)
+{
+  if (!wxTheClipboard->Open())
+    return;
+
+  wxTheClipboard->SetData(new wxTextDataObject(text));
+  wxTheClipboard->Close();
 }
 
 void DialogMainGui::stopTimers()
@@ -591,6 +600,12 @@ void DialogMainGui::OnSpinCtrlDouble_AutomaticSendFreq(wxSpinDoubleEvent& event)
 
   int intervalMs = static_cast<int>(1000.0 / hz);
   m_timer_autoSendNmea.Start(intervalMs);
+}
+
+void DialogMainGui::OnButtonClick_copyManualSentence(wxCommandEvent& event)
+{
+  wxString text = m_textCtrl_sentenceInput->GetValue();
+  copyToClipboard(text);
 }
 
 

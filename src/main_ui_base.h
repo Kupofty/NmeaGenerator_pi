@@ -56,6 +56,7 @@ class MyDialog : public wxDialog
 		wxCheckBox* m_checkBox_autoChecksum;
 		wxStaticLine* m_staticline1;
 		wxButton* m_button_sendSentence;
+		wxButton* m_button_copySentence;
 		wxButton* m_button_clearInput;
 		wxCheckBox* m_checkBox_automaticSend;
 		wxSpinCtrlDouble* m_spinCtrlDouble_automaticSendFreq;
@@ -522,6 +523,7 @@ class MyDialog : public wxDialog
 		virtual void OnInputTextChanged( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnAutoChecksumChecked( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_manualSend( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_copyManualSentence( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnClearInput( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnCheckBox_AutomaticSend( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnSpinCtrlDouble_AutomaticSendFreq( wxSpinDoubleEvent& event ) { event.Skip(); }
