@@ -14,6 +14,7 @@ DialogMainGui::DialogMainGui(wxWindow* parent, wxWindowID id, const wxString& ti
   //Hide/show checkbox autoChecksum
   addAutoChecksum = m_checkBox_autoChecksum->GetValue();
   m_staticText_checksum->Show(addAutoChecksum);
+  m_staticText_isChecksumCorrect->Show(!addAutoChecksum);
 
   //List for search box
   sbSizerListSentenceBuilder = {
@@ -532,48 +533,72 @@ void DialogMainGui::OnClearInput(wxCommandEvent& event)
 
 void DialogMainGui::OnInputTextChanged(wxCommandEvent& event)
 {
-  wxString input = m_textCtrl_sentenceInput->GetValue();
+  wxString input = m_textCtrl_sentenceInput->GetValue().Trim().Trim(false);
 
-  //AIS : no auto checksum
-  if(input.StartsWith("!") )
+  // AIS : no auto checksum
+  if(input.StartsWith("!"))
   {
     m_checkBox_autoChecksum->SetValue(false);
     m_checkBox_autoChecksum->Enable(false);
     m_staticText_checksum->Hide();
+    m_staticText_isChecksumCorrect->SetLabel("");
     addAutoChecksum = false;
-
     return;
   }
 
-  //NMEA : auto checksum allowed
-  else if(input.StartsWith("$") )
+  // NMEA : autochecksumm mode allowed
+  else if(input.StartsWith("$"))
   {
     addAutoChecksum = m_checkBox_autoChecksum->GetValue();
     m_staticText_checksum->Show(addAutoChecksum);
     m_checkBox_autoChecksum->Enable(true);
   }
 
-  //Invalid prefix
+  // Wrong prefix
   else
   {
     m_checkBox_autoChecksum->Enable(false);
     m_staticText_checksum->Hide();
+    m_staticText_isChecksumCorrect->SetLabel("");
     return;
   }
 
-  //Remove $ to calculate checksum
+  // Remove '$'
   wxString payload = input.Mid(1);
 
-  //Calculate checksum
-  unsigned char checksum = utils::calculateChecksum(payload);
-  wxString checksumStr = utils::checksumToString(checksum);
-  m_staticText_checksum->SetLabel(checksumStr);
-}
+  // Locate '*'
+  int asteriskPos = payload.Find('*');
 
+  // Extract payload for computation
+  wxString payloadForChecksum = (asteriskPos != wxNOT_FOUND) ? payload.Left(asteriskPos) : payload;
+
+  // Compute checksum
+  unsigned char checksum = utils::calculateChecksum(payloadForChecksum);
+  wxString checksumStr = utils::checksumToString(checksum);
+
+  m_staticText_checksum->SetLabel(checksumStr);
+
+  // Manual checksum validation
+  if(asteriskPos != wxNOT_FOUND && payload.Length() == static_cast<size_t>(asteriskPos + 3))
+  {
+    wxString userChecksum = "*" + payload.Mid(asteriskPos + 1, 2);
+
+    if(userChecksum.CmpNoCase(checksumStr) == 0)
+      m_staticText_isChecksumCorrect->SetLabel("Correct checksum");
+    else
+      m_staticText_isChecksumCorrect->SetLabel("Incorrect checksum");
+  }
+  else
+  {
+    m_staticText_isChecksumCorrect->SetLabel("No checksum detected");
+  }
+
+}
 void DialogMainGui::OnAutoChecksumChecked(wxCommandEvent& event)
 {
   addAutoChecksum = m_checkBox_autoChecksum->GetValue();
   m_staticText_checksum->Show(addAutoChecksum);
+  m_staticText_isChecksumCorrect->Show(!addAutoChecksum);
 }
 
 void DialogMainGui::OnCheckBox_AutomaticSend(wxCommandEvent& event)

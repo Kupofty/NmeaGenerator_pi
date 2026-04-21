@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Plugin window can be maximized/minimized & Settings window can be resized
 - Button to copy sentence in "Manual Input" tab
+- Checksum verificator in "Manual Input" tab
 
 ### Fixed
 - Sentences with "!" as first character are accepted.  

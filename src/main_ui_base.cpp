@@ -50,6 +50,22 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_checkBox_autoChecksum->SetValue(true);
 	bSizer3->Add( m_checkBox_autoChecksum, 1, wxALIGN_CENTER|wxALL, 5 );
 
+	wxGridSizer* gSizer1;
+	gSizer1 = new wxGridSizer( 0, 3, 0, 0 );
+
+
+	gSizer1->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText_isChecksumCorrect = new wxStaticText( m_panel_manual, wxID_ANY, _("No checksum detected"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText_isChecksumCorrect->Wrap( -1 );
+	gSizer1->Add( m_staticText_isChecksumCorrect, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	gSizer1->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	bSizer3->Add( gSizer1, 0, wxEXPAND, 5 );
+
 
 	bSizer3->Add( 0, 0, 1, wxEXPAND, 5 );
 
@@ -110,7 +126,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_panel_manual->SetSizer( bSizer3 );
 	m_panel_manual->Layout();
 	bSizer3->Fit( m_panel_manual );
-	m_notebook->AddPage( m_panel_manual, _("Manual Input"), false );
+	m_notebook->AddPage( m_panel_manual, _("Manual Input"), true );
 	m_panel_list = new wxPanel( m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer9;
 	bSizer9 = new wxBoxSizer( wxVERTICAL );
@@ -2693,7 +2709,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_panel_list->SetSizer( bSizer9 );
 	m_panel_list->Layout();
 	bSizer9->Fit( m_panel_list );
-	m_notebook->AddPage( m_panel_list, _("Sentence Builder"), true );
+	m_notebook->AddPage( m_panel_list, _("Sentence Builder"), false );
 	m_panel_sim = new wxPanel( m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer8;
 	bSizer8 = new wxBoxSizer( wxVERTICAL );

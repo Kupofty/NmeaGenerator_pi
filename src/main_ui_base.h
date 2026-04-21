@@ -54,6 +54,7 @@ class MyDialog : public wxDialog
 		wxTextCtrl* m_textCtrl_sentenceInput;
 		wxStaticText* m_staticText_checksum;
 		wxCheckBox* m_checkBox_autoChecksum;
+		wxStaticText* m_staticText_isChecksumCorrect;
 		wxStaticLine* m_staticline1;
 		wxButton* m_button_sendSentence;
 		wxButton* m_button_copySentence;
