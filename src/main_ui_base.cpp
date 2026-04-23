@@ -187,7 +187,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	fgSizer41131->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_textCtrl_talkerDBx = new wxTextCtrl( sbSizer_DBx->GetStaticBox(), wxID_ANY, _("SD"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_textCtrl_talkerDBx = new wxTextCtrl( sbSizer_DBx->GetStaticBox(), wxID_ANY, _("SD"), wxDefaultPosition, wxSize( 50,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_talkerDBx->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -273,7 +273,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText106->Wrap( -1 );
 	fgSizer4113->Add( m_staticText106, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_textCtrl_talkerDPT = new wxTextCtrl( sbSizer_DPT->GetStaticBox(), wxID_ANY, _("SD"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_textCtrl_talkerDPT = new wxTextCtrl( sbSizer_DPT->GetStaticBox(), wxID_ANY, _("SD"), wxDefaultPosition, wxSize( 50,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_talkerDPT->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -383,7 +383,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	fgSizer_GGA->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_textCtrl_talkerGGA = new wxTextCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_textCtrl_talkerGGA = new wxTextCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 50,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_talkerGGA->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -398,10 +398,10 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText40->Wrap( -1 );
 	fgSizer_GGA->Add( m_staticText40, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_textCtrl_timeGGA = new wxTextCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("120000"), wxDefaultPosition, wxSize( 60,-1 ), 0 );
+	m_textCtrl_timeGGA = new wxTextCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("120000"), wxDefaultPosition, wxSize( 70,-1 ), 0 );
 	fgSizer_GGA->Add( m_textCtrl_timeGGA, 0, wxALL, 5 );
 
-	m_textCtrl_latitudeGGA = new wxTextCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("0000.0000000"), wxDefaultPosition, wxSize( 95,-1 ), 0 );
+	m_textCtrl_latitudeGGA = new wxTextCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("0000.0000000"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
 	fgSizer_GGA->Add( m_textCtrl_latitudeGGA, 0, wxALL, 5 );
 
 	wxString m_choice_latDirGGAChoices[] = { _("N"), _("S") };
@@ -410,7 +410,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_choice_latDirGGA->SetSelection( 0 );
 	fgSizer_GGA->Add( m_choice_latDirGGA, 0, wxALL, 5 );
 
-	m_textCtrl_longitudeGGA = new wxTextCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("00000.0000000"), wxDefaultPosition, wxSize( 95,-1 ), 0 );
+	m_textCtrl_longitudeGGA = new wxTextCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("00000.0000000"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
 	fgSizer_GGA->Add( m_textCtrl_longitudeGGA, 0, wxALL, 5 );
 
 	wxString m_choice_lonDirGGAChoices[] = { _("E"), _("W") };
@@ -522,7 +522,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText18->Wrap( -1 );
 	fgSizer_GLL->Add( m_staticText18, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_textCtrl_talkerGLL = new wxTextCtrl( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_textCtrl_talkerGLL = new wxTextCtrl( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 50,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_talkerGLL->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -537,7 +537,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText5->Wrap( -1 );
 	fgSizer_GLL->Add( m_staticText5, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_textCtrl_latitudeGLL = new wxTextCtrl( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("0000.0000000"), wxDefaultPosition, wxSize( 95,-1 ), 0 );
+	m_textCtrl_latitudeGLL = new wxTextCtrl( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("0000.0000000"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_latitudeGLL->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -554,7 +554,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_choice_latDirGLL->SetSelection( 0 );
 	fgSizer_GLL->Add( m_choice_latDirGLL, 0, wxALL, 5 );
 
-	m_textCtrl_longitudeGLL = new wxTextCtrl( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("00000.0000000"), wxDefaultPosition, wxSize( 95,-1 ), 0 );
+	m_textCtrl_longitudeGLL = new wxTextCtrl( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("00000.0000000"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_longitudeGLL->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -571,7 +571,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_choice_lonDirGLL->SetSelection( 0 );
 	fgSizer_GLL->Add( m_choice_lonDirGLL, 0, wxALL, 5 );
 
-	m_textCtrl_timeGLL = new wxTextCtrl( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("120000"), wxDefaultPosition, wxSize( 60,-1 ), 0 );
+	m_textCtrl_timeGLL = new wxTextCtrl( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("120000"), wxDefaultPosition, wxSize( 70,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_timeGLL->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -667,7 +667,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText152->Wrap( -1 );
 	fgSizer_GSV->Add( m_staticText152, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_textCtrl_talkerGSV = new wxTextCtrl( sbSizer_GSV->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_textCtrl_talkerGSV = new wxTextCtrl( sbSizer_GSV->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 50,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_talkerGSV->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -758,7 +758,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	fgSizer412->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_textCtrl_talkerHDG = new wxTextCtrl( sbSizer_HDG->GetStaticBox(), wxID_ANY, _("HC"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_textCtrl_talkerHDG = new wxTextCtrl( sbSizer_HDG->GetStaticBox(), wxID_ANY, _("HC"), wxDefaultPosition, wxSize( 50,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_talkerHDG->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -841,7 +841,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	fgSizer41->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_textCtrl_talkerHDM = new wxTextCtrl( sbSizer_HDM->GetStaticBox(), wxID_ANY, _("HC"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_textCtrl_talkerHDM = new wxTextCtrl( sbSizer_HDM->GetStaticBox(), wxID_ANY, _("HC"), wxDefaultPosition, wxSize( 50,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_talkerHDM->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -908,7 +908,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	fgSizer4->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_textCtrl_talkerHDT = new wxTextCtrl( sbSizer_HDT->GetStaticBox(), wxID_ANY, _("HC"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_textCtrl_talkerHDT = new wxTextCtrl( sbSizer_HDT->GetStaticBox(), wxID_ANY, _("HC"), wxDefaultPosition, wxSize( 50,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_talkerHDT->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -975,7 +975,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	fgSizer411->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_textCtrl_talkerMTW = new wxTextCtrl( sbSizer_MTW->GetStaticBox(), wxID_ANY, _("WI"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_textCtrl_talkerMTW = new wxTextCtrl( sbSizer_MTW->GetStaticBox(), wxID_ANY, _("WI"), wxDefaultPosition, wxSize( 50,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_talkerMTW->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -1063,7 +1063,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	fgSizer4112111->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_textCtrl_talkerMWD = new wxTextCtrl( sbSizer_MWD->GetStaticBox(), wxID_ANY, _("WI"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_textCtrl_talkerMWD = new wxTextCtrl( sbSizer_MWD->GetStaticBox(), wxID_ANY, _("WI"), wxDefaultPosition, wxSize( 50,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_talkerMWD->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -1165,7 +1165,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText872->Wrap( -1 );
 	fgSizer411211->Add( m_staticText872, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_textCtrl_talkerMWV = new wxTextCtrl( sbSizer_MWV->GetStaticBox(), wxID_ANY, _("WI"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_textCtrl_talkerMWV = new wxTextCtrl( sbSizer_MWV->GetStaticBox(), wxID_ANY, _("WI"), wxDefaultPosition, wxSize( 50,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_talkerMWV->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -1279,7 +1279,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText174->Wrap( -1 );
 	fgSizer411311->Add( m_staticText174, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_textCtrl_talkerOSD = new wxTextCtrl( sbSizer_OSD->GetStaticBox(), wxID_ANY, _("RA"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_textCtrl_talkerOSD = new wxTextCtrl( sbSizer_OSD->GetStaticBox(), wxID_ANY, _("RA"), wxDefaultPosition, wxSize( 50,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_talkerOSD->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -1422,7 +1422,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	fgSizer_RMC->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_textCtrl_talkerRMC = new wxTextCtrl( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_textCtrl_talkerRMC = new wxTextCtrl( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 50,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_talkerRMC->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -1437,7 +1437,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText22->Wrap( -1 );
 	fgSizer_RMC->Add( m_staticText22, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_textCtrl_timeRMC = new wxTextCtrl( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("120000"), wxDefaultPosition, wxSize( 60,-1 ), 0 );
+	m_textCtrl_timeRMC = new wxTextCtrl( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("120000"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_timeRMC->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -1454,7 +1454,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_choice_statusRMC->SetSelection( 0 );
 	fgSizer_RMC->Add( m_choice_statusRMC, 0, wxALL, 5 );
 
-	m_textCtrl_latitudeRMC = new wxTextCtrl( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("0000.0000000"), wxDefaultPosition, wxSize( 95,-1 ), 0 );
+	m_textCtrl_latitudeRMC = new wxTextCtrl( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("0000.0000000"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_latitudeRMC->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -1471,7 +1471,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_choice_latDirRMC->SetSelection( 0 );
 	fgSizer_RMC->Add( m_choice_latDirRMC, 0, wxALL, 5 );
 
-	m_textCtrl_longitudeRMC = new wxTextCtrl( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("00000.0000000"), wxDefaultPosition, wxSize( 95,-1 ), 0 );
+	m_textCtrl_longitudeRMC = new wxTextCtrl( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("00000.0000000"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_longitudeRMC->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -1488,15 +1488,15 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_choice_lonDirRMC->SetSelection( 0 );
 	fgSizer_RMC->Add( m_choice_lonDirRMC, 0, wxALL, 5 );
 
-	m_spinCtrlDouble_sogRMC = new wxSpinCtrlDouble( sbSizer_RMC->GetStaticBox(), wxID_ANY, wxT("6"), wxDefaultPosition, wxSize( 60,-1 ), wxSP_ARROW_KEYS, 0, 999.9, 1.000000, 1 );
+	m_spinCtrlDouble_sogRMC = new wxSpinCtrlDouble( sbSizer_RMC->GetStaticBox(), wxID_ANY, wxT("6"), wxDefaultPosition, wxSize( -1,-1 ), wxSP_ARROW_KEYS, 0, 999.9, 1.000000, 1 );
 	m_spinCtrlDouble_sogRMC->SetDigits( 1 );
 	fgSizer_RMC->Add( m_spinCtrlDouble_sogRMC, 0, wxALL, 5 );
 
-	m_spinCtrlDouble_cogRMC = new wxSpinCtrlDouble( sbSizer_RMC->GetStaticBox(), wxID_ANY, wxT("60"), wxDefaultPosition, wxSize( 60,-1 ), wxSP_ARROW_KEYS, 0, 360, 0.000000, 45 );
+	m_spinCtrlDouble_cogRMC = new wxSpinCtrlDouble( sbSizer_RMC->GetStaticBox(), wxID_ANY, wxT("60"), wxDefaultPosition, wxSize( -1,-1 ), wxSP_ARROW_KEYS, 0, 360, 0.000000, 45 );
 	m_spinCtrlDouble_cogRMC->SetDigits( 1 );
 	fgSizer_RMC->Add( m_spinCtrlDouble_cogRMC, 0, wxALL, 5 );
 
-	m_textCtrl_dateRMC = new wxTextCtrl( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("010126"), wxDefaultPosition, wxSize( 60,-1 ), 0 );
+	m_textCtrl_dateRMC = new wxTextCtrl( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("010126"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_dateRMC->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -1507,7 +1507,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	#endif
 	fgSizer_RMC->Add( m_textCtrl_dateRMC, 0, wxALL, 5 );
 
-	m_spinCtrlDouble_magRMC = new wxSpinCtrlDouble( sbSizer_RMC->GetStaticBox(), wxID_ANY, wxT("3"), wxDefaultPosition, wxSize( 60,-1 ), wxSP_ARROW_KEYS, 0, 180, 3.000000, 1 );
+	m_spinCtrlDouble_magRMC = new wxSpinCtrlDouble( sbSizer_RMC->GetStaticBox(), wxID_ANY, wxT("3"), wxDefaultPosition, wxSize( -1,-1 ), wxSP_ARROW_KEYS, 0, 180, 3.000000, 1 );
 	m_spinCtrlDouble_magRMC->SetDigits( 1 );
 	fgSizer_RMC->Add( m_spinCtrlDouble_magRMC, 0, wxALL, 5 );
 
@@ -1562,7 +1562,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText77->Wrap( -1 );
 	fgSizer4112->Add( m_staticText77, 0, wxALL, 5 );
 
-	m_textCtrl_talkerROT = new wxTextCtrl( sbSizer_ROT->GetStaticBox(), wxID_ANY, _("HE"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_textCtrl_talkerROT = new wxTextCtrl( sbSizer_ROT->GetStaticBox(), wxID_ANY, _("HE"), wxDefaultPosition, wxSize( 50,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_talkerROT->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -1640,7 +1640,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText87->Wrap( -1 );
 	fgSizer41121->Add( m_staticText87, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_textCtrl_talkerRSA = new wxTextCtrl( sbSizer_RSA->GetStaticBox(), wxID_ANY, _("II"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_textCtrl_talkerRSA = new wxTextCtrl( sbSizer_RSA->GetStaticBox(), wxID_ANY, _("II"), wxDefaultPosition, wxSize( 50,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_talkerRSA->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -1745,7 +1745,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	fgSizer4111->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_textCtrl_talkerTLL = new wxTextCtrl( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("IN"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_textCtrl_talkerTLL = new wxTextCtrl( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("IN"), wxDefaultPosition, wxSize( 50,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_talkerTLL->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -1763,7 +1763,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_spinCtrl_idTLL = new wxSpinCtrl( sbSizer_TLL->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 0 );
 	fgSizer4111->Add( m_spinCtrl_idTLL, 0, wxALL, 5 );
 
-	m_textCtrl_latitudeTLL = new wxTextCtrl( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("0000.0000000"), wxDefaultPosition, wxSize( 95,-1 ), 0 );
+	m_textCtrl_latitudeTLL = new wxTextCtrl( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("0000.0000000"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
 	fgSizer4111->Add( m_textCtrl_latitudeTLL, 0, wxALL, 5 );
 
 	wxString m_choice_latDirTLLChoices[] = { _("N"), _("S") };
@@ -1784,7 +1784,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_textCtrl_nameTLL = new wxTextCtrl( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("DUMMY"), wxDefaultPosition, wxDefaultSize, 0 );
 	fgSizer4111->Add( m_textCtrl_nameTLL, 0, wxALL, 5 );
 
-	m_textCtrl_timeTLL = new wxTextCtrl( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("120000"), wxDefaultPosition, wxSize( 60,-1 ), 0 );
+	m_textCtrl_timeTLL = new wxTextCtrl( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("120000"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
 	fgSizer4111->Add( m_textCtrl_timeTLL, 0, wxALL, 5 );
 
 	wxString m_choice_statusTLLChoices[] = { _("T"), _("Q"), _("L") };
@@ -1842,7 +1842,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText772->Wrap( -1 );
 	fgSizer41122->Add( m_staticText772, 0, wxALL, 5 );
 
-	m_textCtrl_talkerTHS = new wxTextCtrl( sbSizer_THS->GetStaticBox(), wxID_ANY, _("HE"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_textCtrl_talkerTHS = new wxTextCtrl( sbSizer_THS->GetStaticBox(), wxID_ANY, _("HE"), wxDefaultPosition, wxSize( 50,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_talkerTHS->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -1925,7 +1925,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	fgSizer411312->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_textCtrl_talkerVDR = new wxTextCtrl( sbSizer_VDR->GetStaticBox(), wxID_ANY, _("II"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_textCtrl_talkerVDR = new wxTextCtrl( sbSizer_VDR->GetStaticBox(), wxID_ANY, _("II"), wxDefaultPosition, wxSize( 50,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_talkerVDR->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -2029,7 +2029,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	fgSizer4113121->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_textCtrl_talkerVHW = new wxTextCtrl( sbSizer_VHW->GetStaticBox(), wxID_ANY, _("VW"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_textCtrl_talkerVHW = new wxTextCtrl( sbSizer_VHW->GetStaticBox(), wxID_ANY, _("VW"), wxDefaultPosition, wxSize( 50,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_talkerVHW->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -2153,7 +2153,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText182->Wrap( -1 );
 	fgSizer_VTG->Add( m_staticText182, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_textCtrl_talkerVTG = new wxTextCtrl( sbSizer_VTG->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_textCtrl_talkerVTG = new wxTextCtrl( sbSizer_VTG->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 50,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_talkerVTG->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -2271,7 +2271,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	fgSizer41131211->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_textCtrl_talkerVWR = new wxTextCtrl( sbSizer_VWR->GetStaticBox(), wxID_ANY, _("II"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_textCtrl_talkerVWR = new wxTextCtrl( sbSizer_VWR->GetStaticBox(), wxID_ANY, _("II"), wxDefaultPosition, wxSize( 50,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_talkerVWR->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -2383,7 +2383,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText142->Wrap( -1 );
 	fgSizer_WPL->Add( m_staticText142, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_textCtrl_talkerWPL = new wxTextCtrl( sbSizer_WPL->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_textCtrl_talkerWPL = new wxTextCtrl( sbSizer_WPL->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 50,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_talkerWPL->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -2398,7 +2398,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText51->Wrap( -1 );
 	fgSizer_WPL->Add( m_staticText51, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_textCtrl_latitudeWPL = new wxTextCtrl( sbSizer_WPL->GetStaticBox(), wxID_ANY, _("0000.0000000"), wxDefaultPosition, wxSize( 95,-1 ), 0 );
+	m_textCtrl_latitudeWPL = new wxTextCtrl( sbSizer_WPL->GetStaticBox(), wxID_ANY, _("0000.0000000"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_latitudeWPL->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -2415,7 +2415,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_choice_latDirWPL->SetSelection( 0 );
 	fgSizer_WPL->Add( m_choice_latDirWPL, 0, wxALL, 5 );
 
-	m_textCtrl_longitudeWPL = new wxTextCtrl( sbSizer_WPL->GetStaticBox(), wxID_ANY, _("00000.0000000"), wxDefaultPosition, wxSize( 95,-1 ), 0 );
+	m_textCtrl_longitudeWPL = new wxTextCtrl( sbSizer_WPL->GetStaticBox(), wxID_ANY, _("00000.0000000"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_longitudeWPL->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -2496,7 +2496,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText1421->Wrap( -1 );
 	fgSizer_XDR->Add( m_staticText1421, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_textCtrl_talkerXDR = new wxTextCtrl( sbSizer_XDR->GetStaticBox(), wxID_ANY, _("II"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_textCtrl_talkerXDR = new wxTextCtrl( sbSizer_XDR->GetStaticBox(), wxID_ANY, _("II"), wxDefaultPosition, wxSize( 50,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_talkerXDR->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -2598,7 +2598,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText1441->Wrap( -1 );
 	fgSizer_ZDA->Add( m_staticText1441, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_textCtrl_talkerZDA = new wxTextCtrl( sbSizer_ZDA->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_textCtrl_talkerZDA = new wxTextCtrl( sbSizer_ZDA->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 50,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_talkerZDA->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -2709,7 +2709,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_panel_list->SetSizer( bSizer9 );
 	m_panel_list->Layout();
 	bSizer9->Fit( m_panel_list );
-	m_notebook->AddPage( m_panel_list, _("Sentence Builder"), false );
+	m_notebook->AddPage( m_panel_list, _("Sentence Builder"), true );
 	m_panel_sim = new wxPanel( m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer8;
 	bSizer8 = new wxBoxSizer( wxVERTICAL );
@@ -3067,7 +3067,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_panel_sim->SetSizer( bSizer8 );
 	m_panel_sim->Layout();
 	bSizer8->Fit( m_panel_sim );
-	m_notebook->AddPage( m_panel_sim, _("Simulation"), true );
+	m_notebook->AddPage( m_panel_sim, _("Simulation"), false );
 
 	bSizer_main->Add( m_notebook, 1, wxEXPAND, 5 );
 

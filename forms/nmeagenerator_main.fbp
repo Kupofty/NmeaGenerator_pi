@@ -1160,7 +1160,7 @@
             <object class="notebookpage" expanded="true">
               <property name="bitmap"></property>
               <property name="label">Sentence Builder</property>
-              <property name="select">0</property>
+              <property name="select">1</property>
               <object class="wxPanel" expanded="true">
                 <property name="BottomDockable">1</property>
                 <property name="LeftDockable">1</property>
@@ -1285,7 +1285,7 @@
                           <property name="border">5</property>
                           <property name="flag">wxEXPAND</property>
                           <property name="proportion">0</property>
-                          <object class="wxStaticBoxSizer" expanded="true">
+                          <object class="wxStaticBoxSizer" expanded="false">
                             <property name="id">wxID_ANY</property>
                             <property name="label">DBT/S/K</property>
                             <property name="minimum_size"></property>
@@ -1293,11 +1293,11 @@
                             <property name="orient">wxHORIZONTAL</property>
                             <property name="parent">1</property>
                             <property name="permission">protected</property>
-                            <object class="sizeritem" expanded="true">
+                            <object class="sizeritem" expanded="false">
                               <property name="border">5</property>
                               <property name="flag">wxEXPAND</property>
                               <property name="proportion">0</property>
-                              <object class="wxBoxSizer" expanded="true">
+                              <object class="wxBoxSizer" expanded="false">
                                 <property name="minimum_size"></property>
                                 <property name="name">bSizer1711131</property>
                                 <property name="orient">wxVERTICAL</property>
@@ -1857,7 +1857,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">40,-1</property>
+                                    <property name="size">50,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -2806,7 +2806,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">40,-1</property>
+                                    <property name="size">50,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -3933,7 +3933,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">40,-1</property>
+                                    <property name="size">50,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -4060,7 +4060,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">60,-1</property>
+                                    <property name="size">70,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -4125,7 +4125,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">95,-1</property>
+                                    <property name="size">-1,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -4255,7 +4255,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">95,-1</property>
+                                    <property name="size">-1,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -5505,7 +5505,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">40,-1</property>
+                                    <property name="size">50,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -5632,7 +5632,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">95,-1</property>
+                                    <property name="size">-1,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -5762,7 +5762,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">95,-1</property>
+                                    <property name="size">-1,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -5892,7 +5892,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">60,-1</property>
+                                    <property name="size">70,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -6045,7 +6045,7 @@
                           <property name="border">5</property>
                           <property name="flag">wxEXPAND</property>
                           <property name="proportion">0</property>
-                          <object class="wxStaticBoxSizer" expanded="true">
+                          <object class="wxStaticBoxSizer" expanded="false">
                             <property name="id">wxID_ANY</property>
                             <property name="label">GSV</property>
                             <property name="minimum_size"></property>
@@ -6283,11 +6283,11 @@
                                 <property name="window_style"></property>
                               </object>
                             </object>
-                            <object class="sizeritem" expanded="true">
+                            <object class="sizeritem" expanded="false">
                               <property name="border">5</property>
                               <property name="flag">wxEXPAND</property>
                               <property name="proportion">0</property>
-                              <object class="wxFlexGridSizer" expanded="true">
+                              <object class="wxFlexGridSizer" expanded="false">
                                 <property name="cols">9</property>
                                 <property name="flexible_direction">wxBOTH</property>
                                 <property name="growablecols"></property>
@@ -6855,7 +6855,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">40,-1</property>
+                                    <property name="size">50,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -7184,11 +7184,11 @@
                                     <property name="window_style"></property>
                                   </object>
                                 </object>
-                                <object class="sizeritem" expanded="true">
+                                <object class="sizeritem" expanded="false">
                                   <property name="border">5</property>
                                   <property name="flag">wxALL</property>
                                   <property name="proportion">0</property>
-                                  <object class="wxSpinCtrl" expanded="true">
+                                  <object class="wxSpinCtrl" expanded="false">
                                     <property name="BottomDockable">1</property>
                                     <property name="LeftDockable">1</property>
                                     <property name="RightDockable">1</property>
@@ -7247,11 +7247,11 @@
                                     <property name="window_style"></property>
                                   </object>
                                 </object>
-                                <object class="sizeritem" expanded="true">
+                                <object class="sizeritem" expanded="false">
                                   <property name="border">5</property>
                                   <property name="flag">wxALL</property>
                                   <property name="proportion">0</property>
-                                  <object class="wxSpinCtrl" expanded="true">
+                                  <object class="wxSpinCtrl" expanded="false">
                                     <property name="BottomDockable">1</property>
                                     <property name="LeftDockable">1</property>
                                     <property name="RightDockable">1</property>
@@ -7310,11 +7310,11 @@
                                     <property name="window_style"></property>
                                   </object>
                                 </object>
-                                <object class="sizeritem" expanded="true">
+                                <object class="sizeritem" expanded="false">
                                   <property name="border">5</property>
                                   <property name="flag">wxALL</property>
                                   <property name="proportion">0</property>
-                                  <object class="wxSpinCtrl" expanded="true">
+                                  <object class="wxSpinCtrl" expanded="false">
                                     <property name="BottomDockable">1</property>
                                     <property name="LeftDockable">1</property>
                                     <property name="RightDockable">1</property>
@@ -7943,7 +7943,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">40,-1</property>
+                                    <property name="size">50,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -8781,7 +8781,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">40,-1</property>
+                                    <property name="size">50,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -9421,7 +9421,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">40,-1</property>
+                                    <property name="size">50,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -10061,7 +10061,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">40,-1</property>
+                                    <property name="size">50,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -10917,7 +10917,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">40,-1</property>
+                                    <property name="size">50,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -12072,7 +12072,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">40,-1</property>
+                                    <property name="size">50,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -13396,7 +13396,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">40,-1</property>
+                                    <property name="size">50,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -14968,7 +14968,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">40,-1</property>
+                                    <property name="size">50,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -15095,7 +15095,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">60,-1</property>
+                                    <property name="size">-1,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -15225,7 +15225,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">95,-1</property>
+                                    <property name="size">-1,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -15355,7 +15355,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">95,-1</property>
+                                    <property name="size">-1,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -15489,7 +15489,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">60,-1</property>
+                                    <property name="size">-1,-1</property>
                                     <property name="style">wxSP_ARROW_KEYS</property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -15554,7 +15554,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">60,-1</property>
+                                    <property name="size">-1,-1</property>
                                     <property name="style">wxSP_ARROW_KEYS</property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -15615,7 +15615,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">60,-1</property>
+                                    <property name="size">-1,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -15684,7 +15684,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">60,-1</property>
+                                    <property name="size">-1,-1</property>
                                     <property name="style">wxSP_ARROW_KEYS</property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -16248,7 +16248,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">40,-1</property>
+                                    <property name="size">50,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -17067,7 +17067,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">40,-1</property>
+                                    <property name="size">50,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -18170,7 +18170,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">40,-1</property>
+                                    <property name="size">50,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -18360,7 +18360,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">95,-1</property>
+                                    <property name="size">-1,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -18685,7 +18685,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">60,-1</property>
+                                    <property name="size">-1,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -19315,7 +19315,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">40,-1</property>
+                                    <property name="size">50,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -20102,7 +20102,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">40,-1</property>
+                                    <property name="size">50,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -21212,7 +21212,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">40,-1</property>
+                                    <property name="size">50,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -22531,7 +22531,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">40,-1</property>
+                                    <property name="size">50,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -23833,7 +23833,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">40,-1</property>
+                                    <property name="size">50,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -25011,7 +25011,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">40,-1</property>
+                                    <property name="size">50,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -25138,7 +25138,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">95,-1</property>
+                                    <property name="size">-1,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -25268,7 +25268,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">95,-1</property>
+                                    <property name="size">-1,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -26045,7 +26045,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">40,-1</property>
+                                    <property name="size">50,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -27133,7 +27133,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">40,-1</property>
+                                    <property name="size">50,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -28143,7 +28143,7 @@
             <object class="notebookpage" expanded="true">
               <property name="bitmap"></property>
               <property name="label">Simulation</property>
-              <property name="select">1</property>
+              <property name="select">0</property>
               <object class="wxPanel" expanded="true">
                 <property name="BottomDockable">1</property>
                 <property name="LeftDockable">1</property>
