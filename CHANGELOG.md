@@ -9,6 +9,7 @@ All notable changes to this project will be documented in this file.
 - Plugin window can be maximized/minimized & Settings window can be resized
 - Button to copy sentence in "Manual Input" tab
 - Checksum verificator in "Manual Input" tab
+- New option in settings to keep sending data when window is closed
 
 ### Fixed
 - Sentences with "!" as first character are accepted.  

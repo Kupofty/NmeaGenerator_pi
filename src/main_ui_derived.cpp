@@ -1,4 +1,5 @@
 #include "main_ui_derived.h"
+#include "globals.h"
 #include "nmeagenerator_plugin.h"
 #include "utils.h"
 #include <cmath>
@@ -68,8 +69,11 @@ void DialogMainGui::OnClose(wxCloseEvent& event)
 {
   if (plugin)
   {
-    stopTimers();
+    if(!g_sendDataAfterWindowClose)
+      stopTimers();
+
     plugin->OnGuiClosed();
+
   }
 }
 
@@ -594,6 +598,7 @@ void DialogMainGui::OnInputTextChanged(wxCommandEvent& event)
   }
 
 }
+
 void DialogMainGui::OnAutoChecksumChecked(wxCommandEvent& event)
 {
   addAutoChecksum = m_checkBox_autoChecksum->GetValue();

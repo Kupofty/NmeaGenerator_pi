@@ -167,6 +167,8 @@ void NmeaGeneratorPlugin::LoadSettings()
     configSettings->Read("RestoreWindowPos", &g_restoreWindowPos, 1);
     configSettings->Read("WindowPosX", &g_windowPosX, 0);
     configSettings->Read("WindowPosY", &g_windowPosY, 0);
+
+    configSettings->Read("SendDataAfterWindowClose", &g_sendDataAfterWindowClose, 0);
   }
 }
 
@@ -201,6 +203,8 @@ void NmeaGeneratorPlugin::SaveSettings()
     configSettings->Write("RestoreWindowPos", g_restoreWindowPos);
     configSettings->Write("WindowPosX", g_windowPosX);
     configSettings->Write("WindowPosY", g_windowPosY);
+
+    configSettings->Write("SendDataAfterWindowClose", g_sendDataAfterWindowClose);
   }
 }
 
@@ -263,8 +267,10 @@ void NmeaGeneratorPlugin::OnToolbarToolCallback(int id)
   else
   {
     myGUI->Hide();
-    myGUI->stopTimers();
     SetCanvasContextMenuItemViz(positionMenuID, false);
+
+    if(!g_sendDataAfterWindowClose)
+      myGUI->stopTimers();
   }
 
   //Refresh screen

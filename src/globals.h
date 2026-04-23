@@ -24,4 +24,6 @@ extern bool g_restoreWindowPos;
 extern int g_windowPosX;
 extern int g_windowPosY;
 
+extern bool g_sendDataAfterWindowClose;
+
 #endif //GLOBALS_H

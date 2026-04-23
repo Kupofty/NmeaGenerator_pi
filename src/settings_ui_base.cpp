@@ -92,6 +92,21 @@ DialogSettingsBase::DialogSettingsBase( wxWindow* parent, wxWindowID id, const w
 
 	sizerSettings->Add( bSizer9, 1, wxEXPAND, 5 );
 
+	wxBoxSizer* bSizer91;
+	bSizer91 = new wxBoxSizer( wxHORIZONTAL );
+
+
+	bSizer91->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_checkBox_keepSendingData = new wxCheckBox( this, wxID_ANY, _("Keep transmitting data\nwhen window is closed"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer91->Add( m_checkBox_keepSendingData, 0, wxALL, 5 );
+
+
+	bSizer91->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	sizerSettings->Add( bSizer91, 1, wxEXPAND, 5 );
+
 
 	bSizer81->Add( sizerSettings, 1, wxEXPAND, 5 );
 

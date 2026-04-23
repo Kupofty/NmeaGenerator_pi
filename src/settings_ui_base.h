@@ -41,6 +41,7 @@ class DialogSettingsBase : public wxDialog
 		wxCheckBox* m_checkBox_restoreLastTab;
 		wxCheckBox* m_checkBox_restoreWindowPos;
 		wxCheckBox* m_checkBox_restoreWindowSize;
+		wxCheckBox* m_checkBox_keepSendingData;
 		wxStaticLine* m_staticline1;
 		wxButton* buttonOK;
 		wxButton* buttonApply;

@@ -19,6 +19,7 @@ void DialogSettings::OnInit(wxInitDialogEvent& event)
   m_checkBox_restoreLastTab->SetValue(g_restoreLastTab);
   m_checkBox_restoreWindowPos->SetValue(g_restoreWindowPos);
   m_checkBox_restoreWindowSize->SetValue(g_restoreWindowSize);
+  m_checkBox_keepSendingData->SetValue(g_sendDataAfterWindowClose);
 
   Layout();
   Fit();
@@ -35,6 +36,7 @@ void DialogSettings::updateSettings()
   g_restoreLastTab = m_checkBox_restoreLastTab->IsChecked();
   g_restoreWindowPos = m_checkBox_restoreWindowPos->IsChecked();
   g_restoreWindowSize = m_checkBox_restoreWindowSize->IsChecked();
+  g_sendDataAfterWindowClose = m_checkBox_keepSendingData->IsChecked();
 }
 
 
