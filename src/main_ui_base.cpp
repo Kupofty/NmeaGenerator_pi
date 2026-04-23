@@ -126,7 +126,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_panel_manual->SetSizer( bSizer3 );
 	m_panel_manual->Layout();
 	bSizer3->Fit( m_panel_manual );
-	m_notebook->AddPage( m_panel_manual, _("Manual Input"), true );
+	m_notebook->AddPage( m_panel_manual, _("Manual Input"), false );
 	m_panel_list = new wxPanel( m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer9;
 	bSizer9 = new wxBoxSizer( wxVERTICAL );
@@ -2747,49 +2747,89 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer26->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	wxBoxSizer* bSizer_simPos;
-	bSizer_simPos = new wxBoxSizer( wxHORIZONTAL );
+	m_staticline31 = new wxStaticLine( m_scrolledWindow2, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL );
+	bSizer26->Add( m_staticline31, 0, wxEXPAND | wxALL, 5 );
+
+	wxBoxSizer* bSizer_simPosition;
+	bSizer_simPosition = new wxBoxSizer( wxHORIZONTAL );
 
 
-	bSizer_simPos->Add( 0, 0, 1, wxEXPAND, 5 );
+	bSizer_simPosition->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_staticText83 = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("Latitude"), wxDefaultPosition, wxDefaultSize, 0 );
+	wxFlexGridSizer* fgSizer25;
+	fgSizer25 = new wxFlexGridSizer( 3, 4, 0, 0 );
+	fgSizer25->SetFlexibleDirection( wxBOTH );
+	fgSizer25->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
+
+
+	fgSizer25->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText206 = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("Degrees"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText206->Wrap( -1 );
+	fgSizer25->Add( m_staticText206, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText207 = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("Minutes"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText207->Wrap( -1 );
+	fgSizer25->Add( m_staticText207, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText208 = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("Direction"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText208->Wrap( -1 );
+	fgSizer25->Add( m_staticText208, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText83 = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("Latitude:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText83->Wrap( -1 );
-	bSizer_simPos->Add( m_staticText83, 0, wxALIGN_CENTER|wxALL, 5 );
+	fgSizer25->Add( m_staticText83, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_textCtrl_latSim = new wxTextCtrl( m_scrolledWindow2, wxID_ANY, _("0000.0000"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer_simPos->Add( m_textCtrl_latSim, 0, wxALIGN_CENTER|wxALL, 5 );
+	m_spinCtrl_latDegSim = new wxSpinCtrl( m_scrolledWindow2, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 89, 0 );
+	fgSizer25->Add( m_spinCtrl_latDegSim, 0, wxALL, 5 );
+
+	m_spinCtrlDouble_latMinutesSim = new wxSpinCtrlDouble( m_scrolledWindow2, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 59.9999, 0, 1 );
+	m_spinCtrlDouble_latMinutesSim->SetDigits( 4 );
+	fgSizer25->Add( m_spinCtrlDouble_latMinutesSim, 0, wxALL, 5 );
 
 	wxString m_choice_latDirSimChoices[] = { _("N"), _("S") };
 	int m_choice_latDirSimNChoices = sizeof( m_choice_latDirSimChoices ) / sizeof( wxString );
 	m_choice_latDirSim = new wxChoice( m_scrolledWindow2, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_latDirSimNChoices, m_choice_latDirSimChoices, 0 );
 	m_choice_latDirSim->SetSelection( 0 );
-	bSizer_simPos->Add( m_choice_latDirSim, 0, wxALIGN_CENTER|wxALL, 5 );
+	fgSizer25->Add( m_choice_latDirSim, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_staticText84 = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("Longitude"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText84 = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("Longitude:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText84->Wrap( -1 );
-	bSizer_simPos->Add( m_staticText84, 0, wxALIGN_CENTER|wxALL, 5 );
+	fgSizer25->Add( m_staticText84, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_textCtrl_lonSim = new wxTextCtrl( m_scrolledWindow2, wxID_ANY, _("00000.0000"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer_simPos->Add( m_textCtrl_lonSim, 0, wxALIGN_CENTER|wxALL, 5 );
+	m_spinCtrl_lonDegSim = new wxSpinCtrl( m_scrolledWindow2, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 179, 0 );
+	fgSizer25->Add( m_spinCtrl_lonDegSim, 0, wxALL, 5 );
+
+	m_spinCtrlDouble_lonMinutesSim = new wxSpinCtrlDouble( m_scrolledWindow2, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 59.9999, 0, 1 );
+	m_spinCtrlDouble_lonMinutesSim->SetDigits( 4 );
+	fgSizer25->Add( m_spinCtrlDouble_lonMinutesSim, 0, wxALL, 5 );
 
 	wxString m_choice_lonDirSimChoices[] = { _("E"), _("W") };
 	int m_choice_lonDirSimNChoices = sizeof( m_choice_lonDirSimChoices ) / sizeof( wxString );
 	m_choice_lonDirSim = new wxChoice( m_scrolledWindow2, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_lonDirSimNChoices, m_choice_lonDirSimChoices, 0 );
 	m_choice_lonDirSim->SetSelection( 0 );
-	bSizer_simPos->Add( m_choice_lonDirSim, 0, wxALIGN_CENTER|wxALL, 5 );
-
-	m_button20 = new wxButton( m_scrolledWindow2, wxID_ANY, _("Update"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer_simPos->Add( m_button20, 0, wxALIGN_CENTER|wxALL, 5 );
+	fgSizer25->Add( m_choice_lonDirSim, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
-	bSizer_simPos->Add( 0, 0, 1, wxEXPAND, 5 );
+	bSizer_simPosition->Add( fgSizer25, 0, wxEXPAND, 5 );
+
+	m_staticline28 = new wxStaticLine( m_scrolledWindow2, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_VERTICAL );
+	bSizer_simPosition->Add( m_staticline28, 0, wxEXPAND | wxALL, 5 );
+
+	m_button_updateSimPos = new wxButton( m_scrolledWindow2, wxID_ANY, _("Update ship\nposition"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer_simPosition->Add( m_button_updateSimPos, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
-	bSizer26->Add( bSizer_simPos, 0, wxEXPAND, 5 );
+	bSizer_simPosition->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	bSizer26->Add( bSizer_simPosition, 0, wxEXPAND, 5 );
 
 
 	bSizer26->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticline29 = new wxStaticLine( m_scrolledWindow2, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL );
+	bSizer26->Add( m_staticline29, 0, wxEXPAND | wxALL, 5 );
 
 	wxBoxSizer* bSizer_dataSim;
 	bSizer_dataSim = new wxBoxSizer( wxHORIZONTAL );
@@ -2860,11 +2900,17 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer_dataSim->Add( 0, 0, 1, wxEXPAND, 5 );
 
+	m_staticline30 = new wxStaticLine( m_scrolledWindow2, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL );
+	bSizer_dataSim->Add( m_staticline30, 0, wxEXPAND | wxALL, 5 );
+
 
 	bSizer26->Add( bSizer_dataSim, 0, wxEXPAND, 5 );
 
 
 	bSizer26->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticline32 = new wxStaticLine( m_scrolledWindow2, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL );
+	bSizer26->Add( m_staticline32, 0, wxEXPAND | wxALL, 5 );
 
 	wxBoxSizer* bSizer_commands;
 	bSizer_commands = new wxBoxSizer( wxHORIZONTAL );
@@ -3021,7 +3067,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_panel_sim->SetSizer( bSizer8 );
 	m_panel_sim->Layout();
 	bSizer8->Fit( m_panel_sim );
-	m_notebook->AddPage( m_panel_sim, _("Simulation"), false );
+	m_notebook->AddPage( m_panel_sim, _("Simulation"), true );
 
 	bSizer_main->Add( m_notebook, 1, wxEXPAND, 5 );
 
@@ -3073,7 +3119,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_checkBox_automaticSendBuilder->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( MyDialog::OnCheckBox_AutomaticSendBuilder ), NULL, this );
 	m_spinCtrlDouble_autoSendFreqBuilder->Connect( wxEVT_COMMAND_SPINCTRLDOUBLE_UPDATED, wxSpinDoubleEventHandler( MyDialog::OnSpinCtrlDouble_AutomaticSendFreqBuilder ), NULL, this );
 	m_button_sentenceBuilderHelp->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_OpenSentenceBuilderHelp ), NULL, this );
-	m_button20->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_UpdateSimPos ), NULL, this );
+	m_button_updateSimPos->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_UpdateSimPos ), NULL, this );
 	m_slider_rudderSim->Connect( wxEVT_SCROLL_TOP, wxScrollEventHandler( MyDialog::OnScroll_UpdateRudderAngleSim ), NULL, this );
 	m_slider_rudderSim->Connect( wxEVT_SCROLL_BOTTOM, wxScrollEventHandler( MyDialog::OnScroll_UpdateRudderAngleSim ), NULL, this );
 	m_slider_rudderSim->Connect( wxEVT_SCROLL_LINEUP, wxScrollEventHandler( MyDialog::OnScroll_UpdateRudderAngleSim ), NULL, this );

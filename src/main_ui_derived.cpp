@@ -1286,17 +1286,28 @@ void DialogMainGui::sendSentenceBuilderZDA()
 //Update ship position from cursor position
 void DialogMainGui::updateSimStartPosition(double lat, double lon)
 {
-  // Store raw values
+  // Update ship to cursor position
   latSim = lat;
   lonSim = lon;
 
-  // Convert + display
-  m_textCtrl_latSim->SetValue(utils::formatDDMM(lat, true));
-  m_textCtrl_lonSim->SetValue(utils::formatDDMM(lon, false));
+  // Extract degrees & minutes
+  double absLat = std::abs(lat);
+  double absLon = std::abs(lon);
 
-  // Update direction selectors
-  m_choice_latDirSim->SetSelection(lat < 0); // N/S
-  m_choice_lonDirSim->SetSelection(lon < 0); // E/W
+  int latDeg = static_cast<int>(absLat);
+  int lonDeg = static_cast<int>(absLon);
+
+  double latMin = (absLat - latDeg) * 60.0;
+  double lonMin = (absLon - lonDeg) * 60.0;
+
+  // Update UI
+  m_spinCtrl_latDegSim->SetValue(latDeg);
+  m_spinCtrlDouble_latMinutesSim->SetValue(latMin);
+  m_spinCtrl_lonDegSim->SetValue(lonDeg);
+  m_spinCtrlDouble_lonMinutesSim->SetValue(lonMin);
+
+  m_choice_latDirSim->SetStringSelection(lat < 0 ? "S" : "N");
+  m_choice_lonDirSim->SetStringSelection(lon < 0 ? "W" : "E");
 }
 
 void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
@@ -1371,25 +1382,27 @@ void DialogMainGui::OnToggleButton_StartStopSim(wxCommandEvent& event)
 //Update values from GUI
 void DialogMainGui::OnButtonClick_UpdateSimPos(wxCommandEvent& event)
 {
-  wxString latStr = m_textCtrl_latSim->GetValue();
-  wxString lonStr = m_textCtrl_lonSim->GetValue();
-
+  int latDeg = m_spinCtrl_latDegSim->GetValue();
+  double latMinutes = m_spinCtrlDouble_latMinutesSim->GetValue();
   wxString latDirStr = m_choice_latDirSim->GetStringSelection();
+
+  int lonDeg = m_spinCtrl_lonDegSim->GetValue();
+  double lonMinutes = m_spinCtrlDouble_lonMinutesSim->GetValue();
   wxString lonDirStr = m_choice_lonDirSim->GetStringSelection();
 
-  double latNmea = 0.0;
-  double lonNmea = 0.0;
+  // Build NMEA format
+  double latNmea = latDeg * 100.0 + latMinutes;   // DDMM.MMM
+  double lonNmea = lonDeg * 100.0 + lonMinutes;   // DDDMM.MMM
 
-  if (!latStr.ToDouble(&latNmea) || !lonStr.ToDouble(&lonNmea))
-    return;
-
+  // Convert to decimal degrees
   double lat = utils::NMEA_to_decimal(latNmea);
   double lon = utils::NMEA_to_decimal(lonNmea);
 
-  if (latDirStr == "S")
+  // Apply direction
+  if(latDirStr == "S")
     lat = -lat;
 
-  if (lonDirStr == "W")
+  if(lonDirStr == "W")
     lon = -lon;
 
   latSim = lat;

@@ -14,6 +14,7 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 - Sentences with "!" as first character are accepted.  
 - Convert simulation START/STOP button into a toggle button to indicate state.
+- Easier position input in "Simulation tab"
 
 ###
 ## [v1.0.0] / 2026-04-15
