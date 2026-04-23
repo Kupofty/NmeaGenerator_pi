@@ -668,42 +668,41 @@ void DialogMainGui::OnButtonClick_OpenSentenceBuilderHelp(wxCommandEvent& event)
   wxDialog* dlg = new wxDialog(
       this,
       wxID_ANY,
-      _("NMEA Format Help (Units & Field Structure)"),
+      _("NMEA Format Help"),
       wxDefaultPosition,
-      wxSize(400, 300),
+      wxSize(450, 220),
       wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER
       );
 
   wxBoxSizer* sizer = new wxBoxSizer(wxVERTICAL);
 
-  wxTextCtrl* text = new wxTextCtrl(
+  wxStaticText* info = new wxStaticText(
       dlg,
       wxID_ANY,
-      _("This help explains the expected NMEA units and formats required in this tool:")+"\n\n"
-      "UTC Time: hhmmss\n"
-      "Latitude: ddmm.mmmm\n"
-      "Longitude: dddmm.mmmm\n"
-      "COG: degrees\n"
-      "Date: ddmmyy\n"
-      "Mag Var: degrees\n"
-      "Heading: degrees\n"
-      "ROT: deg/min",
-      wxDefaultPosition,
-      wxDefaultSize,
-      wxTE_MULTILINE | wxTE_READONLY | wxTE_RICH2
+      _("Refer to NMEA documentation for detailed information \n on sentence structure, fields, and units:")
       );
 
-  sizer->Add(text, 1, wxEXPAND | wxALL, 10);
+  sizer->AddStretchSpacer(1);
+  sizer->Add(info, 0, wxALIGN_CENTER_HORIZONTAL | wxBOTTOM, 10);
 
-  // Clickable link
-  wxHyperlinkCtrl* link = new wxHyperlinkCtrl(
+  wxHyperlinkCtrl* link1 = new wxHyperlinkCtrl(
       dlg,
       wxID_ANY,
-      _("Open full NMEA reference"),
+      _("OpenCPN NMEA Communication"),
+      "https://opencpn.org/wiki/dokuwiki/doku.php?id=opencpn:manual_basic:nmea0183"
+      );
+
+  wxHyperlinkCtrl* link2 = new wxHyperlinkCtrl(
+      dlg,
+      wxID_ANY,
+      _("NMEA Revealed"),
       "https://gpsd.gitlab.io/gpsd/NMEA.html"
       );
 
-  sizer->Add(link, 0, wxALIGN_CENTER | wxLEFT | wxRIGHT | wxBOTTOM, 10);
+  sizer->Add(link1, 0, wxALIGN_CENTER_HORIZONTAL | wxBOTTOM, 8);
+  sizer->Add(link2, 0, wxALIGN_CENTER_HORIZONTAL | wxBOTTOM, 8);
+
+  sizer->AddStretchSpacer(1);
 
   dlg->SetSizer(sizer);
   dlg->Layout();
@@ -712,7 +711,6 @@ void DialogMainGui::OnButtonClick_OpenSentenceBuilderHelp(wxCommandEvent& event)
   dlg->ShowModal();
   dlg->Destroy();
 }
-
 //Autosend checkboxes
 void DialogMainGui::OnToggleButton_CheckAllBuilders(wxCommandEvent& event)
 {

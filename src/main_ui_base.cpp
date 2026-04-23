@@ -2484,7 +2484,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	fgSizer_XDR->Add( m_staticText911, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_staticText1111 = new wxStaticText( sbSizer_XDR->GetStaticBox(), wxID_ANY, _("Measure"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_staticText1111 = new wxStaticText( sbSizer_XDR->GetStaticBox(), wxID_ANY, _("Measurement"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
 	m_staticText1111->Wrap( -1 );
 	fgSizer_XDR->Add( m_staticText1111, 0, wxALIGN_CENTER|wxALL, 5 );
 
