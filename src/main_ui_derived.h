@@ -88,6 +88,7 @@ class DialogMainGui : public MyDialog
     void sendNmeaToOCPN(wxString sentence);
     void sendManualInput();
     void updateAutoSendBuildersCheckboxes(bool check);
+    void sendAndMaybeCopy(const wxString& msg);
 
     //Generic "create nmea" functions
     wxString createGLL(wxString talker, wxString lat, wxString latDir, wxString lon, wxString lonDir, wxString time, wxString status, wxString mode);

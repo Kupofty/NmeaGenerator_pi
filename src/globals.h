@@ -26,4 +26,6 @@ extern int g_windowPosY;
 
 extern bool g_sendDataAfterWindowClose;
 
+extern bool g_copyNmeaToClipboard;
+
 #endif //GLOBALS_H

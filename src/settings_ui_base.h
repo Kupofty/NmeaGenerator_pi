@@ -42,6 +42,7 @@ class DialogSettingsBase : public wxDialog
 		wxCheckBox* m_checkBox_restoreWindowPos;
 		wxCheckBox* m_checkBox_restoreWindowSize;
 		wxCheckBox* m_checkBox_keepSendingData;
+		wxCheckBox* m_checkBox_copyNmeaToClipboard;
 		wxStaticLine* m_staticline1;
 		wxButton* buttonOK;
 		wxButton* buttonApply;
@@ -54,7 +55,7 @@ class DialogSettingsBase : public wxDialog
 
 	public:
 
-		DialogSettingsBase( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("NmeaGenerator Plugin Preferences"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 352,282 ), long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
+		DialogSettingsBase( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("NmeaGenerator Plugin Preferences"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 352,331 ), long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
 
 		~DialogSettingsBase();
 

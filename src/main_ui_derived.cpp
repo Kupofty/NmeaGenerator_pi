@@ -711,6 +711,7 @@ void DialogMainGui::OnButtonClick_OpenSentenceBuilderHelp(wxCommandEvent& event)
   dlg->ShowModal();
   dlg->Destroy();
 }
+
 //Autosend checkboxes
 void DialogMainGui::OnToggleButton_CheckAllBuilders(wxCommandEvent& event)
 {
@@ -782,148 +783,76 @@ void DialogMainGui::OnTimer_autoSendBuilder(wxTimerEvent& event)
 {
   //Only send sentence if auto-checkbox is checked
   if(m_checkBox_autoSendGLL->GetValue())
-  {
-    wxString gll = createFromGuiGLL();
-    sendNmeaToOCPN(gll);
-  }
+    sendNmeaToOCPN(createFromGuiGLL());
 
   if(m_checkBox_autoSendRMC->GetValue())
-  {
-    wxString rmc = createFromGuiRMC();
-    sendNmeaToOCPN(rmc);
-  }
+    sendNmeaToOCPN(createFromGuiRMC());
 
   if(m_checkBox_autoSendGGA->GetValue())
-  {
-    wxString gga = createFromGuiGGA();
-    sendNmeaToOCPN(gga);
-  }
+    sendNmeaToOCPN(createFromGuiGGA());
 
   if(m_checkBox_autoSendHDT->GetValue())
-  {
-    wxString hdt = createFromGuiHDT();
-    sendNmeaToOCPN(hdt);
-  }
+    sendNmeaToOCPN(createFromGuiHDT());
 
   if(m_checkBox_autoSendHDM->GetValue())
-  {
-    wxString hdm = createFromGuiHDM();
-    sendNmeaToOCPN(hdm);
-  }
+    sendNmeaToOCPN(createFromGuiHDM());
 
   if(m_checkBox_autoSendHDG->GetValue())
-  {
-    wxString hdg = createFromGuiHDG();
-    sendNmeaToOCPN(hdg);
-  }
+    sendNmeaToOCPN(createFromGuiHDG());
 
   if(m_checkBox_autoSendMTW->GetValue())
-  {
-    wxString mtw = createFromGuiMTW();
-    sendNmeaToOCPN(mtw);
-  }
+    sendNmeaToOCPN(createFromGuiMTW());
 
   if(m_checkBox_autoSendTLL->GetValue())
-  {
-    wxString tll = createFromGuiTLL();
-    sendNmeaToOCPN(tll);
-  }
+    sendNmeaToOCPN(createFromGuiTLL());
 
   if(m_checkBox_autoSendROT->GetValue())
-  {
-    wxString rot = createFromGuiROT();
-    sendNmeaToOCPN(rot);
-  }
+    sendNmeaToOCPN(createFromGuiROT());
 
   if(m_checkBox_autoSendRSA->GetValue())
-  {
-    wxString rsa = createFromGuiRSA();
-    sendNmeaToOCPN(rsa);
-  }
+    sendNmeaToOCPN(createFromGuiRSA());
 
   if(m_checkBox_autoSendDPT->GetValue())
-  {
-    wxString dpt = createFromGuiDPT();
-    sendNmeaToOCPN(dpt);
-  }
+    sendNmeaToOCPN(createFromGuiDPT());
 
   if(m_checkBox_autoSendDBx->GetValue())
-  {
-    wxString dbx = createFromGuiDBx();
-    sendNmeaToOCPN(dbx);
-  }
+    sendNmeaToOCPN(createFromGuiDBx());
 
   if(m_checkBox_autoSendTHS->GetValue())
-  {
-    wxString ths = createFromGuiTHS();
-    sendNmeaToOCPN(ths);
-  }
+    sendNmeaToOCPN(createFromGuiTHS());
 
   if(m_checkBox_autoSendWPL->GetValue())
-  {
-    wxString wpl = createFromGuiWPL();
-    sendNmeaToOCPN(wpl);
-  }
+    sendNmeaToOCPN(createFromGuiWPL());
 
   if(m_checkBox_autoSendVTG->GetValue())
-  {
-    wxString vtg = createFromGuiVTG();
-    sendNmeaToOCPN(vtg);
-  }
+    sendNmeaToOCPN(createFromGuiVTG());
 
   if(m_checkBox_autoSendGSV->GetValue())
-  {
-    wxString gsv = createFromGuiGSV();
-    sendNmeaToOCPN(gsv);
-  }
+    sendNmeaToOCPN(createFromGuiGSV());
 
   if(m_checkBox_autoSendXDR->GetValue())
-  {
-    wxString xdr = createFromGuiXDR();
-    sendNmeaToOCPN(xdr);
-  }
+    sendNmeaToOCPN(createFromGuiXDR());
 
   if(m_checkBox_autoSendOSD->GetValue())
-  {
-    wxString osd = createFromGuiOSD();
-    sendNmeaToOCPN(osd);
-  }
+    sendNmeaToOCPN(createFromGuiOSD());
 
   if(m_checkBox_autoSendMWV->GetValue())
-  {
-    wxString mwv = createFromGuiMWV();
-    sendNmeaToOCPN(mwv);
-  }
+    sendNmeaToOCPN(createFromGuiMWV());
 
   if(m_checkBox_autoSendMWD->GetValue())
-  {
-    wxString mwd = createFromGuiMWD();
-    sendNmeaToOCPN(mwd);
-  }
+    sendNmeaToOCPN(createFromGuiMWD());
 
   if(m_checkBox_autoSendVDR->GetValue())
-  {
-    wxString vdr = createFromGuiVDR();
-    sendNmeaToOCPN(vdr);
-  }
+    sendNmeaToOCPN(createFromGuiVDR());
 
   if(m_checkBox_autoSendVHW->GetValue())
-  {
-    wxString vhw = createFromGuiVHW();
-    sendNmeaToOCPN(vhw);
-  }
+    sendNmeaToOCPN(createFromGuiVHW());
 
   if(m_checkBox_autoSendVWR->GetValue())
-  {
-    wxString vwr = createFromGuiVWR();
-    sendNmeaToOCPN(vwr);
-  }
+    sendNmeaToOCPN(createFromGuiVWR());
 
   if(m_checkBox_autoSendZDA->GetValue())
-  {
-    wxString zda = createFromGuiZDA();
-    sendNmeaToOCPN(zda);
-  }
+    sendNmeaToOCPN(createFromGuiZDA());
 }
 
 
@@ -985,149 +914,139 @@ void DialogMainGui::OnChoice_UpdateXDR(wxCommandEvent& event)
 }
 
 
+//Send logic
+void DialogMainGui::sendAndMaybeCopy(const wxString& msg)
+{
+  if(msg.IsEmpty())
+    return;
+
+  sendNmeaToOCPN(msg);
+
+  //Copy to clipboard if setting is activated
+  if(g_copyNmeaToClipboard)
+    copyToClipboard(msg);
+}
+
+
 //Send buttons callbacks
 void DialogMainGui::OnButtonClick_SendGLL(wxCommandEvent& event)
 {
-  wxString gll = createFromGuiGLL();
-  sendNmeaToOCPN(gll);
+  sendAndMaybeCopy(createFromGuiGLL());
 }
 
 void DialogMainGui::OnButtonClick_SendRMC(wxCommandEvent& event)
 {
-  wxString rmc = createFromGuiRMC();
-  sendNmeaToOCPN(rmc);
+  sendAndMaybeCopy(createFromGuiRMC());
 }
 
 void DialogMainGui::OnButtonClick_SendGGA(wxCommandEvent& event)
 {
-  wxString gga = createFromGuiGGA();
-  sendNmeaToOCPN(gga);
+  sendAndMaybeCopy(createFromGuiGGA());
 }
 
 void DialogMainGui::OnButtonClick_SendHDT(wxCommandEvent& event)
 {
-  wxString hdt = createFromGuiHDT();
-  sendNmeaToOCPN(hdt);
+  sendAndMaybeCopy(createFromGuiHDT());
 }
 
 void DialogMainGui::OnButtonClick_SendHDM(wxCommandEvent& event)
 {
-  wxString hdm = createFromGuiHDM();
-  sendNmeaToOCPN(hdm);
+  sendAndMaybeCopy(createFromGuiHDM());
 }
 
 void DialogMainGui::OnButtonClick_SendHDG(wxCommandEvent& event)
 {
-  wxString hdg = createFromGuiHDG();
-  sendNmeaToOCPN(hdg);
+  sendAndMaybeCopy(createFromGuiHDG());
 }
 
 void DialogMainGui::OnButtonClick_SendMTW(wxCommandEvent& event)
 {
-  wxString mtw = createFromGuiMTW();
-  sendNmeaToOCPN(mtw);
+  sendAndMaybeCopy(createFromGuiMTW());
 }
 
 void DialogMainGui::OnButtonClick_SendTLL(wxCommandEvent& event)
 {
-  wxString tll = createFromGuiTLL();
-  sendNmeaToOCPN(tll);
+  sendAndMaybeCopy(createFromGuiTLL());
 }
 
 void DialogMainGui::OnButtonClick_SendROT(wxCommandEvent& event)
 {
-  wxString rot = createFromGuiROT();
-  sendNmeaToOCPN(rot);
+  sendAndMaybeCopy(createFromGuiROT());
 }
 
 void DialogMainGui::OnButtonClick_SendRSA(wxCommandEvent& event)
 {
-  wxString rsa = createFromGuiRSA();
-  sendNmeaToOCPN(rsa);
+  sendAndMaybeCopy(createFromGuiRSA());
 }
 
 void DialogMainGui::OnButtonClick_SendDPT(wxCommandEvent& event)
 {
-  wxString dpt = createFromGuiDPT();
-  sendNmeaToOCPN(dpt);
+  sendAndMaybeCopy(createFromGuiDPT());
 }
 
 void DialogMainGui::OnButtonClick_SendDBx(wxCommandEvent& event)
 {
-  wxString dbx = createFromGuiDBx();
-  sendNmeaToOCPN(dbx);
+  sendAndMaybeCopy(createFromGuiDBx());
 }
 
 void DialogMainGui::OnButtonClick_SendTHS(wxCommandEvent& event)
 {
-  wxString ths = createFromGuiTHS();
-  sendNmeaToOCPN(ths);
+  sendAndMaybeCopy(createFromGuiTHS());
 }
 
 void DialogMainGui::OnButtonClick_SendWPL(wxCommandEvent& event)
 {
-  wxString wpl = createFromGuiWPL();
-  sendNmeaToOCPN(wpl);
+  sendAndMaybeCopy(createFromGuiWPL());
 }
 
 void DialogMainGui::OnButtonClick_SendVTG(wxCommandEvent& event)
 {
-  wxString vtg = createFromGuiVTG();
-  sendNmeaToOCPN(vtg);
+  sendAndMaybeCopy(createFromGuiVTG());
 }
 
 void DialogMainGui::OnButtonClick_SendGSV(wxCommandEvent& event)
 {
-  wxString gsv = createFromGuiGSV();
-  sendNmeaToOCPN(gsv);
+  sendAndMaybeCopy(createFromGuiGSV());
 }
 
 void DialogMainGui::OnButtonClick_SendXDR(wxCommandEvent& event)
 {
-  wxString xdr = createFromGuiXDR();
-  sendNmeaToOCPN(xdr);
+  sendAndMaybeCopy(createFromGuiXDR());
 }
 
 void DialogMainGui::OnButtonClick_SendOSD(wxCommandEvent& event)
 {
-  wxString osd = createFromGuiOSD();
-  sendNmeaToOCPN(osd);
+  sendAndMaybeCopy(createFromGuiOSD());
 }
 
 void DialogMainGui::OnButtonClick_SendMWV(wxCommandEvent& event)
 {
-  wxString mwv = createFromGuiMWV();
-  sendNmeaToOCPN(mwv);
+  sendAndMaybeCopy(createFromGuiMWV());
 }
 
 void DialogMainGui::OnButtonClick_SendMWD(wxCommandEvent& event)
 {
-  wxString mwd = createFromGuiMWD();
-  sendNmeaToOCPN(mwd);
+  sendAndMaybeCopy(createFromGuiMWD());
 }
 
 void DialogMainGui::OnButtonClick_SendVDR(wxCommandEvent& event)
 {
-  wxString vdr = createFromGuiVDR();
-  sendNmeaToOCPN(vdr);
+  sendAndMaybeCopy(createFromGuiVDR());
 }
 
 void DialogMainGui::OnButtonClick_SendVHW(wxCommandEvent& event)
 {
-  wxString vhw = createFromGuiVHW();
-  sendNmeaToOCPN(vhw);
+  sendAndMaybeCopy(createFromGuiVHW());
 }
 
 void DialogMainGui::OnButtonClick_SendVWR(wxCommandEvent& event)
 {
-  wxString vwr = createFromGuiVWR();
-  sendNmeaToOCPN(vwr);
+  sendAndMaybeCopy(createFromGuiVWR());
 }
 
 void DialogMainGui::OnButtonClick_SendZDA(wxCommandEvent& event)
 {
-  wxString zda = createFromGuiZDA();
-  sendNmeaToOCPN(zda);
+  sendAndMaybeCopy(createFromGuiZDA());
 }
 
 
@@ -1439,6 +1358,7 @@ wxString DialogMainGui::createFromGuiZDA()
   wxString zda = createZDA(talker, time, day, month, year, hourOffset, minuteOffset);
   return zda;
 }
+
 
 
 

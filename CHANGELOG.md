@@ -6,10 +6,12 @@ All notable changes to this project will be documented in this file.
 ## [v1.0.1] / 2026-xx-xx
 
 ### Added
-- Plugin window can be maximized/minimized & Settings window can be resized
-- Button to copy sentence in "Manual Input" tab
+- Plugin window can be maximized/minimized
+- Settings window can be resized
 - Checksum verificator in "Manual Input" tab
 - New option in settings to keep sending data when window is closed
+- Button to copy sentence in "Manual Input" tab
+- New option to automatically copy NMEA sentence to clipboard when manually sending in "Sentence builder"
 
 ### Fixed
 - Sentences with "!" as first character are accepted.  

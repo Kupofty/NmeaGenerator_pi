@@ -169,6 +169,8 @@ void NmeaGeneratorPlugin::LoadSettings()
     configSettings->Read("WindowPosY", &g_windowPosY, 0);
 
     configSettings->Read("SendDataAfterWindowClose", &g_sendDataAfterWindowClose, 0);
+
+    configSettings->Read("CopyNmeaToClipboardOnManualSend", &g_copyNmeaToClipboard, 0);
   }
 }
 
@@ -205,6 +207,9 @@ void NmeaGeneratorPlugin::SaveSettings()
     configSettings->Write("WindowPosY", g_windowPosY);
 
     configSettings->Write("SendDataAfterWindowClose", g_sendDataAfterWindowClose);
+
+    configSettings->Write("CopyNmeaToClipboardOnManualSend", g_copyNmeaToClipboard);
+
   }
 }
 
