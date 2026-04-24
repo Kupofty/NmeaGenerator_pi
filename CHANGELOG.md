@@ -12,6 +12,7 @@ All notable changes to this project will be documented in this file.
 - New option in settings to keep sending data when window is closed
 - Button to copy sentence in "Manual Input" tab
 - New option to automatically copy NMEA sentence to clipboard when manually sending in "Sentence builder"
+- Configurable timer for sending simulation data
 
 ### Fixed
 - Sentences with "!" as first character are accepted.  

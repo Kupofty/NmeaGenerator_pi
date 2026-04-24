@@ -525,6 +525,9 @@ class MyDialog : public wxDialog
 		wxButton* m_button_resetThrottle;
 		wxStaticLine* m_staticline15;
 		wxToggleButton* m_toggleBtn_startStopSim;
+		wxStaticText* m_staticText2061;
+		wxSpinCtrlDouble* m_spinCtrlDouble_simFreqTimer;
+		wxStaticText* m_staticText2071;
 
 		// Virtual event handlers, override them in your derived class
 		virtual void OnClose( wxCloseEvent& event ) { event.Skip(); }
@@ -574,6 +577,7 @@ class MyDialog : public wxDialog
 		virtual void OnScroll_UpdateThrottleSim( wxScrollEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_ResetThrottle( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnToggleButton_StartStopSim( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnSpinCtrlDouble_UpdateFreqTimerSim( wxSpinDoubleEvent& event ) { event.Skip(); }
 
 
 	public:

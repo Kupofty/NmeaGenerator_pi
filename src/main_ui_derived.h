@@ -57,6 +57,7 @@ class DialogMainGui : public MyDialog
     void OnButtonClick_ResetThrottle(wxCommandEvent& event) override;
     void OnChoice_UpdateXDR(wxCommandEvent& event) override;
     void OnButtonClick_copyManualSentence(wxCommandEvent& event) override;
+    void OnSpinCtrlDouble_UpdateFreqTimerSim(wxSpinDoubleEvent& event) override;
 
     void OnButtonClick_SendGLL(wxCommandEvent& event) override;
     void OnButtonClick_SendRMC(wxCommandEvent& event) override;

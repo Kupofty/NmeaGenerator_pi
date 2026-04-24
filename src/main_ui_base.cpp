@@ -2709,7 +2709,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_panel_list->SetSizer( bSizer9 );
 	m_panel_list->Layout();
 	bSizer9->Fit( m_panel_list );
-	m_notebook->AddPage( m_panel_list, _("Sentence Builder"), true );
+	m_notebook->AddPage( m_panel_list, _("Sentence Builder"), false );
 	m_panel_sim = new wxPanel( m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer8;
 	bSizer8 = new wxBoxSizer( wxVERTICAL );
@@ -2732,7 +2732,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText901->Wrap( -1 );
 	bSizer_shipType->Add( m_staticText901, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	wxString m_choice_shipTypeChoices[] = { _("Own ship"), _("AIS target") };
+	wxString m_choice_shipTypeChoices[] = { _("Own ship"), _("TLL target") };
 	int m_choice_shipTypeNChoices = sizeof( m_choice_shipTypeChoices ) / sizeof( wxString );
 	m_choice_shipType = new wxChoice( m_scrolledWindow2, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_shipTypeNChoices, m_choice_shipTypeChoices, 0 );
 	m_choice_shipType->SetSelection( 0 );
@@ -2816,7 +2816,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticline28 = new wxStaticLine( m_scrolledWindow2, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_VERTICAL );
 	bSizer_simPosition->Add( m_staticline28, 0, wxEXPAND | wxALL, 5 );
 
-	m_button_updateSimPos = new wxButton( m_scrolledWindow2, wxID_ANY, _("Update ship\nposition"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_button_updateSimPos = new wxButton( m_scrolledWindow2, wxID_ANY, _("Update\nposition"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer_simPosition->Add( m_button_updateSimPos, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
@@ -2940,7 +2940,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	bSizer29->Add( 0, 0, 1, wxEXPAND, 5 );
 
 
-	bSizer_turnRate->Add( bSizer29, 1, wxEXPAND, 5 );
+	bSizer_turnRate->Add( bSizer29, 0, wxEXPAND, 5 );
 
 	wxBoxSizer* bSizer36;
 	bSizer36 = new wxBoxSizer( wxHORIZONTAL );
@@ -2965,13 +2965,13 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	bSizer36->Add( 0, 0, 1, wxEXPAND, 5 );
 
 
-	bSizer_turnRate->Add( bSizer36, 1, wxEXPAND, 5 );
+	bSizer_turnRate->Add( bSizer36, 0, wxEXPAND, 5 );
 
 	m_button_resetRudder = new wxButton( m_scrolledWindow2, wxID_ANY, _("Reset"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer_turnRate->Add( m_button_resetRudder, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
-	bSizer_commands->Add( bSizer_turnRate, 1, wxEXPAND, 5 );
+	bSizer_commands->Add( bSizer_turnRate, 1, 0, 5 );
 
 	wxBoxSizer* bSizer_simSpeed;
 	bSizer_simSpeed = new wxBoxSizer( wxVERTICAL );
@@ -2998,7 +2998,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	bSizer_simSpeed2->Add( 0, 0, 1, wxEXPAND, 5 );
 
 
-	bSizer_simSpeed->Add( bSizer_simSpeed2, 1, wxEXPAND, 5 );
+	bSizer_simSpeed->Add( bSizer_simSpeed2, 0, wxEXPAND, 5 );
 
 	wxBoxSizer* bSizer35;
 	bSizer35 = new wxBoxSizer( wxHORIZONTAL );
@@ -3023,7 +3023,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	bSizer35->Add( 0, 0, 1, wxEXPAND, 5 );
 
 
-	bSizer_simSpeed->Add( bSizer35, 1, wxEXPAND, 5 );
+	bSizer_simSpeed->Add( bSizer35, 0, wxEXPAND, 5 );
 
 	m_button_resetThrottle = new wxButton( m_scrolledWindow2, wxID_ANY, _("Reset"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer_simSpeed->Add( m_button_resetThrottle, 0, wxALIGN_CENTER|wxALL, 5 );
@@ -3060,6 +3060,21 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer_StartStopSim->Add( 0, 0, 1, wxEXPAND, 5 );
 
+	m_staticText2061 = new wxStaticText( m_panel_sim, wxID_ANY, _("Send NMEA every"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText2061->Wrap( -1 );
+	bSizer_StartStopSim->Add( m_staticText2061, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_spinCtrlDouble_simFreqTimer = new wxSpinCtrlDouble( m_panel_sim, wxID_ANY, wxT("1"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0.1, 10, 1, 0.1 );
+	m_spinCtrlDouble_simFreqTimer->SetDigits( 1 );
+	bSizer_StartStopSim->Add( m_spinCtrlDouble_simFreqTimer, 0, wxALL, 5 );
+
+	m_staticText2071 = new wxStaticText( m_panel_sim, wxID_ANY, _("second(s)"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText2071->Wrap( -1 );
+	bSizer_StartStopSim->Add( m_staticText2071, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	bSizer_StartStopSim->Add( 0, 0, 1, wxEXPAND, 5 );
+
 
 	bSizer8->Add( bSizer_StartStopSim, 0, wxEXPAND, 5 );
 
@@ -3067,7 +3082,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_panel_sim->SetSizer( bSizer8 );
 	m_panel_sim->Layout();
 	bSizer8->Fit( m_panel_sim );
-	m_notebook->AddPage( m_panel_sim, _("Simulation"), false );
+	m_notebook->AddPage( m_panel_sim, _("Simulation"), true );
 
 	bSizer_main->Add( m_notebook, 1, wxEXPAND, 5 );
 
@@ -3141,6 +3156,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_slider_throttleSim->Connect( wxEVT_SCROLL_CHANGED, wxScrollEventHandler( MyDialog::OnScroll_UpdateThrottleSim ), NULL, this );
 	m_button_resetThrottle->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_ResetThrottle ), NULL, this );
 	m_toggleBtn_startStopSim->Connect( wxEVT_COMMAND_TOGGLEBUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnToggleButton_StartStopSim ), NULL, this );
+	m_spinCtrlDouble_simFreqTimer->Connect( wxEVT_COMMAND_SPINCTRLDOUBLE_UPDATED, wxSpinDoubleEventHandler( MyDialog::OnSpinCtrlDouble_UpdateFreqTimerSim ), NULL, this );
 }
 
 MyDialog::~MyDialog()

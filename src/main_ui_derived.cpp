@@ -588,13 +588,13 @@ void DialogMainGui::OnInputTextChanged(wxCommandEvent& event)
     wxString userChecksum = "*" + payload.Mid(asteriskPos + 1, 2);
 
     if(userChecksum.CmpNoCase(checksumStr) == 0)
-      m_staticText_isChecksumCorrect->SetLabel("Correct checksum");
+      m_staticText_isChecksumCorrect->SetLabel(_("Correct checksum"));
     else
-      m_staticText_isChecksumCorrect->SetLabel("Incorrect checksum");
+      m_staticText_isChecksumCorrect->SetLabel(_("Incorrect checksum"));
   }
   else
   {
-    m_staticText_isChecksumCorrect->SetLabel("No checksum detected");
+    m_staticText_isChecksumCorrect->SetLabel(_("No checksum detected"));
   }
 
 }
@@ -1458,13 +1458,23 @@ void DialogMainGui::OnToggleButton_StartStopSim(wxCommandEvent& event)
 
   if (isPressed)
   {
-    m_timer_autoSendSim.Start(1000);
+    int timeInterval = m_spinCtrlDouble_simFreqTimer->GetValue() * 1000; //milliseconds
+    m_timer_autoSendSim.Start(timeInterval);
     m_toggleBtn_startStopSim->SetLabel(_("STOP"));
   }
   else
   {
     m_timer_autoSendSim.Stop();
     m_toggleBtn_startStopSim->SetLabel(_("START"));
+  }
+}
+
+void DialogMainGui::OnSpinCtrlDouble_UpdateFreqTimerSim(wxSpinDoubleEvent& event)
+{
+  if(m_toggleBtn_startStopSim->GetValue()) //if timer is running
+  {
+    int timeInterval = m_spinCtrlDouble_simFreqTimer->GetValue() * 1000; //milliseconds
+    m_timer_autoSendSim.Start(timeInterval);
   }
 }
 
