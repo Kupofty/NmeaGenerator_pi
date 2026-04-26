@@ -45,13 +45,6 @@ DialogMainGui::DialogMainGui(wxWindow* parent, wxWindowID id, const wxString& ti
       {sbSizer_ZDA->GetStaticBox()->GetLabel(), sbSizer_ZDA}
   };
 
-  //Init simu data
-  latSim = 0;
-  lonSim = 0;
-  headingSim = 0;
-  rudderAngleSim = 0;
-  directionSignSim = 1;
-  speedSim = 0;
 }
 
 DialogMainGui::~DialogMainGui()
@@ -1370,8 +1363,8 @@ wxString DialogMainGui::createFromGuiZDA()
 void DialogMainGui::updateSimStartPosition(double lat, double lon)
 {
   // Update ship to cursor position
-  latSim = lat;
-  lonSim = lon;
+  shipSimu.lat = lat;
+  shipSimu.lon = lon;
 
   // Extract degrees & minutes
   double absLat = std::abs(lat);
@@ -1396,9 +1389,9 @@ void DialogMainGui::updateSimStartPosition(double lat, double lon)
 void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
 {
   //Update position
-  GeoPos pos = utils::updatePosition(latSim, lonSim, speedSim, headingSim, m_timer_autoSendSim.GetInterval());
-  latSim = pos.lat;
-  lonSim = pos.lon;
+  GeoPos pos = utils::updatePosition(shipSimu.lat, shipSimu.lon, shipSimu.speed, shipSimu.heading, m_timer_autoSendSim.GetInterval());
+  shipSimu.lat = pos.lat;
+  shipSimu.lon = pos.lon;
 
   //Get date & time
   std::time_t now = std::time(nullptr);
@@ -1406,30 +1399,30 @@ void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
 
   //Update heading & cog
   double dt = 1;
-  headingSim = fmod(headingSim + (rudderAngleSim * directionSignSim) * dt, 360.0);
-  if (headingSim < 0)
-    headingSim += 360.0;
+  shipSimu.heading = fmod(shipSimu.heading + (shipSimu.rudderAngle * shipSimu.directionSign) * dt, 360.0);
+  if (shipSimu.heading < 0)
+    shipSimu.heading += 360.0;
 
-  double cogSim = headingSim;
-  if (directionSignSim < 0)
-    cogSim = fmod(headingSim + 180.0, 360.0);
+  double cogSim = shipSimu.heading;
+  if (shipSimu.directionSign < 0)
+    cogSim = fmod(shipSimu.heading + 180.0, 360.0);
 
   //Convert data to wxString
-  wxString latDir = utils::getLatDir(latSim);
-  wxString lonDir = utils::getLonDir(lonSim);
-  wxString latStr = utils::toNMEA_lat(fabs(latSim));
-  wxString lonStr = utils::toNMEA_lon(fabs(lonSim));
+  wxString latDir = utils::getLatDir(shipSimu.lat);
+  wxString lonDir = utils::getLonDir(shipSimu.lon);
+  wxString latStr = utils::toNMEA_lat(fabs(shipSimu.lat));
+  wxString lonStr = utils::toNMEA_lon(fabs(shipSimu.lon));
 
-  wxString speedStr = wxString::Format("%.1f", fabs(speedSim));
-  wxString headingStr = wxString::Format("%.1f", headingSim);
+  wxString speedStr = wxString::Format("%.1f", fabs(shipSimu.speed));
+  wxString headingStr = wxString::Format("%.1f", shipSimu.heading);
   wxString cogStr = wxString::Format("%.1f", cogSim);
-  wxString rudderStr = wxString::Format("%.1f", rudderAngleSim);
+  wxString rudderStr = wxString::Format("%.1f", shipSimu.rudderAngle);
 
   wxString timeStr = wxString::Format("%02d%02d%02d", utc.tm_hour, utc.tm_min, utc.tm_sec);
   wxString dateStr = wxString::Format("%02d%02d%02d", utc.tm_mday, utc.tm_mon + 1, utc.tm_year % 100);
 
   //Update UI
-  m_staticText_headingSim->SetLabel(wxString::Format("%.0f", headingSim));
+  m_staticText_headingSim->SetLabel(wxString::Format("%.0f", shipSimu.heading));
   m_staticText_cogSim->SetLabel(wxString::Format("%.0f", cogSim));
 
   //Send NMEA
@@ -1504,33 +1497,33 @@ void DialogMainGui::OnButtonClick_UpdateSimPos(wxCommandEvent& event)
   if(lonDirStr == "W")
     lon = -lon;
 
-  latSim = lat;
-  lonSim = lon;
+  shipSimu.lat = lat;
+  shipSimu.lon = lon;
 }
 
 void DialogMainGui::OnScroll_UpdateThrottleSim(wxScrollEvent& event)
 {
   double throttle = m_slider_throttleSim->GetValue();
-  speedSim = throttle; //speed = throttle
-  directionSignSim = (throttle >= 0) ? 1 : -1; //heading is decremented when boat is going reverse
+  shipSimu.speed = throttle; //speed = throttle
+  shipSimu.directionSign = (throttle >= 0) ? 1 : -1; //heading is decremented when boat is going reverse
 
-  wxString throttleStr = wxString::Format("%.0f", speedSim);
+  wxString throttleStr = wxString::Format("%.0f", shipSimu.speed);
   m_staticText_throttleSim->SetLabel(throttleStr);
-  wxString speedStr = wxString::Format("%.0f", fabs(speedSim));
+  wxString speedStr = wxString::Format("%.0f", fabs(shipSimu.speed));
   m_staticText_speedSim->SetLabel(speedStr);
 }
 
 void DialogMainGui::OnScroll_UpdateRudderAngleSim(wxScrollEvent& event)
 {
-  rudderAngleSim = m_slider_rudderSim->GetValue();
+  shipSimu.rudderAngle = m_slider_rudderSim->GetValue();
 
-  wxString rudderStr = wxString::Format("%.0f", rudderAngleSim);
+  wxString rudderStr = wxString::Format("%.0f", shipSimu.rudderAngle);
   m_staticText_rudderAngleSim->SetLabel(rudderStr);
 }
 
 void DialogMainGui::OnButtonClick_ResetRudder(wxCommandEvent& event)
 {
-  rudderAngleSim = 0;
+  shipSimu.rudderAngle = 0;
 
   m_slider_rudderSim->SetValue(0);
   m_staticText_rudderAngleSim->SetLabel("0");
@@ -1538,7 +1531,7 @@ void DialogMainGui::OnButtonClick_ResetRudder(wxCommandEvent& event)
 
 void DialogMainGui::OnButtonClick_ResetThrottle(wxCommandEvent& event)
 {
-  speedSim = 0;
+  shipSimu.speed = 0;
 
   m_slider_throttleSim->SetValue(0);
   m_staticText_throttleSim->SetLabel("0");

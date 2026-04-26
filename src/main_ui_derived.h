@@ -20,6 +20,16 @@ struct TimerItem
   wxCheckBox* checkbox;
 };
 
+struct SimVessel
+{
+  double lat = 0;
+  double lon = 0 ;
+  double heading = 0;
+  double speed = 0;
+  double rudderAngle = 0;
+  int directionSign = 1;
+};
+
 class DialogMainGui : public MyDialog
 {
   public:
@@ -146,13 +156,8 @@ class DialogMainGui : public MyDialog
     bool addAutoChecksum;
     std::vector<SectionItem> sbSizerListSentenceBuilder;
 
-    //Sim data
-    double latSim;
-    double lonSim;
-    double headingSim;
-    double rudderAngleSim;
-    int directionSignSim;
-    double speedSim;
+    //Simulation
+    SimVessel shipSimu;
 };
 
 #endif //DIALOG_MAIN_GUI
