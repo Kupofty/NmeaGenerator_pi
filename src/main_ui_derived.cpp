@@ -1398,7 +1398,8 @@ void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
   std::tm utc = *std::gmtime(&now);
 
   //Update heading & cog
-  double dt = 1;
+  double dt = m_timer_autoSendSim.GetInterval() / 1000.0;
+
   shipSimu.heading = fmod(shipSimu.heading + (shipSimu.rudderAngle * shipSimu.directionSign) * dt, 360.0);
   if (shipSimu.heading < 0)
     shipSimu.heading += 360.0;
