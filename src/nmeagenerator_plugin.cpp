@@ -84,7 +84,8 @@ bool NmeaGeneratorPlugin::DeInit()
     myGUI = NULL;
 
     isToolbarActive = false;
-    SetToolbarItemState(toolbarId, isToolbarActive);
+    SetToolbarItemState(toolbarId, false);
+    SetCanvasContextMenuItemViz(positionMenuID, false);
   }
 
   return true;
@@ -272,10 +273,12 @@ void NmeaGeneratorPlugin::OnToolbarToolCallback(int id)
   else
   {
     myGUI->Hide();
-    SetCanvasContextMenuItemViz(positionMenuID, false);
 
     if(!g_sendDataAfterWindowClose)
+    {
+      SetCanvasContextMenuItemViz(positionMenuID, false);
       myGUI->stopTimers();
+    }
   }
 
   //Refresh screen
@@ -301,7 +304,9 @@ void NmeaGeneratorPlugin::OnGuiClosed()
   isToolbarActive = false;
   SetToolbarItemState(toolbarId, false);
   myGUI->Hide();
-  SetCanvasContextMenuItemViz(positionMenuID, false);
+
+  if(!g_sendDataAfterWindowClose)
+    SetCanvasContextMenuItemViz(positionMenuID, false);
 
   //Refresh screen
   RequestRefresh(parentWindow);
