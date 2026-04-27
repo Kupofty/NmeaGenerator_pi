@@ -852,9 +852,9 @@ void DialogMainGui::OnTimer_autoSendBuilder(wxTimerEvent& event)
 //Update UI callbacks
 void DialogMainGui::OnChoice_UpdateXDR(wxCommandEvent& event)
 {
-  wxString xdrChoice = m_choice_nameXDR->GetStringSelection();
+  int xdrChoice = m_choice_nameXDR->GetSelection();
 
-  if(xdrChoice == "Barometer")
+  if(xdrChoice == 0) //Barometer
   {
     m_staticText_typeXDR->SetLabel("P");
     m_staticText_unitXDR->SetLabel("B");
@@ -864,7 +864,7 @@ void DialogMainGui::OnChoice_UpdateXDR(wxCommandEvent& event)
     m_spinCtrlDouble_measureXDR->SetValue(1.0);
     m_spinCtrlDouble_measureXDR->SetDigits(2);
   }
-  else if(xdrChoice == "TempAir")
+  else if(xdrChoice == 1) //TempAir
   {
     m_staticText_typeXDR->SetLabel("C");
     m_staticText_unitXDR->SetLabel("C");
@@ -874,7 +874,7 @@ void DialogMainGui::OnChoice_UpdateXDR(wxCommandEvent& event)
     m_spinCtrlDouble_measureXDR->SetValue(20);
     m_spinCtrlDouble_measureXDR->SetDigits(1);
   }
-  else if(xdrChoice == "TempWater")
+  else if(xdrChoice == 2) //TempWater
   {
     m_staticText_typeXDR->SetLabel("C");
     m_staticText_unitXDR->SetLabel("C");
@@ -884,7 +884,7 @@ void DialogMainGui::OnChoice_UpdateXDR(wxCommandEvent& event)
     m_spinCtrlDouble_measureXDR->SetValue(10);
     m_spinCtrlDouble_measureXDR->SetDigits(1);
   }
-  else if(xdrChoice == "PITCH")
+  else if(xdrChoice == 3) //PITCH
   {
     m_staticText_typeXDR->SetLabel("A");
     m_staticText_unitXDR->SetLabel("D");
@@ -894,7 +894,7 @@ void DialogMainGui::OnChoice_UpdateXDR(wxCommandEvent& event)
     m_spinCtrlDouble_measureXDR->SetValue(0);
     m_spinCtrlDouble_measureXDR->SetDigits(1);
   }
-  else if(xdrChoice == "ROLL")
+  else if(xdrChoice == 4) //ROLL
   {
     m_staticText_typeXDR->SetLabel("A");
     m_staticText_unitXDR->SetLabel("D");
