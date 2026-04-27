@@ -63,7 +63,7 @@ int NmeaGeneratorPlugin::Init()
 
   //Right-click menu entry
   wxMenu simPositionMenu;
-  positionMenuID = AddCanvasContextMenuItem(new wxMenuItem(&simPositionMenu, -1, _("Simulation: Update ship position")), this);
+  positionMenuID = AddCanvasContextMenuItem(new wxMenuItem(&simPositionMenu, -1, _("Simulation: Update vessel position")), this);
   SetCanvasContextMenuItemViz(positionMenuID, false);
 
   // Notify OpenCPN what callbacks the plugin registers to receive

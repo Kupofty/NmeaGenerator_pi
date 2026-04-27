@@ -8,6 +8,7 @@
 
 class NmeaGeneratorPlugin;
 
+
 struct SectionItem
 {
   wxString name;
@@ -25,11 +26,17 @@ struct SimVessel
   double lat = 0;
   double lon = 0 ;
   double heading = 0;
+  double cog = 0;
   double speed = 0;
+  double throttle = 0;
   double rudderAngle = 0;
   int directionSign = 1;
 };
 
+enum class VesselType { OwnShip, TllTarget };
+
+
+// Main class
 class DialogMainGui : public MyDialog
 {
   public:
@@ -68,6 +75,7 @@ class DialogMainGui : public MyDialog
     void OnChoice_UpdateXDR(wxCommandEvent& event) override;
     void OnButtonClick_copyManualSentence(wxCommandEvent& event) override;
     void OnSpinCtrlDouble_UpdateFreqTimerSim(wxSpinDoubleEvent& event) override;
+    void OnChoice_controlledVesselSimChanged(wxCommandEvent& event) override;
 
     void OnButtonClick_SendGLL(wxCommandEvent& event) override;
     void OnButtonClick_SendRMC(wxCommandEvent& event) override;
@@ -100,6 +108,7 @@ class DialogMainGui : public MyDialog
     void sendManualInput();
     void updateAutoSendBuildersCheckboxes(bool check);
     void sendAndMaybeCopy(const wxString& msg);
+    SimVessel* getControlledVessel();
 
     //Generic "create nmea" functions
     wxString createGLL(wxString talker, wxString lat, wxString latDir, wxString lon, wxString lonDir, wxString time, wxString status, wxString mode);
@@ -157,7 +166,9 @@ class DialogMainGui : public MyDialog
     std::vector<SectionItem> sbSizerListSentenceBuilder;
 
     //Simulation
+    VesselType controlledVessel = VesselType::OwnShip;
     SimVessel shipSimu;
+    SimVessel tllSimu;
 };
 
 #endif //DIALOG_MAIN_GUI

@@ -2728,15 +2728,28 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer_shipType->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_staticText901 = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("Simulate:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText901 = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("Control vessel:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText901->Wrap( -1 );
 	bSizer_shipType->Add( m_staticText901, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	wxString m_choice_shipTypeChoices[] = { _("Own ship"), _("TLL target") };
-	int m_choice_shipTypeNChoices = sizeof( m_choice_shipTypeChoices ) / sizeof( wxString );
-	m_choice_shipType = new wxChoice( m_scrolledWindow2, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_shipTypeNChoices, m_choice_shipTypeChoices, 0 );
-	m_choice_shipType->SetSelection( 0 );
-	bSizer_shipType->Add( m_choice_shipType, 0, wxALIGN_CENTER|wxALL, 5 );
+	wxString m_choice_controlledVesselChoices[] = { _("Own ship"), _("TLL target") };
+	int m_choice_controlledVesselNChoices = sizeof( m_choice_controlledVesselChoices ) / sizeof( wxString );
+	m_choice_controlledVessel = new wxChoice( m_scrolledWindow2, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_controlledVesselNChoices, m_choice_controlledVesselChoices, 0 );
+	m_choice_controlledVessel->SetSelection( 0 );
+	bSizer_shipType->Add( m_choice_controlledVessel, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	bSizer_shipType->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText2072 = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("NMEA output:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText2072->Wrap( -1 );
+	bSizer_shipType->Add( m_staticText2072, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	wxString m_choice_nmeaOutputSimChoices[] = { _("Current"), _("Both") };
+	int m_choice_nmeaOutputSimNChoices = sizeof( m_choice_nmeaOutputSimChoices ) / sizeof( wxString );
+	m_choice_nmeaOutputSim = new wxChoice( m_scrolledWindow2, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_nmeaOutputSimNChoices, m_choice_nmeaOutputSimChoices, 0 );
+	m_choice_nmeaOutputSim->SetSelection( 0 );
+	bSizer_shipType->Add( m_choice_nmeaOutputSim, 0, wxALL, 5 );
 
 
 	bSizer_shipType->Add( 0, 0, 1, wxEXPAND, 5 );
@@ -2905,6 +2918,57 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 
 	bSizer26->Add( bSizer_dataSim, 0, wxEXPAND, 5 );
+
+	wxBoxSizer* bSizer511;
+	bSizer511 = new wxBoxSizer( wxHORIZONTAL );
+
+
+	bSizer511->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	wxBoxSizer* bSizer52;
+	bSizer52 = new wxBoxSizer( wxHORIZONTAL );
+
+	m_staticText2081 = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("Latitude:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText2081->Wrap( -1 );
+	bSizer52->Add( m_staticText2081, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText_latDegSim = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("00"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText_latDegSim->Wrap( -1 );
+	bSizer52->Add( m_staticText_latDegSim, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText_latMinSim = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("00.0000"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText_latMinSim->Wrap( -1 );
+	bSizer52->Add( m_staticText_latMinSim, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	bSizer511->Add( bSizer52, 0, wxEXPAND, 5 );
+
+
+	bSizer511->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	wxBoxSizer* bSizer53;
+	bSizer53 = new wxBoxSizer( wxHORIZONTAL );
+
+	m_staticText211 = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("Longitude:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText211->Wrap( -1 );
+	bSizer53->Add( m_staticText211, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText_lonDegSim = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("000"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText_lonDegSim->Wrap( -1 );
+	bSizer53->Add( m_staticText_lonDegSim, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText_lonMinSim = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("00.0000"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText_lonMinSim->Wrap( -1 );
+	bSizer53->Add( m_staticText_lonMinSim, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	bSizer511->Add( bSizer53, 0, wxEXPAND, 5 );
+
+
+	bSizer511->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	bSizer26->Add( bSizer511, 0, wxEXPAND, 5 );
 
 
 	bSizer26->Add( 0, 0, 1, wxEXPAND, 5 );
@@ -3134,6 +3198,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_checkBox_automaticSendBuilder->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( MyDialog::OnCheckBox_AutomaticSendBuilder ), NULL, this );
 	m_spinCtrlDouble_autoSendFreqBuilder->Connect( wxEVT_COMMAND_SPINCTRLDOUBLE_UPDATED, wxSpinDoubleEventHandler( MyDialog::OnSpinCtrlDouble_AutomaticSendFreqBuilder ), NULL, this );
 	m_button_sentenceBuilderHelp->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_OpenSentenceBuilderHelp ), NULL, this );
+	m_choice_controlledVessel->Connect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( MyDialog::OnChoice_controlledVesselSimChanged ), NULL, this );
 	m_button_updateSimPos->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_UpdateSimPos ), NULL, this );
 	m_slider_rudderSim->Connect( wxEVT_SCROLL_TOP, wxScrollEventHandler( MyDialog::OnScroll_UpdateRudderAngleSim ), NULL, this );
 	m_slider_rudderSim->Connect( wxEVT_SCROLL_BOTTOM, wxScrollEventHandler( MyDialog::OnScroll_UpdateRudderAngleSim ), NULL, this );

@@ -482,7 +482,9 @@ class MyDialog : public wxDialog
 		wxPanel* m_panel_sim;
 		wxScrolledWindow* m_scrolledWindow2;
 		wxStaticText* m_staticText901;
-		wxChoice* m_choice_shipType;
+		wxChoice* m_choice_controlledVessel;
+		wxStaticText* m_staticText2072;
+		wxChoice* m_choice_nmeaOutputSim;
 		wxStaticLine* m_staticline31;
 		wxStaticText* m_staticText206;
 		wxStaticText* m_staticText207;
@@ -508,6 +510,12 @@ class MyDialog : public wxDialog
 		wxStaticText* m_staticText_speedSim;
 		wxStaticText* m_staticText95;
 		wxStaticLine* m_staticline30;
+		wxStaticText* m_staticText2081;
+		wxStaticText* m_staticText_latDegSim;
+		wxStaticText* m_staticText_latMinSim;
+		wxStaticText* m_staticText211;
+		wxStaticText* m_staticText_lonDegSim;
+		wxStaticText* m_staticText_lonMinSim;
 		wxStaticLine* m_staticline32;
 		wxStaticText* m_staticText88;
 		wxStaticText* m_staticText_rudderAngleSim;
@@ -571,6 +579,7 @@ class MyDialog : public wxDialog
 		virtual void OnCheckBox_AutomaticSendBuilder( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnSpinCtrlDouble_AutomaticSendFreqBuilder( wxSpinDoubleEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_OpenSentenceBuilderHelp( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnChoice_controlledVesselSimChanged( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_UpdateSimPos( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnScroll_UpdateRudderAngleSim( wxScrollEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_ResetRudder( wxCommandEvent& event ) { event.Skip(); }
@@ -583,7 +592,7 @@ class MyDialog : public wxDialog
 	public:
 		wxNotebook* m_notebook;
 
-		MyDialog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("NMEA Generator Plugin"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 1029,663 ), long style = wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxMINIMIZE_BOX|wxRESIZE_BORDER );
+		MyDialog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("NMEA Generator Plugin"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 894,663 ), long style = wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxMINIMIZE_BOX|wxRESIZE_BORDER );
 
 		~MyDialog();
 

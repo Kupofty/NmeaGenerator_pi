@@ -16,9 +16,8 @@ DialogSettingsBase::DialogSettingsBase( wxWindow* parent, wxWindowID id, const w
 	wxBoxSizer* sizerDialog;
 	sizerDialog = new wxBoxSizer( wxVERTICAL );
 
-	wxBoxSizer* bSizer81;
-	bSizer81 = new wxBoxSizer( wxVERTICAL );
-
+	m_notebook1 = new wxNotebook( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 0 );
+	m_panel_display = new wxPanel( m_notebook1, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* sizerSettings;
 	sizerSettings = new wxBoxSizer( wxVERTICAL );
 
@@ -28,13 +27,13 @@ DialogSettingsBase::DialogSettingsBase( wxWindow* parent, wxWindowID id, const w
 
 	bSizer_lastTab->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_staticText3 = new wxStaticText( this, wxID_ANY, _("Default tab:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText3 = new wxStaticText( m_panel_display, wxID_ANY, _("Default tab:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText3->Wrap( -1 );
 	bSizer_lastTab->Add( m_staticText3, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	wxString m_choice_notebookPageChoices[] = { _("Manual input"), _("Sentence builder"), _("Simulation") };
 	int m_choice_notebookPageNChoices = sizeof( m_choice_notebookPageChoices ) / sizeof( wxString );
-	m_choice_notebookPage = new wxChoice( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_notebookPageNChoices, m_choice_notebookPageChoices, 0 );
+	m_choice_notebookPage = new wxChoice( m_panel_display, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_notebookPageNChoices, m_choice_notebookPageChoices, 0 );
 	m_choice_notebookPage->SetSelection( 0 );
 	bSizer_lastTab->Add( m_choice_notebookPage, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -50,7 +49,7 @@ DialogSettingsBase::DialogSettingsBase( wxWindow* parent, wxWindowID id, const w
 
 	bSizer7->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_checkBox_restoreLastTab = new wxCheckBox( this, wxID_ANY, _("Restore last tab"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_checkBox_restoreLastTab = new wxCheckBox( m_panel_display, wxID_ANY, _("Restore last tab"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_checkBox_restoreLastTab->SetValue(true);
 	bSizer7->Add( m_checkBox_restoreLastTab, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -66,7 +65,7 @@ DialogSettingsBase::DialogSettingsBase( wxWindow* parent, wxWindowID id, const w
 
 	bSizer8->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_checkBox_restoreWindowPos = new wxCheckBox( this, wxID_ANY, _("Restore last window position"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_checkBox_restoreWindowPos = new wxCheckBox( m_panel_display, wxID_ANY, _("Restore last window position"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_checkBox_restoreWindowPos->SetValue(true);
 	bSizer8->Add( m_checkBox_restoreWindowPos, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -82,7 +81,7 @@ DialogSettingsBase::DialogSettingsBase( wxWindow* parent, wxWindowID id, const w
 
 	bSizer9->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_checkBox_restoreWindowSize = new wxCheckBox( this, wxID_ANY, _("Restore last window size"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_checkBox_restoreWindowSize = new wxCheckBox( m_panel_display, wxID_ANY, _("Restore last window size"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_checkBox_restoreWindowSize->SetValue(true);
 	bSizer9->Add( m_checkBox_restoreWindowSize, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -92,20 +91,32 @@ DialogSettingsBase::DialogSettingsBase( wxWindow* parent, wxWindowID id, const w
 
 	sizerSettings->Add( bSizer9, 1, wxEXPAND, 5 );
 
+
+	m_panel_display->SetSizer( sizerSettings );
+	m_panel_display->Layout();
+	sizerSettings->Fit( m_panel_display );
+	m_notebook1->AddPage( m_panel_display, _("Display"), true );
+	m_panel_options = new wxPanel( m_notebook1, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
+	wxBoxSizer* bSizer12;
+	bSizer12 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer12->Add( 0, 0, 1, wxEXPAND, 5 );
+
 	wxBoxSizer* bSizer91;
 	bSizer91 = new wxBoxSizer( wxHORIZONTAL );
 
 
 	bSizer91->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_checkBox_keepSendingData = new wxCheckBox( this, wxID_ANY, _("Keep transmitting data\nwhen window is closed"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_checkBox_keepSendingData = new wxCheckBox( m_panel_options, wxID_ANY, _("Keep transmitting data\nwhen window is closed"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer91->Add( m_checkBox_keepSendingData, 0, wxALL, 5 );
 
 
 	bSizer91->Add( 0, 0, 1, wxEXPAND, 5 );
 
 
-	sizerSettings->Add( bSizer91, 1, wxEXPAND, 5 );
+	bSizer12->Add( bSizer91, 1, wxEXPAND, 5 );
 
 	wxBoxSizer* bSizer10;
 	bSizer10 = new wxBoxSizer( wxHORIZONTAL );
@@ -113,20 +124,25 @@ DialogSettingsBase::DialogSettingsBase( wxWindow* parent, wxWindowID id, const w
 
 	bSizer10->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_checkBox_copyNmeaToClipboard = new wxCheckBox( this, wxID_ANY, _("Copy NMEA sentence to \nclipboard on manual send"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_checkBox_copyNmeaToClipboard = new wxCheckBox( m_panel_options, wxID_ANY, _("Copy NMEA sentence to \nclipboard on manual send"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer10->Add( m_checkBox_copyNmeaToClipboard, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
 	bSizer10->Add( 0, 0, 1, wxEXPAND, 5 );
 
 
-	sizerSettings->Add( bSizer10, 1, wxEXPAND, 5 );
+	bSizer12->Add( bSizer10, 1, wxEXPAND, 5 );
 
 
-	bSizer81->Add( sizerSettings, 1, wxEXPAND, 5 );
+	bSizer12->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_staticline1 = new wxStaticLine( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL );
-	bSizer81->Add( m_staticline1, 0, wxEXPAND | wxALL, 5 );
+
+	m_panel_options->SetSizer( bSizer12 );
+	m_panel_options->Layout();
+	bSizer12->Fit( m_panel_options );
+	m_notebook1->AddPage( m_panel_options, _("Options"), false );
+
+	sizerDialog->Add( m_notebook1, 1, wxEXPAND, 5 );
 
 	wxBoxSizer* sizerButtons;
 	sizerButtons = new wxBoxSizer( wxHORIZONTAL );
@@ -144,10 +160,7 @@ DialogSettingsBase::DialogSettingsBase( wxWindow* parent, wxWindowID id, const w
 	sizerButtons->Add( 0, 0, 1, wxEXPAND, 5 );
 
 
-	bSizer81->Add( sizerButtons, 0, wxEXPAND, 5 );
-
-
-	sizerDialog->Add( bSizer81, 1, wxEXPAND, 5 );
+	sizerDialog->Add( sizerButtons, 0, wxEXPAND, 5 );
 
 
 	this->SetSizer( sizerDialog );

@@ -96,4 +96,21 @@ namespace utils
     else
       return wxString::Format("%03d%07.4f", (int)(ddmm / 100), fmod(ddmm, 100.0));
   }
+
+  DegMin toDegMin(double lat, double lon)
+  {
+    DegMin res;
+
+    double absLat = std::abs(lat);
+    double absLon = std::abs(lon);
+
+    res.latDeg = static_cast<int>(absLat);
+    res.lonDeg = static_cast<int>(absLon);
+
+    res.latMin = (absLat - res.latDeg) * 60.0;
+    res.lonMin = (absLon - res.lonDeg) * 60.0;
+
+    return res;
+  }
+
 }

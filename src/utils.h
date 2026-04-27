@@ -16,6 +16,14 @@ struct GeoPos {
   double lon;
 };
 
+struct DegMin
+{
+  int latDeg;
+  double latMin;
+  int lonDeg;
+  double lonMin;
+};
+
 namespace utils
 {
 
@@ -44,6 +52,9 @@ namespace utils
   //Convert decimal to DDMM
   double decimalToDDMM(double value);
   wxString formatDDMM(double value, bool isLat);
+
+  //Return LatDeg, LatMin, LonDeg, LonMin from decimal (lat, lon)
+  DegMin toDegMin(double lat, double lon);
 }
 
 #endif  // UTILS_H

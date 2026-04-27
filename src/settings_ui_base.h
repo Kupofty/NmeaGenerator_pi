@@ -19,11 +19,12 @@
 #include <wx/choice.h>
 #include <wx/sizer.h>
 #include <wx/checkbox.h>
-#include <wx/statline.h>
-#include <wx/button.h>
+#include <wx/panel.h>
 #include <wx/bitmap.h>
 #include <wx/image.h>
 #include <wx/icon.h>
+#include <wx/notebook.h>
+#include <wx/button.h>
 #include <wx/dialog.h>
 
 ///////////////////////////////////////////////////////////////////////////
@@ -36,14 +37,16 @@ class DialogSettingsBase : public wxDialog
 	private:
 
 	protected:
+		wxNotebook* m_notebook1;
+		wxPanel* m_panel_display;
 		wxStaticText* m_staticText3;
 		wxChoice* m_choice_notebookPage;
 		wxCheckBox* m_checkBox_restoreLastTab;
 		wxCheckBox* m_checkBox_restoreWindowPos;
 		wxCheckBox* m_checkBox_restoreWindowSize;
+		wxPanel* m_panel_options;
 		wxCheckBox* m_checkBox_keepSendingData;
 		wxCheckBox* m_checkBox_copyNmeaToClipboard;
-		wxStaticLine* m_staticline1;
 		wxButton* buttonOK;
 		wxButton* buttonApply;
 
