@@ -1254,7 +1254,31 @@ wxString DialogMainGui::createFromGuiXDR()
   wxString type        = m_staticText_typeXDR->GetLabel();
   wxString measurement = wxString::Format("%.2f", m_spinCtrlDouble_measureXDR->GetValue());
   wxString unit        = m_staticText_unitXDR->GetLabel();
-  wxString name        = m_choice_nameXDR->GetStringSelection();
+  wxString name;
+
+  int xdrChoice = m_choice_nameXDR->GetSelection();
+  switch (xdrChoice)
+  {
+    case 0:
+      name = "Baro";
+      break;
+
+    case 1:
+      name = "Air";
+      break;
+
+    case 2:
+      name = "Water";
+      break;
+
+    case 3:
+      name = "Pitch";
+      break;
+
+    case 4:
+      name = "Roll";
+      break;
+  }
 
   wxString xdr = createXDR(talker, type, measurement, unit, name);
   return xdr;

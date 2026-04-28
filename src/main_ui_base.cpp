@@ -2523,7 +2523,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText_unitXDR->Wrap( -1 );
 	fgSizer_XDR->Add( m_staticText_unitXDR, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	wxString m_choice_nameXDRChoices[] = { _("Barometer"), _("TempAir"), _("TempWater"), _("PITCH"), _("ROLL") };
+	wxString m_choice_nameXDRChoices[] = { _("Barometer"), _("Air Temp."), _("Water Temp."), _("Pitch"), _("Roll") };
 	int m_choice_nameXDRNChoices = sizeof( m_choice_nameXDRChoices ) / sizeof( wxString );
 	m_choice_nameXDR = new wxChoice( sbSizer_XDR->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_nameXDRNChoices, m_choice_nameXDRChoices, 0 );
 	m_choice_nameXDR->SetSelection( 0 );
@@ -2709,7 +2709,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_panel_list->SetSizer( bSizer9 );
 	m_panel_list->Layout();
 	bSizer9->Fit( m_panel_list );
-	m_notebook->AddPage( m_panel_list, _("Sentence Builder"), false );
+	m_notebook->AddPage( m_panel_list, _("Sentence Builder"), true );
 	m_panel_sim = new wxPanel( m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer8;
 	bSizer8 = new wxBoxSizer( wxVERTICAL );
@@ -3146,7 +3146,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_panel_sim->SetSizer( bSizer8 );
 	m_panel_sim->Layout();
 	bSizer8->Fit( m_panel_sim );
-	m_notebook->AddPage( m_panel_sim, _("Simulation"), true );
+	m_notebook->AddPage( m_panel_sim, _("Simulation"), false );
 
 	bSizer_main->Add( m_notebook, 1, wxEXPAND, 5 );
 
