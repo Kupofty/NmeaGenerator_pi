@@ -100,6 +100,7 @@ class DialogMainGui : public MyDialog
     void OnButtonClick_SendOSD(wxCommandEvent& event) override;
     void OnButtonClick_SendMWV(wxCommandEvent& event) override;
     void OnButtonClick_SendMWD(wxCommandEvent& event) override;
+    void OnButtonClick_SendVDM(wxCommandEvent& event) override;
     void OnButtonClick_SendVDR(wxCommandEvent& event) override;
     void OnButtonClick_SendVHW(wxCommandEvent& event) override;
     void OnButtonClick_SendVWR(wxCommandEvent& event) override;
@@ -134,6 +135,7 @@ class DialogMainGui : public MyDialog
     wxString createFromGuiOSD();
     wxString createFromGuiMWV();
     wxString createFromGuiMWD();
+    wxString createFromGuiVDM();
     wxString createFromGuiVDR();
     wxString createFromGuiVHW();
     wxString createFromGuiVWR();

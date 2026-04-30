@@ -6,35 +6,17 @@
 
 #include "ais_encoder.h"
 
+#include <algorithm>
+#include <bitset>
+#include <cstdint>
+#include <time.h>
+#include <vector>
+#include <sstream>
+
 using namespace std;
 
 
 //Encoding tables
-static const std::vector<std::pair<uint32_t, char>> payloadencoding = {
-    {0, '0'},  {1, '1'},  {2, '2'},  {3, '3'},  {4, '4'},  {5, '5'},  {6, '6'},
-    {7, '7'},  {8, '8'},  {9, '9'},  {10, ':'}, {11, ';'}, {12, '<'}, {13, '='},
-    {14, '>'}, {15, '?'}, {16, '@'}, {17, 'A'}, {18, 'B'}, {19, 'C'}, {20, 'D'},
-    {21, 'E'}, {22, 'F'}, {23, 'G'}, {24, 'H'}, {25, 'I'}, {26, 'J'}, {27, 'K'},
-    {28, 'L'}, {29, 'M'}, {30, 'N'}, {31, 'O'}, {32, 'P'}, {33, 'Q'}, {34, 'R'},
-    {35, 'S'}, {36, 'T'}, {37, 'U'}, {38, 'V'}, {39, 'W'}, {40, '`'}, {41, 'a'},
-    {42, 'b'}, {43, 'c'}, {44, 'd'}, {45, 'e'}, {46, 'f'}, {47, 'g'}, {48, 'h'},
-    {49, 'i'}, {50, 'j'}, {51, 'k'}, {52, 'l'}, {53, 'm'}, {54, 'n'}, {55, 'o'},
-    {56, 'p'}, {57, 'q'}, {58, 'r'}, {59, 's'}, {60, 't'}, {61, 'u'}, {62, 'v'},
-    {63, 'w'}};
-
-static const std::vector<std::pair<char, uint32_t>> sixbitencoding = {
-    {'@', 0},  {'A', 1},  {'B', 2},  {'C', 3},   {'D', 4},   {'E', 5},
-    {'F', 6},  {'G', 7},  {'H', 8},  {'I', 9},   {'J', 10},  {'K', 11},
-    {'L', 12}, {'M', 13}, {'N', 14}, {'O', 15},  {'P', 16},  {'Q', 17},
-    {'R', 18}, {'S', 19}, {'T', 20}, {'U', 21},  {'V', 22},  {'W', 23},
-    {'X', 24}, {'Y', 25}, {'Z', 26}, {'[', 27},  {'\\', 28}, {']', 29},
-    {'^', 30}, {'_', 31}, {' ', 32}, {'1', 33},  {'"', 34},  {'#', 35},
-    {'$', 36}, {'%', 37}, {'&', 38}, {'\'', 39}, {'(', 40},  {')', 41},
-    {'*', 42}, {'+', 43}, {'}', 44}, {'-', 45},  {'.', 46},  {'/', 47},
-    {'0', 48}, {'1', 49}, {'2', 50}, {'3', 51},  {'4', 52},  {'5', 53},
-    {'6', 54}, {'7', 55}, {'8', 56}, {'9', 57},  {',', 58},  {';', 59},
-    {'<', 60}, {'=', 61}, {'>', 62}, {'?', 63}};
-
 static const std::vector<std::pair<char, uint32_t>> NMEA_TABLE = {
     {'0', 0},  {'1', 1},  {'2', 2},  {'3', 3},  {'4', 4},  {'5', 5},  {'6', 6},
     {'7', 7},  {'8', 8},  {'9', 9},  {':', 10}, {';', 11}, {'<', 12}, {'=', 13},
@@ -184,80 +166,14 @@ namespace ais
 
 
   //Encoders
-  wxString encodeType18(int iMMSI, double spd, double ilat, double ilon, double course, double hdg)
-  {
-    string type = "18";
-    string MessageID(Int2BString(Str2Int(type, ""), 6));
-
-    string RepeatIndicator = Int2BString(0, 2);
-
-    wxString MMSI = wxString::Format("%i", iMMSI);
-    string sMMSI = (const char*)MMSI.mb_str();
-    string oMMSI = Int2BString(Str2Int(sMMSI, ""), 30);
-
-    string Spare1 = Int2BString(0, 8);
-
-    wxString sChannel;
-    string Channel = (const char*)sChannel.mb_str();
-
-    wxString SPEED = wxString::Format("%f", spd * 10);
-    string sSPEED = (const char*)SPEED.mb_str();
-    float sog = Str2Float(sSPEED, "");
-    string SOG = Int2BString(sog, 10);
-
-    string PosAccuracy = Int2BString(1, 1);
-
-    wxString LON = wxString::Format("%f", ilon);
-    string sLON = (const char*)LON.mb_str();
-    float flon = Str2Float(sLON, "");
-    string Longitude = Int2BString(int(flon * 600000), 28);
-
-    wxString LAT = wxString::Format("%f", ilat);
-    string sLAT = (const char*)LAT.mb_str();
-    float flat = Str2Float(sLAT, "");
-    string Latitude = Int2BString(int(flat * 600000), 27);
-
-    wxString COURSE = wxString::Format("%f", course);
-    string sCOURSE = (const char*)COURSE.mb_str();
-    float cog = Str2Float(sCOURSE, "");
-    string COG = Int2BString(int(cog * 10), 12);
-
-    wxString HEADING = wxString::Format("%f", hdg);
-    string sHEADING = (const char*)HEADING.mb_str();
-    int heading = Str2Int(sHEADING, "");
-    string Heading = Int2BString(heading, 9);
-
-    wxString TIMESTAMP;
-    string sTIMESTAMP = (const char*)TIMESTAMP.mb_str();
-    string tStamp = sTIMESTAMP;
-    int tSecond = wxGetUTCTime();
-    string TimeStamp = Int2BString(tSecond, 6);
-
-    string Spare2 = Int2BString(0, 2);
-
-    string State = Int2BString(393222, 27);
-
-    string BigString = MessageID;
-    BigString = BigString + RepeatIndicator;
-    BigString = BigString + oMMSI + Spare1 + SOG + PosAccuracy + Longitude +
-                Latitude + COG + Heading + TimeStamp + Spare2;
-    BigString = BigString + State;
-
-    string capsule = NMEAencapsulate(BigString, 28);
-    string aisnmea = "AIVDM,1,1,," + Channel + "," + capsule + ",O";
-    wxString myNMEA = aisnmea;
-    wxString myCheck = makeCheckSum(myNMEA);
-
-    myNMEA = "!" + myNMEA + "*" + myCheck;
-    return myNMEA;
-  }
-
-  wxString encodeType1(int iMMSI, int nav_status, float sog, double ilat, double ilon, double cog, double true_heading, wxString channel)
+  wxString encodeType1_2_3(wxString talker, int iMMSI, int nav_status, float sog, double ilat, double ilon, double cog, double true_heading, wxString channel)
   {
     string type = "1";
     string MessageID(Int2BString(Str2Int(type, ""), 6));
 
     string RepeatIndicator = Int2BString(0, 2);
+
+    string talker1 = (const char*)talker.mb_str();
 
     wxString MMSI = wxString::Format("%i", iMMSI);
     string sMMSI = (const char*)MMSI.mb_str();
@@ -320,13 +236,83 @@ namespace ais
     string channel1 = (const char*)channel.mb_str();
 
     string capsule = NMEAencapsulate(BigString, numSixes);
-    string aisnmea = "AIVDM,1,1,," + channel1 + "," + capsule + ",O";
+    string aisnmea = talker1 + "VDM,1,1,," + channel1 + "," + capsule + ",O";
     wxString myNMEA_SART = aisnmea;
     wxString myCheck = makeCheckSum(myNMEA_SART);
 
     myNMEA_SART = "!" + myNMEA_SART + "*" + myCheck;
 
     return myNMEA_SART;
+  }
+
+  wxString encodeType18(wxString talker, int iMMSI, double spd, double ilat, double ilon, double course, double hdg)
+  {
+    string type = "18";
+    string MessageID(Int2BString(Str2Int(type, ""), 6));
+
+    string RepeatIndicator = Int2BString(0, 2);
+
+    string talker1 = (const char*)talker.mb_str();
+
+    wxString MMSI = wxString::Format("%i", iMMSI);
+    string sMMSI = (const char*)MMSI.mb_str();
+    string oMMSI = Int2BString(Str2Int(sMMSI, ""), 30);
+
+    string Spare1 = Int2BString(0, 8);
+
+    wxString sChannel;
+    string Channel = (const char*)sChannel.mb_str();
+
+    wxString SPEED = wxString::Format("%f", spd * 10);
+    string sSPEED = (const char*)SPEED.mb_str();
+    float sog = Str2Float(sSPEED, "");
+    string SOG = Int2BString(sog, 10);
+
+    string PosAccuracy = Int2BString(1, 1);
+
+    wxString LON = wxString::Format("%f", ilon);
+    string sLON = (const char*)LON.mb_str();
+    float flon = Str2Float(sLON, "");
+    string Longitude = Int2BString(int(flon * 600000), 28);
+
+    wxString LAT = wxString::Format("%f", ilat);
+    string sLAT = (const char*)LAT.mb_str();
+    float flat = Str2Float(sLAT, "");
+    string Latitude = Int2BString(int(flat * 600000), 27);
+
+    wxString COURSE = wxString::Format("%f", course);
+    string sCOURSE = (const char*)COURSE.mb_str();
+    float cog = Str2Float(sCOURSE, "");
+    string COG = Int2BString(int(cog * 10), 12);
+
+    wxString HEADING = wxString::Format("%f", hdg);
+    string sHEADING = (const char*)HEADING.mb_str();
+    int heading = Str2Int(sHEADING, "");
+    string Heading = Int2BString(heading, 9);
+
+    wxString TIMESTAMP;
+    string sTIMESTAMP = (const char*)TIMESTAMP.mb_str();
+    string tStamp = sTIMESTAMP;
+    int tSecond = wxGetUTCTime();
+    string TimeStamp = Int2BString(tSecond, 6);
+
+    string Spare2 = Int2BString(0, 2);
+
+    string State = Int2BString(393222, 27);
+
+    string BigString = MessageID;
+    BigString = BigString + RepeatIndicator;
+    BigString = BigString + oMMSI + Spare1 + SOG + PosAccuracy + Longitude +
+                Latitude + COG + Heading + TimeStamp + Spare2;
+    BigString = BigString + State;
+
+    string capsule = NMEAencapsulate(BigString, 28);
+    string aisnmea = talker1 + "VDM,1,1,," + Channel + "," + capsule + ",O";
+    wxString myNMEA = aisnmea;
+    wxString myCheck = makeCheckSum(myNMEA);
+
+    myNMEA = "!" + myNMEA + "*" + myCheck;
+    return myNMEA;
   }
 
 }

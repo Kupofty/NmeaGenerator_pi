@@ -45,7 +45,8 @@ DialogMainGui::DialogMainGui(wxWindow* parent, wxWindowID id, const wxString& ti
       {sbSizer_VDR->GetStaticBox()->GetLabel(), sbSizer_VDR},
       {sbSizer_VHW->GetStaticBox()->GetLabel(), sbSizer_VHW},
       {sbSizer_VWR->GetStaticBox()->GetLabel(), sbSizer_VWR},
-      {sbSizer_ZDA->GetStaticBox()->GetLabel(), sbSizer_ZDA}
+      {sbSizer_ZDA->GetStaticBox()->GetLabel(), sbSizer_ZDA},
+      {sbSizer_VDM->GetStaticBox()->GetLabel(), sbSizer_VDM}
   };
 
 }
@@ -310,8 +311,16 @@ void DialogMainGui::OnButtonClick_OpenSentenceBuilderHelp(wxCommandEvent& event)
       "https://gpsd.gitlab.io/gpsd/NMEA.html"
       );
 
+  wxHyperlinkCtrl* link3 = new wxHyperlinkCtrl(
+      dlg,
+      wxID_ANY,
+      _("AIVDM/AIVDO protocol decoding"),
+      "https://gpsd.gitlab.io/gpsd/AIVDM.html"
+      );
+
   sizer->Add(link1, 0, wxALIGN_CENTER_HORIZONTAL | wxBOTTOM, 8);
   sizer->Add(link2, 0, wxALIGN_CENTER_HORIZONTAL | wxBOTTOM, 8);
+  sizer->Add(link3, 0, wxALIGN_CENTER_HORIZONTAL | wxBOTTOM, 8);
 
   sizer->AddStretchSpacer(1);
 
@@ -362,6 +371,7 @@ void DialogMainGui::updateAutoSendBuildersCheckboxes(bool check)
   m_checkBox_autoSendVHW->SetValue(check);
   m_checkBox_autoSendVWR->SetValue(check);
   m_checkBox_autoSendZDA->SetValue(check);
+  m_checkBox_autoSendVDM->SetValue(check);
 }
 
 
@@ -464,6 +474,9 @@ void DialogMainGui::OnTimer_autoSendBuilder(wxTimerEvent& event)
 
   if(m_checkBox_autoSendZDA->GetValue())
     sendNmeaToOCPN(createFromGuiZDA());
+
+  if(m_checkBox_autoSendVDM->GetValue())
+    sendNmeaToOCPN(createFromGuiVDM());
 }
 
 
@@ -638,6 +651,11 @@ void DialogMainGui::OnButtonClick_SendMWV(wxCommandEvent& event)
 void DialogMainGui::OnButtonClick_SendMWD(wxCommandEvent& event)
 {
   sendAndMaybeCopy(createFromGuiMWD());
+}
+
+void DialogMainGui::OnButtonClick_SendVDM(wxCommandEvent& event)
+{
+  sendAndMaybeCopy(createFromGuiVDM());
 }
 
 void DialogMainGui::OnButtonClick_SendVDR(wxCommandEvent& event)
@@ -944,6 +962,31 @@ wxString DialogMainGui::createFromGuiMWD()
   return mwd;
 }
 
+wxString DialogMainGui::createFromGuiVDM()
+{
+  wxString talker  = m_textCtrl_talkerVDM->GetValue();
+  int mmsi         = m_spinCtrl_mmsiVDM->GetValue();
+  int status       = m_spinCtrl_statusVDM->GetValue();         //class A only
+  double speed     = m_spinCtrlDouble_sogVDM->GetValue();
+  double lat       = m_spinCtrlDouble_latVDM->GetValue();
+  double lon       = m_spinCtrlDouble_lonVDM->GetValue();
+  double cog       = m_spinCtrlDouble_cogVDM->GetValue();
+  double heading   = m_spinCtrl_headingVDM->GetValue();
+  wxString channel = "A";                                      //class A only
+
+  wxString vdm;
+  int classType = m_choice_classVDM->GetSelection();
+
+  //Class A
+  if(classType == 0)
+    vdm  = ais::encodeType1_2_3(talker, mmsi, status, speed, lat, lon, cog, heading, channel);
+  //Class B
+  else if(classType == 1)
+    vdm  = ais::encodeType18(talker, mmsi, speed, lat, lon, cog, heading);
+
+  return vdm;
+}
+
 wxString DialogMainGui::createFromGuiVDR()
 {
   wxString talker       = m_textCtrl_talkerVDR->GetValue();
@@ -1144,14 +1187,14 @@ void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
         aisNmea = nmea::createTLL("II", "99", latStr, latDir, lonStr, lonDir, "DUMMY", timeStr, "T", "R");
         break;
 
-      //VDM : Class A
+      //VDM : Class A (type 1)
       case 1:
-        aisNmea = ais::encodeType1(999000001, 15, aisSimu.speed, aisSimu.lat, aisSimu.lon, aisSimu.cog, aisSimu.heading, "A");
+        aisNmea = ais::encodeType1_2_3("AI", 999000001, 15, aisSimu.speed, aisSimu.lat, aisSimu.lon, aisSimu.cog, aisSimu.heading, "A");
         break;
 
-      //VDM : Class B
+      //VDM : Class B (type 18)
       case 2:
-        aisNmea = ais::encodeType18(999000001, aisSimu.speed, aisSimu.lat, aisSimu.lon, aisSimu.cog, aisSimu.heading);
+        aisNmea = ais::encodeType18("AI", 999000001, aisSimu.speed, aisSimu.lat, aisSimu.lon, aisSimu.cog, aisSimu.heading);
         break;
     }
 

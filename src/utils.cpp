@@ -24,6 +24,7 @@ namespace utils
   {
     return checksumToString(calculateChecksum(s));
   }
+
   GeoPos updatePosition(double lat, double lon, double speed_knots, double heading_deg, double dt_msec)
   {
     double latRad = lat * DEG2RAD;

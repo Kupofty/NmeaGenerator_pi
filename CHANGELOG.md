@@ -7,14 +7,15 @@
 - Plugin window can be maximized/minimized
 - Settings window can be resized
 - Checksum verificator in "Manual Input" tab
-- New option in settings to keep sending data when window is closed
+- Option to keep sending data when window is closed (need to be activated in Preferences)
 - Button to copy to clipboard the sentence in "Manual Input" tab
-- New option to automatically copy NMEA sentence to clipboard when manually sending in "Sentence builder"
+- Option to automatically copy NMEA sentence to clipboard when manually sending in "Sentence builder" (need to be activated in Preferences)
 - Configurable timer for sending simulation data
-- Dual vessel simulation: Own ship and AIS target can now run simultaneously
+- Dual vessel simulations (Own ship & AIS/TLL target) can now run simultaneously
+- Add AIS encoding & capabilities (class A & B) in "Simulation" & "Sentence builder" tabs
 
 ### Fixed
-- Sentences with "!" as first character are accepted.  
+- Sentences with "!" as first character are accepted in "Manual input" tab.  
 - Convert simulation START/STOP button into a toggle button to indicate state.
 - Easier position input in "Simulation tab"
 - Display error due to field's width too small in "Sentence builder"

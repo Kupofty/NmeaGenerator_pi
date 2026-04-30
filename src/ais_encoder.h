@@ -1,11 +1,4 @@
-#include <algorithm>
-#include <bitset>
-#include <cstdint>
-#include <list>
 #include <string>
-#include <time.h>
-#include <vector>
-#include <sstream>
 
 #include <wx/textfile.h>
 #include <wx/wx.h>
@@ -29,8 +22,8 @@ namespace ais
   wxString makeCheckSum(wxString mySentence);
 
   //Encode functions
-  wxString encodeType18(int iMMSI, double spd, double ilat,
+  wxString encodeType1_2_3(wxString talker, int iMMSI, int nav_status, float sog, double ilat, double ilon,
+                           double cog, double true_heading, wxString channel); //Class A report
+  wxString encodeType18(wxString talker, int iMMSI, double spd, double ilat,
                         double ilon, double course, double hdg); //Class B position report
-  wxString encodeType1(int iMMSI, int nav_status, float sog, double ilat, double ilon,
-                       double cog, double true_heading, wxString channel); //Class A report
 };
