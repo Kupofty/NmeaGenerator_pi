@@ -1517,7 +1517,9 @@ void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
     wxString latStr = utils::toNMEA_lat(fabs(tllSimu.lat));
     wxString lonStr = utils::toNMEA_lon(fabs(tllSimu.lon));
 
-    sendNmeaToOCPN(createTLL("II", "99", latStr, latDir, lonStr, lonDir, "DUMMY", timeStr, "T", "R"));
+    wxString aisTLL = createTLL("II", "99", latStr, latDir, lonStr, lonDir, "DUMMY", timeStr, "T", "R");
+    sendNmeaToOCPN(aisTLL);
+
   }
 
 

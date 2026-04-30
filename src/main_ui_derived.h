@@ -6,6 +6,8 @@
 #include <vector>
 #include <wx/timer.h>
 
+#include "ais_encoder.h"
+
 class NmeaGeneratorPlugin;
 
 

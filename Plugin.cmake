@@ -70,6 +70,10 @@ set(SRC
 
     ${CMAKE_SOURCE_DIR}/src/settings_ui_derived.h
     ${CMAKE_SOURCE_DIR}/src/settings_ui_derived.cpp
+
+    # AIS encoder
+    ${CMAKE_SOURCE_DIR}/src/ais_encoder.h
+    ${CMAKE_SOURCE_DIR}/src/ais_encoder.cpp
 )
 set (SOURCE_FILES ${SRC})
 
