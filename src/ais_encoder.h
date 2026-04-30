@@ -10,7 +10,7 @@
 #include <wx/textfile.h>
 #include <wx/wx.h>
 
-namespace AisEncoder
+namespace ais
 {
   //Convert functions
   std::string Str2Str(std::string str, const char* charsToRemove);
@@ -29,9 +29,8 @@ namespace AisEncoder
   wxString makeCheckSum(wxString mySentence);
 
   //Encode functions
-  wxString nmeaEncode(wxString type, int iMMSI, wxString status, double speed, double ilat,
-                      double ilon, double course, double hdg, wxString channel, wxString timestamp);
-
-  wxString nmeaEncode1_2_3(int message_id, int iMMSI, int nav_status, float sog, double ilat,
-                           double ilon, double cog, double true_heading, wxString channel);
+  wxString encodeType18(int iMMSI, double spd, double ilat,
+                        double ilon, double course, double hdg); //Class B position report
+  wxString encodeType1(int iMMSI, int nav_status, float sog, double ilat, double ilon,
+                       double cog, double true_heading, wxString channel); //Class A report
 };

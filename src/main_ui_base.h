@@ -483,6 +483,8 @@ class MyDialog : public wxDialog
 		wxScrolledWindow* m_scrolledWindow2;
 		wxStaticText* m_staticText901;
 		wxChoice* m_choice_controlledVessel;
+		wxStaticText* m_staticText214;
+		wxChoice* m_choice_aisType;
 		wxStaticText* m_staticText2072;
 		wxChoice* m_choice_nmeaOutputSim;
 		wxStaticLine* m_staticline31;
@@ -592,7 +594,7 @@ class MyDialog : public wxDialog
 	public:
 		wxNotebook* m_notebook;
 
-		MyDialog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("NMEA Generator Plugin"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 894,663 ), long style = wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxMINIMIZE_BOX|wxRESIZE_BORDER );
+		MyDialog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("NMEA Generator Plugin"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 1059,663 ), long style = wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxMINIMIZE_BOX|wxRESIZE_BORDER );
 
 		~MyDialog();
 

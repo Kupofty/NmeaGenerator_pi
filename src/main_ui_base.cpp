@@ -425,11 +425,11 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_spinCtrl_satellitesGGA = new wxSpinCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxT("12"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 99, 11 );
 	fgSizer_GGA->Add( m_spinCtrl_satellitesGGA, 0, wxALL, 5 );
 
-	m_spinCtrlDouble_hdopGGA = new wxSpinCtrlDouble( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxT("1"), wxDefaultPosition, wxSize( 60,-1 ), wxSP_ARROW_KEYS, 0, 100, 1.000000, 0.5 );
+	m_spinCtrlDouble_hdopGGA = new wxSpinCtrlDouble( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxT("1"), wxDefaultPosition, wxSize( -1,-1 ), wxSP_ARROW_KEYS, 0, 100, 1.000000, 0.5 );
 	m_spinCtrlDouble_hdopGGA->SetDigits( 1 );
 	fgSizer_GGA->Add( m_spinCtrlDouble_hdopGGA, 0, wxALL, 5 );
 
-	m_spinCtrlDouble_altitude_GGA = new wxSpinCtrlDouble( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 60,-1 ), wxSP_ARROW_KEYS, 0, 100, 10.000000, 1 );
+	m_spinCtrlDouble_altitude_GGA = new wxSpinCtrlDouble( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( -1,-1 ), wxSP_ARROW_KEYS, 0, 100, 10.000000, 1 );
 	m_spinCtrlDouble_altitude_GGA->SetDigits( 1 );
 	fgSizer_GGA->Add( m_spinCtrlDouble_altitude_GGA, 0, wxALL, 5 );
 
@@ -1745,7 +1745,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	fgSizer4111->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_textCtrl_talkerTLL = new wxTextCtrl( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("IN"), wxDefaultPosition, wxSize( 50,-1 ), 0 );
+	m_textCtrl_talkerTLL = new wxTextCtrl( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("IP"), wxDefaultPosition, wxSize( 50,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_talkerTLL->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -2709,7 +2709,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_panel_list->SetSizer( bSizer9 );
 	m_panel_list->Layout();
 	bSizer9->Fit( m_panel_list );
-	m_notebook->AddPage( m_panel_list, _("Sentence Builder"), true );
+	m_notebook->AddPage( m_panel_list, _("Sentence Builder"), false );
 	m_panel_sim = new wxPanel( m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer8;
 	bSizer8 = new wxBoxSizer( wxVERTICAL );
@@ -2732,11 +2732,24 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText901->Wrap( -1 );
 	bSizer_shipType->Add( m_staticText901, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	wxString m_choice_controlledVesselChoices[] = { _("Own ship"), _("TLL target") };
+	wxString m_choice_controlledVesselChoices[] = { _("Own ship"), _("AIS target") };
 	int m_choice_controlledVesselNChoices = sizeof( m_choice_controlledVesselChoices ) / sizeof( wxString );
 	m_choice_controlledVessel = new wxChoice( m_scrolledWindow2, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_controlledVesselNChoices, m_choice_controlledVesselChoices, 0 );
 	m_choice_controlledVessel->SetSelection( 0 );
 	bSizer_shipType->Add( m_choice_controlledVessel, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	bSizer_shipType->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText214 = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("AIS type:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText214->Wrap( -1 );
+	bSizer_shipType->Add( m_staticText214, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	wxString m_choice_aisTypeChoices[] = { _("ARPA"), _("class A"), _("class B") };
+	int m_choice_aisTypeNChoices = sizeof( m_choice_aisTypeChoices ) / sizeof( wxString );
+	m_choice_aisType = new wxChoice( m_scrolledWindow2, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_aisTypeNChoices, m_choice_aisTypeChoices, 0 );
+	m_choice_aisType->SetSelection( 2 );
+	bSizer_shipType->Add( m_choice_aisType, 0, wxALL, 5 );
 
 
 	bSizer_shipType->Add( 0, 0, 1, wxEXPAND, 5 );
@@ -3146,7 +3159,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_panel_sim->SetSizer( bSizer8 );
 	m_panel_sim->Layout();
 	bSizer8->Fit( m_panel_sim );
-	m_notebook->AddPage( m_panel_sim, _("Simulation"), false );
+	m_notebook->AddPage( m_panel_sim, _("Simulation"), true );
 
 	bSizer_main->Add( m_notebook, 1, wxEXPAND, 5 );
 

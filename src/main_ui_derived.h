@@ -36,7 +36,7 @@ struct SimVessel
   int directionSign = 1;
 };
 
-enum class VesselType { OwnShip, TllTarget };
+enum class VesselType { OwnShip, AisTarget };
 
 
 // Main class
@@ -145,7 +145,7 @@ class DialogMainGui : public MyDialog
     //Simulation
     VesselType controlledVessel = VesselType::OwnShip;
     SimVessel shipSimu;
-    SimVessel tllSimu;
+    SimVessel aisSimu;
 };
 
 #endif //DIALOG_MAIN_GUI

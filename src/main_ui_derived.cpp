@@ -1007,7 +1007,7 @@ SimVessel* DialogMainGui::getControlledVessel()
   if (controlledVessel == VesselType::OwnShip)
     return &shipSimu;
   else
-    return &tllSimu;
+    return &aisSimu;
 }
 
 void DialogMainGui::OnChoice_controlledVesselSimChanged(wxCommandEvent& event)
@@ -1017,7 +1017,7 @@ void DialogMainGui::OnChoice_controlledVesselSimChanged(wxCommandEvent& event)
   if (sel == 0)
     controlledVessel = VesselType::OwnShip;
   else
-    controlledVessel = VesselType::TllTarget;
+    controlledVessel = VesselType::AisTarget;
 
   //Update UI to match the controlled vessel current status
   SimVessel* vessel = getControlledVessel();
@@ -1073,7 +1073,7 @@ void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
   // ---- Output mode ----
   int outputMode = m_choice_nmeaOutputSim->GetSelection();
   bool sendOwnShip = (outputMode == 1) || (controlledVessel == VesselType::OwnShip);
-  bool sendTllTarget = (outputMode == 1) || (controlledVessel == VesselType::TllTarget);
+  bool sendAisTarget = (outputMode == 1) || (controlledVessel == VesselType::AisTarget);
 
 
   // ---- Update & send OwnShip NMEA ----
@@ -1113,31 +1113,49 @@ void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
   }
 
 
-  // ---- Update & send TLL target NMEA ----
-  if (sendTllTarget)
+  // ---- Update & send AIS target NMEA ----
+  if (sendAisTarget)
   {
     GeoPos pos = utils::updatePosition(
-        tllSimu.lat, tllSimu.lon,
-        tllSimu.speed, tllSimu.heading,
+        aisSimu.lat, aisSimu.lon,
+        aisSimu.speed, aisSimu.heading,
         m_timer_autoSendSim.GetInterval()
         );
 
-    tllSimu.lat = pos.lat;
-    tllSimu.lon = pos.lon;
+    aisSimu.lat = pos.lat;
+    aisSimu.lon = pos.lon;
 
-    tllSimu.heading = fmod( tllSimu.heading + (tllSimu.rudderAngle * tllSimu.directionSign) * dt, 360.0 );
+    aisSimu.heading = fmod( aisSimu.heading + (aisSimu.rudderAngle * aisSimu.directionSign) * dt, 360.0 );
 
-    if (tllSimu.heading < 0)
-      tllSimu.heading += 360.0;
+    if (aisSimu.heading < 0)
+      aisSimu.heading += 360.0;
 
-    wxString latDir = utils::getLatDir(tllSimu.lat);
-    wxString lonDir = utils::getLonDir(tllSimu.lon);
-    wxString latStr = utils::toNMEA_lat(fabs(tllSimu.lat));
-    wxString lonStr = utils::toNMEA_lon(fabs(tllSimu.lon));
+    wxString latDir = utils::getLatDir(aisSimu.lat);
+    wxString lonDir = utils::getLonDir(aisSimu.lon);
+    wxString latStr = utils::toNMEA_lat(fabs(aisSimu.lat));
+    wxString lonStr = utils::toNMEA_lon(fabs(aisSimu.lon));
 
-    wxString aisTLL  = nmea::createTLL("II", "99", latStr, latDir, lonStr, lonDir, "DUMMY", timeStr, "T", "R");
-    sendNmeaToOCPN(aisTLL);
+    wxString aisNmea;
+    int aisType = m_choice_aisType->GetSelection();
+    switch(aisType)
+    {
+      //TLL : ARPA
+      case 0:
+        aisNmea = nmea::createTLL("II", "99", latStr, latDir, lonStr, lonDir, "DUMMY", timeStr, "T", "R");
+        break;
 
+      //VDM : Class A
+      case 1:
+        aisNmea = ais::encodeType1(999000001, 15, aisSimu.speed, aisSimu.lat, aisSimu.lon, aisSimu.cog, aisSimu.heading, "A");
+        break;
+
+      //VDM : Class B
+      case 2:
+        aisNmea = ais::encodeType18(999000001, aisSimu.speed, aisSimu.lat, aisSimu.lon, aisSimu.cog, aisSimu.heading);
+        break;
+    }
+
+    sendNmeaToOCPN(aisNmea);
   }
 
 

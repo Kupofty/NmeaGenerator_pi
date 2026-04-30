@@ -62,9 +62,10 @@ static const std::vector<std::pair<uint8_t, char>> SIXBIT_ASCII_TABLE = {
 };
 
 
-// Convert & Encode functions
-namespace AisEncoder
+// AIS related
+namespace ais
 {
+  //Converters
   string Str2Str(string str, const char* charsToRemove)
   {
     for (unsigned int i = 0; i < strlen(charsToRemove); ++i) {
@@ -181,11 +182,12 @@ namespace AisEncoder
     return mystr;
   }
 
-  wxString nmeaEncode(wxString type, int iMMSI, wxString status,
-                      double spd, double ilat, double ilon, double course,
-                      double hdg, wxString channel, wxString timestamp)
+
+  //Encoders
+  wxString encodeType18(int iMMSI, double spd, double ilat, double ilon, double course, double hdg)
   {
-    string MessageID(Int2BString(Str2Int("18", ""), 6));
+    string type = "18";
+    string MessageID(Int2BString(Str2Int(type, ""), 6));
 
     string RepeatIndicator = Int2BString(0, 2);
 
@@ -247,23 +249,22 @@ namespace AisEncoder
     wxString myCheck = makeCheckSum(myNMEA);
 
     myNMEA = "!" + myNMEA + "*" + myCheck;
-
     return myNMEA;
   }
 
-  wxString nmeaEncode1_2_3(int message_id, int iMMSI, int nav_status,
-                           float sog, double ilat, double ilon,
-                           double cog, double true_heading, wxString channel)
+  wxString encodeType1(int iMMSI, int nav_status, float sog, double ilat, double ilon, double cog, double true_heading, wxString channel)
   {
-    string MessageID(Int2BString(Str2Int("1", ""), 6));
+    string type = "1";
+    string MessageID(Int2BString(Str2Int(type, ""), 6));
+
     string RepeatIndicator = Int2BString(0, 2);
 
     wxString MMSI = wxString::Format("%i", iMMSI);
     string sMMSI = (const char*)MMSI.mb_str();
     string oMMSI = Int2BString(Str2Int(sMMSI, ""), 30);
 
-    string nav_status1 =
-        Int2BString(nav_status, 4);  // AIS-SART (active), MOB-AIS, EPIRB-AIS
+    string nav_status1 =  Int2BString(nav_status, 4);  // AIS-SART (active), MOB-AIS, EPIRB-AIS
+
     string rot_raw = Int2BString(0, 8);
 
     wxString SPEED = wxString::Format("%f", sog * 10);
