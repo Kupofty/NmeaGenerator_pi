@@ -1,11 +1,14 @@
-#include "main_ui_derived.h"
-#include "globals.h"
-#include "nmeagenerator_plugin.h"
 #include "utils.h"
 #include <cmath>
 #include <ctime>
 #include <wx/hyperlink.h>
 #include <wx/clipbrd.h>
+
+#include "main_ui_derived.h"
+#include "globals.h"
+#include "nmeagenerator_plugin.h"
+
+
 
 ////////////////////////////
 /// Class Initialization ///
@@ -106,391 +109,6 @@ void DialogMainGui::stopTimers()
   m_toggleBtn_startStopSim->SetLabel(_("START"));
 }
 
-
-
-
-//////////////////////////////////
-/// NMEA Sentence Construction ///
-//////////////////////////////////
-wxString DialogMainGui::createGLL(wxString talker, wxString lat, wxString latDir, wxString lon, wxString lonDir, wxString time, wxString status, wxString mode)
-{
-  wxString payload =
-      talker + "GLL" + "," +
-      lat + "," +
-      latDir + "," +
-      lon + "," +
-      lonDir + "," +
-      time + "," +
-      status + "," +
-      mode;
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  return sentence;
-}
-
-wxString DialogMainGui::createRMC(wxString talker, wxString time, wxString status, wxString lat, wxString latDir, wxString lon, wxString lonDir, wxString sogKnot, wxString cogDeg, wxString date, wxString magVarDeg, wxString magVarDir)
-{
-  wxString payload =
-      talker + "RMC" + "," +
-      time + "," +
-      status + "," +
-      lat + "," +
-      latDir + "," +
-      lon + "," +
-      lonDir + "," +
-      sogKnot + "," +
-      cogDeg + "," +
-      date + "," +
-      magVarDeg + "," +
-      magVarDir;
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  return sentence;
-}
-
-wxString DialogMainGui::createGGA(wxString talker, wxString time, wxString lat, wxString latDir, wxString lon, wxString lonDir, wxString gpsFix, wxString satellitesNb, wxString hdop, wxString altitudeMeter, wxString geoid)
-{
-  wxString payload =
-      talker + "GGA" + "," +
-      time + "," +
-      lat + "," +
-      latDir + "," +
-      lon + "," +
-      lonDir + "," +
-      gpsFix + "," +
-      satellitesNb + "," +
-      hdop + "," +
-      altitudeMeter + ",M," +
-      geoid + ",M,,";
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  return sentence;
-}
-
-wxString DialogMainGui::createHDT(wxString talker, wxString headingDeg)
-{
-  wxString payload =
-      talker + "HDT" + "," +
-      headingDeg + ",T";
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  return sentence;
-}
-
-wxString DialogMainGui::createHDM(wxString talker, wxString headingDeg)
-{
-  wxString payload =
-      talker + "HDM" + "," +
-      headingDeg + ",M";
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  return sentence;
-}
-
-wxString DialogMainGui::createHDG(wxString talker, wxString headingDeg, wxString deviationDeg, wxString deviationDir, wxString variationDeg, wxString variationDir)
-{
-  wxString payload =
-      talker + "HDG" + "," +
-      headingDeg + "," +
-      deviationDeg + "," +
-      deviationDir + "," +
-      variationDeg + "," +
-      variationDir;
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  return sentence;
-}
-
-wxString DialogMainGui::createMTW(wxString talker, wxString tempCelsius)
-{
-  wxString payload =
-      talker + "MTW" + "," +
-      tempCelsius + ",C";
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  return sentence;
-}
-
-wxString DialogMainGui::createTLL(wxString talker, wxString targetID, wxString lat, wxString latDir, wxString lon, wxString lonDir, wxString name, wxString time, wxString status, wxString ref)
-{
-  wxString payload =
-      talker + "TLL" + "," +
-      targetID + "," +
-      lat + "," +
-      latDir + "," +
-      lon + "," +
-      lonDir + "," +
-      name + "," +
-      time + "," +
-      status + "," +
-      ref;
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  return sentence;
-}
-
-wxString DialogMainGui::createROT(wxString talker, wxString rateDegPerMin, wxString status)
-{
-  wxString payload =
-      talker + "ROT" + "," +
-      rateDegPerMin + "," +
-      status;
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  return sentence;
-}
-
-wxString DialogMainGui::createRSA(wxString talker, wxString stbdAngleDeg, wxString stbdStatus, wxString portAngleDeg, wxString portStatus)
-{
-  wxString payload =
-      talker + "RSA" + "," +
-      stbdAngleDeg + "," +
-      stbdStatus + "," +
-      portAngleDeg + "," +
-      portStatus;
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  return sentence;
-}
-
-wxString DialogMainGui::createDPT(wxString talker, wxString depthMeter, wxString offsetMeter)
-{
-  wxString payload =
-      talker + "DPT" + "," +
-      depthMeter + "," +
-      offsetMeter;
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  return sentence;
-}
-
-wxString DialogMainGui::createDBx(wxString talker, wxString nmeaType, wxString depthFeet, wxString depthMeter, wxString depthFathom)
-{
-  wxString payload =
-      talker +
-      nmeaType + "," + //same structure for DBT/DBS/DBK
-      depthFeet + ",f," +
-      depthMeter + ",M," +
-      depthFathom + ",F";
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  return sentence;
-}
-
-wxString DialogMainGui::createTHS(wxString talker, wxString heading, wxString mode)
-{
-  wxString payload =
-      talker + "THS" + "," +
-      heading + "," +
-      mode;
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  return sentence;
-}
-
-wxString DialogMainGui::createWPL(wxString talker, wxString lat, wxString latDir, wxString lon, wxString lonDir, wxString wpName)
-{
-  wxString payload =
-      talker + "WPL" + "," +
-      lat + "," +
-      latDir + "," +
-      lon + "," +
-      lonDir + "," +
-      wpName;
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  return sentence;
-}
-
-wxString DialogMainGui::createVTG(wxString talker, wxString cogTrue, wxString cogMag, wxString sogKnot, wxString sogKph, wxString mode)
-{
-  wxString payload =
-      talker + "VTG" + "," +
-      cogTrue + ",T," +
-      cogMag + ",M," +
-      sogKnot + ",N," +
-      sogKph + ",K," +
-      mode;
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  return sentence;
-}
-
-wxString DialogMainGui::createGSV(wxString talker, wxString totalSentences, wxString sentenceNumber, wxString totalSatellites, wxString PRN, wxString elevationDeg, wxString azimuthDeg, wxString SNR)
-{
-  wxString payload =
-      talker + "GSV" + "," +
-      totalSentences + "," +
-      sentenceNumber + "," +
-      totalSatellites + "," +
-      PRN + "," +
-      elevationDeg + "," +
-      azimuthDeg + "," +
-      SNR;
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  return sentence;
-}
-
-wxString DialogMainGui::createXDR(wxString talker, wxString type, wxString measurement, wxString unit, wxString name)
-{
-  wxString payload =
-      talker + "XDR" + "," +
-      type + "," +
-      measurement + "," +
-      unit + "," +
-      name;
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  return sentence;
-}
-
-wxString DialogMainGui::createOSD(wxString talker, wxString heading, wxString status, wxString course, wxString courseRef, wxString speed, wxString speedRef, wxString driftAngle, wxString driftSpeed, wxString speedUnit)
-{
-  wxString payload =
-      talker + "OSD" + "," +
-      heading + "," +
-      status + "," +
-      course + "," +
-      courseRef + "," +
-      speed + "," +
-      speedRef + "," +
-      driftAngle + "," +
-      driftSpeed + "," +
-      speedUnit;
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  return sentence;
-}
-
-wxString DialogMainGui::createMWV(wxString talker, wxString angle, wxString reference, wxString speed, wxString unit, wxString status)
-{
-  wxString payload =
-      talker + "MWV" + "," +
-      angle + "," +
-      reference + "," +
-      speed + "," +
-      unit + "," +
-      status;
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  return sentence;
-}
-
-wxString DialogMainGui::createMWD(wxString talker, wxString direction1, wxString direction2, wxString speed1, wxString speed2)
-{
-  wxString payload =
-      talker + "MWD" + "," +
-      direction1 + ",T," +
-      direction2 + ",M," +
-      speed1 + ",N," +
-      speed2 + ",M";
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  return sentence;
-}
-
-wxString DialogMainGui::createVDR(wxString talker, wxString directionTrue, wxString directionMag, wxString currentSpeedKnot)
-{
-  wxString payload =
-      talker + "VDR" + "," +
-      directionTrue + ",T," +
-      directionMag + ",M," +
-      currentSpeedKnot + ",N";
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  return sentence;
-}
-
-wxString DialogMainGui::createVHW(wxString talker, wxString headingTrue, wxString headingMag, wxString stwKnot, wxString stwKph)
-{
-  wxString payload =
-      talker + "VHW" + "," +
-      headingTrue + ",T," +
-      headingMag + ",M," +
-      stwKnot + ",N," +
-      stwKph + ",K";
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  return sentence;
-}
-
-wxString DialogMainGui::createVWR(wxString talker, wxString angle, wxString direction, wxString speedKnot, wxString speedMps, wxString speedKph)
-{
-  wxString payload =
-      talker + "VWR" + "," +
-      angle + "," +
-      direction + "," +
-      speedKnot + ",N," +
-      speedMps + ",M," +
-      speedKph + ",K";
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  return sentence;
-}
-
-wxString DialogMainGui::createZDA(wxString talker, wxString time, wxString day, wxString month, wxString year, wxString hourOffset, wxString minuteOffset)
-{
-  wxString payload =
-      talker + "ZDA" + "," +
-      time + "," +
-      day + "," +
-      month + "," +
-      year + "," +
-      hourOffset + "," +
-      minuteOffset;
-
-  wxString checksum = utils::calculateChecksumString(payload);
-
-  wxString sentence = "$" + payload + checksum;
-  return sentence;
-}
 
 
 
@@ -1055,7 +673,7 @@ wxString DialogMainGui::createFromGuiGLL()
   wxString status = m_choice_statusGLL->GetStringSelection();
   wxString mode   = m_choice_modeGLL->GetStringSelection();
 
-  wxString gll = createGLL(talker, lat, latDir, lon, lonDir, time, status, mode);
+  wxString gll = nmea::createGLL(talker, lat, latDir, lon, lonDir, time, status, mode);
   return gll;
 }
 
@@ -1074,7 +692,7 @@ wxString DialogMainGui::createFromGuiRMC()
   wxString magVar    = wxString::Format("%.1f",  m_spinCtrlDouble_magRMC->GetValue());
   wxString magVarDir = m_choice_magDirRMC->GetStringSelection();
 
-  wxString rmc = createRMC(talker, time, status, lat, latDir, lon, lonDir, sog, cog, date, magVar, magVarDir);
+  wxString rmc  = nmea::createRMC(talker, time, status, lat, latDir, lon, lonDir, sog, cog, date, magVar, magVarDir);
   return rmc;
 }
 
@@ -1092,7 +710,7 @@ wxString DialogMainGui::createFromGuiGGA()
   wxString altitude = wxString::Format("%.1f", m_spinCtrlDouble_altitude_GGA->GetValue());
   wxString geoid    = wxString::Format("%.1f", m_spinCtrlDouble_geoidSeparationGGA->GetValue());
 
-  wxString gga = createGGA(talker, time, lat, latDir, lon, lonDir, gpsFix, sats, hdop, altitude, geoid);
+  wxString gga  = nmea::createGGA(talker, time, lat, latDir, lon, lonDir, gpsFix, sats, hdop, altitude, geoid);
   return gga;
 }
 
@@ -1101,7 +719,7 @@ wxString DialogMainGui::createFromGuiHDT()
   wxString talker  = m_textCtrl_talkerHDT->GetValue();
   wxString heading = wxString::Format("%.1f", m_spinCtrlDouble_headingHDT->GetValue());
 
-  wxString hdt = createHDT(talker, heading);
+  wxString hdt  = nmea::createHDT(talker, heading);
   return hdt;
 }
 
@@ -1110,7 +728,7 @@ wxString DialogMainGui::createFromGuiHDM()
   wxString talker  = m_textCtrl_talkerHDM->GetValue();
   wxString heading = wxString::Format("%.1f", m_spinCtrlDouble_headingHDM->GetValue());
 
-  wxString hdm = createHDM(talker, heading);
+  wxString hdm  = nmea::createHDM(talker, heading);
   return hdm;
 }
 
@@ -1123,7 +741,7 @@ wxString DialogMainGui::createFromGuiHDG()
   wxString variation    = wxString::Format("%.1f", m_spinCtrlDouble_variationHDG->GetValue());
   wxString variationDir = m_choice_variationDirHDG->GetStringSelection();
 
-  wxString hdg = createHDG(talker, heading, deviation, deviationDir, variation, variationDir);
+  wxString hdg  = nmea::createHDG(talker, heading, deviation, deviationDir, variation, variationDir);
   return hdg;
 }
 
@@ -1132,7 +750,7 @@ wxString DialogMainGui::createFromGuiMTW()
   wxString talker = m_textCtrl_talkerMTW->GetValue();
   wxString temp   = wxString::Format("%.1f", m_spinCtrlDouble_tempMTW->GetValue());
 
-  wxString mtw = createMTW(talker, temp);
+  wxString mtw  = nmea::createMTW(talker, temp);
   return mtw;
 }
 
@@ -1149,7 +767,7 @@ wxString DialogMainGui::createFromGuiTLL()
   wxString status   = m_choice_statusTLL->GetStringSelection();
   wxString ref      = "R";
 
-  wxString tll = createTLL(talker, targetID, lat, latDir, lon, lonDir, name, time, status, ref);
+  wxString tll  = nmea::createTLL(talker, targetID, lat, latDir, lon, lonDir, name, time, status, ref);
   return tll;
 }
 
@@ -1159,7 +777,7 @@ wxString DialogMainGui::createFromGuiROT()
   wxString rate   = wxString::Format("%.1f", m_spinCtrlDouble_rateROT->GetValue());
   wxString status = m_choice_statusROT->GetStringSelection();
 
-  wxString rot = createROT(talker, rate, status);
+  wxString rot  = nmea::createROT(talker, rate, status);
   return rot;
 }
 
@@ -1171,7 +789,7 @@ wxString DialogMainGui::createFromGuiRSA()
   wxString portAngle  = wxString::Format("%.1f", m_spinCtrlDouble_portRSA->GetValue());
   wxString portStatus = m_choice_statusPortRSA->GetStringSelection();
 
-  wxString rsa = createRSA(talker, stbdAngle, stbdStatus, portAngle, portStatus);
+  wxString rsa  = nmea::createRSA(talker, stbdAngle, stbdStatus, portAngle, portStatus);
   return rsa;
 }
 
@@ -1181,7 +799,7 @@ wxString DialogMainGui::createFromGuiDPT()
   wxString depth  = wxString::Format("%.1f", m_spinCtrlDouble_depthDPT->GetValue());
   wxString offset = wxString::Format("%.1f", m_spinCtrlDouble_offsetDPT->GetValue());
 
-  wxString dpt = createDPT(talker, depth, offset);
+  wxString dpt  = nmea::createDPT(talker, depth, offset);
   return dpt;
 }
 
@@ -1193,7 +811,7 @@ wxString DialogMainGui::createFromGuiDBx()
   wxString depthMeter  = wxString::Format("%.1f", m_spinCtrlDouble_depthMeterDBx->GetValue());
   wxString depthFathom = wxString::Format("%.1f", m_spinCtrlDouble_depthFathomDBx->GetValue());
 
-  wxString dbx = createDBx(talker, type, depthFeet, depthMeter, depthFathom);
+  wxString dbx  = nmea::createDBx(talker, type, depthFeet, depthMeter, depthFathom);
   return dbx;
 }
 
@@ -1203,7 +821,7 @@ wxString DialogMainGui::createFromGuiTHS()
   wxString heading = wxString::Format("%.1f", m_spinCtrlDouble_headingTHS->GetValue());
   wxString mode    = m_choice_modeTHS->GetStringSelection();
 
-  wxString ths = createTHS(talker, heading, mode);
+  wxString ths  = nmea::createTHS(talker, heading, mode);
   return ths;
 }
 
@@ -1216,7 +834,7 @@ wxString DialogMainGui::createFromGuiWPL()
   wxString lonDir = m_choice_lonDirWPL->GetStringSelection();
   wxString wpName = m_textCtrl_nameWPL->GetValue();
 
-  wxString wpl = createWPL(talker, lat, latDir, lon, lonDir, wpName);
+  wxString wpl  = nmea::createWPL(talker, lat, latDir, lon, lonDir, wpName);
   return wpl;
 }
 
@@ -1229,7 +847,7 @@ wxString DialogMainGui::createFromGuiVTG()
   wxString sogKph  = wxString::Format("%.1f", m_spinCtrlDouble_sogKphVTG->GetValue());
   wxString mode    = m_choice_modeVTG->GetStringSelection();
 
-  wxString vtg = createVTG(talker, cogTrue, cogMag, sogKnot, sogKph, mode);
+  wxString vtg  = nmea::createVTG(talker, cogTrue, cogMag, sogKnot, sogKph, mode);
   return vtg;
 }
 
@@ -1244,7 +862,7 @@ wxString DialogMainGui::createFromGuiGSV()
   wxString azimuth         = wxString::Format("%d", m_spinCtrl_azimuthGSV->GetValue());
   wxString SNR             = wxString::Format("%d", m_spinCtrl_snrGSV->GetValue());
 
-  wxString gsv = createGSV(talker, totalSentences, sentenceNumber, totalSatellites, PRN, elevation, azimuth, SNR);
+  wxString gsv  = nmea::createGSV(talker, totalSentences, sentenceNumber, totalSatellites, PRN, elevation, azimuth, SNR);
   return gsv;
 }
 
@@ -1280,7 +898,7 @@ wxString DialogMainGui::createFromGuiXDR()
       break;
   }
 
-  wxString xdr = createXDR(talker, type, measurement, unit, name);
+  wxString xdr  = nmea::createXDR(talker, type, measurement, unit, name);
   return xdr;
 }
 
@@ -1297,7 +915,7 @@ wxString DialogMainGui::createFromGuiOSD()
   wxString driftSpeed = wxString::Format("%.1f", m_spinCtrlDouble_driftSpeedOSD->GetValue());
   wxString speedUnit  = m_choice_speedUnitOSD->GetStringSelection();
 
-  wxString osd = createOSD(talker, heading, status, course, courseRef, speed, speedRef, driftAngle, driftSpeed, speedUnit);
+  wxString osd  = nmea::createOSD(talker, heading, status, course, courseRef, speed, speedRef, driftAngle, driftSpeed, speedUnit);
   return osd;
 }
 
@@ -1310,7 +928,7 @@ wxString DialogMainGui::createFromGuiMWV()
   wxString unit   = m_choice_unitMWV->GetStringSelection();
   wxString status = m_choice_statusMWV->GetStringSelection();
 
-  wxString mwv = createMWV(talker, angle, ref, speed, unit, status);
+  wxString mwv  = nmea::createMWV(talker, angle, ref, speed, unit, status);
   return mwv;
 }
 
@@ -1322,7 +940,7 @@ wxString DialogMainGui::createFromGuiMWD()
   wxString speed1 = wxString::Format("%.1f", m_spinCtrlDouble_speed1MWD->GetValue());
   wxString speed2 = wxString::Format("%.1f", m_spinCtrlDouble_speed2MWD->GetValue());
 
-  wxString mwd = createMWD(talker, dir1, dir2, speed1, speed2);
+  wxString mwd  = nmea::createMWD(talker, dir1, dir2, speed1, speed2);
   return mwd;
 }
 
@@ -1333,7 +951,7 @@ wxString DialogMainGui::createFromGuiVDR()
   wxString dirMag       = wxString::Format("%.1f", m_spinCtrlDouble_directionMagVDR->GetValue());
   wxString currentSpeed = wxString::Format("%.1f", m_spinCtrlDouble_currentSpeedVDR->GetValue());
 
-  wxString vdr = createVDR(talker, dirTrue, dirMag, currentSpeed);
+  wxString vdr  = nmea::createVDR(talker, dirTrue, dirMag, currentSpeed);
   return vdr;
 }
 
@@ -1345,7 +963,7 @@ wxString DialogMainGui::createFromGuiVHW()
   wxString stwKnot     = wxString::Format("%.1f", m_spinCtrlDouble_stwKnotVHW->GetValue());
   wxString stwKph      = wxString::Format("%.1f", m_spinCtrlDouble_stwKphVHW->GetValue());
 
-  wxString vhw = createVHW(talker, headingTrue, headingMag, stwKnot, stwKph);
+  wxString vhw  = nmea::createVHW(talker, headingTrue, headingMag, stwKnot, stwKph);
   return vhw;
 }
 
@@ -1358,7 +976,7 @@ wxString DialogMainGui::createFromGuiVWR()
   wxString speedMps  = wxString::Format("%.1f", m_spinCtrlDouble_speedMpsVWR->GetValue());
   wxString speedKph  = wxString::Format("%.1f", m_spinCtrlDouble_speedKphVWR->GetValue());
 
-  wxString vwr = createVWR(talker, angle, direction, speedKnot, speedMps, speedKph);
+  wxString vwr  = nmea::createVWR(talker, angle, direction, speedKnot, speedMps, speedKph);
   return vwr;
 }
 
@@ -1372,7 +990,7 @@ wxString DialogMainGui::createFromGuiZDA()
   wxString hourOffset   = wxString::Format("%d", m_spinCtrl_hourOffsetZDA->GetValue());
   wxString minuteOffset = wxString::Format("%d", m_spinCtrl_minuteOffsetZDA->GetValue());
 
-  wxString zda = createZDA(talker, time, day, month, year, hourOffset, minuteOffset);
+  wxString zda  = nmea::createZDA(talker, time, day, month, year, hourOffset, minuteOffset);
   return zda;
 }
 
@@ -1489,9 +1107,9 @@ void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
     wxString cogStr = wxString::Format("%.1f", cog);
     wxString rudderStr = wxString::Format("%.1f", shipSimu.rudderAngle);
 
-    sendNmeaToOCPN(createRMC("GP", timeStr, "A", latStr, latDir, lonStr, lonDir, speedStr, cogStr, dateStr, "0", "E"));
-    sendNmeaToOCPN(createHDT("II", headingStr));
-    sendNmeaToOCPN(createRSA("II", rudderStr, "A", "0", "V"));
+    sendNmeaToOCPN(nmea::createRMC("GP", timeStr, "A", latStr, latDir, lonStr, lonDir, speedStr, cogStr, dateStr, "0", "E"));
+    sendNmeaToOCPN(nmea::createHDT("II", headingStr));
+    sendNmeaToOCPN(nmea::createRSA("II", rudderStr, "A", "0", "V"));
   }
 
 
@@ -1517,7 +1135,7 @@ void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
     wxString latStr = utils::toNMEA_lat(fabs(tllSimu.lat));
     wxString lonStr = utils::toNMEA_lon(fabs(tllSimu.lon));
 
-    wxString aisTLL = createTLL("II", "99", latStr, latDir, lonStr, lonDir, "DUMMY", timeStr, "T", "R");
+    wxString aisTLL  = nmea::createTLL("II", "99", latStr, latDir, lonStr, lonDir, "DUMMY", timeStr, "T", "R");
     sendNmeaToOCPN(aisTLL);
 
   }
