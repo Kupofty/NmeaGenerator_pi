@@ -1957,8 +1957,15 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_choice_classVDM->SetSelection( 0 );
 	fgSizer4113122->Add( m_choice_classVDM, 0, wxALL, 5 );
 
-	m_spinCtrl_mmsiVDM = new wxSpinCtrl( sbSizer_VDM->GetStaticBox(), wxID_ANY, wxT("999000001"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 999999999, 999000001 );
-	fgSizer4113122->Add( m_spinCtrl_mmsiVDM, 0, wxALL, 5 );
+	m_comboBox_mmsiVDM = new wxComboBox( sbSizer_VDM->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, NULL, 0 );
+	m_comboBox_mmsiVDM->Append( _("999 (Virtual ship)") );
+	m_comboBox_mmsiVDM->Append( _("970 (SART)") );
+	m_comboBox_mmsiVDM->Append( _("972 (MOB)") );
+	m_comboBox_mmsiVDM->Append( _("974 (EPIRB)") );
+	m_comboBox_mmsiVDM->SetSelection( 0 );
+	m_comboBox_mmsiVDM->SetToolTip( _("Select or type MMSI (digits only)") );
+
+	fgSizer4113122->Add( m_comboBox_mmsiVDM, 0, wxALL, 5 );
 
 	m_spinCtrl_statusVDM = new wxSpinCtrl( sbSizer_VDM->GetStaticBox(), wxID_ANY, wxT("0"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 15, 0 );
 	fgSizer4113122->Add( m_spinCtrl_statusVDM, 0, wxALL, 5 );
@@ -2824,7 +2831,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_panel_list->SetSizer( bSizer9 );
 	m_panel_list->Layout();
 	bSizer9->Fit( m_panel_list );
-	m_notebook->AddPage( m_panel_list, _("Sentence Builder"), false );
+	m_notebook->AddPage( m_panel_list, _("Sentence Builder"), true );
 	m_panel_sim = new wxPanel( m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer8;
 	bSizer8 = new wxBoxSizer( wxVERTICAL );
@@ -3274,7 +3281,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_panel_sim->SetSizer( bSizer8 );
 	m_panel_sim->Layout();
 	bSizer8->Fit( m_panel_sim );
-	m_notebook->AddPage( m_panel_sim, _("Simulation"), true );
+	m_notebook->AddPage( m_panel_sim, _("Simulation"), false );
 
 	bSizer_main->Add( m_notebook, 1, wxEXPAND, 5 );
 

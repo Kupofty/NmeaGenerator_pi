@@ -964,8 +964,36 @@ wxString DialogMainGui::createFromGuiMWD()
 
 wxString DialogMainGui::createFromGuiVDM()
 {
-  wxString talker  = m_textCtrl_talkerVDM->GetValue();
-  int mmsi         = m_spinCtrl_mmsiVDM->GetValue();
+  wxString talker   = m_textCtrl_talkerVDM->GetValue();
+
+  int mmsiDefault = 999000000;
+  int mmsi = mmsiDefault;
+  int mmsiSelection = m_comboBox_mmsiVDM->GetSelection();
+  if (mmsiSelection != wxNOT_FOUND)
+  {
+    switch (mmsiSelection)
+    {
+      case 0: mmsi = mmsiDefault; break; // Virtual boat
+      case 1: mmsi = 970000000; break;   // SART
+      case 2: mmsi = 972000000; break;   // MOB
+      case 3: mmsi = 974000000; break;   // EPIRB
+      default: break;
+    }
+  }
+  else
+  {
+    // User typed value
+    wxString text = m_comboBox_mmsiVDM->GetValue();
+
+    // Validate: only digits
+    if (!text.IsEmpty() && text.IsNumber())
+    {
+      long value;
+      text.ToLong(&value);
+      mmsi = static_cast<int>(value);
+    }
+  }
+
   int status       = m_spinCtrl_statusVDM->GetValue();         //class A only
   double speed     = m_spinCtrlDouble_sogVDM->GetValue();
   double lat       = m_spinCtrlDouble_latVDM->GetValue();

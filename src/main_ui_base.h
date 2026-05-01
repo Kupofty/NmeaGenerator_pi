@@ -29,6 +29,7 @@
 #include <wx/panel.h>
 #include <wx/choice.h>
 #include <wx/statbox.h>
+#include <wx/combobox.h>
 #include <wx/scrolwin.h>
 #include <wx/tglbtn.h>
 #include <wx/srchctrl.h>
@@ -364,7 +365,7 @@ class MyDialog : public wxDialog
 		wxTextCtrl* m_textCtrl_talkerVDM;
 		wxStaticText* m_staticText1852;
 		wxChoice* m_choice_classVDM;
-		wxSpinCtrl* m_spinCtrl_mmsiVDM;
+		wxComboBox* m_comboBox_mmsiVDM;
 		wxSpinCtrl* m_spinCtrl_statusVDM;
 		wxSpinCtrlDouble* m_spinCtrlDouble_sogVDM;
 		wxSpinCtrlDouble* m_spinCtrlDouble_latVDM;

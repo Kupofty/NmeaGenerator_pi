@@ -1160,7 +1160,7 @@
             <object class="notebookpage" expanded="true">
               <property name="bitmap"></property>
               <property name="label">Sentence Builder</property>
-              <property name="select">0</property>
+              <property name="select">1</property>
               <object class="wxPanel" expanded="true">
                 <property name="BottomDockable">1</property>
                 <property name="LeftDockable">1</property>
@@ -20528,7 +20528,7 @@
                                   <property name="border">5</property>
                                   <property name="flag">wxALL</property>
                                   <property name="proportion">0</property>
-                                  <object class="wxSpinCtrl" expanded="true">
+                                  <object class="wxComboBox" expanded="true">
                                     <property name="BottomDockable">1</property>
                                     <property name="LeftDockable">1</property>
                                     <property name="RightDockable">1</property>
@@ -20542,6 +20542,7 @@
                                     <property name="caption"></property>
                                     <property name="caption_visible">1</property>
                                     <property name="center_pane">0</property>
+                                    <property name="choices">&quot;999 (Virtual ship)&quot; &quot;970 (SART)&quot; &quot;972 (MOB)&quot; &quot;974 (EPIRB)&quot;</property>
                                     <property name="close_button">1</property>
                                     <property name="context_help"></property>
                                     <property name="context_menu">1</property>
@@ -20557,17 +20558,14 @@
                                     <property name="gripper">0</property>
                                     <property name="hidden">0</property>
                                     <property name="id">wxID_ANY</property>
-                                    <property name="initial">999000001</property>
-                                    <property name="max">999999999</property>
                                     <property name="max_size"></property>
                                     <property name="maximize_button">0</property>
                                     <property name="maximum_size"></property>
-                                    <property name="min">0</property>
                                     <property name="min_size"></property>
                                     <property name="minimize_button">0</property>
                                     <property name="minimum_size"></property>
                                     <property name="moveable">1</property>
-                                    <property name="name">m_spinCtrl_mmsiVDM</property>
+                                    <property name="name">m_comboBox_mmsiVDM</property>
                                     <property name="pane_border">1</property>
                                     <property name="pane_position"></property>
                                     <property name="pane_size"></property>
@@ -20575,13 +20573,18 @@
                                     <property name="pin_button">1</property>
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
+                                    <property name="selection">0</property>
                                     <property name="show">1</property>
                                     <property name="size"></property>
-                                    <property name="style">wxSP_ARROW_KEYS</property>
+                                    <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
-                                    <property name="tooltip"></property>
-                                    <property name="value">999000001</property>
+                                    <property name="tooltip">Select or type MMSI (digits only)</property>
+                                    <property name="validator_data_type"></property>
+                                    <property name="validator_style">wxFILTER_NONE</property>
+                                    <property name="validator_type">wxDefaultValidator</property>
+                                    <property name="validator_variable"></property>
+                                    <property name="value"></property>
                                     <property name="window_extra_style"></property>
                                     <property name="window_name"></property>
                                     <property name="window_style"></property>
@@ -29594,7 +29597,7 @@
             <object class="notebookpage" expanded="true">
               <property name="bitmap"></property>
               <property name="label">Simulation</property>
-              <property name="select">1</property>
+              <property name="select">0</property>
               <object class="wxPanel" expanded="false">
                 <property name="BottomDockable">1</property>
                 <property name="LeftDockable">1</property>
