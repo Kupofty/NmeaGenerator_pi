@@ -964,9 +964,9 @@ wxString DialogMainGui::createFromGuiMWD()
 
 wxString DialogMainGui::createFromGuiVDM()
 {
-  wxString talker   = m_textCtrl_talkerVDM->GetValue();
+  wxString talker = m_textCtrl_talkerVDM->GetValue();
 
-  int mmsiDefault = 999000000;
+  int mmsiDefault = 227000000;
   int mmsi = mmsiDefault;
   int mmsiSelection = m_comboBox_mmsiVDM->GetSelection();
   if (mmsiSelection != wxNOT_FOUND)
@@ -977,6 +977,7 @@ wxString DialogMainGui::createFromGuiVDM()
       case 1: mmsi = 970000000; break;   // SART
       case 2: mmsi = 972000000; break;   // MOB
       case 3: mmsi = 974000000; break;   // EPIRB
+      case 4: mmsi = 111227000; break;   // SAR aircraft
       default: break;
     }
   }

@@ -1958,10 +1958,11 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	fgSizer4113122->Add( m_choice_classVDM, 0, wxALL, 5 );
 
 	m_comboBox_mmsiVDM = new wxComboBox( sbSizer_VDM->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, NULL, 0 );
-	m_comboBox_mmsiVDM->Append( _("999 (Virtual ship)") );
+	m_comboBox_mmsiVDM->Append( _("227 (French ship)") );
 	m_comboBox_mmsiVDM->Append( _("970 (SART)") );
 	m_comboBox_mmsiVDM->Append( _("972 (MOB)") );
 	m_comboBox_mmsiVDM->Append( _("974 (EPIRB)") );
+	m_comboBox_mmsiVDM->Append( _("111 (SAR aircraft)") );
 	m_comboBox_mmsiVDM->SetSelection( 0 );
 	m_comboBox_mmsiVDM->SetToolTip( _("Select or type MMSI (digits only)") );
 

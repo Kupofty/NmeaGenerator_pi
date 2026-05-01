@@ -20542,7 +20542,7 @@
                                     <property name="caption"></property>
                                     <property name="caption_visible">1</property>
                                     <property name="center_pane">0</property>
-                                    <property name="choices">&quot;999 (Virtual ship)&quot; &quot;970 (SART)&quot; &quot;972 (MOB)&quot; &quot;974 (EPIRB)&quot;</property>
+                                    <property name="choices">&quot;227 (French ship)&quot; &quot;970 (SART)&quot; &quot;972 (MOB)&quot; &quot;974 (EPIRB)&quot; &quot;111 (SAR aircraft)&quot;</property>
                                     <property name="close_button">1</property>
                                     <property name="context_help"></property>
                                     <property name="context_menu">1</property>
