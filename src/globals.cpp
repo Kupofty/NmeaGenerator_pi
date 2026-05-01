@@ -24,3 +24,6 @@ bool g_sendDataAfterWindowClose = 0;
 
 //Copy NMEA sentence to clipboard when clicking "Send"
 bool g_copyNmeaToClipboard = 0;
+
+//AIS
+int g_aisMMSI = 227000000;

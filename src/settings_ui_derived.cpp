@@ -21,6 +21,7 @@ void DialogSettings::OnInit(wxInitDialogEvent& event)
   m_checkBox_restoreWindowSize->SetValue(g_restoreWindowSize);
   m_checkBox_keepSendingData->SetValue(g_sendDataAfterWindowClose);
   m_checkBox_copyNmeaToClipboard->SetValue(g_copyNmeaToClipboard);
+  m_spinCtrl_mmsi->SetValue(g_aisMMSI);
 
   Layout();
   Fit();
@@ -39,6 +40,7 @@ void DialogSettings::updateSettings()
   g_restoreWindowSize = m_checkBox_restoreWindowSize->IsChecked();
   g_sendDataAfterWindowClose = m_checkBox_keepSendingData->IsChecked();
   g_copyNmeaToClipboard = m_checkBox_copyNmeaToClipboard->IsChecked();
+  g_aisMMSI = m_spinCtrl_mmsi->GetValue();
 }
 
 

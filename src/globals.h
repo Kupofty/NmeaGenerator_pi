@@ -28,4 +28,6 @@ extern bool g_sendDataAfterWindowClose;
 
 extern bool g_copyNmeaToClipboard;
 
+extern int g_aisMMSI;
+
 #endif //GLOBALS_H

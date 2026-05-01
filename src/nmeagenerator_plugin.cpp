@@ -157,6 +157,7 @@ void NmeaGeneratorPlugin::LoadSettings()
   if (configSettings)
   {
     configSettings->SetPath("/PlugIns/NmeaGeneratorPlugin");
+
     configSettings->Read("NotebookPage", &g_defaultNotebookPage, 0);
     configSettings->Read("RestoreLastTab", &g_restoreLastTab, 1);
     configSettings->Read("LastOpenTab", &g_lastOpenTab, 0);
@@ -172,6 +173,8 @@ void NmeaGeneratorPlugin::LoadSettings()
     configSettings->Read("SendDataAfterWindowClose", &g_sendDataAfterWindowClose, 0);
 
     configSettings->Read("CopyNmeaToClipboardOnManualSend", &g_copyNmeaToClipboard, 0);
+
+    configSettings->Read("aisMMSI", &g_aisMMSI, 227000000);
   }
 }
 
@@ -194,6 +197,7 @@ void NmeaGeneratorPlugin::SaveSettings()
   if (configSettings)
   {
     configSettings->SetPath("/PlugIns/NmeaGeneratorPlugin");
+
     configSettings->Write("NotebookPage", g_defaultNotebookPage);
     configSettings->Write("RestoreLastTab", g_restoreLastTab);
     configSettings->Write("LastOpenTab", g_lastOpenTab);
@@ -210,6 +214,8 @@ void NmeaGeneratorPlugin::SaveSettings()
     configSettings->Write("SendDataAfterWindowClose", g_sendDataAfterWindowClose);
 
     configSettings->Write("CopyNmeaToClipboardOnManualSend", g_copyNmeaToClipboard);
+
+    configSettings->Write("aisMMSI", g_aisMMSI);
 
   }
 }

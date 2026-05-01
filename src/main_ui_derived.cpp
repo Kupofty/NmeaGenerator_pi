@@ -966,18 +966,18 @@ wxString DialogMainGui::createFromGuiVDM()
 {
   wxString talker = m_textCtrl_talkerVDM->GetValue();
 
-  int mmsiDefault = 227000000;
-  int mmsi = mmsiDefault;
+  int mmsi = g_aisMMSI;
   int mmsiSelection = m_comboBox_mmsiVDM->GetSelection();
   if (mmsiSelection != wxNOT_FOUND)
   {
     switch (mmsiSelection)
     {
-      case 0: mmsi = mmsiDefault; break; // Virtual boat
-      case 1: mmsi = 970000000; break;   // SART
-      case 2: mmsi = 972000000; break;   // MOB
-      case 3: mmsi = 974000000; break;   // EPIRB
-      case 4: mmsi = 111227000; break;   // SAR aircraft
+      case 0: mmsi = g_aisMMSI; break; //Custom
+      case 1: mmsi = 227000000; break; //French ship
+      case 2: mmsi = 970000000; break; //SART
+      case 3: mmsi = 972000000; break; //MOB
+      case 4: mmsi = 974000000; break; //EPIRB
+      case 5: mmsi = 111227000; break; //SAR aircraft
       default: break;
     }
   }
@@ -1218,12 +1218,12 @@ void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
 
       //VDM : Class A (type 1)
       case 1:
-        aisNmea = ais::encodeType1_2_3("AI", 999000001, 15, aisSimu.speed, aisSimu.lat, aisSimu.lon, aisSimu.cog, aisSimu.heading, "A");
+        aisNmea = ais::encodeType1_2_3("AI", g_aisMMSI, 15, aisSimu.speed, aisSimu.lat, aisSimu.lon, aisSimu.cog, aisSimu.heading, "A");
         break;
 
       //VDM : Class B (type 18)
       case 2:
-        aisNmea = ais::encodeType18("AI", 999000001, aisSimu.speed, aisSimu.lat, aisSimu.lon, aisSimu.cog, aisSimu.heading);
+        aisNmea = ais::encodeType18("AI", g_aisMMSI, aisSimu.speed, aisSimu.lat, aisSimu.lon, aisSimu.cog, aisSimu.heading);
         break;
     }
 

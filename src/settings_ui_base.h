@@ -23,6 +23,7 @@
 #include <wx/bitmap.h>
 #include <wx/image.h>
 #include <wx/icon.h>
+#include <wx/spinctrl.h>
 #include <wx/notebook.h>
 #include <wx/button.h>
 #include <wx/dialog.h>
@@ -47,6 +48,9 @@ class DialogSettingsBase : public wxDialog
 		wxPanel* m_panel_options;
 		wxCheckBox* m_checkBox_keepSendingData;
 		wxCheckBox* m_checkBox_copyNmeaToClipboard;
+		wxPanel* m_panel_ais;
+		wxStaticText* m_staticText2;
+		wxSpinCtrl* m_spinCtrl_mmsi;
 		wxButton* buttonOK;
 		wxButton* buttonApply;
 

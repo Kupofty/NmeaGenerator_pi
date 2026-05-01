@@ -141,6 +141,40 @@ DialogSettingsBase::DialogSettingsBase( wxWindow* parent, wxWindowID id, const w
 	m_panel_options->Layout();
 	bSizer12->Fit( m_panel_options );
 	m_notebook1->AddPage( m_panel_options, _("Options"), false );
+	m_panel_ais = new wxPanel( m_notebook1, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
+	wxBoxSizer* bSizer11;
+	bSizer11 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer11->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	wxBoxSizer* bSizer121;
+	bSizer121 = new wxBoxSizer( wxHORIZONTAL );
+
+
+	bSizer121->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText2 = new wxStaticText( m_panel_ais, wxID_ANY, _("MMSI:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText2->Wrap( -1 );
+	bSizer121->Add( m_staticText2, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_spinCtrl_mmsi = new wxSpinCtrl( m_panel_ais, wxID_ANY, wxT("227000000"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 999999999, 227000000 );
+	bSizer121->Add( m_spinCtrl_mmsi, 0, wxALL, 5 );
+
+
+	bSizer121->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	bSizer11->Add( bSizer121, 0, wxEXPAND, 5 );
+
+
+	bSizer11->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	m_panel_ais->SetSizer( bSizer11 );
+	m_panel_ais->Layout();
+	bSizer11->Fit( m_panel_ais );
+	m_notebook1->AddPage( m_panel_ais, _("AIS"), false );
 
 	sizerDialog->Add( m_notebook1, 1, wxEXPAND, 5 );
 

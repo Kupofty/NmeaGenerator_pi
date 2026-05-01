@@ -12,6 +12,7 @@
 - Configurable timer for sending simulation data
 - Add AIS encoding & capabilities (class A & B) in "Simulation" & "Sentence builder" tabs
 - Dual vessel simulations (Own ship & AIS target) can now run simultaneously
+- Option to configure custom MMSI for AIS simulation and VDM in "Sentence Builder"
 
 ### Fixed
 - Sentences with "!" as first character are accepted in "Manual input" tab.  
