@@ -79,6 +79,7 @@ class DialogMainGui : public MyDialog
     void OnButtonClick_copyManualSentence(wxCommandEvent& event) override;
     void OnSpinCtrlDouble_UpdateFreqTimerSim(wxSpinDoubleEvent& event) override;
     void OnChoice_controlledVesselSimChanged(wxCommandEvent& event) override;
+    void OnChoice_aisClassVDM(wxCommandEvent& event) override;
 
     void OnButtonClick_SendGLL(wxCommandEvent& event) override;
     void OnButtonClick_SendRMC(wxCommandEvent& event) override;

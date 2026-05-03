@@ -537,6 +537,17 @@ void DialogMainGui::OnChoice_UpdateXDR(wxCommandEvent& event)
   }
 }
 
+void DialogMainGui::OnChoice_aisClassVDM(wxCommandEvent& event)
+{
+  int classChoice = m_choice_classVDM->GetSelection();
+  int isClassA = (classChoice == 0);
+
+  //Only enable following if ais is class A
+  m_spinCtrl_statusVDM->Enable(isClassA);
+  m_spinCtrl_rotVDM->Enable(isClassA);
+  m_choice_channelVDM->Enable(isClassA);
+}
+
 
 //Send logic
 void DialogMainGui::sendAndMaybeCopy(const wxString& msg)
@@ -995,20 +1006,21 @@ wxString DialogMainGui::createFromGuiVDM()
     }
   }
 
-  int status       = m_spinCtrl_statusVDM->GetValue();         //class A only
+  int status       = m_spinCtrl_statusVDM->GetValue();          //class A only
+  int rot          = m_spinCtrl_rotVDM->GetValue();             //class A only
   double speed     = m_spinCtrlDouble_sogVDM->GetValue();
   double lat       = m_spinCtrlDouble_latVDM->GetValue();
   double lon       = m_spinCtrlDouble_lonVDM->GetValue();
   double cog       = m_spinCtrlDouble_cogVDM->GetValue();
   double heading   = m_spinCtrl_headingVDM->GetValue();
-  wxString channel = "A";                                      //class A only
+  wxString channel = m_choice_channelVDM->GetStringSelection(); //class A only
 
   wxString vdm;
   int classType = m_choice_classVDM->GetSelection();
 
   //Class A
   if(classType == 0)
-    vdm  = ais::encodeType1_2_3(talker, mmsi, status, speed, lat, lon, cog, heading, channel);
+    vdm  = ais::encodeType1_2_3(talker, mmsi, status, rot, speed, lat, lon, cog, heading, channel);
   //Class B
   else if(classType == 1)
     vdm  = ais::encodeType18(talker, mmsi, speed, lat, lon, cog, heading);
@@ -1218,7 +1230,7 @@ void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
 
       //VDM : Class A (type 1)
       case 1:
-        aisNmea = ais::encodeType1_2_3("AI", g_aisMMSI, 15, aisSimu.speed, aisSimu.lat, aisSimu.lon, aisSimu.cog, aisSimu.heading, "A");
+        aisNmea = ais::encodeType1_2_3("AI", g_aisMMSI, 0, aisSimu.rudderAngle, aisSimu.speed, aisSimu.lat, aisSimu.lon, aisSimu.cog, aisSimu.heading, "A");
         break;
 
       //VDM : Class B (type 18)

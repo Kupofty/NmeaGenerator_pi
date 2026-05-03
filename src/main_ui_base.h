@@ -357,21 +357,25 @@ class MyDialog : public wxDialog
 		wxStaticText* m_staticText236;
 		wxStaticText* m_staticText361113122;
 		wxStaticText* m_staticText231;
+		wxStaticText* m_staticText226;
 		wxStaticText* m_staticText234;
 		wxStaticText* m_staticText106122;
 		wxStaticText* m_staticText232;
 		wxStaticText* m_staticText11522;
 		wxStaticText* m_staticText233;
+		wxStaticText* m_staticText225;
 		wxTextCtrl* m_textCtrl_talkerVDM;
 		wxStaticText* m_staticText1852;
 		wxChoice* m_choice_classVDM;
 		wxComboBox* m_comboBox_mmsiVDM;
 		wxSpinCtrl* m_spinCtrl_statusVDM;
+		wxSpinCtrl* m_spinCtrl_rotVDM;
 		wxSpinCtrlDouble* m_spinCtrlDouble_sogVDM;
 		wxSpinCtrlDouble* m_spinCtrlDouble_latVDM;
 		wxSpinCtrlDouble* m_spinCtrlDouble_lonVDM;
 		wxSpinCtrlDouble* m_spinCtrlDouble_cogVDM;
 		wxSpinCtrl* m_spinCtrl_headingVDM;
+		wxChoice* m_choice_channelVDM;
 		wxStaticBoxSizer* sbSizer_VDR;
 		wxButton* m_button_sendVDR;
 		wxCheckBox* m_checkBox_autoSendVDR;
@@ -593,6 +597,7 @@ class MyDialog : public wxDialog
 		virtual void OnButtonClick_SendTLL( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendTHS( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendVDM( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnChoice_aisClassVDM( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendVDR( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendVHW( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendVTG( wxCommandEvent& event ) { event.Skip(); }

@@ -166,7 +166,7 @@ namespace ais
 
 
   //Encoders
-  wxString encodeType1_2_3(wxString talker, int iMMSI, int nav_status, float sog, double ilat, double ilon, double cog, double true_heading, wxString channel)
+  wxString encodeType1_2_3(wxString talker, int iMMSI, int nav_status, int rot, float sog, double ilat, double ilon, double cog, double true_heading, wxString channel)
   {
     string type = "1";
     string MessageID(Int2BString(Str2Int(type, ""), 6));
@@ -179,9 +179,9 @@ namespace ais
     string sMMSI = (const char*)MMSI.mb_str();
     string oMMSI = Int2BString(Str2Int(sMMSI, ""), 30);
 
-    string nav_status1 =  Int2BString(nav_status, 4);  // AIS-SART (active), MOB-AIS, EPIRB-AIS
+    string nav_status1 = Int2BString(nav_status, 4);  // AIS-SART (active), MOB-AIS, EPIRB-AIS
 
-    string rot_raw = Int2BString(0, 8);
+    string rot_raw = Int2BString(rot, 8);
 
     wxString SPEED = wxString::Format("%f", sog * 10);
     string sSPEED = (const char*)SPEED.mb_str();

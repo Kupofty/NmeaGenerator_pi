@@ -1893,7 +1893,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	sbSizer_VDM->Add( m_staticline61113122, 0, wxEXPAND | wxALL, 5 );
 
 	wxFlexGridSizer* fgSizer4113122;
-	fgSizer4113122 = new wxFlexGridSizer( 2, 10, 0, 0 );
+	fgSizer4113122 = new wxFlexGridSizer( 2, 12, 0, 0 );
 	fgSizer4113122->SetFlexibleDirection( wxBOTH );
 	fgSizer4113122->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 
@@ -1916,6 +1916,10 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText231->Wrap( -1 );
 	fgSizer4113122->Add( m_staticText231, 0, wxALIGN_CENTER|wxALL, 5 );
 
+	m_staticText226 = new wxStaticText( sbSizer_VDM->GetStaticBox(), wxID_ANY, _("Turn rate"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText226->Wrap( -1 );
+	fgSizer4113122->Add( m_staticText226, 0, wxALIGN_CENTER|wxALL, 5 );
+
 	m_staticText234 = new wxStaticText( sbSizer_VDM->GetStaticBox(), wxID_ANY, _("SOG"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText234->Wrap( -1 );
 	fgSizer4113122->Add( m_staticText234, 0, wxALIGN_CENTER|wxALL, 5 );
@@ -1935,6 +1939,10 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText233 = new wxStaticText( sbSizer_VDM->GetStaticBox(), wxID_ANY, _("Heading"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText233->Wrap( -1 );
 	fgSizer4113122->Add( m_staticText233, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText225 = new wxStaticText( sbSizer_VDM->GetStaticBox(), wxID_ANY, _("Channel"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText225->Wrap( -1 );
+	fgSizer4113122->Add( m_staticText225, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_textCtrl_talkerVDM = new wxTextCtrl( sbSizer_VDM->GetStaticBox(), wxID_ANY, _("AI"), wxDefaultPosition, wxSize( 50,-1 ), 0 );
 	#ifdef __WXGTK__
@@ -1972,6 +1980,9 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_spinCtrl_statusVDM = new wxSpinCtrl( sbSizer_VDM->GetStaticBox(), wxID_ANY, wxT("0"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 15, 0 );
 	fgSizer4113122->Add( m_spinCtrl_statusVDM, 0, wxALL, 5 );
 
+	m_spinCtrl_rotVDM = new wxSpinCtrl( sbSizer_VDM->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, -90, 90, 0 );
+	fgSizer4113122->Add( m_spinCtrl_rotVDM, 0, wxALL, 5 );
+
 	m_spinCtrlDouble_sogVDM = new wxSpinCtrlDouble( sbSizer_VDM->GetStaticBox(), wxID_ANY, wxT("5"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 100, 5, 5 );
 	m_spinCtrlDouble_sogVDM->SetDigits( 1 );
 	fgSizer4113122->Add( m_spinCtrlDouble_sogVDM, 0, wxALL, 5 );
@@ -1990,6 +2001,12 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	m_spinCtrl_headingVDM = new wxSpinCtrl( sbSizer_VDM->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 359, 0 );
 	fgSizer4113122->Add( m_spinCtrl_headingVDM, 0, wxALL, 5 );
+
+	wxString m_choice_channelVDMChoices[] = { _("A"), _("B") };
+	int m_choice_channelVDMNChoices = sizeof( m_choice_channelVDMChoices ) / sizeof( wxString );
+	m_choice_channelVDM = new wxChoice( sbSizer_VDM->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_channelVDMNChoices, m_choice_channelVDMChoices, 0 );
+	m_choice_channelVDM->SetSelection( 0 );
+	fgSizer4113122->Add( m_choice_channelVDM, 0, wxALL, 5 );
 
 
 	sbSizer_VDM->Add( fgSizer4113122, 0, wxEXPAND, 5 );
@@ -3323,6 +3340,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_button_sendTLL->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendTLL ), NULL, this );
 	m_button_sendTHS->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendTHS ), NULL, this );
 	m_button_sendVDM->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendVDM ), NULL, this );
+	m_choice_classVDM->Connect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( MyDialog::OnChoice_aisClassVDM ), NULL, this );
 	m_button_sendVDR->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendVDR ), NULL, this );
 	m_button_sendVHW->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendVHW ), NULL, this );
 	m_button_sendVTG->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendVTG ), NULL, this );

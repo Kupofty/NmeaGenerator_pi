@@ -22,7 +22,7 @@ namespace ais
   wxString makeCheckSum(wxString mySentence);
 
   //Encode functions
-  wxString encodeType1_2_3(wxString talker, int iMMSI, int nav_status, float sog, double ilat, double ilon,
+  wxString encodeType1_2_3(wxString talker, int iMMSI, int nav_status, int rot, float sog, double ilat, double ilon,
                            double cog, double true_heading, wxString channel); //Class A report
   wxString encodeType18(wxString talker, int iMMSI, double spd, double ilat,
                         double ilon, double course, double hdg); //Class B position report
