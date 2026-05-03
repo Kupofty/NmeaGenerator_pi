@@ -1,9 +1,3 @@
-/*
- * Project: OpenCPN
- * Author:  Mike Rossiter - ShipDriver.
- * Source:  AIS encoding ported from AISConverter Python code by @transmitterdan
-*/
-
 #include "ais_encoder.h"
 
 #include <algorithm>
@@ -101,30 +95,13 @@ namespace ais
     return i != NMEA_TABLE.end() ? i->first : 0xff;
   }
 
-  string Str2Six(string str, int length)
-  {
-    string result;
-    char letter;
-
-    for (size_t i = 0; i < str.size(); i++) {
-      letter = str[i];
-      int si = findIntFromLetter(letter);
-      result = result + Int2BString(si, 6);
-    }
-    while (result.size() < (size_t)length) {
-      int sj = findIntFromLetter(' ');
-      result = result + Int2BString(sj, 6);
-    }
-    return result;
-  }
-
   int BString2Int(char* bitlist)
   {
     int s = std::bitset<6>(bitlist).to_ulong();
     return s;
   }
 
-  string NMEAencapsulate(string BigString, int numsixes)
+  string nmeaEncapsulate(string BigString, int numsixes)
   {
     string capsule = "";
     int chindex;
@@ -166,152 +143,141 @@ namespace ais
 
 
   //Encoders
-  wxString encodeType1_2_3(wxString talker, int iMMSI, int nav_status, int rot, float sog, double ilat, double ilon, double cog, double true_heading, wxString channel)
+  wxString encodeType1_2_3(wxString s_talker, int i_MMSI, int i_navStatus, int i_rot, double d_sog, double d_lat, double d_lon, double d_cog, double d_heading, wxString s_channel)
   {
-    string type = "1";
-    string MessageID(Int2BString(Str2Int(type, ""), 6));
+    //Get data
+    int i_messageID = 1;
+    string messageID = Int2BString(i_messageID, 6);
 
-    string RepeatIndicator = Int2BString(0, 2);
+    int i_repeatIndicator = 0;
+    string repeatIndicator = Int2BString(i_repeatIndicator, 2);
 
-    string talker1 = (const char*)talker.mb_str();
+    string talker = (const char*)s_talker.mb_str();
 
-    wxString MMSI = wxString::Format("%i", iMMSI);
-    string sMMSI = (const char*)MMSI.mb_str();
-    string oMMSI = Int2BString(Str2Int(sMMSI, ""), 30);
+    string MMSI = Int2BString(i_MMSI, 30);
 
-    string nav_status1 = Int2BString(nav_status, 4);  // AIS-SART (active), MOB-AIS, EPIRB-AIS
+    string navStatus = Int2BString(i_navStatus, 4);
 
-    string rot_raw = Int2BString(rot, 8);
+    string rotRaw = Int2BString(i_rot, 8);
 
-    wxString SPEED = wxString::Format("%f", sog * 10);
-    string sSPEED = (const char*)SPEED.mb_str();
-    float sog1 = Str2Float(sSPEED, "");
-    string sog2 = Int2BString(sog1, 10);
+    int sog_scaled = static_cast<int>(d_sog * 10.0);
+    std::string sog = Int2BString(sog_scaled, 10);
 
-    string position_accuracy = Int2BString(0, 1);
+    int i_posAccuracy = 0;
+    string posAccuracy = Int2BString(i_posAccuracy, 1);
 
-    wxString LON = wxString::Format("%f", ilon);
-    string sLON = (const char*)LON.mb_str();
-    float flon = Str2Float(sLON, "");
-    string Longitude = Int2BString(int(flon * 600000), 28);
+    int lon_scaled = static_cast<int>(d_lon * 600000.0);
+    std::string longitude = Int2BString(lon_scaled, 28);
 
-    wxString LAT = wxString::Format("%f", ilat);
-    string sLAT = (const char*)LAT.mb_str();
-    float flat = Str2Float(sLAT, "");
-    string Latitude = Int2BString(int(flat * 600000), 27);
+    int lat_scaled = static_cast<int>(d_lat * 600000.0);
+    std::string latitude = Int2BString(lat_scaled, 27);
 
-    wxString COURSE = wxString::Format("%f", cog);
-    string sCOURSE = (const char*)COURSE.mb_str();
-    float cog1 = Str2Float(sCOURSE, "");
-    string COG = Int2BString(int(cog1 * 10), 12);
+    int cog_scaled = static_cast<int>(d_cog * 10.0);
+    std::string cog = Int2BString(cog_scaled, 12);
 
-    wxString HEADING = wxString::Format("%f", true_heading);
-    string sHEADING = (const char*)HEADING.mb_str();
-    int heading = Str2Int(sHEADING, "");
-    string Heading = Int2BString(heading, 9);
+    int i_heading = static_cast<int>(d_heading);
+    std::string heading = Int2BString(i_heading, 9);
 
     int tSecond = wxGetUTCTime();
-    string TimeStamp = Int2BString(tSecond, 6);
+    string timeStamp = Int2BString(tSecond, 6);
 
-    string special_manoeuvre = Int2BString(0, 2);
-    string spare = Int2BString(0, 3);
+    int i_specialManoeuver = 0;
+    string specialManoeuver = Int2BString(i_specialManoeuver, 2);
 
-    string raim = Int2BString(0, 1);
+    int i_spare = 0;
+    string spare = Int2BString(i_spare, 3);
 
-    string sync_state = Int2BString(0, 2);
+    int i_raim = 1;
+    string raim = Int2BString(i_raim, 1);
 
-    string slot_timeout = Int2BString(0, 3);
-    string slot_offset = Int2BString(0, 14);
+    int i_syncState = 0;
+    string syncState = Int2BString(i_syncState, 2);
 
-    string BigString = MessageID;
-    BigString = BigString + RepeatIndicator;
-    BigString = BigString + oMMSI + nav_status1 + rot_raw + sog2 +
-                position_accuracy + Longitude + Latitude + COG + Heading +
-                TimeStamp + special_manoeuvre + spare + raim + sync_state +
-                slot_timeout + slot_offset;
+    int timeout = 0;
+    string slotTimeout = Int2BString(timeout, 3);
 
-    int bsz = BigString.size();
-    int numSixes = (bsz / 6);
+    int offset = 0;
+    string slotOffset = Int2BString(offset, 14);
 
-    string channel1 = (const char*)channel.mb_str();
+    //Payload
+    string bigString = messageID + repeatIndicator + MMSI + navStatus + rotRaw + sog +
+                       posAccuracy + longitude + latitude + cog + heading + timeStamp +
+                       specialManoeuver + spare + raim + syncState + slotTimeout + slotOffset;
 
-    string capsule = NMEAencapsulate(BigString, numSixes);
-    string aisnmea = talker1 + "VDM,1,1,," + channel1 + "," + capsule + ",O";
-    wxString myNMEA_SART = aisnmea;
-    wxString myCheck = makeCheckSum(myNMEA_SART);
+    int bigStringSize = bigString.size();
+    int numSixes = (bigStringSize / 6);
 
-    myNMEA_SART = "!" + myNMEA_SART + "*" + myCheck;
+    string channel = (const char*)s_channel.mb_str();
 
-    return myNMEA_SART;
+    //Encode payload
+    string encodedPayload = nmeaEncapsulate(bigString, numSixes);
+
+    //Create NMEA
+    string sentence = talker + "VDM,1,1,," + channel + "," + encodedPayload + ",O";
+    wxString checksum = makeCheckSum(sentence);
+    wxString myNMEA = "!" + sentence + "*" + checksum;
+
+    return myNMEA;
   }
 
-  wxString encodeType18(wxString talker, int iMMSI, double spd, double ilat, double ilon, double course, double hdg)
+  wxString encodeType18(wxString s_talker, int i_MMSI, double d_sog, double d_lat, double d_lon, double d_cog, double d_heading)
   {
-    string type = "18";
-    string MessageID(Int2BString(Str2Int(type, ""), 6));
+    //Get data
+    int i_MessageID = 18;
+    string MessageID(Int2BString(i_MessageID, 6));
 
-    string RepeatIndicator = Int2BString(0, 2);
+    int i_repeatIndicator = 0;
+    string repeatIndicator = Int2BString(i_repeatIndicator, 2);
 
-    string talker1 = (const char*)talker.mb_str();
+    string talker = (const char*)s_talker.mb_str();
 
-    wxString MMSI = wxString::Format("%i", iMMSI);
-    string sMMSI = (const char*)MMSI.mb_str();
-    string oMMSI = Int2BString(Str2Int(sMMSI, ""), 30);
+    string MMSI = Int2BString(i_MMSI, 30);
 
-    string Spare1 = Int2BString(0, 8);
+    int i_spare1 = 0;
+    string spare1 = Int2BString(i_spare1, 8);
 
-    wxString sChannel;
-    string Channel = (const char*)sChannel.mb_str();
+    wxString s_channel;
+    string channel = (const char*)s_channel.mb_str();
 
-    wxString SPEED = wxString::Format("%f", spd * 10);
-    string sSPEED = (const char*)SPEED.mb_str();
-    float sog = Str2Float(sSPEED, "");
-    string SOG = Int2BString(sog, 10);
+    int sog_scaled = static_cast<int>(d_sog * 10.0);
+    string sog = Int2BString(sog_scaled, 10);
 
-    string PosAccuracy = Int2BString(1, 1);
+    int i_posAccuracy = 1;
+    string posAccuracy = Int2BString(i_posAccuracy, 1);
 
-    wxString LON = wxString::Format("%f", ilon);
-    string sLON = (const char*)LON.mb_str();
-    float flon = Str2Float(sLON, "");
-    string Longitude = Int2BString(int(flon * 600000), 28);
+    int lon_scaled = static_cast<int>(d_lon * 600000.0);
+    std::string longitude = Int2BString(lon_scaled, 28);
 
-    wxString LAT = wxString::Format("%f", ilat);
-    string sLAT = (const char*)LAT.mb_str();
-    float flat = Str2Float(sLAT, "");
-    string Latitude = Int2BString(int(flat * 600000), 27);
+    int lat_scaled = static_cast<int>(d_lat * 600000.0);
+    std::string latitude = Int2BString(lat_scaled, 27);
 
-    wxString COURSE = wxString::Format("%f", course);
-    string sCOURSE = (const char*)COURSE.mb_str();
-    float cog = Str2Float(sCOURSE, "");
-    string COG = Int2BString(int(cog * 10), 12);
+    int cog_scaled = static_cast<int>(d_cog * 10.0);
+    std::string cog = Int2BString(cog_scaled, 12);
 
-    wxString HEADING = wxString::Format("%f", hdg);
-    string sHEADING = (const char*)HEADING.mb_str();
-    int heading = Str2Int(sHEADING, "");
-    string Heading = Int2BString(heading, 9);
+    int i_heading = static_cast<int>(d_heading);
+    std::string heading = Int2BString(i_heading, 9);
 
-    wxString TIMESTAMP;
-    string sTIMESTAMP = (const char*)TIMESTAMP.mb_str();
-    string tStamp = sTIMESTAMP;
     int tSecond = wxGetUTCTime();
-    string TimeStamp = Int2BString(tSecond, 6);
+    string timeStamp = Int2BString(tSecond, 6);
 
-    string Spare2 = Int2BString(0, 2);
+    int i_spare2 = 0;
+    string spare2 = Int2BString(i_spare2, 2);
 
-    string State = Int2BString(393222, 27);
+    int i_state = 393222;
+    string state = Int2BString(i_state, 27);
 
-    string BigString = MessageID;
-    BigString = BigString + RepeatIndicator;
-    BigString = BigString + oMMSI + Spare1 + SOG + PosAccuracy + Longitude +
-                Latitude + COG + Heading + TimeStamp + Spare2;
-    BigString = BigString + State;
+    //Payload
+    string bigString = MessageID + repeatIndicator + MMSI + spare1 + sog + posAccuracy + longitude +
+                       latitude + cog + heading + timeStamp + spare2 + state;
 
-    string capsule = NMEAencapsulate(BigString, 28);
-    string aisnmea = talker1 + "VDM,1,1,," + Channel + "," + capsule + ",O";
-    wxString myNMEA = aisnmea;
-    wxString myCheck = makeCheckSum(myNMEA);
+    //Encode payload
+    string encodedPayload = nmeaEncapsulate(bigString, 28);
 
-    myNMEA = "!" + myNMEA + "*" + myCheck;
+    //Create NMEA
+    string sentence = talker + "VDM,1,1,," + channel + "," + encodedPayload + ",O";
+    wxString checksum = makeCheckSum(sentence);
+    wxString myNMEA = "!" + sentence + "*" + checksum;
+
     return myNMEA;
   }
 
