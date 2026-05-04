@@ -363,6 +363,7 @@ class MyDialog : public wxDialog
 		wxStaticText* m_staticText232;
 		wxStaticText* m_staticText11522;
 		wxStaticText* m_staticText233;
+		wxStaticText* m_staticText227;
 		wxStaticText* m_staticText225;
 		wxTextCtrl* m_textCtrl_talkerVDM;
 		wxStaticText* m_staticText1852;
@@ -375,6 +376,7 @@ class MyDialog : public wxDialog
 		wxSpinCtrlDouble* m_spinCtrlDouble_lonVDM;
 		wxSpinCtrlDouble* m_spinCtrlDouble_cogVDM;
 		wxSpinCtrl* m_spinCtrl_headingVDM;
+		wxSpinCtrl* m_spinCtrl_maneuverVDM;
 		wxChoice* m_choice_channelVDM;
 		wxStaticBoxSizer* sbSizer_VDR;
 		wxButton* m_button_sendVDR;

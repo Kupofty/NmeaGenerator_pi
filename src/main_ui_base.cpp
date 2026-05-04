@@ -1893,7 +1893,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	sbSizer_VDM->Add( m_staticline61113122, 0, wxEXPAND | wxALL, 5 );
 
 	wxFlexGridSizer* fgSizer4113122;
-	fgSizer4113122 = new wxFlexGridSizer( 2, 12, 0, 0 );
+	fgSizer4113122 = new wxFlexGridSizer( 2, 13, 0, 0 );
 	fgSizer4113122->SetFlexibleDirection( wxBOTH );
 	fgSizer4113122->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 
@@ -1939,6 +1939,10 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText233 = new wxStaticText( sbSizer_VDM->GetStaticBox(), wxID_ANY, _("Heading"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText233->Wrap( -1 );
 	fgSizer4113122->Add( m_staticText233, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText227 = new wxStaticText( sbSizer_VDM->GetStaticBox(), wxID_ANY, _("Maneuver"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText227->Wrap( -1 );
+	fgSizer4113122->Add( m_staticText227, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_staticText225 = new wxStaticText( sbSizer_VDM->GetStaticBox(), wxID_ANY, _("Channel"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText225->Wrap( -1 );
@@ -2001,6 +2005,9 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	m_spinCtrl_headingVDM = new wxSpinCtrl( sbSizer_VDM->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 359, 0 );
 	fgSizer4113122->Add( m_spinCtrl_headingVDM, 0, wxALL, 5 );
+
+	m_spinCtrl_maneuverVDM = new wxSpinCtrl( sbSizer_VDM->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 2, 0 );
+	fgSizer4113122->Add( m_spinCtrl_maneuverVDM, 0, wxALL, 5 );
 
 	wxString m_choice_channelVDMChoices[] = { _("A"), _("B") };
 	int m_choice_channelVDMNChoices = sizeof( m_choice_channelVDMChoices ) / sizeof( wxString );

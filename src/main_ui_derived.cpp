@@ -545,7 +545,7 @@ void DialogMainGui::OnChoice_aisClassVDM(wxCommandEvent& event)
   //Only enable following if ais is class A
   m_spinCtrl_statusVDM->Enable(isClassA);
   m_spinCtrl_rotVDM->Enable(isClassA);
-  m_choice_channelVDM->Enable(isClassA);
+  m_spinCtrl_maneuverVDM->Enable(isClassA);
 }
 
 
@@ -1006,24 +1006,25 @@ wxString DialogMainGui::createFromGuiVDM()
     }
   }
 
-  int status       = m_spinCtrl_statusVDM->GetValue();          //class A only
-  int rot          = m_spinCtrl_rotVDM->GetValue();             //class A only
+  int status       = m_spinCtrl_statusVDM->GetValue();     //class A only
+  int rot          = m_spinCtrl_rotVDM->GetValue();        //class A only
   double speed     = m_spinCtrlDouble_sogVDM->GetValue();
   double lat       = m_spinCtrlDouble_latVDM->GetValue();
   double lon       = m_spinCtrlDouble_lonVDM->GetValue();
   double cog       = m_spinCtrlDouble_cogVDM->GetValue();
   double heading   = m_spinCtrl_headingVDM->GetValue();
-  wxString channel = m_choice_channelVDM->GetStringSelection(); //class A only
+  int maneuver     = m_spinCtrl_maneuverVDM->GetValue();   //class A only
+  wxString channel = m_choice_channelVDM->GetStringSelection();
 
   wxString vdm;
   int classType = m_choice_classVDM->GetSelection();
 
   //Class A
   if(classType == 0)
-    vdm  = ais::encodeType1_2_3(talker, mmsi, status, rot, speed, lat, lon, cog, heading, channel);
+    vdm  = ais::encodeType1_2_3(talker, mmsi, status, rot, speed, lat, lon, cog, heading, maneuver, channel);
   //Class B
   else if(classType == 1)
-    vdm  = ais::encodeType18(talker, mmsi, speed, lat, lon, cog, heading);
+    vdm  = ais::encodeType18(talker, mmsi, speed, lat, lon, cog, heading, channel);
 
   return vdm;
 }
@@ -1230,12 +1231,12 @@ void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
 
       //VDM : Class A (type 1)
       case 1:
-        aisNmea = ais::encodeType1_2_3("AI", g_aisMMSI, 0, aisSimu.rudderAngle, fabs(aisSimu.speed), aisSimu.lat, aisSimu.lon, aisSimu.cog, aisSimu.heading, "A");
+        aisNmea = ais::encodeType1_2_3("AI", g_aisMMSI, 0, aisSimu.rudderAngle, fabs(aisSimu.speed), aisSimu.lat, aisSimu.lon, aisSimu.cog, aisSimu.heading, 0, "A");
         break;
 
       //VDM : Class B (type 18)
       case 2:
-        aisNmea = ais::encodeType18("AI", g_aisMMSI, fabs(aisSimu.speed), aisSimu.lat, aisSimu.lon, aisSimu.cog, aisSimu.heading);
+        aisNmea = ais::encodeType18("AI", g_aisMMSI, fabs(aisSimu.speed), aisSimu.lat, aisSimu.lon, aisSimu.cog, aisSimu.heading, "A");
         break;
     }
 

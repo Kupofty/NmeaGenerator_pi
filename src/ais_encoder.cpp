@@ -143,16 +143,16 @@ namespace ais
 
 
   //Encoders
-  wxString encodeType1_2_3(wxString s_talker, int i_MMSI, int i_navStatus, int i_rot, double d_sog, double d_lat, double d_lon, double d_cog, double d_heading, wxString s_channel)
+  wxString encodeType1_2_3(wxString s_talker, int i_MMSI, int i_navStatus, int i_rot, double d_sog, double d_lat, double d_lon, double d_cog, double d_heading, int i_maneuver, wxString s_channel)
   {
     //Get data
+    string talker = (const char*)s_talker.mb_str();
+
     int i_messageID = 1;
     string messageID = Int2BString(i_messageID, 6);
 
     int i_repeatIndicator = 0;
     string repeatIndicator = Int2BString(i_repeatIndicator, 2);
-
-    string talker = (const char*)s_talker.mb_str();
 
     string MMSI = Int2BString(i_MMSI, 30);
 
@@ -181,8 +181,7 @@ namespace ais
     int tSecond = wxGetUTCTime();
     string timeStamp = Int2BString(tSecond, 6);
 
-    int i_specialManoeuver = 0;
-    string specialManoeuver = Int2BString(i_specialManoeuver, 2);
+    string specialManoeuver = Int2BString(i_maneuver, 2);
 
     int i_spare = 0;
     string spare = Int2BString(i_spare, 3);
@@ -220,24 +219,21 @@ namespace ais
     return myNMEA;
   }
 
-  wxString encodeType18(wxString s_talker, int i_MMSI, double d_sog, double d_lat, double d_lon, double d_cog, double d_heading)
+  wxString encodeType18(wxString s_talker, int i_MMSI, double d_sog, double d_lat, double d_lon, double d_cog, double d_heading, wxString s_channel)
   {
     //Get data
+    string talker = (const char*)s_talker.mb_str();
+
     int i_MessageID = 18;
     string MessageID(Int2BString(i_MessageID, 6));
 
     int i_repeatIndicator = 0;
     string repeatIndicator = Int2BString(i_repeatIndicator, 2);
 
-    string talker = (const char*)s_talker.mb_str();
-
     string MMSI = Int2BString(i_MMSI, 30);
 
     int i_spare1 = 0;
     string spare1 = Int2BString(i_spare1, 8);
-
-    wxString s_channel;
-    string channel = (const char*)s_channel.mb_str();
 
     int sog_scaled = static_cast<int>(d_sog * 10.0);
     string sog = Int2BString(sog_scaled, 10);
@@ -265,6 +261,8 @@ namespace ais
 
     int i_state = 393222;
     string state = Int2BString(i_state, 27);
+
+    string channel = (const char*)s_channel.mb_str();
 
     //Payload
     string bigString = MessageID + repeatIndicator + MMSI + spare1 + sog + posAccuracy + longitude +
