@@ -9,8 +9,8 @@
 - Option to keep sending data when window is closed (need to be activated in Preferences)
 - Option to automatically copy NMEA sentence to clipboard when manually sending in "Sentence builder" (need to be activated in Preferences) 
 - Button to copy to clipboard the sentence in "Manual Input" tab
-- Configurable timer for sending simulation data
-- Add AIS encoding & capabilities (class A & B) in "Simulation" & "Sentence builder" tabs
+- Configurable timer for sending simulation data 
+- Add AIS encoding & capabilities (AIVDM/AIVDO) in "Simulation" & "Sentence builder" tabs
 - Dual vessel simulations (Own ship & AIS target) can now run simultaneously
 - Option to configure custom MMSI for AIS simulation and VDM in "Sentence Builder"
 

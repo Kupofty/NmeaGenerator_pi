@@ -1873,7 +1873,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer_NmeaList->Add( sbSizer_THS, 0, wxEXPAND, 5 );
 
-	sbSizer_VDM = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("VDM") ), wxHORIZONTAL );
+	sbSizer_VDM = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("VDM/O") ), wxHORIZONTAL );
 
 	wxBoxSizer* bSizer171113122;
 	bSizer171113122 = new wxBoxSizer( wxVERTICAL );
@@ -1959,9 +1959,11 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	#endif
 	fgSizer4113122->Add( m_textCtrl_talkerVDM, 0, wxALL, 5 );
 
-	m_staticText1852 = new wxStaticText( sbSizer_VDM->GetStaticBox(), wxID_ANY, _("VDM"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText1852->Wrap( -1 );
-	fgSizer4113122->Add( m_staticText1852, 0, wxALIGN_CENTER|wxALL, 5 );
+	wxString m_choice_idVDMChoices[] = { _("VDM"), _("VDO") };
+	int m_choice_idVDMNChoices = sizeof( m_choice_idVDMChoices ) / sizeof( wxString );
+	m_choice_idVDM = new wxChoice( sbSizer_VDM->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_idVDMNChoices, m_choice_idVDMChoices, 0 );
+	m_choice_idVDM->SetSelection( 0 );
+	fgSizer4113122->Add( m_choice_idVDM, 0, wxALL, 5 );
 
 	wxString m_choice_classVDMChoices[] = { _("A"), _("B") };
 	int m_choice_classVDMNChoices = sizeof( m_choice_classVDMChoices ) / sizeof( wxString );
@@ -1999,12 +2001,13 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_spinCtrlDouble_lonVDM->SetDigits( 5 );
 	fgSizer4113122->Add( m_spinCtrlDouble_lonVDM, 0, wxALL, 5 );
 
-	m_spinCtrlDouble_cogVDM = new wxSpinCtrlDouble( sbSizer_VDM->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 360, 0, 15 );
+	m_spinCtrlDouble_cogVDM = new wxSpinCtrlDouble( sbSizer_VDM->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 359, 0, 15 );
 	m_spinCtrlDouble_cogVDM->SetDigits( 1 );
 	fgSizer4113122->Add( m_spinCtrlDouble_cogVDM, 0, wxALL, 5 );
 
-	m_spinCtrl_headingVDM = new wxSpinCtrl( sbSizer_VDM->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 359, 0 );
-	fgSizer4113122->Add( m_spinCtrl_headingVDM, 0, wxALL, 5 );
+	m_spinCtrlDouble_headingVDM = new wxSpinCtrlDouble( sbSizer_VDM->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 359, 0, 15 );
+	m_spinCtrlDouble_headingVDM->SetDigits( 0 );
+	fgSizer4113122->Add( m_spinCtrlDouble_headingVDM, 0, wxALL, 5 );
 
 	m_spinCtrl_maneuverVDM = new wxSpinCtrl( sbSizer_VDM->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 2, 0 );
 	fgSizer4113122->Add( m_spinCtrl_maneuverVDM, 0, wxALL, 5 );

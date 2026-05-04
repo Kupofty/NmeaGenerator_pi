@@ -976,6 +976,7 @@ wxString DialogMainGui::createFromGuiMWD()
 wxString DialogMainGui::createFromGuiVDM()
 {
   wxString talker = m_textCtrl_talkerVDM->GetValue();
+  wxString id = m_choice_idVDM->GetStringSelection();
 
   int mmsi = g_aisMMSI;
   int mmsiSelection = m_comboBox_mmsiVDM->GetSelection();
@@ -1012,7 +1013,7 @@ wxString DialogMainGui::createFromGuiVDM()
   double lat       = m_spinCtrlDouble_latVDM->GetValue();
   double lon       = m_spinCtrlDouble_lonVDM->GetValue();
   double cog       = m_spinCtrlDouble_cogVDM->GetValue();
-  double heading   = m_spinCtrl_headingVDM->GetValue();
+  double heading   = m_spinCtrlDouble_headingVDM->GetValue();
   int maneuver     = m_spinCtrl_maneuverVDM->GetValue();   //class A only
   wxString channel = m_choice_channelVDM->GetStringSelection();
 
@@ -1021,10 +1022,10 @@ wxString DialogMainGui::createFromGuiVDM()
 
   //Class A
   if(classType == 0)
-    vdm  = ais::encodeType1_2_3(talker, mmsi, status, rot, speed, lat, lon, cog, heading, maneuver, channel);
+    vdm  = ais::encodeType1_2_3(talker, id, mmsi, status, rot, speed, lat, lon, cog, heading, maneuver, channel);
   //Class B
   else if(classType == 1)
-    vdm  = ais::encodeType18(talker, mmsi, speed, lat, lon, cog, heading, channel);
+    vdm  = ais::encodeType18(talker, id, mmsi, speed, lat, lon, cog, heading, channel);
 
   return vdm;
 }
@@ -1231,12 +1232,12 @@ void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
 
       //VDM : Class A (type 1)
       case 1:
-        aisNmea = ais::encodeType1_2_3("AI", g_aisMMSI, 0, aisSimu.rudderAngle, fabs(aisSimu.speed), aisSimu.lat, aisSimu.lon, aisSimu.cog, aisSimu.heading, 0, "A");
+        aisNmea = ais::encodeType1_2_3("AI", "VDM", g_aisMMSI, 0, aisSimu.rudderAngle, fabs(aisSimu.speed), aisSimu.lat, aisSimu.lon, aisSimu.cog, aisSimu.heading, 0, "A");
         break;
 
       //VDM : Class B (type 18)
       case 2:
-        aisNmea = ais::encodeType18("AI", g_aisMMSI, fabs(aisSimu.speed), aisSimu.lat, aisSimu.lon, aisSimu.cog, aisSimu.heading, "A");
+        aisNmea = ais::encodeType18("AI", "VDM", g_aisMMSI, fabs(aisSimu.speed), aisSimu.lat, aisSimu.lon, aisSimu.cog, aisSimu.heading, "A");
         break;
     }
 

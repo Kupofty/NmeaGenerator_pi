@@ -21,9 +21,9 @@ namespace ais
   wxString makeCheckSum(wxString mySentence);
 
   //Encode functions
-  wxString encodeType1_2_3(wxString s_talker, int i_MMSI, int i_navStatus, int i_rot, double d_sog, double d_lat,
+  wxString encodeType1_2_3(wxString s_talker, wxString s_id, int i_MMSI, int i_navStatus, int i_rot, double d_sog, double d_lat,
                            double d_lon, double d_cog, double d_heading, int i_maneuver, wxString s_channel); //Class A report
 
-  wxString encodeType18(wxString s_talker, int i_MMSI, double d_sog, double d_lat,
+  wxString encodeType18(wxString s_talker, wxString s_id, int i_MMSI, double d_sog, double d_lat,
                         double d_lon, double d_cog, double d_heading, wxString s_channel); //Class B position report
 };

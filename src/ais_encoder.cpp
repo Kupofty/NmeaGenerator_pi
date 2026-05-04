@@ -143,10 +143,12 @@ namespace ais
 
 
   //Encoders
-  wxString encodeType1_2_3(wxString s_talker, int i_MMSI, int i_navStatus, int i_rot, double d_sog, double d_lat, double d_lon, double d_cog, double d_heading, int i_maneuver, wxString s_channel)
+  wxString encodeType1_2_3(wxString s_talker, wxString s_id, int i_MMSI, int i_navStatus, int i_rot, double d_sog, double d_lat, double d_lon, double d_cog, double d_heading, int i_maneuver, wxString s_channel)
   {
     //Get data
     string talker = (const char*)s_talker.mb_str();
+
+    string id = (const char*)s_id.mb_str();
 
     int i_messageID = 1;
     string messageID = Int2BString(i_messageID, 6);
@@ -212,17 +214,19 @@ namespace ais
     string encodedPayload = nmeaEncapsulate(bigString, numSixes);
 
     //Create NMEA
-    string sentence = talker + "VDM,1,1,," + channel + "," + encodedPayload + ",O";
+    string sentence = talker + id + ",1,1,," + channel + "," + encodedPayload + ",O";
     wxString checksum = makeCheckSum(sentence);
     wxString myNMEA = "!" + sentence + "*" + checksum;
 
     return myNMEA;
   }
 
-  wxString encodeType18(wxString s_talker, int i_MMSI, double d_sog, double d_lat, double d_lon, double d_cog, double d_heading, wxString s_channel)
+  wxString encodeType18(wxString s_talker, wxString s_id, int i_MMSI, double d_sog, double d_lat, double d_lon, double d_cog, double d_heading, wxString s_channel)
   {
     //Get data
     string talker = (const char*)s_talker.mb_str();
+
+    string id = (const char*)s_id.mb_str();
 
     int i_MessageID = 18;
     string MessageID(Int2BString(i_MessageID, 6));
@@ -272,7 +276,7 @@ namespace ais
     string encodedPayload = nmeaEncapsulate(bigString, 28);
 
     //Create NMEA
-    string sentence = talker + "VDM,1,1,," + channel + "," + encodedPayload + ",O";
+    string sentence = talker + id + ",1,1,,"  + channel + "," + encodedPayload + ",O";
     wxString checksum = makeCheckSum(sentence);
     wxString myNMEA = "!" + sentence + "*" + checksum;
 
