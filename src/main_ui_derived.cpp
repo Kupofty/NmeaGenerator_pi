@@ -1230,12 +1230,12 @@ void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
 
       //VDM : Class A (type 1)
       case 1:
-        aisNmea = ais::encodeType1_2_3("AI", g_aisMMSI, 0, aisSimu.rudderAngle, aisSimu.speed, aisSimu.lat, aisSimu.lon, aisSimu.cog, aisSimu.heading, "A");
+        aisNmea = ais::encodeType1_2_3("AI", g_aisMMSI, 0, aisSimu.rudderAngle, fabs(aisSimu.speed), aisSimu.lat, aisSimu.lon, aisSimu.cog, aisSimu.heading, "A");
         break;
 
       //VDM : Class B (type 18)
       case 2:
-        aisNmea = ais::encodeType18("AI", g_aisMMSI, aisSimu.speed, aisSimu.lat, aisSimu.lon, aisSimu.cog, aisSimu.heading);
+        aisNmea = ais::encodeType18("AI", g_aisMMSI, fabs(aisSimu.speed), aisSimu.lat, aisSimu.lon, aisSimu.cog, aisSimu.heading);
         break;
     }
 

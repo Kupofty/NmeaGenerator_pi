@@ -77,6 +77,12 @@ namespace ais
     return result;
   }
 
+  int BString2Int(char* bitlist)
+  {
+    int s = std::bitset<6>(bitlist).to_ulong();
+    return s;
+  }
+
   int findIntFromLetter(char letter)
   {
     auto i = std::find_if(SIXBIT_ASCII_TABLE.begin(), SIXBIT_ASCII_TABLE.end(),
@@ -93,12 +99,6 @@ namespace ais
                             return p.second == (unsigned)mp;
                           });
     return i != NMEA_TABLE.end() ? i->first : 0xff;
-  }
-
-  int BString2Int(char* bitlist)
-  {
-    int s = std::bitset<6>(bitlist).to_ulong();
-    return s;
   }
 
   string nmeaEncapsulate(string BigString, int numsixes)
