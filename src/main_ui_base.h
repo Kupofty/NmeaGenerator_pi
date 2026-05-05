@@ -324,9 +324,6 @@ class MyDialog : public wxDialog
 		wxStaticText* m_staticText361111;
 		wxStaticText* m_staticText63;
 		wxStaticText* m_staticText64;
-		wxStaticText* m_staticText65;
-		wxStaticText* m_staticText66;
-		wxStaticText* m_staticText67;
 		wxTextCtrl* m_textCtrl_talkerTLL;
 		wxStaticText* m_staticText371111;
 		wxSpinCtrl* m_spinCtrl_idTLL;
@@ -334,6 +331,9 @@ class MyDialog : public wxDialog
 		wxChoice* m_choice_latDirTLL;
 		wxTextCtrl* m_textCtrl_longitudeTLL;
 		wxChoice* m_choice_lonDirTLL;
+		wxStaticText* m_staticText65;
+		wxStaticText* m_staticText66;
+		wxStaticText* m_staticText67;
 		wxTextCtrl* m_textCtrl_nameTLL;
 		wxTextCtrl* m_textCtrl_timeTLL;
 		wxChoice* m_choice_statusTLL;

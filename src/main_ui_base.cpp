@@ -1748,6 +1748,9 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	wxBoxSizer* bSizer171111;
 	bSizer171111 = new wxBoxSizer( wxVERTICAL );
 
+
+	bSizer171111->Add( 0, 0, 1, wxEXPAND, 5 );
+
 	m_button_sendTLL = new wxButton( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("Send"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_button_sendTLL->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxEmptyString ) );
 
@@ -1757,13 +1760,19 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	bSizer171111->Add( m_checkBox_autoSendTLL, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
+	bSizer171111->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
 	sbSizer_TLL->Add( bSizer171111, 0, wxEXPAND, 5 );
 
 	m_staticline61111 = new wxStaticLine( sbSizer_TLL->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_VERTICAL );
 	sbSizer_TLL->Add( m_staticline61111, 0, wxEXPAND | wxALL, 5 );
 
+	wxBoxSizer* bSizer60;
+	bSizer60 = new wxBoxSizer( wxVERTICAL );
+
 	wxFlexGridSizer* fgSizer4111;
-	fgSizer4111 = new wxFlexGridSizer( 2, 11, 0, 0 );
+	fgSizer4111 = new wxFlexGridSizer( 2, 7, 0, 0 );
 	fgSizer4111->SetFlexibleDirection( wxBOTH );
 	fgSizer4111->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 
@@ -1788,21 +1797,6 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText64 = new wxStaticText( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("Longitude"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText64->Wrap( -1 );
 	fgSizer4111->Add( m_staticText64, 0, wxALIGN_CENTER|wxALL, 5 );
-
-
-	fgSizer4111->Add( 0, 0, 1, wxEXPAND, 5 );
-
-	m_staticText65 = new wxStaticText( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("Name"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText65->Wrap( -1 );
-	fgSizer4111->Add( m_staticText65, 0, wxALIGN_CENTER|wxALL, 5 );
-
-	m_staticText66 = new wxStaticText( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("UTC Time"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText66->Wrap( -1 );
-	fgSizer4111->Add( m_staticText66, 0, wxALIGN_CENTER|wxALL, 5 );
-
-	m_staticText67 = new wxStaticText( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("Status"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText67->Wrap( -1 );
-	fgSizer4111->Add( m_staticText67, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
 	fgSizer4111->Add( 0, 0, 1, wxEXPAND, 5 );
@@ -1843,24 +1837,50 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_choice_lonDirTLL->SetSelection( 0 );
 	fgSizer4111->Add( m_choice_lonDirTLL, 0, wxALL, 5 );
 
+
+	bSizer60->Add( fgSizer4111, 0, wxEXPAND, 5 );
+
+	wxFlexGridSizer* fgSizer321;
+	fgSizer321 = new wxFlexGridSizer( 2, 4, 0, 0 );
+	fgSizer321->SetFlexibleDirection( wxBOTH );
+	fgSizer321->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
+
+	m_staticText65 = new wxStaticText( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("Name"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText65->Wrap( -1 );
+	fgSizer321->Add( m_staticText65, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText66 = new wxStaticText( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("UTC Time"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText66->Wrap( -1 );
+	fgSizer321->Add( m_staticText66, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText67 = new wxStaticText( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("Status"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText67->Wrap( -1 );
+	fgSizer321->Add( m_staticText67, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer321->Add( 0, 0, 1, wxEXPAND, 5 );
+
 	m_textCtrl_nameTLL = new wxTextCtrl( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("DUMMY"), wxDefaultPosition, wxDefaultSize, 0 );
-	fgSizer4111->Add( m_textCtrl_nameTLL, 0, wxALL, 5 );
+	fgSizer321->Add( m_textCtrl_nameTLL, 0, wxALL, 5 );
 
 	m_textCtrl_timeTLL = new wxTextCtrl( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("120000"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
-	fgSizer4111->Add( m_textCtrl_timeTLL, 0, wxALL, 5 );
+	fgSizer321->Add( m_textCtrl_timeTLL, 0, wxALL, 5 );
 
 	wxString m_choice_statusTLLChoices[] = { _("T"), _("Q"), _("L") };
 	int m_choice_statusTLLNChoices = sizeof( m_choice_statusTLLChoices ) / sizeof( wxString );
 	m_choice_statusTLL = new wxChoice( sbSizer_TLL->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_statusTLLNChoices, m_choice_statusTLLChoices, 0 );
 	m_choice_statusTLL->SetSelection( 0 );
-	fgSizer4111->Add( m_choice_statusTLL, 0, wxALL, 5 );
+	fgSizer321->Add( m_choice_statusTLL, 0, wxALL, 5 );
 
 	m_staticText68 = new wxStaticText( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("R"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText68->Wrap( -1 );
-	fgSizer4111->Add( m_staticText68, 0, wxALIGN_CENTER|wxALL, 5 );
+	fgSizer321->Add( m_staticText68, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
-	sbSizer_TLL->Add( fgSizer4111, 0, wxEXPAND, 5 );
+	bSizer60->Add( fgSizer321, 1, wxEXPAND, 5 );
+
+
+	sbSizer_TLL->Add( bSizer60, 1, wxEXPAND, 5 );
 
 
 	bSizer_NmeaList->Add( sbSizer_TLL, 0, wxEXPAND, 5 );
