@@ -18,7 +18,7 @@ namespace ais
 
   //NMEA functions
   std::string nmeaEncapsulate(std::string BigString, int numsixes);
-  wxString makeCheckSum(wxString mySentence);
+  wxString makeChecksum(wxString mySentence);
 
   //Encode functions
   wxString encodeType1_2_3(wxString s_talker, wxString s_id, int i_MMSI, int i_navStatus, int i_rot, double d_sog, double d_lat,

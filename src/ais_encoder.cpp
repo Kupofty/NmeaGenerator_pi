@@ -83,6 +83,8 @@ namespace ais
     return s;
   }
 
+
+  //Finders
   int findIntFromLetter(char letter)
   {
     auto i = std::find_if(SIXBIT_ASCII_TABLE.begin(), SIXBIT_ASCII_TABLE.end(),
@@ -101,6 +103,8 @@ namespace ais
     return i != NMEA_TABLE.end() ? i->first : 0xff;
   }
 
+
+  //NMEA
   string nmeaEncapsulate(string BigString, int numsixes)
   {
     string capsule = "";
@@ -125,7 +129,7 @@ namespace ais
     return capsule;
   }
 
-  wxString makeCheckSum(wxString mySentence)
+  wxString makeChecksum(wxString mySentence)
   {
     size_t i;
     unsigned char XOR;
@@ -215,7 +219,7 @@ namespace ais
 
     //Create NMEA
     string sentence = talker + id + ",1,1,," + channel + "," + encodedPayload + ",O";
-    wxString checksum = makeCheckSum(sentence);
+    wxString checksum = makeChecksum(sentence);
     wxString myNMEA = "!" + sentence + "*" + checksum;
 
     return myNMEA;
@@ -277,7 +281,7 @@ namespace ais
 
     //Create NMEA
     string sentence = talker + id + ",1,1,,"  + channel + "," + encodedPayload + ",O";
-    wxString checksum = makeCheckSum(sentence);
+    wxString checksum = makeChecksum(sentence);
     wxString myNMEA = "!" + sentence + "*" + checksum;
 
     return myNMEA;
