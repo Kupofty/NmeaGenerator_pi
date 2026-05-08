@@ -379,7 +379,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText40->Wrap( -1 );
 	fgSizer_GGA->Add( m_staticText40, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_textCtrl_timeGGA = new wxTextCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("120000"), wxDefaultPosition, wxSize( 70,-1 ), 0 );
+	m_textCtrl_timeGGA = new wxTextCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("120000"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
 	fgSizer_GGA->Add( m_textCtrl_timeGGA, 0, wxALL, 5 );
 
 	m_textCtrl_latitudeGGA = new wxTextCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("0000.0000000"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
@@ -433,7 +433,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	fgSizer28->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_spinCtrl_satellitesGGA = new wxSpinCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxT("12"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 99, 11 );
+	m_spinCtrl_satellitesGGA = new wxSpinCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxT("12"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 99, 12 );
 	fgSizer28->Add( m_spinCtrl_satellitesGGA, 0, wxALL, 5 );
 
 	m_spinCtrlDouble_hdopGGA = new wxSpinCtrlDouble( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxT("1"), wxDefaultPosition, wxSize( -1,-1 ), wxSP_ARROW_KEYS, 0, 100, 1.000000, 0.5 );
@@ -585,7 +585,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_choice_lonDirGLL->SetSelection( 0 );
 	fgSizer_GLL->Add( m_choice_lonDirGLL, 0, wxALL, 5 );
 
-	m_textCtrl_timeGLL = new wxTextCtrl( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("120000"), wxDefaultPosition, wxSize( 70,-1 ), 0 );
+	m_textCtrl_timeGLL = new wxTextCtrl( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("120000"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_timeGLL->HasFlag( wxTE_MULTILINE ) )
 	{
@@ -3123,7 +3123,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText902->Wrap( -1 );
 	bSizer37->Add( m_staticText902, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_staticText_headingSim = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("0"), wxDefaultPosition, wxSize( 30,-1 ), 0 );
+	m_staticText_headingSim = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("000"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
 	m_staticText_headingSim->Wrap( -1 );
 	bSizer37->Add( m_staticText_headingSim, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -3144,7 +3144,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText1001->Wrap( -1 );
 	bSizer39->Add( m_staticText1001, 0, wxALL, 5 );
 
-	m_staticText_cogSim = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("0"), wxDefaultPosition, wxSize( 30,-1 ), 0 );
+	m_staticText_cogSim = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("000"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
 	m_staticText_cogSim->Wrap( -1 );
 	bSizer39->Add( m_staticText_cogSim, 0, wxALL, 5 );
 

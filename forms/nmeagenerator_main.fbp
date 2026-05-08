@@ -3801,7 +3801,7 @@
                                         <property name="pos"></property>
                                         <property name="resize">Resizable</property>
                                         <property name="show">1</property>
-                                        <property name="size">70,-1</property>
+                                        <property name="size">-1,-1</property>
                                         <property name="style"></property>
                                         <property name="subclass">; ; forward_declare</property>
                                         <property name="toolbar_pane">0</property>
@@ -4458,7 +4458,7 @@
                                         <property name="gripper">0</property>
                                         <property name="hidden">0</property>
                                         <property name="id">wxID_ANY</property>
-                                        <property name="initial">11</property>
+                                        <property name="initial">12</property>
                                         <property name="max">99</property>
                                         <property name="max_size"></property>
                                         <property name="maximize_button">0</property>
@@ -5921,7 +5921,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">70,-1</property>
+                                    <property name="size">-1,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -31928,7 +31928,7 @@
                                     <property name="gripper">0</property>
                                     <property name="hidden">0</property>
                                     <property name="id">wxID_ANY</property>
-                                    <property name="label">0</property>
+                                    <property name="label">000</property>
                                     <property name="markup">0</property>
                                     <property name="max_size"></property>
                                     <property name="maximize_button">0</property>
@@ -31946,7 +31946,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">30,-1</property>
+                                    <property name="size">40,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
@@ -32135,7 +32135,7 @@
                                     <property name="gripper">0</property>
                                     <property name="hidden">0</property>
                                     <property name="id">wxID_ANY</property>
-                                    <property name="label">0</property>
+                                    <property name="label">000</property>
                                     <property name="markup">0</property>
                                     <property name="max_size"></property>
                                     <property name="maximize_button">0</property>
@@ -32153,7 +32153,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="show">1</property>
-                                    <property name="size">30,-1</property>
+                                    <property name="size">40,-1</property>
                                     <property name="style"></property>
                                     <property name="subclass">; ; forward_declare</property>
                                     <property name="toolbar_pane">0</property>
