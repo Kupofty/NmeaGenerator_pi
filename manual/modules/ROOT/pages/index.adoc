@@ -2,6 +2,11 @@
 
 image::logo/banner.png[width=700]
 
+
+== Author
+Plugin created by ©link:https://github.com/Kupofty[Kupofty] 2026
+
+
 == Overview
 NmeaGenerator is a plugin for https://opencpn.org[OpenCPN] which generates and transmits NMEA0183 sentences.
 
@@ -236,5 +241,3 @@ image::data_monitor.png[]
 
 
 
-== Author
-Plugin created by ©link:https://github.com/Kupofty[Kupofty] 2026
