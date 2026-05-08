@@ -1,33 +1,39 @@
 # NmeaGenerator_pi
 
-OpenCPN plugin for generating, injecting, and simulating NMEA 0183 sentences.  
-Used for testing, debugging, and validating navigation data flows without requiring real hardware sensors.
+An OpenCPN plugin for generating, injecting, and simulating NMEA 0183 sentences — useful for testing, debugging, and validating navigation data flows without real hardware sensors.
 
+## Installation
+
+Three options are available:
+- **Compile from source** — see [INSTALL.md](INSTALL.md) for instructions
+- **Download a tarball** — available on [Cloudsmith](https://cloudsmith.io/~kupoftyopencpn/repos/)
+- **Install via the OpenCPN plugin catalogue**
 
 ## Modes
 
 ### Manual Input
-- Send custom NMEA sentences (manual or automated)
-- Full control over the sentence content
-- Optional automatic checksum calculation
+Send custom NMEA sentences, either manually or automatically, with full control over sentence content and optional checksum calculation.
 
-
-### Prebuilt List
-- Includes most common NMEA sentences for quick access
-- Each sentence can be customized within valid value ranges
-- Trigger sentences manually or enable automated sending for selected entries
-- Built-in search box to quickly find specific NMEA sentences
-
+### Sentence Builder
+Quickly access the most common NMEA sentences, customize values within valid ranges, and trigger them manually or on a schedule.   
+A built-in search box makes it easy to find specific sentences.
 
 ### Simulation Mode
-- Generates continuous NMEA data streams
-- Simulates own ship or AIS target
-- Control steering and throttle with position updated accordingly
+Generate continuous NMEA data streams simulating own ship and/or AIS targets, with interactive steering and throttle controls that update position in real time.
 
+For full details, see the [manual](https://github.com/Kupofty/NmeaGenerator_pi/blob/main/manual/modules/ROOT/pages/index.adoc).
 
-## Typical Applications
+## Typical Use Cases
+
 - OpenCPN plugin development and testing
 - Navigation instrument validation
 - AIS and GPS simulation
 - Debugging NMEA data pipelines
 - Training without physical navigation equipment
+
+## Discussions
+
+For questions, bug reports, or feature requests :
+- Open a GitHub [Issue](https://github.com/Kupofty/NmeaGenerator_pi/issues)
+- Ask on GitHub [Discussions](https://github.com/Kupofty/NmeaGenerator_pi/discussions)
+- Join the thread on the [Cruisers & Sailing forum](https://www.cruisersforum.com/forums/f134/nmeagenerator-plugin-299761.html)
