@@ -1,7 +1,12 @@
-## INSTALL: Building Plugins generic README.
+## Custom Install Process
+
+Follow instructions in the [plugin's manual](https://github.com/Kupofty/NmeaGenerator_pi/blob/main/manual/modules/ROOT/pages/index.adoc).
+
+
+## Generic Install Process
 
 Install build dependencies as described in the
-[manual](https://opencpn-manuals.github.io/main/AlternativeWorkflow/Local-Build.html)
+[opencpn's manual](https://opencpn-manuals.github.io/main/AlternativeWorkflow/Local-Build.html)
 
 After cloning, enter this directory, setup the library submodule and
 enter a fresh working directory:
