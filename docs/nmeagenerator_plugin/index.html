@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Untitled :: NmeaGenerator Plugin Manual</title>
+    <link rel="canonical" href="https://github.com/Kupofty/NmeaGenerator_pi/nmeagenerator_plugin/index.html">
+    <meta name="generator" content="Antora 3.1.14">
+    <link rel="stylesheet" href="../_/css/site.css">
+<link rel="icon" href="../_/img/favicon.ico" type="image/x-icon">
+    <script>var uiRootPath = '../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <div class="navbar">
+    <div class="navbar-brand">
+      <div class="ocpn-logo"> </div>
+      <a class="navbar-title"
+         href="https://github.com/Kupofty/NmeaGenerator_pi"
+      >
+        NmeaGenerator Plugin Manual
+        </a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+       <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources</a>
+          <div class="navbar-dropdown">
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="nmeagenerator_plugin" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-explore is-active" data-panel="explore">
+  <div class="context">
+    <span class="title">NmeaGenerator</span>
+    <span class="version">default</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="index.html">NmeaGenerator</a>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link is-current"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+</nav>
+  <div class="edit-this-page"><a href="file:///home/mathis/Documents/GitHub/NmeaGenerator_pi//manual/modules/ROOT/pages/index.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<div class="imageblock">
+<div class="content">
+<img src="_images/logo/banner.png" alt="banner" width="700">
+</div>
+</div>
+<div class="sect1">
+<h2 id="_author"><a class="anchor" href="#_author"></a>Author</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Plugin created by ©<a href="https://github.com/Kupofty">Kupofty</a> 2026</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_overview"><a class="anchor" href="#_overview"></a>Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>NmeaGenerator is a plugin for <a href="https://opencpn.org">OpenCPN</a> which generates and transmits NMEA0183 sentences.</p>
+</div>
+<div class="paragraph">
+<p>The plugin can be used as a lightweight ship simulator to reproduce realistic navigation behavior inside OpenCPN or for testing UI, other plugins, instruments, etc.</p>
+</div>
+<div class="sect2">
+<h3 id="_capabilities"><a class="anchor" href="#_capabilities"></a>Capabilities</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Generates standard NMEA0183 sentences</p>
+</li>
+<li>
+<p>Produces real-time data streams</p>
+</li>
+<li>
+<p>Simulates vessel movement (position, speed, heading)</p>
+</li>
+<li>
+<p>Supports AIS target simulation</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_use_cases"><a class="anchor" href="#_use_cases"></a>Use cases</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Testing OpenCPN UI with live data</p>
+</li>
+<li>
+<p>Validating instruments and dashboards</p>
+</li>
+<li>
+<p>Developing and debugging NMEA-based plugins</p>
+</li>
+<li>
+<p>Simulating navigation scenarios without hardware</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_links"><a class="anchor" href="#_links"></a>Links</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Sources:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/Kupofty/NmeaGenerator_pi">Github Repository</a></p>
+</li>
+<li>
+<p><a href="https://cloudsmith.io/~kupoftyopencpn/repos/">Cloudsmith Packages</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Discussions:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.cruisersforum.com/forums/f134/nmeagenerator-plugin-299761.html">Cruisers&amp;Sailing Forum</a></p>
+</li>
+<li>
+<p><a href="https://github.com/Kupofty/NmeaGenerator_pi/discussions">Github Discussions</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_installation"><a class="anchor" href="#_installation"></a>Installation</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_method_1_plugin_manager_recommended"><a class="anchor" href="#_method_1_plugin_manager_recommended"></a>Method 1: Plugin Manager (Recommended)</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open OpenCPN</p>
+</li>
+<li>
+<p>Go to <strong>Options → Plugins</strong></p>
+</li>
+<li>
+<p>Update catalog and search for the <strong>NmeaGenerator</strong> plugin</p>
+</li>
+<li>
+<p>Click <strong>Install</strong> then <strong>Enable</strong></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_method_2_manual_install_cloudsmith"><a class="anchor" href="#_method_2_manual_install_cloudsmith"></a>Method 2: Manual Install (Cloudsmith)</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go to Cloudsmith</p>
+</li>
+<li>
+<p>Select the correct tarball for your OS</p>
+</li>
+<li>
+<p>Download the <code>.tar.gz</code> archive (not the <code>.xml</code>)</p>
+</li>
+<li>
+<p>Click on <strong>Options → Plugins → Import plugin&#8230;&#8203;</strong></p>
+</li>
+<li>
+<p>Enable plugin in <strong>Options → Plugins</strong></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_method_3_build_from_source_github"><a class="anchor" href="#_method_3_build_from_source_github"></a>Method 3: Build from Source (Github)</h3>
+<div class="paragraph">
+<p>Clone the repository:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>git clone https://github.com/Kupofty/NmeaGenerator_pi.git</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Create the build directory:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>mkdir build
+cd build</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Linux</div>
+<div class="content">
+<pre>cmake ..
+make tarball</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Windows</div>
+<div class="content">
+<pre>cmake .. -A Win32
+cmake --build . --config Release --target tarball</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Import the tarball in OpenCPN via <strong>Options → Plugins → Import plugin&#8230;&#8203;</strong> and enable it.<br>
+For more information, see the INSTALL.md file in the GitHub repository.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_user_interface"><a class="anchor" href="#_user_interface"></a>User Interface</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To open the plugin, click on the toolbar icon :</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/logo/logo_toolbar.png" alt="logo toolbar" width="50">
+</div>
+</div>
+<div class="paragraph">
+<p>The plugin is divided into multiple tabs:</p>
+</div>
+<div class="sect2">
+<h3 id="_manual_input"><a class="anchor" href="#_manual_input"></a>Manual Input</h3>
+<div class="imageblock">
+<div class="content">
+<img src="_images/gui/manual_input_tab.png" alt="manual input tab">
+</div>
+</div>
+<div class="paragraph">
+<p>The "Manual Input" tab lets you type and send any NMEA sentence directly to OpenCPN, making it ideal for testing specific messages independently of the simulation engine, or for validating and debugging data flows.</p>
+</div>
+<div class="paragraph">
+<p>There is no validation on the content — any sentence will be forwarded as-is. Sentences must start with <code>$</code> (NMEA) or <code>!</code> (AIS/VDM). The checksum is optional.</p>
+</div>
+<div class="sect3">
+<h4 id="_checksum"><a class="anchor" href="#_checksum"></a><strong>Checksum</strong></h4>
+<div class="paragraph">
+<p>The "Add automatic checksum" option computes and appends the correct checksum to your sentence automatically.</p>
+</div>
+<div class="paragraph">
+<p>When enabled, you can paste a sentence that already includes a checksum and visually compare it with the generated one — the manually written checksum will be stripped before sending.</p>
+</div>
+<div class="paragraph">
+<p>When disabled, a status message is displayed below the input field indicating whether the checksum is absent, correct, or invalid.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_controls"><a class="anchor" href="#_controls"></a><strong>Controls</strong></h4>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+Send
+</td>
+<td class="hdlist2">
+<p>Sends the sentence once to OpenCPN.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Copy
+</td>
+<td class="hdlist2">
+<p>Copies the current input to the clipboard.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Clear
+</td>
+<td class="hdlist2">
+<p>Clears the input field.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Automatic send
+</td>
+<td class="hdlist2">
+<p>Sends the sentence continuously at the specified frequency. The rate can be adjusted at any time.</p>
+</td>
+</tr>
+</table>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sentence_builder"><a class="anchor" href="#_sentence_builder"></a>Sentence Builder</h3>
+<div class="imageblock">
+<div class="content">
+<img src="_images/gui/sentence_builder_tab.png" alt="sentence builder tab">
+</div>
+</div>
+<div class="paragraph">
+<p>The "Sentence Builder" tab provides quick access to the most common NMEA sentences, each with editable fields. Multiple sentences can be sent simultaneously and automatically.</p>
+</div>
+<div class="paragraph">
+<p>Use the search box to filter sentences by ID, and the vertical scrollbar to browse the full list.<br>
+For text input fields, values must follow the official NMEA field format to be interpreted correctly by OpenCPN or external hardware/software.</p>
+</div>
+<div class="paragraph">
+<p><strong>Controls</strong></p>
+</div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+Send
+</td>
+<td class="hdlist2">
+<p>Sends the selected sentence once to OpenCPN.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Auto
+</td>
+<td class="hdlist2">
+<p>Adds the sentence to the automatic send list.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Check all / Uncheck all
+</td>
+<td class="hdlist2">
+<p>Quickly adds or removes all sentences from the automatic send list.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Automatic send
+</td>
+<td class="hdlist2">
+<p>Sends all checked sentences continuously at the specified frequency. Must be enabled for automatic sending to take effect.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Help
+</td>
+<td class="hdlist2">
+<p>Opens external references on NMEA and AIS sentence structures, field definitions, and units.</p>
+</td>
+</tr>
+</table>
+</div>
+<hr>
+</div>
+<div class="sect2">
+<h3 id="_simulation"><a class="anchor" href="#_simulation"></a>Simulation</h3>
+<div class="imageblock">
+<div class="content">
+<img src="_images/gui/simulation_tab.png" alt="simulation tab">
+</div>
+</div>
+<div class="paragraph">
+<p>The Simulation tab generates continuous NMEA data streams to mimic own ship and/or AIS target.</p>
+</div>
+<div class="paragraph">
+<p><strong>Vessel Selection And Data Outputs</strong></p>
+</div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+Control vessel
+</td>
+<td class="hdlist2">
+<p>Selects which vessel is currently being controlled (own ship or AIS target). The other vessel retains its last speed and rudder angle.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+AIS type
+</td>
+<td class="hdlist2">
+<p>Sets the AIS target type: Class A, Class B, or ARPA radar target.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+NMEA output
+</td>
+<td class="hdlist2">
+<p>Controls which data is transmitted. <em>Current</em> sends data for the vessel selected in Control vessel only; <em>Both</em> sends data for both own ship and AIS target simultaneously, with both vessels continuously updated in position and heading.</p>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Vessel Controls</strong></p>
+</div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+Initial position
+</td>
+<td class="hdlist2">
+<p>Set latitude and longitude manually, or right-click on the map to update the position directly.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Throttle
+</td>
+<td class="hdlist2">
+<p>Speed control slider.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Rudder angle
+</td>
+<td class="hdlist2">
+<p>Turn rate slider.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Reset
+</td>
+<td class="hdlist2">
+<p>Returns slider to zero.</p>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Simulation</strong></p>
+</div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+START/STOP
+</td>
+<td class="hdlist2">
+<p>Starts or stops sending simulation data at the specified rate (adjustable).</p>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The status labels in the centre of the tab (position, heading, COG, speed) reflect the live data of the vessel currently selected in "Control vessel".</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_settings"><a class="anchor" href="#_settings"></a>Settings</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The plugin can be accessed via Options → Plugins → NmeaGenerator in the OpenCPN toolbar.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/catalog/plugin_catalog_installed.png" alt="plugin catalog installed">
+</div>
+</div>
+<div class="paragraph">
+<p>Click on "Preferences" to open the settings window.<br>
+Remember to click "OK" or "Apply" before closing to save any changes.</p>
+</div>
+<hr>
+<div class="sect2">
+<h3 id="_display"><a class="anchor" href="#_display"></a>Display</h3>
+<div class="imageblock">
+<div class="content">
+<img src="_images/settings/setting1.png" alt="setting1">
+</div>
+</div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+Default tab
+</td>
+<td class="hdlist2">
+<p>Tab opened by default when the plugin window is launched (only applies if <em>Restore last tab</em> is disabled).</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Restore last tab
+</td>
+<td class="hdlist2">
+<p>Reopens the last active tab when launching the plugin, overriding the default tab setting.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Restore last window position
+</td>
+<td class="hdlist2">
+<p>Restores the plugin window to its last position before it was closed.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Restore last window size
+</td>
+<td class="hdlist2">
+<p>Restores the plugin window to its last size before it was closed.</p>
+</td>
+</tr>
+</table>
+</div>
+<hr>
+</div>
+<div class="sect2">
+<h3 id="_options"><a class="anchor" href="#_options"></a>Options</h3>
+<div class="imageblock">
+<div class="content">
+<img src="_images/settings/setting2.png" alt="setting2">
+</div>
+</div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+Keep transmitting when window is closed
+</td>
+<td class="hdlist2">
+<p>Continues sending data when the plugin window is closed, allowing use of other plugins without interrupting an active simulation or auto-send.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Copy sentence to clipboard on manual send
+</td>
+<td class="hdlist2">
+<p>Automatically copies the sent sentence to the clipboard when clicking Send in the Sentence Builder tab.</p>
+</td>
+</tr>
+</table>
+</div>
+<hr>
+</div>
+<div class="sect2">
+<h3 id="_ais"><a class="anchor" href="#_ais"></a>AIS</h3>
+<div class="imageblock">
+<div class="content">
+<img src="_images/settings/setting3.png" alt="setting3">
+</div>
+</div>
+<div class="paragraph">
+<p>Customize the MMSI used for AIS simulation in the Sentence Builder tab (VDM/VDO sentences) and for the AIS target in the Simulation tab.
+Can be used to mimic a vessel or SART targets (MOB, EPIRB, etc).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_notes"><a class="anchor" href="#_notes"></a>Notes</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_connections"><a class="anchor" href="#_connections"></a>Connections</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>NMEA sentences are sent to OpenCPN&#8217;s internal data bus. They will be received by any plugin or instrument listening on that bus, including Dashboard, AIS display or third-party plugins.</p>
+</li>
+<li>
+<p>The plugin does not create a serial or network output by default. To forward sentences to external software or hardware, use OpenCPN&#8217;s connection settings to create an output connection.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_general"><a class="anchor" href="#_general"></a>General</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Multiple NMEA sources may cause conflicts in OpenCPN: ensure sensor inputs and generated data do not overlap.</p>
+</li>
+<li>
+<p>Do not use the plugin during real navigation, or do so at your own risk — it may interfere with critical navigation data and affect system reliability.</p>
+</li>
+<li>
+<p>The outputs of all three tabs (in auto-send mode) are automatically stopped when the plugin window is closed, unless <em>Keep transmitting when window is closed</em> is enabled in Settings.</p>
+</li>
+<li>
+<p>Output can be monitored in the OpenCPN Data Monitor window.<br>
+Plugin sentences are prefixed with a "virtual" tag, making them easy to identify.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/data_monitor.png" alt="data monitor">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When simulating AIS targets, make sure the MMSI used does not match any real vessel to avoid confusion in AIS displays.</p>
+</li>
+<li>
+<p>Sentence fields left empty or filled with invalid values may be silently ignored or cause unexpected behavior in receiving instruments — always refer to the NMEA reference when in doubt.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.
+     Sources: https://gitlab.com/leamas/antora-ui-default
+  </p>
+</footer>
+<script src="../_/js/site.js"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

@@ -16,7 +16,7 @@ ui:
     snapshot: true
 
 output:
-  dir: ./docs
+  dir: ../docs
   clean: true              
 
 asciidoc:

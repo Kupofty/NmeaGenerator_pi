@@ -12,7 +12,7 @@ It is designed for OpenCPN development, navigation software testing, AIS/GPS sim
 
 ## Documentation
 
-Complete documentation is available in the [manual](https://github.com/Kupofty/NmeaGenerator_pi/blob/main/manual/modules/ROOT/pages/index.adoc).
+Complete documentation is available in the [manual](https://kupofty.github.io/NmeaGenerator_pi/nmeagenerator_plugin/index.html).
 
 The manual includes:
 - General overview of the plugin

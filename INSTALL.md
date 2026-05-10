@@ -1,6 +1,6 @@
 ## Custom Install Process
 
-Follow instructions in the [plugin's manual](https://github.com/Kupofty/NmeaGenerator_pi/blob/main/manual/modules/ROOT/pages/index.adoc).
+Follow instructions in the [plugin's manual](https://kupofty.github.io/NmeaGenerator_pi/nmeagenerator_plugin/index.html).
 
 
 ## Generic Install Process
