@@ -137,7 +137,7 @@ class DialogMainGui : public MyDialog
   private:
     void copyToClipboard(wxString text);
     void sendNmeaToOCPN(wxString sentence);
-    void sendManualInput();
+    wxString getManualInput();
     void updateAutoSendBuildersCheckboxes(bool check);
     void sendAndMaybeCopy(const wxString& msg);
     SimVessel* getControlledVessel();

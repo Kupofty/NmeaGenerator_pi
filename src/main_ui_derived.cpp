@@ -117,7 +117,9 @@ void DialogMainGui::stopTimers()
 ////////////////////
 /// Manual Input ///
 ////////////////////
-void DialogMainGui::sendManualInput()
+
+//Get
+wxString DialogMainGui::getManualInput()
 {
   wxString sentenceStr = m_textCtrl_sentenceInput->GetValue();
 
@@ -128,20 +130,31 @@ void DialogMainGui::sendManualInput()
     sentenceStr += checksumStr;
   }
 
-  //Send
-  sendNmeaToOCPN(sentenceStr);
+  return sentenceStr;
 }
 
+void DialogMainGui::OnButtonClick_copyManualSentence(wxCommandEvent& event)
+{
+  wxString nmea = getManualInput();
+  copyToClipboard(nmea);
+}
+
+
+//Send
 void DialogMainGui::OnButtonClick_manualSend(wxCommandEvent& event)
 {
-  sendManualInput();
+  wxString nmea = getManualInput();
+  sendNmeaToOCPN(nmea);
 }
 
 void DialogMainGui::OnTimer_autoSendNmea(wxTimerEvent& event)
 {
-  sendManualInput();
+  wxString nmea = getManualInput();
+  sendNmeaToOCPN(nmea);
 }
 
+
+//GUI
 void DialogMainGui::OnClearInput(wxCommandEvent& event)
 {
   m_textCtrl_sentenceInput->Clear();
@@ -244,17 +257,27 @@ void DialogMainGui::OnSpinCtrlDouble_AutomaticSendFreq(wxSpinDoubleEvent& event)
   m_timer_autoSendNmea.Start(intervalMs);
 }
 
-void DialogMainGui::OnButtonClick_copyManualSentence(wxCommandEvent& event)
-{
-  wxString text = m_textCtrl_sentenceInput->GetValue();
-  copyToClipboard(text);
-}
+
 
 
 
 ////////////////////////
 /// Sentence Builder ///
 ////////////////////////
+
+//Send logic
+void DialogMainGui::sendAndMaybeCopy(const wxString& msg)
+{
+  if(msg.IsEmpty())
+    return;
+
+  sendNmeaToOCPN(msg);
+
+  //Copy to clipboard if setting is activated
+  if(g_copyNmeaToClipboard)
+    copyToClipboard(msg);
+}
+
 
 //Search specific sentences
 void DialogMainGui::OnText_SearchSentenceBuilder(wxCommandEvent& event)
@@ -546,20 +569,6 @@ void DialogMainGui::OnChoice_aisClassVDM(wxCommandEvent& event)
   m_spinCtrl_statusVDM->Enable(isClassA);
   m_spinCtrl_rotVDM->Enable(isClassA);
   m_spinCtrl_maneuverVDM->Enable(isClassA);
-}
-
-
-//Send logic
-void DialogMainGui::sendAndMaybeCopy(const wxString& msg)
-{
-  if(msg.IsEmpty())
-    return;
-
-  sendNmeaToOCPN(msg);
-
-  //Copy to clipboard if setting is activated
-  if(g_copyNmeaToClipboard)
-    copyToClipboard(msg);
 }
 
 
