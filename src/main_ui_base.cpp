@@ -145,6 +145,9 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer1711131->Add( m_button_sendDBx, 0, wxALL, 5 );
 
+	m_button_copyDBx = new wxButton( sbSizer_DBx->GetStaticBox(), wxID_ANY, _("Copy"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer1711131->Add( m_button_copyDBx, 0, wxALL, 5 );
+
 	m_checkBox_autoSendDBx = new wxCheckBox( sbSizer_DBx->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer1711131->Add( m_checkBox_autoSendDBx, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -153,6 +156,12 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	m_staticline611131 = new wxStaticLine( sbSizer_DBx->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_VERTICAL );
 	sbSizer_DBx->Add( m_staticline611131, 0, wxEXPAND | wxALL, 5 );
+
+	wxBoxSizer* bSizer61;
+	bSizer61 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer61->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	wxFlexGridSizer* fgSizer41131;
 	fgSizer41131 = new wxFlexGridSizer( 2, 8, 0, 0 );
@@ -229,7 +238,13 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	fgSizer41131->Add( m_staticText118, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
-	sbSizer_DBx->Add( fgSizer41131, 0, wxEXPAND, 5 );
+	bSizer61->Add( fgSizer41131, 0, wxEXPAND, 5 );
+
+
+	bSizer61->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	sbSizer_DBx->Add( bSizer61, 0, wxEXPAND, 5 );
 
 
 	bSizer_NmeaList->Add( sbSizer_DBx, 0, wxEXPAND, 5 );
@@ -244,6 +259,9 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer171113->Add( m_button_sendDPT, 0, wxALL, 5 );
 
+	m_button_copyDPT = new wxButton( sbSizer_DPT->GetStaticBox(), wxID_ANY, _("Copy"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer171113->Add( m_button_copyDPT, 0, wxALL, 5 );
+
 	m_checkBox_autoSendDPT = new wxCheckBox( sbSizer_DPT->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer171113->Add( m_checkBox_autoSendDPT, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -252,6 +270,12 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	m_staticline61113 = new wxStaticLine( sbSizer_DPT->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_VERTICAL );
 	sbSizer_DPT->Add( m_staticline61113, 0, wxEXPAND | wxALL, 5 );
+
+	wxBoxSizer* bSizer62;
+	bSizer62 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer62->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	wxFlexGridSizer* fgSizer4113;
 	fgSizer4113 = new wxFlexGridSizer( 2, 4, 0, 0 );
@@ -297,72 +321,84 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	fgSizer4113->Add( m_spinCtrlDouble_offsetDPT, 0, wxALL, 5 );
 
 
-	sbSizer_DPT->Add( fgSizer4113, 0, wxEXPAND, 5 );
+	bSizer62->Add( fgSizer4113, 0, wxEXPAND, 5 );
+
+
+	bSizer62->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	sbSizer_DPT->Add( bSizer62, 0, wxEXPAND, 5 );
 
 
 	bSizer_NmeaList->Add( sbSizer_DPT, 0, wxEXPAND, 5 );
 
 	sbSizer_GGA = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("GGA") ), wxHORIZONTAL );
 
-	wxBoxSizer* bSizer15;
-	bSizer15 = new wxBoxSizer( wxVERTICAL );
+	wxBoxSizer* bSizer1214;
+	bSizer1214 = new wxBoxSizer( wxVERTICAL );
 
 
-	bSizer15->Add( 0, 0, 1, wxEXPAND, 5 );
+	bSizer1214->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	m_button_sendGGA = new wxButton( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("Send"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_button_sendGGA->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxEmptyString ) );
 
-	bSizer15->Add( m_button_sendGGA, 0, wxALL, 5 );
+	bSizer1214->Add( m_button_sendGGA, 0, wxALL, 5 );
+
+	m_button_copyGGA = new wxButton( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("Copy"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer1214->Add( m_button_copyGGA, 0, wxALL, 5 );
 
 	m_checkBox_autoSendGGA = new wxCheckBox( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer15->Add( m_checkBox_autoSendGGA, 0, wxALIGN_CENTER|wxALL, 5 );
+	bSizer1214->Add( m_checkBox_autoSendGGA, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
-	bSizer15->Add( 0, 0, 1, wxEXPAND, 5 );
+	bSizer1214->Add( 0, 0, 1, wxEXPAND, 5 );
 
 
-	sbSizer_GGA->Add( bSizer15, 0, wxEXPAND, 5 );
+	sbSizer_GGA->Add( bSizer1214, 0, wxEXPAND, 5 );
 
-	m_staticline8 = new wxStaticLine( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_VERTICAL );
-	sbSizer_GGA->Add( m_staticline8, 0, wxEXPAND | wxALL, 5 );
+	m_staticline54 = new wxStaticLine( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL|wxLI_VERTICAL );
+	sbSizer_GGA->Add( m_staticline54, 0, wxEXPAND | wxALL, 5 );
 
-	wxBoxSizer* bSizer56;
-	bSizer56 = new wxBoxSizer( wxVERTICAL );
-
-	wxFlexGridSizer* fgSizer_GGA;
-	fgSizer_GGA = new wxFlexGridSizer( 2, 8, 0, 0 );
-	fgSizer_GGA->SetFlexibleDirection( wxBOTH );
-	fgSizer_GGA->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
-
-	m_staticText29 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("Talker"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText29->Wrap( -1 );
-	fgSizer_GGA->Add( m_staticText29, 0, wxALIGN_CENTER|wxALL, 5 );
+	wxBoxSizer* bSizer631;
+	bSizer631 = new wxBoxSizer( wxVERTICAL );
 
 
-	fgSizer_GGA->Add( 0, 0, 1, wxEXPAND, 5 );
+	bSizer631->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_staticText30 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("UTC time"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
-	m_staticText30->Wrap( -1 );
-	fgSizer_GGA->Add( m_staticText30, 0, wxALIGN_CENTER|wxALL, 5 );
+	wxFlexGridSizer* fgSizer34;
+	fgSizer34 = new wxFlexGridSizer( 2, 8, 0, 0 );
+	fgSizer34->SetFlexibleDirection( wxBOTH );
+	fgSizer34->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 
-	m_staticText31 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("Latitude"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
-	m_staticText31->Wrap( -1 );
-	fgSizer_GGA->Add( m_staticText31, 0, wxALIGN_CENTER|wxALL, 5 );
-
-
-	fgSizer_GGA->Add( 0, 0, 1, wxEXPAND, 5 );
-
-	m_staticText32 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("Longitude"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
-	m_staticText32->Wrap( -1 );
-	fgSizer_GGA->Add( m_staticText32, 0, wxALIGN_CENTER|wxALL, 5 );
+	m_staticText229 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("Talker"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText229->Wrap( -1 );
+	fgSizer34->Add( m_staticText229, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
-	fgSizer_GGA->Add( 0, 0, 1, wxEXPAND, 5 );
+	fgSizer34->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_staticText33 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("GPS fix"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
-	m_staticText33->Wrap( -1 );
-	fgSizer_GGA->Add( m_staticText33, 0, wxALIGN_CENTER|wxALL, 5 );
+	m_staticText230 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("UTC time"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText230->Wrap( -1 );
+	fgSizer34->Add( m_staticText230, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText2311 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("Latitude"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText2311->Wrap( -1 );
+	fgSizer34->Add( m_staticText2311, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer34->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText2321 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("Longitude"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText2321->Wrap( -1 );
+	fgSizer34->Add( m_staticText2321, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer34->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText2331 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("GPX fix"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText2331->Wrap( -1 );
+	fgSizer34->Add( m_staticText2331, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_textCtrl_talkerGGA = new wxTextCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 50,-1 ), 0 );
 	#ifdef __WXGTK__
@@ -373,100 +409,121 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	#else
 	m_textCtrl_talkerGGA->SetMaxLength( 2 );
 	#endif
-	fgSizer_GGA->Add( m_textCtrl_talkerGGA, 0, wxALL, 5 );
+	fgSizer34->Add( m_textCtrl_talkerGGA, 0, wxALL, 5 );
 
-	m_staticText40 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("GGA"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText40->Wrap( -1 );
-	fgSizer_GGA->Add( m_staticText40, 0, wxALIGN_CENTER|wxALL, 5 );
+	m_staticText2341 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("GGA"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText2341->Wrap( -1 );
+	fgSizer34->Add( m_staticText2341, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_textCtrl_timeGGA = new wxTextCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("120000"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
-	fgSizer_GGA->Add( m_textCtrl_timeGGA, 0, wxALL, 5 );
+	m_textCtrl_timeGGA = new wxTextCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("120000"), wxDefaultPosition, wxDefaultSize, 0 );
+	#ifdef __WXGTK__
+	if ( !m_textCtrl_timeGGA->HasFlag( wxTE_MULTILINE ) )
+	{
+	m_textCtrl_timeGGA->SetMaxLength( 9 );
+	}
+	#else
+	m_textCtrl_timeGGA->SetMaxLength( 9 );
+	#endif
+	fgSizer34->Add( m_textCtrl_timeGGA, 0, wxALL, 5 );
 
-	m_textCtrl_latitudeGGA = new wxTextCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("0000.0000000"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
-	fgSizer_GGA->Add( m_textCtrl_latitudeGGA, 0, wxALL, 5 );
+	m_textCtrl_latitudeGGA = new wxTextCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("0000.0000000"), wxDefaultPosition, wxDefaultSize, 0 );
+	#ifdef __WXGTK__
+	if ( !m_textCtrl_latitudeGGA->HasFlag( wxTE_MULTILINE ) )
+	{
+	m_textCtrl_latitudeGGA->SetMaxLength( 12 );
+	}
+	#else
+	m_textCtrl_latitudeGGA->SetMaxLength( 12 );
+	#endif
+	fgSizer34->Add( m_textCtrl_latitudeGGA, 0, wxALL, 5 );
 
 	wxString m_choice_latDirGGAChoices[] = { _("N"), _("S") };
 	int m_choice_latDirGGANChoices = sizeof( m_choice_latDirGGAChoices ) / sizeof( wxString );
 	m_choice_latDirGGA = new wxChoice( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_latDirGGANChoices, m_choice_latDirGGAChoices, 0 );
 	m_choice_latDirGGA->SetSelection( 0 );
-	fgSizer_GGA->Add( m_choice_latDirGGA, 0, wxALL, 5 );
+	fgSizer34->Add( m_choice_latDirGGA, 0, wxALL, 5 );
 
-	m_textCtrl_longitudeGGA = new wxTextCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("00000.0000000"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
-	fgSizer_GGA->Add( m_textCtrl_longitudeGGA, 0, wxALL, 5 );
+	m_textCtrl_longitudeGGA = new wxTextCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("00000.0000000"), wxDefaultPosition, wxDefaultSize, 0 );
+	#ifdef __WXGTK__
+	if ( !m_textCtrl_longitudeGGA->HasFlag( wxTE_MULTILINE ) )
+	{
+	m_textCtrl_longitudeGGA->SetMaxLength( 13 );
+	}
+	#else
+	m_textCtrl_longitudeGGA->SetMaxLength( 13 );
+	#endif
+	fgSizer34->Add( m_textCtrl_longitudeGGA, 0, wxALL, 5 );
 
 	wxString m_choice_lonDirGGAChoices[] = { _("E"), _("W") };
 	int m_choice_lonDirGGANChoices = sizeof( m_choice_lonDirGGAChoices ) / sizeof( wxString );
 	m_choice_lonDirGGA = new wxChoice( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_lonDirGGANChoices, m_choice_lonDirGGAChoices, 0 );
 	m_choice_lonDirGGA->SetSelection( 0 );
-	fgSizer_GGA->Add( m_choice_lonDirGGA, 0, wxALL, 5 );
+	fgSizer34->Add( m_choice_lonDirGGA, 0, wxALL, 5 );
 
-	m_spinCtrl_gpsQualityGGA = new wxSpinCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 6, 1 );
-	fgSizer_GGA->Add( m_spinCtrl_gpsQualityGGA, 0, wxALIGN_CENTER|wxALL, 5 );
-
-
-	bSizer56->Add( fgSizer_GGA, 0, wxEXPAND, 5 );
-
-	wxFlexGridSizer* fgSizer28;
-	fgSizer28 = new wxFlexGridSizer( 2, 6, 0, 0 );
-	fgSizer28->SetFlexibleDirection( wxBOTH );
-	fgSizer28->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
-
-	m_staticText34 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("Satellites"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
-	m_staticText34->Wrap( -1 );
-	fgSizer28->Add( m_staticText34, 0, wxALIGN_CENTER|wxALL, 5 );
-
-	m_staticText35 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("HDOP"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText35->Wrap( -1 );
-	fgSizer28->Add( m_staticText35, 0, wxALIGN_CENTER|wxALL, 5 );
-
-	m_staticText36 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("Altitude"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText36->Wrap( -1 );
-	fgSizer28->Add( m_staticText36, 0, wxALIGN_CENTER|wxALL, 5 );
+	m_spinCtrl_gpsQualityGGA = new wxSpinCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxT("1"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 6, 1 );
+	fgSizer34->Add( m_spinCtrl_gpsQualityGGA, 0, wxALL, 5 );
 
 
-	fgSizer28->Add( 0, 0, 1, wxEXPAND, 5 );
+	bSizer631->Add( fgSizer34, 0, wxEXPAND, 5 );
 
-	m_staticText37 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("Geoid separation"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
-	m_staticText37->Wrap( -1 );
-	fgSizer28->Add( m_staticText37, 0, wxALIGN_CENTER|wxALL, 5 );
+	wxFlexGridSizer* fgSizer33;
+	fgSizer33 = new wxFlexGridSizer( 2, 6, 0, 0 );
+	fgSizer33->SetFlexibleDirection( wxBOTH );
+	fgSizer33->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
+
+	m_staticText235 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("Satellites"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText235->Wrap( -1 );
+	fgSizer33->Add( m_staticText235, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText2361 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("HDOP"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText2361->Wrap( -1 );
+	fgSizer33->Add( m_staticText2361, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText237 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("Altitude"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText237->Wrap( -1 );
+	fgSizer33->Add( m_staticText237, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
-	fgSizer28->Add( 0, 0, 1, wxEXPAND, 5 );
+	fgSizer33->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText238 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("Geoid separation"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText238->Wrap( -1 );
+	fgSizer33->Add( m_staticText238, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer33->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	m_spinCtrl_satellitesGGA = new wxSpinCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxT("12"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 99, 12 );
-	fgSizer28->Add( m_spinCtrl_satellitesGGA, 0, wxALL, 5 );
+	fgSizer33->Add( m_spinCtrl_satellitesGGA, 0, wxALL, 5 );
 
-	m_spinCtrlDouble_hdopGGA = new wxSpinCtrlDouble( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxT("1"), wxDefaultPosition, wxSize( -1,-1 ), wxSP_ARROW_KEYS, 0, 100, 1.000000, 0.5 );
+	m_spinCtrlDouble_hdopGGA = new wxSpinCtrlDouble( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 100, 0, 0.5 );
 	m_spinCtrlDouble_hdopGGA->SetDigits( 1 );
-	fgSizer28->Add( m_spinCtrlDouble_hdopGGA, 0, wxALL, 5 );
+	fgSizer33->Add( m_spinCtrlDouble_hdopGGA, 0, wxALL, 5 );
 
-	m_spinCtrlDouble_altitude_GGA = new wxSpinCtrlDouble( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( -1,-1 ), wxSP_ARROW_KEYS, 0, 100, 10.000000, 1 );
-	m_spinCtrlDouble_altitude_GGA->SetDigits( 1 );
-	fgSizer28->Add( m_spinCtrlDouble_altitude_GGA, 0, wxALL, 5 );
+	m_spinCtrlDouble_altitudeGGA = new wxSpinCtrlDouble( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 100, 0, 1 );
+	m_spinCtrlDouble_altitudeGGA->SetDigits( 1 );
+	fgSizer33->Add( m_spinCtrlDouble_altitudeGGA, 0, wxALL, 5 );
 
-	m_staticText411 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("M"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText411->Wrap( -1 );
-	fgSizer28->Add( m_staticText411, 0, wxALIGN_CENTER|wxALL, 5 );
+	m_staticText240 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("M"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText240->Wrap( -1 );
+	fgSizer33->Add( m_staticText240, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	wxBoxSizer* bSizer18;
-	bSizer18 = new wxBoxSizer( wxVERTICAL );
-
-	m_spinCtrlDouble_geoidSeparationGGA = new wxSpinCtrlDouble( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( -1,-1 ), wxSP_ARROW_KEYS, 0, 100, 0, 1 );
+	m_spinCtrlDouble_geoidSeparationGGA = new wxSpinCtrlDouble( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 100, 0, 1 );
 	m_spinCtrlDouble_geoidSeparationGGA->SetDigits( 1 );
-	bSizer18->Add( m_spinCtrlDouble_geoidSeparationGGA, 0, wxALIGN_CENTER|wxALL, 5 );
+	fgSizer33->Add( m_spinCtrlDouble_geoidSeparationGGA, 0, wxALL, 5 );
+
+	m_staticText239 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("M"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText239->Wrap( -1 );
+	fgSizer33->Add( m_staticText239, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
-	fgSizer28->Add( bSizer18, 1, wxEXPAND, 5 );
-
-	m_staticText42 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("M"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText42->Wrap( -1 );
-	fgSizer28->Add( m_staticText42, 0, wxALIGN_CENTER|wxALL, 5 );
+	bSizer631->Add( fgSizer33, 0, wxEXPAND, 5 );
 
 
-	bSizer56->Add( fgSizer28, 0, wxEXPAND, 5 );
+	bSizer631->Add( 0, 0, 1, wxEXPAND, 5 );
 
 
-	sbSizer_GGA->Add( bSizer56, 1, wxEXPAND, 5 );
+	sbSizer_GGA->Add( bSizer631, 0, wxEXPAND, 5 );
 
 
 	bSizer_NmeaList->Add( sbSizer_GGA, 0, wxEXPAND, 5 );
@@ -484,6 +541,9 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer121->Add( m_button_sendGLL, 0, wxALL, 5 );
 
+	m_button_copyGLL = new wxButton( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("Copy"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer121->Add( m_button_copyGLL, 0, wxALL, 5 );
+
 	m_checkBox_autoSendGLL = new wxCheckBox( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer121->Add( m_checkBox_autoSendGLL, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -495,6 +555,12 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	m_staticline5 = new wxStaticLine( sbSizer_GLL->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL|wxLI_VERTICAL );
 	sbSizer_GLL->Add( m_staticline5, 0, wxEXPAND | wxALL, 5 );
+
+	wxBoxSizer* bSizer63;
+	bSizer63 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer63->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	wxFlexGridSizer* fgSizer_GLL;
 	fgSizer_GLL = new wxFlexGridSizer( 2, 9, 0, 0 );
@@ -565,7 +631,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	wxString m_choice_latDirGLLChoices[] = { _("N"), _("S") };
 	int m_choice_latDirGLLNChoices = sizeof( m_choice_latDirGLLChoices ) / sizeof( wxString );
 	m_choice_latDirGLL = new wxChoice( sbSizer_GLL->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_latDirGLLNChoices, m_choice_latDirGLLChoices, 0 );
-	m_choice_latDirGLL->SetSelection( 0 );
+	m_choice_latDirGLL->SetSelection( 1 );
 	fgSizer_GLL->Add( m_choice_latDirGLL, 0, wxALL, 5 );
 
 	m_textCtrl_longitudeGLL = new wxTextCtrl( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("00000.0000000"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
@@ -609,7 +675,13 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	fgSizer_GLL->Add( m_choice_modeGLL, 0, wxALL, 5 );
 
 
-	sbSizer_GLL->Add( fgSizer_GLL, 0, wxEXPAND, 5 );
+	bSizer63->Add( fgSizer_GLL, 0, wxEXPAND, 5 );
+
+
+	bSizer63->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	sbSizer_GLL->Add( bSizer63, 0, wxEXPAND, 5 );
 
 
 	bSizer_NmeaList->Add( sbSizer_GLL, 0, wxEXPAND, 5 );
@@ -627,6 +699,9 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer1213->Add( m_button_sendGSV, 0, wxALL, 5 );
 
+	m_button_copyGSV = new wxButton( sbSizer_GSV->GetStaticBox(), wxID_ANY, _("Copy"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer1213->Add( m_button_copyGSV, 0, wxALL, 5 );
+
 	m_checkBox_autoSendGSV = new wxCheckBox( sbSizer_GSV->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer1213->Add( m_checkBox_autoSendGSV, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -641,6 +716,9 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	wxBoxSizer* bSizer57;
 	bSizer57 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer57->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	wxFlexGridSizer* fgSizer_GSV;
 	fgSizer_GSV = new wxFlexGridSizer( 2, 5, 0, 0 );
@@ -729,10 +807,13 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	fgSizer29->Add( m_spinCtrl_snrGSV, 0, wxALL, 5 );
 
 
-	bSizer57->Add( fgSizer29, 1, wxEXPAND, 5 );
+	bSizer57->Add( fgSizer29, 0, wxEXPAND, 5 );
 
 
-	sbSizer_GSV->Add( bSizer57, 1, wxEXPAND, 5 );
+	bSizer57->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	sbSizer_GSV->Add( bSizer57, 0, wxEXPAND, 5 );
 
 
 	bSizer_NmeaList->Add( sbSizer_GSV, 0, wxEXPAND, 5 );
@@ -747,6 +828,9 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer17112->Add( m_button_sendHDG, 0, wxALL, 5 );
 
+	m_button_copyHDG = new wxButton( sbSizer_HDG->GetStaticBox(), wxID_ANY, _("Copy"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer17112->Add( m_button_copyHDG, 0, wxALL, 5 );
+
 	m_checkBox_autoSendHDG = new wxCheckBox( sbSizer_HDG->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer17112->Add( m_checkBox_autoSendHDG, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -755,6 +839,12 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	m_staticline6112 = new wxStaticLine( sbSizer_HDG->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_VERTICAL );
 	sbSizer_HDG->Add( m_staticline6112, 0, wxEXPAND | wxALL, 5 );
+
+	wxBoxSizer* bSizer64;
+	bSizer64 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer64->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	wxFlexGridSizer* fgSizer412;
 	fgSizer412 = new wxFlexGridSizer( 2, 7, 0, 0 );
@@ -826,7 +916,13 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	fgSizer412->Add( m_choice_variationDirHDG, 0, wxALL, 5 );
 
 
-	sbSizer_HDG->Add( fgSizer412, 1, wxEXPAND, 5 );
+	bSizer64->Add( fgSizer412, 0, wxEXPAND, 5 );
+
+
+	bSizer64->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	sbSizer_HDG->Add( bSizer64, 0, wxEXPAND, 5 );
 
 
 	bSizer_NmeaList->Add( sbSizer_HDG, 0, wxEXPAND, 5 );
@@ -841,6 +937,9 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer1711->Add( m_button_sendHDM, 0, wxALL, 5 );
 
+	m_button_copyHDM = new wxButton( sbSizer_HDM->GetStaticBox(), wxID_ANY, _("Copy"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer1711->Add( m_button_copyHDM, 0, wxALL, 5 );
+
 	m_checkBox_autoSendHDM = new wxCheckBox( sbSizer_HDM->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer1711->Add( m_checkBox_autoSendHDM, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -849,6 +948,12 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	m_staticline611 = new wxStaticLine( sbSizer_HDM->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_VERTICAL );
 	sbSizer_HDM->Add( m_staticline611, 0, wxEXPAND | wxALL, 5 );
+
+	wxBoxSizer* bSizer65;
+	bSizer65 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer65->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	wxFlexGridSizer* fgSizer41;
 	fgSizer41 = new wxFlexGridSizer( 2, 4, 0, 0 );
@@ -893,7 +998,13 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	fgSizer41->Add( m_staticText381, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
-	sbSizer_HDM->Add( fgSizer41, 1, wxEXPAND, 5 );
+	bSizer65->Add( fgSizer41, 0, wxEXPAND, 5 );
+
+
+	bSizer65->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	sbSizer_HDM->Add( bSizer65, 0, wxEXPAND, 5 );
 
 
 	bSizer_NmeaList->Add( sbSizer_HDM, 0, wxEXPAND, 5 );
@@ -908,6 +1019,9 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer171->Add( m_button_sendHDT, 0, wxALL, 5 );
 
+	m_button_copyHDT = new wxButton( sbSizer_HDT->GetStaticBox(), wxID_ANY, _("Copy"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer171->Add( m_button_copyHDT, 0, wxALL, 5 );
+
 	m_checkBox_autoSendHDT = new wxCheckBox( sbSizer_HDT->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer171->Add( m_checkBox_autoSendHDT, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -916,6 +1030,18 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	m_staticline61 = new wxStaticLine( sbSizer_HDT->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_VERTICAL );
 	sbSizer_HDT->Add( m_staticline61, 0, wxEXPAND | wxALL, 5 );
+
+	wxBoxSizer* bSizer80;
+	bSizer80 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer80->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	wxBoxSizer* bSizer66;
+	bSizer66 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer66->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	wxFlexGridSizer* fgSizer4;
 	fgSizer4 = new wxFlexGridSizer( 2, 4, 0, 0 );
@@ -960,7 +1086,19 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	fgSizer4->Add( m_staticText38, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
-	sbSizer_HDT->Add( fgSizer4, 1, wxEXPAND, 5 );
+	bSizer66->Add( fgSizer4, 0, wxEXPAND, 5 );
+
+
+	bSizer66->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	bSizer80->Add( bSizer66, 0, wxEXPAND, 5 );
+
+
+	bSizer80->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	sbSizer_HDT->Add( bSizer80, 0, wxEXPAND, 5 );
 
 
 	bSizer_NmeaList->Add( sbSizer_HDT, 0, wxEXPAND, 5 );
@@ -975,6 +1113,9 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer17111->Add( m_button_sendMTW, 0, wxALL, 5 );
 
+	m_button_copyMTW = new wxButton( sbSizer_MTW->GetStaticBox(), wxID_ANY, _("Copy"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer17111->Add( m_button_copyMTW, 0, wxALL, 5 );
+
 	m_checkBox_autoSendMTW = new wxCheckBox( sbSizer_MTW->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer17111->Add( m_checkBox_autoSendMTW, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -983,6 +1124,12 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	m_staticline6111 = new wxStaticLine( sbSizer_MTW->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_VERTICAL );
 	sbSizer_MTW->Add( m_staticline6111, 0, wxEXPAND | wxALL, 5 );
+
+	wxBoxSizer* bSizer79;
+	bSizer79 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer79->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	wxFlexGridSizer* fgSizer411;
 	fgSizer411 = new wxFlexGridSizer( 2, 4, 0, 0 );
@@ -1027,7 +1174,13 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	fgSizer411->Add( m_staticText3811, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
-	sbSizer_MTW->Add( fgSizer411, 0, wxEXPAND, 5 );
+	bSizer79->Add( fgSizer411, 0, wxEXPAND, 5 );
+
+
+	bSizer79->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	sbSizer_MTW->Add( bSizer79, 0, wxEXPAND, 5 );
 
 
 	bSizer_NmeaList->Add( sbSizer_MTW, 0, wxEXPAND, 5 );
@@ -1042,6 +1195,9 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer171112111->Add( m_button_sendMWD, 0, wxALL, 5 );
 
+	m_button_copyMWD = new wxButton( sbSizer_MWD->GetStaticBox(), wxID_ANY, _("Copy"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer171112111->Add( m_button_copyMWD, 0, wxALL, 5 );
+
 	m_checkBox_autoSendMWD = new wxCheckBox( sbSizer_MWD->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer171112111->Add( m_checkBox_autoSendMWD, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -1050,6 +1206,12 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	m_staticline61112111 = new wxStaticLine( sbSizer_MWD->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_VERTICAL );
 	sbSizer_MWD->Add( m_staticline61112111, 0, wxEXPAND | wxALL, 5 );
+
+	wxBoxSizer* bSizer78;
+	bSizer78 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer78->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	wxFlexGridSizer* fgSizer4112111;
 	fgSizer4112111 = new wxFlexGridSizer( 2, 10, 0, 0 );
@@ -1139,7 +1301,13 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	fgSizer4112111->Add( m_staticText1701, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
-	sbSizer_MWD->Add( fgSizer4112111, 0, wxEXPAND, 5 );
+	bSizer78->Add( fgSizer4112111, 0, wxEXPAND, 5 );
+
+
+	bSizer78->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	sbSizer_MWD->Add( bSizer78, 0, wxEXPAND, 5 );
 
 
 	bSizer_NmeaList->Add( sbSizer_MWD, 0, wxEXPAND, 5 );
@@ -1154,6 +1322,9 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer17111211->Add( m_button_sendMWV, 0, wxALL, 5 );
 
+	m_button_copyMWV = new wxButton( sbSizer_MWV->GetStaticBox(), wxID_ANY, _("Copy"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer17111211->Add( m_button_copyMWV, 0, wxALL, 5 );
+
 	m_checkBox_autoSendMWV = new wxCheckBox( sbSizer_MWV->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer17111211->Add( m_checkBox_autoSendMWV, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -1162,6 +1333,12 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	m_staticline6111211 = new wxStaticLine( sbSizer_MWV->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_VERTICAL );
 	sbSizer_MWV->Add( m_staticline6111211, 0, wxEXPAND | wxALL, 5 );
+
+	wxBoxSizer* bSizer77;
+	bSizer77 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer77->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	wxFlexGridSizer* fgSizer411211;
 	fgSizer411211 = new wxFlexGridSizer( 2, 7, 0, 0 );
@@ -1235,7 +1412,13 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	fgSizer411211->Add( m_choice_statusMWV, 0, wxALL, 5 );
 
 
-	sbSizer_MWV->Add( fgSizer411211, 0, wxEXPAND, 5 );
+	bSizer77->Add( fgSizer411211, 0, wxEXPAND, 5 );
+
+
+	bSizer77->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	sbSizer_MWV->Add( bSizer77, 0, wxEXPAND, 5 );
 
 
 	bSizer_NmeaList->Add( sbSizer_MWV, 0, wxEXPAND, 5 );
@@ -1253,6 +1436,9 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer17111311->Add( m_button_sendOSD, 0, wxALL, 5 );
 
+	m_button_copyOSD = new wxButton( sbSizer_OSD->GetStaticBox(), wxID_ANY, _("Copy"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer17111311->Add( m_button_copyOSD, 0, wxALL, 5 );
+
 	m_checkBox_autoSendOSD = new wxCheckBox( sbSizer_OSD->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer17111311->Add( m_checkBox_autoSendOSD, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -1267,6 +1453,9 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	wxBoxSizer* bSizer58;
 	bSizer58 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer58->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	wxFlexGridSizer* fgSizer411311;
 	fgSizer411311 = new wxFlexGridSizer( 2, 6, 0, 0 );
@@ -1384,10 +1573,13 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	fgSizer30->Add( m_choice_speedUnitOSD, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
-	bSizer58->Add( fgSizer30, 1, wxEXPAND, 5 );
+	bSizer58->Add( fgSizer30, 0, wxEXPAND, 5 );
 
 
-	sbSizer_OSD->Add( bSizer58, 1, wxEXPAND, 5 );
+	bSizer58->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	sbSizer_OSD->Add( bSizer58, 0, wxEXPAND, 5 );
 
 
 	bSizer_NmeaList->Add( sbSizer_OSD, 0, wxEXPAND, 5 );
@@ -1405,6 +1597,9 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer14->Add( m_button_sendRMC, 0, wxALL, 5 );
 
+	m_button_copyRMC = new wxButton( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("Copy"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer14->Add( m_button_copyRMC, 0, wxALL, 5 );
+
 	m_checkBox_autoSendRMC = new wxCheckBox( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer14->Add( m_checkBox_autoSendRMC, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -1419,6 +1614,9 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	wxBoxSizer* bSizer59;
 	bSizer59 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer59->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	wxFlexGridSizer* fgSizer_RMC;
 	fgSizer_RMC = new wxFlexGridSizer( 2, 8, 0, 0 );
@@ -1577,10 +1775,13 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	fgSizer32->Add( m_choice_magDirRMC, 0, wxALL, 5 );
 
 
-	bSizer59->Add( fgSizer32, 1, wxEXPAND, 5 );
+	bSizer59->Add( fgSizer32, 0, wxEXPAND, 5 );
 
 
-	sbSizer_RMC->Add( bSizer59, 1, wxEXPAND, 5 );
+	bSizer59->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	sbSizer_RMC->Add( bSizer59, 0, wxEXPAND, 5 );
 
 
 	bSizer_NmeaList->Add( sbSizer_RMC, 0, wxEXPAND, 5 );
@@ -1595,6 +1796,9 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer171112->Add( m_button_sendROT, 0, wxALL, 5 );
 
+	m_button_copyROT = new wxButton( sbSizer_ROT->GetStaticBox(), wxID_ANY, _("Copy"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer171112->Add( m_button_copyROT, 0, wxALL, 5 );
+
 	m_checkBox_autoSendROT = new wxCheckBox( sbSizer_ROT->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer171112->Add( m_checkBox_autoSendROT, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -1603,6 +1807,12 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	m_staticline61112 = new wxStaticLine( sbSizer_ROT->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_VERTICAL );
 	sbSizer_ROT->Add( m_staticline61112, 0, wxEXPAND | wxALL, 5 );
+
+	wxBoxSizer* bSizer76;
+	bSizer76 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer76->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	wxFlexGridSizer* fgSizer4112;
 	fgSizer4112 = new wxFlexGridSizer( 2, 4, 0, 0 );
@@ -1650,7 +1860,13 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	fgSizer4112->Add( m_choice_statusROT, 0, wxALL, 5 );
 
 
-	sbSizer_ROT->Add( fgSizer4112, 0, wxEXPAND, 5 );
+	bSizer76->Add( fgSizer4112, 0, wxEXPAND, 5 );
+
+
+	bSizer76->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	sbSizer_ROT->Add( bSizer76, 0, wxEXPAND, 5 );
 
 
 	bSizer_NmeaList->Add( sbSizer_ROT, 0, wxEXPAND, 5 );
@@ -1665,6 +1881,9 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer1711121->Add( m_button_sendRSA, 0, wxALL, 5 );
 
+	m_button_copyRSA = new wxButton( sbSizer_RSA->GetStaticBox(), wxID_ANY, _("Copy"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer1711121->Add( m_button_copyRSA, 0, wxALL, 5 );
+
 	m_checkBox_autoSendRSA = new wxCheckBox( sbSizer_RSA->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer1711121->Add( m_checkBox_autoSendRSA, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -1673,6 +1892,12 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	m_staticline611121 = new wxStaticLine( sbSizer_RSA->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_VERTICAL );
 	sbSizer_RSA->Add( m_staticline611121, 0, wxEXPAND | wxALL, 5 );
+
+	wxBoxSizer* bSizer75;
+	bSizer75 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer75->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	wxFlexGridSizer* fgSizer41121;
 	fgSizer41121 = new wxFlexGridSizer( 2, 6, 0, 0 );
@@ -1738,7 +1963,13 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	fgSizer41121->Add( m_choice_statusPortRSA, 0, wxALL, 5 );
 
 
-	sbSizer_RSA->Add( fgSizer41121, 0, wxEXPAND, 5 );
+	bSizer75->Add( fgSizer41121, 0, wxEXPAND, 5 );
+
+
+	bSizer75->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	sbSizer_RSA->Add( bSizer75, 0, wxEXPAND, 5 );
 
 
 	bSizer_NmeaList->Add( sbSizer_RSA, 0, wxEXPAND, 5 );
@@ -1756,6 +1987,9 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer171111->Add( m_button_sendTLL, 0, wxALL, 5 );
 
+	m_button_copyTLL = new wxButton( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("MyButton"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer171111->Add( m_button_copyTLL, 0, wxALL, 5 );
+
 	m_checkBox_autoSendTLL = new wxCheckBox( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer171111->Add( m_checkBox_autoSendTLL, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -1770,6 +2004,9 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	wxBoxSizer* bSizer60;
 	bSizer60 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer60->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	wxFlexGridSizer* fgSizer4111;
 	fgSizer4111 = new wxFlexGridSizer( 2, 7, 0, 0 );
@@ -1877,10 +2114,13 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	fgSizer321->Add( m_staticText68, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
-	bSizer60->Add( fgSizer321, 1, wxEXPAND, 5 );
+	bSizer60->Add( fgSizer321, 0, wxEXPAND, 5 );
 
 
-	sbSizer_TLL->Add( bSizer60, 1, wxEXPAND, 5 );
+	bSizer60->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	sbSizer_TLL->Add( bSizer60, 0, wxEXPAND, 5 );
 
 
 	bSizer_NmeaList->Add( sbSizer_TLL, 0, wxEXPAND, 5 );
@@ -1895,6 +2135,9 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer1711122->Add( m_button_sendTHS, 0, wxALL, 5 );
 
+	m_button_copyTHS = new wxButton( sbSizer_THS->GetStaticBox(), wxID_ANY, _("Copy"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer1711122->Add( m_button_copyTHS, 0, wxALL, 5 );
+
 	m_checkBox_autoSendTHS = new wxCheckBox( sbSizer_THS->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer1711122->Add( m_checkBox_autoSendTHS, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -1903,6 +2146,12 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	m_staticline611122 = new wxStaticLine( sbSizer_THS->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_VERTICAL );
 	sbSizer_THS->Add( m_staticline611122, 0, wxEXPAND | wxALL, 5 );
+
+	wxBoxSizer* bSizer74;
+	bSizer74 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer74->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	wxFlexGridSizer* fgSizer41122;
 	fgSizer41122 = new wxFlexGridSizer( 2, 4, 0, 0 );
@@ -1950,7 +2199,13 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	fgSizer41122->Add( m_choice_modeTHS, 0, wxALL, 5 );
 
 
-	sbSizer_THS->Add( fgSizer41122, 0, wxEXPAND, 5 );
+	bSizer74->Add( fgSizer41122, 0, wxEXPAND, 5 );
+
+
+	bSizer74->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	sbSizer_THS->Add( bSizer74, 0, wxEXPAND, 5 );
 
 
 	bSizer_NmeaList->Add( sbSizer_THS, 0, wxEXPAND, 5 );
@@ -1968,6 +2223,9 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer171113122->Add( m_button_sendVDM, 0, wxALL, 5 );
 
+	m_button_copyVDM = new wxButton( sbSizer_VDM->GetStaticBox(), wxID_ANY, _("Copy"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer171113122->Add( m_button_copyVDM, 0, wxALL, 5 );
+
 	m_checkBox_autoSendVDM = new wxCheckBox( sbSizer_VDM->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer171113122->Add( m_checkBox_autoSendVDM, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -1982,6 +2240,9 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	wxBoxSizer* bSizer55;
 	bSizer55 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer55->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	wxFlexGridSizer* fgSizer4113122;
 	fgSizer4113122 = new wxFlexGridSizer( 2, 7, 0, 0 );
@@ -2121,7 +2382,10 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	bSizer55->Add( fgSizer27, 0, wxEXPAND, 5 );
 
 
-	sbSizer_VDM->Add( bSizer55, 1, wxEXPAND, 5 );
+	bSizer55->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	sbSizer_VDM->Add( bSizer55, 0, wxEXPAND, 5 );
 
 
 	bSizer_NmeaList->Add( sbSizer_VDM, 0, wxEXPAND, 5 );
@@ -2136,6 +2400,9 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer17111312->Add( m_button_sendVDR, 0, wxALL, 5 );
 
+	m_button_copyVDR = new wxButton( sbSizer_VDR->GetStaticBox(), wxID_ANY, _("Copy"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer17111312->Add( m_button_copyVDR, 0, wxALL, 5 );
+
 	m_checkBox_autoSendVDR = new wxCheckBox( sbSizer_VDR->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer17111312->Add( m_checkBox_autoSendVDR, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -2144,6 +2411,12 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	m_staticline6111312 = new wxStaticLine( sbSizer_VDR->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_VERTICAL );
 	sbSizer_VDR->Add( m_staticline6111312, 0, wxEXPAND | wxALL, 5 );
+
+	wxBoxSizer* bSizer73;
+	bSizer73 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer73->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	wxFlexGridSizer* fgSizer411312;
 	fgSizer411312 = new wxFlexGridSizer( 2, 8, 0, 0 );
@@ -2218,7 +2491,13 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	fgSizer411312->Add( m_staticText1181, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
-	sbSizer_VDR->Add( fgSizer411312, 0, wxEXPAND, 5 );
+	bSizer73->Add( fgSizer411312, 0, wxEXPAND, 5 );
+
+
+	bSizer73->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	sbSizer_VDR->Add( bSizer73, 0, wxEXPAND, 5 );
 
 
 	bSizer_NmeaList->Add( sbSizer_VDR, 0, wxEXPAND, 5 );
@@ -2233,6 +2512,9 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer171113121->Add( m_button_sendVHW, 0, wxALL, 5 );
 
+	m_button_copyVHW = new wxButton( sbSizer_VHW->GetStaticBox(), wxID_ANY, _("Copy"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer171113121->Add( m_button_copyVHW, 0, wxALL, 5 );
+
 	m_checkBox_autoSendVHW = new wxCheckBox( sbSizer_VHW->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer171113121->Add( m_checkBox_autoSendVHW, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -2241,6 +2523,12 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	m_staticline61113121 = new wxStaticLine( sbSizer_VHW->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_VERTICAL );
 	sbSizer_VHW->Add( m_staticline61113121, 0, wxEXPAND | wxALL, 5 );
+
+	wxBoxSizer* bSizer72;
+	bSizer72 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer72->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	wxFlexGridSizer* fgSizer4113121;
 	fgSizer4113121 = new wxFlexGridSizer( 2, 10, 0, 0 );
@@ -2330,7 +2618,13 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	fgSizer4113121->Add( m_staticText203, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
-	sbSizer_VHW->Add( fgSizer4113121, 0, wxEXPAND, 5 );
+	bSizer72->Add( fgSizer4113121, 0, wxEXPAND, 5 );
+
+
+	bSizer72->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	sbSizer_VHW->Add( bSizer72, 0, wxEXPAND, 5 );
 
 
 	bSizer_NmeaList->Add( sbSizer_VHW, 0, wxEXPAND, 5 );
@@ -2348,6 +2642,9 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer1212->Add( m_button_sendVTG, 0, wxALL, 5 );
 
+	m_button_copyVTG = new wxButton( sbSizer_VTG->GetStaticBox(), wxID_ANY, _("Copy"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer1212->Add( m_button_copyVTG, 0, wxALL, 5 );
+
 	m_checkBox_autoSendVTG = new wxCheckBox( sbSizer_VTG->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer1212->Add( m_checkBox_autoSendVTG, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -2359,6 +2656,12 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	m_staticline52 = new wxStaticLine( sbSizer_VTG->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL|wxLI_VERTICAL );
 	sbSizer_VTG->Add( m_staticline52, 0, wxEXPAND | wxALL, 5 );
+
+	wxBoxSizer* bSizer71;
+	bSizer71 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer71->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	wxFlexGridSizer* fgSizer_VTG;
 	fgSizer_VTG = new wxFlexGridSizer( 2, 11, 0, 0 );
@@ -2460,7 +2763,13 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	fgSizer_VTG->Add( m_choice_modeVTG, 0, wxALL, 5 );
 
 
-	sbSizer_VTG->Add( fgSizer_VTG, 0, wxEXPAND, 5 );
+	bSizer71->Add( fgSizer_VTG, 0, wxEXPAND, 5 );
+
+
+	bSizer71->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	sbSizer_VTG->Add( bSizer71, 0, wxEXPAND, 5 );
 
 
 	bSizer_NmeaList->Add( sbSizer_VTG, 0, wxEXPAND, 5 );
@@ -2475,6 +2784,9 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer1711131211->Add( m_button_sendVWR, 0, wxALL, 5 );
 
+	m_button_copyVWR = new wxButton( sbSizer_VWR->GetStaticBox(), wxID_ANY, _("Copy"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer1711131211->Add( m_button_copyVWR, 0, wxALL, 5 );
+
 	m_checkBox_autoSendVWR = new wxCheckBox( sbSizer_VWR->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer1711131211->Add( m_checkBox_autoSendVWR, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -2483,6 +2795,12 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	m_staticline611131211 = new wxStaticLine( sbSizer_VWR->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_VERTICAL );
 	sbSizer_VWR->Add( m_staticline611131211, 0, wxEXPAND | wxALL, 5 );
+
+	wxBoxSizer* bSizer70;
+	bSizer70 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer70->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	wxFlexGridSizer* fgSizer41131211;
 	fgSizer41131211 = new wxFlexGridSizer( 2, 10, 0, 0 );
@@ -2574,7 +2892,13 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	fgSizer41131211->Add( m_staticText2031, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
-	sbSizer_VWR->Add( fgSizer41131211, 0, wxEXPAND, 5 );
+	bSizer70->Add( fgSizer41131211, 0, wxEXPAND, 5 );
+
+
+	bSizer70->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	sbSizer_VWR->Add( bSizer70, 0, wxEXPAND, 5 );
 
 
 	bSizer_NmeaList->Add( sbSizer_VWR, 0, wxEXPAND, 5 );
@@ -2592,6 +2916,9 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer1211->Add( m_button_sendWPL, 0, wxALL, 5 );
 
+	m_button_copyWPL = new wxButton( sbSizer_WPL->GetStaticBox(), wxID_ANY, _("Copy"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer1211->Add( m_button_copyWPL, 0, wxALL, 5 );
+
 	m_checkBox_autoSendWPL = new wxCheckBox( sbSizer_WPL->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer1211->Add( m_checkBox_autoSendWPL, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -2603,6 +2930,12 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	m_staticline51 = new wxStaticLine( sbSizer_WPL->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL|wxLI_VERTICAL );
 	sbSizer_WPL->Add( m_staticline51, 0, wxEXPAND | wxALL, 5 );
+
+	wxBoxSizer* bSizer69;
+	bSizer69 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer69->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	wxFlexGridSizer* fgSizer_WPL;
 	fgSizer_WPL = new wxFlexGridSizer( 2, 7, 0, 0 );
@@ -2689,7 +3022,13 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	fgSizer_WPL->Add( m_textCtrl_nameWPL, 0, wxALL, 5 );
 
 
-	sbSizer_WPL->Add( fgSizer_WPL, 0, wxEXPAND, 5 );
+	bSizer69->Add( fgSizer_WPL, 0, wxEXPAND, 5 );
+
+
+	bSizer69->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	sbSizer_WPL->Add( bSizer69, 0, wxEXPAND, 5 );
 
 
 	bSizer_NmeaList->Add( sbSizer_WPL, 0, wxEXPAND, 5 );
@@ -2707,6 +3046,9 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer12111->Add( m_button_sendXDR, 0, wxALL, 5 );
 
+	m_button_copyXDR = new wxButton( sbSizer_XDR->GetStaticBox(), wxID_ANY, _("Copy"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer12111->Add( m_button_copyXDR, 0, wxALL, 5 );
+
 	m_checkBox_autoSendXDR = new wxCheckBox( sbSizer_XDR->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer12111->Add( m_checkBox_autoSendXDR, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -2718,6 +3060,12 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	m_staticline511 = new wxStaticLine( sbSizer_XDR->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL|wxLI_VERTICAL );
 	sbSizer_XDR->Add( m_staticline511, 0, wxEXPAND | wxALL, 5 );
+
+	wxBoxSizer* bSizer68;
+	bSizer68 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer68->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	wxFlexGridSizer* fgSizer_XDR;
 	fgSizer_XDR = new wxFlexGridSizer( 2, 6, 0, 0 );
@@ -2783,7 +3131,13 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	fgSizer_XDR->Add( m_choice_nameXDR, 0, wxALL, 5 );
 
 
-	sbSizer_XDR->Add( fgSizer_XDR, 0, wxEXPAND, 5 );
+	bSizer68->Add( fgSizer_XDR, 0, wxEXPAND, 5 );
+
+
+	bSizer68->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	sbSizer_XDR->Add( bSizer68, 0, wxEXPAND, 5 );
 
 
 	bSizer_NmeaList->Add( sbSizer_XDR, 0, wxEXPAND, 5 );
@@ -2801,6 +3155,9 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer12131->Add( m_button_sendZDA, 0, wxALL, 5 );
 
+	m_button_copyZDA = new wxButton( sbSizer_ZDA->GetStaticBox(), wxID_ANY, _("Copy"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer12131->Add( m_button_copyZDA, 0, wxALL, 5 );
+
 	m_checkBox_autoSendZDA = new wxCheckBox( sbSizer_ZDA->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer12131->Add( m_checkBox_autoSendZDA, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -2812,6 +3169,12 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	m_staticline531 = new wxStaticLine( sbSizer_ZDA->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL|wxLI_VERTICAL );
 	sbSizer_ZDA->Add( m_staticline531, 0, wxEXPAND | wxALL, 5 );
+
+	wxBoxSizer* bSizer67;
+	bSizer67 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer67->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	wxFlexGridSizer* fgSizer_ZDA;
 	fgSizer_ZDA = new wxFlexGridSizer( 2, 8, 0, 0 );
@@ -2893,7 +3256,13 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	fgSizer_ZDA->Add( m_spinCtrl_minuteOffsetZDA, 0, wxALL, 5 );
 
 
-	sbSizer_ZDA->Add( fgSizer_ZDA, 0, wxEXPAND, 5 );
+	bSizer67->Add( fgSizer_ZDA, 0, wxEXPAND, 5 );
+
+
+	bSizer67->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	sbSizer_ZDA->Add( bSizer67, 0, wxEXPAND, 5 );
 
 
 	bSizer_NmeaList->Add( sbSizer_ZDA, 0, wxEXPAND, 5 );
@@ -3435,32 +3804,57 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_checkBox_automaticSend->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( MyDialog::OnCheckBox_AutomaticSend ), NULL, this );
 	m_spinCtrlDouble_automaticSendFreq->Connect( wxEVT_COMMAND_SPINCTRLDOUBLE_UPDATED, wxSpinDoubleEventHandler( MyDialog::OnSpinCtrlDouble_AutomaticSendFreq ), NULL, this );
 	m_button_sendDBx->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendDBx ), NULL, this );
+	m_button_copyDBx->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyDBx ), NULL, this );
 	m_button_sendDPT->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendDPT ), NULL, this );
+	m_button_copyDPT->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyDPT ), NULL, this );
 	m_button_sendGGA->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendGGA ), NULL, this );
+	m_button_copyGGA->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyGGA ), NULL, this );
 	m_button_sendGLL->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendGLL ), NULL, this );
+	m_button_copyGLL->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyGLL ), NULL, this );
 	m_button_sendGSV->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendGSV ), NULL, this );
+	m_button_copyGSV->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyGSV ), NULL, this );
 	m_button_sendHDG->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendHDG ), NULL, this );
+	m_button_copyHDG->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyHDG ), NULL, this );
 	m_button_sendHDM->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendHDM ), NULL, this );
+	m_button_copyHDM->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyHDM ), NULL, this );
 	m_button_sendHDT->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendHDT ), NULL, this );
+	m_button_copyHDT->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyHDT ), NULL, this );
 	m_button_sendMTW->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendMTW ), NULL, this );
+	m_button_copyMTW->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyMTW ), NULL, this );
 	m_button_sendMWD->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendMWD ), NULL, this );
+	m_button_copyMWD->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyMWD ), NULL, this );
 	m_button_sendMWV->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendMWV ), NULL, this );
+	m_button_copyMWV->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyMWV ), NULL, this );
 	m_button_sendOSD->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendOSD ), NULL, this );
+	m_button_copyOSD->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyOSD ), NULL, this );
 	m_button_sendRMC->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendRMC ), NULL, this );
+	m_button_copyRMC->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyRMC ), NULL, this );
 	m_button_sendROT->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendROT ), NULL, this );
+	m_button_copyROT->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyROT ), NULL, this );
 	m_button_sendRSA->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendRSA ), NULL, this );
+	m_button_copyRSA->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyRSA ), NULL, this );
 	m_button_sendTLL->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendTLL ), NULL, this );
+	m_button_copyTLL->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyTLL ), NULL, this );
 	m_button_sendTHS->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendTHS ), NULL, this );
+	m_button_copyTHS->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyTHS ), NULL, this );
 	m_button_sendVDM->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendVDM ), NULL, this );
+	m_button_copyVDM->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyVDM ), NULL, this );
 	m_choice_classVDM->Connect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( MyDialog::OnChoice_aisClassVDM ), NULL, this );
 	m_button_sendVDR->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendVDR ), NULL, this );
+	m_button_copyVDR->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyVDR ), NULL, this );
 	m_button_sendVHW->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendVHW ), NULL, this );
+	m_button_copyVHW->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyVHW ), NULL, this );
 	m_button_sendVTG->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendVTG ), NULL, this );
+	m_button_copyVTG->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyVTG ), NULL, this );
 	m_button_sendVWR->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendVWR ), NULL, this );
+	m_button_copyVWR->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyVWR ), NULL, this );
 	m_button_sendWPL->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendWPL ), NULL, this );
+	m_button_copyWPL->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyWPL ), NULL, this );
 	m_button_sendXDR->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendXDR ), NULL, this );
+	m_button_copyXDR->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyXDR ), NULL, this );
 	m_choice_nameXDR->Connect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( MyDialog::OnChoice_UpdateXDR ), NULL, this );
 	m_button_sendZDA->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendZDA ), NULL, this );
+	m_button_copyZDA->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyZDA ), NULL, this );
 	m_toggleBtn_checkAllBuilder->Connect( wxEVT_COMMAND_TOGGLEBUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnToggleButton_CheckAllBuilders ), NULL, this );
 	m_searchCtrl_sentencesBuilder->Connect( wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( MyDialog::OnText_SearchSentenceBuilder ), NULL, this );
 	m_checkBox_automaticSendBuilder->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( MyDialog::OnCheckBox_AutomaticSendBuilder ), NULL, this );

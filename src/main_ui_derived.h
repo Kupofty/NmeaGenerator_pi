@@ -107,6 +107,33 @@ class DialogMainGui : public MyDialog
     void OnButtonClick_SendVWR(wxCommandEvent& event) override;
     void OnButtonClick_SendZDA(wxCommandEvent& event) override;
 
+
+    void OnButtonClick_CopyGLL(wxCommandEvent& event) override;
+    void OnButtonClick_CopyRMC(wxCommandEvent& event) override;
+    void OnButtonClick_CopyGGA(wxCommandEvent& event) override;
+    void OnButtonClick_CopyHDT(wxCommandEvent& event) override;
+    void OnButtonClick_CopyHDM(wxCommandEvent& event) override;
+    void OnButtonClick_CopyHDG(wxCommandEvent& event) override;
+    void OnButtonClick_CopyMTW(wxCommandEvent& event) override;
+    void OnButtonClick_CopyTLL(wxCommandEvent& event) override;
+    void OnButtonClick_CopyROT(wxCommandEvent& event) override;
+    void OnButtonClick_CopyRSA(wxCommandEvent& event) override;
+    void OnButtonClick_CopyDPT(wxCommandEvent& event) override;
+    void OnButtonClick_CopyDBx(wxCommandEvent& event) override;
+    void OnButtonClick_CopyTHS(wxCommandEvent& event) override;
+    void OnButtonClick_CopyWPL(wxCommandEvent& event) override;
+    void OnButtonClick_CopyVTG(wxCommandEvent& event) override;
+    void OnButtonClick_CopyGSV(wxCommandEvent& event) override;
+    void OnButtonClick_CopyXDR(wxCommandEvent& event) override;
+    void OnButtonClick_CopyOSD(wxCommandEvent& event) override;
+    void OnButtonClick_CopyMWV(wxCommandEvent& event) override;
+    void OnButtonClick_CopyMWD(wxCommandEvent& event) override;
+    void OnButtonClick_CopyVDM(wxCommandEvent& event) override;
+    void OnButtonClick_CopyVDR(wxCommandEvent& event) override;
+    void OnButtonClick_CopyVHW(wxCommandEvent& event) override;
+    void OnButtonClick_CopyVWR(wxCommandEvent& event) override;
+    void OnButtonClick_CopyZDA(wxCommandEvent& event) override;
+
   private:
     void copyToClipboard(wxString text);
     void sendNmeaToOCPN(wxString sentence);

@@ -7,8 +7,8 @@
 - Plugin window can be maximized/minimized & Settings window can be resized
 - Checksum verificator in "Manual Input" tab
 - Option to keep sending data when window is closed (need to be activated in Preferences)
+- Buttons to copy to clipboard the sentence in "Manual Input" and "Sentence builder" tabs
 - Option to automatically copy NMEA sentence to clipboard when manually sending in "Sentence builder" (need to be activated in Preferences) 
-- Button to copy to clipboard the sentence in "Manual Input" tab
 - Configurable timer for sending simulation data 
 - Add AIS encoding & capabilities (AIVDM/AIVDO) in "Simulation" & "Sentence builder" tabs
 - Dual vessel simulations (Own ship & AIS target) can now run simultaneously

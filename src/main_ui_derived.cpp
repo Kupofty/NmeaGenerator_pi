@@ -568,125 +568,204 @@ void DialogMainGui::OnButtonClick_SendGLL(wxCommandEvent& event)
 {
   sendAndMaybeCopy(createFromGuiGLL());
 }
-
 void DialogMainGui::OnButtonClick_SendRMC(wxCommandEvent& event)
 {
   sendAndMaybeCopy(createFromGuiRMC());
 }
-
 void DialogMainGui::OnButtonClick_SendGGA(wxCommandEvent& event)
 {
   sendAndMaybeCopy(createFromGuiGGA());
 }
-
 void DialogMainGui::OnButtonClick_SendHDT(wxCommandEvent& event)
 {
   sendAndMaybeCopy(createFromGuiHDT());
 }
-
 void DialogMainGui::OnButtonClick_SendHDM(wxCommandEvent& event)
 {
   sendAndMaybeCopy(createFromGuiHDM());
 }
-
 void DialogMainGui::OnButtonClick_SendHDG(wxCommandEvent& event)
 {
   sendAndMaybeCopy(createFromGuiHDG());
 }
-
 void DialogMainGui::OnButtonClick_SendMTW(wxCommandEvent& event)
 {
   sendAndMaybeCopy(createFromGuiMTW());
 }
-
 void DialogMainGui::OnButtonClick_SendTLL(wxCommandEvent& event)
 {
   sendAndMaybeCopy(createFromGuiTLL());
 }
-
 void DialogMainGui::OnButtonClick_SendROT(wxCommandEvent& event)
 {
   sendAndMaybeCopy(createFromGuiROT());
 }
-
 void DialogMainGui::OnButtonClick_SendRSA(wxCommandEvent& event)
 {
   sendAndMaybeCopy(createFromGuiRSA());
 }
-
 void DialogMainGui::OnButtonClick_SendDPT(wxCommandEvent& event)
 {
   sendAndMaybeCopy(createFromGuiDPT());
 }
-
 void DialogMainGui::OnButtonClick_SendDBx(wxCommandEvent& event)
 {
   sendAndMaybeCopy(createFromGuiDBx());
 }
-
 void DialogMainGui::OnButtonClick_SendTHS(wxCommandEvent& event)
 {
   sendAndMaybeCopy(createFromGuiTHS());
 }
-
 void DialogMainGui::OnButtonClick_SendWPL(wxCommandEvent& event)
 {
   sendAndMaybeCopy(createFromGuiWPL());
 }
-
 void DialogMainGui::OnButtonClick_SendVTG(wxCommandEvent& event)
 {
   sendAndMaybeCopy(createFromGuiVTG());
 }
-
 void DialogMainGui::OnButtonClick_SendGSV(wxCommandEvent& event)
 {
   sendAndMaybeCopy(createFromGuiGSV());
 }
-
 void DialogMainGui::OnButtonClick_SendXDR(wxCommandEvent& event)
 {
   sendAndMaybeCopy(createFromGuiXDR());
 }
-
 void DialogMainGui::OnButtonClick_SendOSD(wxCommandEvent& event)
 {
   sendAndMaybeCopy(createFromGuiOSD());
 }
-
 void DialogMainGui::OnButtonClick_SendMWV(wxCommandEvent& event)
 {
   sendAndMaybeCopy(createFromGuiMWV());
 }
-
 void DialogMainGui::OnButtonClick_SendMWD(wxCommandEvent& event)
 {
   sendAndMaybeCopy(createFromGuiMWD());
 }
-
 void DialogMainGui::OnButtonClick_SendVDM(wxCommandEvent& event)
 {
   sendAndMaybeCopy(createFromGuiVDM());
 }
-
 void DialogMainGui::OnButtonClick_SendVDR(wxCommandEvent& event)
 {
   sendAndMaybeCopy(createFromGuiVDR());
 }
-
 void DialogMainGui::OnButtonClick_SendVHW(wxCommandEvent& event)
 {
   sendAndMaybeCopy(createFromGuiVHW());
 }
-
 void DialogMainGui::OnButtonClick_SendVWR(wxCommandEvent& event)
 {
   sendAndMaybeCopy(createFromGuiVWR());
 }
-
 void DialogMainGui::OnButtonClick_SendZDA(wxCommandEvent& event)
 {
   sendAndMaybeCopy(createFromGuiZDA());
+}
+
+
+//Copy buttons callbacks
+void DialogMainGui::OnButtonClick_CopyGLL(wxCommandEvent& event)
+{
+  copyToClipboard(createFromGuiGLL());
+}
+void DialogMainGui::OnButtonClick_CopyRMC(wxCommandEvent& event)
+{
+  copyToClipboard(createFromGuiRMC());
+}
+void DialogMainGui::OnButtonClick_CopyGGA(wxCommandEvent& event)
+{
+  copyToClipboard(createFromGuiGGA());
+}
+void DialogMainGui::OnButtonClick_CopyHDT(wxCommandEvent& event)
+{
+  copyToClipboard(createFromGuiHDT());
+}
+void DialogMainGui::OnButtonClick_CopyHDM(wxCommandEvent& event)
+{
+  copyToClipboard(createFromGuiHDM());
+}
+void DialogMainGui::OnButtonClick_CopyHDG(wxCommandEvent& event)
+{
+  copyToClipboard(createFromGuiHDG());
+}
+void DialogMainGui::OnButtonClick_CopyMTW(wxCommandEvent& event)
+{
+  copyToClipboard(createFromGuiMTW());
+}
+void DialogMainGui::OnButtonClick_CopyTLL(wxCommandEvent& event)
+{
+  copyToClipboard(createFromGuiTLL());
+}
+void DialogMainGui::OnButtonClick_CopyROT(wxCommandEvent& event)
+{
+  copyToClipboard(createFromGuiROT());
+}
+void DialogMainGui::OnButtonClick_CopyRSA(wxCommandEvent& event)
+{
+  copyToClipboard(createFromGuiRSA());
+}
+void DialogMainGui::OnButtonClick_CopyDPT(wxCommandEvent& event)
+{
+  copyToClipboard(createFromGuiDPT());
+}
+void DialogMainGui::OnButtonClick_CopyDBx(wxCommandEvent& event)
+{
+  copyToClipboard(createFromGuiDBx());
+}
+void DialogMainGui::OnButtonClick_CopyTHS(wxCommandEvent& event)
+{
+  copyToClipboard(createFromGuiTHS());
+}
+void DialogMainGui::OnButtonClick_CopyWPL(wxCommandEvent& event)
+{
+  copyToClipboard(createFromGuiWPL());
+}
+void DialogMainGui::OnButtonClick_CopyVTG(wxCommandEvent& event)
+{
+  copyToClipboard(createFromGuiVTG());
+}
+void DialogMainGui::OnButtonClick_CopyGSV(wxCommandEvent& event)
+{
+  copyToClipboard(createFromGuiGSV());
+}
+void DialogMainGui::OnButtonClick_CopyXDR(wxCommandEvent& event)
+{
+  copyToClipboard(createFromGuiXDR());
+}
+void DialogMainGui::OnButtonClick_CopyOSD(wxCommandEvent& event)
+{
+  copyToClipboard(createFromGuiOSD());
+}
+void DialogMainGui::OnButtonClick_CopyMWV(wxCommandEvent& event)
+{
+  copyToClipboard(createFromGuiMWV());
+}
+void DialogMainGui::OnButtonClick_CopyMWD(wxCommandEvent& event)
+{
+  copyToClipboard(createFromGuiMWD());
+}
+void DialogMainGui::OnButtonClick_CopyVDM(wxCommandEvent& event)
+{
+  copyToClipboard(createFromGuiVDM());
+}
+void DialogMainGui::OnButtonClick_CopyVDR(wxCommandEvent& event)
+{
+  copyToClipboard(createFromGuiVDR());
+}
+void DialogMainGui::OnButtonClick_CopyVHW(wxCommandEvent& event)
+{
+  copyToClipboard(createFromGuiVHW());
+}
+void DialogMainGui::OnButtonClick_CopyVWR(wxCommandEvent& event)
+{
+  copyToClipboard(createFromGuiVWR());
+}
+void DialogMainGui::OnButtonClick_CopyZDA(wxCommandEvent& event)
+{
+  copyToClipboard(createFromGuiZDA());
 }
 
 
@@ -736,7 +815,7 @@ wxString DialogMainGui::createFromGuiGGA()
   wxString gpsFix   = wxString::Format("%d", m_spinCtrl_gpsQualityGGA->GetValue());
   wxString sats     = wxString::Format("%d", m_spinCtrl_satellitesGGA->GetValue());
   wxString hdop     = wxString::Format("%.1f", m_spinCtrlDouble_hdopGGA->GetValue());
-  wxString altitude = wxString::Format("%.1f", m_spinCtrlDouble_altitude_GGA->GetValue());
+  wxString altitude = wxString::Format("%.1f", m_spinCtrlDouble_altitudeGGA->GetValue());
   wxString geoid    = wxString::Format("%.1f", m_spinCtrlDouble_geoidSeparationGGA->GetValue());
 
   wxString gga  = nmea::createGGA(talker, time, lat, latDir, lon, lonDir, gpsFix, sats, hdop, altitude, geoid);

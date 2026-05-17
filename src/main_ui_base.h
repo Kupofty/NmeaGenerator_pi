@@ -68,6 +68,7 @@ class MyDialog : public wxDialog
 		wxBoxSizer* bSizer_NmeaList;
 		wxStaticBoxSizer* sbSizer_DBx;
 		wxButton* m_button_sendDBx;
+		wxButton* m_button_copyDBx;
 		wxCheckBox* m_checkBox_autoSendDBx;
 		wxStaticLine* m_staticline611131;
 		wxStaticText* m_staticText3511131;
@@ -84,6 +85,7 @@ class MyDialog : public wxDialog
 		wxStaticText* m_staticText118;
 		wxStaticBoxSizer* sbSizer_DPT;
 		wxButton* m_button_sendDPT;
+		wxButton* m_button_copyDPT;
 		wxCheckBox* m_checkBox_autoSendDPT;
 		wxStaticLine* m_staticline61113;
 		wxStaticText* m_staticText351113;
@@ -95,33 +97,35 @@ class MyDialog : public wxDialog
 		wxSpinCtrlDouble* m_spinCtrlDouble_offsetDPT;
 		wxStaticBoxSizer* sbSizer_GGA;
 		wxButton* m_button_sendGGA;
+		wxButton* m_button_copyGGA;
 		wxCheckBox* m_checkBox_autoSendGGA;
-		wxStaticLine* m_staticline8;
-		wxStaticText* m_staticText29;
-		wxStaticText* m_staticText30;
-		wxStaticText* m_staticText31;
-		wxStaticText* m_staticText32;
-		wxStaticText* m_staticText33;
+		wxStaticLine* m_staticline54;
+		wxStaticText* m_staticText229;
+		wxStaticText* m_staticText230;
+		wxStaticText* m_staticText2311;
+		wxStaticText* m_staticText2321;
+		wxStaticText* m_staticText2331;
 		wxTextCtrl* m_textCtrl_talkerGGA;
-		wxStaticText* m_staticText40;
+		wxStaticText* m_staticText2341;
 		wxTextCtrl* m_textCtrl_timeGGA;
 		wxTextCtrl* m_textCtrl_latitudeGGA;
 		wxChoice* m_choice_latDirGGA;
 		wxTextCtrl* m_textCtrl_longitudeGGA;
 		wxChoice* m_choice_lonDirGGA;
 		wxSpinCtrl* m_spinCtrl_gpsQualityGGA;
-		wxStaticText* m_staticText34;
-		wxStaticText* m_staticText35;
-		wxStaticText* m_staticText36;
-		wxStaticText* m_staticText37;
+		wxStaticText* m_staticText235;
+		wxStaticText* m_staticText2361;
+		wxStaticText* m_staticText237;
+		wxStaticText* m_staticText238;
 		wxSpinCtrl* m_spinCtrl_satellitesGGA;
 		wxSpinCtrlDouble* m_spinCtrlDouble_hdopGGA;
-		wxSpinCtrlDouble* m_spinCtrlDouble_altitude_GGA;
-		wxStaticText* m_staticText411;
+		wxSpinCtrlDouble* m_spinCtrlDouble_altitudeGGA;
+		wxStaticText* m_staticText240;
 		wxSpinCtrlDouble* m_spinCtrlDouble_geoidSeparationGGA;
-		wxStaticText* m_staticText42;
+		wxStaticText* m_staticText239;
 		wxStaticBoxSizer* sbSizer_GLL;
 		wxButton* m_button_sendGLL;
+		wxButton* m_button_copyGLL;
 		wxCheckBox* m_checkBox_autoSendGLL;
 		wxStaticLine* m_staticline5;
 		wxStaticText* m_staticText19;
@@ -141,6 +145,7 @@ class MyDialog : public wxDialog
 		wxChoice* m_choice_modeGLL;
 		wxStaticBoxSizer* sbSizer_GSV;
 		wxButton* m_button_sendGSV;
+		wxButton* m_button_copyGSV;
 		wxCheckBox* m_checkBox_autoSendGSV;
 		wxStaticLine* m_staticline53;
 		wxStaticText* m_staticText193;
@@ -162,6 +167,7 @@ class MyDialog : public wxDialog
 		wxSpinCtrl* m_spinCtrl_snrGSV;
 		wxStaticBoxSizer* sbSizer_HDG;
 		wxButton* m_button_sendHDG;
+		wxButton* m_button_copyHDG;
 		wxCheckBox* m_checkBox_autoSendHDG;
 		wxStaticLine* m_staticline6112;
 		wxStaticText* m_staticText35112;
@@ -177,6 +183,7 @@ class MyDialog : public wxDialog
 		wxChoice* m_choice_variationDirHDG;
 		wxStaticBoxSizer* sbSizer_HDM;
 		wxButton* m_button_sendHDM;
+		wxButton* m_button_copyHDM;
 		wxCheckBox* m_checkBox_autoSendHDM;
 		wxStaticLine* m_staticline611;
 		wxStaticText* m_staticText3511;
@@ -187,6 +194,7 @@ class MyDialog : public wxDialog
 		wxStaticText* m_staticText381;
 		wxStaticBoxSizer* sbSizer_HDT;
 		wxButton* m_button_sendHDT;
+		wxButton* m_button_copyHDT;
 		wxCheckBox* m_checkBox_autoSendHDT;
 		wxStaticLine* m_staticline61;
 		wxStaticText* m_staticText351;
@@ -197,6 +205,7 @@ class MyDialog : public wxDialog
 		wxStaticText* m_staticText38;
 		wxStaticBoxSizer* sbSizer_MTW;
 		wxButton* m_button_sendMTW;
+		wxButton* m_button_copyMTW;
 		wxCheckBox* m_checkBox_autoSendMTW;
 		wxStaticLine* m_staticline6111;
 		wxStaticText* m_staticText35111;
@@ -207,6 +216,7 @@ class MyDialog : public wxDialog
 		wxStaticText* m_staticText3811;
 		wxStaticBoxSizer* sbSizer_MWD;
 		wxButton* m_button_sendMWD;
+		wxButton* m_button_copyMWD;
 		wxCheckBox* m_checkBox_autoSendMWD;
 		wxStaticLine* m_staticline61112111;
 		wxStaticText* m_staticText351112111;
@@ -226,6 +236,7 @@ class MyDialog : public wxDialog
 		wxStaticText* m_staticText1701;
 		wxStaticBoxSizer* sbSizer_MWV;
 		wxButton* m_button_sendMWV;
+		wxButton* m_button_copyMWV;
 		wxCheckBox* m_checkBox_autoSendMWV;
 		wxStaticLine* m_staticline6111211;
 		wxStaticText* m_staticText35111211;
@@ -241,6 +252,7 @@ class MyDialog : public wxDialog
 		wxChoice* m_choice_statusMWV;
 		wxStaticBoxSizer* sbSizer_OSD;
 		wxButton* m_button_sendOSD;
+		wxButton* m_button_copyOSD;
 		wxCheckBox* m_checkBox_autoSendOSD;
 		wxStaticLine* m_staticline6111311;
 		wxStaticText* m_staticText35111311;
@@ -266,6 +278,7 @@ class MyDialog : public wxDialog
 		wxChoice* m_choice_speedUnitOSD;
 		wxStaticBoxSizer* sbSizer_RMC;
 		wxButton* m_button_sendRMC;
+		wxButton* m_button_copyRMC;
 		wxCheckBox* m_checkBox_autoSendRMC;
 		wxStaticLine* m_staticline6;
 		wxStaticText* m_staticText13;
@@ -292,6 +305,7 @@ class MyDialog : public wxDialog
 		wxChoice* m_choice_magDirRMC;
 		wxStaticBoxSizer* sbSizer_ROT;
 		wxButton* m_button_sendROT;
+		wxButton* m_button_copyROT;
 		wxCheckBox* m_checkBox_autoSendROT;
 		wxStaticLine* m_staticline61112;
 		wxStaticText* m_staticText351112;
@@ -303,6 +317,7 @@ class MyDialog : public wxDialog
 		wxChoice* m_choice_statusROT;
 		wxStaticBoxSizer* sbSizer_RSA;
 		wxButton* m_button_sendRSA;
+		wxButton* m_button_copyRSA;
 		wxCheckBox* m_checkBox_autoSendRSA;
 		wxStaticLine* m_staticline611121;
 		wxStaticText* m_staticText3511121;
@@ -318,6 +333,7 @@ class MyDialog : public wxDialog
 		wxChoice* m_choice_statusPortRSA;
 		wxStaticBoxSizer* sbSizer_TLL;
 		wxButton* m_button_sendTLL;
+		wxButton* m_button_copyTLL;
 		wxCheckBox* m_checkBox_autoSendTLL;
 		wxStaticLine* m_staticline61111;
 		wxStaticText* m_staticText351111;
@@ -340,6 +356,7 @@ class MyDialog : public wxDialog
 		wxStaticText* m_staticText68;
 		wxStaticBoxSizer* sbSizer_THS;
 		wxButton* m_button_sendTHS;
+		wxButton* m_button_copyTHS;
 		wxCheckBox* m_checkBox_autoSendTHS;
 		wxStaticLine* m_staticline611122;
 		wxStaticText* m_staticText3511122;
@@ -351,6 +368,7 @@ class MyDialog : public wxDialog
 		wxChoice* m_choice_modeTHS;
 		wxStaticBoxSizer* sbSizer_VDM;
 		wxButton* m_button_sendVDM;
+		wxButton* m_button_copyVDM;
 		wxCheckBox* m_checkBox_autoSendVDM;
 		wxStaticLine* m_staticline61113122;
 		wxStaticText* m_staticText351113122;
@@ -380,6 +398,7 @@ class MyDialog : public wxDialog
 		wxChoice* m_choice_channelVDM;
 		wxStaticBoxSizer* sbSizer_VDR;
 		wxButton* m_button_sendVDR;
+		wxButton* m_button_copyVDR;
 		wxCheckBox* m_checkBox_autoSendVDR;
 		wxStaticLine* m_staticline6111312;
 		wxStaticText* m_staticText35111312;
@@ -396,6 +415,7 @@ class MyDialog : public wxDialog
 		wxStaticText* m_staticText1181;
 		wxStaticBoxSizer* sbSizer_VHW;
 		wxButton* m_button_sendVHW;
+		wxButton* m_button_copyVHW;
 		wxCheckBox* m_checkBox_autoSendVHW;
 		wxStaticLine* m_staticline61113121;
 		wxStaticText* m_staticText351113121;
@@ -415,6 +435,7 @@ class MyDialog : public wxDialog
 		wxStaticText* m_staticText203;
 		wxStaticBoxSizer* sbSizer_VTG;
 		wxButton* m_button_sendVTG;
+		wxButton* m_button_copyVTG;
 		wxCheckBox* m_checkBox_autoSendVTG;
 		wxStaticLine* m_staticline52;
 		wxStaticText* m_staticText192;
@@ -436,6 +457,7 @@ class MyDialog : public wxDialog
 		wxChoice* m_choice_modeVTG;
 		wxStaticBoxSizer* sbSizer_VWR;
 		wxButton* m_button_sendVWR;
+		wxButton* m_button_copyVWR;
 		wxCheckBox* m_checkBox_autoSendVWR;
 		wxStaticLine* m_staticline611131211;
 		wxStaticText* m_staticText3511131211;
@@ -455,6 +477,7 @@ class MyDialog : public wxDialog
 		wxStaticText* m_staticText2031;
 		wxStaticBoxSizer* sbSizer_WPL;
 		wxButton* m_button_sendWPL;
+		wxButton* m_button_copyWPL;
 		wxCheckBox* m_checkBox_autoSendWPL;
 		wxStaticLine* m_staticline51;
 		wxStaticText* m_staticText191;
@@ -470,6 +493,7 @@ class MyDialog : public wxDialog
 		wxTextCtrl* m_textCtrl_nameWPL;
 		wxStaticBoxSizer* sbSizer_XDR;
 		wxButton* m_button_sendXDR;
+		wxButton* m_button_copyXDR;
 		wxCheckBox* m_checkBox_autoSendXDR;
 		wxStaticLine* m_staticline511;
 		wxStaticText* m_staticText1911;
@@ -485,6 +509,7 @@ class MyDialog : public wxDialog
 		wxChoice* m_choice_nameXDR;
 		wxStaticBoxSizer* sbSizer_ZDA;
 		wxButton* m_button_sendZDA;
+		wxButton* m_button_copyZDA;
 		wxCheckBox* m_checkBox_autoSendZDA;
 		wxStaticLine* m_staticline531;
 		wxStaticText* m_staticText1931;
@@ -582,32 +607,57 @@ class MyDialog : public wxDialog
 		virtual void OnCheckBox_AutomaticSend( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnSpinCtrlDouble_AutomaticSendFreq( wxSpinDoubleEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendDBx( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_CopyDBx( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendDPT( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_CopyDPT( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendGGA( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_CopyGGA( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendGLL( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_CopyGLL( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendGSV( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_CopyGSV( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendHDG( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_CopyHDG( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendHDM( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_CopyHDM( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendHDT( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_CopyHDT( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendMTW( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_CopyMTW( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendMWD( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_CopyMWD( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendMWV( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_CopyMWV( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendOSD( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_CopyOSD( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendRMC( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_CopyRMC( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendROT( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_CopyROT( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendRSA( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_CopyRSA( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendTLL( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_CopyTLL( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendTHS( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_CopyTHS( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendVDM( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_CopyVDM( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnChoice_aisClassVDM( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendVDR( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_CopyVDR( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendVHW( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_CopyVHW( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendVTG( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_CopyVTG( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendVWR( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_CopyVWR( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendWPL( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_CopyWPL( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendXDR( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_CopyXDR( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnChoice_UpdateXDR( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendZDA( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_CopyZDA( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnToggleButton_CheckAllBuilders( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnText_SearchSentenceBuilder( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnCheckBox_AutomaticSendBuilder( wxCommandEvent& event ) { event.Skip(); }
