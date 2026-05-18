@@ -172,8 +172,6 @@ void NmeaGeneratorPlugin::LoadSettings()
 
     configSettings->Read("SendDataAfterWindowClose", &g_sendDataAfterWindowClose, 0);
 
-    configSettings->Read("CopyNmeaToClipboardOnManualSend", &g_copyNmeaToClipboard, 0);
-
     configSettings->Read("aisMMSI", &g_aisMMSI, 227000000);
   }
 }
@@ -212,8 +210,6 @@ void NmeaGeneratorPlugin::SaveSettings()
     configSettings->Write("WindowPosY", g_windowPosY);
 
     configSettings->Write("SendDataAfterWindowClose", g_sendDataAfterWindowClose);
-
-    configSettings->Write("CopyNmeaToClipboardOnManualSend", g_copyNmeaToClipboard);
 
     configSettings->Write("aisMMSI", g_aisMMSI);
 

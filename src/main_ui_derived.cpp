@@ -118,7 +118,7 @@ void DialogMainGui::stopTimers()
 /// Manual Input ///
 ////////////////////
 
-//Get
+//Get & copy nmea from manual input
 wxString DialogMainGui::getManualInput()
 {
   wxString sentenceStr = m_textCtrl_sentenceInput->GetValue();
@@ -265,20 +265,6 @@ void DialogMainGui::OnSpinCtrlDouble_AutomaticSendFreq(wxSpinDoubleEvent& event)
 /// Sentence Builder ///
 ////////////////////////
 
-//Send logic
-void DialogMainGui::sendAndMaybeCopy(const wxString& msg)
-{
-  if(msg.IsEmpty())
-    return;
-
-  sendNmeaToOCPN(msg);
-
-  //Copy to clipboard if setting is activated
-  if(g_copyNmeaToClipboard)
-    copyToClipboard(msg);
-}
-
-
 //Search specific sentences
 void DialogMainGui::OnText_SearchSentenceBuilder(wxCommandEvent& event)
 {
@@ -296,6 +282,7 @@ void DialogMainGui::OnText_SearchSentenceBuilder(wxCommandEvent& event)
   bSizer_NmeaList->Layout();
   m_scrolledWindow_sentenceBuilder->FitInside();
 }
+
 
 //Help button
 void DialogMainGui::OnButtonClick_OpenSentenceBuilderHelp(wxCommandEvent& event)
@@ -354,6 +341,7 @@ void DialogMainGui::OnButtonClick_OpenSentenceBuilderHelp(wxCommandEvent& event)
   dlg->ShowModal();
   dlg->Destroy();
 }
+
 
 //Autosend checkboxes
 void DialogMainGui::OnToggleButton_CheckAllBuilders(wxCommandEvent& event)
@@ -575,103 +563,103 @@ void DialogMainGui::OnChoice_aisClassVDM(wxCommandEvent& event)
 //Send buttons callbacks
 void DialogMainGui::OnButtonClick_SendGLL(wxCommandEvent& event)
 {
-  sendAndMaybeCopy(createFromGuiGLL());
+  sendNmeaToOCPN(createFromGuiGLL());
 }
 void DialogMainGui::OnButtonClick_SendRMC(wxCommandEvent& event)
 {
-  sendAndMaybeCopy(createFromGuiRMC());
+  sendNmeaToOCPN(createFromGuiRMC());
 }
 void DialogMainGui::OnButtonClick_SendGGA(wxCommandEvent& event)
 {
-  sendAndMaybeCopy(createFromGuiGGA());
+  sendNmeaToOCPN(createFromGuiGGA());
 }
 void DialogMainGui::OnButtonClick_SendHDT(wxCommandEvent& event)
 {
-  sendAndMaybeCopy(createFromGuiHDT());
+  sendNmeaToOCPN(createFromGuiHDT());
 }
 void DialogMainGui::OnButtonClick_SendHDM(wxCommandEvent& event)
 {
-  sendAndMaybeCopy(createFromGuiHDM());
+  sendNmeaToOCPN(createFromGuiHDM());
 }
 void DialogMainGui::OnButtonClick_SendHDG(wxCommandEvent& event)
 {
-  sendAndMaybeCopy(createFromGuiHDG());
+  sendNmeaToOCPN(createFromGuiHDG());
 }
 void DialogMainGui::OnButtonClick_SendMTW(wxCommandEvent& event)
 {
-  sendAndMaybeCopy(createFromGuiMTW());
+  sendNmeaToOCPN(createFromGuiMTW());
 }
 void DialogMainGui::OnButtonClick_SendTLL(wxCommandEvent& event)
 {
-  sendAndMaybeCopy(createFromGuiTLL());
+  sendNmeaToOCPN(createFromGuiTLL());
 }
 void DialogMainGui::OnButtonClick_SendROT(wxCommandEvent& event)
 {
-  sendAndMaybeCopy(createFromGuiROT());
+  sendNmeaToOCPN(createFromGuiROT());
 }
 void DialogMainGui::OnButtonClick_SendRSA(wxCommandEvent& event)
 {
-  sendAndMaybeCopy(createFromGuiRSA());
+  sendNmeaToOCPN(createFromGuiRSA());
 }
 void DialogMainGui::OnButtonClick_SendDPT(wxCommandEvent& event)
 {
-  sendAndMaybeCopy(createFromGuiDPT());
+  sendNmeaToOCPN(createFromGuiDPT());
 }
 void DialogMainGui::OnButtonClick_SendDBx(wxCommandEvent& event)
 {
-  sendAndMaybeCopy(createFromGuiDBx());
+  sendNmeaToOCPN(createFromGuiDBx());
 }
 void DialogMainGui::OnButtonClick_SendTHS(wxCommandEvent& event)
 {
-  sendAndMaybeCopy(createFromGuiTHS());
+  sendNmeaToOCPN(createFromGuiTHS());
 }
 void DialogMainGui::OnButtonClick_SendWPL(wxCommandEvent& event)
 {
-  sendAndMaybeCopy(createFromGuiWPL());
+  sendNmeaToOCPN(createFromGuiWPL());
 }
 void DialogMainGui::OnButtonClick_SendVTG(wxCommandEvent& event)
 {
-  sendAndMaybeCopy(createFromGuiVTG());
+  sendNmeaToOCPN(createFromGuiVTG());
 }
 void DialogMainGui::OnButtonClick_SendGSV(wxCommandEvent& event)
 {
-  sendAndMaybeCopy(createFromGuiGSV());
+  sendNmeaToOCPN(createFromGuiGSV());
 }
 void DialogMainGui::OnButtonClick_SendXDR(wxCommandEvent& event)
 {
-  sendAndMaybeCopy(createFromGuiXDR());
+  sendNmeaToOCPN(createFromGuiXDR());
 }
 void DialogMainGui::OnButtonClick_SendOSD(wxCommandEvent& event)
 {
-  sendAndMaybeCopy(createFromGuiOSD());
+  sendNmeaToOCPN(createFromGuiOSD());
 }
 void DialogMainGui::OnButtonClick_SendMWV(wxCommandEvent& event)
 {
-  sendAndMaybeCopy(createFromGuiMWV());
+  sendNmeaToOCPN(createFromGuiMWV());
 }
 void DialogMainGui::OnButtonClick_SendMWD(wxCommandEvent& event)
 {
-  sendAndMaybeCopy(createFromGuiMWD());
+  sendNmeaToOCPN(createFromGuiMWD());
 }
 void DialogMainGui::OnButtonClick_SendVDM(wxCommandEvent& event)
 {
-  sendAndMaybeCopy(createFromGuiVDM());
+  sendNmeaToOCPN(createFromGuiVDM());
 }
 void DialogMainGui::OnButtonClick_SendVDR(wxCommandEvent& event)
 {
-  sendAndMaybeCopy(createFromGuiVDR());
+  sendNmeaToOCPN(createFromGuiVDR());
 }
 void DialogMainGui::OnButtonClick_SendVHW(wxCommandEvent& event)
 {
-  sendAndMaybeCopy(createFromGuiVHW());
+  sendNmeaToOCPN(createFromGuiVHW());
 }
 void DialogMainGui::OnButtonClick_SendVWR(wxCommandEvent& event)
 {
-  sendAndMaybeCopy(createFromGuiVWR());
+  sendNmeaToOCPN(createFromGuiVWR());
 }
 void DialogMainGui::OnButtonClick_SendZDA(wxCommandEvent& event)
 {
-  sendAndMaybeCopy(createFromGuiZDA());
+  sendNmeaToOCPN(createFromGuiZDA());
 }
 
 

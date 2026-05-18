@@ -271,7 +271,7 @@ For more information, see the INSTALL.md file in the GitHub repository.</p>
 <p>The "Manual Input" tab lets you type and send any NMEA sentence directly to OpenCPN, making it ideal for testing specific messages independently of the simulation engine, or for validating and debugging data flows.</p>
 </div>
 <div class="paragraph">
-<p>There is no validation on the content — any sentence will be forwarded as-is. Sentences must start with <code>$</code> (NMEA) or <code>!</code> (AIS/VDM). The checksum is optional.</p>
+<p>There is no validation on the content — any sentence will be forwarded as-is. Sentences must start with <code>$</code> or <code>!</code>. The checksum is optional.</p>
 </div>
 <div class="sect3">
 <h4 id="_checksum"><a class="anchor" href="#_checksum"></a><strong>Checksum</strong></h4>
@@ -302,7 +302,7 @@ Send
 Copy
 </td>
 <td class="hdlist2">
-<p>Copies the current input to the clipboard.</p>
+<p>Copies the current input and checksum (optionnal) to the clipboard.</p>
 </td>
 </tr>
 <tr>
@@ -351,6 +351,14 @@ Send
 </td>
 <td class="hdlist2">
 <p>Sends the selected sentence once to OpenCPN.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Copy
+</td>
+<td class="hdlist2">
+<p>Copies the full sentence to the clipboard.</p>
 </td>
 </tr>
 <tr>
@@ -566,14 +574,6 @@ Keep transmitting when window is closed
 </td>
 <td class="hdlist2">
 <p>Continues sending data when the plugin window is closed, allowing use of other plugins without interrupting an active simulation or auto-send.</p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-Copy sentence to clipboard on manual send
-</td>
-<td class="hdlist2">
-<p>Automatically copies the sent sentence to the clipboard when clicking Send in the Sentence Builder tab.</p>
 </td>
 </tr>
 </table>

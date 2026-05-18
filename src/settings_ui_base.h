@@ -47,7 +47,6 @@ class DialogSettingsBase : public wxDialog
 		wxCheckBox* m_checkBox_restoreWindowSize;
 		wxPanel* m_panel_options;
 		wxCheckBox* m_checkBox_keepSendingData;
-		wxCheckBox* m_checkBox_copyNmeaToClipboard;
 		wxPanel* m_panel_ais;
 		wxStaticText* m_staticText2;
 		wxSpinCtrl* m_spinCtrl_mmsi;

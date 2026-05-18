@@ -6,6 +6,7 @@
 ////////////////////////////
 DialogSettings::DialogSettings(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style) : DialogSettingsBase(parent, id, title, pos, size, style)
 {
+  m_notebook1->SetSelection(0);
 }
 
 DialogSettings::~DialogSettings()
@@ -20,7 +21,6 @@ void DialogSettings::OnInit(wxInitDialogEvent& event)
   m_checkBox_restoreWindowPos->SetValue(g_restoreWindowPos);
   m_checkBox_restoreWindowSize->SetValue(g_restoreWindowSize);
   m_checkBox_keepSendingData->SetValue(g_sendDataAfterWindowClose);
-  m_checkBox_copyNmeaToClipboard->SetValue(g_copyNmeaToClipboard);
   m_spinCtrl_mmsi->SetValue(g_aisMMSI);
 
   Layout();
@@ -39,7 +39,6 @@ void DialogSettings::updateSettings()
   g_restoreWindowPos = m_checkBox_restoreWindowPos->IsChecked();
   g_restoreWindowSize = m_checkBox_restoreWindowSize->IsChecked();
   g_sendDataAfterWindowClose = m_checkBox_keepSendingData->IsChecked();
-  g_copyNmeaToClipboard = m_checkBox_copyNmeaToClipboard->IsChecked();
   g_aisMMSI = m_spinCtrl_mmsi->GetValue();
 }
 

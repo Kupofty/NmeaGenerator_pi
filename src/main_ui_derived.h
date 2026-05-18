@@ -139,7 +139,6 @@ class DialogMainGui : public MyDialog
     void sendNmeaToOCPN(wxString sentence);
     wxString getManualInput();
     void updateAutoSendBuildersCheckboxes(bool check);
-    void sendAndMaybeCopy(const wxString& msg);
     SimVessel* getControlledVessel();
 
     //Create nmea from SentenceBuilder tab

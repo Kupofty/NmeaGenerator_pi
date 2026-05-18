@@ -100,7 +100,7 @@ image::gui/manual_input_tab.png[]
 
 The "Manual Input" tab lets you type and send any NMEA sentence directly to OpenCPN, making it ideal for testing specific messages independently of the simulation engine, or for validating and debugging data flows.
 
-There is no validation on the content — any sentence will be forwarded as-is. Sentences must start with `$` (NMEA) or `!` (AIS/VDM). The checksum is optional.
+There is no validation on the content — any sentence will be forwarded as-is. Sentences must start with `$` or `!`. The checksum is optional.
 
 
 
@@ -116,7 +116,7 @@ When disabled, a status message is displayed below the input field indicating wh
 
 [horizontal]
 Send:: Sends the sentence once to OpenCPN.
-Copy:: Copies the current input to the clipboard.
+Copy:: Copies the current input and checksum (optionnal) to the clipboard.
 Clear:: Clears the input field.
 Automatic send:: Sends the sentence continuously at the specified frequency. The rate can be adjusted at any time.
 
@@ -137,6 +137,7 @@ For text input fields, values must follow the official NMEA field format to be i
 
 [horizontal]
 Send:: Sends the selected sentence once to OpenCPN.
+Copy:: Copies the full sentence to the clipboard.
 Auto:: Adds the sentence to the automatic send list.
 Check all / Uncheck all:: Quickly adds or removes all sentences from the automatic send list.
 Automatic send:: Sends all checked sentences continuously at the specified frequency. Must be enabled for automatic sending to take effect.
@@ -205,7 +206,6 @@ image::settings/setting2.png[]
 
 [horizontal]
 Keep transmitting when window is closed:: Continues sending data when the plugin window is closed, allowing use of other plugins without interrupting an active simulation or auto-send.
-Copy sentence to clipboard on manual send:: Automatically copies the sent sentence to the clipboard when clicking Send in the Sentence Builder tab.
 
 
 '''

@@ -118,21 +118,6 @@ DialogSettingsBase::DialogSettingsBase( wxWindow* parent, wxWindowID id, const w
 
 	bSizer12->Add( bSizer91, 1, wxEXPAND, 5 );
 
-	wxBoxSizer* bSizer10;
-	bSizer10 = new wxBoxSizer( wxHORIZONTAL );
-
-
-	bSizer10->Add( 0, 0, 1, wxEXPAND, 5 );
-
-	m_checkBox_copyNmeaToClipboard = new wxCheckBox( m_panel_options, wxID_ANY, _("Copy NMEA sentence to \nclipboard on manual send"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer10->Add( m_checkBox_copyNmeaToClipboard, 0, wxALIGN_CENTER|wxALL, 5 );
-
-
-	bSizer10->Add( 0, 0, 1, wxEXPAND, 5 );
-
-
-	bSizer12->Add( bSizer10, 1, wxEXPAND, 5 );
-
 
 	bSizer12->Add( 0, 0, 1, wxEXPAND, 5 );
 
