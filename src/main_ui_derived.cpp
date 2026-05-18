@@ -121,16 +121,19 @@ void DialogMainGui::stopTimers()
 //Get & copy nmea from manual input
 wxString DialogMainGui::getManualInput()
 {
-  wxString sentenceStr = m_textCtrl_sentenceInput->GetValue();
+  wxString input = m_textCtrl_sentenceInput->GetValue();
 
-  // Add checksum to string
+  //Add checksum to string
   if(addAutoChecksum)
   {
-    wxString checksumStr = m_staticText_checksum->GetLabel();
-    sentenceStr += checksumStr;
+    //Remove manually added checksum (if exists)
+    input = utils::removeChecksumStr(input);
+
+    //Add automatically calculated checksum instead
+    input +=  m_staticText_checksum->GetLabel();
   }
 
-  return sentenceStr;
+  return input;
 }
 
 void DialogMainGui::OnButtonClick_copyManualSentence(wxCommandEvent& event)
@@ -199,7 +202,7 @@ void DialogMainGui::OnInputTextChanged(wxCommandEvent& event)
   int asteriskPos = payload.Find('*');
 
   // Extract payload for computation
-  wxString payloadForChecksum = (asteriskPos != wxNOT_FOUND) ? payload.Left(asteriskPos) : payload;
+  wxString payloadForChecksum =utils::removeChecksumStr(payload);
 
   // Compute checksum
   unsigned char checksum = utils::calculateChecksum(payloadForChecksum);

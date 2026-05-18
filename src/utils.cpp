@@ -114,4 +114,12 @@ namespace utils
     return res;
   }
 
+  wxString removeChecksumStr(wxString sentence)
+  {
+    int asteriskPos = sentence.Find('*');
+    wxString payloadWithoutChecksum = (asteriskPos != wxNOT_FOUND) ? sentence.Left(asteriskPos) : sentence;
+
+    return payloadWithoutChecksum;
+  }
+
 }

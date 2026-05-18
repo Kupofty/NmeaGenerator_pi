@@ -55,6 +55,9 @@ namespace utils
 
   //Return LatDeg, LatMin, LonDeg, LonMin from decimal (lat, lon)
   DegMin toDegMin(double lat, double lon);
+
+  //Return NMEA sentence without checksum
+  wxString removeChecksumStr(wxString sentence);
 }
 
 #endif  // UTILS_H
