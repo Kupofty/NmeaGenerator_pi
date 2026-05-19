@@ -500,13 +500,17 @@ class MyDialog : public wxDialog
 		wxStaticText* m_staticText911;
 		wxStaticText* m_staticText1111;
 		wxStaticText* m_staticText1501;
+		wxStaticText* m_staticText2271;
 		wxStaticText* m_staticText1421;
+		wxStaticText* m_staticText228;
 		wxTextCtrl* m_textCtrl_talkerXDR;
 		wxStaticText* m_staticText511;
 		wxStaticText* m_staticText_typeXDR;
 		wxSpinCtrlDouble* m_spinCtrlDouble_measureXDR;
 		wxStaticText* m_staticText_unitXDR;
+		wxChoice* m_choice_categoryXDR;
 		wxChoice* m_choice_nameXDR;
+		wxSpinCtrl* m_spinCtrl_numberIdXDR;
 		wxStaticBoxSizer* sbSizer_ZDA;
 		wxButton* m_button_sendZDA;
 		wxButton* m_button_copyZDA;
@@ -655,7 +659,7 @@ class MyDialog : public wxDialog
 		virtual void OnButtonClick_CopyWPL( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendXDR( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_CopyXDR( wxCommandEvent& event ) { event.Skip(); }
-		virtual void OnChoice_UpdateXDR( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnChoice_UpdateCategoryXDR( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_SendZDA( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_CopyZDA( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnToggleButton_CheckAllBuilders( wxCommandEvent& event ) { event.Skip(); }

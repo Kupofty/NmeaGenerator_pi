@@ -3068,7 +3068,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	bSizer68->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	wxFlexGridSizer* fgSizer_XDR;
-	fgSizer_XDR = new wxFlexGridSizer( 2, 6, 0, 0 );
+	fgSizer_XDR = new wxFlexGridSizer( 2, 8, 0, 0 );
 	fgSizer_XDR->SetFlexibleDirection( wxBOTH );
 	fgSizer_XDR->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 
@@ -3085,7 +3085,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	fgSizer_XDR->Add( m_staticText911, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_staticText1111 = new wxStaticText( sbSizer_XDR->GetStaticBox(), wxID_ANY, _("Measurement"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_staticText1111 = new wxStaticText( sbSizer_XDR->GetStaticBox(), wxID_ANY, _("Value"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
 	m_staticText1111->Wrap( -1 );
 	fgSizer_XDR->Add( m_staticText1111, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -3093,9 +3093,17 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText1501->Wrap( -1 );
 	fgSizer_XDR->Add( m_staticText1501, 0, wxALL, 5 );
 
-	m_staticText1421 = new wxStaticText( sbSizer_XDR->GetStaticBox(), wxID_ANY, _("Name"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_staticText2271 = new wxStaticText( sbSizer_XDR->GetStaticBox(), wxID_ANY, _("Category"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText2271->Wrap( -1 );
+	fgSizer_XDR->Add( m_staticText2271, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText1421 = new wxStaticText( sbSizer_XDR->GetStaticBox(), wxID_ANY, _("ID"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
 	m_staticText1421->Wrap( -1 );
 	fgSizer_XDR->Add( m_staticText1421, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText228 = new wxStaticText( sbSizer_XDR->GetStaticBox(), wxID_ANY, _("#"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText228->Wrap( -1 );
+	fgSizer_XDR->Add( m_staticText228, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_textCtrl_talkerXDR = new wxTextCtrl( sbSizer_XDR->GetStaticBox(), wxID_ANY, _("II"), wxDefaultPosition, wxSize( 50,-1 ), 0 );
 	#ifdef __WXGTK__
@@ -3112,23 +3120,31 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText511->Wrap( -1 );
 	fgSizer_XDR->Add( m_staticText511, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_staticText_typeXDR = new wxStaticText( sbSizer_XDR->GetStaticBox(), wxID_ANY, _("P"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText_typeXDR = new wxStaticText( sbSizer_XDR->GetStaticBox(), wxID_ANY, _("S"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText_typeXDR->Wrap( -1 );
 	fgSizer_XDR->Add( m_staticText_typeXDR, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_spinCtrlDouble_measureXDR = new wxSpinCtrlDouble( sbSizer_XDR->GetStaticBox(), wxID_ANY, wxT("1"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0.85, 1.1, 1, 0.01 );
-	m_spinCtrlDouble_measureXDR->SetDigits( 2 );
+	m_spinCtrlDouble_measureXDR = new wxSpinCtrlDouble( sbSizer_XDR->GetStaticBox(), wxID_ANY, wxT("0"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 1, 0, 1 );
+	m_spinCtrlDouble_measureXDR->SetDigits( 0 );
 	fgSizer_XDR->Add( m_spinCtrlDouble_measureXDR, 0, wxALL, 5 );
 
 	m_staticText_unitXDR = new wxStaticText( sbSizer_XDR->GetStaticBox(), wxID_ANY, _("B"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText_unitXDR->Wrap( -1 );
 	fgSizer_XDR->Add( m_staticText_unitXDR, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	wxString m_choice_nameXDRChoices[] = { _("Barometer"), _("Air Temp."), _("Water Temp."), _("Pitch"), _("Roll") };
-	int m_choice_nameXDRNChoices = sizeof( m_choice_nameXDRChoices ) / sizeof( wxString );
-	m_choice_nameXDR = new wxChoice( sbSizer_XDR->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_nameXDRNChoices, m_choice_nameXDRChoices, 0 );
+	wxString m_choice_categoryXDRChoices[] = { _("Current"), _("Displacement (Angular)"), _("Displacement (Linear)"), _("Flow rate"), _("Fluid level"), _("Force"), _("Frequency"), _("Generic"), _("Humidity"), _("Humidity (absolute)"), _("Pressure"), _("Salinity"), _("Switch / Valve"), _("Tachometer"), _("Temperature"), _("Voltage"), _("Volume") };
+	int m_choice_categoryXDRNChoices = sizeof( m_choice_categoryXDRChoices ) / sizeof( wxString );
+	m_choice_categoryXDR = new wxChoice( sbSizer_XDR->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_categoryXDRNChoices, m_choice_categoryXDRChoices, 0 );
+	m_choice_categoryXDR->SetSelection( 0 );
+	fgSizer_XDR->Add( m_choice_categoryXDR, 0, wxALL, 5 );
+
+	wxArrayString m_choice_nameXDRChoices;
+	m_choice_nameXDR = new wxChoice( sbSizer_XDR->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_nameXDRChoices, 0 );
 	m_choice_nameXDR->SetSelection( 0 );
 	fgSizer_XDR->Add( m_choice_nameXDR, 0, wxALL, 5 );
+
+	m_spinCtrl_numberIdXDR = new wxSpinCtrl( sbSizer_XDR->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 99, 0 );
+	fgSizer_XDR->Add( m_spinCtrl_numberIdXDR, 0, wxALL, 5 );
 
 
 	bSizer68->Add( fgSizer_XDR, 0, wxEXPAND, 5 );
@@ -3852,7 +3868,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_button_copyWPL->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyWPL ), NULL, this );
 	m_button_sendXDR->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendXDR ), NULL, this );
 	m_button_copyXDR->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyXDR ), NULL, this );
-	m_choice_nameXDR->Connect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( MyDialog::OnChoice_UpdateXDR ), NULL, this );
+	m_choice_categoryXDR->Connect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( MyDialog::OnChoice_UpdateCategoryXDR ), NULL, this );
 	m_button_sendZDA->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendZDA ), NULL, this );
 	m_button_copyZDA->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyZDA ), NULL, this );
 	m_toggleBtn_checkAllBuilder->Connect( wxEVT_COMMAND_TOGGLEBUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnToggleButton_CheckAllBuilders ), NULL, this );

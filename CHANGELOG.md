@@ -4,9 +4,10 @@
 ## [v1.1.0] / 2026-xx-xx
 
 ### Added
-- Add AIS encoding & capabilities (AIVDM/AIVDO) in "Simulation" & "Sentence builder" tabs
+- AIS encoding & capabilities (AIVDM/AIVDO) in "Simulation" & "Sentence builder" tabs
 - Vessel simulations (Own ship & AIS target) can now run simultaneously
 - Checksum verificator in "Manual Input" tab
+- New XDR transducers in "Sentence builder" tab
 - Plugin window can be maximized/minimized & Settings window can be resized
 - Option to keep sending data when window is closed (need to be activated in Preferences)
 - Buttons to copy to clipboard the sentence in "Manual Input" and "Sentence builder" tabs

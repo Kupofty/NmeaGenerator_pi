@@ -75,11 +75,11 @@ class DialogMainGui : public MyDialog
     void OnScroll_UpdateRudderAngleSim(wxScrollEvent& event) override;
     void OnButtonClick_ResetRudder(wxCommandEvent& event) override;
     void OnButtonClick_ResetThrottle(wxCommandEvent& event) override;
-    void OnChoice_UpdateXDR(wxCommandEvent& event) override;
     void OnButtonClick_copyManualSentence(wxCommandEvent& event) override;
     void OnSpinCtrlDouble_UpdateFreqTimerSim(wxSpinDoubleEvent& event) override;
     void OnChoice_controlledVesselSimChanged(wxCommandEvent& event) override;
     void OnChoice_aisClassVDM(wxCommandEvent& event) override;
+    void OnChoice_UpdateCategoryXDR(wxCommandEvent& event) override;
 
     void OnButtonClick_SendGLL(wxCommandEvent& event) override;
     void OnButtonClick_SendRMC(wxCommandEvent& event) override;
@@ -106,7 +106,6 @@ class DialogMainGui : public MyDialog
     void OnButtonClick_SendVHW(wxCommandEvent& event) override;
     void OnButtonClick_SendVWR(wxCommandEvent& event) override;
     void OnButtonClick_SendZDA(wxCommandEvent& event) override;
-
 
     void OnButtonClick_CopyGLL(wxCommandEvent& event) override;
     void OnButtonClick_CopyRMC(wxCommandEvent& event) override;
@@ -140,6 +139,7 @@ class DialogMainGui : public MyDialog
     wxString getManualInput();
     void updateAutoSendBuildersCheckboxes(bool check);
     SimVessel* getControlledVessel();
+    wxString getXdrNmeaName();
 
     //Create nmea from SentenceBuilder tab
     wxString createFromGuiGLL();
