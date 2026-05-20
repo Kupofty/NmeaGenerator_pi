@@ -506,179 +506,195 @@ void DialogMainGui::OnChoice_UpdateCategoryXDR(wxCommandEvent& event)
                                      double increment, double value,
                                      unsigned int digits)
   {
-    m_staticText_typeXDR->SetLabel(type);
-    m_staticText_unitXDR->SetLabel(unit);
+    m_textCtrl_typeXDR->SetValue(type);
+    m_textCtrl_unitXDR->SetValue(unit);
     m_spinCtrlDouble_measureXDR->SetRange(min, max);
     m_spinCtrlDouble_measureXDR->SetIncrement(increment);
     m_spinCtrlDouble_measureXDR->SetValue(value);
     m_spinCtrlDouble_measureXDR->SetDigits(digits);
   };
 
-  m_choice_nameXDR->Clear();
+  //Update UI
+  m_comboBox_nameXDR->Clear();
+  m_spinCtrl_numberIdXDR->Enable();
 
   int xdrCategoryChoice = m_choice_categoryXDR->GetSelection();
 
   if(xdrCategoryChoice == 0) //Current
   {
-    m_choice_nameXDR->Append(_("Battery"));
-    m_choice_nameXDR->Append(_("Alternator"));
-    m_choice_nameXDR->Append(_("Converter"));
-    m_choice_nameXDR->Append(_("Inverter"));
-    m_choice_nameXDR->Append(_("Solar panel"));
-    m_choice_nameXDR->Append(_("Wind generator"));
+    m_comboBox_nameXDR->Append(_("Battery"));
+    m_comboBox_nameXDR->Append(_("Alternator"));
+    m_comboBox_nameXDR->Append(_("Converter"));
+    m_comboBox_nameXDR->Append(_("Inverter"));
+    m_comboBox_nameXDR->Append(_("Solar panel"));
+    m_comboBox_nameXDR->Append(_("Wind generator"));
 
     ConfigureMeasureCtrl("I", "A", 0, 999, 1, 3, 1);
   }
   else if(xdrCategoryChoice == 1) //Angular Displacement
   {
-    m_choice_nameXDR->Append(_("Engine tilt"));
-    m_choice_nameXDR->Append(_("Trim"));
-    m_choice_nameXDR->Append(_("Heel"));
-    m_choice_nameXDR->Append(_("Rudder"));
-    m_choice_nameXDR->Append(_("Leeway"));
-    m_choice_nameXDR->Append(_("Yaw"));
-    m_choice_nameXDR->Append(_("Pitch"));
-    m_choice_nameXDR->Append(_("Roll"));
+    m_comboBox_nameXDR->Append(_("Engine tilt"));
+    m_comboBox_nameXDR->Append(_("Trim"));
+    m_comboBox_nameXDR->Append(_("Heel"));
+    m_comboBox_nameXDR->Append(_("Rudder"));
+    m_comboBox_nameXDR->Append(_("Leeway"));
+    m_comboBox_nameXDR->Append(_("Yaw"));
+    m_comboBox_nameXDR->Append(_("Pitch"));
+    m_comboBox_nameXDR->Append(_("Roll"));
 
     ConfigureMeasureCtrl("A", "D", -360, 360, 5, 15, 1);
   }
   else if(xdrCategoryChoice == 2) //Linear Displacement
   {
-    m_choice_nameXDR->Append(_("Door"));
-    m_choice_nameXDR->Append(_("Window"));
+    m_comboBox_nameXDR->Append(_("Door"));
+    m_comboBox_nameXDR->Append(_("Window"));
 
     ConfigureMeasureCtrl("D", "P", -100, 100, 5, 20, 0);
   }
   else if(xdrCategoryChoice == 3) //Flow Rate
   {
-    m_choice_nameXDR->Append(_("Fuel"));
-    m_choice_nameXDR->Append(_("Fresh water"));
-    m_choice_nameXDR->Append(_("Waste water"));
-    m_choice_nameXDR->Append(_("Live water"));
-    m_choice_nameXDR->Append(_("Oil"));
-    m_choice_nameXDR->Append(_("Black water"));
-    m_choice_nameXDR->Append(_("Brine water"));
+    m_comboBox_nameXDR->Append(_("Fuel"));
+    m_comboBox_nameXDR->Append(_("Fresh water"));
+    m_comboBox_nameXDR->Append(_("Waste water"));
+    m_comboBox_nameXDR->Append(_("Live water"));
+    m_comboBox_nameXDR->Append(_("Oil"));
+    m_comboBox_nameXDR->Append(_("Black water"));
+    m_comboBox_nameXDR->Append(_("Brine water"));
 
     ConfigureMeasureCtrl("R", "I", 0, 999, 1, 0, 1);
   }
   else if(xdrCategoryChoice == 4) //Fluid level
   {
-    m_choice_nameXDR->Append(_("Fuel"));
-    m_choice_nameXDR->Append(_("Fresh water"));
-    m_choice_nameXDR->Append(_("Waste water"));
-    m_choice_nameXDR->Append(_("Livewell water"));
-    m_choice_nameXDR->Append(_("Oil"));
-    m_choice_nameXDR->Append(_("Black water"));
+    m_comboBox_nameXDR->Append(_("Fuel"));
+    m_comboBox_nameXDR->Append(_("Fresh water"));
+    m_comboBox_nameXDR->Append(_("Waste water"));
+    m_comboBox_nameXDR->Append(_("Livewell water"));
+    m_comboBox_nameXDR->Append(_("Oil"));
+    m_comboBox_nameXDR->Append(_("Black water"));
 
     ConfigureMeasureCtrl("E", "P", 0, 100, 1, 0, 0);
   }
   else if(xdrCategoryChoice == 5) //Force
   {
-    m_choice_nameXDR->Append(_("Pressure"));
+    m_comboBox_nameXDR->Append(_("Pressure"));
 
     ConfigureMeasureCtrl("N", "N", -1000, 1000, 10, 0, 0);
   }
   else if(xdrCategoryChoice == 6) //Frequency
   {
-    m_choice_nameXDR->Append(_("AC"));
+    m_comboBox_nameXDR->Append(_("Air conditioning"));
     ConfigureMeasureCtrl("F", "H", 0, 100, 1, 0, 1);
   }
   else if(xdrCategoryChoice == 7) //Generic
   {
-    m_choice_nameXDR->Append(_("Custom"));
-
+    m_spinCtrl_numberIdXDR->Disable();
     ConfigureMeasureCtrl("G", "", -999, 999, 1, 0, 1);
   }
   else if(xdrCategoryChoice == 8) //Humidity
   {
-    m_choice_nameXDR->Append(_("Air"));
+    m_comboBox_nameXDR->Append(_("Air"));
 
     ConfigureMeasureCtrl("H", "P", 0, 100, 1, 0, 0);
   }
   else if(xdrCategoryChoice == 9) //Humidity (absolute)
   {
-    m_choice_nameXDR->Append(_("Air"));
+    m_comboBox_nameXDR->Append(_("Air"));
 
     ConfigureMeasureCtrl("B", "K", 0, 10, 0.05, 0, 2);
   }
   else if(xdrCategoryChoice == 10) //Pressure
   {
-    m_choice_nameXDR->Append(_("Engine"));
-    m_choice_nameXDR->Append(_("Engine oil"));
-    m_choice_nameXDR->Append(_("Transmission oil"));
-    m_choice_nameXDR->Append(_("Engine coolant"));
-    m_choice_nameXDR->Append(_("Engine boost"));
-    m_choice_nameXDR->Append(_("Fuel"));
-    m_choice_nameXDR->Append(_("Barometer"));
+    m_comboBox_nameXDR->Append(_("Engine"));
+    m_comboBox_nameXDR->Append(_("Engine oil"));
+    m_comboBox_nameXDR->Append(_("Transmission oil"));
+    m_comboBox_nameXDR->Append(_("Engine coolant"));
+    m_comboBox_nameXDR->Append(_("Engine boost"));
+    m_comboBox_nameXDR->Append(_("Fuel"));
+    m_comboBox_nameXDR->Append(_("Barometer"));
 
     ConfigureMeasureCtrl("P", "B", -100, 100, 0.5, 0, 1);
   }
   else if(xdrCategoryChoice == 11) //Salinity
   {
-    m_choice_nameXDR->Append(_("Sea water"));
+    m_comboBox_nameXDR->Append(_("Sea water"));
 
     ConfigureMeasureCtrl("L", "S", 0, 100, 1, 35, 1);
   }
   else if(xdrCategoryChoice == 12) //Switch-Valve
   {
-    m_choice_nameXDR->Append(_("Valve"));
+    m_comboBox_nameXDR->Append(_("Valve"));
 
     ConfigureMeasureCtrl("S", "B", 0, 1, 1, 0, 0);
   }
   else if(xdrCategoryChoice == 13) //Tachometer
   {
-    m_choice_nameXDR->Append(_("Engine"));
+    m_comboBox_nameXDR->Append(_("Engine"));
 
     ConfigureMeasureCtrl("T", "R", 0, 10000, 500, 1500, 0);
   }
   else if(xdrCategoryChoice == 14) //Temperature
   {
-    m_choice_nameXDR->Append(_("Engine"));
-    m_choice_nameXDR->Append(_("Engine oil"));
-    m_choice_nameXDR->Append(_("Transmission oil"));
-    m_choice_nameXDR->Append(_("Air"));
-    m_choice_nameXDR->Append(_("Water"));
+    m_comboBox_nameXDR->Append(_("Engine"));
+    m_comboBox_nameXDR->Append(_("Engine oil"));
+    m_comboBox_nameXDR->Append(_("Transmission oil"));
+    m_comboBox_nameXDR->Append(_("Air"));
+    m_comboBox_nameXDR->Append(_("Water"));
 
     ConfigureMeasureCtrl("C", "C", 0, 999, 5, 20, 1);
   }
   else if(xdrCategoryChoice == 15) //Voltage
   {
-    m_choice_nameXDR->Append(_("Battery"));
-    m_choice_nameXDR->Append(_("Alternator"));
-    m_choice_nameXDR->Append(_("Converter"));
-    m_choice_nameXDR->Append(_("Inverter"));
-    m_choice_nameXDR->Append(_("Solar panel"));
-    m_choice_nameXDR->Append(_("Wind generator"));
+    m_comboBox_nameXDR->Append(_("Battery"));
+    m_comboBox_nameXDR->Append(_("Alternator"));
+    m_comboBox_nameXDR->Append(_("Converter"));
+    m_comboBox_nameXDR->Append(_("Inverter"));
+    m_comboBox_nameXDR->Append(_("Solar panel"));
+    m_comboBox_nameXDR->Append(_("Wind generator"));
 
 
     ConfigureMeasureCtrl("U", "V", 0, 250, 1, 12, 1);
   }
   else if(xdrCategoryChoice == 16) //Volume
   {
-    m_choice_nameXDR->Append(_("Fuel"));
-    m_choice_nameXDR->Append(_("Fresh water"));
-    m_choice_nameXDR->Append(_("Waste water"));
-    m_choice_nameXDR->Append(_("Live water"));
-    m_choice_nameXDR->Append(_("Oil"));
-    m_choice_nameXDR->Append(_("Black water"));
+    m_comboBox_nameXDR->Append(_("Fuel"));
+    m_comboBox_nameXDR->Append(_("Fresh water"));
+    m_comboBox_nameXDR->Append(_("Waste water"));
+    m_comboBox_nameXDR->Append(_("Live water"));
+    m_comboBox_nameXDR->Append(_("Oil"));
+    m_comboBox_nameXDR->Append(_("Black water"));
 
     ConfigureMeasureCtrl("V", "P", 0, 100, 1, 90, 0);
   }
 
   //Force GUI update
-  m_choice_nameXDR->SetSelection(0);
+  m_comboBox_nameXDR->SetSelection(0);
+}
+
+void DialogMainGui::OnText_UpdateCustomNameXDR(wxCommandEvent& event)
+{
+  //Disable XDR number ID if custom entry
+  wxString value = m_comboBox_nameXDR->GetValue();
+  bool isUserDefined = (m_comboBox_nameXDR->FindString(value) == wxNOT_FOUND);
+
+  m_spinCtrl_numberIdXDR->Enable(!isUserDefined);
 }
 
 wxString DialogMainGui::getXdrNmeaName()
 {
+  //Return user entry if not in list
+  wxString value = m_comboBox_nameXDR->GetValue();
+  bool isUserDefined = (m_comboBox_nameXDR->FindString(value) == wxNOT_FOUND);
+  if(isUserDefined)
+    return value;
+
+  //Get UI selection
   wxString name = "";
-
   int xdrCategoryChoice = m_choice_categoryXDR->GetSelection();
-  int xdrNameChoice = m_choice_nameXDR->GetSelection();
-
+  int xdrNameChoice = m_comboBox_nameXDR->GetSelection();
   int idNumber = m_spinCtrl_numberIdXDR->GetValue();
   wxString idNumberString = wxString::Format("%d", idNumber);
 
+  //Update XDR ID name from list
   if(xdrCategoryChoice == 0) //Current
   {
     if(xdrNameChoice == 0)
@@ -770,7 +786,7 @@ wxString DialogMainGui::getXdrNmeaName()
   }
   else if(xdrCategoryChoice == 7) //Generic
   {
-    name = "Custom";
+    name = m_comboBox_nameXDR->GetValue();
   }
   else if(xdrCategoryChoice == 8 || xdrCategoryChoice == 9) //Humidity
   {
@@ -1287,9 +1303,9 @@ wxString DialogMainGui::createFromGuiGSV()
 wxString DialogMainGui::createFromGuiXDR()
 {
   wxString talker      = m_textCtrl_talkerXDR->GetValue();
-  wxString type        = m_staticText_typeXDR->GetLabel();
+  wxString type        = m_textCtrl_typeXDR->GetValue();
   wxString measurement = wxString::Format("%.2f", m_spinCtrlDouble_measureXDR->GetValue());
-  wxString unit        = m_staticText_unitXDR->GetLabel();
+  wxString unit        = m_textCtrl_unitXDR->GetValue();
   wxString name        = getXdrNmeaName();
 
   wxString xdr = nmea::createXDR(talker, type, measurement, unit, name);

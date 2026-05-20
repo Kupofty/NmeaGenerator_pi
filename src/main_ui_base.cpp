@@ -1987,7 +1987,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizer171111->Add( m_button_sendTLL, 0, wxALL, 5 );
 
-	m_button_copyTLL = new wxButton( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("MyButton"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_button_copyTLL = new wxButton( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("Copy"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer171111->Add( m_button_copyTLL, 0, wxALL, 5 );
 
 	m_checkBox_autoSendTLL = new wxCheckBox( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("Auto"), wxDefaultPosition, wxDefaultSize, 0 );
@@ -3085,13 +3085,13 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	fgSizer_XDR->Add( m_staticText911, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_staticText1111 = new wxStaticText( sbSizer_XDR->GetStaticBox(), wxID_ANY, _("Value"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_staticText1111 = new wxStaticText( sbSizer_XDR->GetStaticBox(), wxID_ANY, _("Data"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
 	m_staticText1111->Wrap( -1 );
 	fgSizer_XDR->Add( m_staticText1111, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_staticText1501 = new wxStaticText( sbSizer_XDR->GetStaticBox(), wxID_ANY, _("Unit"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText1501->Wrap( -1 );
-	fgSizer_XDR->Add( m_staticText1501, 0, wxALL, 5 );
+	fgSizer_XDR->Add( m_staticText1501, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_staticText2271 = new wxStaticText( sbSizer_XDR->GetStaticBox(), wxID_ANY, _("Category"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText2271->Wrap( -1 );
@@ -3120,17 +3120,31 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText511->Wrap( -1 );
 	fgSizer_XDR->Add( m_staticText511, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_staticText_typeXDR = new wxStaticText( sbSizer_XDR->GetStaticBox(), wxID_ANY, _("S"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText_typeXDR->Wrap( -1 );
-	fgSizer_XDR->Add( m_staticText_typeXDR, 0, wxALIGN_CENTER|wxALL, 5 );
+	m_textCtrl_typeXDR = new wxTextCtrl( sbSizer_XDR->GetStaticBox(), wxID_ANY, _("I"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	#ifdef __WXGTK__
+	if ( !m_textCtrl_typeXDR->HasFlag( wxTE_MULTILINE ) )
+	{
+	m_textCtrl_typeXDR->SetMaxLength( 1 );
+	}
+	#else
+	m_textCtrl_typeXDR->SetMaxLength( 1 );
+	#endif
+	fgSizer_XDR->Add( m_textCtrl_typeXDR, 0, wxALL, 5 );
 
 	m_spinCtrlDouble_measureXDR = new wxSpinCtrlDouble( sbSizer_XDR->GetStaticBox(), wxID_ANY, wxT("0"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 1, 0, 1 );
 	m_spinCtrlDouble_measureXDR->SetDigits( 0 );
 	fgSizer_XDR->Add( m_spinCtrlDouble_measureXDR, 0, wxALL, 5 );
 
-	m_staticText_unitXDR = new wxStaticText( sbSizer_XDR->GetStaticBox(), wxID_ANY, _("B"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText_unitXDR->Wrap( -1 );
-	fgSizer_XDR->Add( m_staticText_unitXDR, 0, wxALIGN_CENTER|wxALL, 5 );
+	m_textCtrl_unitXDR = new wxTextCtrl( sbSizer_XDR->GetStaticBox(), wxID_ANY, _("A"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	#ifdef __WXGTK__
+	if ( !m_textCtrl_unitXDR->HasFlag( wxTE_MULTILINE ) )
+	{
+	m_textCtrl_unitXDR->SetMaxLength( 1 );
+	}
+	#else
+	m_textCtrl_unitXDR->SetMaxLength( 1 );
+	#endif
+	fgSizer_XDR->Add( m_textCtrl_unitXDR, 0, wxALL, 5 );
 
 	wxString m_choice_categoryXDRChoices[] = { _("Current"), _("Displacement (Angular)"), _("Displacement (Linear)"), _("Flow rate"), _("Fluid level"), _("Force"), _("Frequency"), _("Generic"), _("Humidity"), _("Humidity (absolute)"), _("Pressure"), _("Salinity"), _("Switch / Valve"), _("Tachometer"), _("Temperature"), _("Voltage"), _("Volume") };
 	int m_choice_categoryXDRNChoices = sizeof( m_choice_categoryXDRChoices ) / sizeof( wxString );
@@ -3138,10 +3152,8 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_choice_categoryXDR->SetSelection( 0 );
 	fgSizer_XDR->Add( m_choice_categoryXDR, 0, wxALL, 5 );
 
-	wxArrayString m_choice_nameXDRChoices;
-	m_choice_nameXDR = new wxChoice( sbSizer_XDR->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_nameXDRChoices, 0 );
-	m_choice_nameXDR->SetSelection( 0 );
-	fgSizer_XDR->Add( m_choice_nameXDR, 0, wxALL, 5 );
+	m_comboBox_nameXDR = new wxComboBox( sbSizer_XDR->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, NULL, 0 );
+	fgSizer_XDR->Add( m_comboBox_nameXDR, 0, wxALL, 5 );
 
 	m_spinCtrl_numberIdXDR = new wxSpinCtrl( sbSizer_XDR->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 99, 0 );
 	fgSizer_XDR->Add( m_spinCtrl_numberIdXDR, 0, wxALL, 5 );
@@ -3869,6 +3881,7 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_button_sendXDR->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendXDR ), NULL, this );
 	m_button_copyXDR->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyXDR ), NULL, this );
 	m_choice_categoryXDR->Connect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( MyDialog::OnChoice_UpdateCategoryXDR ), NULL, this );
+	m_comboBox_nameXDR->Connect( wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( MyDialog::OnText_UpdateCustomNameXDR ), NULL, this );
 	m_button_sendZDA->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendZDA ), NULL, this );
 	m_button_copyZDA->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyZDA ), NULL, this );
 	m_toggleBtn_checkAllBuilder->Connect( wxEVT_COMMAND_TOGGLEBUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnToggleButton_CheckAllBuilders ), NULL, this );

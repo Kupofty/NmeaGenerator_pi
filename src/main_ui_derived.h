@@ -80,6 +80,7 @@ class DialogMainGui : public MyDialog
     void OnChoice_controlledVesselSimChanged(wxCommandEvent& event) override;
     void OnChoice_aisClassVDM(wxCommandEvent& event) override;
     void OnChoice_UpdateCategoryXDR(wxCommandEvent& event) override;
+    void OnText_UpdateCustomNameXDR(wxCommandEvent& event) override;
 
     void OnButtonClick_SendGLL(wxCommandEvent& event) override;
     void OnButtonClick_SendRMC(wxCommandEvent& event) override;
