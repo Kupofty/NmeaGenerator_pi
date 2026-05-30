@@ -8,7 +8,11 @@
 #include "wx/wx.h"
 #endif
 
-// Globally accessible variables used by the plugin, dialogs etc.
+
+/////////////////////////////////////////////////////////////////////
+/// Globally accessible variables used by the plugin, dialogs etc ///
+/////////////////////////////////////////////////////////////////////
+
 extern wxBitmap g_pluginBitmap;
 
 extern int g_defaultNotebookPage;

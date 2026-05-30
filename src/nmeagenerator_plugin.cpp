@@ -46,27 +46,30 @@ NmeaGeneratorPlugin::~NmeaGeneratorPlugin()
 
 int NmeaGeneratorPlugin::Init()
 {
+  //Load translations
+  AddLocaleCatalog("opencpn-nmeagenerator_pi");
+
+  //Init GUI
   parentWindow = GetOCPNCanvasWindow();
   configSettings = GetOCPNConfigObject();
+  myGUI = NULL;
 
+  //Settings
   LoadSettings();
 
-  // Add the toolbar button (SVG only)
+  //Add the toolbar button (SVG only)
   wxString pluginFolder = GetPluginDataDir(PKG_NAME) + wxFileName::GetPathSeparator() + "data" + wxFileName::GetPathSeparator();
   wxString normalIcon   = pluginFolder + "icon_nmea_toolbar_default.svg";
   wxString rolloverIcon = pluginFolder + "icon_nmea_toolbar_toggled.svg"; //BUG : rollover state not working in OpenCPN
   wxString toggledIcon  = pluginFolder + "icon_nmea_toolbar_toggled.svg";
   toolbarId = InsertPlugInToolSVG("NmeaGenerator", normalIcon, rolloverIcon, toggledIcon, wxITEM_CHECK, "NmeaGenerator", "NmeaGenerator Plugin Toolbar", NULL, -1, 0, this);
 
-  //Init main GUI to NULL
-  myGUI = NULL;
-
   //Right-click menu entry
   wxMenu simPositionMenu;
   positionMenuID = AddCanvasContextMenuItem(new wxMenuItem(&simPositionMenu, -1, _("Simulation: Update vessel position")), this);
   SetCanvasContextMenuItemViz(positionMenuID, false);
 
-  // Notify OpenCPN what callbacks the plugin registers to receive
+  //Inform OpenCPN about the plugin capabilities and requested callbacks
   return  ( INSTALLS_TOOLBAR_TOOL  //Add toolbar icon
           | WANTS_PREFERENCES      //Add "Preferences" button in plugin catalogue
           | WANTS_CURSOR_LATLON);  //Enable SetCursorLatLon()

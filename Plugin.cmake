@@ -40,7 +40,6 @@ set(PKG_AUTHOR "Kupofty")
 set(PKG_IS_OPEN_SOURCE "yes")
 set(PKG_HOMEPAGE https://github.com/Kupofty/NmeaGenerator_pi)
 set(PKG_INFO_URL https://kupofty.github.io/NmeaGenerator_pi/nmeagenerator_plugin/index.html) #Used in the website button
-#set(PKG_INFO_URL https://opencpn.org/OpenCPN/plugins/nmeagenerator.html) #Waiting for the page to be added to opencpn.org
 
 # ------- Code sources --------
 set(SRC
@@ -93,6 +92,9 @@ macro(late_init)
     target_compile_definitions(${PACKAGE_NAME} PUBLIC OCPN_GHC_FILESYSTEM)
   endif ()
 endmacro ()
+
+
+# ------- Libraries --------
 
 # Add plugin libraries
 #macro(add_plugin_libraries)
