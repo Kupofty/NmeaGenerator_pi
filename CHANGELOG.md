@@ -1,7 +1,7 @@
 # NmeaGenerator Changelog
 
 ###
-## [v1.1.0] / 2026-xx-xx
+## [v1.1.0] / 2026-06-11
 
 ### Added
 - AIS encoding & capabilities (AIVDM/AIVDO) in "Simulation" & "Sentence builder" tabs
