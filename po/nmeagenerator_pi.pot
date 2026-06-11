@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-19 23:52+0200\n"
+"POT-Creation-Date: 2026-06-11 20:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -74,11 +74,11 @@ msgstr ""
 msgid "Apply"
 msgstr ""
 
-#: src/nmeagenerator_plugin.cpp:66
+#: src/nmeagenerator_plugin.cpp:69
 msgid "Simulation: Update vessel position"
 msgstr ""
 
-#: src/nmeagenerator_plugin.cpp:237
+#: src/nmeagenerator_plugin.cpp:240
 msgid "NmeaGenerator Preferences"
 msgstr ""
 
@@ -752,7 +752,7 @@ msgstr ""
 msgid "Humidity (absolute)"
 msgstr ""
 
-#: src/main_ui_base.cpp:3149 src/main_ui_derived.cpp:577
+#: src/main_ui_base.cpp:3149 src/main_ui_derived.cpp:579
 msgid "Pressure"
 msgstr ""
 
@@ -931,7 +931,7 @@ msgid "%"
 msgstr ""
 
 #: src/main_ui_base.cpp:3782 src/main_ui_derived.cpp:113
-#: src/main_ui_derived.cpp:1643
+#: src/main_ui_derived.cpp:1661
 msgid "START"
 msgstr ""
 
@@ -951,7 +951,7 @@ msgstr ""
 msgid "NmeaGenerator Plugin GUI"
 msgstr ""
 
-#: src/main_ui_base.h:683
+#: src/main_ui_base.h:684
 msgid "NMEA Generator Plugin"
 msgstr ""
 
@@ -993,153 +993,150 @@ msgstr ""
 msgid "Check All"
 msgstr ""
 
-#: src/main_ui_derived.cpp:523 src/main_ui_derived.cpp:644
+#: src/main_ui_derived.cpp:525 src/main_ui_derived.cpp:647
 msgid "Battery"
 msgstr ""
 
-#: src/main_ui_derived.cpp:524 src/main_ui_derived.cpp:645
+#: src/main_ui_derived.cpp:526 src/main_ui_derived.cpp:648
 msgid "Alternator"
 msgstr ""
 
-#: src/main_ui_derived.cpp:525 src/main_ui_derived.cpp:646
+#: src/main_ui_derived.cpp:527 src/main_ui_derived.cpp:649
 msgid "Converter"
 msgstr ""
 
-#: src/main_ui_derived.cpp:526 src/main_ui_derived.cpp:647
+#: src/main_ui_derived.cpp:528 src/main_ui_derived.cpp:650
 msgid "Inverter"
 msgstr ""
 
-#: src/main_ui_derived.cpp:527 src/main_ui_derived.cpp:648
+#: src/main_ui_derived.cpp:529 src/main_ui_derived.cpp:651
 msgid "Solar panel"
 msgstr ""
 
-#: src/main_ui_derived.cpp:528 src/main_ui_derived.cpp:649
+#: src/main_ui_derived.cpp:530 src/main_ui_derived.cpp:652
 msgid "Wind generator"
 msgstr ""
 
-#: src/main_ui_derived.cpp:534
+#: src/main_ui_derived.cpp:536
 msgid "Engine tilt"
 msgstr ""
 
-#: src/main_ui_derived.cpp:535
+#: src/main_ui_derived.cpp:537
 msgid "Trim"
 msgstr ""
 
-#: src/main_ui_derived.cpp:536
+#: src/main_ui_derived.cpp:538
 msgid "Heel"
 msgstr ""
 
-#: src/main_ui_derived.cpp:537
+#: src/main_ui_derived.cpp:539
 msgid "Rudder"
 msgstr ""
 
-#: src/main_ui_derived.cpp:538
+#: src/main_ui_derived.cpp:540
 msgid "Leeway"
 msgstr ""
 
-#: src/main_ui_derived.cpp:539
+#: src/main_ui_derived.cpp:541
 msgid "Yaw"
 msgstr ""
 
-#: src/main_ui_derived.cpp:540
+#: src/main_ui_derived.cpp:542
 msgid "Pitch"
 msgstr ""
 
-#: src/main_ui_derived.cpp:541
+#: src/main_ui_derived.cpp:543
 msgid "Roll"
 msgstr ""
 
-#: src/main_ui_derived.cpp:547
+#: src/main_ui_derived.cpp:549
 msgid "Door"
 msgstr ""
 
-#: src/main_ui_derived.cpp:548
+#: src/main_ui_derived.cpp:550
 msgid "Window"
 msgstr ""
 
-#: src/main_ui_derived.cpp:554 src/main_ui_derived.cpp:566
-#: src/main_ui_derived.cpp:609 src/main_ui_derived.cpp:656
+#: src/main_ui_derived.cpp:556 src/main_ui_derived.cpp:568
+#: src/main_ui_derived.cpp:612 src/main_ui_derived.cpp:659
 msgid "Fuel"
 msgstr ""
 
-#: src/main_ui_derived.cpp:555 src/main_ui_derived.cpp:567
-#: src/main_ui_derived.cpp:657
+#: src/main_ui_derived.cpp:557 src/main_ui_derived.cpp:569
+#: src/main_ui_derived.cpp:660
 msgid "Fresh water"
 msgstr ""
 
-#: src/main_ui_derived.cpp:556 src/main_ui_derived.cpp:568
-#: src/main_ui_derived.cpp:658
+#: src/main_ui_derived.cpp:558 src/main_ui_derived.cpp:570
+#: src/main_ui_derived.cpp:661
 msgid "Waste water"
 msgstr ""
 
-#: src/main_ui_derived.cpp:557 src/main_ui_derived.cpp:659
-msgid "Live water"
-msgstr ""
-
-#: src/main_ui_derived.cpp:558 src/main_ui_derived.cpp:570
-#: src/main_ui_derived.cpp:660
-msgid "Oil"
-msgstr ""
-
 #: src/main_ui_derived.cpp:559 src/main_ui_derived.cpp:571
-#: src/main_ui_derived.cpp:661
-msgid "Black water"
-msgstr ""
-
-#: src/main_ui_derived.cpp:560
-msgid "Brine water"
-msgstr ""
-
-#: src/main_ui_derived.cpp:569
+#: src/main_ui_derived.cpp:662
 msgid "Livewell water"
 msgstr ""
 
-#: src/main_ui_derived.cpp:583
+#: src/main_ui_derived.cpp:560 src/main_ui_derived.cpp:572
+#: src/main_ui_derived.cpp:663
+msgid "Oil"
+msgstr ""
+
+#: src/main_ui_derived.cpp:561 src/main_ui_derived.cpp:573
+#: src/main_ui_derived.cpp:664
+msgid "Black water"
+msgstr ""
+
+#: src/main_ui_derived.cpp:562
+msgid "Brine water"
+msgstr ""
+
+#: src/main_ui_derived.cpp:585
 msgid "Air conditioning"
 msgstr ""
 
-#: src/main_ui_derived.cpp:592 src/main_ui_derived.cpp:598
-#: src/main_ui_derived.cpp:637
+#: src/main_ui_derived.cpp:595 src/main_ui_derived.cpp:601
+#: src/main_ui_derived.cpp:640
 msgid "Air"
 msgstr ""
 
-#: src/main_ui_derived.cpp:604 src/main_ui_derived.cpp:628
-#: src/main_ui_derived.cpp:634
+#: src/main_ui_derived.cpp:607 src/main_ui_derived.cpp:631
+#: src/main_ui_derived.cpp:637
 msgid "Engine"
 msgstr ""
 
-#: src/main_ui_derived.cpp:605 src/main_ui_derived.cpp:635
+#: src/main_ui_derived.cpp:608 src/main_ui_derived.cpp:638
 msgid "Engine oil"
 msgstr ""
 
-#: src/main_ui_derived.cpp:606 src/main_ui_derived.cpp:636
+#: src/main_ui_derived.cpp:609 src/main_ui_derived.cpp:639
 msgid "Transmission oil"
 msgstr ""
 
-#: src/main_ui_derived.cpp:607
+#: src/main_ui_derived.cpp:610
 msgid "Engine coolant"
 msgstr ""
 
-#: src/main_ui_derived.cpp:608
+#: src/main_ui_derived.cpp:611
 msgid "Engine boost"
 msgstr ""
 
-#: src/main_ui_derived.cpp:610
+#: src/main_ui_derived.cpp:613
 msgid "Barometer"
 msgstr ""
 
-#: src/main_ui_derived.cpp:616
+#: src/main_ui_derived.cpp:619
 msgid "Sea water"
 msgstr ""
 
-#: src/main_ui_derived.cpp:622
+#: src/main_ui_derived.cpp:625
 msgid "Valve"
 msgstr ""
 
-#: src/main_ui_derived.cpp:638
+#: src/main_ui_derived.cpp:641
 msgid "Water"
 msgstr ""
 
-#: src/main_ui_derived.cpp:1638
+#: src/main_ui_derived.cpp:1656
 msgid "STOP"
 msgstr ""

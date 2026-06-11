@@ -556,7 +556,7 @@ void DialogMainGui::OnChoice_UpdateCategoryXDR(wxCommandEvent& event)
     m_comboBox_nameXDR->Append(_("Fuel"));
     m_comboBox_nameXDR->Append(_("Fresh water"));
     m_comboBox_nameXDR->Append(_("Waste water"));
-    m_comboBox_nameXDR->Append(_("Live water"));
+    m_comboBox_nameXDR->Append(_("Livewell water"));
     m_comboBox_nameXDR->Append(_("Oil"));
     m_comboBox_nameXDR->Append(_("Black water"));
     m_comboBox_nameXDR->Append(_("Brine water"));
@@ -659,7 +659,7 @@ void DialogMainGui::OnChoice_UpdateCategoryXDR(wxCommandEvent& event)
     m_comboBox_nameXDR->Append(_("Fuel"));
     m_comboBox_nameXDR->Append(_("Fresh water"));
     m_comboBox_nameXDR->Append(_("Waste water"));
-    m_comboBox_nameXDR->Append(_("Live water"));
+    m_comboBox_nameXDR->Append(_("Livewell water"));
     m_comboBox_nameXDR->Append(_("Oil"));
     m_comboBox_nameXDR->Append(_("Black water"));
 
@@ -749,7 +749,7 @@ wxString DialogMainGui::getXdrNmeaName()
     else if(xdrNameChoice == 2)
       name = "WasteWater";
     else if(xdrNameChoice == 3)
-      name = "LiveWater";
+      name = "LiveWellWater";
     else if(xdrNameChoice == 4)
       name = "Oil";
     else if(xdrNameChoice == 5)
@@ -865,7 +865,7 @@ wxString DialogMainGui::getXdrNmeaName()
     else if(xdrNameChoice == 2)
       name = "WasteWater";
     else if(xdrNameChoice == 3)
-      name = "LiveWater";
+      name = "LiveWellWater";
     else if(xdrNameChoice == 4)
       name = "Oil";
     else if(xdrNameChoice == 5)
