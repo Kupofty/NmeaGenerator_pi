@@ -35,6 +35,7 @@ echo -e "${CYAN}[*] Moving to project root directory...${NC}"
 cd .. 
 
 
+
 # --------------------------------------------------------------
 # STEP 1: Generate the list of source files to scan
 #
@@ -59,6 +60,7 @@ else
     echo -e "${RED}[ERROR] Failed to generate POTFILES.in.${NC}"
     exit 1
 fi
+
 
 
 # --------------------------------------------------------------
@@ -113,4 +115,40 @@ else
     exit 1
 fi
 
+
+
+# --------------------------------------------------------------
+# STEP 3: Update nmeagenerator_pi.pot header
+# --------------------------------------------------------------
+
+echo -e "${BLUE}[*] Updating nmeagenerator_pi.pot header...${NC}"
+
+{
+cat <<'EOF'
+# Translation of NmeaGenerator plugin
+# Copyright (C) Kupofty 2026
+# This file is distributed under the same license as the nmeagenerator_pi package.
+
+EOF
+
+tail -n +7 po/nmeagenerator_pi.pot
+} > po/nmeagenerator_pi.pot.tmp && mv po/nmeagenerator_pi.pot.tmp po/nmeagenerator_pi.pot
+
+if [ $? -eq 0 ]; then
+    echo -e "${GREEN}[OK] Header updated successfully.${NC}"
+else
+    echo -e "${RED}[ERROR] Failed to update POT file header.${NC}"
+    exit 1
+fi
+
+
+
+# --------------------------------------------------------------
+# STEP 4: End of script
+# --------------------------------------------------------------
+
+echo -e "${GREEN}[OK] Translation template is ready.${NC}"
+echo -e "${CYAN}[*] Output file: po/nmeagenerator_pi.pot${NC}"
 echo -e "${YELLOW}[*] Done.${NC}"
+
+exit 0

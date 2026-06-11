@@ -13,6 +13,7 @@
 - Buttons to copy to clipboard the sentence in "Manual Input" and "Sentence builder" tabs
 - Configurable timer for sending simulation data 
 - Option to configure custom MMSI for AIS simulation and VDM in "Sentence Builder"
+- Translations in DE/ES/FR
 
 ### Fixed
 - Sentences with "!" as first character are accepted in "Manual input" tab.  
