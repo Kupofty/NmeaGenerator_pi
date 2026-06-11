@@ -995,7 +995,7 @@ msgstr "Tout cocher"
 
 #: src/main_ui_derived.cpp:523 src/main_ui_derived.cpp:644
 msgid "Battery"
-msgstr "Batterie\n"
+msgstr "Batterie"
 
 #: src/main_ui_derived.cpp:524 src/main_ui_derived.cpp:645
 msgid "Alternator"
@@ -1070,7 +1070,7 @@ msgstr "Eau douce"
 #: src/main_ui_derived.cpp:556 src/main_ui_derived.cpp:568
 #: src/main_ui_derived.cpp:658
 msgid "Waste water"
-msgstr "Eaux usées\n"
+msgstr "Eaux usées"
 
 #: src/main_ui_derived.cpp:557 src/main_ui_derived.cpp:659
 msgid "Live water"

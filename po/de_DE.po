@@ -867,8 +867,8 @@ msgstr "Länge:"
 #: src/main_ui_base.cpp:3495
 msgid "Update\n"
 "position"
-msgstr "\n"
-"Position aktualisieren"
+msgstr "Position\n"
+"aktualisieren"
 
 #: src/main_ui_base.cpp:3519
 msgid "Heading:"
