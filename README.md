@@ -1,13 +1,14 @@
 # NmeaGenerator_pi
 
-NmeaGenerator_pi is an OpenCPN plugin designed to generate, inject, and simulate NMEA 0183 data streams without requiring physical navigation hardware.
+NmeaGenerator_pi is an OpenCPN plugin that generates, injects, and simulates NMEA 0183 data streams without requiring physical navigation hardware.
 
-The plugin provides tools for:
-- Manually sending custom NMEA sentences
-- Building common navigation messages through a simplified interface
-- Simulating vessel and/oror AIS target in real time. 
+The plugin provides tools to:
+* Send custom NMEA sentences manually
+* Create common navigation messages through a simplified user interface
+* Simulate vessel and/or AIS target in real time
 
-It is designed for OpenCPN development, navigation software testing, AIS/GPS simulation, instrument validation, and NMEA data debugging.
+It is intended for OpenCPN development, navigation software testing, AIS/GPS simulation, instrument validation, and NMEA data analysis and debugging.
+
 
 
 ## Documentation
@@ -15,10 +16,11 @@ It is designed for OpenCPN development, navigation software testing, AIS/GPS sim
 Complete documentation is available in the [manual](https://kupofty.github.io/NmeaGenerator_pi/nmeagenerator_plugin/index.html).
 
 The manual includes:
-- General overview of the plugin
-- Installation instructions
-- User interface documentation for all tabs and features
-- Settings configuration
-- Usage examples and workflows
-- Additional notes and warnings
-- Useful links for support and discussions
+
+* Plugin overview
+* Installation instructions
+* Detailed user interface documentation
+* Configuration and settings reference
+* Usage examples and workflows
+* Notes, limitations, and warnings
+* Useful links for support and community discussions
