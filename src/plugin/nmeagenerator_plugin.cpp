@@ -9,8 +9,8 @@
 /// Include Headers ///
 ///////////////////////
 #include "nmeagenerator_plugin.h"
-#include "globals.h"
-#include "settings_ui_derived.h"
+#include "settings/global_settings.h"
+#include "settings/settings_ui_derived.h"
 
 
 

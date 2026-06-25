@@ -1,5 +1,5 @@
-#ifndef GLOBALS_H
-#define GLOBALS_H
+#ifndef GLOBAL_SETTINGS_H
+#define GLOBAL_SETTINGS_H
 
 // wxWidgets Precompiled Headers
 #include "wx/wxprec.h"
@@ -12,8 +12,6 @@
 /////////////////////////////////////////////////////////////////////
 /// Globally accessible variables used by the plugin, dialogs etc ///
 /////////////////////////////////////////////////////////////////////
-
-extern wxBitmap g_pluginBitmap;
 
 extern int g_defaultNotebookPage;
 
@@ -32,4 +30,4 @@ extern bool g_sendDataAfterWindowClose;
 
 extern int g_aisMMSI;
 
-#endif //GLOBALS_H
+#endif //GLOBAL_SETTINGS_H

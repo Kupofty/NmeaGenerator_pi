@@ -42,6 +42,10 @@ include(PluginCompiler)
 
 add_library(${CMAKE_PROJECT_NAME} SHARED EXCLUDE_FROM_ALL cmake/dummy.cpp) #do not remove
 include_directories(BEFORE ${CMAKE_BINARY_DIR}/include)
+target_include_directories(${CMAKE_PROJECT_NAME}
+    PRIVATE
+        ${CMAKE_SOURCE_DIR}/src
+)
 
 add_subdirectory("opencpn-libs/${PKG_API_LIB}")
 target_link_libraries(${CMAKE_PROJECT_NAME} ocpn::api)

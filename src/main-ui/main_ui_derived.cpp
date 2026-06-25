@@ -1,13 +1,12 @@
-#include "utils.h"
 #include <cmath>
 #include <ctime>
 #include <wx/hyperlink.h>
 #include <wx/clipbrd.h>
 
 #include "main_ui_derived.h"
-#include "globals.h"
-#include "nmeagenerator_plugin.h"
-
+#include "settings/global_settings.h"
+#include "plugin/nmeagenerator_plugin.h"
+#include "nmea/utils.h"
 
 
 ////////////////////////////

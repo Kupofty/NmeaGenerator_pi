@@ -1,13 +1,12 @@
 #ifndef DIALOG_MAIN_GUI
 #define DIALOG_MAIN_GUI
 
-
-#include "main_ui_base.h"
 #include <vector>
 #include <wx/timer.h>
 
-#include "ais_encoder.h"
-#include "nmea_builder.h"
+#include "main_ui_base.h"
+#include "nmea/ais_encoder.h"
+#include "nmea/nmea_builder.h"
 
 class NmeaGeneratorPlugin;
 

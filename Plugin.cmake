@@ -44,42 +44,42 @@ set(PKG_INFO_URL https://kupofty.github.io/NmeaGenerator_pi/nmeagenerator_plugin
 # ------- Code sources --------
 set(SRC
     # OCPN plugin
-    ${CMAKE_SOURCE_DIR}/src/nmeagenerator_plugin.h
-    ${CMAKE_SOURCE_DIR}/src/nmeagenerator_plugin.cpp
-
-    # Shared variables
-    ${CMAKE_SOURCE_DIR}/src/globals.h
-    ${CMAKE_SOURCE_DIR}/src/globals.cpp
-
-    # Utils functions
-    ${CMAKE_SOURCE_DIR}/src/utils.h
-    ${CMAKE_SOURCE_DIR}/src/utils.cpp
+    ${CMAKE_SOURCE_DIR}/src/plugin/nmeagenerator_plugin.h
+    ${CMAKE_SOURCE_DIR}/src/plugin/nmeagenerator_plugin.cpp
 
     # Main UI
-    ${CMAKE_SOURCE_DIR}/src/main_ui_base.h
-    ${CMAKE_SOURCE_DIR}/src/main_ui_base.cpp
-    ${CMAKE_SOURCE_DIR}/src/main_ui_derived.h
-    ${CMAKE_SOURCE_DIR}/src/main_ui_derived.cpp
+    ${CMAKE_SOURCE_DIR}/src/main-ui/main_ui_base.h
+    ${CMAKE_SOURCE_DIR}/src/main-ui/main_ui_base.cpp
+    ${CMAKE_SOURCE_DIR}/src/main-ui/main_ui_derived.h
+    ${CMAKE_SOURCE_DIR}/src/main-ui/main_ui_derived.cpp
 
     # Settings UI
-    ${CMAKE_SOURCE_DIR}/src/settings_ui_base.h
-    ${CMAKE_SOURCE_DIR}/src/settings_ui_base.cpp
-    ${CMAKE_SOURCE_DIR}/src/settings_ui_derived.h
-    ${CMAKE_SOURCE_DIR}/src/settings_ui_derived.cpp
+    ${CMAKE_SOURCE_DIR}/src/settings/settings_ui_base.h
+    ${CMAKE_SOURCE_DIR}/src/settings/settings_ui_base.cpp
+    ${CMAKE_SOURCE_DIR}/src/settings/settings_ui_derived.h
+    ${CMAKE_SOURCE_DIR}/src/settings/settings_ui_derived.cpp
+
+    # Shared settings variables
+    ${CMAKE_SOURCE_DIR}/src/settings/global_settings.h
+    ${CMAKE_SOURCE_DIR}/src/settings/global_settings.cpp
 
     # Menu Dialog UI
-    ${CMAKE_SOURCE_DIR}/src/menuDialog_ui_base.h
-    ${CMAKE_SOURCE_DIR}/src/menuDialog_ui_base.cpp
-    ${CMAKE_SOURCE_DIR}/src/menuDialog_ui_derived.h
-    ${CMAKE_SOURCE_DIR}/src/menuDialog_ui_derived.cpp
+    ${CMAKE_SOURCE_DIR}/src/menu-entry/menuDialog_ui_base.h
+    ${CMAKE_SOURCE_DIR}/src/menu-entry/menuDialog_ui_base.cpp
+    ${CMAKE_SOURCE_DIR}/src/menu-entry/menuDialog_ui_derived.h
+    ${CMAKE_SOURCE_DIR}/src/menu-entry/menuDialog_ui_derived.cpp
+
+    # Utils functions
+    ${CMAKE_SOURCE_DIR}/src/nmea/utils.h
+    ${CMAKE_SOURCE_DIR}/src/nmea/utils.cpp
 
     # AIS encoder
-    ${CMAKE_SOURCE_DIR}/src/ais_encoder.h
-    ${CMAKE_SOURCE_DIR}/src/ais_encoder.cpp
+    ${CMAKE_SOURCE_DIR}/src/nmea/ais_encoder.h
+    ${CMAKE_SOURCE_DIR}/src/nmea/ais_encoder.cpp
 
     # NMEA sentence creators
-    ${CMAKE_SOURCE_DIR}/src/nmea_builder.h
-    ${CMAKE_SOURCE_DIR}/src/nmea_builder.cpp
+    ${CMAKE_SOURCE_DIR}/src/nmea/nmea_builder.h
+    ${CMAKE_SOURCE_DIR}/src/nmea/nmea_builder.cpp
 )
 set (SOURCE_FILES ${SRC})
 

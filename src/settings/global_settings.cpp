@@ -1,8 +1,5 @@
-#include "globals.h"
+#include "global_settings.h"
 
-
-// Plugin icon
-wxBitmap g_pluginBitmap;
 
 //Notebook page to open by default
 int g_defaultNotebookPage = 0;

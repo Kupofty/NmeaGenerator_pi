@@ -29,8 +29,8 @@
 //#include "nmea0183.h"
 
 //GUI
-#include "main_ui_derived.h"
-#include "menuDialog_ui_derived.h"
+#include "main-ui/main_ui_derived.h"
+#include "menu-entry/menuDialog_ui_derived.h"
 
 
 
@@ -81,6 +81,9 @@ class NmeaGeneratorPlugin : public opencpn_plugin_120, public wxEvtHandler
     //Settings
     void LoadSettings();
     void SaveSettings();
+
+    // Plugin icon
+    wxBitmap g_pluginBitmap;
 
     // Toolbar button Id & state
     int toolbarId;

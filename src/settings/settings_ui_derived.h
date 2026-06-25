@@ -8,9 +8,8 @@
 #include "wx/wx.h"
 #endif
 
-
 #include "settings_ui_base.h"
-#include "globals.h"
+#include "global_settings.h"
 
 class DialogSettings : public DialogSettingsBase
 {
