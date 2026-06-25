@@ -1,8 +1,14 @@
 # NmeaGenerator Changelog
 
+
+###
+## [v1.1.1] / 2026-xx-yy
+### Added
+- Context menu dialog allowing update of either Own Ship or AIS Target position from cursor location
+
+
 ###
 ## [v1.1.0] / 2026-06-11
-
 ### Added
 - AIS encoding & capabilities (AIVDM/AIVDO) in "Simulation" & "Sentence builder" tabs
 - Vessel simulations (Own ship & AIS target) can now run simultaneously
@@ -22,6 +28,7 @@
 - XDR IDs now follow NMEA 4.11 revision
 - Convert simulation START/STOP button into a toggle button to indicate state.
 - Remove manual checksum when auto-checksum is activated to prevent sending sentence with 2 checksums
+
 
 ###
 ## [v1.0.0] / 2026-04-15

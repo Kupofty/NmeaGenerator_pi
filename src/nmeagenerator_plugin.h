@@ -1,6 +1,11 @@
 #ifndef NMEAGENERATOR_PLUGIN_H
 #define NMEAGENERATOR_PLUGIN_H
 
+
+///////////////
+/// Headers ///
+///////////////
+
 // Pre compiled headers 
 #include "wx/wxprec.h"
 
@@ -25,8 +30,15 @@
 
 //GUI
 #include "main_ui_derived.h"
+#include "menuDialog_ui_derived.h"
 
 
+
+///////////////
+/// Classes ///
+//////////////
+
+//Main plugin class
 class NmeaGeneratorPlugin : public opencpn_plugin_120, public wxEvtHandler
 {
   public:
@@ -78,6 +90,7 @@ class NmeaGeneratorPlugin : public opencpn_plugin_120, public wxEvtHandler
     double m_cursor_lat;
     double m_cursor_lon;
 };
+
 
 #endif //NMEAGENERATOR_PLUGIN_H
 

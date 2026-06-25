@@ -66,7 +66,7 @@ int NmeaGeneratorPlugin::Init()
 
   //Right-click menu entry
   wxMenu simPositionMenu;
-  positionMenuID = AddCanvasContextMenuItem(new wxMenuItem(&simPositionMenu, -1, _("Simulation: Update vessel position")), this);
+  positionMenuID = AddCanvasContextMenuItem(new wxMenuItem(&simPositionMenu, -1, _("NmeaGenerator...")), this);
   SetCanvasContextMenuItemViz(positionMenuID, false);
 
   //Inform OpenCPN about the plugin capabilities and requested callbacks
@@ -295,8 +295,24 @@ void NmeaGeneratorPlugin::OnContextMenuItemCallback(int id)
   if (myGUI == NULL)
     return;
 
-  if (id == positionMenuID)
-    myGUI->updateSimStartPosition(m_cursor_lat, m_cursor_lon);
+  if(id == positionMenuID)
+  {
+    DialogMenuEntry dlg(GetOCPNCanvasWindow());
+
+    if(dlg.ShowModal() == wxID_OK)
+    {
+      switch(dlg.m_updateVesselPositionChoice)
+      {
+        case 1:
+          myGUI->updateSimStartPosition(VesselType::OwnShip, m_cursor_lat, m_cursor_lon);
+          break;
+
+        case 2:
+          myGUI->updateSimStartPosition(VesselType::AisTarget, m_cursor_lat, m_cursor_lon);
+          break;
+      }
+    }
+  }
 }
 
 

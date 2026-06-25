@@ -40,14 +40,14 @@ enum class VesselType { OwnShip, AisTarget };
 
 
 // Main class
-class DialogMainGui : public MyDialog
+class DialogMainGui : public DialogMainGuiBase
 {
   public:
     DialogMainGui(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("NmeaGenerator Plugin GUI"),
                   const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE);
     ~DialogMainGui();
 
-    void updateSimStartPosition(double lat, double lon);
+    void updateSimStartPosition(VesselType type, double lat, double lon);
     void stopTimers();
 
     NmeaGeneratorPlugin* plugin = nullptr;

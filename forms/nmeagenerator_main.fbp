@@ -48,7 +48,7 @@
       <property name="id">wxID_ANY</property>
       <property name="maximum_size"></property>
       <property name="minimum_size"></property>
-      <property name="name">MyDialog</property>
+      <property name="name">DialogMainGuiBase</property>
       <property name="pos"></property>
       <property name="size">1059,663</property>
       <property name="style">wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxMINIMIZE_BOX|wxRESIZE_BORDER</property>

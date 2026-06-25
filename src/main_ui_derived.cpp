@@ -13,7 +13,7 @@
 ////////////////////////////
 /// Class Initialization ///
 ////////////////////////////
-DialogMainGui::DialogMainGui(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style) : MyDialog( parent )
+DialogMainGui::DialogMainGui(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style) : DialogMainGuiBase( parent )
 {
   //Hide/show checkbox autoChecksum
   addAutoChecksum = m_checkBox_autoChecksum->GetValue();
@@ -1508,9 +1508,14 @@ void DialogMainGui::OnChoice_controlledVesselSimChanged(wxCommandEvent& event)
 
 
 //Update ship position to cursor position
-void DialogMainGui::updateSimStartPosition(double lat, double lon)
+void DialogMainGui::updateSimStartPosition(VesselType type, double lat, double lon)
 {
-  SimVessel* vessel = getControlledVessel();
+  SimVessel* vessel = nullptr;
+  if(type == VesselType::OwnShip)
+    vessel = &shipSimu;
+  else
+    vessel = &aisSimu;
+
   vessel->lat = lat;
   vessel->lon = lon;
 

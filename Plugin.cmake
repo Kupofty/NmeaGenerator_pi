@@ -29,7 +29,7 @@ set(OCPN_RELEASE_REPO
 
 # ------- Plugin setup --------
 set(PKG_NAME nmeagenerator_pi)
-set(PKG_VERSION  1.1.0)
+set(PKG_VERSION  1.1.1)
 set(PKG_PRERELEASE "") # Empty, or a tag like 'beta'
 
 set(DISPLAY_NAME NmeaGenerator)    # Dialogs, installer artifacts, ...
@@ -58,16 +58,20 @@ set(SRC
     # Main UI
     ${CMAKE_SOURCE_DIR}/src/main_ui_base.h
     ${CMAKE_SOURCE_DIR}/src/main_ui_base.cpp
-
     ${CMAKE_SOURCE_DIR}/src/main_ui_derived.h
     ${CMAKE_SOURCE_DIR}/src/main_ui_derived.cpp
 
     # Settings UI
     ${CMAKE_SOURCE_DIR}/src/settings_ui_base.h
     ${CMAKE_SOURCE_DIR}/src/settings_ui_base.cpp
-
     ${CMAKE_SOURCE_DIR}/src/settings_ui_derived.h
     ${CMAKE_SOURCE_DIR}/src/settings_ui_derived.cpp
+
+    # Menu Dialog UI
+    ${CMAKE_SOURCE_DIR}/src/menuDialog_ui_base.h
+    ${CMAKE_SOURCE_DIR}/src/menuDialog_ui_base.cpp
+    ${CMAKE_SOURCE_DIR}/src/menuDialog_ui_derived.h
+    ${CMAKE_SOURCE_DIR}/src/menuDialog_ui_derived.cpp
 
     # AIS encoder
     ${CMAKE_SOURCE_DIR}/src/ais_encoder.h

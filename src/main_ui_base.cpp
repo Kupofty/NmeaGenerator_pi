@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// C++ code generated with wxFormBuilder (version 4.2.1-0-g80c4cb6-dirty)
+// C++ code generated with wxFormBuilder (version 4.2.1-0-g80c4cb6)
 // http://www.wxformbuilder.org/
 //
 // PLEASE DO *NOT* EDIT THIS FILE!
@@ -9,7 +9,7 @@
 
 ///////////////////////////////////////////////////////////////////////////
 
-MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
+DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
 {
 	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
 
@@ -3820,101 +3820,101 @@ MyDialog::MyDialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	this->Centre( wxBOTH );
 
 	// Connect Events
-	this->Connect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( MyDialog::OnClose ) );
-	this->Connect( m_timer_autoSendNmea.GetId(), wxEVT_TIMER, wxTimerEventHandler( MyDialog::OnTimer_autoSendNmea ) );
-	this->Connect( m_timer_autoSendBuilder.GetId(), wxEVT_TIMER, wxTimerEventHandler( MyDialog::OnTimer_autoSendBuilder ) );
-	this->Connect( m_timer_autoSendSim.GetId(), wxEVT_TIMER, wxTimerEventHandler( MyDialog::OnTimer_autoSendSim ) );
-	m_textCtrl_sentenceInput->Connect( wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( MyDialog::OnInputTextChanged ), NULL, this );
-	m_checkBox_autoChecksum->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( MyDialog::OnAutoChecksumChecked ), NULL, this );
-	m_button_sendSentence->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_manualSend ), NULL, this );
-	m_button_copySentence->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_copyManualSentence ), NULL, this );
-	m_button_clearInput->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnClearInput ), NULL, this );
-	m_checkBox_automaticSend->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( MyDialog::OnCheckBox_AutomaticSend ), NULL, this );
-	m_spinCtrlDouble_automaticSendFreq->Connect( wxEVT_COMMAND_SPINCTRLDOUBLE_UPDATED, wxSpinDoubleEventHandler( MyDialog::OnSpinCtrlDouble_AutomaticSendFreq ), NULL, this );
-	m_button_sendDBx->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendDBx ), NULL, this );
-	m_button_copyDBx->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyDBx ), NULL, this );
-	m_button_sendDPT->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendDPT ), NULL, this );
-	m_button_copyDPT->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyDPT ), NULL, this );
-	m_button_sendGGA->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendGGA ), NULL, this );
-	m_button_copyGGA->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyGGA ), NULL, this );
-	m_button_sendGLL->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendGLL ), NULL, this );
-	m_button_copyGLL->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyGLL ), NULL, this );
-	m_button_sendGSV->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendGSV ), NULL, this );
-	m_button_copyGSV->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyGSV ), NULL, this );
-	m_button_sendHDG->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendHDG ), NULL, this );
-	m_button_copyHDG->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyHDG ), NULL, this );
-	m_button_sendHDM->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendHDM ), NULL, this );
-	m_button_copyHDM->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyHDM ), NULL, this );
-	m_button_sendHDT->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendHDT ), NULL, this );
-	m_button_copyHDT->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyHDT ), NULL, this );
-	m_button_sendMTW->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendMTW ), NULL, this );
-	m_button_copyMTW->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyMTW ), NULL, this );
-	m_button_sendMWD->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendMWD ), NULL, this );
-	m_button_copyMWD->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyMWD ), NULL, this );
-	m_button_sendMWV->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendMWV ), NULL, this );
-	m_button_copyMWV->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyMWV ), NULL, this );
-	m_button_sendOSD->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendOSD ), NULL, this );
-	m_button_copyOSD->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyOSD ), NULL, this );
-	m_button_sendRMC->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendRMC ), NULL, this );
-	m_button_copyRMC->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyRMC ), NULL, this );
-	m_button_sendROT->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendROT ), NULL, this );
-	m_button_copyROT->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyROT ), NULL, this );
-	m_button_sendRSA->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendRSA ), NULL, this );
-	m_button_copyRSA->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyRSA ), NULL, this );
-	m_button_sendTLL->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendTLL ), NULL, this );
-	m_button_copyTLL->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyTLL ), NULL, this );
-	m_button_sendTHS->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendTHS ), NULL, this );
-	m_button_copyTHS->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyTHS ), NULL, this );
-	m_button_sendVDM->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendVDM ), NULL, this );
-	m_button_copyVDM->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyVDM ), NULL, this );
-	m_choice_classVDM->Connect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( MyDialog::OnChoice_aisClassVDM ), NULL, this );
-	m_button_sendVDR->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendVDR ), NULL, this );
-	m_button_copyVDR->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyVDR ), NULL, this );
-	m_button_sendVHW->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendVHW ), NULL, this );
-	m_button_copyVHW->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyVHW ), NULL, this );
-	m_button_sendVTG->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendVTG ), NULL, this );
-	m_button_copyVTG->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyVTG ), NULL, this );
-	m_button_sendVWR->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendVWR ), NULL, this );
-	m_button_copyVWR->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyVWR ), NULL, this );
-	m_button_sendWPL->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendWPL ), NULL, this );
-	m_button_copyWPL->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyWPL ), NULL, this );
-	m_button_sendXDR->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendXDR ), NULL, this );
-	m_button_copyXDR->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyXDR ), NULL, this );
-	m_choice_categoryXDR->Connect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( MyDialog::OnChoice_UpdateCategoryXDR ), NULL, this );
-	m_comboBox_nameXDR->Connect( wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( MyDialog::OnText_UpdateCustomNameXDR ), NULL, this );
-	m_button_sendZDA->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_SendZDA ), NULL, this );
-	m_button_copyZDA->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_CopyZDA ), NULL, this );
-	m_toggleBtn_checkAllBuilder->Connect( wxEVT_COMMAND_TOGGLEBUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnToggleButton_CheckAllBuilders ), NULL, this );
-	m_searchCtrl_sentencesBuilder->Connect( wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( MyDialog::OnText_SearchSentenceBuilder ), NULL, this );
-	m_checkBox_automaticSendBuilder->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( MyDialog::OnCheckBox_AutomaticSendBuilder ), NULL, this );
-	m_spinCtrlDouble_autoSendFreqBuilder->Connect( wxEVT_COMMAND_SPINCTRLDOUBLE_UPDATED, wxSpinDoubleEventHandler( MyDialog::OnSpinCtrlDouble_AutomaticSendFreqBuilder ), NULL, this );
-	m_button_sentenceBuilderHelp->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_OpenSentenceBuilderHelp ), NULL, this );
-	m_choice_controlledVessel->Connect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( MyDialog::OnChoice_controlledVesselSimChanged ), NULL, this );
-	m_button_updateSimPos->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_UpdateSimPos ), NULL, this );
-	m_slider_rudderSim->Connect( wxEVT_SCROLL_TOP, wxScrollEventHandler( MyDialog::OnScroll_UpdateRudderAngleSim ), NULL, this );
-	m_slider_rudderSim->Connect( wxEVT_SCROLL_BOTTOM, wxScrollEventHandler( MyDialog::OnScroll_UpdateRudderAngleSim ), NULL, this );
-	m_slider_rudderSim->Connect( wxEVT_SCROLL_LINEUP, wxScrollEventHandler( MyDialog::OnScroll_UpdateRudderAngleSim ), NULL, this );
-	m_slider_rudderSim->Connect( wxEVT_SCROLL_LINEDOWN, wxScrollEventHandler( MyDialog::OnScroll_UpdateRudderAngleSim ), NULL, this );
-	m_slider_rudderSim->Connect( wxEVT_SCROLL_PAGEUP, wxScrollEventHandler( MyDialog::OnScroll_UpdateRudderAngleSim ), NULL, this );
-	m_slider_rudderSim->Connect( wxEVT_SCROLL_PAGEDOWN, wxScrollEventHandler( MyDialog::OnScroll_UpdateRudderAngleSim ), NULL, this );
-	m_slider_rudderSim->Connect( wxEVT_SCROLL_THUMBTRACK, wxScrollEventHandler( MyDialog::OnScroll_UpdateRudderAngleSim ), NULL, this );
-	m_slider_rudderSim->Connect( wxEVT_SCROLL_THUMBRELEASE, wxScrollEventHandler( MyDialog::OnScroll_UpdateRudderAngleSim ), NULL, this );
-	m_slider_rudderSim->Connect( wxEVT_SCROLL_CHANGED, wxScrollEventHandler( MyDialog::OnScroll_UpdateRudderAngleSim ), NULL, this );
-	m_button_resetRudder->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_ResetRudder ), NULL, this );
-	m_slider_throttleSim->Connect( wxEVT_SCROLL_TOP, wxScrollEventHandler( MyDialog::OnScroll_UpdateThrottleSim ), NULL, this );
-	m_slider_throttleSim->Connect( wxEVT_SCROLL_BOTTOM, wxScrollEventHandler( MyDialog::OnScroll_UpdateThrottleSim ), NULL, this );
-	m_slider_throttleSim->Connect( wxEVT_SCROLL_LINEUP, wxScrollEventHandler( MyDialog::OnScroll_UpdateThrottleSim ), NULL, this );
-	m_slider_throttleSim->Connect( wxEVT_SCROLL_LINEDOWN, wxScrollEventHandler( MyDialog::OnScroll_UpdateThrottleSim ), NULL, this );
-	m_slider_throttleSim->Connect( wxEVT_SCROLL_PAGEUP, wxScrollEventHandler( MyDialog::OnScroll_UpdateThrottleSim ), NULL, this );
-	m_slider_throttleSim->Connect( wxEVT_SCROLL_PAGEDOWN, wxScrollEventHandler( MyDialog::OnScroll_UpdateThrottleSim ), NULL, this );
-	m_slider_throttleSim->Connect( wxEVT_SCROLL_THUMBTRACK, wxScrollEventHandler( MyDialog::OnScroll_UpdateThrottleSim ), NULL, this );
-	m_slider_throttleSim->Connect( wxEVT_SCROLL_THUMBRELEASE, wxScrollEventHandler( MyDialog::OnScroll_UpdateThrottleSim ), NULL, this );
-	m_slider_throttleSim->Connect( wxEVT_SCROLL_CHANGED, wxScrollEventHandler( MyDialog::OnScroll_UpdateThrottleSim ), NULL, this );
-	m_button_resetThrottle->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnButtonClick_ResetThrottle ), NULL, this );
-	m_toggleBtn_startStopSim->Connect( wxEVT_COMMAND_TOGGLEBUTTON_CLICKED, wxCommandEventHandler( MyDialog::OnToggleButton_StartStopSim ), NULL, this );
-	m_spinCtrlDouble_simFreqTimer->Connect( wxEVT_COMMAND_SPINCTRLDOUBLE_UPDATED, wxSpinDoubleEventHandler( MyDialog::OnSpinCtrlDouble_UpdateFreqTimerSim ), NULL, this );
+	this->Connect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( DialogMainGuiBase::OnClose ) );
+	this->Connect( m_timer_autoSendNmea.GetId(), wxEVT_TIMER, wxTimerEventHandler( DialogMainGuiBase::OnTimer_autoSendNmea ) );
+	this->Connect( m_timer_autoSendBuilder.GetId(), wxEVT_TIMER, wxTimerEventHandler( DialogMainGuiBase::OnTimer_autoSendBuilder ) );
+	this->Connect( m_timer_autoSendSim.GetId(), wxEVT_TIMER, wxTimerEventHandler( DialogMainGuiBase::OnTimer_autoSendSim ) );
+	m_textCtrl_sentenceInput->Connect( wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( DialogMainGuiBase::OnInputTextChanged ), NULL, this );
+	m_checkBox_autoChecksum->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnAutoChecksumChecked ), NULL, this );
+	m_button_sendSentence->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_manualSend ), NULL, this );
+	m_button_copySentence->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_copyManualSentence ), NULL, this );
+	m_button_clearInput->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnClearInput ), NULL, this );
+	m_checkBox_automaticSend->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnCheckBox_AutomaticSend ), NULL, this );
+	m_spinCtrlDouble_automaticSendFreq->Connect( wxEVT_COMMAND_SPINCTRLDOUBLE_UPDATED, wxSpinDoubleEventHandler( DialogMainGuiBase::OnSpinCtrlDouble_AutomaticSendFreq ), NULL, this );
+	m_button_sendDBx->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_SendDBx ), NULL, this );
+	m_button_copyDBx->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_CopyDBx ), NULL, this );
+	m_button_sendDPT->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_SendDPT ), NULL, this );
+	m_button_copyDPT->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_CopyDPT ), NULL, this );
+	m_button_sendGGA->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_SendGGA ), NULL, this );
+	m_button_copyGGA->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_CopyGGA ), NULL, this );
+	m_button_sendGLL->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_SendGLL ), NULL, this );
+	m_button_copyGLL->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_CopyGLL ), NULL, this );
+	m_button_sendGSV->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_SendGSV ), NULL, this );
+	m_button_copyGSV->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_CopyGSV ), NULL, this );
+	m_button_sendHDG->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_SendHDG ), NULL, this );
+	m_button_copyHDG->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_CopyHDG ), NULL, this );
+	m_button_sendHDM->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_SendHDM ), NULL, this );
+	m_button_copyHDM->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_CopyHDM ), NULL, this );
+	m_button_sendHDT->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_SendHDT ), NULL, this );
+	m_button_copyHDT->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_CopyHDT ), NULL, this );
+	m_button_sendMTW->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_SendMTW ), NULL, this );
+	m_button_copyMTW->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_CopyMTW ), NULL, this );
+	m_button_sendMWD->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_SendMWD ), NULL, this );
+	m_button_copyMWD->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_CopyMWD ), NULL, this );
+	m_button_sendMWV->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_SendMWV ), NULL, this );
+	m_button_copyMWV->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_CopyMWV ), NULL, this );
+	m_button_sendOSD->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_SendOSD ), NULL, this );
+	m_button_copyOSD->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_CopyOSD ), NULL, this );
+	m_button_sendRMC->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_SendRMC ), NULL, this );
+	m_button_copyRMC->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_CopyRMC ), NULL, this );
+	m_button_sendROT->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_SendROT ), NULL, this );
+	m_button_copyROT->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_CopyROT ), NULL, this );
+	m_button_sendRSA->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_SendRSA ), NULL, this );
+	m_button_copyRSA->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_CopyRSA ), NULL, this );
+	m_button_sendTLL->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_SendTLL ), NULL, this );
+	m_button_copyTLL->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_CopyTLL ), NULL, this );
+	m_button_sendTHS->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_SendTHS ), NULL, this );
+	m_button_copyTHS->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_CopyTHS ), NULL, this );
+	m_button_sendVDM->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_SendVDM ), NULL, this );
+	m_button_copyVDM->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_CopyVDM ), NULL, this );
+	m_choice_classVDM->Connect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( DialogMainGuiBase::OnChoice_aisClassVDM ), NULL, this );
+	m_button_sendVDR->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_SendVDR ), NULL, this );
+	m_button_copyVDR->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_CopyVDR ), NULL, this );
+	m_button_sendVHW->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_SendVHW ), NULL, this );
+	m_button_copyVHW->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_CopyVHW ), NULL, this );
+	m_button_sendVTG->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_SendVTG ), NULL, this );
+	m_button_copyVTG->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_CopyVTG ), NULL, this );
+	m_button_sendVWR->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_SendVWR ), NULL, this );
+	m_button_copyVWR->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_CopyVWR ), NULL, this );
+	m_button_sendWPL->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_SendWPL ), NULL, this );
+	m_button_copyWPL->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_CopyWPL ), NULL, this );
+	m_button_sendXDR->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_SendXDR ), NULL, this );
+	m_button_copyXDR->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_CopyXDR ), NULL, this );
+	m_choice_categoryXDR->Connect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( DialogMainGuiBase::OnChoice_UpdateCategoryXDR ), NULL, this );
+	m_comboBox_nameXDR->Connect( wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( DialogMainGuiBase::OnText_UpdateCustomNameXDR ), NULL, this );
+	m_button_sendZDA->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_SendZDA ), NULL, this );
+	m_button_copyZDA->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_CopyZDA ), NULL, this );
+	m_toggleBtn_checkAllBuilder->Connect( wxEVT_COMMAND_TOGGLEBUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnToggleButton_CheckAllBuilders ), NULL, this );
+	m_searchCtrl_sentencesBuilder->Connect( wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( DialogMainGuiBase::OnText_SearchSentenceBuilder ), NULL, this );
+	m_checkBox_automaticSendBuilder->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnCheckBox_AutomaticSendBuilder ), NULL, this );
+	m_spinCtrlDouble_autoSendFreqBuilder->Connect( wxEVT_COMMAND_SPINCTRLDOUBLE_UPDATED, wxSpinDoubleEventHandler( DialogMainGuiBase::OnSpinCtrlDouble_AutomaticSendFreqBuilder ), NULL, this );
+	m_button_sentenceBuilderHelp->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_OpenSentenceBuilderHelp ), NULL, this );
+	m_choice_controlledVessel->Connect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( DialogMainGuiBase::OnChoice_controlledVesselSimChanged ), NULL, this );
+	m_button_updateSimPos->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_UpdateSimPos ), NULL, this );
+	m_slider_rudderSim->Connect( wxEVT_SCROLL_TOP, wxScrollEventHandler( DialogMainGuiBase::OnScroll_UpdateRudderAngleSim ), NULL, this );
+	m_slider_rudderSim->Connect( wxEVT_SCROLL_BOTTOM, wxScrollEventHandler( DialogMainGuiBase::OnScroll_UpdateRudderAngleSim ), NULL, this );
+	m_slider_rudderSim->Connect( wxEVT_SCROLL_LINEUP, wxScrollEventHandler( DialogMainGuiBase::OnScroll_UpdateRudderAngleSim ), NULL, this );
+	m_slider_rudderSim->Connect( wxEVT_SCROLL_LINEDOWN, wxScrollEventHandler( DialogMainGuiBase::OnScroll_UpdateRudderAngleSim ), NULL, this );
+	m_slider_rudderSim->Connect( wxEVT_SCROLL_PAGEUP, wxScrollEventHandler( DialogMainGuiBase::OnScroll_UpdateRudderAngleSim ), NULL, this );
+	m_slider_rudderSim->Connect( wxEVT_SCROLL_PAGEDOWN, wxScrollEventHandler( DialogMainGuiBase::OnScroll_UpdateRudderAngleSim ), NULL, this );
+	m_slider_rudderSim->Connect( wxEVT_SCROLL_THUMBTRACK, wxScrollEventHandler( DialogMainGuiBase::OnScroll_UpdateRudderAngleSim ), NULL, this );
+	m_slider_rudderSim->Connect( wxEVT_SCROLL_THUMBRELEASE, wxScrollEventHandler( DialogMainGuiBase::OnScroll_UpdateRudderAngleSim ), NULL, this );
+	m_slider_rudderSim->Connect( wxEVT_SCROLL_CHANGED, wxScrollEventHandler( DialogMainGuiBase::OnScroll_UpdateRudderAngleSim ), NULL, this );
+	m_button_resetRudder->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_ResetRudder ), NULL, this );
+	m_slider_throttleSim->Connect( wxEVT_SCROLL_TOP, wxScrollEventHandler( DialogMainGuiBase::OnScroll_UpdateThrottleSim ), NULL, this );
+	m_slider_throttleSim->Connect( wxEVT_SCROLL_BOTTOM, wxScrollEventHandler( DialogMainGuiBase::OnScroll_UpdateThrottleSim ), NULL, this );
+	m_slider_throttleSim->Connect( wxEVT_SCROLL_LINEUP, wxScrollEventHandler( DialogMainGuiBase::OnScroll_UpdateThrottleSim ), NULL, this );
+	m_slider_throttleSim->Connect( wxEVT_SCROLL_LINEDOWN, wxScrollEventHandler( DialogMainGuiBase::OnScroll_UpdateThrottleSim ), NULL, this );
+	m_slider_throttleSim->Connect( wxEVT_SCROLL_PAGEUP, wxScrollEventHandler( DialogMainGuiBase::OnScroll_UpdateThrottleSim ), NULL, this );
+	m_slider_throttleSim->Connect( wxEVT_SCROLL_PAGEDOWN, wxScrollEventHandler( DialogMainGuiBase::OnScroll_UpdateThrottleSim ), NULL, this );
+	m_slider_throttleSim->Connect( wxEVT_SCROLL_THUMBTRACK, wxScrollEventHandler( DialogMainGuiBase::OnScroll_UpdateThrottleSim ), NULL, this );
+	m_slider_throttleSim->Connect( wxEVT_SCROLL_THUMBRELEASE, wxScrollEventHandler( DialogMainGuiBase::OnScroll_UpdateThrottleSim ), NULL, this );
+	m_slider_throttleSim->Connect( wxEVT_SCROLL_CHANGED, wxScrollEventHandler( DialogMainGuiBase::OnScroll_UpdateThrottleSim ), NULL, this );
+	m_button_resetThrottle->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_ResetThrottle ), NULL, this );
+	m_toggleBtn_startStopSim->Connect( wxEVT_COMMAND_TOGGLEBUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnToggleButton_StartStopSim ), NULL, this );
+	m_spinCtrlDouble_simFreqTimer->Connect( wxEVT_COMMAND_SPINCTRLDOUBLE_UPDATED, wxSpinDoubleEventHandler( DialogMainGuiBase::OnSpinCtrlDouble_UpdateFreqTimerSim ), NULL, this );
 }
 
-MyDialog::~MyDialog()
+DialogMainGuiBase::~DialogMainGuiBase()
 {
 }

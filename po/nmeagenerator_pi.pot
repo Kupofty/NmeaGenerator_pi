@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-11 22:42+0200\n"
+"POT-Creation-Date: 2026-06-25 22:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -74,7 +74,7 @@ msgid "Apply"
 msgstr ""
 
 #: src/nmeagenerator_plugin.cpp:69
-msgid "Simulation: Update vessel position"
+msgid "NmeaGenerator..."
 msgstr ""
 
 #: src/nmeagenerator_plugin.cpp:240
@@ -815,11 +815,11 @@ msgstr ""
 msgid "Control vessel:"
 msgstr ""
 
-#: src/main_ui_base.cpp:3385
+#: src/main_ui_base.cpp:3385 src/menuDialog_ui_base.cpp:19
 msgid "Own ship"
 msgstr ""
 
-#: src/main_ui_base.cpp:3385
+#: src/main_ui_base.cpp:3385 src/menuDialog_ui_base.cpp:22
 msgid "AIS target"
 msgstr ""
 
@@ -930,7 +930,7 @@ msgid "%"
 msgstr ""
 
 #: src/main_ui_base.cpp:3782 src/main_ui_derived.cpp:113
-#: src/main_ui_derived.cpp:1661
+#: src/main_ui_derived.cpp:1666
 msgid "START"
 msgstr ""
 
@@ -944,6 +944,10 @@ msgstr ""
 
 #: src/settings_ui_derived.h:18 src/settings_ui_base.h:64
 msgid "NmeaGenerator Plugin Preferences"
+msgstr ""
+
+#: src/menuDialog_ui_base.h:45
+msgid "Update position"
 msgstr ""
 
 #: src/main_ui_derived.h:46
@@ -1136,6 +1140,6 @@ msgstr ""
 msgid "Water"
 msgstr ""
 
-#: src/main_ui_derived.cpp:1656
+#: src/main_ui_derived.cpp:1661
 msgid "STOP"
 msgstr ""

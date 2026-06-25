@@ -3,6 +3,7 @@ src/nmeagenerator_plugin.cpp
 src/main_ui_base.cpp
 src/settings_ui_derived.h
 src/nmea_builder.cpp
+src/menuDialog_ui_base.h
 src/utils.cpp
 src/settings_ui_derived.cpp
 src/utils.h
@@ -13,6 +14,9 @@ src/ais_encoder.cpp
 src/main_ui_base.h
 src/ais_encoder.h
 src/settings_ui_base.h
+src/menuDialog_ui_derived.cpp
 src/globals.h
+src/menuDialog_ui_derived.h
 src/main_ui_derived.cpp
+src/menuDialog_ui_base.cpp
 src/globals.cpp

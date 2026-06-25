@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// C++ code generated with wxFormBuilder (version 4.2.1-0-g80c4cb6-dirty)
+// C++ code generated with wxFormBuilder (version 4.2.1-0-g80c4cb6)
 // http://www.wxformbuilder.org/
 //
 // PLEASE DO *NOT* EDIT THIS FILE!
@@ -40,9 +40,9 @@
 ///////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
-/// Class MyDialog
+/// Class DialogMainGuiBase
 ///////////////////////////////////////////////////////////////////////////////
-class MyDialog : public wxDialog
+class DialogMainGuiBase : public wxDialog
 {
 	private:
 
@@ -681,9 +681,9 @@ class MyDialog : public wxDialog
 	public:
 		wxNotebook* m_notebook;
 
-		MyDialog( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("NMEA Generator Plugin"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 1059,663 ), long style = wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxMINIMIZE_BOX|wxRESIZE_BORDER );
+		DialogMainGuiBase( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("NMEA Generator Plugin"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 1059,663 ), long style = wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxMINIMIZE_BOX|wxRESIZE_BORDER );
 
-		~MyDialog();
+		~DialogMainGuiBase();
 
 };
 
