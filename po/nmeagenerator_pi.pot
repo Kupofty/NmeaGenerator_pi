@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-25 23:59+0200\n"
+"POT-Creation-Date: 2026-06-30 00:10+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -690,7 +690,7 @@ msgstr ""
 msgid "I"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3149 src/main-ui/main_ui_base.cpp:3411
+#: src/main-ui/main_ui_base.cpp:3149
 msgid "Current"
 msgstr ""
 
@@ -794,11 +794,11 @@ msgstr ""
 msgid "Control vessel:"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3385 src/menu-entry/menuDialog_ui_base.cpp:19
+#: src/main-ui/main_ui_base.cpp:3385 src/menu-entry/menuDialog_ui_base.cpp:22
 msgid "Own ship"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3385 src/menu-entry/menuDialog_ui_base.cpp:22
+#: src/main-ui/main_ui_base.cpp:3385 src/menu-entry/menuDialog_ui_base.cpp:25
 msgid "AIS target"
 msgstr ""
 
@@ -820,6 +820,10 @@ msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:3407
 msgid "NMEA output:"
+msgstr ""
+
+#: src/main-ui/main_ui_base.cpp:3411
+msgid "Controlled vessel"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:3411
@@ -912,7 +916,7 @@ msgid "%"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:3782 src/main-ui/main_ui_derived.cpp:112
-#: src/main-ui/main_ui_derived.cpp:1665
+#: src/main-ui/main_ui_derived.cpp:1711
 msgid "START"
 msgstr ""
 
@@ -1114,16 +1118,36 @@ msgstr ""
 msgid "Water"
 msgstr ""
 
-#: src/main-ui/main_ui_derived.cpp:1660
+#: src/main-ui/main_ui_derived.cpp:1706
 msgid "STOP"
 msgstr ""
 
-#: src/main-ui/main_ui_derived.h:45
+#: src/main-ui/main_ui_derived.h:47
 msgid "NmeaGenerator Plugin GUI"
 msgstr ""
 
-#: src/menu-entry/menuDialog_ui_base.h:45
+#: src/menu-entry/menuDialog_ui_base.cpp:20
 msgid "Update position"
+msgstr ""
+
+#: src/menu-entry/menuDialog_ui_base.cpp:32
+msgid "Dummy AIS targets"
+msgstr ""
+
+#: src/menu-entry/menuDialog_ui_base.cpp:37
+msgid "Add new"
+msgstr ""
+
+#: src/menu-entry/menuDialog_ui_base.cpp:46
+msgid "Remove last"
+msgstr ""
+
+#: src/menu-entry/menuDialog_ui_base.cpp:49
+msgid "Delete all"
+msgstr ""
+
+#: src/menu-entry/menuDialog_ui_base.h:52
+msgid "NmeaGenerator"
 msgstr ""
 
 #: src/plugin/nmeagenerator_plugin.cpp:69

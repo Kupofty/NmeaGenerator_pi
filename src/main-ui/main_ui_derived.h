@@ -7,6 +7,7 @@
 #include "main_ui_base.h"
 #include "nmea/ais_encoder.h"
 #include "nmea/nmea_builder.h"
+#include "settings/global_settings.h"
 
 class NmeaGeneratorPlugin;
 
@@ -33,6 +34,7 @@ struct SimVessel
   double throttle = 0;
   double rudderAngle = 0;
   int directionSign = 1;
+  unsigned int mmsi = 0;
 };
 
 enum class VesselType { OwnShip, AisTarget };
@@ -47,6 +49,9 @@ class DialogMainGui : public DialogMainGuiBase
     ~DialogMainGui();
 
     void updateSimStartPosition(VesselType type, double lat, double lon);
+    void addAisTarget(double lat, double lon);
+    void removeLastAisTarget();
+    void clearAisTargets();
     void stopTimers();
 
     NmeaGeneratorPlugin* plugin = nullptr;
@@ -175,6 +180,8 @@ class DialogMainGui : public DialogMainGuiBase
     VesselType controlledVessel = VesselType::OwnShip;
     SimVessel shipSimu;
     SimVessel aisSimu;
+    std::vector<SimVessel> aisTargetList;
+    unsigned int m_nextMmsi = g_aisMMSI;
 };
 
 #endif //DIALOG_MAIN_GUI

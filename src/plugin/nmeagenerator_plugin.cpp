@@ -295,20 +295,44 @@ void NmeaGeneratorPlugin::OnContextMenuItemCallback(int id)
   if (myGUI == NULL)
     return;
 
+  //Entry in right-click menu
   if(id == positionMenuID)
   {
     DialogMenuEntry dlg(GetOCPNCanvasWindow());
 
     if(dlg.ShowModal() == wxID_OK)
     {
-      switch(dlg.m_updateVesselPositionChoice)
+      switch(dlg.m_action)
       {
-        case 1:
-          myGUI->updateSimStartPosition(VesselType::OwnShip, m_cursor_lat, m_cursor_lon);
+        //Update position
+        case DialogAction::UpdateOwnShip:
+          myGUI->updateSimStartPosition(
+              VesselType::OwnShip,
+              m_cursor_lat,
+              m_cursor_lon);
           break;
 
-        case 2:
-          myGUI->updateSimStartPosition(VesselType::AisTarget, m_cursor_lat, m_cursor_lon);
+        case DialogAction::UpdateAisTarget:
+          myGUI->updateSimStartPosition(
+              VesselType::AisTarget,
+              m_cursor_lat,
+              m_cursor_lon);
+          break;
+
+        //Handle dummy AIS targets
+        case DialogAction::AddAisTarget:
+          myGUI->addAisTarget(m_cursor_lat, m_cursor_lon);
+          break;
+
+        case DialogAction::RemoveLastAisTarget:
+          myGUI->removeLastAisTarget();
+          break;
+
+        case DialogAction::ClearAisTargets:
+          myGUI->clearAisTargets();
+          break;
+
+        default:
           break;
       }
     }

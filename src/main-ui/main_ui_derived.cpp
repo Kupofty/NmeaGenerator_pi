@@ -1506,6 +1506,30 @@ void DialogMainGui::OnChoice_controlledVesselSimChanged(wxCommandEvent& event)
 }
 
 
+//Dummy AIS targets
+void DialogMainGui::addAisTarget(double lat, double lon)
+{
+  SimVessel v;
+  v.lat = lat;
+  v.lon = lon;
+  v.mmsi = ++m_nextMmsi;
+
+  aisTargetList.push_back(v);
+}
+
+void DialogMainGui::removeLastAisTarget()
+{
+  aisTargetList.pop_back();
+  --m_nextMmsi;
+}
+
+void DialogMainGui::clearAisTargets()
+{
+  aisTargetList.clear();
+  m_nextMmsi = g_aisMMSI;
+}
+
+
 //Update ship position to cursor position
 void DialogMainGui::updateSimStartPosition(VesselType type, double lat, double lon)
 {
@@ -1584,8 +1608,7 @@ void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
     sendNmeaToOCPN(nmea::createRSA("II", rudderStr, "A", "0", "V"));
   }
 
-
-  // ---- Update & send AIS target NMEA ----
+  // ---- Update & send controlled AIS target NMEA ----
   if (sendAisTarget)
   {
     GeoPos pos = utils::updatePosition(
@@ -1628,6 +1651,29 @@ void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
     }
 
     sendNmeaToOCPN(aisNmea);
+  }
+
+  // ---- Show AIS dummy targets in list ----
+  if (sendAisTarget)
+  {
+    for (auto& ais : aisTargetList)
+    {
+      wxString latDir = utils::getLatDir(ais.lat);
+      wxString lonDir = utils::getLonDir(ais.lon);
+
+      wxString aisNmea = ais::encodeType18(
+          "AI", "VDM",
+          ais.mmsi,
+          fabs(ais.speed),
+          ais.lat,
+          ais.lon,
+          ais.cog,
+          ais.heading,
+          "A"
+          );
+
+      sendNmeaToOCPN(aisNmea);
+    }
   }
 
 

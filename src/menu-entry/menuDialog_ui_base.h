@@ -20,6 +20,7 @@
 #include <wx/colour.h>
 #include <wx/settings.h>
 #include <wx/sizer.h>
+#include <wx/statbox.h>
 #include <wx/dialog.h>
 
 ///////////////////////////////////////////////////////////////////////////
@@ -34,15 +35,21 @@ class DialogMenuEntryBase : public wxDialog
 	protected:
 		wxButton* m_button_updateOwnShipPosition;
 		wxButton* m_button_updateAisTargetPosition;
+		wxButton* m_button_addAisTarget;
+		wxButton* m_button_removeLastAisTarget;
+		wxButton* m_button_deleteAllAisTargets;
 
 		// Virtual event handlers, override them in your derived class
 		virtual void OnButtonClick_UpdateOwnShipPosition( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_UpdateAisTargetPosition( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_AddAisTarget( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_RemoveLastAisTargets( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_ClearAisTargets( wxCommandEvent& event ) { event.Skip(); }
 
 
 	public:
 
-		DialogMenuEntryBase( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Update position"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 178,139 ), long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
+		DialogMenuEntryBase( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("NmeaGenerator"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 233,229 ), long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
 
 		~DialogMenuEntryBase();
 

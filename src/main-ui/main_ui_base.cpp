@@ -3359,7 +3359,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_panel_list->SetSizer( bSizer9 );
 	m_panel_list->Layout();
 	bSizer9->Fit( m_panel_list );
-	m_notebook->AddPage( m_panel_list, _("Sentence Builder"), true );
+	m_notebook->AddPage( m_panel_list, _("Sentence Builder"), false );
 	m_panel_sim = new wxPanel( m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer8;
 	bSizer8 = new wxBoxSizer( wxVERTICAL );
@@ -3408,7 +3408,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_staticText2072->Wrap( -1 );
 	bSizer_shipType->Add( m_staticText2072, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	wxString m_choice_nmeaOutputSimChoices[] = { _("Current"), _("Both") };
+	wxString m_choice_nmeaOutputSimChoices[] = { _("Controlled vessel"), _("Both") };
 	int m_choice_nmeaOutputSimNChoices = sizeof( m_choice_nmeaOutputSimChoices ) / sizeof( wxString );
 	m_choice_nmeaOutputSim = new wxChoice( m_scrolledWindow2, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_nmeaOutputSimNChoices, m_choice_nmeaOutputSimChoices, 0 );
 	m_choice_nmeaOutputSim->SetSelection( 0 );
@@ -3809,7 +3809,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_panel_sim->SetSizer( bSizer8 );
 	m_panel_sim->Layout();
 	bSizer8->Fit( m_panel_sim );
-	m_notebook->AddPage( m_panel_sim, _("Simulation"), false );
+	m_notebook->AddPage( m_panel_sim, _("Simulation"), true );
 
 	bSizer_main->Add( m_notebook, 1, wxEXPAND, 5 );
 

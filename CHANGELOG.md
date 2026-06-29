@@ -2,10 +2,10 @@
 
 
 ###
-## [v1.1.1] / 2026-xx-yy
+## [v1.2.0] / 2026-xx-yy
 ### Added
-- Context menu dialog allowing update of either Own Ship or AIS Target position from cursor location
-
+- Context menu dialog for updating Own_Ship or AIS_Target position from cursor location
+- Ability to create/delete multiple additional AIS targets at cursor position (non-controlled)
 
 ###
 ## [v1.1.0] / 2026-06-11
