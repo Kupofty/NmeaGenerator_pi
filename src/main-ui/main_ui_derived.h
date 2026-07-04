@@ -178,7 +178,6 @@ class DialogMainGui : public DialogMainGuiBase
     //Simulation
     VesselType controlledVessel = VesselType::OwnShip;
     SimVessel shipSimu;
-    SimVessel aisSimu;
     std::vector<SimVessel> aisTargetList;
     unsigned int m_nextMmsi = g_aisMMSI;
 };
