@@ -546,8 +546,13 @@ class DialogMainGuiBase : public wxDialog
 		wxChoice* m_choice_aisType;
 		wxStaticText* m_staticText2072;
 		wxChoice* m_choice_nmeaOutputSim;
-		wxStaticLine* m_staticline31;
 		wxStaticLine* m_staticline29;
+		wxStaticText* m_staticText2081;
+		wxStaticText* m_staticText_latDegSim;
+		wxStaticText* m_staticText_latMinSim;
+		wxStaticText* m_staticText211;
+		wxStaticText* m_staticText_lonDegSim;
+		wxStaticText* m_staticText_lonMinSim;
 		wxStaticText* m_staticText902;
 		wxStaticText* m_staticText_headingSim;
 		wxStaticText* m_staticText92;
@@ -558,12 +563,6 @@ class DialogMainGuiBase : public wxDialog
 		wxStaticText* m_staticText_speedSim;
 		wxStaticText* m_staticText95;
 		wxStaticLine* m_staticline30;
-		wxStaticText* m_staticText2081;
-		wxStaticText* m_staticText_latDegSim;
-		wxStaticText* m_staticText_latMinSim;
-		wxStaticText* m_staticText211;
-		wxStaticText* m_staticText_lonDegSim;
-		wxStaticText* m_staticText_lonMinSim;
 		wxStaticLine* m_staticline32;
 		wxStaticText* m_staticText88;
 		wxStaticText* m_staticText_rudderAngleSim;

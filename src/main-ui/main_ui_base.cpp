@@ -3408,7 +3408,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_staticText2072->Wrap( -1 );
 	bSizer_shipType->Add( m_staticText2072, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	wxString m_choice_nmeaOutputSimChoices[] = { _("Controlled vessel"), _("Both") };
+	wxString m_choice_nmeaOutputSimChoices[] = { _("All"), _("Own ship"), _("AIS targets") };
 	int m_choice_nmeaOutputSimNChoices = sizeof( m_choice_nmeaOutputSimChoices ) / sizeof( wxString );
 	m_choice_nmeaOutputSim = new wxChoice( m_scrolledWindow2, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_nmeaOutputSimNChoices, m_choice_nmeaOutputSimChoices, 0 );
 	m_choice_nmeaOutputSim->SetSelection( 0 );
@@ -3423,14 +3423,59 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	bSizer26->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_staticline31 = new wxStaticLine( m_scrolledWindow2, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL );
-	bSizer26->Add( m_staticline31, 0, wxEXPAND | wxALL, 5 );
-
-
-	bSizer26->Add( 0, 0, 1, wxEXPAND, 5 );
-
 	m_staticline29 = new wxStaticLine( m_scrolledWindow2, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL );
 	bSizer26->Add( m_staticline29, 0, wxEXPAND | wxALL, 5 );
+
+	wxBoxSizer* bSizer511;
+	bSizer511 = new wxBoxSizer( wxHORIZONTAL );
+
+
+	bSizer511->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	wxBoxSizer* bSizer52;
+	bSizer52 = new wxBoxSizer( wxHORIZONTAL );
+
+	m_staticText2081 = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("Latitude:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText2081->Wrap( -1 );
+	bSizer52->Add( m_staticText2081, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText_latDegSim = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("00"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText_latDegSim->Wrap( -1 );
+	bSizer52->Add( m_staticText_latDegSim, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText_latMinSim = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("00.0000"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText_latMinSim->Wrap( -1 );
+	bSizer52->Add( m_staticText_latMinSim, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	bSizer511->Add( bSizer52, 0, wxEXPAND, 5 );
+
+
+	bSizer511->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	wxBoxSizer* bSizer53;
+	bSizer53 = new wxBoxSizer( wxHORIZONTAL );
+
+	m_staticText211 = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("Longitude:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText211->Wrap( -1 );
+	bSizer53->Add( m_staticText211, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText_lonDegSim = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("000"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText_lonDegSim->Wrap( -1 );
+	bSizer53->Add( m_staticText_lonDegSim, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText_lonMinSim = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("00.0000"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText_lonMinSim->Wrap( -1 );
+	bSizer53->Add( m_staticText_lonMinSim, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	bSizer511->Add( bSizer53, 0, wxEXPAND, 5 );
+
+
+	bSizer511->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	bSizer26->Add( bSizer511, 0, wxEXPAND, 5 );
 
 	wxBoxSizer* bSizer_dataSim;
 	bSizer_dataSim = new wxBoxSizer( wxHORIZONTAL );
@@ -3506,57 +3551,6 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 
 	bSizer26->Add( bSizer_dataSim, 0, wxEXPAND, 5 );
-
-	wxBoxSizer* bSizer511;
-	bSizer511 = new wxBoxSizer( wxHORIZONTAL );
-
-
-	bSizer511->Add( 0, 0, 1, wxEXPAND, 5 );
-
-	wxBoxSizer* bSizer52;
-	bSizer52 = new wxBoxSizer( wxHORIZONTAL );
-
-	m_staticText2081 = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("Latitude:"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText2081->Wrap( -1 );
-	bSizer52->Add( m_staticText2081, 0, wxALIGN_CENTER|wxALL, 5 );
-
-	m_staticText_latDegSim = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("00"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText_latDegSim->Wrap( -1 );
-	bSizer52->Add( m_staticText_latDegSim, 0, wxALIGN_CENTER|wxALL, 5 );
-
-	m_staticText_latMinSim = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("00.0000"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText_latMinSim->Wrap( -1 );
-	bSizer52->Add( m_staticText_latMinSim, 0, wxALIGN_CENTER|wxALL, 5 );
-
-
-	bSizer511->Add( bSizer52, 0, wxEXPAND, 5 );
-
-
-	bSizer511->Add( 0, 0, 1, wxEXPAND, 5 );
-
-	wxBoxSizer* bSizer53;
-	bSizer53 = new wxBoxSizer( wxHORIZONTAL );
-
-	m_staticText211 = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("Longitude:"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText211->Wrap( -1 );
-	bSizer53->Add( m_staticText211, 0, wxALIGN_CENTER|wxALL, 5 );
-
-	m_staticText_lonDegSim = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("000"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText_lonDegSim->Wrap( -1 );
-	bSizer53->Add( m_staticText_lonDegSim, 0, wxALIGN_CENTER|wxALL, 5 );
-
-	m_staticText_lonMinSim = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("00.0000"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText_lonMinSim->Wrap( -1 );
-	bSizer53->Add( m_staticText_lonMinSim, 0, wxALIGN_CENTER|wxALL, 5 );
-
-
-	bSizer511->Add( bSizer53, 0, wxEXPAND, 5 );
-
-
-	bSizer511->Add( 0, 0, 1, wxEXPAND, 5 );
-
-
-	bSizer26->Add( bSizer511, 0, wxEXPAND, 5 );
 
 
 	bSizer26->Add( 0, 0, 1, wxEXPAND, 5 );

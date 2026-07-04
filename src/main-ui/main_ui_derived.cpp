@@ -1556,8 +1556,8 @@ void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
 
   // ---- Output mode ----
   int outputMode = m_choice_nmeaOutputSim->GetSelection();
-  bool sendOwnShip = (outputMode == 1) || (controlledVessel == VesselType::OwnShip);
-  bool sendAisTarget = (outputMode == 1) || (controlledVessel == VesselType::AisTarget);
+  bool sendOwnShip = (outputMode == 0) || (outputMode == 1);
+  bool sendAisTarget = (outputMode == 0) || (outputMode == 2);
 
 
   // ---- Update & send OwnShip NMEA ----
@@ -1646,8 +1646,24 @@ void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
   {
     for (auto& ais : aisTargetList)
     {
+      GeoPos pos = utils::updatePosition(
+          ais.lat, ais.lon,
+          ais.speed, ais.heading,
+          m_timer_autoSendSim.GetInterval()
+          );
+
+      ais.lat = pos.lat;
+      ais.lon = pos.lon;
+
+      ais.heading = fmod( ais.heading + (ais.rudderAngle * ais.directionSign) * dt, 360.0 );
+
+      if (ais.heading < 0)
+        ais.heading += 360.0;
+
       wxString latDir = utils::getLatDir(ais.lat);
       wxString lonDir = utils::getLonDir(ais.lon);
+      wxString latStr = utils::toNMEA_lat(fabs(ais.lat));
+      wxString lonStr = utils::toNMEA_lon(fabs(ais.lon));
 
       wxString aisNmea = ais::encodeType18(
           "AI", "VDM",
