@@ -74,7 +74,6 @@ class DialogMainGui : public DialogMainGuiBase
     void OnButtonClick_OpenSentenceBuilderHelp(wxCommandEvent& event) override;
     void OnTimer_autoSendSim(wxTimerEvent& event) override;
     void OnToggleButton_StartStopSim(wxCommandEvent& event) override;
-    void OnButtonClick_UpdateSimPos(wxCommandEvent& event) override;
     void OnScroll_UpdateThrottleSim(wxScrollEvent& event) override;
     void OnScroll_UpdateRudderAngleSim(wxScrollEvent& event) override;
     void OnButtonClick_ResetRudder(wxCommandEvent& event) override;

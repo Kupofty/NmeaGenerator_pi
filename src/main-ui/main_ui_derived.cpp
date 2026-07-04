@@ -1541,18 +1541,6 @@ void DialogMainGui::updateSimStartPosition(VesselType type, double lat, double l
 
   vessel->lat = lat;
   vessel->lon = lon;
-
-  // Extract degrees & minutes
-  DegMin dm = utils::toDegMin(vessel->lat, vessel->lon);
-
-  // Update UI
-  m_spinCtrl_latDegSim->SetValue(dm.latDeg);
-  m_spinCtrlDouble_latMinutesSim->SetValue(dm.latMin);
-  m_spinCtrl_lonDegSim->SetValue(dm.lonDeg);
-  m_spinCtrlDouble_lonMinutesSim->SetValue(dm.lonMin);
-
-  m_choice_latDirSim->SetStringSelection(lat < 0 ? "S" : "N");
-  m_choice_lonDirSim->SetStringSelection(lon < 0 ? "W" : "E");
 }
 
 void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
@@ -1721,37 +1709,6 @@ void DialogMainGui::OnSpinCtrlDouble_UpdateFreqTimerSim(wxSpinDoubleEvent& event
   }
 }
 
-
-//Update values from GUI
-void DialogMainGui::OnButtonClick_UpdateSimPos(wxCommandEvent& event)
-{
-  int latDeg = m_spinCtrl_latDegSim->GetValue();
-  double latMinutes = m_spinCtrlDouble_latMinutesSim->GetValue();
-  wxString latDirStr = m_choice_latDirSim->GetStringSelection();
-
-  int lonDeg = m_spinCtrl_lonDegSim->GetValue();
-  double lonMinutes = m_spinCtrlDouble_lonMinutesSim->GetValue();
-  wxString lonDirStr = m_choice_lonDirSim->GetStringSelection();
-
-  // Build NMEA format
-  double latNmea = latDeg * 100.0 + latMinutes;   // DDMM.MMM
-  double lonNmea = lonDeg * 100.0 + lonMinutes;   // DDDMM.MMM
-
-  // Convert to decimal degrees
-  double lat = utils::NMEA_to_decimal(latNmea);
-  double lon = utils::NMEA_to_decimal(lonNmea);
-
-  // Apply direction
-  if(latDirStr == "S")
-    lat = -lat;
-
-  if(lonDirStr == "W")
-    lon = -lon;
-
-  SimVessel* vessel = getControlledVessel();
-  vessel->lat = lat;
-  vessel->lon = lon;
-}
 
 void DialogMainGui::OnScroll_UpdateThrottleSim(wxScrollEvent& event)
 {

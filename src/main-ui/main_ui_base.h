@@ -547,19 +547,6 @@ class DialogMainGuiBase : public wxDialog
 		wxStaticText* m_staticText2072;
 		wxChoice* m_choice_nmeaOutputSim;
 		wxStaticLine* m_staticline31;
-		wxStaticText* m_staticText206;
-		wxStaticText* m_staticText207;
-		wxStaticText* m_staticText208;
-		wxStaticText* m_staticText83;
-		wxSpinCtrl* m_spinCtrl_latDegSim;
-		wxSpinCtrlDouble* m_spinCtrlDouble_latMinutesSim;
-		wxChoice* m_choice_latDirSim;
-		wxStaticText* m_staticText84;
-		wxSpinCtrl* m_spinCtrl_lonDegSim;
-		wxSpinCtrlDouble* m_spinCtrlDouble_lonMinutesSim;
-		wxChoice* m_choice_lonDirSim;
-		wxStaticLine* m_staticline28;
-		wxButton* m_button_updateSimPos;
 		wxStaticLine* m_staticline29;
 		wxStaticText* m_staticText902;
 		wxStaticText* m_staticText_headingSim;
@@ -669,7 +656,6 @@ class DialogMainGuiBase : public wxDialog
 		virtual void OnSpinCtrlDouble_AutomaticSendFreqBuilder( wxSpinDoubleEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_OpenSentenceBuilderHelp( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnChoice_controlledVesselSimChanged( wxCommandEvent& event ) { event.Skip(); }
-		virtual void OnButtonClick_UpdateSimPos( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnScroll_UpdateRudderAngleSim( wxScrollEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_ResetRudder( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnScroll_UpdateThrottleSim( wxScrollEvent& event ) { event.Skip(); }
