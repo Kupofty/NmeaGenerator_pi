@@ -30,4 +30,7 @@ extern bool g_sendDataAfterWindowClose;
 
 extern int g_aisMMSI;
 
+extern double g_lastSimLatitude;
+extern double g_lastSimLongitude;
+
 #endif //GLOBAL_SETTINGS_H

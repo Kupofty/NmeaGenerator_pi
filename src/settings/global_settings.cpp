@@ -18,6 +18,9 @@ int g_windowPosY = 0;
 //Keep streaming data when window is closed
 bool g_sendDataAfterWindowClose = 0;
 
+//Last ship position
+double g_lastSimLatitude = 0.0;
+double g_lastSimLongitude = 0.0;
 
 //AIS
 int g_aisMMSI = 227000000;

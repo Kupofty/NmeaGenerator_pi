@@ -56,6 +56,10 @@ DialogMainGui::DialogMainGui(wxWindow* parent, wxWindowID id, const wxString& ti
 DialogMainGui::~DialogMainGui()
 {
   stopTimers();
+
+  //Save last ship position
+  g_lastSimLatitude = shipSimu.lat;
+  g_lastSimLongitude = shipSimu.lon;
 }
 
 
@@ -1541,7 +1545,7 @@ void DialogMainGui::addAisTarget(double lat, double lon)
   SimVessel v;
   v.lat = lat;
   v.lon = lon;
-  v.mmsi = ++m_nextMmsi;
+  v.mmsi = m_nextMmsi++;
   int aisType = m_choice_aisType->GetSelection();
   switch(aisType)
   {
@@ -1694,13 +1698,13 @@ void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
   wxString dateStr = wxString::Format("%02d%02d%02d", utc.tm_mday, utc.tm_mon + 1, utc.tm_year % 100);
 
 
-          // ---- Output mode ----
+  // ---- Output mode ----
   int outputMode = m_choice_nmeaOutputSim->GetSelection();
   bool sendOwnShip = (outputMode == 0) || (outputMode == 1);
   bool sendAisTarget = (outputMode == 0) || (outputMode == 2);
 
 
-          // ---- Update & send OwnShip NMEA ----
+  // ---- Update & send OwnShip NMEA ----
   if (sendOwnShip)
   {
     GeoPos pos = utils::updatePosition(
@@ -1739,7 +1743,7 @@ void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
     sendNmeaToOCPN(nmea::createRSA("II", rudderStr, "A", "0", "V"));
   }
 
-          // ---- Update & send controlled AIS target NMEA ----
+  // ---- Update & send controlled AIS target NMEA ----
   if (sendAisTarget)
   {
     for (auto& ais : aisTargetList)
@@ -1787,7 +1791,7 @@ void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
   }
 
 
-          // ---- Update UI for controlled vessel ----
+  // ---- Update UI for controlled vessel ----
   updateGuiSimValues();
 
 }

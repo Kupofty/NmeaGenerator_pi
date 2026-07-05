@@ -176,6 +176,9 @@ void NmeaGeneratorPlugin::LoadSettings()
     configSettings->Read("SendDataAfterWindowClose", &g_sendDataAfterWindowClose, 0);
 
     configSettings->Read("aisMMSI", &g_aisMMSI, 227000000);
+
+    configSettings->Read("simLastLatitude", &g_lastSimLatitude, 0.0);
+    configSettings->Read("simLastLongitude", &g_lastSimLongitude, 0.0);
   }
 }
 
@@ -215,6 +218,9 @@ void NmeaGeneratorPlugin::SaveSettings()
     configSettings->Write("SendDataAfterWindowClose", g_sendDataAfterWindowClose);
 
     configSettings->Write("aisMMSI", g_aisMMSI);
+
+    configSettings->Write("simLastLatitude", g_lastSimLatitude);
+    configSettings->Write("simLastLongitude", g_lastSimLongitude);
 
   }
 }
@@ -306,17 +312,11 @@ void NmeaGeneratorPlugin::OnContextMenuItemCallback(int id)
       {
         //Update position
         case DialogAction::UpdateOwnShip:
-          myGUI->updateSimStartPosition(
-              VesselType::OwnShip,
-              m_cursor_lat,
-              m_cursor_lon);
+          myGUI->updateSimStartPosition(VesselType::OwnShip, m_cursor_lat, m_cursor_lon);
           break;
 
         case DialogAction::UpdateAisTarget:
-          myGUI->updateSimStartPosition(
-              VesselType::AisTarget,
-              m_cursor_lat,
-              m_cursor_lon);
+          myGUI->updateSimStartPosition(VesselType::AisTarget, m_cursor_lat, m_cursor_lon);
           break;
 
         //Handle dummy AIS targets

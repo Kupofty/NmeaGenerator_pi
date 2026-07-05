@@ -6,9 +6,10 @@
 ### Added
 - Context menu action to update Own Ship or selected AIS target position from cursor location
 - Multiple AIS targets management with selectable control target
+- Persistent storage of last simulation vessel position across sessions
 
 ### Removed
-- Manual position input for simulation vessels (Own Ship and AIS targets)
+- Manual position input for simulation vessels
 
 
 ###

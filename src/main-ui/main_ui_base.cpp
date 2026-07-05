@@ -27,6 +27,9 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	bSizer3->Add( 0, 0, 1, wxEXPAND, 5 );
 
+
+	bSizer3->Add( 0, 0, 1, wxEXPAND, 5 );
+
 	wxBoxSizer* bSizer4;
 	bSizer4 = new wxBoxSizer( wxHORIZONTAL );
 
@@ -126,7 +129,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_panel_manual->SetSizer( bSizer3 );
 	m_panel_manual->Layout();
 	bSizer3->Fit( m_panel_manual );
-	m_notebook->AddPage( m_panel_manual, _("Manual Input"), false );
+	m_notebook->AddPage( m_panel_manual, _("Manual Input"), true );
 	m_panel_list = new wxPanel( m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer9;
 	bSizer9 = new wxBoxSizer( wxVERTICAL );
@@ -3378,41 +3381,59 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	bSizer_shipType->Add( 0, 0, 1, wxEXPAND, 5 );
 
+	wxBoxSizer* bSizer791;
+	bSizer791 = new wxBoxSizer( wxVERTICAL );
+
 	m_staticText901 = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("Control vessel:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText901->Wrap( -1 );
-	bSizer_shipType->Add( m_staticText901, 0, wxALIGN_CENTER|wxALL, 5 );
+	bSizer791->Add( m_staticText901, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	wxString m_choice_controlledVesselChoices[] = { _("Own ship") };
 	int m_choice_controlledVesselNChoices = sizeof( m_choice_controlledVesselChoices ) / sizeof( wxString );
 	m_choice_controlledVessel = new wxChoice( m_scrolledWindow2, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_controlledVesselNChoices, m_choice_controlledVesselChoices, 0 );
 	m_choice_controlledVessel->SetSelection( 0 );
-	bSizer_shipType->Add( m_choice_controlledVessel, 0, wxALIGN_CENTER|wxALL, 5 );
+	bSizer791->Add( m_choice_controlledVessel, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	bSizer_shipType->Add( bSizer791, 0, wxEXPAND, 5 );
 
 
 	bSizer_shipType->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_staticText214 = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("AIS type of\nnew target:"), wxDefaultPosition, wxDefaultSize, 0 );
+	wxBoxSizer* bSizer801;
+	bSizer801 = new wxBoxSizer( wxVERTICAL );
+
+	m_staticText214 = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("New AIS target type:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText214->Wrap( -1 );
-	bSizer_shipType->Add( m_staticText214, 0, wxALIGN_CENTER|wxALL, 5 );
+	bSizer801->Add( m_staticText214, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	wxString m_choice_aisTypeChoices[] = { _("ARPA"), _("class A"), _("class B") };
 	int m_choice_aisTypeNChoices = sizeof( m_choice_aisTypeChoices ) / sizeof( wxString );
 	m_choice_aisType = new wxChoice( m_scrolledWindow2, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_aisTypeNChoices, m_choice_aisTypeChoices, 0 );
 	m_choice_aisType->SetSelection( 1 );
-	bSizer_shipType->Add( m_choice_aisType, 0, wxALL, 5 );
+	bSizer801->Add( m_choice_aisType, 1, wxALIGN_CENTER|wxALL, 5 );
+
+
+	bSizer_shipType->Add( bSizer801, 0, wxEXPAND, 5 );
 
 
 	bSizer_shipType->Add( 0, 0, 1, wxEXPAND, 5 );
 
+	wxBoxSizer* bSizer81;
+	bSizer81 = new wxBoxSizer( wxVERTICAL );
+
 	m_staticText2072 = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("NMEA output:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText2072->Wrap( -1 );
-	bSizer_shipType->Add( m_staticText2072, 0, wxALIGN_CENTER|wxALL, 5 );
+	bSizer81->Add( m_staticText2072, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	wxString m_choice_nmeaOutputSimChoices[] = { _("All"), _("Own ship"), _("AIS targets") };
 	int m_choice_nmeaOutputSimNChoices = sizeof( m_choice_nmeaOutputSimChoices ) / sizeof( wxString );
 	m_choice_nmeaOutputSim = new wxChoice( m_scrolledWindow2, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_nmeaOutputSimNChoices, m_choice_nmeaOutputSimChoices, 0 );
 	m_choice_nmeaOutputSim->SetSelection( 0 );
-	bSizer_shipType->Add( m_choice_nmeaOutputSim, 0, wxALL, 5 );
+	bSizer81->Add( m_choice_nmeaOutputSim, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	bSizer_shipType->Add( bSizer81, 0, wxEXPAND, 5 );
 
 
 	bSizer_shipType->Add( 0, 0, 1, wxEXPAND, 5 );
@@ -3728,7 +3749,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_panel_sim->SetSizer( bSizer8 );
 	m_panel_sim->Layout();
 	bSizer8->Fit( m_panel_sim );
-	m_notebook->AddPage( m_panel_sim, _("Simulation"), true );
+	m_notebook->AddPage( m_panel_sim, _("Simulation"), false );
 
 	bSizer_main->Add( m_notebook, 1, wxEXPAND, 5 );
 

@@ -29,7 +29,7 @@ DialogMenuEntryBase::DialogMenuEntryBase( wxWindow* parent, wxWindowID id, const
 	bSizer1->Add( sbSizer1, 1, wxALL|wxEXPAND, 5 );
 
 	wxStaticBoxSizer* sbSizer2;
-	sbSizer2 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, _("Dummy AIS targets") ), wxVERTICAL );
+	sbSizer2 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, _("AIS targets") ), wxVERTICAL );
 
 	wxBoxSizer* bSizer4;
 	bSizer4 = new wxBoxSizer( wxHORIZONTAL );

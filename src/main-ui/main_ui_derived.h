@@ -29,8 +29,8 @@ struct TimerItem
 
 struct SimVessel
 {
-  double lat = 0;
-  double lon = 0 ;
+  double lat = g_lastSimLatitude;
+  double lon = g_lastSimLongitude;
   double heading = 0;
   double cog = 0;
   double speed = 0;
