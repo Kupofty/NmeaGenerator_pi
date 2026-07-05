@@ -56,10 +56,6 @@ DialogMainGui::DialogMainGui(wxWindow* parent, wxWindowID id, const wxString& ti
 DialogMainGui::~DialogMainGui()
 {
   stopTimers();
-
-  //Save last ship position
-  g_lastSimLatitude = shipSimu.lat;
-  g_lastSimLongitude = shipSimu.lon;
 }
 
 
@@ -1655,6 +1651,8 @@ void DialogMainGui::updateSimStartPosition(VesselType type, double lat, double l
   if (type == VesselType::OwnShip)
   {
     vessel = &shipSimu;
+    g_lastSimLatitude = lat;
+    g_lastSimLongitude = lon;
   }
   else if (type == VesselType::AisTarget)
   {
