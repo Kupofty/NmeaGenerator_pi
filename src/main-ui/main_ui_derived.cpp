@@ -1487,21 +1487,8 @@ SimVessel* DialogMainGui::getControlledVessel()
 void DialogMainGui::OnChoice_controlledVesselSimChanged(wxCommandEvent& event)
 {
   int sel = m_choice_controlledVessel->GetSelection();
-
-  //Own ship
-  if (sel == 0)
-  {
-    controlledVessel = VesselType::OwnShip;
-    m_selectedAisIndex = -1;
-  }
-
-  //AIS target in list
-  else
-  {
-    controlledVessel = VesselType::AisTarget;
-    m_selectedAisIndex = sel - 1;
-  }
-
+  controlledVessel = (sel == 0) ? VesselType::OwnShip : VesselType::AisTarget;
+  m_selectedAisIndex = sel - 1;
   updateGuiSimValues();
 }
 
@@ -1656,7 +1643,7 @@ void DialogMainGui::OnSpinCtrlDouble_UpdateFreqTimerSim(wxSpinDoubleEvent& event
 }
 
 
-//Update ship position to cursor position
+//Update sim data & send NMEA
 void DialogMainGui::updateSimStartPosition(VesselType type, double lat, double lon)
 {
   SimVessel* vessel;
@@ -1699,6 +1686,30 @@ void DialogMainGui::updateSimStartPosition(VesselType type, double lat, double l
   vessel->lon = lon;
 }
 
+void DialogMainGui::updateVessel(SimVessel& vessel, double dt, int intervalMs)
+{
+  GeoPos pos = utils::updatePosition(
+      vessel.lat,
+      vessel.lon,
+      vessel.speed,
+      vessel.heading,
+      intervalMs);
+
+  vessel.lat = pos.lat;
+  vessel.lon = pos.lon;
+
+  vessel.heading = fmod(
+      vessel.heading + vessel.rudderAngle * vessel.directionSign * dt,
+      360.0);
+
+  if (vessel.heading < 0)
+    vessel.heading += 360.0;
+
+  vessel.cog = vessel.heading;
+  if (vessel.directionSign < 0)
+    vessel.cog = fmod(vessel.heading + 180.0, 360.0);
+}
+
 void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
 {
   // ---- Time ----
@@ -1719,35 +1730,16 @@ void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
   // ---- Update & send OwnShip NMEA ----
   if (sendOwnShip)
   {
-    GeoPos pos = utils::updatePosition(
-        shipSimu.lat, shipSimu.lon,
-        shipSimu.speed, shipSimu.heading,
-        m_timer_autoSendSim.GetInterval()
-        );
-
-    shipSimu.lat = pos.lat;
-    shipSimu.lon = pos.lon;
-
-    shipSimu.heading = fmod( shipSimu.heading + (shipSimu.rudderAngle * shipSimu.directionSign) * dt, 360.0 );
-    if (shipSimu.heading < 0)
-      shipSimu.heading += 360.0;
-
-    shipSimu.cog = shipSimu.heading;
-    if (shipSimu.directionSign < 0)
-      shipSimu.cog  = fmod(shipSimu.heading + 180.0, 360.0);
+    updateVessel(shipSimu, dt, m_timer_autoSendSim.GetInterval());
 
     wxString latDir = utils::getLatDir(shipSimu.lat);
     wxString lonDir = utils::getLonDir(shipSimu.lon);
     wxString latStr = utils::toNMEA_lat(fabs(shipSimu.lat));
     wxString lonStr = utils::toNMEA_lon(fabs(shipSimu.lon));
 
-    double cog = shipSimu.heading;
-    if (shipSimu.directionSign < 0)
-      cog = fmod(shipSimu.heading + 180.0, 360.0);
-
     wxString speedStr = wxString::Format("%.1f", fabs(shipSimu.speed));
     wxString headingStr = wxString::Format("%.1f", shipSimu.heading);
-    wxString cogStr = wxString::Format("%.1f", cog);
+    wxString cogStr = wxString::Format("%.1f", shipSimu.cog);
     wxString rudderStr = wxString::Format("%.1f", shipSimu.rudderAngle);
 
     sendNmeaToOCPN(nmea::createRMC("GP", timeStr, "A", latStr, latDir, lonStr, lonDir, speedStr, cogStr, dateStr, "0", "E"));
@@ -1760,22 +1752,7 @@ void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
   {
     for (auto& ais : aisTargetList)
     {
-      GeoPos pos = utils::updatePosition(
-          ais.lat, ais.lon,
-          ais.speed, ais.heading,
-          m_timer_autoSendSim.GetInterval()
-          );
-
-      ais.lat = pos.lat;
-      ais.lon = pos.lon;
-
-      ais.heading = fmod( ais.heading + (ais.rudderAngle * ais.directionSign) * dt, 360.0 );
-      if (ais.heading < 0)
-        ais.heading += 360.0;
-
-      ais.cog = ais.heading;
-      if (ais.directionSign < 0)
-        ais.cog  = fmod(ais.heading + 180.0, 360.0);
+      updateVessel(ais, dt, m_timer_autoSendSim.GetInterval());
 
       wxString latDir = utils::getLatDir(ais.lat);
       wxString lonDir = utils::getLonDir(ais.lon);

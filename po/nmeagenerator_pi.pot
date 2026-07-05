@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-30 00:10+0200\n"
+"POT-Creation-Date: 2026-07-05 22:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,925 +14,905 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/main-ui/main_ui_base.cpp:33
+#: src/main-ui/main_ui_base.cpp:36
 msgid "NMEA sentence:"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:37
+#: src/main-ui/main_ui_base.cpp:40
 msgid "$"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:42
+#: src/main-ui/main_ui_base.cpp:45
 msgid "*00"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:49
+#: src/main-ui/main_ui_base.cpp:52
 msgid "Automatic checksum calculation"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:59 src/main-ui/main_ui_derived.cpp:227
+#: src/main-ui/main_ui_base.cpp:62 src/main-ui/main_ui_derived.cpp:227
 msgid "No checksum detected"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:84 src/main-ui/main_ui_base.cpp:143
-#: src/main-ui/main_ui_base.cpp:257 src/main-ui/main_ui_base.cpp:343
-#: src/main-ui/main_ui_base.cpp:539 src/main-ui/main_ui_base.cpp:697
-#: src/main-ui/main_ui_base.cpp:826 src/main-ui/main_ui_base.cpp:935
-#: src/main-ui/main_ui_base.cpp:1017 src/main-ui/main_ui_base.cpp:1111
-#: src/main-ui/main_ui_base.cpp:1193 src/main-ui/main_ui_base.cpp:1320
-#: src/main-ui/main_ui_base.cpp:1434 src/main-ui/main_ui_base.cpp:1595
-#: src/main-ui/main_ui_base.cpp:1794 src/main-ui/main_ui_base.cpp:1879
-#: src/main-ui/main_ui_base.cpp:1985 src/main-ui/main_ui_base.cpp:2133
-#: src/main-ui/main_ui_base.cpp:2221 src/main-ui/main_ui_base.cpp:2398
-#: src/main-ui/main_ui_base.cpp:2510 src/main-ui/main_ui_base.cpp:2640
-#: src/main-ui/main_ui_base.cpp:2782 src/main-ui/main_ui_base.cpp:2914
-#: src/main-ui/main_ui_base.cpp:3044 src/main-ui/main_ui_base.cpp:3181
+#: src/main-ui/main_ui_base.cpp:87 src/main-ui/main_ui_base.cpp:146
+#: src/main-ui/main_ui_base.cpp:260 src/main-ui/main_ui_base.cpp:346
+#: src/main-ui/main_ui_base.cpp:542 src/main-ui/main_ui_base.cpp:700
+#: src/main-ui/main_ui_base.cpp:829 src/main-ui/main_ui_base.cpp:938
+#: src/main-ui/main_ui_base.cpp:1020 src/main-ui/main_ui_base.cpp:1114
+#: src/main-ui/main_ui_base.cpp:1196 src/main-ui/main_ui_base.cpp:1323
+#: src/main-ui/main_ui_base.cpp:1437 src/main-ui/main_ui_base.cpp:1598
+#: src/main-ui/main_ui_base.cpp:1797 src/main-ui/main_ui_base.cpp:1882
+#: src/main-ui/main_ui_base.cpp:1988 src/main-ui/main_ui_base.cpp:2136
+#: src/main-ui/main_ui_base.cpp:2224 src/main-ui/main_ui_base.cpp:2401
+#: src/main-ui/main_ui_base.cpp:2513 src/main-ui/main_ui_base.cpp:2643
+#: src/main-ui/main_ui_base.cpp:2785 src/main-ui/main_ui_base.cpp:2917
+#: src/main-ui/main_ui_base.cpp:3047 src/main-ui/main_ui_base.cpp:3184
 msgid "Send"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:87 src/main-ui/main_ui_base.cpp:148
-#: src/main-ui/main_ui_base.cpp:262 src/main-ui/main_ui_base.cpp:348
-#: src/main-ui/main_ui_base.cpp:544 src/main-ui/main_ui_base.cpp:702
-#: src/main-ui/main_ui_base.cpp:831 src/main-ui/main_ui_base.cpp:940
-#: src/main-ui/main_ui_base.cpp:1022 src/main-ui/main_ui_base.cpp:1116
-#: src/main-ui/main_ui_base.cpp:1198 src/main-ui/main_ui_base.cpp:1325
-#: src/main-ui/main_ui_base.cpp:1439 src/main-ui/main_ui_base.cpp:1600
-#: src/main-ui/main_ui_base.cpp:1799 src/main-ui/main_ui_base.cpp:1884
-#: src/main-ui/main_ui_base.cpp:1990 src/main-ui/main_ui_base.cpp:2138
-#: src/main-ui/main_ui_base.cpp:2226 src/main-ui/main_ui_base.cpp:2403
-#: src/main-ui/main_ui_base.cpp:2515 src/main-ui/main_ui_base.cpp:2645
-#: src/main-ui/main_ui_base.cpp:2787 src/main-ui/main_ui_base.cpp:2919
-#: src/main-ui/main_ui_base.cpp:3049 src/main-ui/main_ui_base.cpp:3186
+#: src/main-ui/main_ui_base.cpp:90 src/main-ui/main_ui_base.cpp:151
+#: src/main-ui/main_ui_base.cpp:265 src/main-ui/main_ui_base.cpp:351
+#: src/main-ui/main_ui_base.cpp:547 src/main-ui/main_ui_base.cpp:705
+#: src/main-ui/main_ui_base.cpp:834 src/main-ui/main_ui_base.cpp:943
+#: src/main-ui/main_ui_base.cpp:1025 src/main-ui/main_ui_base.cpp:1119
+#: src/main-ui/main_ui_base.cpp:1201 src/main-ui/main_ui_base.cpp:1328
+#: src/main-ui/main_ui_base.cpp:1442 src/main-ui/main_ui_base.cpp:1603
+#: src/main-ui/main_ui_base.cpp:1802 src/main-ui/main_ui_base.cpp:1887
+#: src/main-ui/main_ui_base.cpp:1993 src/main-ui/main_ui_base.cpp:2141
+#: src/main-ui/main_ui_base.cpp:2229 src/main-ui/main_ui_base.cpp:2406
+#: src/main-ui/main_ui_base.cpp:2518 src/main-ui/main_ui_base.cpp:2648
+#: src/main-ui/main_ui_base.cpp:2790 src/main-ui/main_ui_base.cpp:2922
+#: src/main-ui/main_ui_base.cpp:3052 src/main-ui/main_ui_base.cpp:3189
 msgid "Copy"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:90
+#: src/main-ui/main_ui_base.cpp:93
 msgid "Clear"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:105 src/main-ui/main_ui_base.cpp:3332
+#: src/main-ui/main_ui_base.cpp:108 src/main-ui/main_ui_base.cpp:3335
 msgid "Automatic send at"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:112 src/main-ui/main_ui_base.cpp:3339
+#: src/main-ui/main_ui_base.cpp:115 src/main-ui/main_ui_base.cpp:3342
 msgid "Hz"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:129
+#: src/main-ui/main_ui_base.cpp:132
 msgid "Manual Input"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:138
+#: src/main-ui/main_ui_base.cpp:141
 msgid "DBT/S/K"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:151 src/main-ui/main_ui_base.cpp:265
-#: src/main-ui/main_ui_base.cpp:351 src/main-ui/main_ui_base.cpp:547
-#: src/main-ui/main_ui_base.cpp:705 src/main-ui/main_ui_base.cpp:834
-#: src/main-ui/main_ui_base.cpp:943 src/main-ui/main_ui_base.cpp:1025
-#: src/main-ui/main_ui_base.cpp:1119 src/main-ui/main_ui_base.cpp:1201
-#: src/main-ui/main_ui_base.cpp:1328 src/main-ui/main_ui_base.cpp:1442
-#: src/main-ui/main_ui_base.cpp:1603 src/main-ui/main_ui_base.cpp:1802
-#: src/main-ui/main_ui_base.cpp:1887 src/main-ui/main_ui_base.cpp:1993
-#: src/main-ui/main_ui_base.cpp:2141 src/main-ui/main_ui_base.cpp:2229
-#: src/main-ui/main_ui_base.cpp:2406 src/main-ui/main_ui_base.cpp:2518
-#: src/main-ui/main_ui_base.cpp:2648 src/main-ui/main_ui_base.cpp:2790
-#: src/main-ui/main_ui_base.cpp:2922 src/main-ui/main_ui_base.cpp:3052
-#: src/main-ui/main_ui_base.cpp:3189
+#: src/main-ui/main_ui_base.cpp:154 src/main-ui/main_ui_base.cpp:268
+#: src/main-ui/main_ui_base.cpp:354 src/main-ui/main_ui_base.cpp:550
+#: src/main-ui/main_ui_base.cpp:708 src/main-ui/main_ui_base.cpp:837
+#: src/main-ui/main_ui_base.cpp:946 src/main-ui/main_ui_base.cpp:1028
+#: src/main-ui/main_ui_base.cpp:1122 src/main-ui/main_ui_base.cpp:1204
+#: src/main-ui/main_ui_base.cpp:1331 src/main-ui/main_ui_base.cpp:1445
+#: src/main-ui/main_ui_base.cpp:1606 src/main-ui/main_ui_base.cpp:1805
+#: src/main-ui/main_ui_base.cpp:1890 src/main-ui/main_ui_base.cpp:1996
+#: src/main-ui/main_ui_base.cpp:2144 src/main-ui/main_ui_base.cpp:2232
+#: src/main-ui/main_ui_base.cpp:2409 src/main-ui/main_ui_base.cpp:2521
+#: src/main-ui/main_ui_base.cpp:2651 src/main-ui/main_ui_base.cpp:2793
+#: src/main-ui/main_ui_base.cpp:2925 src/main-ui/main_ui_base.cpp:3055
+#: src/main-ui/main_ui_base.cpp:3192
 msgid "Auto"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:171 src/main-ui/main_ui_base.cpp:285
-#: src/main-ui/main_ui_base.cpp:374 src/main-ui/main_ui_base.cpp:570
-#: src/main-ui/main_ui_base.cpp:728 src/main-ui/main_ui_base.cpp:854
-#: src/main-ui/main_ui_base.cpp:963 src/main-ui/main_ui_base.cpp:1051
-#: src/main-ui/main_ui_base.cpp:1139 src/main-ui/main_ui_base.cpp:1221
-#: src/main-ui/main_ui_base.cpp:1348 src/main-ui/main_ui_base.cpp:1465
-#: src/main-ui/main_ui_base.cpp:1626 src/main-ui/main_ui_base.cpp:1822
-#: src/main-ui/main_ui_base.cpp:1907 src/main-ui/main_ui_base.cpp:2016
-#: src/main-ui/main_ui_base.cpp:2161 src/main-ui/main_ui_base.cpp:2252
-#: src/main-ui/main_ui_base.cpp:2426 src/main-ui/main_ui_base.cpp:2538
-#: src/main-ui/main_ui_base.cpp:2671 src/main-ui/main_ui_base.cpp:2810
-#: src/main-ui/main_ui_base.cpp:2945 src/main-ui/main_ui_base.cpp:3075
-#: src/main-ui/main_ui_base.cpp:3212
+#: src/main-ui/main_ui_base.cpp:174 src/main-ui/main_ui_base.cpp:288
+#: src/main-ui/main_ui_base.cpp:377 src/main-ui/main_ui_base.cpp:573
+#: src/main-ui/main_ui_base.cpp:731 src/main-ui/main_ui_base.cpp:857
+#: src/main-ui/main_ui_base.cpp:966 src/main-ui/main_ui_base.cpp:1054
+#: src/main-ui/main_ui_base.cpp:1142 src/main-ui/main_ui_base.cpp:1224
+#: src/main-ui/main_ui_base.cpp:1351 src/main-ui/main_ui_base.cpp:1468
+#: src/main-ui/main_ui_base.cpp:1629 src/main-ui/main_ui_base.cpp:1825
+#: src/main-ui/main_ui_base.cpp:1910 src/main-ui/main_ui_base.cpp:2019
+#: src/main-ui/main_ui_base.cpp:2164 src/main-ui/main_ui_base.cpp:2255
+#: src/main-ui/main_ui_base.cpp:2429 src/main-ui/main_ui_base.cpp:2541
+#: src/main-ui/main_ui_base.cpp:2674 src/main-ui/main_ui_base.cpp:2813
+#: src/main-ui/main_ui_base.cpp:2948 src/main-ui/main_ui_base.cpp:3078
+#: src/main-ui/main_ui_base.cpp:3215
 msgid "Talker"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:178 src/main-ui/main_ui_base.cpp:185
-#: src/main-ui/main_ui_base.cpp:192 src/main-ui/main_ui_base.cpp:292
+#: src/main-ui/main_ui_base.cpp:181 src/main-ui/main_ui_base.cpp:188
+#: src/main-ui/main_ui_base.cpp:195 src/main-ui/main_ui_base.cpp:295
 msgid "Depth"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:199 src/main-ui/main_ui_base.cpp:300
+#: src/main-ui/main_ui_base.cpp:202 src/main-ui/main_ui_base.cpp:303
 msgid "SD"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:210
+#: src/main-ui/main_ui_base.cpp:213
 msgid "DBT"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:210
+#: src/main-ui/main_ui_base.cpp:213
 msgid "DBS"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:210
+#: src/main-ui/main_ui_base.cpp:213
 msgid "DBK"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:220
+#: src/main-ui/main_ui_base.cpp:223
 msgid "f"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:228 src/main-ui/main_ui_base.cpp:507
-#: src/main-ui/main_ui_base.cpp:515 src/main-ui/main_ui_base.cpp:671
-#: src/main-ui/main_ui_base.cpp:996 src/main-ui/main_ui_base.cpp:1283
-#: src/main-ui/main_ui_base.cpp:1299 src/main-ui/main_ui_base.cpp:1402
-#: src/main-ui/main_ui_base.cpp:1517 src/main-ui/main_ui_base.cpp:1555
-#: src/main-ui/main_ui_base.cpp:2481 src/main-ui/main_ui_base.cpp:2600
-#: src/main-ui/main_ui_base.cpp:2739 src/main-ui/main_ui_base.cpp:2882
+#: src/main-ui/main_ui_base.cpp:231 src/main-ui/main_ui_base.cpp:510
+#: src/main-ui/main_ui_base.cpp:518 src/main-ui/main_ui_base.cpp:674
+#: src/main-ui/main_ui_base.cpp:999 src/main-ui/main_ui_base.cpp:1286
+#: src/main-ui/main_ui_base.cpp:1302 src/main-ui/main_ui_base.cpp:1405
+#: src/main-ui/main_ui_base.cpp:1520 src/main-ui/main_ui_base.cpp:1558
+#: src/main-ui/main_ui_base.cpp:2484 src/main-ui/main_ui_base.cpp:2603
+#: src/main-ui/main_ui_base.cpp:2742 src/main-ui/main_ui_base.cpp:2885
 msgid "M"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:236
+#: src/main-ui/main_ui_base.cpp:239
 msgid "F"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:252 src/main-ui/main_ui_base.cpp:311
+#: src/main-ui/main_ui_base.cpp:255 src/main-ui/main_ui_base.cpp:314
 msgid "DPT"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:296
+#: src/main-ui/main_ui_base.cpp:299
 msgid "Offset"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:335 src/main-ui/main_ui_base.cpp:414
+#: src/main-ui/main_ui_base.cpp:338 src/main-ui/main_ui_base.cpp:417
 msgid "GGA"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:381 src/main-ui/main_ui_base.cpp:593
-#: src/main-ui/main_ui_base.cpp:1633 src/main-ui/main_ui_base.cpp:3219
+#: src/main-ui/main_ui_base.cpp:384 src/main-ui/main_ui_base.cpp:596
+#: src/main-ui/main_ui_base.cpp:1636 src/main-ui/main_ui_base.cpp:3222
 msgid "UTC time"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:385 src/main-ui/main_ui_base.cpp:577
-#: src/main-ui/main_ui_base.cpp:1641 src/main-ui/main_ui_base.cpp:2027
-#: src/main-ui/main_ui_base.cpp:2332 src/main-ui/main_ui_base.cpp:2952
+#: src/main-ui/main_ui_base.cpp:388 src/main-ui/main_ui_base.cpp:580
+#: src/main-ui/main_ui_base.cpp:1644 src/main-ui/main_ui_base.cpp:2030
+#: src/main-ui/main_ui_base.cpp:2335 src/main-ui/main_ui_base.cpp:2955
 msgid "Latitude"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:392 src/main-ui/main_ui_base.cpp:586
-#: src/main-ui/main_ui_base.cpp:1648 src/main-ui/main_ui_base.cpp:2034
-#: src/main-ui/main_ui_base.cpp:2336 src/main-ui/main_ui_base.cpp:2961
+#: src/main-ui/main_ui_base.cpp:395 src/main-ui/main_ui_base.cpp:589
+#: src/main-ui/main_ui_base.cpp:1651 src/main-ui/main_ui_base.cpp:2037
+#: src/main-ui/main_ui_base.cpp:2339 src/main-ui/main_ui_base.cpp:2964
 msgid "Longitude"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:399
+#: src/main-ui/main_ui_base.cpp:402
 msgid "GPX fix"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:403 src/main-ui/main_ui_base.cpp:605
-#: src/main-ui/main_ui_base.cpp:749 src/main-ui/main_ui_base.cpp:1655
-#: src/main-ui/main_ui_base.cpp:2712 src/main-ui/main_ui_base.cpp:2972
-#: src/main-ui/main_ui_base.cpp:3245
+#: src/main-ui/main_ui_base.cpp:406 src/main-ui/main_ui_base.cpp:608
+#: src/main-ui/main_ui_base.cpp:752 src/main-ui/main_ui_base.cpp:1658
+#: src/main-ui/main_ui_base.cpp:2715 src/main-ui/main_ui_base.cpp:2975
+#: src/main-ui/main_ui_base.cpp:3248
 msgid "GP"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:418 src/main-ui/main_ui_base.cpp:654
-#: src/main-ui/main_ui_base.cpp:1670 src/main-ui/main_ui_base.cpp:2103
-#: src/main-ui/main_ui_base.cpp:3260
+#: src/main-ui/main_ui_base.cpp:421 src/main-ui/main_ui_base.cpp:657
+#: src/main-ui/main_ui_base.cpp:1673 src/main-ui/main_ui_base.cpp:2106
+#: src/main-ui/main_ui_base.cpp:3263
 msgid "120000"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:429 src/main-ui/main_ui_base.cpp:620
-#: src/main-ui/main_ui_base.cpp:1687 src/main-ui/main_ui_base.cpp:2059
-#: src/main-ui/main_ui_base.cpp:2987
+#: src/main-ui/main_ui_base.cpp:432 src/main-ui/main_ui_base.cpp:623
+#: src/main-ui/main_ui_base.cpp:1690 src/main-ui/main_ui_base.cpp:2062
+#: src/main-ui/main_ui_base.cpp:2990
 msgid "0000.0000000"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:440 src/main-ui/main_ui_base.cpp:631
-#: src/main-ui/main_ui_base.cpp:671 src/main-ui/main_ui_base.cpp:1291
-#: src/main-ui/main_ui_base.cpp:1402 src/main-ui/main_ui_base.cpp:1569
-#: src/main-ui/main_ui_base.cpp:1698 src/main-ui/main_ui_base.cpp:2062
-#: src/main-ui/main_ui_base.cpp:2489 src/main-ui/main_ui_base.cpp:2608
-#: src/main-ui/main_ui_base.cpp:2747 src/main-ui/main_ui_base.cpp:2874
-#: src/main-ui/main_ui_base.cpp:2998 src/main-ui/main_ui_base.cpp:3466
+#: src/main-ui/main_ui_base.cpp:443 src/main-ui/main_ui_base.cpp:634
+#: src/main-ui/main_ui_base.cpp:674 src/main-ui/main_ui_base.cpp:1294
+#: src/main-ui/main_ui_base.cpp:1405 src/main-ui/main_ui_base.cpp:1572
+#: src/main-ui/main_ui_base.cpp:1701 src/main-ui/main_ui_base.cpp:2065
+#: src/main-ui/main_ui_base.cpp:2492 src/main-ui/main_ui_base.cpp:2611
+#: src/main-ui/main_ui_base.cpp:2750 src/main-ui/main_ui_base.cpp:2877
+#: src/main-ui/main_ui_base.cpp:3001
 msgid "N"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:440 src/main-ui/main_ui_base.cpp:631
-#: src/main-ui/main_ui_base.cpp:671 src/main-ui/main_ui_base.cpp:1698
-#: src/main-ui/main_ui_base.cpp:2062 src/main-ui/main_ui_base.cpp:2998
-#: src/main-ui/main_ui_base.cpp:3466
+#: src/main-ui/main_ui_base.cpp:443 src/main-ui/main_ui_base.cpp:634
+#: src/main-ui/main_ui_base.cpp:674 src/main-ui/main_ui_base.cpp:1701
+#: src/main-ui/main_ui_base.cpp:2065 src/main-ui/main_ui_base.cpp:3001
 msgid "S"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:446 src/main-ui/main_ui_base.cpp:637
-#: src/main-ui/main_ui_base.cpp:1704 src/main-ui/main_ui_base.cpp:2068
-#: src/main-ui/main_ui_base.cpp:3004
+#: src/main-ui/main_ui_base.cpp:449 src/main-ui/main_ui_base.cpp:640
+#: src/main-ui/main_ui_base.cpp:1707 src/main-ui/main_ui_base.cpp:2071
+#: src/main-ui/main_ui_base.cpp:3007
 msgid "00000.0000000"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:457 src/main-ui/main_ui_base.cpp:648
-#: src/main-ui/main_ui_base.cpp:671 src/main-ui/main_ui_base.cpp:902
-#: src/main-ui/main_ui_base.cpp:912 src/main-ui/main_ui_base.cpp:1715
-#: src/main-ui/main_ui_base.cpp:1771 src/main-ui/main_ui_base.cpp:2071
-#: src/main-ui/main_ui_base.cpp:3015 src/main-ui/main_ui_base.cpp:3483
+#: src/main-ui/main_ui_base.cpp:460 src/main-ui/main_ui_base.cpp:651
+#: src/main-ui/main_ui_base.cpp:674 src/main-ui/main_ui_base.cpp:905
+#: src/main-ui/main_ui_base.cpp:915 src/main-ui/main_ui_base.cpp:1718
+#: src/main-ui/main_ui_base.cpp:1774 src/main-ui/main_ui_base.cpp:2074
+#: src/main-ui/main_ui_base.cpp:3018
 msgid "E"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:457 src/main-ui/main_ui_base.cpp:648
-#: src/main-ui/main_ui_base.cpp:902 src/main-ui/main_ui_base.cpp:912
-#: src/main-ui/main_ui_base.cpp:1517 src/main-ui/main_ui_base.cpp:1555
-#: src/main-ui/main_ui_base.cpp:1715 src/main-ui/main_ui_base.cpp:1771
-#: src/main-ui/main_ui_base.cpp:2071 src/main-ui/main_ui_base.cpp:3015
-#: src/main-ui/main_ui_base.cpp:3483
+#: src/main-ui/main_ui_base.cpp:460 src/main-ui/main_ui_base.cpp:651
+#: src/main-ui/main_ui_base.cpp:905 src/main-ui/main_ui_base.cpp:915
+#: src/main-ui/main_ui_base.cpp:1520 src/main-ui/main_ui_base.cpp:1558
+#: src/main-ui/main_ui_base.cpp:1718 src/main-ui/main_ui_base.cpp:1774
+#: src/main-ui/main_ui_base.cpp:2074 src/main-ui/main_ui_base.cpp:3018
 msgid "W"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:474
+#: src/main-ui/main_ui_base.cpp:477
 msgid "Satellites"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:478
+#: src/main-ui/main_ui_base.cpp:481
 msgid "HDOP"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:482
+#: src/main-ui/main_ui_base.cpp:485
 msgid "Altitude"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:489
+#: src/main-ui/main_ui_base.cpp:492
 msgid "Geoid separation"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:531 src/main-ui/main_ui_base.cpp:616
-#: src/main-ui/main_ui_base.cpp:2983
+#: src/main-ui/main_ui_base.cpp:534 src/main-ui/main_ui_base.cpp:619
+#: src/main-ui/main_ui_base.cpp:2986
 msgid "GLL"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:597 src/main-ui/main_ui_base.cpp:1369
-#: src/main-ui/main_ui_base.cpp:1476 src/main-ui/main_ui_base.cpp:1637
-#: src/main-ui/main_ui_base.cpp:1833 src/main-ui/main_ui_base.cpp:1918
-#: src/main-ui/main_ui_base.cpp:1926 src/main-ui/main_ui_base.cpp:2093
-#: src/main-ui/main_ui_base.cpp:2267
+#: src/main-ui/main_ui_base.cpp:600 src/main-ui/main_ui_base.cpp:1372
+#: src/main-ui/main_ui_base.cpp:1479 src/main-ui/main_ui_base.cpp:1640
+#: src/main-ui/main_ui_base.cpp:1836 src/main-ui/main_ui_base.cpp:1921
+#: src/main-ui/main_ui_base.cpp:1929 src/main-ui/main_ui_base.cpp:2096
+#: src/main-ui/main_ui_base.cpp:2270
 msgid "Status"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:601 src/main-ui/main_ui_base.cpp:2172
-#: src/main-ui/main_ui_base.cpp:2708
+#: src/main-ui/main_ui_base.cpp:604 src/main-ui/main_ui_base.cpp:2175
+#: src/main-ui/main_ui_base.cpp:2711
 msgid "Mode"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:665 src/main-ui/main_ui_base.cpp:671
-#: src/main-ui/main_ui_base.cpp:1408 src/main-ui/main_ui_base.cpp:1507
-#: src/main-ui/main_ui_base.cpp:1681 src/main-ui/main_ui_base.cpp:1856
-#: src/main-ui/main_ui_base.cpp:1949 src/main-ui/main_ui_base.cpp:1959
-#: src/main-ui/main_ui_base.cpp:2195 src/main-ui/main_ui_base.cpp:2296
-#: src/main-ui/main_ui_base.cpp:2375 src/main-ui/main_ui_base.cpp:2759
-#: src/main-ui/main_ui_base.cpp:3138
+#: src/main-ui/main_ui_base.cpp:668 src/main-ui/main_ui_base.cpp:674
+#: src/main-ui/main_ui_base.cpp:1411 src/main-ui/main_ui_base.cpp:1510
+#: src/main-ui/main_ui_base.cpp:1684 src/main-ui/main_ui_base.cpp:1859
+#: src/main-ui/main_ui_base.cpp:1952 src/main-ui/main_ui_base.cpp:1962
+#: src/main-ui/main_ui_base.cpp:2198 src/main-ui/main_ui_base.cpp:2299
+#: src/main-ui/main_ui_base.cpp:2378 src/main-ui/main_ui_base.cpp:2762
+#: src/main-ui/main_ui_base.cpp:3141
 msgid "A"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:665 src/main-ui/main_ui_base.cpp:1408
-#: src/main-ui/main_ui_base.cpp:1507 src/main-ui/main_ui_base.cpp:1681
-#: src/main-ui/main_ui_base.cpp:1856 src/main-ui/main_ui_base.cpp:1949
-#: src/main-ui/main_ui_base.cpp:1959 src/main-ui/main_ui_base.cpp:2195
-#: src/main-ui/main_ui_base.cpp:2759
+#: src/main-ui/main_ui_base.cpp:668 src/main-ui/main_ui_base.cpp:1411
+#: src/main-ui/main_ui_base.cpp:1510 src/main-ui/main_ui_base.cpp:1684
+#: src/main-ui/main_ui_base.cpp:1859 src/main-ui/main_ui_base.cpp:1952
+#: src/main-ui/main_ui_base.cpp:1962 src/main-ui/main_ui_base.cpp:2198
+#: src/main-ui/main_ui_base.cpp:2762
 msgid "V"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:671
+#: src/main-ui/main_ui_base.cpp:674
 msgid "D"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:689 src/main-ui/main_ui_base.cpp:760
+#: src/main-ui/main_ui_base.cpp:692 src/main-ui/main_ui_base.cpp:763
 msgid "GSV"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:735
+#: src/main-ui/main_ui_base.cpp:738
 msgid "Total sentences"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:741
+#: src/main-ui/main_ui_base.cpp:744
 msgid "Sentence ID"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:745
+#: src/main-ui/main_ui_base.cpp:748
 msgid "Satellites in view"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:781
+#: src/main-ui/main_ui_base.cpp:784
 msgid "PRN"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:785
+#: src/main-ui/main_ui_base.cpp:788
 msgid "Elevation"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:789
+#: src/main-ui/main_ui_base.cpp:792
 msgid "Azimuth"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:793
+#: src/main-ui/main_ui_base.cpp:796
 msgid "SNR"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:821 src/main-ui/main_ui_base.cpp:890
+#: src/main-ui/main_ui_base.cpp:824 src/main-ui/main_ui_base.cpp:893
 msgid "HDG"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:861 src/main-ui/main_ui_base.cpp:970
-#: src/main-ui/main_ui_base.cpp:1058 src/main-ui/main_ui_base.cpp:1472
-#: src/main-ui/main_ui_base.cpp:2168 src/main-ui/main_ui_base.cpp:2344
-#: src/main-ui/main_ui_base.cpp:2545 src/main-ui/main_ui_base.cpp:2552
+#: src/main-ui/main_ui_base.cpp:864 src/main-ui/main_ui_base.cpp:973
+#: src/main-ui/main_ui_base.cpp:1061 src/main-ui/main_ui_base.cpp:1475
+#: src/main-ui/main_ui_base.cpp:2171 src/main-ui/main_ui_base.cpp:2347
+#: src/main-ui/main_ui_base.cpp:2548 src/main-ui/main_ui_base.cpp:2555
 msgid "Heading"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:865
+#: src/main-ui/main_ui_base.cpp:868
 msgid "Deviation"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:872
+#: src/main-ui/main_ui_base.cpp:875
 msgid "Variation"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:879 src/main-ui/main_ui_base.cpp:977
-#: src/main-ui/main_ui_base.cpp:1065
+#: src/main-ui/main_ui_base.cpp:882 src/main-ui/main_ui_base.cpp:980
+#: src/main-ui/main_ui_base.cpp:1068
 msgid "HC"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:930 src/main-ui/main_ui_base.cpp:988
+#: src/main-ui/main_ui_base.cpp:933 src/main-ui/main_ui_base.cpp:991
 msgid "HDM"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1012 src/main-ui/main_ui_base.cpp:1076
+#: src/main-ui/main_ui_base.cpp:1015 src/main-ui/main_ui_base.cpp:1079
 msgid "HDT"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1084 src/main-ui/main_ui_base.cpp:1275
-#: src/main-ui/main_ui_base.cpp:1392 src/main-ui/main_ui_base.cpp:2106
-#: src/main-ui/main_ui_base.cpp:2473 src/main-ui/main_ui_base.cpp:2592
-#: src/main-ui/main_ui_base.cpp:2731
+#: src/main-ui/main_ui_base.cpp:1087 src/main-ui/main_ui_base.cpp:1278
+#: src/main-ui/main_ui_base.cpp:1395 src/main-ui/main_ui_base.cpp:2109
+#: src/main-ui/main_ui_base.cpp:2476 src/main-ui/main_ui_base.cpp:2595
+#: src/main-ui/main_ui_base.cpp:2734
 msgid "T"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1106 src/main-ui/main_ui_base.cpp:1164
+#: src/main-ui/main_ui_base.cpp:1109 src/main-ui/main_ui_base.cpp:1167
 msgid "MTW"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1146 src/main-ui/main_ui_base.cpp:3149
+#: src/main-ui/main_ui_base.cpp:1149 src/main-ui/main_ui_base.cpp:3152
 msgid "Temperature"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1153 src/main-ui/main_ui_base.cpp:1256
-#: src/main-ui/main_ui_base.cpp:1373
+#: src/main-ui/main_ui_base.cpp:1156 src/main-ui/main_ui_base.cpp:1259
+#: src/main-ui/main_ui_base.cpp:1376
 msgid "WI"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1172
+#: src/main-ui/main_ui_base.cpp:1175
 msgid "C"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1188 src/main-ui/main_ui_base.cpp:1267
+#: src/main-ui/main_ui_base.cpp:1191 src/main-ui/main_ui_base.cpp:1270
 msgid "MWD"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1228 src/main-ui/main_ui_base.cpp:1235
-#: src/main-ui/main_ui_base.cpp:2433 src/main-ui/main_ui_base.cpp:2440
-#: src/main-ui/main_ui_base.cpp:3451
+#: src/main-ui/main_ui_base.cpp:1231 src/main-ui/main_ui_base.cpp:1238
+#: src/main-ui/main_ui_base.cpp:2436 src/main-ui/main_ui_base.cpp:2443
 msgid "Direction"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1242 src/main-ui/main_ui_base.cpp:1249
-#: src/main-ui/main_ui_base.cpp:1362 src/main-ui/main_ui_base.cpp:1531
-#: src/main-ui/main_ui_base.cpp:2824 src/main-ui/main_ui_base.cpp:2831
-#: src/main-ui/main_ui_base.cpp:2838
+#: src/main-ui/main_ui_base.cpp:1245 src/main-ui/main_ui_base.cpp:1252
+#: src/main-ui/main_ui_base.cpp:1365 src/main-ui/main_ui_base.cpp:1534
+#: src/main-ui/main_ui_base.cpp:2827 src/main-ui/main_ui_base.cpp:2834
+#: src/main-ui/main_ui_base.cpp:2841
 msgid "Speed"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1315 src/main-ui/main_ui_base.cpp:1384
+#: src/main-ui/main_ui_base.cpp:1318 src/main-ui/main_ui_base.cpp:1387
 msgid "MWV"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1355 src/main-ui/main_ui_base.cpp:2817
+#: src/main-ui/main_ui_base.cpp:1358 src/main-ui/main_ui_base.cpp:2820
 msgid "Angle"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1392 src/main-ui/main_ui_base.cpp:1517
-#: src/main-ui/main_ui_base.cpp:1555 src/main-ui/main_ui_base.cpp:2112
-#: src/main-ui/main_ui_base.cpp:2864
+#: src/main-ui/main_ui_base.cpp:1395 src/main-ui/main_ui_base.cpp:1520
+#: src/main-ui/main_ui_base.cpp:1558 src/main-ui/main_ui_base.cpp:2115
+#: src/main-ui/main_ui_base.cpp:2867
 msgid "R"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1402 src/main-ui/main_ui_base.cpp:1569
-#: src/main-ui/main_ui_base.cpp:2616 src/main-ui/main_ui_base.cpp:2755
-#: src/main-ui/main_ui_base.cpp:2890
+#: src/main-ui/main_ui_base.cpp:1405 src/main-ui/main_ui_base.cpp:1572
+#: src/main-ui/main_ui_base.cpp:2619 src/main-ui/main_ui_base.cpp:2758
+#: src/main-ui/main_ui_base.cpp:2893
 msgid "K"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1426 src/main-ui/main_ui_base.cpp:1499
+#: src/main-ui/main_ui_base.cpp:1429 src/main-ui/main_ui_base.cpp:1502
 msgid "OSD"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1480
+#: src/main-ui/main_ui_base.cpp:1483
 msgid "Course"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1484 src/main-ui/main_ui_base.cpp:1535
+#: src/main-ui/main_ui_base.cpp:1487 src/main-ui/main_ui_base.cpp:1538
 msgid "Reference"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1488
+#: src/main-ui/main_ui_base.cpp:1491
 msgid "RA"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1517 src/main-ui/main_ui_base.cpp:1555
-#: src/main-ui/main_ui_base.cpp:2296 src/main-ui/main_ui_base.cpp:2375
+#: src/main-ui/main_ui_base.cpp:1520 src/main-ui/main_ui_base.cpp:1558
+#: src/main-ui/main_ui_base.cpp:2299 src/main-ui/main_ui_base.cpp:2378
 msgid "B"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1517 src/main-ui/main_ui_base.cpp:1555
+#: src/main-ui/main_ui_base.cpp:1520 src/main-ui/main_ui_base.cpp:1558
 msgid "P"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1539
+#: src/main-ui/main_ui_base.cpp:1542
 msgid "Drift angle"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1543
+#: src/main-ui/main_ui_base.cpp:1546
 msgid "Drift speed"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1547
+#: src/main-ui/main_ui_base.cpp:1550
 msgid "Speed unit"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1587 src/main-ui/main_ui_base.cpp:1666
+#: src/main-ui/main_ui_base.cpp:1590 src/main-ui/main_ui_base.cpp:1669
 msgid "RMC"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1729 src/main-ui/main_ui_base.cpp:2275
-#: src/main-ui/main_ui_base.cpp:2694 src/main-ui/main_ui_base.cpp:2701
+#: src/main-ui/main_ui_base.cpp:1732 src/main-ui/main_ui_base.cpp:2278
+#: src/main-ui/main_ui_base.cpp:2697 src/main-ui/main_ui_base.cpp:2704
 msgid "SOG"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1733 src/main-ui/main_ui_base.cpp:2340
-#: src/main-ui/main_ui_base.cpp:2678 src/main-ui/main_ui_base.cpp:2687
+#: src/main-ui/main_ui_base.cpp:1736 src/main-ui/main_ui_base.cpp:2343
+#: src/main-ui/main_ui_base.cpp:2681 src/main-ui/main_ui_base.cpp:2690
 msgid "COG"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1737
+#: src/main-ui/main_ui_base.cpp:1740
 msgid "Date"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1741
+#: src/main-ui/main_ui_base.cpp:1744
 msgid "Mag var."
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1756
+#: src/main-ui/main_ui_base.cpp:1759
 msgid "010126"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1789 src/main-ui/main_ui_base.cpp:1848
+#: src/main-ui/main_ui_base.cpp:1792 src/main-ui/main_ui_base.cpp:1851
 msgid "ROT"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1829
+#: src/main-ui/main_ui_base.cpp:1832
 msgid "Rate of turn"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1837 src/main-ui/main_ui_base.cpp:2176
+#: src/main-ui/main_ui_base.cpp:1840 src/main-ui/main_ui_base.cpp:2179
 msgid "HE"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1874 src/main-ui/main_ui_base.cpp:1941
+#: src/main-ui/main_ui_base.cpp:1877 src/main-ui/main_ui_base.cpp:1944
 msgid "RSA"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1914
+#: src/main-ui/main_ui_base.cpp:1917
 msgid "Starboard"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1922
+#: src/main-ui/main_ui_base.cpp:1925
 msgid "Port"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1930 src/main-ui/main_ui_base.cpp:2454
-#: src/main-ui/main_ui_base.cpp:2845 src/main-ui/main_ui_base.cpp:3108
+#: src/main-ui/main_ui_base.cpp:1933 src/main-ui/main_ui_base.cpp:2457
+#: src/main-ui/main_ui_base.cpp:2848 src/main-ui/main_ui_base.cpp:3111
 msgid "II"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1977 src/main-ui/main_ui_base.cpp:2052
+#: src/main-ui/main_ui_base.cpp:1980 src/main-ui/main_ui_base.cpp:2055
 msgid "TLL"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2023 src/main-ui/main_ui_base.cpp:3100
+#: src/main-ui/main_ui_base.cpp:2026 src/main-ui/main_ui_base.cpp:3103
 msgid "ID"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2041
+#: src/main-ui/main_ui_base.cpp:2044
 msgid "IP"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2085
+#: src/main-ui/main_ui_base.cpp:2088
 msgid "Name"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2089
+#: src/main-ui/main_ui_base.cpp:2092
 msgid "UTC Time"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2100
+#: src/main-ui/main_ui_base.cpp:2103
 msgid "DUMMY"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2106
+#: src/main-ui/main_ui_base.cpp:2109
 msgid "Q"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2106 src/main-ui/main_ui_base.cpp:2864
+#: src/main-ui/main_ui_base.cpp:2109 src/main-ui/main_ui_base.cpp:2867
 msgid "L"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2128 src/main-ui/main_ui_base.cpp:2187
+#: src/main-ui/main_ui_base.cpp:2131 src/main-ui/main_ui_base.cpp:2190
 msgid "THS"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2213
+#: src/main-ui/main_ui_base.cpp:2216
 msgid "VDM/O"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2259
+#: src/main-ui/main_ui_base.cpp:2262
 msgid "Class"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2263
+#: src/main-ui/main_ui_base.cpp:2266
 msgid "MMSI"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2271
+#: src/main-ui/main_ui_base.cpp:2274
 msgid "Turn rate"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2279
+#: src/main-ui/main_ui_base.cpp:2282
 msgid "AI"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2290
+#: src/main-ui/main_ui_base.cpp:2293
 msgid "VDM"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2290
+#: src/main-ui/main_ui_base.cpp:2293
 msgid "VDO"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2303
+#: src/main-ui/main_ui_base.cpp:2306
 msgid "Custom"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2304
+#: src/main-ui/main_ui_base.cpp:2307
 msgid "227 (French ship)"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2305
+#: src/main-ui/main_ui_base.cpp:2308
 msgid "970 (SART)"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2306
+#: src/main-ui/main_ui_base.cpp:2309
 msgid "972 (MOB)"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2307
+#: src/main-ui/main_ui_base.cpp:2310
 msgid "974 (EPIRB)"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2308
+#: src/main-ui/main_ui_base.cpp:2311
 msgid "111 (SAR aircraft)"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2310
+#: src/main-ui/main_ui_base.cpp:2313
 msgid "Select or type MMSI (digits only)"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2348
+#: src/main-ui/main_ui_base.cpp:2351
 msgid "Maneuver"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2352
+#: src/main-ui/main_ui_base.cpp:2355
 msgid "Channel"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2393 src/main-ui/main_ui_base.cpp:2465
+#: src/main-ui/main_ui_base.cpp:2396 src/main-ui/main_ui_base.cpp:2468
 msgid "VDR"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2447
+#: src/main-ui/main_ui_base.cpp:2450
 msgid "Current speed"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2505 src/main-ui/main_ui_base.cpp:2584
+#: src/main-ui/main_ui_base.cpp:2508 src/main-ui/main_ui_base.cpp:2587
 msgid "VHW"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2559 src/main-ui/main_ui_base.cpp:2566
+#: src/main-ui/main_ui_base.cpp:2562 src/main-ui/main_ui_base.cpp:2569
 msgid "STW"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2573
+#: src/main-ui/main_ui_base.cpp:2576
 msgid "VW"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2632 src/main-ui/main_ui_base.cpp:2723
+#: src/main-ui/main_ui_base.cpp:2635 src/main-ui/main_ui_base.cpp:2726
 msgid "VTG"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2777 src/main-ui/main_ui_base.cpp:2856
+#: src/main-ui/main_ui_base.cpp:2780 src/main-ui/main_ui_base.cpp:2859
 msgid "VWR"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2906
+#: src/main-ui/main_ui_base.cpp:2909
 msgid "WPL"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2968
+#: src/main-ui/main_ui_base.cpp:2971
 msgid "Waypoint name"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3021
+#: src/main-ui/main_ui_base.cpp:3024
 msgid "WP099"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3036 src/main-ui/main_ui_base.cpp:3119
+#: src/main-ui/main_ui_base.cpp:3039 src/main-ui/main_ui_base.cpp:3122
 msgid "XDR"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3082
+#: src/main-ui/main_ui_base.cpp:3085
 msgid "Type"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3088
+#: src/main-ui/main_ui_base.cpp:3091
 msgid "Data"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3092
+#: src/main-ui/main_ui_base.cpp:3095
 msgid "Unit"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3096
+#: src/main-ui/main_ui_base.cpp:3099
 msgid "Category"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3104
+#: src/main-ui/main_ui_base.cpp:3107
 msgid "#"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3123
+#: src/main-ui/main_ui_base.cpp:3126
 msgid "I"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3149
+#: src/main-ui/main_ui_base.cpp:3152
 msgid "Current"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3149
+#: src/main-ui/main_ui_base.cpp:3152
 msgid "Displacement (Angular)"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3149
+#: src/main-ui/main_ui_base.cpp:3152
 msgid "Displacement (Linear)"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3149
+#: src/main-ui/main_ui_base.cpp:3152
 msgid "Flow rate"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3149
+#: src/main-ui/main_ui_base.cpp:3152
 msgid "Fluid level"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3149
+#: src/main-ui/main_ui_base.cpp:3152
 msgid "Force"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3149
+#: src/main-ui/main_ui_base.cpp:3152
 msgid "Frequency"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3149
+#: src/main-ui/main_ui_base.cpp:3152
 msgid "Generic"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3149
+#: src/main-ui/main_ui_base.cpp:3152
 msgid "Humidity"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3149
+#: src/main-ui/main_ui_base.cpp:3152
 msgid "Humidity (absolute)"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3149 src/main-ui/main_ui_derived.cpp:578
+#: src/main-ui/main_ui_base.cpp:3152 src/main-ui/main_ui_derived.cpp:578
 msgid "Pressure"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3149
+#: src/main-ui/main_ui_base.cpp:3152
 msgid "Salinity"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3149
+#: src/main-ui/main_ui_base.cpp:3152
 msgid "Switch / Valve"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3149
+#: src/main-ui/main_ui_base.cpp:3152
 msgid "Tachometer"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3149
+#: src/main-ui/main_ui_base.cpp:3152
 msgid "Voltage"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3149
+#: src/main-ui/main_ui_base.cpp:3152
 msgid "Volume"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3173 src/main-ui/main_ui_base.cpp:3256
+#: src/main-ui/main_ui_base.cpp:3176 src/main-ui/main_ui_base.cpp:3259
 msgid "ZDA"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3225
+#: src/main-ui/main_ui_base.cpp:3228
 msgid "Day"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3229
+#: src/main-ui/main_ui_base.cpp:3232
 msgid "Month"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3233
+#: src/main-ui/main_ui_base.cpp:3236
 msgid "Year"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3237
+#: src/main-ui/main_ui_base.cpp:3240
 msgid "Hour offset"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3241
+#: src/main-ui/main_ui_base.cpp:3244
 msgid "Minutes offset"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3313
+#: src/main-ui/main_ui_base.cpp:3316
 msgid "Check all"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3349
+#: src/main-ui/main_ui_base.cpp:3352
 msgid "Help"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3362
+#: src/main-ui/main_ui_base.cpp:3365
 msgid "Sentence Builder"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3381
+#: src/main-ui/main_ui_base.cpp:3387
 msgid "Control vessel:"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3385 src/menu-entry/menuDialog_ui_base.cpp:22
+#: src/main-ui/main_ui_base.cpp:3391 src/main-ui/main_ui_base.cpp:3429
+#: src/menu-entry/menuDialog_ui_base.cpp:22
 msgid "Own ship"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3385 src/menu-entry/menuDialog_ui_base.cpp:25
-msgid "AIS target"
+#: src/main-ui/main_ui_base.cpp:3406
+msgid "New AIS target type:"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3394
-msgid "AIS type:"
-msgstr ""
-
-#: src/main-ui/main_ui_base.cpp:3398
+#: src/main-ui/main_ui_base.cpp:3410
 msgid "ARPA"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3398
+#: src/main-ui/main_ui_base.cpp:3410
 msgid "class A"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3398
+#: src/main-ui/main_ui_base.cpp:3410
 msgid "class B"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3407
+#: src/main-ui/main_ui_base.cpp:3425
 msgid "NMEA output:"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3411
-msgid "Controlled vessel"
+#: src/main-ui/main_ui_base.cpp:3429
+msgid "All"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3411
-msgid "Both"
+#: src/main-ui/main_ui_base.cpp:3429 src/menu-entry/menuDialog_ui_base.cpp:32
+msgid "AIS targets"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3443
-msgid "Degrees"
-msgstr ""
-
-#: src/main-ui/main_ui_base.cpp:3447
-msgid "Minutes"
-msgstr ""
-
-#: src/main-ui/main_ui_base.cpp:3455 src/main-ui/main_ui_base.cpp:3594
+#: src/main-ui/main_ui_base.cpp:3459
 msgid "Latitude:"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3472 src/main-ui/main_ui_base.cpp:3615
-msgid "Longitude:"
-msgstr ""
-
-#: src/main-ui/main_ui_base.cpp:3495
-msgid ""
-"Update\n"
-"position"
-msgstr ""
-
-#: src/main-ui/main_ui_base.cpp:3519
-msgid "Heading:"
-msgstr ""
-
-#: src/main-ui/main_ui_base.cpp:3523 src/main-ui/main_ui_base.cpp:3544
-#: src/main-ui/main_ui_base.cpp:3619
-msgid "000"
-msgstr ""
-
-#: src/main-ui/main_ui_base.cpp:3527 src/main-ui/main_ui_base.cpp:3548
-#: src/main-ui/main_ui_base.cpp:3662
-msgid "deg"
-msgstr ""
-
-#: src/main-ui/main_ui_base.cpp:3540
-msgid "Course:"
-msgstr ""
-
-#: src/main-ui/main_ui_base.cpp:3561
-msgid "Speed:"
-msgstr ""
-
-#: src/main-ui/main_ui_base.cpp:3565 src/main-ui/main_ui_base.cpp:3658
-#: src/main-ui/main_ui_base.cpp:3716
-msgid "0"
-msgstr ""
-
-#: src/main-ui/main_ui_base.cpp:3569
-msgid "knots"
-msgstr ""
-
-#: src/main-ui/main_ui_base.cpp:3598
+#: src/main-ui/main_ui_base.cpp:3463
 msgid "00"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3602 src/main-ui/main_ui_base.cpp:3623
+#: src/main-ui/main_ui_base.cpp:3467 src/main-ui/main_ui_base.cpp:3488
 msgid "00.0000"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3654
+#: src/main-ui/main_ui_base.cpp:3480
+msgid "Longitude:"
+msgstr ""
+
+#: src/main-ui/main_ui_base.cpp:3484 src/main-ui/main_ui_base.cpp:3514
+#: src/main-ui/main_ui_base.cpp:3535
+msgid "000"
+msgstr ""
+
+#: src/main-ui/main_ui_base.cpp:3510
+msgid "Heading:"
+msgstr ""
+
+#: src/main-ui/main_ui_base.cpp:3518 src/main-ui/main_ui_base.cpp:3539
+#: src/main-ui/main_ui_base.cpp:3602
+msgid "deg"
+msgstr ""
+
+#: src/main-ui/main_ui_base.cpp:3531
+msgid "Course:"
+msgstr ""
+
+#: src/main-ui/main_ui_base.cpp:3552
+msgid "Speed:"
+msgstr ""
+
+#: src/main-ui/main_ui_base.cpp:3556 src/main-ui/main_ui_base.cpp:3598
+#: src/main-ui/main_ui_base.cpp:3656
+msgid "0"
+msgstr ""
+
+#: src/main-ui/main_ui_base.cpp:3560
+msgid "knots"
+msgstr ""
+
+#: src/main-ui/main_ui_base.cpp:3594
 msgid "Rudder angle:"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3678 src/main-ui/main_ui_base.cpp:3736
+#: src/main-ui/main_ui_base.cpp:3618 src/main-ui/main_ui_base.cpp:3676
 msgid "-"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3687 src/main-ui/main_ui_base.cpp:3745
+#: src/main-ui/main_ui_base.cpp:3627 src/main-ui/main_ui_base.cpp:3685
 msgid "+"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3697 src/main-ui/main_ui_base.cpp:3755
+#: src/main-ui/main_ui_base.cpp:3637 src/main-ui/main_ui_base.cpp:3695
 msgid "Reset"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3712
+#: src/main-ui/main_ui_base.cpp:3652
 msgid "Throttle:"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3720
+#: src/main-ui/main_ui_base.cpp:3660
 msgid "%"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3782 src/main-ui/main_ui_derived.cpp:112
-#: src/main-ui/main_ui_derived.cpp:1711
+#: src/main-ui/main_ui_base.cpp:3722 src/main-ui/main_ui_derived.cpp:112
+#: src/main-ui/main_ui_derived.cpp:1645
 msgid "START"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3790
+#: src/main-ui/main_ui_base.cpp:3730
 msgid "Send NMEA every"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3798
+#: src/main-ui/main_ui_base.cpp:3738
 msgid "second(s)"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3812 src/settings/settings_ui_base.cpp:34
+#: src/main-ui/main_ui_base.cpp:3752 src/settings/settings_ui_base.cpp:34
 msgid "Simulation"
 msgstr ""
 
-#: src/main-ui/main_ui_base.h:684
+#: src/main-ui/main_ui_base.h:669
 msgid "NMEA Generator Plugin"
 msgstr ""
 
@@ -1118,11 +1098,19 @@ msgstr ""
 msgid "Water"
 msgstr ""
 
-#: src/main-ui/main_ui_derived.cpp:1706
+#: src/main-ui/main_ui_derived.cpp:1640
 msgid "STOP"
 msgstr ""
 
-#: src/main-ui/main_ui_derived.h:47
+#: src/main-ui/main_ui_derived.cpp:1683
+msgid "No AIS targets available."
+msgstr ""
+
+#: src/main-ui/main_ui_derived.cpp:1684
+msgid "AIS Error"
+msgstr ""
+
+#: src/main-ui/main_ui_derived.h:51
 msgid "NmeaGenerator Plugin GUI"
 msgstr ""
 
@@ -1130,8 +1118,8 @@ msgstr ""
 msgid "Update position"
 msgstr ""
 
-#: src/menu-entry/menuDialog_ui_base.cpp:32
-msgid "Dummy AIS targets"
+#: src/menu-entry/menuDialog_ui_base.cpp:25
+msgid "AIS target"
 msgstr ""
 
 #: src/menu-entry/menuDialog_ui_base.cpp:37
@@ -1154,7 +1142,7 @@ msgstr ""
 msgid "NmeaGenerator..."
 msgstr ""
 
-#: src/plugin/nmeagenerator_plugin.cpp:240
+#: src/plugin/nmeagenerator_plugin.cpp:246
 msgid "NmeaGenerator Preferences"
 msgstr ""
 

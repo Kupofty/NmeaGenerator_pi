@@ -176,11 +176,13 @@ class DialogMainGui : public DialogMainGuiBase
     wxString createFromGuiVWR();
     wxString createFromGuiZDA();
 
+    void updateGuiSimValues();
+    void updateVessel(SimVessel& vessel, double dt, int intervalMs);
+
+  private:
     bool addAutoChecksum;
     std::vector<SectionItem> sbSizerListSentenceBuilder;
 
-    //Simulation
-    void updateGuiSimValues();
     VesselType controlledVessel = VesselType::OwnShip;
     SimVessel shipSimu;
     std::vector<SimVessel> aisTargetList;

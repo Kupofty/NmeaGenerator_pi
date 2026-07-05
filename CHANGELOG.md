@@ -9,7 +9,7 @@
 - Persistent storage of last simulation vessel position across sessions
 
 ### Removed
-- Manual position input for simulation vessels
+- Manual position input for simulation ship & AIS targets
 
 
 ###
