@@ -39,6 +39,7 @@ struct SimVessel
   int directionSign = 1;
   unsigned int mmsi = 0;
   aisType type = aisType::ClassB;
+  wxString name = "";
 };
 
 

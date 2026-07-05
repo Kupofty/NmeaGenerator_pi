@@ -1542,26 +1542,39 @@ void DialogMainGui::addAisTarget(double lat, double lon)
   v.lat = lat;
   v.lon = lon;
   v.mmsi = m_nextMmsi++;
+
+  wxString label = "";
   int aisType = m_choice_aisType->GetSelection();
   switch(aisType)
   {
     case 0:
+    {
       v.type = aisType::ARPA;
-      break;
 
-     case 1:
+      int id = v.mmsi % 100;
+      v.name = "DUMMY" +  wxString::Format("%02d", id);
+      label = "ARPA: " + v.name;
+      break;
+    }
+
+    case 1:
+    {
       v.type = aisType::ClassA;
-      break;
-
-     case 2:
-      v.type = aisType::ClassB;
+      label = wxString::Format("ClassA: %u", v.mmsi);
       break;
      }
+
+    case 2:
+     {
+      v.type = aisType::ClassB;
+      label = wxString::Format("ClassB: %u", v.mmsi);
+      break;
+     }
+  }
 
   aisTargetList.push_back(v);
 
   // Add to UI selector
-  wxString label = wxString::Format("AIS %u", v.mmsi);
   m_choice_controlledVessel->Append(label);
 
   wxCommandEvent dummy;
@@ -1646,15 +1659,9 @@ void DialogMainGui::OnSpinCtrlDouble_UpdateFreqTimerSim(wxSpinDoubleEvent& event
 //Update ship position to cursor position
 void DialogMainGui::updateSimStartPosition(VesselType type, double lat, double lon)
 {
-  SimVessel* vessel = nullptr;
+  SimVessel* vessel;
 
-  if (type == VesselType::OwnShip)
-  {
-    vessel = &shipSimu;
-    g_lastSimLatitude = lat;
-    g_lastSimLongitude = lon;
-  }
-  else if (type == VesselType::AisTarget)
+  if (type == VesselType::AisTarget)
   {
     if (!aisTargetList.empty())
     {
@@ -1673,12 +1680,19 @@ void DialogMainGui::updateSimStartPosition(VesselType type, double lat, double l
     else
     {
       wxMessageBox(
-          "No AIS targets available.",
-          "AIS Error",
+          _("No AIS targets available."),
+          _("AIS Error"),
           wxOK | wxICON_WARNING
           );
       return;
     }
+  }
+
+  else //OwnShip
+  {
+    vessel = &shipSimu;
+    g_lastSimLatitude = lat;
+    g_lastSimLongitude = lon;
   }
 
   vessel->lat = lat;
@@ -1774,8 +1788,7 @@ void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
         case aisType::ARPA:
         {
           int id = ais.mmsi % 100;
-          wxString name = "DUMMY" +  wxString::Format("%02d", id);
-          aisNmea = nmea::createTLL("II",  wxString::Format("%02d", id), latStr, latDir, lonStr, lonDir, name, timeStr, "T", "R");
+          aisNmea = nmea::createTLL("II",  wxString::Format("%02d", id), latStr, latDir, lonStr, lonDir, ais.name, timeStr, "T", "R");
           break;
         }
         case aisType::ClassA:
