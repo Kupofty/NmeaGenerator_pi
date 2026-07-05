@@ -1774,9 +1774,12 @@ void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
       switch(ais.type)
       {
         case aisType::ARPA:
-          aisNmea = nmea::createTLL("II",  wxString::Format("%d", ais.mmsi), latStr, latDir, lonStr, lonDir, "DUMMY", timeStr, "T", "R");
+        {
+          int id = ais.mmsi % 100;
+          wxString name = "DUMMY" +  wxString::Format("%02d", id);
+          aisNmea = nmea::createTLL("II",  wxString::Format("%02d", id), latStr, latDir, lonStr, lonDir, name, timeStr, "T", "R");
           break;
-
+        }
         case aisType::ClassA:
           aisNmea = ais::encodeType1_2_3("AI", "VDM", ais.mmsi, 0, ais.rudderAngle, fabs(ais.speed), ais.lat, ais.lon, ais.cog, ais.heading, 0, "A");
           break;
