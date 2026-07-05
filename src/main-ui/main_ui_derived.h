@@ -11,6 +11,9 @@
 
 class NmeaGeneratorPlugin;
 
+enum class VesselType { OwnShip, AisTarget };
+
+enum class aisType { ClassA, ClassB, ARPA };
 
 struct SectionItem
 {
@@ -35,9 +38,9 @@ struct SimVessel
   double rudderAngle = 0;
   int directionSign = 1;
   unsigned int mmsi = 0;
+  aisType type = aisType::ClassB;
 };
 
-enum class VesselType { OwnShip, AisTarget };
 
 
 // Main class

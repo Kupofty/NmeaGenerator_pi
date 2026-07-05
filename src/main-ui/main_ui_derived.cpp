@@ -1472,11 +1472,14 @@ SimVessel* DialogMainGui::getControlledVessel()
 {
   if (controlledVessel == VesselType::OwnShip)
     return &shipSimu;
+  else
+  {
+    if (!aisTargetList.empty())
+      return &aisTargetList.back();
+    else
+      return nullptr;
+  }
 
-  if (!aisTargetList.empty())
-    return &aisTargetList.back();
-
-  return nullptr;
 }
 
 void DialogMainGui::OnChoice_controlledVesselSimChanged(wxCommandEvent& event)
@@ -1506,7 +1509,7 @@ void DialogMainGui::OnChoice_controlledVesselSimChanged(wxCommandEvent& event)
 }
 
 
-//Dummy AIS targets
+//AIS targets list
 void DialogMainGui::addAisTarget(double lat, double lon)
 {
   SimVessel v;
@@ -1514,19 +1517,47 @@ void DialogMainGui::addAisTarget(double lat, double lon)
   v.lon = lon;
   v.mmsi = ++m_nextMmsi;
 
+  int aisType = m_choice_aisType->GetSelection();
+  switch(aisType)
+  {
+    case 0:
+      v.type = aisType::ARPA;
+      break;
+
+     case 1:
+      v.type = aisType::ClassA;
+      break;
+
+     case 2:
+      v.type = aisType::ClassB;
+      break;
+     }
+
   aisTargetList.push_back(v);
+
+  wxCommandEvent dummy;
+  OnChoice_controlledVesselSimChanged(dummy);
 }
 
 void DialogMainGui::removeLastAisTarget()
 {
+  if (aisTargetList.empty())
+    return;
+
   aisTargetList.pop_back();
   --m_nextMmsi;
+
+  wxCommandEvent dummy;
+  OnChoice_controlledVesselSimChanged(dummy);
 }
 
 void DialogMainGui::clearAisTargets()
 {
   aisTargetList.clear();
   m_nextMmsi = g_aisMMSI;
+
+  wxCommandEvent dummy;
+  OnChoice_controlledVesselSimChanged(dummy);
 }
 
 
@@ -1534,14 +1565,21 @@ void DialogMainGui::clearAisTargets()
 void DialogMainGui::updateSimStartPosition(VesselType type, double lat, double lon)
 {
   SimVessel* vessel = nullptr;
+
   if(type == VesselType::OwnShip)
     vessel = &shipSimu;
 
   else
   {
     if (!aisTargetList.empty())
-    {
       vessel = &aisTargetList.back();
+    else
+    {
+      wxMessageBox(
+          "There are no AIS targets in the list.",
+          "No AIS Target",
+          wxOK | wxICON_INFORMATION
+          );
       return;
     }
   }
@@ -1627,36 +1665,21 @@ void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
       wxString latStr = utils::toNMEA_lat(fabs(ais.lat));
       wxString lonStr = utils::toNMEA_lon(fabs(ais.lon));
 
-      /*wxString aisNmea;
-      int aisType = m_choice_aisType->GetSelection();
-      switch(aisType)
+      wxString aisNmea;
+      switch(ais.type)
       {
-        //TLL : ARPA
-        case 0:
-          aisNmea = nmea::createTLL("II", "99", latStr, latDir, lonStr, lonDir, "DUMMY", timeStr, "T", "R");
+        case aisType::ARPA:
+          aisNmea = nmea::createTLL("II",  wxString::Format("%d", ais.mmsi), latStr, latDir, lonStr, lonDir, "DUMMY", timeStr, "T", "R");
           break;
 
-                  //VDM : Class A (type 1)
-        case 1:
-          aisNmea = ais::encodeType1_2_3("AI", "VDM", g_aisMMSI, 0, aisSimu.rudderAngle, fabs(aisSimu.speed), aisSimu.lat, aisSimu.lon, aisSimu.cog, aisSimu.heading, 0, "A");
+        case aisType::ClassA:
+          aisNmea = ais::encodeType1_2_3("AI", "VDM", ais.mmsi, 0, ais.rudderAngle, fabs(ais.speed), ais.lat, ais.lon, ais.cog, ais.heading, 0, "A");
           break;
 
-                  //VDM : Class B (type 18)
-        case 2:
-          aisNmea = ais::encodeType18("AI", "VDM", g_aisMMSI, fabs(aisSimu.speed), aisSimu.lat, aisSimu.lon, aisSimu.cog, aisSimu.heading, "A");
+        case aisType::ClassB:
+          aisNmea = ais::encodeType18("AI", "VDM", ais.mmsi, fabs(ais.speed), ais.lat, ais.lon, ais.cog, ais.heading, "A");
           break;
-      }*/
-
-      wxString aisNmea = ais::encodeType18(
-          "AI", "VDM",
-          ais.mmsi,
-          fabs(ais.speed),
-          ais.lat,
-          ais.lon,
-          ais.cog,
-          ais.heading,
-          "A"
-          );
+      }
 
       sendNmeaToOCPN(aisNmea);
     }
@@ -1708,6 +1731,7 @@ void DialogMainGui::OnSpinCtrlDouble_UpdateFreqTimerSim(wxSpinDoubleEvent& event
 }
 
 
+//Update control sliders
 void DialogMainGui::OnScroll_UpdateThrottleSim(wxScrollEvent& event)
 {
   double throttle = m_slider_throttleSim->GetValue();
