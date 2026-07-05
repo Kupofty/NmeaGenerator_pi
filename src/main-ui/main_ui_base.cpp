@@ -3391,7 +3391,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	bSizer_shipType->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_staticText214 = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("AIS type:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText214 = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("AIS type of\nnew target:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText214->Wrap( -1 );
 	bSizer_shipType->Add( m_staticText214, 0, wxALIGN_CENTER|wxALL, 5 );
 

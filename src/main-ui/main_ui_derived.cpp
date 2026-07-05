@@ -1475,10 +1475,9 @@ SimVessel* DialogMainGui::getControlledVessel()
 
   if (controlledVessel == VesselType::AisTarget)
   {
-    if (m_selectedAisIndex >= 0 &&
-        m_selectedAisIndex < (int)aisTargetList.size())
+    if (m_selectedAisIndex >= 0 && m_selectedAisIndex < (int)aisTargetList.size())
     {
-      return &aisTargetList[m_selectedAisIndex];
+      return &aisTargetList[m_selectedAisIndex]; //return AIS target at index
     }
   }
 
@@ -1489,11 +1488,14 @@ void DialogMainGui::OnChoice_controlledVesselSimChanged(wxCommandEvent& event)
 {
   int sel = m_choice_controlledVessel->GetSelection();
 
+  //Own ship
   if (sel == 0)
   {
     controlledVessel = VesselType::OwnShip;
     m_selectedAisIndex = -1;
   }
+
+  //AIS target in list
   else
   {
     controlledVessel = VesselType::AisTarget;
@@ -1507,21 +1509,25 @@ void DialogMainGui::updateGuiSimValues()
 {
   SimVessel* vessel = getControlledVessel();
 
+  //Heading & COG
   m_staticText_headingSim->SetLabel(wxString::Format("%.0f", vessel->heading));
   m_staticText_cogSim->SetLabel(wxString::Format("%.0f", vessel->cog ));
 
+  //Position
   DegMin dm = utils::toDegMin(vessel->lat, vessel->lon);
   m_staticText_latDegSim->SetLabel(wxString::Format("%d", dm.latDeg));
   m_staticText_latMinSim->SetLabel(wxString::Format("%.4f", dm.latMin));
   m_staticText_lonDegSim->SetLabel(wxString::Format("%d", dm.lonDeg));
   m_staticText_lonMinSim->SetLabel(wxString::Format("%.4f", dm.lonMin));
 
+  //Throttle & Speed
   m_slider_throttleSim->SetValue(vessel->throttle);
   wxString throttleStr = wxString::Format("%.0f", vessel->speed);
   m_staticText_throttleSim->SetLabel(throttleStr);
   wxString speedStr = wxString::Format("%.0f", fabs(vessel->speed));
   m_staticText_speedSim->SetLabel(speedStr);
 
+  //Rudder
   m_slider_rudderSim->SetValue(vessel->rudderAngle);
   wxString rudderStr = wxString::Format("%.0f", vessel->rudderAngle);
   m_staticText_rudderAngleSim->SetLabel(rudderStr);
@@ -1531,11 +1537,11 @@ void DialogMainGui::updateGuiSimValues()
 //AIS targets list
 void DialogMainGui::addAisTarget(double lat, double lon)
 {
+  //Create new AIS target
   SimVessel v;
   v.lat = lat;
   v.lon = lon;
   v.mmsi = ++m_nextMmsi;
-
   int aisType = m_choice_aisType->GetSelection();
   switch(aisType)
   {
@@ -1609,6 +1615,34 @@ void DialogMainGui::clearAisTargets()
 }
 
 
+// Start/stop timer
+void DialogMainGui::OnToggleButton_StartStopSim(wxCommandEvent& event)
+{
+  bool isPressed = event.IsChecked();
+
+  if (isPressed)
+  {
+    int timeInterval = m_spinCtrlDouble_simFreqTimer->GetValue() * 1000; //milliseconds
+    m_timer_autoSendSim.Start(timeInterval);
+    m_toggleBtn_startStopSim->SetLabel(_("STOP"));
+  }
+  else
+  {
+    m_timer_autoSendSim.Stop();
+    m_toggleBtn_startStopSim->SetLabel(_("START"));
+  }
+}
+
+void DialogMainGui::OnSpinCtrlDouble_UpdateFreqTimerSim(wxSpinDoubleEvent& event)
+{
+  if(m_toggleBtn_startStopSim->GetValue()) //if timer is running
+  {
+    int timeInterval = m_spinCtrlDouble_simFreqTimer->GetValue() * 1000; //milliseconds
+    m_timer_autoSendSim.Start(timeInterval);
+  }
+}
+
+
 //Update ship position to cursor position
 void DialogMainGui::updateSimStartPosition(VesselType type, double lat, double lon)
 {
@@ -1660,13 +1694,13 @@ void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
   wxString dateStr = wxString::Format("%02d%02d%02d", utc.tm_mday, utc.tm_mon + 1, utc.tm_year % 100);
 
 
-  // ---- Output mode ----
+          // ---- Output mode ----
   int outputMode = m_choice_nmeaOutputSim->GetSelection();
   bool sendOwnShip = (outputMode == 0) || (outputMode == 1);
   bool sendAisTarget = (outputMode == 0) || (outputMode == 2);
 
 
-  // ---- Update & send OwnShip NMEA ----
+          // ---- Update & send OwnShip NMEA ----
   if (sendOwnShip)
   {
     GeoPos pos = utils::updatePosition(
@@ -1705,7 +1739,7 @@ void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
     sendNmeaToOCPN(nmea::createRSA("II", rudderStr, "A", "0", "V"));
   }
 
-  // ---- Update & send controlled AIS target NMEA ----
+          // ---- Update & send controlled AIS target NMEA ----
   if (sendAisTarget)
   {
     for (auto& ais : aisTargetList)
@@ -1753,37 +1787,9 @@ void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
   }
 
 
-  // ---- Update UI for controlled vessel ----
+          // ---- Update UI for controlled vessel ----
   updateGuiSimValues();
 
-}
-
-
-// Start/stop timer
-void DialogMainGui::OnToggleButton_StartStopSim(wxCommandEvent& event)
-{
-  bool isPressed = event.IsChecked();
-
-  if (isPressed)
-  {
-    int timeInterval = m_spinCtrlDouble_simFreqTimer->GetValue() * 1000; //milliseconds
-    m_timer_autoSendSim.Start(timeInterval);
-    m_toggleBtn_startStopSim->SetLabel(_("STOP"));
-  }
-  else
-  {
-    m_timer_autoSendSim.Stop();
-    m_toggleBtn_startStopSim->SetLabel(_("START"));
-  }
-}
-
-void DialogMainGui::OnSpinCtrlDouble_UpdateFreqTimerSim(wxSpinDoubleEvent& event)
-{
-  if(m_toggleBtn_startStopSim->GetValue()) //if timer is running
-  {
-    int timeInterval = m_spinCtrlDouble_simFreqTimer->GetValue() * 1000; //milliseconds
-    m_timer_autoSendSim.Start(timeInterval);
-  }
 }
 
 

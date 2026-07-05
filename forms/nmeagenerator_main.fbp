@@ -50,7 +50,7 @@
       <property name="minimum_size"></property>
       <property name="name">DialogMainGuiBase</property>
       <property name="pos"></property>
-      <property name="size">1059,663</property>
+      <property name="size">698,663</property>
       <property name="style">wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxMINIMIZE_BOX|wxRESIZE_BORDER</property>
       <property name="subclass">; ; forward_declare</property>
       <property name="title">NMEA Generator Plugin</property>
@@ -87,16 +87,16 @@
         <property name="permission">protected</property>
         <event name="OnTimer">OnTimer_autoSendSim</event>
       </object>
-      <object class="wxBoxSizer" expanded="true">
+      <object class="wxBoxSizer" expanded="false">
         <property name="minimum_size"></property>
         <property name="name">bSizer_main</property>
         <property name="orient">wxVERTICAL</property>
         <property name="permission">none</property>
-        <object class="sizeritem" expanded="true">
+        <object class="sizeritem" expanded="false">
           <property name="border">5</property>
           <property name="flag">wxEXPAND</property>
           <property name="proportion">1</property>
-          <object class="wxNotebook" expanded="true">
+          <object class="wxNotebook" expanded="false">
             <property name="BottomDockable">1</property>
             <property name="LeftDockable">1</property>
             <property name="RightDockable">1</property>
@@ -33075,11 +33075,11 @@
                 </object>
               </object>
             </object>
-            <object class="notebookpage" expanded="true">
+            <object class="notebookpage" expanded="false">
               <property name="bitmap"></property>
               <property name="label">Simulation</property>
               <property name="select">1</property>
-              <object class="wxPanel" expanded="true">
+              <object class="wxPanel" expanded="false">
                 <property name="BottomDockable">1</property>
                 <property name="LeftDockable">1</property>
                 <property name="RightDockable">1</property>
@@ -33131,16 +33131,16 @@
                 <property name="window_extra_style"></property>
                 <property name="window_name"></property>
                 <property name="window_style">wxTAB_TRAVERSAL</property>
-                <object class="wxBoxSizer" expanded="true">
+                <object class="wxBoxSizer" expanded="false">
                   <property name="minimum_size"></property>
                   <property name="name">bSizer8</property>
                   <property name="orient">wxVERTICAL</property>
                   <property name="permission">none</property>
-                  <object class="sizeritem" expanded="true">
+                  <object class="sizeritem" expanded="false">
                     <property name="border">5</property>
                     <property name="flag">wxEXPAND | wxALL</property>
                     <property name="proportion">1</property>
-                    <object class="wxScrolledWindow" expanded="true">
+                    <object class="wxScrolledWindow" expanded="false">
                       <property name="BottomDockable">1</property>
                       <property name="LeftDockable">1</property>
                       <property name="RightDockable">1</property>
@@ -33194,7 +33194,7 @@
                       <property name="window_extra_style"></property>
                       <property name="window_name"></property>
                       <property name="window_style">wxHSCROLL|wxVSCROLL</property>
-                      <object class="wxBoxSizer" expanded="true">
+                      <object class="wxBoxSizer" expanded="false">
                         <property name="minimum_size"></property>
                         <property name="name">bSizer26</property>
                         <property name="orient">wxVERTICAL</property>
@@ -33399,7 +33399,7 @@
                                 <property name="gripper">0</property>
                                 <property name="hidden">0</property>
                                 <property name="id">wxID_ANY</property>
-                                <property name="label">AIS type:</property>
+                                <property name="label">AIS type of&#x0A;new target:</property>
                                 <property name="markup">0</property>
                                 <property name="max_size"></property>
                                 <property name="maximize_button">0</property>
