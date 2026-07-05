@@ -184,6 +184,7 @@ class DialogMainGui : public DialogMainGuiBase
     SimVessel shipSimu;
     std::vector<SimVessel> aisTargetList;
     unsigned int m_nextMmsi = g_aisMMSI;
+    int m_selectedAisIndex = -1; // -1 = OwnShip
 };
 
 #endif //DIALOG_MAIN_GUI

@@ -1472,21 +1472,33 @@ SimVessel* DialogMainGui::getControlledVessel()
 {
   if (controlledVessel == VesselType::OwnShip)
     return &shipSimu;
-  else
+
+  if (controlledVessel == VesselType::AisTarget)
   {
-    if (!aisTargetList.empty())
-      return &aisTargetList.back();
-    else
-      return nullptr;
+    if (m_selectedAisIndex >= 0 &&
+        m_selectedAisIndex < (int)aisTargetList.size())
+    {
+      return &aisTargetList[m_selectedAisIndex];
+    }
   }
 
+  return &shipSimu; // safe fallback
 }
 
 void DialogMainGui::OnChoice_controlledVesselSimChanged(wxCommandEvent& event)
 {
-  //Get selection from GUI
   int sel = m_choice_controlledVessel->GetSelection();
-  controlledVessel = (sel == 0) ? VesselType::OwnShip : VesselType::AisTarget;
+
+  if (sel == 0)
+  {
+    controlledVessel = VesselType::OwnShip;
+    m_selectedAisIndex = -1;
+  }
+  else
+  {
+    controlledVessel = VesselType::AisTarget;
+    m_selectedAisIndex = sel - 1;
+  }
 
   updateGuiSimValues();
 }
@@ -1542,6 +1554,10 @@ void DialogMainGui::addAisTarget(double lat, double lon)
 
   aisTargetList.push_back(v);
 
+  // Add to UI selector
+  wxString label = wxString::Format("AIS %u", v.mmsi);
+  m_choice_controlledVessel->Append(label);
+
   wxCommandEvent dummy;
   OnChoice_controlledVesselSimChanged(dummy);
 }
@@ -1554,6 +1570,24 @@ void DialogMainGui::removeLastAisTarget()
   aisTargetList.pop_back();
   --m_nextMmsi;
 
+  if (m_choice_controlledVessel->GetCount() > 1)
+    m_choice_controlledVessel->Delete(m_choice_controlledVessel->GetCount() - 1);
+
+  // If no AIS left, force OwnShip selection
+  if (aisTargetList.empty())
+  {
+    m_choice_controlledVessel->SetSelection(0);
+  }
+  else
+  {
+    // clamp index if still valid
+    if (m_selectedAisIndex >= (int)aisTargetList.size())
+      m_selectedAisIndex = (int)aisTargetList.size() - 1;
+
+    m_choice_controlledVessel->SetSelection(m_selectedAisIndex + 1);
+    controlledVessel = VesselType::AisTarget;
+  }
+
   wxCommandEvent dummy;
   OnChoice_controlledVesselSimChanged(dummy);
 }
@@ -1562,6 +1596,13 @@ void DialogMainGui::clearAisTargets()
 {
   aisTargetList.clear();
   m_nextMmsi = g_aisMMSI;
+
+  // keep OwnShip only
+  while (m_choice_controlledVessel->GetCount() > 1)
+    m_choice_controlledVessel->Delete(1);
+
+  // force UI selection to OwnShip
+  m_choice_controlledVessel->SetSelection(0);
 
   wxCommandEvent dummy;
   OnChoice_controlledVesselSimChanged(dummy);
@@ -1573,19 +1614,32 @@ void DialogMainGui::updateSimStartPosition(VesselType type, double lat, double l
 {
   SimVessel* vessel = nullptr;
 
-  if(type == VesselType::OwnShip)
+  if (type == VesselType::OwnShip)
+  {
     vessel = &shipSimu;
-
-  else if(type == VesselType::AisTarget)
+  }
+  else if (type == VesselType::AisTarget)
   {
     if (!aisTargetList.empty())
-      vessel = &aisTargetList.back();
+    {
+      if (m_selectedAisIndex >= 0 &&
+          m_selectedAisIndex < (int)aisTargetList.size())
+      {
+        vessel = &aisTargetList[m_selectedAisIndex];
+      }
+      else
+      {
+        // fallback: last AIS target
+        vessel = &aisTargetList.back();
+        m_selectedAisIndex = (int)aisTargetList.size() - 1;
+      }
+    }
     else
     {
       wxMessageBox(
-          "There are no AIS targets in the list.",
-          "No AIS Target",
-          wxOK | wxICON_INFORMATION
+          "No AIS targets available.",
+          "AIS Error",
+          wxOK | wxICON_WARNING
           );
       return;
     }

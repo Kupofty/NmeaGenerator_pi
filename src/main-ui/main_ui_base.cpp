@@ -3382,7 +3382,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_staticText901->Wrap( -1 );
 	bSizer_shipType->Add( m_staticText901, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	wxString m_choice_controlledVesselChoices[] = { _("Own ship"), _("AIS target") };
+	wxString m_choice_controlledVesselChoices[] = { _("Own ship") };
 	int m_choice_controlledVesselNChoices = sizeof( m_choice_controlledVesselChoices ) / sizeof( wxString );
 	m_choice_controlledVessel = new wxChoice( m_scrolledWindow2, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_controlledVesselNChoices, m_choice_controlledVesselChoices, 0 );
 	m_choice_controlledVessel->SetSelection( 0 );
