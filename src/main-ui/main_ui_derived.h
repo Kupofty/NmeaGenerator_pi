@@ -179,6 +179,7 @@ class DialogMainGui : public DialogMainGuiBase
     std::vector<SectionItem> sbSizerListSentenceBuilder;
 
     //Simulation
+    void updateGuiSimValues();
     VesselType controlledVessel = VesselType::OwnShip;
     SimVessel shipSimu;
     std::vector<SimVessel> aisTargetList;

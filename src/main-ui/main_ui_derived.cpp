@@ -1488,15 +1488,12 @@ void DialogMainGui::OnChoice_controlledVesselSimChanged(wxCommandEvent& event)
   int sel = m_choice_controlledVessel->GetSelection();
   controlledVessel = (sel == 0) ? VesselType::OwnShip : VesselType::AisTarget;
 
-  //Update UI to match the controlled vessel current status
+  updateGuiSimValues();
+}
+
+void DialogMainGui::updateGuiSimValues()
+{
   SimVessel* vessel = getControlledVessel();
-
-  wxScrollEvent updateGUI;
-  m_slider_throttleSim->SetValue(vessel->throttle);
-  OnScroll_UpdateThrottleSim(updateGUI);
-
-  m_slider_rudderSim->SetValue(vessel->rudderAngle);
-  OnScroll_UpdateRudderAngleSim(updateGUI);
 
   m_staticText_headingSim->SetLabel(wxString::Format("%.0f", vessel->heading));
   m_staticText_cogSim->SetLabel(wxString::Format("%.0f", vessel->cog ));
@@ -1506,6 +1503,16 @@ void DialogMainGui::OnChoice_controlledVesselSimChanged(wxCommandEvent& event)
   m_staticText_latMinSim->SetLabel(wxString::Format("%.4f", dm.latMin));
   m_staticText_lonDegSim->SetLabel(wxString::Format("%d", dm.lonDeg));
   m_staticText_lonMinSim->SetLabel(wxString::Format("%.4f", dm.lonMin));
+
+  m_slider_throttleSim->SetValue(vessel->throttle);
+  wxString throttleStr = wxString::Format("%.0f", vessel->speed);
+  m_staticText_throttleSim->SetLabel(throttleStr);
+  wxString speedStr = wxString::Format("%.0f", fabs(vessel->speed));
+  m_staticText_speedSim->SetLabel(speedStr);
+
+  m_slider_rudderSim->SetValue(vessel->rudderAngle);
+  wxString rudderStr = wxString::Format("%.0f", vessel->rudderAngle);
+  m_staticText_rudderAngleSim->SetLabel(rudderStr);
 }
 
 
@@ -1569,7 +1576,7 @@ void DialogMainGui::updateSimStartPosition(VesselType type, double lat, double l
   if(type == VesselType::OwnShip)
     vessel = &shipSimu;
 
-  else
+  else if(type == VesselType::AisTarget)
   {
     if (!aisTargetList.empty())
       vessel = &aisTargetList.back();
@@ -1618,9 +1625,12 @@ void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
     shipSimu.lon = pos.lon;
 
     shipSimu.heading = fmod( shipSimu.heading + (shipSimu.rudderAngle * shipSimu.directionSign) * dt, 360.0 );
-
     if (shipSimu.heading < 0)
       shipSimu.heading += 360.0;
+
+    shipSimu.cog = shipSimu.heading;
+    if (shipSimu.directionSign < 0)
+      shipSimu.cog  = fmod(shipSimu.heading + 180.0, 360.0);
 
     wxString latDir = utils::getLatDir(shipSimu.lat);
     wxString lonDir = utils::getLonDir(shipSimu.lon);
@@ -1656,9 +1666,12 @@ void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
       ais.lon = pos.lon;
 
       ais.heading = fmod( ais.heading + (ais.rudderAngle * ais.directionSign) * dt, 360.0 );
-
       if (ais.heading < 0)
         ais.heading += 360.0;
+
+      ais.cog = ais.heading;
+      if (ais.directionSign < 0)
+        ais.cog  = fmod(ais.heading + 180.0, 360.0);
 
       wxString latDir = utils::getLatDir(ais.lat);
       wxString lonDir = utils::getLonDir(ais.lon);
@@ -1687,19 +1700,8 @@ void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
 
 
   // ---- Update UI for controlled vessel ----
-  SimVessel* vessel = getControlledVessel();
+  updateGuiSimValues();
 
-  vessel->cog = vessel->heading;
-  if (vessel->directionSign < 0)
-    vessel->cog  = fmod(vessel->heading + 180.0, 360.0);
-  m_staticText_headingSim->SetLabel(wxString::Format("%.0f", vessel->heading));
-  m_staticText_cogSim->SetLabel(wxString::Format("%.0f", vessel->cog ));
-
-  DegMin dm = utils::toDegMin(vessel->lat, vessel->lon);
-  m_staticText_latDegSim->SetLabel(wxString::Format("%d", dm.latDeg));
-  m_staticText_latMinSim->SetLabel(wxString::Format("%.4f", dm.latMin));
-  m_staticText_lonDegSim->SetLabel(wxString::Format("%d", dm.lonDeg));
-  m_staticText_lonMinSim->SetLabel(wxString::Format("%.4f", dm.lonMin));
 }
 
 
