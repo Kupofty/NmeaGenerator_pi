@@ -154,8 +154,19 @@ void DialogMainGui::OnButtonClick_manualSend(wxCommandEvent& event)
 
 void DialogMainGui::OnTimer_autoSendNmea(wxTimerEvent& event)
 {
+  // Send stored manual list entries
+  for (const ManualInput& input : manualInputList)
+  {
+    if(input.autoSend)
+      sendNmeaToOCPN(input.sentence);
+  }
+
+  // Send current manual input
   wxString nmea = getManualInput();
-  sendNmeaToOCPN(nmea);
+  bool autoSend = m_checkBox_manualInputAutoSend->GetValue();
+
+  if(autoSend)
+    sendNmeaToOCPN(nmea);
 }
 
 
@@ -263,6 +274,92 @@ void DialogMainGui::OnSpinCtrlDouble_AutomaticSendFreq(wxSpinDoubleEvent& event)
 }
 
 
+
+//List
+void DialogMainGui::OnButtonClick_AddManualList(wxCommandEvent& event)
+{
+  wxString sentence = getManualInput().Trim().Trim(false);
+
+  //Do not accept empty sentence
+  if (sentence.IsEmpty())
+    return;
+  // Accept only NMEA ($) or AIS (!)
+  if (!sentence.StartsWith("$") && !sentence.StartsWith("!"))
+    return;
+
+  bool autoChecksum = m_checkBox_autoChecksum->GetValue();
+  if (autoChecksum)
+  {
+    // Remove existing checksum if any
+    sentence = utils::removeChecksumStr(sentence);
+    // Add calculated checksum
+    sentence += m_staticText_checksum->GetLabel();
+  }
+
+  bool autoSend = m_checkBox_manualInputAutoSend->GetValue();
+
+  //Create list input
+  ManualInput input;
+  input.sentence = sentence;
+  input.autoChecksum = autoChecksum;
+  input.autoSend = autoSend;
+  manualInputList.push_back(input);
+
+  // Display name: 5 characters after '$'
+  wxString displayName = sentence;
+  if (displayName.StartsWith("$") || displayName.StartsWith("!"))
+    displayName = displayName.Mid(1);
+  displayName = displayName.Left(5);
+
+  if(autoSend)
+    displayName += _(" (auto)");
+
+  m_choice_manualInputList->Append(displayName);
+
+  // Clear editor
+  m_textCtrl_sentenceInput->Clear();
+  m_checkBox_manualInputAutoSend->SetValue(false);
+}
+
+void DialogMainGui::OnButtonClick_LoadManualInputList(wxCommandEvent& event)
+{
+  int sel = m_choice_manualInputList->GetSelection();
+  if (sel == wxNOT_FOUND)
+    return;
+
+  //Restore UI from selected entry
+  const ManualInput& input = manualInputList[sel];
+  m_checkBox_autoChecksum->SetValue(input.autoChecksum);
+  m_checkBox_manualInputAutoSend->SetValue(input.autoSend);
+
+  // Remove "*XX" checksum if auto checksum is enabled
+  wxString sentence = input.sentence;
+  if (input.autoChecksum)
+  {
+    int starPos = sentence.Find('*');
+    if (starPos != wxNOT_FOUND)
+      sentence = sentence.Left(starPos);
+  }
+
+  m_textCtrl_sentenceInput->SetValue(sentence);
+}
+
+void DialogMainGui::OnButtonClick_DeleteManualInputList(wxCommandEvent& event)
+{
+  int sel = m_choice_manualInputList->GetSelection();
+
+  if (sel == wxNOT_FOUND)
+    return;
+
+  manualInputList.erase(manualInputList.begin() + sel);
+  m_choice_manualInputList->Delete(sel);
+}
+
+void DialogMainGui::OnButtonClick_DeleteAllManualList(wxCommandEvent& event)
+{
+  manualInputList.clear();
+  m_choice_manualInputList->Clear();
+}
 
 
 

@@ -42,6 +42,12 @@ struct SimVessel
   wxString name = "";
 };
 
+struct ManualInput
+{
+  wxString sentence = "";
+  bool autoSend = false;
+  bool autoChecksum = false;
+};
 
 
 // Main class
@@ -63,6 +69,10 @@ class DialogMainGui : public DialogMainGuiBase
   protected:
     void OnClose(wxCloseEvent& event) override;
 
+    void OnButtonClick_AddManualList( wxCommandEvent& event ) override;
+    void OnButtonClick_LoadManualInputList( wxCommandEvent& event ) override;
+    void OnButtonClick_DeleteManualInputList( wxCommandEvent& event ) override;
+    void OnButtonClick_DeleteAllManualList( wxCommandEvent& event ) override;
     void OnButtonClick_manualSend(wxCommandEvent& event) override;
     void OnClearInput(wxCommandEvent& event) override;
     void OnInputTextChanged(wxCommandEvent& event) override;
@@ -182,6 +192,7 @@ class DialogMainGui : public DialogMainGuiBase
   private:
     bool addAutoChecksum;
     std::vector<SectionItem> sbSizerListSentenceBuilder;
+    std::vector<ManualInput> manualInputList;
 
     VesselType controlledVessel = VesselType::OwnShip;
     SimVessel shipSimu;

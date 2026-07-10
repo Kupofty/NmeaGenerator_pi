@@ -7,6 +7,7 @@
 - Context menu action to update Own Ship or selected AIS target position from cursor location
 - Multiple AIS targets management with selectable control target
 - Persistent storage of last simulation vessel position across sessions
+- Manual input list allowing multiple NMEA sentences to be configured and transmitted simultaneously
 
 ### Removed
 - Manual position input for simulation ship & AIS targets

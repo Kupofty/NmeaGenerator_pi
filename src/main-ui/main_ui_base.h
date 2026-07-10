@@ -17,17 +17,17 @@
 #include <wx/font.h>
 #include <wx/colour.h>
 #include <wx/settings.h>
-#include <wx/textctrl.h>
+#include <wx/choice.h>
 #include <wx/sizer.h>
-#include <wx/checkbox.h>
-#include <wx/statline.h>
 #include <wx/button.h>
 #include <wx/bitmap.h>
 #include <wx/image.h>
 #include <wx/icon.h>
+#include <wx/statline.h>
+#include <wx/textctrl.h>
+#include <wx/checkbox.h>
 #include <wx/spinctrl.h>
 #include <wx/panel.h>
-#include <wx/choice.h>
 #include <wx/statbox.h>
 #include <wx/combobox.h>
 #include <wx/scrolwin.h>
@@ -51,16 +51,26 @@ class DialogMainGuiBase : public wxDialog
 		wxTimer m_timer_autoSendBuilder;
 		wxTimer m_timer_autoSendSim;
 		wxPanel* m_panel_manual;
+		wxStaticText* m_staticText222;
+		wxChoice* m_choice_manualInputList;
+		wxButton* m_button_loadManualInput;
+		wxButton* m_button_deleteManualInputList;
+		wxButton* m_button_deleteAllManualList;
+		wxStaticLine* m_staticline321;
 		wxStaticText* m_staticText3;
 		wxTextCtrl* m_textCtrl_sentenceInput;
 		wxStaticText* m_staticText_checksum;
+		wxCheckBox* m_checkBox_manualInputAutoSend;
+		wxStaticLine* m_staticline34;
 		wxCheckBox* m_checkBox_autoChecksum;
 		wxStaticText* m_staticText_isChecksumCorrect;
-		wxStaticLine* m_staticline1;
+		wxButton* m_button_addManualList;
 		wxButton* m_button_sendSentence;
 		wxButton* m_button_copySentence;
 		wxButton* m_button_clearInput;
+		wxStaticLine* m_staticline1;
 		wxCheckBox* m_checkBox_automaticSend;
+		wxStaticText* m_staticText223;
 		wxSpinCtrlDouble* m_spinCtrlDouble_automaticSendFreq;
 		wxStaticText* m_staticText4;
 		wxPanel* m_panel_list;
@@ -556,6 +566,7 @@ class DialogMainGuiBase : public wxDialog
 		wxStaticText* m_staticText902;
 		wxStaticText* m_staticText_headingSim;
 		wxStaticText* m_staticText92;
+		wxStaticLine* m_staticline36;
 		wxStaticText* m_staticText1001;
 		wxStaticText* m_staticText_cogSim;
 		wxStaticText* m_staticText102;
@@ -589,8 +600,13 @@ class DialogMainGuiBase : public wxDialog
 		virtual void OnTimer_autoSendNmea( wxTimerEvent& event ) { event.Skip(); }
 		virtual void OnTimer_autoSendBuilder( wxTimerEvent& event ) { event.Skip(); }
 		virtual void OnTimer_autoSendSim( wxTimerEvent& event ) { event.Skip(); }
+		virtual void OnChoice_ManualInputList( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_LoadManualInputList( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_DeleteManualInputList( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_DeleteAllManualList( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnInputTextChanged( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnAutoChecksumChecked( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_AddManualList( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_manualSend( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_copyManualSentence( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnClearInput( wxCommandEvent& event ) { event.Skip(); }

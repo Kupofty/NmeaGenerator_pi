@@ -27,47 +27,143 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	bSizer3->Add( 0, 0, 1, wxEXPAND, 5 );
 
+	wxBoxSizer* bSizer82;
+	bSizer82 = new wxBoxSizer( wxHORIZONTAL );
+
+
+	bSizer82->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText222 = new wxStaticText( m_panel_manual, wxID_ANY, _("List entries:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText222->Wrap( -1 );
+	bSizer82->Add( m_staticText222, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	wxArrayString m_choice_manualInputListChoices;
+	m_choice_manualInputList = new wxChoice( m_panel_manual, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_manualInputListChoices, 0 );
+	m_choice_manualInputList->SetSelection( 0 );
+	bSizer82->Add( m_choice_manualInputList, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	bSizer82->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	bSizer3->Add( bSizer82, 1, wxEXPAND, 5 );
+
+	wxBoxSizer* bSizer83;
+	bSizer83 = new wxBoxSizer( wxHORIZONTAL );
+
+
+	bSizer83->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_button_loadManualInput = new wxButton( m_panel_manual, wxID_ANY, _("Load"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer83->Add( m_button_loadManualInput, 0, wxALL, 5 );
+
+	m_button_deleteManualInputList = new wxButton( m_panel_manual, wxID_ANY, _("Delete"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer83->Add( m_button_deleteManualInputList, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_button_deleteAllManualList = new wxButton( m_panel_manual, wxID_ANY, _("Delete all"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer83->Add( m_button_deleteAllManualList, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	bSizer83->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	bSizer3->Add( bSizer83, 1, wxEXPAND, 5 );
+
 
 	bSizer3->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	wxBoxSizer* bSizer4;
-	bSizer4 = new wxBoxSizer( wxHORIZONTAL );
+	m_staticline321 = new wxStaticLine( m_panel_manual, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL );
+	bSizer3->Add( m_staticline321, 0, wxEXPAND | wxALL, 5 );
+
+
+	bSizer3->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	wxBoxSizer* bSizer_nmeaInput;
+	bSizer_nmeaInput = new wxBoxSizer( wxHORIZONTAL );
 
 	m_staticText3 = new wxStaticText( m_panel_manual, wxID_ANY, _("NMEA sentence:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText3->Wrap( -1 );
-	bSizer4->Add( m_staticText3, 0, wxALIGN_CENTER|wxALL, 5 );
+	bSizer_nmeaInput->Add( m_staticText3, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_textCtrl_sentenceInput = new wxTextCtrl( m_panel_manual, wxID_ANY, _("$"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_textCtrl_sentenceInput->SetMinSize( wxSize( 200,-1 ) );
 
-	bSizer4->Add( m_textCtrl_sentenceInput, 1, wxALIGN_CENTER|wxALL|wxEXPAND, 5 );
+	bSizer_nmeaInput->Add( m_textCtrl_sentenceInput, 1, wxALIGN_CENTER|wxALL|wxEXPAND, 5 );
 
 	m_staticText_checksum = new wxStaticText( m_panel_manual, wxID_ANY, _("*00"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText_checksum->Wrap( -1 );
-	bSizer4->Add( m_staticText_checksum, 0, wxALIGN_CENTER|wxALL, 5 );
+	bSizer_nmeaInput->Add( m_staticText_checksum, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
-	bSizer3->Add( bSizer4, 0, wxEXPAND, 5 );
+	bSizer3->Add( bSizer_nmeaInput, 0, wxEXPAND, 5 );
 
-	m_checkBox_autoChecksum = new wxCheckBox( m_panel_manual, wxID_ANY, _("Automatic checksum calculation"), wxDefaultPosition, wxDefaultSize, 0 );
+	wxBoxSizer* bSizer85;
+	bSizer85 = new wxBoxSizer( wxHORIZONTAL );
+
+
+	bSizer85->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	wxBoxSizer* bSizer86;
+	bSizer86 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer86->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_checkBox_manualInputAutoSend = new wxCheckBox( m_panel_manual, wxID_ANY, _("Auto send"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer86->Add( m_checkBox_manualInputAutoSend, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	bSizer86->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	bSizer85->Add( bSizer86, 0, wxEXPAND, 5 );
+
+	m_staticline34 = new wxStaticLine( m_panel_manual, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_VERTICAL );
+	bSizer85->Add( m_staticline34, 0, wxEXPAND | wxALL, 5 );
+
+	wxBoxSizer* bSizer84;
+	bSizer84 = new wxBoxSizer( wxVERTICAL );
+
+	m_checkBox_autoChecksum = new wxCheckBox( m_panel_manual, wxID_ANY, _("Auto checksum"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_checkBox_autoChecksum->SetValue(true);
-	bSizer3->Add( m_checkBox_autoChecksum, 1, wxALIGN_CENTER|wxALL, 5 );
-
-	wxGridSizer* gSizer1;
-	gSizer1 = new wxGridSizer( 0, 3, 0, 0 );
-
-
-	gSizer1->Add( 0, 0, 1, wxEXPAND, 5 );
+	bSizer84->Add( m_checkBox_autoChecksum, 1, wxALIGN_CENTER|wxALL, 5 );
 
 	m_staticText_isChecksumCorrect = new wxStaticText( m_panel_manual, wxID_ANY, _("No checksum detected"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText_isChecksumCorrect->Wrap( -1 );
-	gSizer1->Add( m_staticText_isChecksumCorrect, 0, wxALIGN_CENTER|wxALL, 5 );
+	bSizer84->Add( m_staticText_isChecksumCorrect, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
-	gSizer1->Add( 0, 0, 1, wxEXPAND, 5 );
+	bSizer85->Add( bSizer84, 0, wxEXPAND, 5 );
 
 
-	bSizer3->Add( gSizer1, 0, wxEXPAND, 5 );
+	bSizer85->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	bSizer3->Add( bSizer85, 1, wxEXPAND, 5 );
+
+	wxBoxSizer* bSizer_buttons;
+	bSizer_buttons = new wxBoxSizer( wxHORIZONTAL );
+
+
+	bSizer_buttons->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_button_addManualList = new wxButton( m_panel_manual, wxID_ANY, _("Add to list"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer_buttons->Add( m_button_addManualList, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_button_sendSentence = new wxButton( m_panel_manual, wxID_ANY, _("Send"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer_buttons->Add( m_button_sendSentence, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+	m_button_copySentence = new wxButton( m_panel_manual, wxID_ANY, _("Copy"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer_buttons->Add( m_button_copySentence, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_button_clearInput = new wxButton( m_panel_manual, wxID_ANY, _("Clear"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer_buttons->Add( m_button_clearInput, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+
+
+	bSizer_buttons->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	bSizer3->Add( bSizer_buttons, 1, wxEXPAND, 5 );
 
 
 	bSizer3->Add( 0, 0, 1, wxEXPAND, 5 );
@@ -78,49 +174,35 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	bSizer3->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	wxBoxSizer* bSizer51;
-	bSizer51 = new wxBoxSizer( wxHORIZONTAL );
+	wxBoxSizer* bSizer_autoSend;
+	bSizer_autoSend = new wxBoxSizer( wxHORIZONTAL );
 
 
-	bSizer51->Add( 0, 0, 1, wxEXPAND, 5 );
+	bSizer_autoSend->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_button_sendSentence = new wxButton( m_panel_manual, wxID_ANY, _("Send"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer51->Add( m_button_sendSentence, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
-
-	m_button_copySentence = new wxButton( m_panel_manual, wxID_ANY, _("Copy"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer51->Add( m_button_copySentence, 0, wxALIGN_CENTER|wxALL, 5 );
-
-	m_button_clearInput = new wxButton( m_panel_manual, wxID_ANY, _("Clear"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer51->Add( m_button_clearInput, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
+	m_checkBox_automaticSend = new wxCheckBox( m_panel_manual, wxID_ANY, _("Automatic send"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer_autoSend->Add( m_checkBox_automaticSend, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
-	bSizer51->Add( 0, 0, 1, wxEXPAND, 5 );
+	bSizer_autoSend->Add( 0, 0, 1, wxEXPAND, 5 );
 
-
-	bSizer3->Add( bSizer51, 1, wxEXPAND, 5 );
-
-	wxBoxSizer* bSizer7;
-	bSizer7 = new wxBoxSizer( wxHORIZONTAL );
-
-
-	bSizer7->Add( 0, 0, 1, wxEXPAND, 5 );
-
-	m_checkBox_automaticSend = new wxCheckBox( m_panel_manual, wxID_ANY, _("Automatic send at"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer7->Add( m_checkBox_automaticSend, 0, wxALIGN_CENTER|wxALL, 5 );
+	m_staticText223 = new wxStaticText( m_panel_manual, wxID_ANY, _("Publish rate:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText223->Wrap( -1 );
+	bSizer_autoSend->Add( m_staticText223, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_spinCtrlDouble_automaticSendFreq = new wxSpinCtrlDouble( m_panel_manual, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( -1,-1 ), wxSP_ARROW_KEYS, 0.1, 10, 1, 0.2 );
 	m_spinCtrlDouble_automaticSendFreq->SetDigits( 1 );
-	bSizer7->Add( m_spinCtrlDouble_automaticSendFreq, 0, wxALIGN_CENTER|wxALL, 5 );
+	bSizer_autoSend->Add( m_spinCtrlDouble_automaticSendFreq, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_staticText4 = new wxStaticText( m_panel_manual, wxID_ANY, _("Hz"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText4->Wrap( -1 );
-	bSizer7->Add( m_staticText4, 0, wxALIGN_CENTER|wxALL, 5 );
+	bSizer_autoSend->Add( m_staticText4, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
-	bSizer7->Add( 0, 0, 1, wxEXPAND, 5 );
+	bSizer_autoSend->Add( 0, 0, 1, wxEXPAND, 5 );
 
 
-	bSizer3->Add( bSizer7, 1, wxEXPAND, 5 );
+	bSizer3->Add( bSizer_autoSend, 1, wxEXPAND, 5 );
 
 
 	bSizer3->Add( 0, 0, 1, wxEXPAND, 5 );
@@ -3525,6 +3607,9 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	bSizer_dataSim->Add( 0, 0, 1, wxEXPAND, 5 );
 
+	m_staticline36 = new wxStaticLine( m_scrolledWindow2, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL );
+	bSizer_dataSim->Add( m_staticline36, 0, wxEXPAND | wxALL, 5 );
+
 	wxBoxSizer* bSizer39;
 	bSizer39 = new wxBoxSizer( wxHORIZONTAL );
 
@@ -3764,8 +3849,13 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	this->Connect( m_timer_autoSendNmea.GetId(), wxEVT_TIMER, wxTimerEventHandler( DialogMainGuiBase::OnTimer_autoSendNmea ) );
 	this->Connect( m_timer_autoSendBuilder.GetId(), wxEVT_TIMER, wxTimerEventHandler( DialogMainGuiBase::OnTimer_autoSendBuilder ) );
 	this->Connect( m_timer_autoSendSim.GetId(), wxEVT_TIMER, wxTimerEventHandler( DialogMainGuiBase::OnTimer_autoSendSim ) );
+	m_choice_manualInputList->Connect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( DialogMainGuiBase::OnChoice_ManualInputList ), NULL, this );
+	m_button_loadManualInput->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_LoadManualInputList ), NULL, this );
+	m_button_deleteManualInputList->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_DeleteManualInputList ), NULL, this );
+	m_button_deleteAllManualList->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_DeleteAllManualList ), NULL, this );
 	m_textCtrl_sentenceInput->Connect( wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( DialogMainGuiBase::OnInputTextChanged ), NULL, this );
 	m_checkBox_autoChecksum->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnAutoChecksumChecked ), NULL, this );
+	m_button_addManualList->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_AddManualList ), NULL, this );
 	m_button_sendSentence->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_manualSend ), NULL, this );
 	m_button_copySentence->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_copyManualSentence ), NULL, this );
 	m_button_clearInput->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnClearInput ), NULL, this );
