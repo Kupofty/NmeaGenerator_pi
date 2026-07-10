@@ -26,7 +26,7 @@ The plugin can be used as a lightweight ship simulator to reproduce realistic na
 
 
 
-== Links
+== Plugin Links
 *Sources:*
 
 - link:https://github.com/Kupofty/NmeaGenerator_pi[Github Repository]
@@ -40,6 +40,20 @@ The plugin can be used as a lightweight ship simulator to reproduce realistic na
 
 - link:https://github.com/Kupofty/NmeaGenerator_pi/discussions[Github Discussions]
 
+
+
+== NMEA References
+
+The following resources provide detailed information about NMEA0183 sentence formats, field definitions, units, and AIS message encoding.
+
+*General NMEA*
+
+- https://opencpn.org/wiki/dokuwiki/doku.php?id=opencpn:manual_basic:nmea0183[OpenCPN NMEA Communication]
+- https://gpsd.gitlab.io/gpsd/NMEA.html[NMEA Revealed (GPSD)]
+
+*AIS*
+
+- https://gpsd.gitlab.io/gpsd/AIVDM.html[AIVDM/AIVDO Protocol Decoding (GPSD)]
 
 
 
@@ -141,8 +155,6 @@ Copy:: Copies the full sentence to the clipboard.
 Auto:: Adds the sentence to the automatic send list.
 Check all / Uncheck all:: Quickly adds or removes all sentences from the automatic send list.
 Automatic send:: Sends all checked sentences continuously at the specified frequency. Must be enabled for automatic sending to take effect.
-Help:: Opens external references on NMEA and AIS sentence structures, field definitions, and units.
-
 
 
 '''
@@ -161,7 +173,7 @@ NMEA output:: Controls which data is transmitted. _Current_ sends data for the v
 *Vessel Controls*
 
 [horizontal]
-Initial position:: Set latitude and longitude manually, or right-click on the map to update the position directly.
+Initial position:: Right-click on the map to update the position directly.
 Throttle:: Speed control slider.
 Rudder angle:: Turn rate slider.
 Reset:: Returns slider to zero.

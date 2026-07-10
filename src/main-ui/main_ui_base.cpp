@@ -211,7 +211,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_panel_manual->SetSizer( bSizer3 );
 	m_panel_manual->Layout();
 	bSizer3->Fit( m_panel_manual );
-	m_notebook->AddPage( m_panel_manual, _("Manual Input"), true );
+	m_notebook->AddPage( m_panel_manual, _("Manual Input"), false );
 	m_panel_list = new wxPanel( m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer9;
 	bSizer9 = new wxBoxSizer( wxVERTICAL );
@@ -3431,12 +3431,6 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	bSizer12->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_button_sentenceBuilderHelp = new wxButton( m_panel_list, wxID_ANY, _("Help"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer12->Add( m_button_sentenceBuilderHelp, 0, wxALIGN_CENTER|wxALL, 5 );
-
-
-	bSizer12->Add( 0, 0, 1, wxEXPAND, 5 );
-
 
 	bSizer9->Add( bSizer12, 0, wxEXPAND, 5 );
 
@@ -3444,7 +3438,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_panel_list->SetSizer( bSizer9 );
 	m_panel_list->Layout();
 	bSizer9->Fit( m_panel_list );
-	m_notebook->AddPage( m_panel_list, _("Sentence Builder"), false );
+	m_notebook->AddPage( m_panel_list, _("Sentence Builder"), true );
 	m_panel_sim = new wxPanel( m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer8;
 	bSizer8 = new wxBoxSizer( wxVERTICAL );
@@ -3918,7 +3912,6 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_searchCtrl_sentencesBuilder->Connect( wxEVT_COMMAND_TEXT_UPDATED, wxCommandEventHandler( DialogMainGuiBase::OnText_SearchSentenceBuilder ), NULL, this );
 	m_checkBox_automaticSendBuilder->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnCheckBox_AutomaticSendBuilder ), NULL, this );
 	m_spinCtrlDouble_autoSendFreqBuilder->Connect( wxEVT_COMMAND_SPINCTRLDOUBLE_UPDATED, wxSpinDoubleEventHandler( DialogMainGuiBase::OnSpinCtrlDouble_AutomaticSendFreqBuilder ), NULL, this );
-	m_button_sentenceBuilderHelp->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_OpenSentenceBuilderHelp ), NULL, this );
 	m_choice_controlledVessel->Connect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( DialogMainGuiBase::OnChoice_controlledVesselSimChanged ), NULL, this );
 	m_slider_rudderSim->Connect( wxEVT_SCROLL_TOP, wxScrollEventHandler( DialogMainGuiBase::OnScroll_UpdateRudderAngleSim ), NULL, this );
 	m_slider_rudderSim->Connect( wxEVT_SCROLL_BOTTOM, wxScrollEventHandler( DialogMainGuiBase::OnScroll_UpdateRudderAngleSim ), NULL, this );

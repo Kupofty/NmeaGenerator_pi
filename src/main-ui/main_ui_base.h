@@ -547,7 +547,6 @@ class DialogMainGuiBase : public wxDialog
 		wxCheckBox* m_checkBox_automaticSendBuilder;
 		wxSpinCtrlDouble* m_spinCtrlDouble_autoSendFreqBuilder;
 		wxStaticText* m_staticText20;
-		wxButton* m_button_sentenceBuilderHelp;
 		wxPanel* m_panel_sim;
 		wxScrolledWindow* m_scrolledWindow2;
 		wxStaticText* m_staticText901;
@@ -669,7 +668,6 @@ class DialogMainGuiBase : public wxDialog
 		virtual void OnText_SearchSentenceBuilder( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnCheckBox_AutomaticSendBuilder( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnSpinCtrlDouble_AutomaticSendFreqBuilder( wxSpinDoubleEvent& event ) { event.Skip(); }
-		virtual void OnButtonClick_OpenSentenceBuilderHelp( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnChoice_controlledVesselSimChanged( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnScroll_UpdateRudderAngleSim( wxScrollEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_ResetRudder( wxCommandEvent& event ) { event.Skip(); }

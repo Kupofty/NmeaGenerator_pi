@@ -85,7 +85,6 @@ class DialogMainGui : public DialogMainGuiBase
     void OnSpinCtrlDouble_AutomaticSendFreqBuilder(wxSpinDoubleEvent& event) override;
     void OnTimer_autoSendBuilder(wxTimerEvent& event) override;
     void OnText_SearchSentenceBuilder(wxCommandEvent& event) override;
-    void OnButtonClick_OpenSentenceBuilderHelp(wxCommandEvent& event) override;
     void OnTimer_autoSendSim(wxTimerEvent& event) override;
     void OnToggleButton_StartStopSim(wxCommandEvent& event) override;
     void OnScroll_UpdateThrottleSim(wxScrollEvent& event) override;

@@ -386,65 +386,6 @@ void DialogMainGui::OnText_SearchSentenceBuilder(wxCommandEvent& event)
 }
 
 
-//Help button
-void DialogMainGui::OnButtonClick_OpenSentenceBuilderHelp(wxCommandEvent& event)
-{
-  wxDialog* dlg = new wxDialog(
-      this,
-      wxID_ANY,
-      _("NMEA Format Help"),
-      wxDefaultPosition,
-      wxSize(450, 220),
-      wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER
-      );
-
-  wxBoxSizer* sizer = new wxBoxSizer(wxVERTICAL);
-
-  wxStaticText* info = new wxStaticText(
-      dlg,
-      wxID_ANY,
-      _("Refer to NMEA documentation for detailed information \n on sentence structure, fields, and units:")
-      );
-
-  sizer->AddStretchSpacer(1);
-  sizer->Add(info, 0, wxALIGN_CENTER_HORIZONTAL | wxBOTTOM, 10);
-
-  wxHyperlinkCtrl* link1 = new wxHyperlinkCtrl(
-      dlg,
-      wxID_ANY,
-      _("OpenCPN NMEA Communication"),
-      "https://opencpn.org/wiki/dokuwiki/doku.php?id=opencpn:manual_basic:nmea0183"
-      );
-
-  wxHyperlinkCtrl* link2 = new wxHyperlinkCtrl(
-      dlg,
-      wxID_ANY,
-      _("NMEA Revealed"),
-      "https://gpsd.gitlab.io/gpsd/NMEA.html"
-      );
-
-  wxHyperlinkCtrl* link3 = new wxHyperlinkCtrl(
-      dlg,
-      wxID_ANY,
-      _("AIVDM/AIVDO protocol decoding"),
-      "https://gpsd.gitlab.io/gpsd/AIVDM.html"
-      );
-
-  sizer->Add(link1, 0, wxALIGN_CENTER_HORIZONTAL | wxBOTTOM, 8);
-  sizer->Add(link2, 0, wxALIGN_CENTER_HORIZONTAL | wxBOTTOM, 8);
-  sizer->Add(link3, 0, wxALIGN_CENTER_HORIZONTAL | wxBOTTOM, 8);
-
-  sizer->AddStretchSpacer(1);
-
-  dlg->SetSizer(sizer);
-  dlg->Layout();
-  dlg->Centre();
-
-  dlg->ShowModal();
-  dlg->Destroy();
-}
-
-
 //Autosend checkboxes
 void DialogMainGui::OnToggleButton_CheckAllBuilders(wxCommandEvent& event)
 {

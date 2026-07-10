@@ -11,6 +11,7 @@
 
 ### Removed
 - Manual position input for simulation ship & AIS targets
+- "Help" button in "Sentence builder". Links moved to the manual.
 
 
 ###
