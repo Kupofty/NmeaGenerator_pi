@@ -173,7 +173,8 @@ void DialogMainGui::OnTimer_autoSendNmea(wxTimerEvent& event)
 //GUI
 void DialogMainGui::OnClearInput(wxCommandEvent& event)
 {
-  m_textCtrl_sentenceInput->Clear();
+  m_checkBox_manualInputAutoSend->SetValue(false);
+  m_textCtrl_sentenceInput->SetValue("$");
 }
 
 void DialogMainGui::OnInputTextChanged(wxCommandEvent& event)
@@ -317,8 +318,8 @@ void DialogMainGui::OnButtonClick_AddManualList(wxCommandEvent& event)
   m_choice_manualInputList->Append(displayName);
 
   // Clear editor
-  m_textCtrl_sentenceInput->Clear();
   m_checkBox_manualInputAutoSend->SetValue(false);
+  m_textCtrl_sentenceInput->SetValue("$");
 }
 
 void DialogMainGui::OnButtonClick_LoadManualInputList(wxCommandEvent& event)
@@ -330,7 +331,6 @@ void DialogMainGui::OnButtonClick_LoadManualInputList(wxCommandEvent& event)
   //Restore UI from selected entry
   const ManualInput& input = manualInputList[sel];
   m_checkBox_autoChecksum->SetValue(input.autoChecksum);
-  m_checkBox_manualInputAutoSend->SetValue(input.autoSend);
 
   // Remove "*XX" checksum if auto checksum is enabled
   wxString sentence = input.sentence;
