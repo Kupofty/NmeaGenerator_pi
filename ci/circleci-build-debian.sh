@@ -77,6 +77,7 @@ if [ "$PWD" != "/"  ]; then sudo ln -sf $PWD/$builddir /$builddir; fi
 exec > >(tee $builddir/build.log) 2>&1;
 
 sudo apt -qq update || apt update
+echo 'Acquire::Retries "5";' | sudo tee /etc/apt/apt.conf.d/80-retries > /dev/null
 sudo apt-get -qq install devscripts equivs software-properties-common
 
 mk-build-deps --root-cmd=sudo -ir build-deps/control
