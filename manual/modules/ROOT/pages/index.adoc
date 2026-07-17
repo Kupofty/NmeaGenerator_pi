@@ -2,31 +2,51 @@
 
 image::logo/banner.png[width=700]
 
-
+//----------------------------------------------------------------------------------------------------
 == Author
 Plugin created by ©link:https://github.com/Kupofty[Kupofty] 2026
 
 
+
+//----------------------------------------------------------------------------------------------------
+== Manual Version
+
+This manual applies to **version 1.2.0**.
+
+Previous versions of the manual:
+
+- https://github.com/Kupofty/NmeaGenerator_pi/blob/a7bfce910393ec2c481eac64d8d4c6bc8c052b01/manual/modules/ROOT/pages/index.adoc[V1.1.0]
+- https://github.com/Kupofty/NmeaGenerator_pi/blob/72cd6c2a2b64a9c0b096d0a5a5171c6c61449685/manual/modules/ROOT/pages/index.adoc[V1.0.0]
+
+
+//----------------------------------------------------------------------------------------------------
 == Overview
-NmeaGenerator is a plugin for https://opencpn.org[OpenCPN] which generates and transmits NMEA0183 sentences.
 
-The plugin can be used as a lightweight ship simulator to reproduce realistic navigation behavior inside OpenCPN or for testing UI, other plugins, instruments, etc.
+NmeaGenerator is an https://opencpn.org[OpenCPN] plugin that generates and transmits NMEA 0183 sentences.
 
-=== Capabilities
-- Generates standard NMEA0183 sentences
-- Produces real-time data streams
-- Simulates vessel movement (position, speed, heading)
-- Supports AIS target simulation
+[underline]#*Capabilities*#
 
-=== Use cases
-- Testing OpenCPN UI with live data
-- Validating instruments and dashboards
+- Generates standard NMEA 0183 sentences
+- Produces configurable real-time NMEA data streams
+- Simulates own ship navigation (position, speed, course, heading, and turn rate)
+- Simulates multiple AIS targets (Class A, Class B, and ARPA)
+- Sends custom NMEA sentences manually or automatically
+- Builds common NMEA sentences using editable fields
+
+
+[underline]#*Use Cases*#
+
+- Testing OpenCPN with live NMEA data
+- Simulating navigation scenarios
+- Validating dashboards, instruments, and NMEA displays
 - Developing and debugging NMEA-based plugins
-- Simulating navigation scenarios without hardware
+- Simulating GPS, AIS, and other onboard sensors
+- Testing external NMEA-compatible hardware and software
 
 
 
-== Plugin Links
+//----------------------------------------------------------------------------------------------------
+== Links
 *Sources:*
 
 - link:https://github.com/Kupofty/NmeaGenerator_pi[Github Repository]
@@ -42,6 +62,7 @@ The plugin can be used as a lightweight ship simulator to reproduce realistic na
 
 
 
+//----------------------------------------------------------------------------------------------------
 == NMEA References
 
 The following resources provide detailed information about NMEA0183 sentence formats, field definitions, units, and AIS message encoding.
@@ -57,15 +78,19 @@ The following resources provide detailed information about NMEA0183 sentence for
 
 
 
+//----------------------------------------------------------------------------------------------------
 == Installation
 
-=== Method 1: Plugin Manager (Recommended)
+[underline]#*Method 1: Plugin Manager (Recommended)*#
+
 1. Open OpenCPN
 2. Go to *Options → Plugins*
 3. Update catalog and search for the *NmeaGenerator* plugin
 4. Click *Install* then *Enable*
 
-=== Method 2: Manual Install (Cloudsmith)
+
+[underline]#*Method 2: Manual Install (Cloudsmith)*#
+
 1. Go to Cloudsmith
 2. Select the correct tarball for your OS
 3. Download the `.tar.gz` archive (not the `.xml`)
@@ -73,7 +98,7 @@ The following resources provide detailed information about NMEA0183 sentence for
 5. Enable plugin in *Options → Plugins*
 
 
-=== Method 3: Build from Source (Github)
+[underline]#*Method 3: Build from Source (Github)*#
 
 Clone the repository:
 ----
@@ -102,92 +127,158 @@ Import the tarball in OpenCPN via *Options → Plugins → Import plugin...* and
 For more information, see the INSTALL.md file in the GitHub repository.
 
 
+
+
+//----------------------------------------------------------------------------------------------------
 == User Interface
 To open the plugin, click on the toolbar icon : 
 
 image::logo/logo_toolbar.png[width=50]
 
-The plugin is divided into multiple tabs:
+The plugin is divided into multiple tabs.
 
+''''
 === Manual Input
-image::gui/manual_input_tab.png[]
 
-The "Manual Input" tab lets you type and send any NMEA sentence directly to OpenCPN, making it ideal for testing specific messages independently of the simulation engine, or for validating and debugging data flows.
+The **Manual Input** tab lets you type and send any NMEA sentence directly to OpenCPN. It is useful for testing individual sentences independently of the simulation engine, as well as validating or debugging NMEA data flows.
 
-There is no validation on the content — any sentence will be forwarded as-is. Sentences must start with `$` or `!`. The checksum is optional.
+No validation is performed on the input. Any sentence is forwarded exactly as entered. Sentences must begin with `$` or `!`. The checksum is optional.
 
-
-
-==== *Checksum*
-
-The "Add automatic checksum" option computes and appends the correct checksum to your sentence automatically.  
-
-When enabled, you can paste a sentence that already includes a checksum and visually compare it with the generated one — the manually written checksum will be stripped before sending.  
-
-When disabled, a status message is displayed below the input field indicating whether the checksum is absent, correct, or invalid.
-
-==== *Controls*
-
-[horizontal]
-Send:: Sends the sentence once to OpenCPN.
-Copy:: Copies the current input and checksum (optionnal) to the clipboard.
-Clear:: Clears the input field.
-Automatic send:: Sends the sentence continuously at the specified frequency. The rate can be adjusted at any time.
+image::gui/manual_input/manual_input_tab.png[]
 
 
+#### [underline]#*Controls*#
+
+- **Add to list**: Adds the current sentence to the list so it can be saved, loaded, or included in automatic sending.
+- **Send**: Sends the current sentence once to OpenCPN.
+- **Copy**: Copies the current sentence, including the checksum if present or automatically generated, to the clipboard.
+- **Clear**: Clears the input field.
+- **Automatic send**: Continuously sends the selected sentences at the configured frequency. The transmission rate can be changed at any time.
+
+
+
+#### [underline]#*Automatic Send*#
+
+Each sentence in the list has an **Auto send** checkbox. Only sentences with this option enabled are transmitted when the **Automatic send** option at the bottom of the window is enabled.
+
+During each transmission cycle, the application iterates through the list and sends only the entries marked for automatic transmission.
+
+
+
+#### [underline]#*Checksum*#
+
+The **Auto checksum** option calculates and appends the correct checksum automatically before sending.
+
+When enabled, you can paste a sentence that already contains a checksum. The existing checksum is ignored and replaced with the newly calculated one, making it easy to compare the two visually.
+
+When disabled, a status indicator below the input field reports whether the checksum is: Missing / Valid / Invalid
+
+
+
+#### [underline]#*List*#
+The list displays all saved NMEA sentences.
+
+image::gui/manual_input/manual_input_list.png[]
+
+
+Entries marked with **(auto)** are included in automatic transmission when **Automatic send** is enabled. Other entries can be loaded back into the input field for editing or sent manually.
+
+Individual entries can be removed, or the entire list can be cleared using the available buttons.
+
+Each list entry is named using the first five characters of the NMEA sentence, excluding the leading `$` or `!` character.
 
 
 '''
 === Sentence Builder
-image::gui/sentence_builder_tab.png[]
 
-The "Sentence Builder" tab provides quick access to the most common NMEA sentences, each with editable fields. Multiple sentences can be sent simultaneously and automatically.
+The **Sentence Builder** tab provides quick access to the most commonly used NMEA sentences through editable fields.
 
-Use the search box to filter sentences by ID, and the vertical scrollbar to browse the full list. +
-For text input fields, values must follow the official NMEA field format to be interpreted correctly by OpenCPN or external hardware/software.
+image::gui/sentence_builder/sentence_builder_tab.png[]
 
+Multiple sentences can be configured and transmitted automatically at the same time.
 
-*Controls*
+Use the search box to filter sentences by their ID, and the vertical scrollbar to browse the complete list.
 
-[horizontal]
-Send:: Sends the selected sentence once to OpenCPN.
-Copy:: Copies the full sentence to the clipboard.
-Auto:: Adds the sentence to the automatic send list.
-Check all / Uncheck all:: Quickly adds or removes all sentences from the automatic send list.
-Automatic send:: Sends all checked sentences continuously at the specified frequency. Must be enabled for automatic sending to take effect.
+For text input fields, values must follow the official NMEA format to ensure they are interpreted correctly by OpenCPN or compatible hardware and software.
+
+==== [underline]#*Controls*#
+
+- **Send**: Sends the selected sentence once to OpenCPN.
+- **Copy**: Copies the complete sentence to the clipboard.
+- **Auto**: Includes the sentence in the automatic send list.
+- **Check all**: Enables or disables automatic sending for all sentences.
+- **Automatic send**: Continuously sends all sentences marked with **Auto** at the configured frequency. This option must be enabled for automatic transmission to occur.
 
 
 '''
 === Simulation
-image::gui/simulation_tab.png[]
 
-The Simulation tab generates continuous NMEA data streams to mimic own ship and/or AIS target.
+image::gui/simulation/simulation_tab.png[]
 
-*Vessel Selection And Data Outputs*
-
-[horizontal]
-Control vessel:: Selects which vessel is currently being controlled (own ship or AIS target). The other vessel retains its last speed and rudder angle.
-AIS type:: Sets the AIS target type: Class A, Class B, or ARPA radar target.
-NMEA output:: Controls which data is transmitted. _Current_ sends data for the vessel selected in Control vessel only; _Both_ sends data for both own ship and AIS target simultaneously, with both vessels continuously updated in position and heading.
-
-*Vessel Controls*
-
-[horizontal]
-Initial position:: Right-click on the map to update the position directly.
-Throttle:: Speed control slider.
-Rudder angle:: Turn rate slider.
-Reset:: Returns slider to zero.
-
-
-*Simulation*
-
-[horizontal]
-START/STOP:: Starts or stops sending simulation data at the specified rate (adjustable).
-
-The status labels in the centre of the tab (position, heading, COG, speed) reflect the live data of the vessel currently selected in "Control vessel".
+The **Simulation** tab generates continuous NMEA data streams to simulate own ship and one or more AIS targets.
 
 
 
+==== [underline]#*Vessel Selection and Data Output*#
+
+- **Control vessel:** Selects the vessel currently controlled by the throttle and rudder sliders. The list always contains the own ship and any created AIS targets. Vessels that are not currently selected continue moving using their last speed and rudder settings.
+- **AIS type:** Sets the AIS target type: Class A, Class B, or ARPA radar target.
+- **NMEA output:** Selects which data is transmitted:
+  * **All:** Sends NMEA data for both the own ship and all AIS targets.
+  * **Own ship only:** Sends NMEA data for the own ship only.
+  * **AIS targets only:** Sends NMEA data for AIS targets only.
+
+
+
+==== [underline]#*Vessel Controls*#
+
+- **Initial position:** Right-click on the map to move the selected vessel to the cursor position.
+- **Throttle:** Adjusts the vessel speed.
+- **Rudder angle:** Adjusts the vessel turn rate.
+- **Reset:** Returns the throttle and rudder controls to zero.
+
+
+==== [underline]#*Simulation*#
+
+The status fields in the center of the tab (position, heading, COG, and speed) display the live data of the vessel currently selected in **Control vessel**.
+
+- **START/STOP:** Starts or stops the simulation. Data is transmitted continuously at the configured frequency.
+
+
+
+==== [underline]#*Selecting a Vessel*#
+
+Clicking the **Control vessel** drop-down displays all controllable vessels: the own ship and every AIS target that has been created.
+
+image::gui/simulation/simulation_vessel_list.png[]
+
+Selecting a vessel makes it the active vessel, allowing its speed and rudder angle to be controlled with the sliders.
+
+
+==== [underline]#*Context Menu*#
+
+Right-click anywhere on the map and select **NmeaGenerator...**.
+
+image::gui/simulation/right_click_menu.png[]
+
+The context menu provides quick simulation actions:
+
+- **Update position:** Move the own ship or the currently selected AIS target to the cursor position.
+- **AIS targets:** Create a new AIS target at the cursor position, delete the last created AIS target, or remove all AIS targets.
+
+image::gui/simulation/right_click_menu_options.png[]
+
+
+
+==== [underline]#*Multiple Vessel Simulation*#
+
+Multiple AIS targets can be created and simulated simultaneously. Each vessel keeps its own position, speed, heading, and rudder state, allowing realistic multi-target scenarios while switching control between vessels.
+
+image::gui/simulation/multiple_sim_vessels.png[]
+
+
+
+//----------------------------------------------------------------------------------------------------
 == Settings
 
 The plugin can be accessed via Options → Plugins → NmeaGenerator in the OpenCPN toolbar.
@@ -229,6 +320,7 @@ Can be used to mimic a vessel or SART targets (MOB, EPIRB, etc).
 
 
 
+//----------------------------------------------------------------------------------------------------
 == Notes
 
 === Connections
@@ -236,20 +328,19 @@ Can be used to mimic a vessel or SART targets (MOB, EPIRB, etc).
 - The plugin does not create a serial or network output by default. To forward sentences to external software or hardware, use OpenCPN's connection settings to create an output connection.
 
 === General
-- Multiple NMEA sources may cause conflicts in OpenCPN: ensure sensor inputs and generated data do not overlap.
 
-- Do not use the plugin during real navigation, or do so at your own risk — it may interfere with critical navigation data and affect system reliability.
+- Outputs from the **Manual Input**, **Sentence Builder**, and **Simulation** tabs can be used simultaneously. For example, ship simulation can run while the Sentence Builder automatically transmits selected sentences, and additional sentences are sent automatically or manually from the Manual Input tab.
 
-- The outputs of all three tabs (in auto-send mode) are automatically stopped when the plugin window is closed, unless _Keep transmitting when window is closed_ is enabled in Settings.
+- Multiple NMEA sources may cause conflicts in OpenCPN. Ensure that generated data does not overlap with data from real sensors or other NMEA sources.
 
-- Output can be monitored in the OpenCPN Data Monitor window. + 
-Plugin sentences are prefixed with a "virtual" tag, making them easy to identify.
+- Do not use this plugin for real navigation. Generated data may interfere with navigation information and affect system reliability.
+
+- Automatic transmissions from the **Manual Input**, **Sentence Builder**, and **Simulation** tabs stop when the plugin window is closed, unless **Keep transmitting when window is closed** is enabled in *Settings*.
+
+- Output can be monitored in the OpenCPN **Data Monitor** window. Plugin-generated sentences are prefixed with the **virtual** tag, making them easy to identify.
 
 image::data_monitor.png[]
 
-- When simulating AIS targets, make sure the MMSI used does not match any real vessel to avoid confusion in AIS displays.
+- When simulating AIS targets, ensure that the configured MMSI does not match that of a real vessel to avoid confusion in AIS displays.
 
-- Sentence fields left empty or filled with invalid values may be silently ignored or cause unexpected behavior in receiving instruments — always refer to the NMEA reference when in doubt.
-
-
-
+- Sentence fields left empty or containing invalid values may be ignored or interpreted unexpectedly by receiving software or instruments. Refer to the NMEA specifications when necessary.
