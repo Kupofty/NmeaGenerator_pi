@@ -83,56 +83,86 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="_overview"><a class="anchor" href="#_overview"></a>Overview</h2>
+<h2 id="_manual_version"><a class="anchor" href="#_manual_version"></a>Manual Version</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>NmeaGenerator is a plugin for <a href="https://opencpn.org">OpenCPN</a> which generates and transmits NMEA0183 sentences.</p>
+<p>This manual applies to <strong>version 1.2.0</strong>.</p>
 </div>
 <div class="paragraph">
-<p>The plugin can be used as a lightweight ship simulator to reproduce realistic navigation behavior inside OpenCPN or for testing UI, other plugins, instruments, etc.</p>
+<p>Previous versions of the manual:</p>
 </div>
-<div class="sect2">
-<h3 id="_capabilities"><a class="anchor" href="#_capabilities"></a>Capabilities</h3>
 <div class="ulist">
 <ul>
 <li>
-<p>Generates standard NMEA0183 sentences</p>
+<p><a href="https://github.com/Kupofty/NmeaGenerator_pi/blob/a7bfce910393ec2c481eac64d8d4c6bc8c052b01/manual/modules/ROOT/pages/index.adoc">V1.1.0</a></p>
 </li>
 <li>
-<p>Produces real-time data streams</p>
-</li>
-<li>
-<p>Simulates vessel movement (position, speed, heading)</p>
-</li>
-<li>
-<p>Supports AIS target simulation</p>
+<p><a href="https://github.com/Kupofty/NmeaGenerator_pi/blob/72cd6c2a2b64a9c0b096d0a5a5171c6c61449685/manual/modules/ROOT/pages/index.adoc">V1.0.0</a></p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_use_cases"><a class="anchor" href="#_use_cases"></a>Use cases</h3>
+</div>
+<div class="sect1">
+<h2 id="_overview"><a class="anchor" href="#_overview"></a>Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>NmeaGenerator is an <a href="https://opencpn.org">OpenCPN</a> plugin that generates and transmits NMEA 0183 sentences.</p>
+</div>
+<div class="paragraph">
+<p><span class="underline"><strong>Capabilities</strong></span></p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Testing OpenCPN UI with live data</p>
+<p>Generates standard NMEA 0183 sentences</p>
 </li>
 <li>
-<p>Validating instruments and dashboards</p>
+<p>Produces configurable real-time NMEA data streams</p>
+</li>
+<li>
+<p>Simulates own ship navigation (position, speed, course, heading, and turn rate)</p>
+</li>
+<li>
+<p>Simulates multiple AIS targets (Class A, Class B, and ARPA)</p>
+</li>
+<li>
+<p>Sends custom NMEA sentences manually or automatically</p>
+</li>
+<li>
+<p>Builds common NMEA sentences using editable fields</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="underline"><strong>Use Cases</strong></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Testing OpenCPN with live NMEA data</p>
+</li>
+<li>
+<p>Simulating navigation scenarios</p>
+</li>
+<li>
+<p>Validating dashboards, instruments, and NMEA displays</p>
 </li>
 <li>
 <p>Developing and debugging NMEA-based plugins</p>
 </li>
 <li>
-<p>Simulating navigation scenarios without hardware</p>
+<p>Simulating GPS, AIS, and other onboard sensors</p>
+</li>
+<li>
+<p>Testing external NMEA-compatible hardware and software</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
-</div>
 <div class="sect1">
-<h2 id="_plugin_links"><a class="anchor" href="#_plugin_links"></a>Plugin Links</h2>
+<h2 id="_links"><a class="anchor" href="#_links"></a>Links</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Sources:</strong></p>
@@ -168,9 +198,6 @@
 <div class="paragraph">
 <p>The following resources provide detailed information about NMEA0183 sentence formats, field definitions, units, and AIS message encoding.</p>
 </div>
-<div class="paragraph">
-<p><strong>General NMEA</strong></p>
-</div>
 <div class="ulist">
 <ul>
 <li>
@@ -179,13 +206,6 @@
 <li>
 <p><a href="https://gpsd.gitlab.io/gpsd/NMEA.html">NMEA Revealed (GPSD)</a></p>
 </li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>AIS</strong></p>
-</div>
-<div class="ulist">
-<ul>
 <li>
 <p><a href="https://gpsd.gitlab.io/gpsd/AIVDM.html">AIVDM/AIVDO Protocol Decoding (GPSD)</a></p>
 </li>
@@ -196,8 +216,9 @@
 <div class="sect1">
 <h2 id="_installation"><a class="anchor" href="#_installation"></a>Installation</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_method_1_plugin_manager_recommended"><a class="anchor" href="#_method_1_plugin_manager_recommended"></a>Method 1: Plugin Manager (Recommended)</h3>
+<div class="paragraph">
+<p><span class="underline"><strong>Method 1: Plugin Manager (Recommended)</strong></span></p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -214,9 +235,9 @@
 </li>
 </ol>
 </div>
+<div class="paragraph">
+<p><span class="underline"><strong>Method 2: Manual Install (Cloudsmith)</strong></span></p>
 </div>
-<div class="sect2">
-<h3 id="_method_2_manual_install_cloudsmith"><a class="anchor" href="#_method_2_manual_install_cloudsmith"></a>Method 2: Manual Install (Cloudsmith)</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -236,9 +257,9 @@
 </li>
 </ol>
 </div>
+<div class="paragraph">
+<p><span class="underline"><strong>Method 3: Build from Source (Github)</strong></span></p>
 </div>
-<div class="sect2">
-<h3 id="_method_3_build_from_source_github"><a class="anchor" href="#_method_3_build_from_source_github"></a>Method 3: Build from Source (Github)</h3>
 <div class="paragraph">
 <p>Clone the repository:</p>
 </div>
@@ -276,7 +297,6 @@ For more information, see the INSTALL.md file in the GitHub repository.</p>
 </div>
 </div>
 </div>
-</div>
 <div class="sect1">
 <h2 id="_user_interface"><a class="anchor" href="#_user_interface"></a>User Interface</h2>
 <div class="sectionbody">
@@ -289,234 +309,284 @@ For more information, see the INSTALL.md file in the GitHub repository.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The plugin is divided into multiple tabs:</p>
+<p>The plugin is divided into multiple tabs.</p>
 </div>
+<hr>
 <div class="sect2">
 <h3 id="_manual_input"><a class="anchor" href="#_manual_input"></a>Manual Input</h3>
+<div class="paragraph">
+<p>The <strong>Manual Input</strong> tab lets you type and send any NMEA sentence directly to OpenCPN. It is useful for testing individual sentences independently of the simulation engine, as well as validating or debugging NMEA data flows.</p>
+</div>
+<div class="paragraph">
+<p>The input is only checked to ensure the sentence begins with $ or !. No other validation is performed. The checksum is optional.</p>
+</div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/gui/manual_input_tab.png" alt="manual input tab">
-</div>
-</div>
-<div class="paragraph">
-<p>The "Manual Input" tab lets you type and send any NMEA sentence directly to OpenCPN, making it ideal for testing specific messages independently of the simulation engine, or for validating and debugging data flows.</p>
-</div>
-<div class="paragraph">
-<p>There is no validation on the content — any sentence will be forwarded as-is. Sentences must start with <code>$</code> or <code>!</code>. The checksum is optional.</p>
-</div>
-<div class="sect3">
-<h4 id="_checksum"><a class="anchor" href="#_checksum"></a><strong>Checksum</strong></h4>
-<div class="paragraph">
-<p>The "Add automatic checksum" option computes and appends the correct checksum to your sentence automatically.</p>
-</div>
-<div class="paragraph">
-<p>When enabled, you can paste a sentence that already includes a checksum and visually compare it with the generated one — the manually written checksum will be stripped before sending.</p>
-</div>
-<div class="paragraph">
-<p>When disabled, a status message is displayed below the input field indicating whether the checksum is absent, correct, or invalid.</p>
+<img src="_images/gui/manual_input/manual_input_tab.png" alt="manual input tab">
 </div>
 </div>
 <div class="sect3">
-<h4 id="_controls"><a class="anchor" href="#_controls"></a><strong>Controls</strong></h4>
-<div class="hdlist">
-<table>
-<tr>
-<td class="hdlist1">
-Send
-</td>
-<td class="hdlist2">
-<p>Sends the sentence once to OpenCPN.</p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-Copy
-</td>
-<td class="hdlist2">
-<p>Copies the current input and checksum (optionnal) to the clipboard.</p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-Clear
-</td>
-<td class="hdlist2">
-<p>Clears the input field.</p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-Automatic send
-</td>
-<td class="hdlist2">
-<p>Sends the sentence continuously at the specified frequency. The rate can be adjusted at any time.</p>
-</td>
-</tr>
-</table>
+<h4 id="_controls"><a class="anchor" href="#_controls"></a><span class="underline"><strong>Controls</strong></span></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Add to list</strong>: Adds the current sentence to the list so it can be saved, loaded, or included in automatic sending. The input field is cleared.</p>
+</li>
+<li>
+<p><strong>Send</strong>: Sends the current sentence once to OpenCPN.</p>
+</li>
+<li>
+<p><strong>Copy</strong>: Copies the current sentence, including the checksum if present or automatically generated, to the clipboard.</p>
+</li>
+<li>
+<p><strong>Clear</strong>: Clears the input field.</p>
+</li>
+<li>
+<p><strong>Automatic send</strong>: Continuously sends the selected sentences at the configured frequency. The transmission rate can be changed at any time.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_automatic_send"><a class="anchor" href="#_automatic_send"></a><span class="underline"><strong>Automatic Send</strong></span></h4>
+<div class="paragraph">
+<p>Each sentence in the list has an <strong>Auto send</strong> checkbox. Only sentences with this option enabled are transmitted when the <strong>Automatic send</strong> option at the bottom of the window is enabled.</p>
+</div>
+<div class="paragraph">
+<p>During each transmission cycle, the application iterates through the list and sends only the entries marked for automatic transmission.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_checksum"><a class="anchor" href="#_checksum"></a><span class="underline"><strong>Checksum</strong></span></h4>
+<div class="paragraph">
+<p>The <strong>Auto checksum</strong> option calculates and appends the correct checksum automatically before sending.</p>
+</div>
+<div class="paragraph">
+<p>When enabled, you can paste a sentence that already contains a checksum. The existing checksum is ignored and replaced with the newly calculated one, making it easy to compare the two visually.</p>
+</div>
+<div class="paragraph">
+<p>When disabled, a status indicator below the input field reports whether the checksum is: Missing / Valid / Invalid</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_list"><a class="anchor" href="#_list"></a><span class="underline"><strong>List</strong></span></h4>
+<div class="paragraph">
+<p>The list displays all saved NMEA sentences.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/gui/manual_input/manual_input_list.png" alt="manual input list">
+</div>
+</div>
+<div class="paragraph">
+<p>Entries marked with <strong>(auto)</strong> are included in automatic transmission when <strong>Automatic send</strong> is enabled. Other entries can be loaded back into the input field for editing or sent manually.</p>
+</div>
+<div class="paragraph">
+<p>Individual entries can be removed, or the entire list can be cleared using the available buttons.</p>
+</div>
+<div class="paragraph">
+<p>Each list entry is named using the first five characters of the NMEA sentence, excluding the leading <code>$</code> or <code>!</code> character.</p>
 </div>
 <hr>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_sentence_builder"><a class="anchor" href="#_sentence_builder"></a>Sentence Builder</h3>
+<div class="paragraph">
+<p>The <strong>Sentence Builder</strong> tab provides quick access to the most commonly used NMEA sentences through editable fields.</p>
+</div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/gui/sentence_builder_tab.png" alt="sentence builder tab">
+<img src="_images/gui/sentence_builder/sentence_builder_tab.png" alt="sentence builder tab">
 </div>
 </div>
 <div class="paragraph">
-<p>The "Sentence Builder" tab provides quick access to the most common NMEA sentences, each with editable fields. Multiple sentences can be sent simultaneously and automatically.</p>
+<p>Multiple sentences can be configured and transmitted automatically at the same time.</p>
 </div>
 <div class="paragraph">
-<p>Use the search box to filter sentences by ID, and the vertical scrollbar to browse the full list.<br>
-For text input fields, values must follow the official NMEA field format to be interpreted correctly by OpenCPN or external hardware/software.</p>
+<p>Use the search box to filter sentences by their ID, and the vertical scrollbar to browse the complete list.</p>
 </div>
 <div class="paragraph">
-<p><strong>Controls</strong></p>
+<p>For text input fields, values must follow the official NMEA format to ensure they are interpreted correctly by OpenCPN or compatible hardware and software.</p>
 </div>
-<div class="hdlist">
-<table>
-<tr>
-<td class="hdlist1">
-Send
-</td>
-<td class="hdlist2">
-<p>Sends the selected sentence once to OpenCPN.</p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-Copy
-</td>
-<td class="hdlist2">
-<p>Copies the full sentence to the clipboard.</p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-Auto
-</td>
-<td class="hdlist2">
-<p>Adds the sentence to the automatic send list.</p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-Check all / Uncheck all
-</td>
-<td class="hdlist2">
-<p>Quickly adds or removes all sentences from the automatic send list.</p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-Automatic send
-</td>
-<td class="hdlist2">
-<p>Sends all checked sentences continuously at the specified frequency. Must be enabled for automatic sending to take effect.</p>
-</td>
-</tr>
-</table>
+<div class="sect3">
+<h4 id="_controls_2"><a class="anchor" href="#_controls_2"></a><span class="underline"><strong>Controls</strong></span></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Send</strong>: Sends the selected sentence once to OpenCPN.</p>
+</li>
+<li>
+<p><strong>Copy</strong>: Copies the complete sentence to the clipboard.</p>
+</li>
+<li>
+<p><strong>Auto</strong>: Includes the sentence in the automatic send list.</p>
+</li>
+<li>
+<p><strong>Check all</strong>: Enables or disables automatic sending for all sentences.</p>
+</li>
+<li>
+<p><strong>Automatic send</strong>: Continuously sends all sentences marked with <strong>Auto</strong> at the configured frequency. This option must be enabled for automatic transmission to occur.</p>
+</li>
+</ul>
 </div>
 <hr>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_simulation"><a class="anchor" href="#_simulation"></a>Simulation</h3>
 <div class="imageblock">
 <div class="content">
-<img src="_images/gui/simulation_tab.png" alt="simulation tab">
+<img src="_images/gui/simulation/simulation_tab.png" alt="simulation tab">
 </div>
 </div>
 <div class="paragraph">
-<p>The Simulation tab generates continuous NMEA data streams to mimic own ship and/or AIS target.</p>
+<p>The <strong>Simulation</strong> tab generates continuous NMEA data streams to simulate own ship and one or more AIS targets.</p>
+</div>
+<div class="sect3">
+<h4 id="_vessel_selection_and_data_output"><a class="anchor" href="#_vessel_selection_and_data_output"></a><span class="underline"><strong>Vessel Selection and Data Output</strong></span></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Control vessel:</strong> Selects the vessel currently controlled by the throttle and rudder sliders. The list always contains the own ship and any created AIS targets. Vessels that are not currently selected continue moving using their last speed and rudder settings.</p>
+</li>
+<li>
+<p><strong>AIS type:</strong> Sets the new AIS target type: Class A, Class B, or ARPA radar target.</p>
+</li>
+<li>
+<p><strong>NMEA output:</strong> Selects which data is transmitted:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>All:</strong> Sends NMEA data forown ship and all AIS targets.</p>
+</li>
+<li>
+<p><strong>Own ship only:</strong> Sends NMEA data for own ship only.</p>
+</li>
+<li>
+<p><strong>AIS targets only:</strong> Sends NMEA data for AIS targets only.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_vessel_controls"><a class="anchor" href="#_vessel_controls"></a><span class="underline"><strong>Vessel Controls</strong></span></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Position:</strong> Right-click on the map to move the selected vessel to the cursor position.</p>
+</li>
+<li>
+<p><strong>Throttle:</strong> Adjusts the vessel speed.</p>
+</li>
+<li>
+<p><strong>Rudder angle:</strong> Adjusts the vessel turn rate.</p>
+</li>
+<li>
+<p><strong>Reset:</strong> Returns the throttle or rudder control to zero.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_simulation_2"><a class="anchor" href="#_simulation_2"></a><span class="underline"><strong>Simulation</strong></span></h4>
+<div class="paragraph">
+<p>The status fields in the center of the tab (position, heading, COG, and speed) display the live data of the vessel currently selected in <strong>Control vessel</strong>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>START/STOP:</strong> Starts or stops the simulation. Data is transmitted continuously at the configured frequency.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_selecting_a_vessel"><a class="anchor" href="#_selecting_a_vessel"></a><span class="underline"><strong>Selecting a Vessel</strong></span></h4>
+<div class="paragraph">
+<p>Clicking the <strong>Control vessel</strong> drop-down displays all controllable vessels: the own ship and every AIS target that has been created.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/gui/simulation/simulation_vessel_list.png" alt="simulation vessel list">
+</div>
 </div>
 <div class="paragraph">
-<p><strong>Vessel Selection And Data Outputs</strong></p>
+<p>Selecting a vessel makes it the active vessel, allowing its speed and rudder angle to be controlled with the sliders.</p>
 </div>
-<div class="hdlist">
+</div>
+<div class="sect3">
+<h4 id="_context_menu"><a class="anchor" href="#_context_menu"></a><span class="underline"><strong>Context Menu</strong></span></h4>
+<div class="paragraph">
+<p>Right-click anywhere on the map and select <strong>NmeaGenerator&#8230;&#8203;</strong>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/gui/simulation/right_click_menu.png" alt="right click menu">
+</div>
+</div>
+<div class="paragraph">
+<p>The context menu provides quick simulation actions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Update position:</strong> Move the own ship or the currently selected AIS target to the cursor position.</p>
+</li>
+<li>
+<p><strong>AIS targets:</strong> Create a new AIS target at the cursor position, delete the last created AIS target, or remove all AIS targets.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/gui/simulation/right_click_menu_options.png" alt="right click menu options">
+</div>
+</div>
+<div class="admonitionblock note">
 <table>
 <tr>
-<td class="hdlist1">
-Control vessel
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
 </td>
-<td class="hdlist2">
-<p>Selects which vessel is currently being controlled (own ship or AIS target). The other vessel retains its last speed and rudder angle.</p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-AIS type
-</td>
-<td class="hdlist2">
-<p>Sets the AIS target type: Class A, Class B, or ARPA radar target.</p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-NMEA output
-</td>
-<td class="hdlist2">
-<p>Controls which data is transmitted. <em>Current</em> sends data for the vessel selected in Control vessel only; <em>Both</em> sends data for both own ship and AIS target simultaneously, with both vessels continuously updated in position and heading.</p>
+<td class="content">
+<div class="paragraph">
+<p>When you click <strong>Delete Last AIS Target</strong> or <strong>Remove All AIS Targets</strong>, the selected AIS target is removed from the simulator&#8217;s internal list and its NMEA messages are no longer transmitted.</p>
+</div>
+<div class="paragraph">
+<p>If the target is still visible on the chart, it is because OpenCPN retains lost AIS targets for a configurable period. To make deleted targets disappear immediately, open <strong>Options → Ships → AIS Targets</strong> and set the following parameters to <strong>0 min</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Mark target as lost after&#8230;&#8203;</strong></p>
+</li>
+<li>
+<p><strong>Remove lost target after&#8230;&#8203;</strong></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>With both values set to <strong>0 min</strong>, the target is removed from the chart as soon as OpenCPN stops receiving its NMEA messages.</p>
+</div>
 </td>
 </tr>
 </table>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_multiple_vessel_simulation"><a class="anchor" href="#_multiple_vessel_simulation"></a><span class="underline"><strong>Multiple Vessel Simulation</strong></span></h4>
 <div class="paragraph">
-<p><strong>Vessel Controls</strong></p>
+<p>Multiple AIS targets can be created and simulated simultaneously. Each vessel keeps its own position, speed, heading, and rudder state, allowing realistic multi-target scenarios while switching control between vessels.</p>
 </div>
-<div class="hdlist">
-<table>
-<tr>
-<td class="hdlist1">
-Initial position
-</td>
-<td class="hdlist2">
-<p>Right-click on the map to update the position directly.</p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-Throttle
-</td>
-<td class="hdlist2">
-<p>Speed control slider.</p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-Rudder angle
-</td>
-<td class="hdlist2">
-<p>Turn rate slider.</p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-Reset
-</td>
-<td class="hdlist2">
-<p>Returns slider to zero.</p>
-</td>
-</tr>
-</table>
+<div class="imageblock">
+<div class="content">
+<img src="_images/gui/simulation/multiple_sim_vessels.png" alt="multiple sim vessels">
 </div>
-<div class="paragraph">
-<p><strong>Simulation</strong></p>
 </div>
-<div class="hdlist">
-<table>
-<tr>
-<td class="hdlist1">
-START/STOP
-</td>
-<td class="hdlist2">
-<p>Starts or stops sending simulation data at the specified rate (adjustable).</p>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The status labels in the centre of the tab (position, heading, COG, speed) reflect the live data of the vessel currently selected in "Control vessel".</p>
 </div>
 </div>
 </div>
@@ -638,17 +708,19 @@ Can be used to mimic a vessel or SART targets (MOB, EPIRB, etc).</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Multiple NMEA sources may cause conflicts in OpenCPN: ensure sensor inputs and generated data do not overlap.</p>
+<p>Outputs from the <strong>Manual Input</strong>, <strong>Sentence Builder</strong>, and <strong>Simulation</strong> tabs can be used simultaneously. For example, ship simulation can run while the Sentence Builder automatically transmits selected sentences, and additional sentences are sent automatically or manually from the Manual Input tab.</p>
 </li>
 <li>
-<p>Do not use the plugin during real navigation, or do so at your own risk — it may interfere with critical navigation data and affect system reliability.</p>
+<p>Multiple NMEA sources may cause conflicts in OpenCPN. Ensure that generated data does not overlap with data from real sensors or other NMEA sources.</p>
 </li>
 <li>
-<p>The outputs of all three tabs (in auto-send mode) are automatically stopped when the plugin window is closed, unless <em>Keep transmitting when window is closed</em> is enabled in Settings.</p>
+<p>Do not use this plugin for real navigation. Generated data may interfere with navigation information and affect system reliability.</p>
 </li>
 <li>
-<p>Output can be monitored in the OpenCPN Data Monitor window.<br>
-Plugin sentences are prefixed with a "virtual" tag, making them easy to identify.</p>
+<p>Automatic transmissions from the <strong>Manual Input</strong>, <strong>Sentence Builder</strong>, and <strong>Simulation</strong> tabs stop when the plugin window is closed, unless <strong>Keep transmitting when window is closed</strong> is enabled in <strong>Settings</strong>.</p>
+</li>
+<li>
+<p>Output can be monitored in the OpenCPN <strong>Data Monitor</strong> window. Plugin-generated sentences are prefixed with the <strong>virtual</strong> tag, making them easy to identify.</p>
 </li>
 </ul>
 </div>
@@ -660,10 +732,10 @@ Plugin sentences are prefixed with a "virtual" tag, making them easy to identify
 <div class="ulist">
 <ul>
 <li>
-<p>When simulating AIS targets, make sure the MMSI used does not match any real vessel to avoid confusion in AIS displays.</p>
+<p>When simulating AIS targets, ensure that the configured MMSI does not match that of a real vessel to avoid confusion in AIS displays.</p>
 </li>
 <li>
-<p>Sentence fields left empty or filled with invalid values may be silently ignored or cause unexpected behavior in receiving instruments — always refer to the NMEA reference when in doubt.</p>
+<p>Sentence fields left empty or containing invalid values may be ignored or interpreted unexpectedly by receiving software or instruments. Refer to the NMEA specifications when necessary.</p>
 </li>
 </ul>
 </div>
