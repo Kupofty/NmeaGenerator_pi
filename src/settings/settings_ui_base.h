@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// C++ code generated with wxFormBuilder (version 4.2.1-0-g80c4cb6-dirty)
+// C++ code generated with wxFormBuilder (version 4.2.1-0-g80c4cb6)
 // http://www.wxformbuilder.org/
 //
 // PLEASE DO *NOT* EDIT THIS FILE!
@@ -61,7 +61,7 @@ class DialogSettingsBase : public wxDialog
 
 	public:
 
-		DialogSettingsBase( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("NmeaGenerator Plugin Preferences"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 352,331 ), long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
+		DialogSettingsBase( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("NmeaGenerator Plugin Preferences"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 350,300 ), long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
 
 		~DialogSettingsBase();
 

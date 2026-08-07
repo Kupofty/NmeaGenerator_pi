@@ -243,7 +243,15 @@ void NmeaGeneratorPlugin::SetCursorLatLon(double lat, double lon)
 /////////////////////////////////
 void NmeaGeneratorPlugin::ShowPreferencesDialog(wxWindow* parent)
 {
-  auto dialogSettings = std::make_unique<DialogSettings>(parent, wxID_ANY, _("NmeaGenerator Preferences"));
+  auto dialogSettings = std::make_unique<DialogSettings>(
+    parent,
+    wxID_ANY,
+    _("NmeaGenerator Preferences"),
+    wxDefaultPosition,
+    wxDefaultSize,
+    wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER
+  );
+
   if (wxID_OK == dialogSettings->ShowModal())
     SaveSettings();
 }

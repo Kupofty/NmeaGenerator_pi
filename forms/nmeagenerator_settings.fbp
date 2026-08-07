@@ -19,7 +19,7 @@
     <property name="lua_skip_events">1</property>
     <property name="lua_ui_table">UI</property>
     <property name="name">Preferences GUI</property>
-    <property name="path">../src</property>
+    <property name="path">../src/settings</property>
     <property name="php_disconnect_events">0</property>
     <property name="php_disconnect_mode">source_name</property>
     <property name="php_skip_events">1</property>
@@ -50,7 +50,7 @@
       <property name="minimum_size"></property>
       <property name="name">DialogSettingsBase</property>
       <property name="pos"></property>
-      <property name="size">352,331</property>
+      <property name="size">350,300</property>
       <property name="style">wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER</property>
       <property name="subclass">; ; forward_declare</property>
       <property name="title">NmeaGenerator Plugin Preferences</property>
@@ -126,7 +126,7 @@
             <object class="notebookpage" expanded="false">
               <property name="bitmap"></property>
               <property name="label">Display</property>
-              <property name="select">0</property>
+              <property name="select">1</property>
               <object class="wxPanel" expanded="false">
                 <property name="BottomDockable">1</property>
                 <property name="LeftDockable">1</property>
@@ -636,7 +636,7 @@
             <object class="notebookpage" expanded="true">
               <property name="bitmap"></property>
               <property name="label">Options</property>
-              <property name="select">1</property>
+              <property name="select">0</property>
               <object class="wxPanel" expanded="true">
                 <property name="BottomDockable">1</property>
                 <property name="LeftDockable">1</property>
