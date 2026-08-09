@@ -2,7 +2,7 @@
 
 
 ###
-## [v1.2.0] / 2026-xx-yy
+## [v1.2.0] / 2026-08-09
 ### Added
 - Multiple AIS targets management with selectable control target
 - Manual input list allowing multiple NMEA sentences to be configured and transmitted simultaneously
