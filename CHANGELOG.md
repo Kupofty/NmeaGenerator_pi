@@ -1,7 +1,15 @@
 # NmeaGenerator Changelog
 
 
-###
+
+--------------------------------------------------------------------------------------------
+## [v1.2.1] / 2026-xx-xx
+### Changed
+- Minor labels changes
+- Minor layout tweaks
+
+
+--------------------------------------------------------------------------------------------
 ## [v1.2.0] / 2026-08-09
 ### Added
 - Multiple AIS targets management with selectable control target
@@ -14,7 +22,7 @@
 - "Help" button in "Sentence builder". Links moved to the manual.
 
 
-###
+--------------------------------------------------------------------------------------------
 ## [v1.1.0] / 2026-06-11
 ### Added
 - AIS encoding & capabilities (AIVDM/AIVDO) in "Simulation" & "Sentence builder" tabs
@@ -37,6 +45,6 @@
 - Remove manual checksum when auto-checksum is activated to prevent sending sentence with 2 checksums
 
 
-###
+--------------------------------------------------------------------------------------------
 ## [v1.0.0] / 2026-04-15
 ### Initial release

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-23 22:56+0200\n"
+"POT-Creation-Date: 2026-09-01 19:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: src/main-ui/main_ui_base.cpp:36
-msgid "List entries:"
+msgid "List of entries:"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:57
@@ -716,7 +716,7 @@ msgid "I"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:3234
-msgid "Current"
+msgid "Electric current"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:3234
@@ -816,131 +816,131 @@ msgid "Sentence Builder"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:3463
+msgid "New AIS target type:"
+msgstr ""
+
+#: src/main-ui/main_ui_base.cpp:3467
+msgid "ARPA"
+msgstr ""
+
+#: src/main-ui/main_ui_base.cpp:3467
+msgid "class A"
+msgstr ""
+
+#: src/main-ui/main_ui_base.cpp:3467
+msgid "class B"
+msgstr ""
+
+#: src/main-ui/main_ui_base.cpp:3488
 msgid "Control vessel:"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3467 src/main-ui/main_ui_base.cpp:3505
+#: src/main-ui/main_ui_base.cpp:3492 src/main-ui/main_ui_base.cpp:3511
 #: src/menu-entry/menuDialog_ui_base.cpp:22
 msgid "Own ship"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3482
-msgid "New AIS target type:"
-msgstr ""
-
-#: src/main-ui/main_ui_base.cpp:3486
-msgid "ARPA"
-msgstr ""
-
-#: src/main-ui/main_ui_base.cpp:3486
-msgid "class A"
-msgstr ""
-
-#: src/main-ui/main_ui_base.cpp:3486
-msgid "class B"
-msgstr ""
-
-#: src/main-ui/main_ui_base.cpp:3501
+#: src/main-ui/main_ui_base.cpp:3507
 msgid "NMEA output:"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3505
+#: src/main-ui/main_ui_base.cpp:3511
 msgid "All"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3505 src/menu-entry/menuDialog_ui_base.cpp:32
+#: src/main-ui/main_ui_base.cpp:3511 src/menu-entry/menuDialog_ui_base.cpp:32
 msgid "AIS targets"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3535
+#: src/main-ui/main_ui_base.cpp:3541
 msgid "Latitude:"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3539
+#: src/main-ui/main_ui_base.cpp:3545
 msgid "00"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3543 src/main-ui/main_ui_base.cpp:3564
+#: src/main-ui/main_ui_base.cpp:3549 src/main-ui/main_ui_base.cpp:3570
 msgid "00.0000"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3556
+#: src/main-ui/main_ui_base.cpp:3562
 msgid "Longitude:"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3560 src/main-ui/main_ui_base.cpp:3590
-#: src/main-ui/main_ui_base.cpp:3614
+#: src/main-ui/main_ui_base.cpp:3566 src/main-ui/main_ui_base.cpp:3596
+#: src/main-ui/main_ui_base.cpp:3620
 msgid "000"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3586
-msgid "Heading:"
+#: src/main-ui/main_ui_base.cpp:3592
+msgid "True heading:"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3594 src/main-ui/main_ui_base.cpp:3618
-#: src/main-ui/main_ui_base.cpp:3681
+#: src/main-ui/main_ui_base.cpp:3600 src/main-ui/main_ui_base.cpp:3624
+#: src/main-ui/main_ui_base.cpp:3687
 msgid "deg"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3610
-msgid "Course:"
+#: src/main-ui/main_ui_base.cpp:3616
+msgid "COG:"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3631
-msgid "Speed:"
+#: src/main-ui/main_ui_base.cpp:3637
+msgid "SOG:"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3635 src/main-ui/main_ui_base.cpp:3677
-#: src/main-ui/main_ui_base.cpp:3735
+#: src/main-ui/main_ui_base.cpp:3641 src/main-ui/main_ui_base.cpp:3683
+#: src/main-ui/main_ui_base.cpp:3741
 msgid "0"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3639
+#: src/main-ui/main_ui_base.cpp:3645
 msgid "knots"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3673
+#: src/main-ui/main_ui_base.cpp:3679
 msgid "Rudder angle:"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3697 src/main-ui/main_ui_base.cpp:3755
+#: src/main-ui/main_ui_base.cpp:3703 src/main-ui/main_ui_base.cpp:3761
 msgid "-"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3706 src/main-ui/main_ui_base.cpp:3764
+#: src/main-ui/main_ui_base.cpp:3712 src/main-ui/main_ui_base.cpp:3770
 msgid "+"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3716 src/main-ui/main_ui_base.cpp:3774
+#: src/main-ui/main_ui_base.cpp:3722 src/main-ui/main_ui_base.cpp:3780
 msgid "Reset"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3731
+#: src/main-ui/main_ui_base.cpp:3737
 msgid "Throttle:"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3739
+#: src/main-ui/main_ui_base.cpp:3745
 msgid "%"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3801 src/main-ui/main_ui_derived.cpp:112
+#: src/main-ui/main_ui_base.cpp:3807 src/main-ui/main_ui_derived.cpp:112
 #: src/main-ui/main_ui_derived.cpp:1670
 msgid "START"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3809
+#: src/main-ui/main_ui_base.cpp:3815
 msgid "Send NMEA every"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3817
+#: src/main-ui/main_ui_base.cpp:3823
 msgid "second(s)"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3831 src/settings/settings_ui_base.cpp:34
+#: src/main-ui/main_ui_base.cpp:3837 src/settings/settings_ui_base.cpp:34
 msgid "Simulation"
 msgstr ""
 
-#: src/main-ui/main_ui_base.h:683
+#: src/main-ui/main_ui_base.h:684
 msgid "NMEA Generator Plugin"
 msgstr ""
 
@@ -1148,7 +1148,7 @@ msgstr ""
 msgid "NmeaGenerator..."
 msgstr ""
 
-#: src/plugin/nmeagenerator_plugin.cpp:246
+#: src/plugin/nmeagenerator_plugin.cpp:249
 msgid "NmeaGenerator Preferences"
 msgstr ""
 

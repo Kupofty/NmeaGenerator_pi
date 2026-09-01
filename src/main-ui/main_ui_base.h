@@ -549,10 +549,11 @@ class DialogMainGuiBase : public wxDialog
 		wxStaticText* m_staticText20;
 		wxPanel* m_panel_sim;
 		wxScrolledWindow* m_scrolledWindow2;
-		wxStaticText* m_staticText901;
-		wxChoice* m_choice_controlledVessel;
 		wxStaticText* m_staticText214;
 		wxChoice* m_choice_aisType;
+		wxStaticLine* m_staticline35;
+		wxStaticText* m_staticText901;
+		wxChoice* m_choice_controlledVessel;
 		wxStaticText* m_staticText2072;
 		wxChoice* m_choice_nmeaOutputSim;
 		wxStaticLine* m_staticline29;
