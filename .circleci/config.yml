@@ -295,10 +295,10 @@ workflows:
           <<: *std-filters
 
       ### Debian11 Bullseye ###
-      - build-bullseye-wx32:
-          <<: *std-filters
-      - build-bullseye:
-          <<: *std-filters
+      #- build-bullseye-wx32:
+      #    <<: *std-filters
+      #- build-bullseye:
+      #    <<: *std-filters
 
       #### Debian12 Bookworm ###
       - build-bookworm:
