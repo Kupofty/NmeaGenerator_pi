@@ -13,7 +13,7 @@ Plugin created by ©link:https://github.com/Kupofty[Kupofty] 2026
 
 This manual applies to **version 1.2.1**.
 
-See what's changed in the https://github.com/Kupofty/NmeaGenerator_pi/blob/main/CHANGELOG.md[CHANGELOG].
+See what's changed in the https://github.com/Kupofty/NmeaGenerator_pi/blob/github-pages/CHANGELOG.md[CHANGELOG].
 
 
 Previous versions of the manual:
