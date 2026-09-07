@@ -294,12 +294,6 @@ workflows:
       - build-flatpak-x86-2508:
           <<: *std-filters
 
-      ### Debian11 Bullseye ###
-      #- build-bullseye-wx32:
-      #    <<: *std-filters
-      #- build-bullseye:
-      #    <<: *std-filters
-
       #### Debian12 Bookworm ###
       - build-bookworm:
           <<: *std-filters
@@ -319,9 +313,3 @@ workflows:
       #### MacOS ###
       - build-macos-universal:
           <<: *std-filters
-
-       ### Android (only with API 118) ###
-       #- build-android-arm64:
-       #    <<: *std-filters
-       #- build-android-armhf:
-       #    <<: *std-filters
