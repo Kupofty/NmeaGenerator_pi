@@ -5,6 +5,7 @@
 --------------------------------------------------------------------------------------------
 ## [v1.2.1] / 2026-xx-xx
 ### Changed
+- Move new AIS target type selection in right-click menu
 - Minor labels changes
 - Minor layout tweaks
 

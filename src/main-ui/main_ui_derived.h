@@ -59,7 +59,7 @@ class DialogMainGui : public DialogMainGuiBase
     ~DialogMainGui();
 
     void updateSimStartPosition(VesselType type, double lat, double lon);
-    void addAisTarget(double lat, double lon);
+    void addAisTarget(double lat, double lon, aisType type);
     void removeLastAisTarget();
     void clearAisTargets();
     void stopTimers();

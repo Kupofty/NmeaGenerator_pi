@@ -21,6 +21,7 @@
 #include <wx/settings.h>
 #include <wx/sizer.h>
 #include <wx/statbox.h>
+#include <wx/statline.h>
 #include <wx/dialog.h>
 
 ///////////////////////////////////////////////////////////////////////////
@@ -35,21 +36,26 @@ class DialogMenuEntryBase : public wxDialog
 	protected:
 		wxButton* m_button_updateOwnShipPosition;
 		wxButton* m_button_updateAisTargetPosition;
-		wxButton* m_button_addAisTarget;
+		wxStaticLine* m_staticline1;
+		wxButton* m_button_addClassA;
+		wxButton* m_button_addClassB;
+		wxButton* m_button_addARPA;
 		wxButton* m_button_removeLastAisTarget;
 		wxButton* m_button_deleteAllAisTargets;
 
 		// Virtual event handlers, override them in your derived class
 		virtual void OnButtonClick_UpdateOwnShipPosition( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_UpdateAisTargetPosition( wxCommandEvent& event ) { event.Skip(); }
-		virtual void OnButtonClick_AddAisTarget( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_AddClassA( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_AddClassB( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_AddARPA( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_RemoveLastAisTargets( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_ClearAisTargets( wxCommandEvent& event ) { event.Skip(); }
 
 
 	public:
 
-		DialogMenuEntryBase( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("NmeaGenerator"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 233,229 ), long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
+		DialogMenuEntryBase( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("NmeaGenerator"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 333,270 ), long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER );
 
 		~DialogMenuEntryBase();
 

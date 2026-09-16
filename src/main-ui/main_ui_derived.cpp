@@ -9,6 +9,9 @@
 #include "nmea/utils.h"
 
 
+const wxString degreeSymbol(wxUniChar(0x00B0));
+
+
 ////////////////////////////
 /// Class Initialization ///
 ////////////////////////////
@@ -1535,66 +1538,61 @@ void DialogMainGui::updateGuiSimValues()
   SimVessel* vessel = getControlledVessel();
 
   //Heading & COG
-  m_staticText_headingSim->SetLabel(wxString::Format("%.0f", vessel->heading));
-  m_staticText_cogSim->SetLabel(wxString::Format("%.0f", vessel->cog ));
+  m_staticText_headingSim->SetLabel(wxString::Format("%.0f%s", vessel->heading, degreeSymbol));
+  m_staticText_cogSim->SetLabel(wxString::Format("%.0f%s", vessel->cog, degreeSymbol));
 
   //Position
   DegMin dm = utils::toDegMin(vessel->lat, vessel->lon);
-  m_staticText_latDegSim->SetLabel(wxString::Format("%d", dm.latDeg));
-  m_staticText_latMinSim->SetLabel(wxString::Format("%.4f", dm.latMin));
-  m_staticText_lonDegSim->SetLabel(wxString::Format("%d", dm.lonDeg));
-  m_staticText_lonMinSim->SetLabel(wxString::Format("%.4f", dm.lonMin));
+  m_staticText_latDegSim->SetLabel(wxString::Format("%d  %.4f%s", dm.latDeg, dm.latMin, degreeSymbol));
+  m_staticText_lonDegSim->SetLabel(wxString::Format("%d  %.4f%s", dm.lonDeg, dm.lonMin, degreeSymbol));
 
   //Throttle & Speed
   m_slider_throttleSim->SetValue(vessel->throttle);
-  wxString throttleStr = wxString::Format("%.0f", vessel->speed);
+  wxString throttleStr = wxString::Format("%.0f%s", vessel->speed, "%");
   m_staticText_throttleSim->SetLabel(throttleStr);
-  wxString speedStr = wxString::Format("%.0f", fabs(vessel->speed));
+  wxString speedStr = wxString::Format("%.0f %s",fabs(vessel->speed), _("kts"));
   m_staticText_speedSim->SetLabel(speedStr);
 
   //Rudder
   m_slider_rudderSim->SetValue(vessel->rudderAngle);
-  wxString rudderStr = wxString::Format("%.0f", vessel->rudderAngle);
+  wxString rudderStr = wxString::Format("%.0f%s", vessel->rudderAngle, degreeSymbol);
   m_staticText_rudderAngleSim->SetLabel(rudderStr);
 }
 
 
 //AIS targets list
-void DialogMainGui::addAisTarget(double lat, double lon)
+void DialogMainGui::addAisTarget(double lat, double lon, aisType type)
 {
   //Create new AIS target
   SimVessel v;
   v.lat = lat;
   v.lon = lon;
   v.mmsi = m_nextMmsi++;
+  v.type = type;
 
   wxString label = "";
-  int aisType = m_choice_aisType->GetSelection();
-  switch(aisType)
-  {
-    case 0:
-    {
-      v.type = aisType::ARPA;
 
+  switch (type)
+  {
+    case aisType::ARPA:
+    {
       int id = v.mmsi % 100;
-      v.name = "DUMMY" +  wxString::Format("%02d", id);
+      v.name = "DUMMY" + wxString::Format("%02d", id);
       label = "ARPA: " + v.name;
       break;
     }
 
-    case 1:
+    case aisType::ClassA:
     {
-      v.type = aisType::ClassA;
-      label = wxString::Format("ClassA: %u", v.mmsi);
+      label = wxString::Format("Class A: %u", v.mmsi);
       break;
-     }
+    }
 
-    case 2:
-     {
-      v.type = aisType::ClassB;
-      label = wxString::Format("ClassB: %u", v.mmsi);
+    case aisType::ClassB:
+    {
+      label = wxString::Format("Class B: %u", v.mmsi);
       break;
-     }
+    }
   }
 
   aisTargetList.push_back(v);

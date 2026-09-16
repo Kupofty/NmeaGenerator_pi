@@ -328,8 +328,16 @@ void NmeaGeneratorPlugin::OnContextMenuItemCallback(int id)
           break;
 
         //Handle dummy AIS targets
-        case DialogAction::AddAisTarget:
-          myGUI->addAisTarget(m_cursor_lat, m_cursor_lon);
+        case DialogAction::AddARPA:
+          myGUI->addAisTarget(m_cursor_lat, m_cursor_lon, aisType::ARPA);
+          break;
+
+        case DialogAction::AddClassA:
+          myGUI->addAisTarget(m_cursor_lat, m_cursor_lon, aisType::ClassA);
+          break;
+
+        case DialogAction::AddClassB:
+          myGUI->addAisTarget(m_cursor_lat, m_cursor_lon, aisType::ClassB);
           break;
 
         case DialogAction::RemoveLastAisTarget:

@@ -3457,31 +3457,6 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	bSizer_shipType->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	wxBoxSizer* bSizer801;
-	bSizer801 = new wxBoxSizer( wxVERTICAL );
-
-	m_staticText214 = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("New AIS target type:"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText214->Wrap( -1 );
-	bSizer801->Add( m_staticText214, 0, wxALIGN_CENTER|wxALL, 5 );
-
-	wxString m_choice_aisTypeChoices[] = { _("ARPA"), _("class A"), _("class B") };
-	int m_choice_aisTypeNChoices = sizeof( m_choice_aisTypeChoices ) / sizeof( wxString );
-	m_choice_aisType = new wxChoice( m_scrolledWindow2, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_aisTypeNChoices, m_choice_aisTypeChoices, 0 );
-	m_choice_aisType->SetSelection( 1 );
-	bSizer801->Add( m_choice_aisType, 1, wxALIGN_CENTER|wxALL, 5 );
-
-
-	bSizer_shipType->Add( bSizer801, 0, wxEXPAND, 5 );
-
-
-	bSizer_shipType->Add( 0, 0, 1, wxEXPAND, 5 );
-
-	m_staticline35 = new wxStaticLine( m_scrolledWindow2, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL|wxLI_VERTICAL );
-	bSizer_shipType->Add( m_staticline35, 0, wxEXPAND | wxALL, 5 );
-
-
-	bSizer_shipType->Add( 0, 0, 1, wxEXPAND, 5 );
-
 	wxBoxSizer* bSizer791;
 	bSizer791 = new wxBoxSizer( wxVERTICAL );
 
@@ -3542,13 +3517,9 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_staticText2081->Wrap( -1 );
 	bSizer52->Add( m_staticText2081, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_staticText_latDegSim = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("00"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText_latDegSim = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("00  00.0000°"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText_latDegSim->Wrap( -1 );
 	bSizer52->Add( m_staticText_latDegSim, 0, wxALIGN_CENTER|wxALL, 5 );
-
-	m_staticText_latMinSim = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("00.0000"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText_latMinSim->Wrap( -1 );
-	bSizer52->Add( m_staticText_latMinSim, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
 	bSizer511->Add( bSizer52, 0, wxEXPAND, 5 );
@@ -3563,13 +3534,9 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_staticText211->Wrap( -1 );
 	bSizer53->Add( m_staticText211, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_staticText_lonDegSim = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("000"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText_lonDegSim = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("000  00.0000°"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText_lonDegSim->Wrap( -1 );
 	bSizer53->Add( m_staticText_lonDegSim, 0, wxALIGN_CENTER|wxALL, 5 );
-
-	m_staticText_lonMinSim = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("00.0000"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText_lonMinSim->Wrap( -1 );
-	bSizer53->Add( m_staticText_lonMinSim, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
 	bSizer511->Add( bSizer53, 0, wxEXPAND, 5 );
@@ -3593,22 +3560,15 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_staticText902->Wrap( -1 );
 	bSizer37->Add( m_staticText902, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_staticText_headingSim = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("000"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_staticText_headingSim = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("0°"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
 	m_staticText_headingSim->Wrap( -1 );
 	bSizer37->Add( m_staticText_headingSim, 0, wxALIGN_CENTER|wxALL, 5 );
-
-	m_staticText92 = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("deg"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText92->Wrap( -1 );
-	bSizer37->Add( m_staticText92, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
 	bSizer_dataSim->Add( bSizer37, 0, wxEXPAND, 5 );
 
 
 	bSizer_dataSim->Add( 0, 0, 1, wxEXPAND, 5 );
-
-	m_staticline36 = new wxStaticLine( m_scrolledWindow2, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL );
-	bSizer_dataSim->Add( m_staticline36, 0, wxEXPAND | wxALL, 5 );
 
 	wxBoxSizer* bSizer39;
 	bSizer39 = new wxBoxSizer( wxHORIZONTAL );
@@ -3617,13 +3577,9 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_staticText1001->Wrap( -1 );
 	bSizer39->Add( m_staticText1001, 0, wxALL, 5 );
 
-	m_staticText_cogSim = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("000"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
+	m_staticText_cogSim = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("0°"), wxDefaultPosition, wxSize( 40,-1 ), 0 );
 	m_staticText_cogSim->Wrap( -1 );
 	bSizer39->Add( m_staticText_cogSim, 0, wxALL, 5 );
-
-	m_staticText102 = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("deg"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText102->Wrap( -1 );
-	bSizer39->Add( m_staticText102, 0, wxALL, 5 );
 
 
 	bSizer_dataSim->Add( bSizer39, 0, wxEXPAND, 5 );
@@ -3638,22 +3594,15 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_staticText93->Wrap( -1 );
 	bSizer38->Add( m_staticText93, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_staticText_speedSim = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("0"), wxDefaultPosition, wxSize( 20,-1 ), 0 );
+	m_staticText_speedSim = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("0 kts"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
 	m_staticText_speedSim->Wrap( -1 );
 	bSizer38->Add( m_staticText_speedSim, 0, wxALIGN_CENTER|wxALL, 5 );
-
-	m_staticText95 = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("knots"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText95->Wrap( -1 );
-	bSizer38->Add( m_staticText95, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
 	bSizer_dataSim->Add( bSizer38, 0, wxEXPAND, 5 );
 
 
 	bSizer_dataSim->Add( 0, 0, 1, wxEXPAND, 5 );
-
-	m_staticline30 = new wxStaticLine( m_scrolledWindow2, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL );
-	bSizer_dataSim->Add( m_staticline30, 0, wxEXPAND | wxALL, 5 );
 
 
 	bSizer26->Add( bSizer_dataSim, 0, wxEXPAND, 5 );
@@ -3680,13 +3629,9 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_staticText88->Wrap( -1 );
 	bSizer29->Add( m_staticText88, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_staticText_rudderAngleSim = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("0"), wxDefaultPosition, wxSize( 20,-1 ), 0 );
+	m_staticText_rudderAngleSim = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("0°"), wxDefaultPosition, wxSize( 20,-1 ), 0 );
 	m_staticText_rudderAngleSim->Wrap( -1 );
 	bSizer29->Add( m_staticText_rudderAngleSim, 0, wxALIGN_CENTER|wxALL, 5 );
-
-	m_staticText90 = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("deg"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText90->Wrap( -1 );
-	bSizer29->Add( m_staticText90, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
 	bSizer29->Add( 0, 0, 1, wxEXPAND, 5 );
@@ -3738,13 +3683,9 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_staticText85->Wrap( -1 );
 	bSizer_simSpeed2->Add( m_staticText85, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_staticText_throttleSim = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("0"), wxDefaultPosition, wxSize( 20,-1 ), 0 );
+	m_staticText_throttleSim = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("0%"), wxDefaultPosition, wxSize( 20,-1 ), 0 );
 	m_staticText_throttleSim->Wrap( -1 );
 	bSizer_simSpeed2->Add( m_staticText_throttleSim, 0, wxALIGN_CENTER|wxALL, 5 );
-
-	m_staticText871 = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("%"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText871->Wrap( -1 );
-	bSizer_simSpeed2->Add( m_staticText871, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
 	bSizer_simSpeed2->Add( 0, 0, 1, wxEXPAND, 5 );
