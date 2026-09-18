@@ -3460,7 +3460,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	wxBoxSizer* bSizer791;
 	bSizer791 = new wxBoxSizer( wxVERTICAL );
 
-	m_staticText901 = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("Control vessel:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText901 = new wxStaticText( m_scrolledWindow2, wxID_ANY, _("Controlled vessel:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText901->Wrap( -1 );
 	bSizer791->Add( m_staticText901, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -3472,6 +3472,18 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 
 	bSizer_shipType->Add( bSizer791, 0, wxEXPAND, 5 );
+
+
+	bSizer_shipType->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_button_deleteSelectedAisTarget = new wxButton( m_scrolledWindow2, wxID_ANY, _("Delete selected target"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer_shipType->Add( m_button_deleteSelectedAisTarget, 0, wxALIGN_BOTTOM|wxALL, 5 );
+
+
+	bSizer_shipType->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticline341 = new wxStaticLine( m_scrolledWindow2, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_VERTICAL );
+	bSizer_shipType->Add( m_staticline341, 0, wxEXPAND | wxALL, 5 );
 
 
 	bSizer_shipType->Add( 0, 0, 1, wxEXPAND, 5 );
@@ -3860,6 +3872,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_checkBox_automaticSendBuilder->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnCheckBox_AutomaticSendBuilder ), NULL, this );
 	m_spinCtrlDouble_autoSendFreqBuilder->Connect( wxEVT_COMMAND_SPINCTRLDOUBLE_UPDATED, wxSpinDoubleEventHandler( DialogMainGuiBase::OnSpinCtrlDouble_AutomaticSendFreqBuilder ), NULL, this );
 	m_choice_controlledVessel->Connect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( DialogMainGuiBase::OnChoice_controlledVesselSimChanged ), NULL, this );
+	m_button_deleteSelectedAisTarget->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DialogMainGuiBase::OnButtonClick_DeleteSelectAisTarget ), NULL, this );
 	m_slider_rudderSim->Connect( wxEVT_SCROLL_TOP, wxScrollEventHandler( DialogMainGuiBase::OnScroll_UpdateRudderAngleSim ), NULL, this );
 	m_slider_rudderSim->Connect( wxEVT_SCROLL_BOTTOM, wxScrollEventHandler( DialogMainGuiBase::OnScroll_UpdateRudderAngleSim ), NULL, this );
 	m_slider_rudderSim->Connect( wxEVT_SCROLL_LINEUP, wxScrollEventHandler( DialogMainGuiBase::OnScroll_UpdateRudderAngleSim ), NULL, this );

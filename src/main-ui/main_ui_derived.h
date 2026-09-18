@@ -97,6 +97,7 @@ class DialogMainGui : public DialogMainGuiBase
     void OnChoice_aisClassVDM(wxCommandEvent& event) override;
     void OnChoice_UpdateCategoryXDR(wxCommandEvent& event) override;
     void OnText_UpdateCustomNameXDR(wxCommandEvent& event) override;
+    void OnButtonClick_DeleteSelectAisTarget(wxCommandEvent& event) override;
 
     void OnButtonClick_SendGLL(wxCommandEvent& event) override;
     void OnButtonClick_SendRMC(wxCommandEvent& event) override;

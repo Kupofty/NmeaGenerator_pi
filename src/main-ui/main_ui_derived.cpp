@@ -1604,6 +1604,39 @@ void DialogMainGui::addAisTarget(double lat, double lon, aisType type)
   OnChoice_controlledVesselSimChanged(dummy);
 }
 
+void DialogMainGui::OnButtonClick_DeleteSelectAisTarget(wxCommandEvent& event)
+{
+  // Cannot delete OwnShip
+  if (controlledVessel == VesselType::OwnShip)
+    return;
+
+  if (m_selectedAisIndex < 0 ||
+      m_selectedAisIndex >= (int)aisTargetList.size())
+    return;
+
+  const int deletedIndex = m_selectedAisIndex;
+
+  // Remove selected AIS target
+  aisTargetList.erase(aisTargetList.begin() + deletedIndex);
+
+  // Remove corresponding entry from UI +1 because OwnShip is the first entry
+  m_choice_controlledVessel->Delete(deletedIndex + 1);
+
+  // If no AIS targets remain, select OwnShip
+  if (aisTargetList.empty())
+  {
+    m_choice_controlledVessel->SetSelection(0);
+  }
+  else
+  {
+    m_choice_controlledVessel->SetSelection(deletedIndex);
+  }
+
+  // Update controlled vessel and GUI
+  wxCommandEvent dummy;
+  OnChoice_controlledVesselSimChanged(dummy);
+}
+
 void DialogMainGui::removeLastAisTarget()
 {
   if (aisTargetList.empty())

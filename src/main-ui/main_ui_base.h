@@ -551,6 +551,8 @@ class DialogMainGuiBase : public wxDialog
 		wxScrolledWindow* m_scrolledWindow2;
 		wxStaticText* m_staticText901;
 		wxChoice* m_choice_controlledVessel;
+		wxButton* m_button_deleteSelectedAisTarget;
+		wxStaticLine* m_staticline341;
 		wxStaticText* m_staticText2072;
 		wxChoice* m_choice_nmeaOutputSim;
 		wxStaticLine* m_staticline29;
@@ -658,6 +660,7 @@ class DialogMainGuiBase : public wxDialog
 		virtual void OnCheckBox_AutomaticSendBuilder( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnSpinCtrlDouble_AutomaticSendFreqBuilder( wxSpinDoubleEvent& event ) { event.Skip(); }
 		virtual void OnChoice_controlledVesselSimChanged( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnButtonClick_DeleteSelectAisTarget( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnScroll_UpdateRudderAngleSim( wxScrollEvent& event ) { event.Skip(); }
 		virtual void OnButtonClick_ResetRudder( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnScroll_UpdateThrottleSim( wxScrollEvent& event ) { event.Skip(); }
@@ -669,7 +672,7 @@ class DialogMainGuiBase : public wxDialog
 	public:
 		wxNotebook* m_notebook;
 
-		DialogMainGuiBase( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("NMEA Generator Plugin"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 698,663 ), long style = wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxMINIMIZE_BOX|wxRESIZE_BORDER );
+		DialogMainGuiBase( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("NMEA Generator Plugin"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 957,663 ), long style = wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX|wxMINIMIZE_BOX|wxRESIZE_BORDER );
 
 		~DialogMainGuiBase();
 

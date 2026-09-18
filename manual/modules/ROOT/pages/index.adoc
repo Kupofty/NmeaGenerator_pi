@@ -220,7 +220,7 @@ The **Simulation** tab generates continuous NMEA data streams to simulate own sh
 ==== [underline]#*Vessel Selection and Data Output*#
 
 - **Control vessel:** Selects the vessel currently controlled by the throttle and rudder sliders. The list always contains the own ship and any created AIS targets. Vessels that are not currently selected continue moving using their last speed and rudder settings.
-- **AIS type:** Sets the new AIS target type: Class A, Class B, or ARPA radar target.
+- **Delete selected target:** Delete the selected AIS target from the list. Can not delete own ship.
 - **NMEA output:** Selects which data is transmitted:
   * **All:** Sends NMEA data forown ship and all AIS targets.
   * **Own ship only:** Sends NMEA data for own ship only.
@@ -262,7 +262,8 @@ image::gui/simulation/right_click_menu.png[]
 The context menu provides quick simulation actions:
 
 - **Update position:** Move the own ship or the currently selected AIS target to the cursor position.
-- **AIS targets:** Create a new AIS target at the cursor position, delete the last created AIS target, or remove all AIS targets.
+- **Add AIS targets:** Create a new AIS target (class A, B or ARPA) at the cursor position.
+- **Delete AIS targets:** delete the last created AIS target, or remove all AIS targets.
 
 image::gui/simulation/right_click_menu_options.png[]
 

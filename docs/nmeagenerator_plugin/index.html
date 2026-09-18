@@ -86,10 +86,10 @@
 <h2 id="_manual_version"><a class="anchor" href="#_manual_version"></a>Manual Version</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This manual applies to <strong>version 1.2.0</strong>.</p>
+<p>This manual applies to <strong>version 1.2.1</strong>.</p>
 </div>
 <div class="paragraph">
-<p>See what&#8217;s changed in the <a href="https://github.com/Kupofty/NmeaGenerator_pi/blob/main/CHANGELOG.md">CHANGELOG</a>.</p>
+<p>See what&#8217;s changed in the <a href="https://github.com/Kupofty/NmeaGenerator_pi/blob/github-pages/CHANGELOG.md">CHANGELOG</a>.</p>
 </div>
 <div class="paragraph">
 <p>Previous versions of the manual:</p>
@@ -454,7 +454,7 @@ For more information, see the INSTALL.md file in the GitHub repository.</p>
 <p><strong>Control vessel:</strong> Selects the vessel currently controlled by the throttle and rudder sliders. The list always contains the own ship and any created AIS targets. Vessels that are not currently selected continue moving using their last speed and rudder settings.</p>
 </li>
 <li>
-<p><strong>AIS type:</strong> Sets the new AIS target type: Class A, Class B, or ARPA radar target.</p>
+<p><strong>Delete selected target:</strong> Delete the selected AIS target from the list. Can not delete own ship.</p>
 </li>
 <li>
 <p><strong>NMEA output:</strong> Selects which data is transmitted:</p>
@@ -540,7 +540,10 @@ For more information, see the INSTALL.md file in the GitHub repository.</p>
 <p><strong>Update position:</strong> Move the own ship or the currently selected AIS target to the cursor position.</p>
 </li>
 <li>
-<p><strong>AIS targets:</strong> Create a new AIS target at the cursor position, delete the last created AIS target, or remove all AIS targets.</p>
+<p><strong>Add AIS targets:</strong> Create a new AIS target (class A, B or ARPA) at the cursor position.</p>
+</li>
+<li>
+<p><strong>Delete AIS targets:</strong> delete the last created AIS target, or remove all AIS targets.</p>
 </li>
 </ul>
 </div>

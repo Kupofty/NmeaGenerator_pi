@@ -4,11 +4,12 @@
 
 --------------------------------------------------------------------------------------------
 ## [v1.2.1] / 2026-xx-xx
+### Added
+- Button to delete selected AIS target from list
+
 ### Changed
 - Move new AIS target type selection in right-click menu
-- Minor labels changes
-- Minor layout tweaks
-
+- Minor UI changes
 
 --------------------------------------------------------------------------------------------
 ## [v1.2.0] / 2026-08-09
