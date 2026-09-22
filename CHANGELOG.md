@@ -6,6 +6,7 @@
 ## [v1.2.1] / 2026-xx-xx
 ### Added
 - Button to delete selected AIS target from list
+- Keep toolbar icon highlighted when window is closed but data is still streaming
 
 ### Changed
 - Move new AIS target type selection in right-click menu

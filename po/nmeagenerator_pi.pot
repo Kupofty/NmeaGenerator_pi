@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-16 23:07+0200\n"
+"POT-Creation-Date: 2026-09-22 22:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:63 src/menu-entry/menuDialog_ui_base.cpp:49
+#: src/main-ui/main_ui_base.cpp:63
 msgid "Delete all"
 msgstr ""
 
@@ -816,117 +816,105 @@ msgid "Sentence Builder"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:3463
-msgid "New AIS target type:"
+msgid "Controlled vessel:"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3467
-msgid "ARPA"
-msgstr ""
-
-#: src/main-ui/main_ui_base.cpp:3467
-msgid "class A"
-msgstr ""
-
-#: src/main-ui/main_ui_base.cpp:3467
-msgid "class B"
-msgstr ""
-
-#: src/main-ui/main_ui_base.cpp:3488
-msgid "Control vessel:"
-msgstr ""
-
-#: src/main-ui/main_ui_base.cpp:3492 src/main-ui/main_ui_base.cpp:3511
-#: src/menu-entry/menuDialog_ui_base.cpp:22
+#: src/main-ui/main_ui_base.cpp:3467 src/main-ui/main_ui_base.cpp:3498
+#: src/menu-entry/menuDialog_ui_base.cpp:25
 msgid "Own ship"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3507
+#: src/main-ui/main_ui_base.cpp:3479
+msgid "Delete selected target"
+msgstr ""
+
+#: src/main-ui/main_ui_base.cpp:3494
 msgid "NMEA output:"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3511
+#: src/main-ui/main_ui_base.cpp:3498 src/menu-entry/menuDialog_ui_base.cpp:82
 msgid "All"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3511 src/menu-entry/menuDialog_ui_base.cpp:32
+#: src/main-ui/main_ui_base.cpp:3498
 msgid "AIS targets"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3541
+#: src/main-ui/main_ui_base.cpp:3528
 msgid "Latitude:"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3545
+#: src/main-ui/main_ui_base.cpp:3532
 msgid "00  00.0000°"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3558
+#: src/main-ui/main_ui_base.cpp:3545
 msgid "Longitude:"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3562
+#: src/main-ui/main_ui_base.cpp:3549
 msgid "000  00.0000°"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3584
+#: src/main-ui/main_ui_base.cpp:3571
 msgid "True heading:"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3588 src/main-ui/main_ui_base.cpp:3605
-#: src/main-ui/main_ui_base.cpp:3657
+#: src/main-ui/main_ui_base.cpp:3575 src/main-ui/main_ui_base.cpp:3592
+#: src/main-ui/main_ui_base.cpp:3644
 msgid "0°"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3601
+#: src/main-ui/main_ui_base.cpp:3588
 msgid "COG:"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3618
+#: src/main-ui/main_ui_base.cpp:3605
 msgid "SOG:"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3622
+#: src/main-ui/main_ui_base.cpp:3609
 msgid "0 kts"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3653
+#: src/main-ui/main_ui_base.cpp:3640
 msgid "Rudder angle:"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3673 src/main-ui/main_ui_base.cpp:3727
+#: src/main-ui/main_ui_base.cpp:3660 src/main-ui/main_ui_base.cpp:3714
 msgid "-"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3682 src/main-ui/main_ui_base.cpp:3736
+#: src/main-ui/main_ui_base.cpp:3669 src/main-ui/main_ui_base.cpp:3723
 msgid "+"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3692 src/main-ui/main_ui_base.cpp:3746
+#: src/main-ui/main_ui_base.cpp:3679 src/main-ui/main_ui_base.cpp:3733
 msgid "Reset"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3707
+#: src/main-ui/main_ui_base.cpp:3694
 msgid "Throttle:"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3711
+#: src/main-ui/main_ui_base.cpp:3698
 msgid "0%"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3773 src/main-ui/main_ui_derived.cpp:115
-#: src/main-ui/main_ui_derived.cpp:1671
+#: src/main-ui/main_ui_base.cpp:3760 src/main-ui/main_ui_derived.cpp:115
+#: src/main-ui/main_ui_derived.cpp:1701
 msgid "START"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3781
+#: src/main-ui/main_ui_base.cpp:3768
 msgid "Send NMEA every"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3789
+#: src/main-ui/main_ui_base.cpp:3776
 msgid "second(s)"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3803 src/settings/settings_ui_base.cpp:34
+#: src/main-ui/main_ui_base.cpp:3790 src/settings/settings_ui_base.cpp:34
 msgid "Simulation"
 msgstr ""
 
@@ -1102,15 +1090,15 @@ msgstr ""
 msgid "kts"
 msgstr ""
 
-#: src/main-ui/main_ui_derived.cpp:1666
+#: src/main-ui/main_ui_derived.cpp:1696
 msgid "STOP"
 msgstr ""
 
-#: src/main-ui/main_ui_derived.cpp:1709
+#: src/main-ui/main_ui_derived.cpp:1739
 msgid "No AIS targets available."
 msgstr ""
 
-#: src/main-ui/main_ui_derived.cpp:1710
+#: src/main-ui/main_ui_derived.cpp:1740
 msgid "AIS Error"
 msgstr ""
 
@@ -1122,19 +1110,35 @@ msgstr ""
 msgid "Update position"
 msgstr ""
 
-#: src/menu-entry/menuDialog_ui_base.cpp:25
+#: src/menu-entry/menuDialog_ui_base.cpp:31
 msgid "AIS target"
 msgstr ""
 
-#: src/menu-entry/menuDialog_ui_base.cpp:37
-msgid "Add new"
+#: src/menu-entry/menuDialog_ui_base.cpp:44
+msgid "AIS targets - Add new..."
 msgstr ""
 
-#: src/menu-entry/menuDialog_ui_base.cpp:46
-msgid "Remove last"
+#: src/menu-entry/menuDialog_ui_base.cpp:49
+msgid "ClassA"
 msgstr ""
 
-#: src/menu-entry/menuDialog_ui_base.h:52
+#: src/menu-entry/menuDialog_ui_base.cpp:55
+msgid "ClassB"
+msgstr ""
+
+#: src/menu-entry/menuDialog_ui_base.cpp:61
+msgid "ARPA"
+msgstr ""
+
+#: src/menu-entry/menuDialog_ui_base.cpp:71
+msgid "AIS targets - Delete..."
+msgstr ""
+
+#: src/menu-entry/menuDialog_ui_base.cpp:76
+msgid "Last"
+msgstr ""
+
+#: src/menu-entry/menuDialog_ui_base.h:58
 msgid "NmeaGenerator"
 msgstr ""
 

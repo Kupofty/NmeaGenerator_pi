@@ -11,18 +11,18 @@
 #include <wx/xrc/xmlres.h>
 #include <wx/intl.h>
 #include <wx/string.h>
-#include <wx/stattext.h>
+#include <wx/checkbox.h>
 #include <wx/gdicmn.h>
 #include <wx/font.h>
 #include <wx/colour.h>
 #include <wx/settings.h>
-#include <wx/choice.h>
 #include <wx/sizer.h>
-#include <wx/checkbox.h>
 #include <wx/panel.h>
 #include <wx/bitmap.h>
 #include <wx/image.h>
 #include <wx/icon.h>
+#include <wx/stattext.h>
+#include <wx/choice.h>
 #include <wx/spinctrl.h>
 #include <wx/notebook.h>
 #include <wx/button.h>
@@ -39,14 +39,14 @@ class DialogSettingsBase : public wxDialog
 
 	protected:
 		wxNotebook* m_notebook1;
+		wxPanel* m_panel_options;
+		wxCheckBox* m_checkBox_keepSendingData;
 		wxPanel* m_panel_display;
 		wxStaticText* m_staticText3;
 		wxChoice* m_choice_notebookPage;
 		wxCheckBox* m_checkBox_restoreLastTab;
 		wxCheckBox* m_checkBox_restoreWindowPos;
 		wxCheckBox* m_checkBox_restoreWindowSize;
-		wxPanel* m_panel_options;
-		wxCheckBox* m_checkBox_keepSendingData;
 		wxPanel* m_panel_ais;
 		wxStaticText* m_staticText2;
 		wxSpinCtrl* m_spinCtrl_mmsi;

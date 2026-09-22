@@ -17,6 +17,36 @@ DialogSettingsBase::DialogSettingsBase( wxWindow* parent, wxWindowID id, const w
 	sizerDialog = new wxBoxSizer( wxVERTICAL );
 
 	m_notebook1 = new wxNotebook( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, 0 );
+	m_panel_options = new wxPanel( m_notebook1, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
+	wxBoxSizer* bSizer12;
+	bSizer12 = new wxBoxSizer( wxVERTICAL );
+
+
+	bSizer12->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	wxBoxSizer* bSizer91;
+	bSizer91 = new wxBoxSizer( wxHORIZONTAL );
+
+
+	bSizer91->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_checkBox_keepSendingData = new wxCheckBox( m_panel_options, wxID_ANY, _("Keep transmitting data\nwhen window is closed"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer91->Add( m_checkBox_keepSendingData, 0, wxALL, 5 );
+
+
+	bSizer91->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	bSizer12->Add( bSizer91, 1, wxEXPAND, 5 );
+
+
+	bSizer12->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	m_panel_options->SetSizer( bSizer12 );
+	m_panel_options->Layout();
+	bSizer12->Fit( m_panel_options );
+	m_notebook1->AddPage( m_panel_options, _("Options"), false );
 	m_panel_display = new wxPanel( m_notebook1, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* sizerSettings;
 	sizerSettings = new wxBoxSizer( wxVERTICAL );
@@ -96,36 +126,6 @@ DialogSettingsBase::DialogSettingsBase( wxWindow* parent, wxWindowID id, const w
 	m_panel_display->Layout();
 	sizerSettings->Fit( m_panel_display );
 	m_notebook1->AddPage( m_panel_display, _("Display"), true );
-	m_panel_options = new wxPanel( m_notebook1, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
-	wxBoxSizer* bSizer12;
-	bSizer12 = new wxBoxSizer( wxVERTICAL );
-
-
-	bSizer12->Add( 0, 0, 1, wxEXPAND, 5 );
-
-	wxBoxSizer* bSizer91;
-	bSizer91 = new wxBoxSizer( wxHORIZONTAL );
-
-
-	bSizer91->Add( 0, 0, 1, wxEXPAND, 5 );
-
-	m_checkBox_keepSendingData = new wxCheckBox( m_panel_options, wxID_ANY, _("Keep transmitting data\nwhen window is closed"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer91->Add( m_checkBox_keepSendingData, 0, wxALL, 5 );
-
-
-	bSizer91->Add( 0, 0, 1, wxEXPAND, 5 );
-
-
-	bSizer12->Add( bSizer91, 1, wxEXPAND, 5 );
-
-
-	bSizer12->Add( 0, 0, 1, wxEXPAND, 5 );
-
-
-	m_panel_options->SetSizer( bSizer12 );
-	m_panel_options->Layout();
-	bSizer12->Fit( m_panel_options );
-	m_notebook1->AddPage( m_panel_options, _("Options"), false );
 	m_panel_ais = new wxPanel( m_notebook1, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer11;
 	bSizer11 = new wxBoxSizer( wxVERTICAL );

@@ -117,6 +117,17 @@ void DialogMainGui::stopTimers()
 
 
 
+///////////////
+/// Getters ///
+///////////////
+bool DialogMainGui::isStreamingData()
+{
+  bool isManualStreaming = m_checkBox_automaticSend->GetValue();
+  bool isNmeaBuilderStreaming = m_checkBox_automaticSendBuilder->GetValue();
+  bool isSimuStreaming = m_toggleBtn_startStopSim->GetValue();
+
+  return (isManualStreaming || isNmeaBuilderStreaming || isSimuStreaming);
+}
 
 
 ////////////////////

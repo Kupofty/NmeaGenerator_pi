@@ -100,7 +100,7 @@ The following resources provide detailed information about NMEA0183 sentence for
 
 Clone the repository:
 ----
-git clone https://github.com/Kupofty/NmeaGenerator_pi.git
+git clone --recurse-submodules https://github.com/Kupofty/NmeaGenerator_pi.git
 ----
 
 Create the build directory:
@@ -319,6 +319,10 @@ image::settings/setting2.png[]
 [horizontal]
 Keep transmitting when window is closed:: Continues sending data when the plugin window is closed, allowing use of other plugins without interrupting an active simulation or auto-send.
 
+[NOTE]
+====
+Toolbar icon stays highlighted when the window is closed but data is still streaming
+====
 
 '''
 === AIS

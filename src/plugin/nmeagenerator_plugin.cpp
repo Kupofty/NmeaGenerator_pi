@@ -281,17 +281,23 @@ void NmeaGeneratorPlugin::OnToolbarToolCallback(int id)
 
   //Toggle UI & toolbar icon state
   isToolbarActive = !isToolbarActive;
-  SetToolbarItemState(id, isToolbarActive);
+
   if (isToolbarActive)
   {
+    SetToolbarItemState(id, true);
+    SetCanvasContextMenuItemViz(positionMenuID, true);
+
     myGUI->Show();
     myGUI->Raise();
     myGUI->SetFocus();
-    SetCanvasContextMenuItemViz(positionMenuID, true);
   }
   else
   {
     myGUI->Hide();
+
+    // Keep toolbar highlighted if still streaming and allowed
+    bool isDataStreaming = myGUI->isStreamingData();
+    SetToolbarItemState(id, isDataStreaming && g_sendDataAfterWindowClose);
 
     if(!g_sendDataAfterWindowClose)
     {
@@ -363,11 +369,19 @@ void NmeaGeneratorPlugin::OnContextMenuItemCallback(int id)
 void NmeaGeneratorPlugin::OnGuiClosed()
 {
   isToolbarActive = false;
-  SetToolbarItemState(toolbarId, false);
-  myGUI->Hide();
 
+  //Keep icon toolbar highlighted if still transmitting data & g_sendDataAfterWindowClose is true
+  bool isDataStreaming = myGUI->isStreamingData();
+  SetToolbarItemState(toolbarId, isDataStreaming && g_sendDataAfterWindowClose);
+
+  //Deactivate right-click menu if g_sendDataAfterWindowClose is false
   if(!g_sendDataAfterWindowClose)
+  {
     SetCanvasContextMenuItemViz(positionMenuID, false);
+  }
+
+  //Hide GUI
+  myGUI->Hide();
 
   //Refresh screen
   RequestRefresh(parentWindow);

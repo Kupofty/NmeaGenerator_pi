@@ -63,6 +63,7 @@ class DialogMainGui : public DialogMainGuiBase
     void removeLastAisTarget();
     void clearAisTargets();
     void stopTimers();
+    bool isStreamingData();
 
     NmeaGeneratorPlugin* plugin = nullptr;
 
