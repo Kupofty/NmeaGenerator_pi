@@ -3,10 +3,10 @@
 # This file is distributed under the same license as the nmeagenerator_pi package.
 msgid ""
 msgstr ""
-"Project-Id-Version: opencpn\n"
+"Project-Id-Version: kupofty-ocpn-plugins\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-23 22:56+0200\n"
-"PO-Revision-Date: 2026-08-10 12:47\n"
+"POT-Creation-Date: 2026-09-29 12:19+0200\n"
+"PO-Revision-Date: 2026-10-03 20:23\n"
 "Last-Translator: \n"
 "Language-Team: German\n"
 "Language: de_DE\n"
@@ -14,14 +14,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Crowdin-Project: opencpn\n"
-"X-Crowdin-Project-ID: 49843\n"
+"X-Crowdin-Project: kupofty-ocpn-plugins\n"
+"X-Crowdin-Project-ID: 935631\n"
 "X-Crowdin-Language: de\n"
-"X-Crowdin-File: /plugins/nmeagenerator_pi/nmeagenerator_pi.pot\n"
-"X-Crowdin-File-ID: 464\n"
+"X-Crowdin-File: nmeagenerator_pi.pot\n"
+"X-Crowdin-File-ID: 13\n"
 
 #: src/main-ui/main_ui_base.cpp:36
-msgid "List entries:"
+msgid "List of entries:"
 msgstr "Listeneinträge:"
 
 #: src/main-ui/main_ui_base.cpp:57
@@ -32,7 +32,7 @@ msgstr "Laden"
 msgid "Delete"
 msgstr "Löschen"
 
-#: src/main-ui/main_ui_base.cpp:63 src/menu-entry/menuDialog_ui_base.cpp:49
+#: src/main-ui/main_ui_base.cpp:63
 msgid "Delete all"
 msgstr "Alle löschen"
 
@@ -56,7 +56,7 @@ msgstr "Auto senden"
 msgid "Auto checksum"
 msgstr "Auto-Prüfsumme"
 
-#: src/main-ui/main_ui_base.cpp:131 src/main-ui/main_ui_derived.cpp:239
+#: src/main-ui/main_ui_base.cpp:131 src/main-ui/main_ui_derived.cpp:253
 msgid "No checksum detected"
 msgstr "Keine Prüfsumme erkannt"
 
@@ -722,8 +722,8 @@ msgid "I"
 msgstr "I"
 
 #: src/main-ui/main_ui_base.cpp:3234
-msgid "Current"
-msgstr "Strömung"
+msgid "Electric current"
+msgstr "E-Stromstärke"
 
 #: src/main-ui/main_ui_base.cpp:3234
 msgid "Displacement (Angular)"
@@ -761,7 +761,7 @@ msgstr "Luftfeuchte"
 msgid "Humidity (absolute)"
 msgstr "Luftfeuchte (absolut)"
 
-#: src/main-ui/main_ui_base.cpp:3234 src/main-ui/main_ui_derived.cpp:616
+#: src/main-ui/main_ui_base.cpp:3234 src/main-ui/main_ui_derived.cpp:630
 msgid "Pressure"
 msgstr "Druck"
 
@@ -822,307 +822,289 @@ msgid "Sentence Builder"
 msgstr "Satzgenerator"
 
 #: src/main-ui/main_ui_base.cpp:3463
-msgid "Control vessel:"
-msgstr "Kontrolliere Schiff:"
+msgid "Controlled vessel:"
+msgstr "Ausgewähltes Schiff:"
 
-#: src/main-ui/main_ui_base.cpp:3467 src/main-ui/main_ui_base.cpp:3505
-#: src/menu-entry/menuDialog_ui_base.cpp:22
+#: src/main-ui/main_ui_base.cpp:3467 src/main-ui/main_ui_base.cpp:3498
+#: src/menu-entry/menuDialog_ui_base.cpp:25
 msgid "Own ship"
 msgstr "Eigenes Schiff"
 
-#: src/main-ui/main_ui_base.cpp:3482
-msgid "New AIS target type:"
-msgstr "Neuer AIS-Zieltyp:"
+#: src/main-ui/main_ui_base.cpp:3479
+msgid "Delete selected target"
+msgstr "Ausgewähltes Ziel löschen"
 
-#: src/main-ui/main_ui_base.cpp:3486
-msgid "ARPA"
-msgstr "ARPA"
-
-#: src/main-ui/main_ui_base.cpp:3486
-msgid "class A"
-msgstr "Klasse A"
-
-#: src/main-ui/main_ui_base.cpp:3486
-msgid "class B"
-msgstr "Klasse B"
-
-#: src/main-ui/main_ui_base.cpp:3501
+#: src/main-ui/main_ui_base.cpp:3494
 msgid "NMEA output:"
 msgstr "NMEA Ausgabe:"
 
-#: src/main-ui/main_ui_base.cpp:3505
+#: src/main-ui/main_ui_base.cpp:3498 src/menu-entry/menuDialog_ui_base.cpp:82
 msgid "All"
 msgstr "Alle"
 
-#: src/main-ui/main_ui_base.cpp:3505 src/menu-entry/menuDialog_ui_base.cpp:32
+#: src/main-ui/main_ui_base.cpp:3498
 msgid "AIS targets"
 msgstr "AIS-Ziele"
 
-#: src/main-ui/main_ui_base.cpp:3535
+#: src/main-ui/main_ui_base.cpp:3528
 msgid "Latitude:"
 msgstr "Breite:"
 
-#: src/main-ui/main_ui_base.cpp:3539
-msgid "00"
-msgstr "00"
+#: src/main-ui/main_ui_base.cpp:3532
+msgid "00  00.0000°"
+msgstr "00  00.0000°"
 
-#: src/main-ui/main_ui_base.cpp:3543 src/main-ui/main_ui_base.cpp:3564
-msgid "00.0000"
-msgstr "00.0000"
-
-#: src/main-ui/main_ui_base.cpp:3556
+#: src/main-ui/main_ui_base.cpp:3545
 msgid "Longitude:"
 msgstr "Länge:"
 
-#: src/main-ui/main_ui_base.cpp:3560 src/main-ui/main_ui_base.cpp:3590
-#: src/main-ui/main_ui_base.cpp:3614
-msgid "000"
-msgstr "000"
+#: src/main-ui/main_ui_base.cpp:3549
+msgid "000  00.0000°"
+msgstr "000  00.0000°"
 
-#: src/main-ui/main_ui_base.cpp:3586
-msgid "Heading:"
-msgstr "Steuerkurs"
+#: src/main-ui/main_ui_base.cpp:3571
+msgid "True heading:"
+msgstr "Wahrer Kurs:"
 
-#: src/main-ui/main_ui_base.cpp:3594 src/main-ui/main_ui_base.cpp:3618
-#: src/main-ui/main_ui_base.cpp:3681
-msgid "deg"
-msgstr "Grad"
+#: src/main-ui/main_ui_base.cpp:3575 src/main-ui/main_ui_base.cpp:3592
+#: src/main-ui/main_ui_base.cpp:3644
+msgid "0°"
+msgstr "0°"
 
-#: src/main-ui/main_ui_base.cpp:3610
-msgid "Course:"
-msgstr "Kurs:"
+#: src/main-ui/main_ui_base.cpp:3588
+msgid "COG:"
+msgstr "COG:"
 
-#: src/main-ui/main_ui_base.cpp:3631
-msgid "Speed:"
-msgstr "Geschw:"
+#: src/main-ui/main_ui_base.cpp:3605
+msgid "SOG:"
+msgstr "SOG:"
 
-#: src/main-ui/main_ui_base.cpp:3635 src/main-ui/main_ui_base.cpp:3677
-#: src/main-ui/main_ui_base.cpp:3735
-msgid "0"
-msgstr "0"
+#: src/main-ui/main_ui_base.cpp:3609
+msgid "0 kts"
+msgstr "0 kts"
 
-#: src/main-ui/main_ui_base.cpp:3639
-msgid "knots"
-msgstr "Knoten"
-
-#: src/main-ui/main_ui_base.cpp:3673
+#: src/main-ui/main_ui_base.cpp:3640
 msgid "Rudder angle:"
 msgstr "Ruderlage:"
 
-#: src/main-ui/main_ui_base.cpp:3697 src/main-ui/main_ui_base.cpp:3755
+#: src/main-ui/main_ui_base.cpp:3660 src/main-ui/main_ui_base.cpp:3714
 msgid "-"
 msgstr "-"
 
-#: src/main-ui/main_ui_base.cpp:3706 src/main-ui/main_ui_base.cpp:3764
+#: src/main-ui/main_ui_base.cpp:3669 src/main-ui/main_ui_base.cpp:3723
 msgid "+"
 msgstr "+"
 
-#: src/main-ui/main_ui_base.cpp:3716 src/main-ui/main_ui_base.cpp:3774
+#: src/main-ui/main_ui_base.cpp:3679 src/main-ui/main_ui_base.cpp:3733
 msgid "Reset"
 msgstr "Zurücksetzen"
 
-#: src/main-ui/main_ui_base.cpp:3731
+#: src/main-ui/main_ui_base.cpp:3694
 msgid "Throttle:"
 msgstr "Gas:"
 
-#: src/main-ui/main_ui_base.cpp:3739
-msgid "%"
-msgstr "%"
+#: src/main-ui/main_ui_base.cpp:3698
+msgid "0%"
+msgstr "0%"
 
-#: src/main-ui/main_ui_base.cpp:3801 src/main-ui/main_ui_derived.cpp:112
-#: src/main-ui/main_ui_derived.cpp:1670
+#: src/main-ui/main_ui_base.cpp:3760 src/main-ui/main_ui_derived.cpp:115
+#: src/main-ui/main_ui_derived.cpp:1712
 msgid "START"
 msgstr "START"
 
-#: src/main-ui/main_ui_base.cpp:3809
+#: src/main-ui/main_ui_base.cpp:3768
 msgid "Send NMEA every"
 msgstr "NMEA senden alle"
 
-#: src/main-ui/main_ui_base.cpp:3817
+#: src/main-ui/main_ui_base.cpp:3776
 msgid "second(s)"
 msgstr "Sekunde(n)"
 
-#: src/main-ui/main_ui_base.cpp:3831 src/settings/settings_ui_base.cpp:34
+#: src/main-ui/main_ui_base.cpp:3790 src/settings/settings_ui_base.cpp:64
 msgid "Simulation"
 msgstr "Simulation"
 
-#: src/main-ui/main_ui_base.h:683
+#: src/main-ui/main_ui_base.h:675
 msgid "NMEA Generator Plugin"
 msgstr "NMEA Generator Plugin"
 
-#: src/main-ui/main_ui_derived.cpp:233
+#: src/main-ui/main_ui_derived.cpp:247
 msgid "Correct checksum"
 msgstr "Korrekte Prüfsumme"
 
-#: src/main-ui/main_ui_derived.cpp:235
+#: src/main-ui/main_ui_derived.cpp:249
 msgid "Incorrect checksum"
 msgstr "Falsche Prüfsumme"
 
-#: src/main-ui/main_ui_derived.cpp:316
+#: src/main-ui/main_ui_derived.cpp:330
 msgid " (auto)"
 msgstr " (auto)"
 
-#: src/main-ui/main_ui_derived.cpp:397
+#: src/main-ui/main_ui_derived.cpp:411
 msgid "Uncheck All"
 msgstr "Alle abwählen"
 
-#: src/main-ui/main_ui_derived.cpp:399
+#: src/main-ui/main_ui_derived.cpp:413
 msgid "Check All"
 msgstr "Alle auswählen"
 
-#: src/main-ui/main_ui_derived.cpp:562 src/main-ui/main_ui_derived.cpp:684
+#: src/main-ui/main_ui_derived.cpp:576 src/main-ui/main_ui_derived.cpp:698
 msgid "Battery"
 msgstr "Batterie"
 
-#: src/main-ui/main_ui_derived.cpp:563 src/main-ui/main_ui_derived.cpp:685
+#: src/main-ui/main_ui_derived.cpp:577 src/main-ui/main_ui_derived.cpp:699
 msgid "Alternator"
 msgstr "Lichtmaschine"
 
-#: src/main-ui/main_ui_derived.cpp:564 src/main-ui/main_ui_derived.cpp:686
+#: src/main-ui/main_ui_derived.cpp:578 src/main-ui/main_ui_derived.cpp:700
 msgid "Converter"
 msgstr "Konverter"
 
-#: src/main-ui/main_ui_derived.cpp:565 src/main-ui/main_ui_derived.cpp:687
+#: src/main-ui/main_ui_derived.cpp:579 src/main-ui/main_ui_derived.cpp:701
 msgid "Inverter"
 msgstr "Wechselrichter"
 
-#: src/main-ui/main_ui_derived.cpp:566 src/main-ui/main_ui_derived.cpp:688
+#: src/main-ui/main_ui_derived.cpp:580 src/main-ui/main_ui_derived.cpp:702
 msgid "Solar panel"
 msgstr "Solarmodul"
 
-#: src/main-ui/main_ui_derived.cpp:567 src/main-ui/main_ui_derived.cpp:689
+#: src/main-ui/main_ui_derived.cpp:581 src/main-ui/main_ui_derived.cpp:703
 msgid "Wind generator"
 msgstr "Windgenerator"
 
-#: src/main-ui/main_ui_derived.cpp:573
+#: src/main-ui/main_ui_derived.cpp:587
 msgid "Engine tilt"
 msgstr "Motor Neigung"
 
-#: src/main-ui/main_ui_derived.cpp:574
+#: src/main-ui/main_ui_derived.cpp:588
 msgid "Trim"
 msgstr "Trimm"
 
-#: src/main-ui/main_ui_derived.cpp:575
+#: src/main-ui/main_ui_derived.cpp:589
 msgid "Heel"
 msgstr "Krängung"
 
-#: src/main-ui/main_ui_derived.cpp:576
+#: src/main-ui/main_ui_derived.cpp:590
 msgid "Rudder"
 msgstr "Ruder"
 
-#: src/main-ui/main_ui_derived.cpp:577
+#: src/main-ui/main_ui_derived.cpp:591
 msgid "Leeway"
 msgstr "Abdrift"
 
-#: src/main-ui/main_ui_derived.cpp:578
+#: src/main-ui/main_ui_derived.cpp:592
 msgid "Yaw"
 msgstr "Gierung"
 
-#: src/main-ui/main_ui_derived.cpp:579
+#: src/main-ui/main_ui_derived.cpp:593
 msgid "Pitch"
 msgstr "Nickwinkel"
 
-#: src/main-ui/main_ui_derived.cpp:580
+#: src/main-ui/main_ui_derived.cpp:594
 msgid "Roll"
 msgstr "Rollwinkel"
 
-#: src/main-ui/main_ui_derived.cpp:586
+#: src/main-ui/main_ui_derived.cpp:600
 msgid "Door"
 msgstr "Tür"
 
-#: src/main-ui/main_ui_derived.cpp:587
+#: src/main-ui/main_ui_derived.cpp:601
 msgid "Window"
 msgstr "Fenster"
 
-#: src/main-ui/main_ui_derived.cpp:593 src/main-ui/main_ui_derived.cpp:605
-#: src/main-ui/main_ui_derived.cpp:649 src/main-ui/main_ui_derived.cpp:696
+#: src/main-ui/main_ui_derived.cpp:607 src/main-ui/main_ui_derived.cpp:619
+#: src/main-ui/main_ui_derived.cpp:663 src/main-ui/main_ui_derived.cpp:710
 msgid "Fuel"
 msgstr "Kraftstoff"
 
-#: src/main-ui/main_ui_derived.cpp:594 src/main-ui/main_ui_derived.cpp:606
-#: src/main-ui/main_ui_derived.cpp:697
+#: src/main-ui/main_ui_derived.cpp:608 src/main-ui/main_ui_derived.cpp:620
+#: src/main-ui/main_ui_derived.cpp:711
 msgid "Fresh water"
 msgstr "Frischwasser"
 
-#: src/main-ui/main_ui_derived.cpp:595 src/main-ui/main_ui_derived.cpp:607
-#: src/main-ui/main_ui_derived.cpp:698
+#: src/main-ui/main_ui_derived.cpp:609 src/main-ui/main_ui_derived.cpp:621
+#: src/main-ui/main_ui_derived.cpp:712
 msgid "Waste water"
 msgstr "Abwasser"
 
-#: src/main-ui/main_ui_derived.cpp:596 src/main-ui/main_ui_derived.cpp:608
-#: src/main-ui/main_ui_derived.cpp:699
+#: src/main-ui/main_ui_derived.cpp:610 src/main-ui/main_ui_derived.cpp:622
+#: src/main-ui/main_ui_derived.cpp:713
 msgid "Livewell water"
 msgstr "Wasser im Lebendfischbehälter"
 
-#: src/main-ui/main_ui_derived.cpp:597 src/main-ui/main_ui_derived.cpp:609
-#: src/main-ui/main_ui_derived.cpp:700
+#: src/main-ui/main_ui_derived.cpp:611 src/main-ui/main_ui_derived.cpp:623
+#: src/main-ui/main_ui_derived.cpp:714
 msgid "Oil"
 msgstr "Öl"
 
-#: src/main-ui/main_ui_derived.cpp:598 src/main-ui/main_ui_derived.cpp:610
-#: src/main-ui/main_ui_derived.cpp:701
+#: src/main-ui/main_ui_derived.cpp:612 src/main-ui/main_ui_derived.cpp:624
+#: src/main-ui/main_ui_derived.cpp:715
 msgid "Black water"
 msgstr "Fäkalienwasser"
 
-#: src/main-ui/main_ui_derived.cpp:599
+#: src/main-ui/main_ui_derived.cpp:613
 msgid "Brine water"
 msgstr "Brackwasser"
 
-#: src/main-ui/main_ui_derived.cpp:622
+#: src/main-ui/main_ui_derived.cpp:636
 msgid "Air conditioning"
 msgstr "Klimaanlage"
 
-#: src/main-ui/main_ui_derived.cpp:632 src/main-ui/main_ui_derived.cpp:638
-#: src/main-ui/main_ui_derived.cpp:677
+#: src/main-ui/main_ui_derived.cpp:646 src/main-ui/main_ui_derived.cpp:652
+#: src/main-ui/main_ui_derived.cpp:691
 msgid "Air"
 msgstr "Luft"
 
-#: src/main-ui/main_ui_derived.cpp:644 src/main-ui/main_ui_derived.cpp:668
-#: src/main-ui/main_ui_derived.cpp:674
+#: src/main-ui/main_ui_derived.cpp:658 src/main-ui/main_ui_derived.cpp:682
+#: src/main-ui/main_ui_derived.cpp:688
 msgid "Engine"
 msgstr "Motor"
 
-#: src/main-ui/main_ui_derived.cpp:645 src/main-ui/main_ui_derived.cpp:675
+#: src/main-ui/main_ui_derived.cpp:659 src/main-ui/main_ui_derived.cpp:689
 msgid "Engine oil"
 msgstr "Motorenöl"
 
-#: src/main-ui/main_ui_derived.cpp:646 src/main-ui/main_ui_derived.cpp:676
+#: src/main-ui/main_ui_derived.cpp:660 src/main-ui/main_ui_derived.cpp:690
 msgid "Transmission oil"
 msgstr "Getriebeöl"
 
-#: src/main-ui/main_ui_derived.cpp:647
+#: src/main-ui/main_ui_derived.cpp:661
 msgid "Engine coolant"
 msgstr "Motor-Kühlmittel"
 
-#: src/main-ui/main_ui_derived.cpp:648
+#: src/main-ui/main_ui_derived.cpp:662
 msgid "Engine boost"
 msgstr "Ladedruck Motor"
 
-#: src/main-ui/main_ui_derived.cpp:650
+#: src/main-ui/main_ui_derived.cpp:664
 msgid "Barometer"
 msgstr "Barometer"
 
-#: src/main-ui/main_ui_derived.cpp:656
+#: src/main-ui/main_ui_derived.cpp:670
 msgid "Sea water"
 msgstr "Meerwasser"
 
-#: src/main-ui/main_ui_derived.cpp:662
+#: src/main-ui/main_ui_derived.cpp:676
 msgid "Valve"
 msgstr "Ventil"
 
-#: src/main-ui/main_ui_derived.cpp:678
+#: src/main-ui/main_ui_derived.cpp:692
 msgid "Water"
 msgstr "Wasser"
 
-#: src/main-ui/main_ui_derived.cpp:1665
+#: src/main-ui/main_ui_derived.cpp:1564
+msgid "kts"
+msgstr "kts"
+
+#: src/main-ui/main_ui_derived.cpp:1707
 msgid "STOP"
 msgstr "STOP"
 
-#: src/main-ui/main_ui_derived.cpp:1708
+#: src/main-ui/main_ui_derived.cpp:1750
 msgid "No AIS targets available."
 msgstr "Keine AIS-Ziele verfügbar."
 
-#: src/main-ui/main_ui_derived.cpp:1709
+#: src/main-ui/main_ui_derived.cpp:1751
 msgid "AIS Error"
 msgstr "AIS-Fehler"
 
@@ -1135,19 +1117,35 @@ msgid "Update position"
 msgstr "Position \n"
 "aktualisieren"
 
-#: src/menu-entry/menuDialog_ui_base.cpp:25
+#: src/menu-entry/menuDialog_ui_base.cpp:31
 msgid "AIS target"
 msgstr "AIS-Ziel"
 
-#: src/menu-entry/menuDialog_ui_base.cpp:37
-msgid "Add new"
-msgstr "Neu hinzufügen"
+#: src/menu-entry/menuDialog_ui_base.cpp:44
+msgid "AIS targets - Add new..."
+msgstr "AIS-Ziele - Neue hinzufügen..."
 
-#: src/menu-entry/menuDialog_ui_base.cpp:46
-msgid "Remove last"
-msgstr "Letzten entfernen"
+#: src/menu-entry/menuDialog_ui_base.cpp:49
+msgid "ClassA"
+msgstr "ClassA"
 
-#: src/menu-entry/menuDialog_ui_base.h:52
+#: src/menu-entry/menuDialog_ui_base.cpp:55
+msgid "ClassB"
+msgstr "ClassB"
+
+#: src/menu-entry/menuDialog_ui_base.cpp:61
+msgid "ARPA"
+msgstr "ARPA"
+
+#: src/menu-entry/menuDialog_ui_base.cpp:71
+msgid "AIS targets - Delete..."
+msgstr "AIS-Ziele - Löschen..."
+
+#: src/menu-entry/menuDialog_ui_base.cpp:76
+msgid "Last"
+msgstr "Letzte"
+
+#: src/menu-entry/menuDialog_ui_base.h:58
 msgid "NmeaGenerator"
 msgstr "NmeaGenerator"
 
@@ -1155,46 +1153,46 @@ msgstr "NmeaGenerator"
 msgid "NmeaGenerator..."
 msgstr "NmeaGenerator..."
 
-#: src/plugin/nmeagenerator_plugin.cpp:246
+#: src/plugin/nmeagenerator_plugin.cpp:249
 msgid "NmeaGenerator Preferences"
 msgstr "NmeaGenerator Einstellungen"
 
-#: src/settings/settings_ui_base.cpp:30
-msgid "Default tab:"
-msgstr "Standardreiter"
-
-#: src/settings/settings_ui_base.cpp:34
-msgid "Manual input"
-msgstr "Manuelle Eingabe"
-
-#: src/settings/settings_ui_base.cpp:34
-msgid "Sentence builder"
-msgstr "Satzgenerator"
-
-#: src/settings/settings_ui_base.cpp:52
-msgid "Restore last tab"
-msgstr "Letzten Reiter wiederherstellen"
-
-#: src/settings/settings_ui_base.cpp:68
-msgid "Restore last window position"
-msgstr "Letzte Fensterposition wiederherstellen"
-
-#: src/settings/settings_ui_base.cpp:84
-msgid "Restore last window size"
-msgstr "Letzte Fenstergröße wiederherstellen"
-
-#: src/settings/settings_ui_base.cpp:98
-msgid "Display"
-msgstr "Anzeige"
-
-#: src/settings/settings_ui_base.cpp:112
+#: src/settings/settings_ui_base.cpp:33
 msgid "Keep transmitting data\n"
 "when window is closed"
 msgstr "Weiter Daten übertragen, wenn das Fenster geschlossen ist"
 
-#: src/settings/settings_ui_base.cpp:128
+#: src/settings/settings_ui_base.cpp:49
 msgid "Options"
 msgstr "Einstellungen"
+
+#: src/settings/settings_ui_base.cpp:60
+msgid "Default tab:"
+msgstr "Standardreiter"
+
+#: src/settings/settings_ui_base.cpp:64
+msgid "Manual input"
+msgstr "Manuelle Eingabe"
+
+#: src/settings/settings_ui_base.cpp:64
+msgid "Sentence builder"
+msgstr "Satzgenerator"
+
+#: src/settings/settings_ui_base.cpp:82
+msgid "Restore last tab"
+msgstr "Letzten Reiter wiederherstellen"
+
+#: src/settings/settings_ui_base.cpp:98
+msgid "Restore last window position"
+msgstr "Letzte Fensterposition wiederherstellen"
+
+#: src/settings/settings_ui_base.cpp:114
+msgid "Restore last window size"
+msgstr "Letzte Fenstergröße wiederherstellen"
+
+#: src/settings/settings_ui_base.cpp:128
+msgid "Display"
+msgstr "Anzeige"
 
 #: src/settings/settings_ui_base.cpp:142
 msgid "MMSI:"
