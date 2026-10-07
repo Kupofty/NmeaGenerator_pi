@@ -62,6 +62,7 @@ class NmeaGeneratorPlugin : public opencpn_plugin_120, public wxEvtHandler
 
     //Plugin sets
     void SetCursorLatLon(double lat, double lon) override;
+    void SetPositionFix(PlugIn_Position_Fix &pfix) override;
 
     //OCPN Interactions
     void ShowPreferencesDialog(wxWindow* parent) override;
@@ -90,6 +91,7 @@ class NmeaGeneratorPlugin : public opencpn_plugin_120, public wxEvtHandler
     bool isToolbarActive;
     int positionMenuID;
 
+    //Cursor position
     double m_cursor_lat;
     double m_cursor_lon;
 };

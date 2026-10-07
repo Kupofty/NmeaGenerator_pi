@@ -1519,6 +1519,17 @@ wxString DialogMainGui::createFromGuiZDA()
 /// Simulation ///
 //////////////////
 
+void DialogMainGui::initSimuBoatPosition(double lat, double lon)
+{
+  // Init simBoat position on last known position of own boat
+  if (!m_timer_autoSendSim.IsRunning())
+  {
+    shipSimu.lat = lat;
+    shipSimu.lon = lon;
+  }
+}
+
+
 //Update controlled vessel type
 SimVessel* DialogMainGui::getControlledVessel()
 {
@@ -1724,8 +1735,12 @@ void DialogMainGui::OnSpinCtrlDouble_UpdateFreqTimerSim(wxSpinDoubleEvent& event
 
 
 //Update sim data & send NMEA
-void DialogMainGui::updateSimStartPosition(VesselType type, double lat, double lon)
+void DialogMainGui::updateSimVesselPosition(VesselType type, double lat, double lon)
 {
+  //Do not update if simulation is not running
+  if (!m_timer_autoSendSim.IsRunning())
+    return;
+
   SimVessel* vessel;
 
   if (type == VesselType::AisTarget)
@@ -1754,12 +1769,9 @@ void DialogMainGui::updateSimStartPosition(VesselType type, double lat, double l
       return;
     }
   }
-
   else //OwnShip
   {
     vessel = &shipSimu;
-    g_lastSimLatitude = lat;
-    g_lastSimLongitude = lon;
   }
 
   vessel->lat = lat;

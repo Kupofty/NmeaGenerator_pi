@@ -72,7 +72,8 @@ int NmeaGeneratorPlugin::Init()
   //Inform OpenCPN about the plugin capabilities and requested callbacks
   return  ( INSTALLS_TOOLBAR_TOOL  //Add toolbar icon
           | WANTS_PREFERENCES      //Add "Preferences" button in plugin catalogue
-          | WANTS_CURSOR_LATLON);  //Enable SetCursorLatLon()
+          | WANTS_CURSOR_LATLON    //Enable SetCursorLatLon()
+          | WANTS_NMEA_EVENTS);    //Enable SetPositionFix
 }
 
 bool NmeaGeneratorPlugin::DeInit()
@@ -176,9 +177,6 @@ void NmeaGeneratorPlugin::LoadSettings()
     configSettings->Read("SendDataAfterWindowClose", &g_sendDataAfterWindowClose, 0);
 
     configSettings->Read("aisMMSI", &g_aisMMSI, 227000000);
-
-    configSettings->Read("simLastLatitude", &g_lastSimLatitude, 0.0);
-    configSettings->Read("simLastLongitude", &g_lastSimLongitude, 0.0);
   }
 }
 
@@ -218,10 +216,6 @@ void NmeaGeneratorPlugin::SaveSettings()
     configSettings->Write("SendDataAfterWindowClose", g_sendDataAfterWindowClose);
 
     configSettings->Write("aisMMSI", g_aisMMSI);
-
-    configSettings->Write("simLastLatitude", g_lastSimLatitude);
-    configSettings->Write("simLastLongitude", g_lastSimLongitude);
-
   }
 }
 
@@ -234,6 +228,12 @@ void NmeaGeneratorPlugin::SetCursorLatLon(double lat, double lon)
 {
   m_cursor_lat = lat;
   m_cursor_lon = lon;
+}
+
+void NmeaGeneratorPlugin::SetPositionFix(PlugIn_Position_Fix &pfix)
+{
+  if (myGUI != NULL)
+    myGUI->initSimuBoatPosition(pfix.Lat, pfix.Lon);
 }
 
 
@@ -326,11 +326,11 @@ void NmeaGeneratorPlugin::OnContextMenuItemCallback(int id)
       {
         //Update position
         case DialogAction::UpdateOwnShip:
-          myGUI->updateSimStartPosition(VesselType::OwnShip, m_cursor_lat, m_cursor_lon);
+          myGUI->updateSimVesselPosition(VesselType::OwnShip, m_cursor_lat, m_cursor_lon);
           break;
 
         case DialogAction::UpdateAisTarget:
-          myGUI->updateSimStartPosition(VesselType::AisTarget, m_cursor_lat, m_cursor_lon);
+          myGUI->updateSimVesselPosition(VesselType::AisTarget, m_cursor_lat, m_cursor_lon);
           break;
 
         //Handle dummy AIS targets

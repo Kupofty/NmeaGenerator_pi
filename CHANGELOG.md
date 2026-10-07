@@ -6,6 +6,7 @@
 ## [v1.2.2] / 2026-xx-xx
 
 ### Changed
+- Simulation boat starts on last known position of OwnBoat
 - Minor UI changes
 
 

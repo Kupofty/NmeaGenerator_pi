@@ -1,6 +1,7 @@
 #ifndef DIALOG_MAIN_GUI
 #define DIALOG_MAIN_GUI
 
+// Includes
 #include <vector>
 #include <wx/timer.h>
 
@@ -9,12 +10,16 @@
 #include "nmea/nmea_builder.h"
 #include "settings/global_settings.h"
 
+
+//Class
 class NmeaGeneratorPlugin;
 
 enum class VesselType { OwnShip, AisTarget };
 
 enum class aisType { ClassA, ClassB, ARPA };
 
+
+// Structs
 struct SectionItem
 {
   wxString name;
@@ -29,13 +34,13 @@ struct TimerItem
 
 struct SimVessel
 {
-  double lat = g_lastSimLatitude;
-  double lon = g_lastSimLongitude;
-  double heading = 0;
-  double cog = 0;
-  double speed = 0;
-  double throttle = 0;
-  double rudderAngle = 0;
+  double lat = 0.0;
+  double lon = 0.0;
+  double heading = 0.0;
+  double cog = 0.0;
+  double speed = 0.0;
+  double throttle = 0.0;
+  double rudderAngle = 0.0;
   int directionSign = 1;
   unsigned int mmsi = 0;
   aisType type = aisType::ClassB;
@@ -58,7 +63,8 @@ class DialogMainGui : public DialogMainGuiBase
                   const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = wxDEFAULT_DIALOG_STYLE);
     ~DialogMainGui();
 
-    void updateSimStartPosition(VesselType type, double lat, double lon);
+    void updateSimVesselPosition(VesselType type, double lat, double lon);
+    void initSimuBoatPosition(double lat, double lon);
     void addAisTarget(double lat, double lon, aisType type);
     void removeLastAisTarget();
     void clearAisTargets();
