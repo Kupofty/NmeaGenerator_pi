@@ -109,7 +109,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	bSizer86->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_checkBox_manualInputAutoSend = new wxCheckBox( m_panel_manual, wxID_ANY, _("Auto send"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_checkBox_manualInputAutoSend = new wxCheckBox( m_panel_manual, wxID_ANY, _("Include in auto send"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer86->Add( m_checkBox_manualInputAutoSend, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
@@ -211,7 +211,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_panel_manual->SetSizer( bSizer3 );
 	m_panel_manual->Layout();
 	bSizer3->Fit( m_panel_manual );
-	m_notebook->AddPage( m_panel_manual, _("Manual Input"), false );
+	m_notebook->AddPage( m_panel_manual, _("Manual Input"), true );
 	m_panel_list = new wxPanel( m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer9;
 	bSizer9 = new wxBoxSizer( wxVERTICAL );
@@ -3765,13 +3765,13 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	bSizer_StartStopSim->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_staticText2061 = new wxStaticText( m_panel_sim, wxID_ANY, _("Send NMEA every"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText2061 = new wxStaticText( m_panel_sim, wxID_ANY, _("Publish rate:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText2061->Wrap( -1 );
 	bSizer_StartStopSim->Add( m_staticText2061, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_spinCtrlDouble_simFreqTimer = new wxSpinCtrlDouble( m_panel_sim, wxID_ANY, wxT("1"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0.1, 10, 1, 0.1 );
 	m_spinCtrlDouble_simFreqTimer->SetDigits( 1 );
-	bSizer_StartStopSim->Add( m_spinCtrlDouble_simFreqTimer, 0, wxALL, 5 );
+	bSizer_StartStopSim->Add( m_spinCtrlDouble_simFreqTimer, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_staticText2071 = new wxStaticText( m_panel_sim, wxID_ANY, _("second(s)"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText2071->Wrap( -1 );
@@ -3787,7 +3787,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_panel_sim->SetSizer( bSizer8 );
 	m_panel_sim->Layout();
 	bSizer8->Fit( m_panel_sim );
-	m_notebook->AddPage( m_panel_sim, _("Simulation"), true );
+	m_notebook->AddPage( m_panel_sim, _("Simulation"), false );
 
 	bSizer_main->Add( m_notebook, 1, wxEXPAND, 5 );
 

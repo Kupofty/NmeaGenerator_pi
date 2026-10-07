@@ -153,7 +153,7 @@
             <object class="notebookpage" expanded="false">
               <property name="bitmap"></property>
               <property name="label">Manual Input</property>
-              <property name="select">0</property>
+              <property name="select">1</property>
               <object class="wxPanel" expanded="false">
                 <property name="BottomDockable">1</property>
                 <property name="LeftDockable">1</property>
@@ -988,7 +988,7 @@
                               <property name="gripper">0</property>
                               <property name="hidden">0</property>
                               <property name="id">wxID_ANY</property>
-                              <property name="label">Auto send</property>
+                              <property name="label">Include in auto send</property>
                               <property name="max_size"></property>
                               <property name="maximize_button">0</property>
                               <property name="maximum_size"></property>
@@ -33797,7 +33797,7 @@
             <object class="notebookpage" expanded="true">
               <property name="bitmap"></property>
               <property name="label">Simulation</property>
-              <property name="select">1</property>
+              <property name="select">0</property>
               <object class="wxPanel" expanded="true">
                 <property name="BottomDockable">1</property>
                 <property name="LeftDockable">1</property>
@@ -36449,7 +36449,7 @@
                           <property name="gripper">0</property>
                           <property name="hidden">0</property>
                           <property name="id">wxID_ANY</property>
-                          <property name="label">Send NMEA every</property>
+                          <property name="label">Publish rate:</property>
                           <property name="markup">0</property>
                           <property name="max_size"></property>
                           <property name="maximize_button">0</property>
@@ -36480,7 +36480,7 @@
                       </object>
                       <object class="sizeritem" expanded="false">
                         <property name="border">5</property>
-                        <property name="flag">wxALL</property>
+                        <property name="flag">wxALIGN_CENTER|wxALL</property>
                         <property name="proportion">0</property>
                         <object class="wxSpinCtrlDouble" expanded="false">
                           <property name="BottomDockable">1</property>

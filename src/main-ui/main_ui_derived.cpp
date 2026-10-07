@@ -1878,28 +1878,8 @@ void DialogMainGui::OnScroll_UpdateThrottleSim(wxScrollEvent& event)
   vessel->speed = throttle;
   vessel->directionSign = (throttle >= 0) ? 1 : -1; //heading is decremented when boat is going reverse
 
-  wxString throttleStr = wxString::Format("%.0f", vessel->speed);
+  wxString throttleStr = wxString::Format("%.0f%s", vessel->speed, "%");
   m_staticText_throttleSim->SetLabel(throttleStr);
-  wxString speedStr = wxString::Format("%.0f", fabs(vessel->speed));
-  m_staticText_speedSim->SetLabel(speedStr);
-}
-
-void DialogMainGui::OnScroll_UpdateRudderAngleSim(wxScrollEvent& event)
-{
-  SimVessel* vessel = getControlledVessel();
-  vessel->rudderAngle = m_slider_rudderSim->GetValue();
-
-  wxString rudderStr = wxString::Format("%.0f", vessel->rudderAngle);
-  m_staticText_rudderAngleSim->SetLabel(rudderStr);
-}
-
-void DialogMainGui::OnButtonClick_ResetRudder(wxCommandEvent& event)
-{
-  SimVessel* vessel = getControlledVessel();
-  vessel->rudderAngle = 0;
-
-  m_slider_rudderSim->SetValue(0);
-  m_staticText_rudderAngleSim->SetLabel("0");
 }
 
 void DialogMainGui::OnButtonClick_ResetThrottle(wxCommandEvent& event)
@@ -1909,6 +1889,27 @@ void DialogMainGui::OnButtonClick_ResetThrottle(wxCommandEvent& event)
   vessel->speed = 0;
 
   m_slider_throttleSim->SetValue(0);
-  m_staticText_throttleSim->SetLabel("0");
-  m_staticText_speedSim->SetLabel("0");
+  wxString throttleStr = wxString::Format("0%s", "%");
+  m_staticText_throttleSim->SetLabel(throttleStr);
 }
+
+void DialogMainGui::OnScroll_UpdateRudderAngleSim(wxScrollEvent& event)
+{
+  SimVessel* vessel = getControlledVessel();
+  vessel->rudderAngle = m_slider_rudderSim->GetValue();
+
+  wxString rudderStr = wxString::Format("%.0f%s", vessel->rudderAngle, degreeSymbol);
+  m_staticText_rudderAngleSim->SetLabel(rudderStr);
+}
+
+void DialogMainGui::OnButtonClick_ResetRudder(wxCommandEvent& event)
+{
+  SimVessel* vessel = getControlledVessel();
+  vessel->rudderAngle = 0;
+
+  m_slider_rudderSim->SetValue(0);
+
+  wxString rudderStr = wxString::Format("%.0f%s", vessel->rudderAngle, degreeSymbol);
+  m_staticText_rudderAngleSim->SetLabel(rudderStr);
+}
+

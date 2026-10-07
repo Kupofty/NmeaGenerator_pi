@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-29 12:19+0200\n"
+"POT-Creation-Date: 2026-10-07 22:04+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,7 +43,7 @@ msgid "*00"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:112
-msgid "Auto send"
+msgid "Include in auto send"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:127
@@ -98,7 +98,7 @@ msgstr ""
 msgid "Automatic send"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:189
+#: src/main-ui/main_ui_base.cpp:189 src/main-ui/main_ui_base.cpp:3768
 msgid "Publish rate:"
 msgstr ""
 
@@ -904,10 +904,6 @@ msgstr ""
 #: src/main-ui/main_ui_base.cpp:3760 src/main-ui/main_ui_derived.cpp:115
 #: src/main-ui/main_ui_derived.cpp:1712
 msgid "START"
-msgstr ""
-
-#: src/main-ui/main_ui_base.cpp:3768
-msgid "Send NMEA every"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:3776
