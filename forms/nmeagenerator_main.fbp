@@ -87,16 +87,16 @@
         <property name="permission">protected</property>
         <event name="OnTimer">OnTimer_autoSendSim</event>
       </object>
-      <object class="wxBoxSizer" expanded="true">
+      <object class="wxBoxSizer" expanded="false">
         <property name="minimum_size"></property>
         <property name="name">bSizer_main</property>
         <property name="orient">wxVERTICAL</property>
         <property name="permission">none</property>
-        <object class="sizeritem" expanded="true">
+        <object class="sizeritem" expanded="false">
           <property name="border">5</property>
           <property name="flag">wxEXPAND</property>
           <property name="proportion">1</property>
-          <object class="wxNotebook" expanded="true">
+          <object class="wxNotebook" expanded="false">
             <property name="BottomDockable">1</property>
             <property name="LeftDockable">1</property>
             <property name="RightDockable">1</property>
@@ -153,7 +153,7 @@
             <object class="notebookpage" expanded="false">
               <property name="bitmap"></property>
               <property name="label">Manual Input</property>
-              <property name="select">1</property>
+              <property name="select">0</property>
               <object class="wxPanel" expanded="false">
                 <property name="BottomDockable">1</property>
                 <property name="LeftDockable">1</property>
@@ -1961,11 +1961,11 @@
                 </object>
               </object>
             </object>
-            <object class="notebookpage" expanded="true">
+            <object class="notebookpage" expanded="false">
               <property name="bitmap"></property>
               <property name="label">Sentence Builder</property>
-              <property name="select">0</property>
-              <object class="wxPanel" expanded="true">
+              <property name="select">1</property>
+              <object class="wxPanel" expanded="false">
                 <property name="BottomDockable">1</property>
                 <property name="LeftDockable">1</property>
                 <property name="RightDockable">1</property>
@@ -2017,16 +2017,16 @@
                 <property name="window_extra_style"></property>
                 <property name="window_name"></property>
                 <property name="window_style">wxTAB_TRAVERSAL</property>
-                <object class="wxBoxSizer" expanded="true">
+                <object class="wxBoxSizer" expanded="false">
                   <property name="minimum_size"></property>
                   <property name="name">bSizer9</property>
                   <property name="orient">wxVERTICAL</property>
                   <property name="permission">none</property>
-                  <object class="sizeritem" expanded="true">
+                  <object class="sizeritem" expanded="false">
                     <property name="border">5</property>
                     <property name="flag">wxEXPAND | wxALL</property>
                     <property name="proportion">1</property>
-                    <object class="wxScrolledWindow" expanded="true">
+                    <object class="wxScrolledWindow" expanded="false">
                       <property name="BottomDockable">1</property>
                       <property name="LeftDockable">1</property>
                       <property name="RightDockable">1</property>
@@ -2080,7 +2080,7 @@
                       <property name="window_extra_style"></property>
                       <property name="window_name"></property>
                       <property name="window_style">wxHSCROLL|wxVSCROLL</property>
-                      <object class="wxBoxSizer" expanded="true">
+                      <object class="wxBoxSizer" expanded="false">
                         <property name="minimum_size"></property>
                         <property name="name">bSizer_NmeaList</property>
                         <property name="orient">wxVERTICAL</property>
@@ -2091,7 +2091,7 @@
                           <property name="proportion">0</property>
                           <object class="wxStaticBoxSizer" expanded="false">
                             <property name="id">wxID_ANY</property>
-                            <property name="label">DBT/S/K</property>
+                            <property name="label">DBT/S/K - Depth Below Transducer/Surface/Keel</property>
                             <property name="minimum_size"></property>
                             <property name="name">sbSizer_DBx</property>
                             <property name="orient">wxHORIZONTAL</property>
@@ -2870,7 +2870,7 @@
                                         <property name="hidden">0</property>
                                         <property name="id">wxID_ANY</property>
                                         <property name="inc">10</property>
-                                        <property name="initial">32.8</property>
+                                        <property name="initial">10.000000</property>
                                         <property name="max">2000</property>
                                         <property name="max_size"></property>
                                         <property name="maximize_button">0</property>
@@ -3238,7 +3238,7 @@
                           <property name="proportion">0</property>
                           <object class="wxStaticBoxSizer" expanded="false">
                             <property name="id">wxID_ANY</property>
-                            <property name="label">DPT</property>
+                            <property name="label">DPT - Depth of Water</property>
                             <property name="minimum_size"></property>
                             <property name="name">sbSizer_DPT</property>
                             <property name="orient">wxHORIZONTAL</property>
@@ -4039,7 +4039,7 @@
                           <property name="proportion">0</property>
                           <object class="wxStaticBoxSizer" expanded="false">
                             <property name="id">wxID_ANY</property>
-                            <property name="label">GGA</property>
+                            <property name="label">GGA - Global Positioning System Fix Data</property>
                             <property name="minimum_size"></property>
                             <property name="name">sbSizer_GGA</property>
                             <property name="orient">wxHORIZONTAL</property>
@@ -5930,7 +5930,7 @@
                           <property name="proportion">0</property>
                           <object class="wxStaticBoxSizer" expanded="false">
                             <property name="id">wxID_ANY</property>
-                            <property name="label">GLL</property>
+                            <property name="label">GLL - Geographic Position</property>
                             <property name="minimum_size"></property>
                             <property name="name">sbSizer_GLL</property>
                             <property name="orient">wxHORIZONTAL</property>
@@ -7282,7 +7282,7 @@
                           <property name="proportion">0</property>
                           <object class="wxStaticBoxSizer" expanded="false">
                             <property name="id">wxID_ANY</property>
-                            <property name="label">GSV</property>
+                            <property name="label">GSV - Satellites in View</property>
                             <property name="minimum_size"></property>
                             <property name="name">sbSizer_GSV</property>
                             <property name="orient">wxHORIZONTAL</property>
@@ -8742,7 +8742,7 @@
                           <property name="proportion">0</property>
                           <object class="wxStaticBoxSizer" expanded="false">
                             <property name="id">wxID_ANY</property>
-                            <property name="label">HDG</property>
+                            <property name="label">HDG - Magnetic Heading and Deviation</property>
                             <property name="minimum_size"></property>
                             <property name="name">sbSizer_HDG</property>
                             <property name="orient">wxHORIZONTAL</property>
@@ -9820,7 +9820,7 @@
                           <property name="proportion">0</property>
                           <object class="wxStaticBoxSizer" expanded="false">
                             <property name="id">wxID_ANY</property>
-                            <property name="label">HDM</property>
+                            <property name="label">HDM - Magnetic Heading</property>
                             <property name="minimum_size"></property>
                             <property name="name">sbSizer_HDM</property>
                             <property name="orient">wxHORIZONTAL</property>
@@ -10566,7 +10566,7 @@
                           <property name="proportion">0</property>
                           <object class="wxStaticBoxSizer" expanded="false">
                             <property name="id">wxID_ANY</property>
-                            <property name="label">HDT</property>
+                            <property name="label">HDT - True Heading</property>
                             <property name="minimum_size"></property>
                             <property name="name">sbSizer_HDT</property>
                             <property name="orient">wxHORIZONTAL</property>
@@ -11343,7 +11343,7 @@
                           <property name="proportion">0</property>
                           <object class="wxStaticBoxSizer" expanded="false">
                             <property name="id">wxID_ANY</property>
-                            <property name="label">MTW</property>
+                            <property name="label">MTW - Mean Temperature of Water</property>
                             <property name="minimum_size"></property>
                             <property name="name">sbSizer_MTW</property>
                             <property name="orient">wxHORIZONTAL</property>
@@ -12089,7 +12089,7 @@
                           <property name="proportion">0</property>
                           <object class="wxStaticBoxSizer" expanded="false">
                             <property name="id">wxID_ANY</property>
-                            <property name="label">MWD</property>
+                            <property name="label">MWD - Wind Direction and Speed</property>
                             <property name="minimum_size"></property>
                             <property name="name">sbSizer_MWD</property>
                             <property name="orient">wxHORIZONTAL</property>
@@ -13432,7 +13432,7 @@
                           <property name="proportion">0</property>
                           <object class="wxStaticBoxSizer" expanded="false">
                             <property name="id">wxID_ANY</property>
-                            <property name="label">MWV</property>
+                            <property name="label">MWV - Wind Speed and Angle</property>
                             <property name="minimum_size"></property>
                             <property name="name">sbSizer_MWV</property>
                             <property name="orient">wxHORIZONTAL</property>
@@ -14510,7 +14510,7 @@
                           <property name="proportion">0</property>
                           <object class="wxStaticBoxSizer" expanded="false">
                             <property name="id">wxID_ANY</property>
-                            <property name="label">OSD</property>
+                            <property name="label">OSD - Own Ship Data</property>
                             <property name="minimum_size"></property>
                             <property name="name">sbSizer_OSD</property>
                             <property name="orient">wxHORIZONTAL</property>
@@ -16238,7 +16238,7 @@
                           <property name="proportion">0</property>
                           <object class="wxStaticBoxSizer" expanded="false">
                             <property name="id">wxID_ANY</property>
-                            <property name="label">RMC</property>
+                            <property name="label">RMC - Recommended Minimum Navigation Information</property>
                             <property name="minimum_size"></property>
                             <property name="name">sbSizer_RMC</property>
                             <property name="orient">wxHORIZONTAL</property>
@@ -18064,7 +18064,7 @@
                           <property name="proportion">0</property>
                           <object class="wxStaticBoxSizer" expanded="false">
                             <property name="id">wxID_ANY</property>
-                            <property name="label">ROT</property>
+                            <property name="label">ROT - Rate of Turn</property>
                             <property name="minimum_size"></property>
                             <property name="name">sbSizer_ROT</property>
                             <property name="orient">wxHORIZONTAL</property>
@@ -18865,7 +18865,7 @@
                           <property name="proportion">0</property>
                           <object class="wxStaticBoxSizer" expanded="false">
                             <property name="id">wxID_ANY</property>
-                            <property name="label">RSA</property>
+                            <property name="label">RSA - Rudder Sensor Angle</property>
                             <property name="minimum_size"></property>
                             <property name="name">sbSizer_RSA</property>
                             <property name="orient">wxHORIZONTAL</property>
@@ -19920,7 +19920,7 @@
                           <property name="proportion">0</property>
                           <object class="wxStaticBoxSizer" expanded="false">
                             <property name="id">wxID_ANY</property>
-                            <property name="label">TLL</property>
+                            <property name="label">TLL - Target Latitude and Longitude</property>
                             <property name="minimum_size"></property>
                             <property name="name">sbSizer_TLL</property>
                             <property name="orient">wxHORIZONTAL</property>
@@ -21487,7 +21487,7 @@
                           <property name="proportion">0</property>
                           <object class="wxStaticBoxSizer" expanded="false">
                             <property name="id">wxID_ANY</property>
-                            <property name="label">THS</property>
+                            <property name="label">THS - True Heading Status</property>
                             <property name="minimum_size"></property>
                             <property name="name">sbSizer_THS</property>
                             <property name="orient">wxHORIZONTAL</property>
@@ -21949,7 +21949,7 @@
                                     </object>
                                     <object class="sizeritem" expanded="false">
                                       <property name="border">5</property>
-                                      <property name="flag">wxALL</property>
+                                      <property name="flag">wxALIGN_CENTER|wxALL</property>
                                       <property name="proportion">0</property>
                                       <object class="wxStaticText" expanded="false">
                                         <property name="BottomDockable">1</property>
@@ -22288,7 +22288,7 @@
                           <property name="proportion">0</property>
                           <object class="wxStaticBoxSizer" expanded="false">
                             <property name="id">wxID_ANY</property>
-                            <property name="label">VDM/O</property>
+                            <property name="label">VDM/O - Automatic Information System (AIS)</property>
                             <property name="minimum_size"></property>
                             <property name="name">sbSizer_VDM</property>
                             <property name="orient">wxHORIZONTAL</property>
@@ -24269,7 +24269,7 @@
                           <property name="proportion">0</property>
                           <object class="wxStaticBoxSizer" expanded="false">
                             <property name="id">wxID_ANY</property>
-                            <property name="label">VDR</property>
+                            <property name="label">VDR - Set and Drift</property>
                             <property name="minimum_size"></property>
                             <property name="name">sbSizer_VDR</property>
                             <property name="orient">wxHORIZONTAL</property>
@@ -25413,7 +25413,7 @@
                           <property name="proportion">0</property>
                           <object class="wxStaticBoxSizer" expanded="false">
                             <property name="id">wxID_ANY</property>
-                            <property name="label">VHW</property>
+                            <property name="label">VHW - Water Speed and Heading</property>
                             <property name="minimum_size"></property>
                             <property name="name">sbSizer_VHW</property>
                             <property name="orient">wxHORIZONTAL</property>
@@ -26756,7 +26756,7 @@
                           <property name="proportion">0</property>
                           <object class="wxStaticBoxSizer" expanded="false">
                             <property name="id">wxID_ANY</property>
-                            <property name="label">VTG</property>
+                            <property name="label">VTG - Track Made Good and Ground Speed</property>
                             <property name="minimum_size"></property>
                             <property name="name">sbSizer_VTG</property>
                             <property name="orient">wxHORIZONTAL</property>
@@ -28246,7 +28246,7 @@
                           <property name="proportion">0</property>
                           <object class="wxStaticBoxSizer" expanded="false">
                             <property name="id">wxID_ANY</property>
-                            <property name="label">VWR</property>
+                            <property name="label">VWR - Relative Wind Speed and Angle</property>
                             <property name="minimum_size"></property>
                             <property name="name">sbSizer_VWR</property>
                             <property name="orient">wxHORIZONTAL</property>
@@ -29592,7 +29592,7 @@
                           <property name="proportion">0</property>
                           <object class="wxStaticBoxSizer" expanded="false">
                             <property name="id">wxID_ANY</property>
-                            <property name="label">WPL</property>
+                            <property name="label">WPL - Waypoint Location</property>
                             <property name="minimum_size"></property>
                             <property name="name">sbSizer_WPL</property>
                             <property name="orient">wxHORIZONTAL</property>
@@ -30690,7 +30690,7 @@
                           <property name="proportion">0</property>
                           <object class="wxStaticBoxSizer" expanded="false">
                             <property name="id">wxID_ANY</property>
-                            <property name="label">XDR</property>
+                            <property name="label">XDR - Transducer Measurement</property>
                             <property name="minimum_size"></property>
                             <property name="name">sbSizer_XDR</property>
                             <property name="orient">wxHORIZONTAL</property>
@@ -32020,7 +32020,7 @@
                           <property name="proportion">0</property>
                           <object class="wxStaticBoxSizer" expanded="false">
                             <property name="id">wxID_ANY</property>
-                            <property name="label">ZDA</property>
+                            <property name="label">ZDA - Time and Date</property>
                             <property name="minimum_size"></property>
                             <property name="name">sbSizer_ZDA</property>
                             <property name="orient">wxHORIZONTAL</property>
@@ -33794,11 +33794,11 @@
                 </object>
               </object>
             </object>
-            <object class="notebookpage" expanded="true">
+            <object class="notebookpage" expanded="false">
               <property name="bitmap"></property>
               <property name="label">Simulation</property>
               <property name="select">0</property>
-              <object class="wxPanel" expanded="true">
+              <object class="wxPanel" expanded="false">
                 <property name="BottomDockable">1</property>
                 <property name="LeftDockable">1</property>
                 <property name="RightDockable">1</property>
@@ -33850,16 +33850,16 @@
                 <property name="window_extra_style"></property>
                 <property name="window_name"></property>
                 <property name="window_style">wxTAB_TRAVERSAL</property>
-                <object class="wxBoxSizer" expanded="true">
+                <object class="wxBoxSizer" expanded="false">
                   <property name="minimum_size"></property>
                   <property name="name">bSizer8</property>
                   <property name="orient">wxVERTICAL</property>
                   <property name="permission">none</property>
-                  <object class="sizeritem" expanded="true">
+                  <object class="sizeritem" expanded="false">
                     <property name="border">5</property>
                     <property name="flag">wxEXPAND | wxALL</property>
                     <property name="proportion">1</property>
-                    <object class="wxScrolledWindow" expanded="true">
+                    <object class="wxScrolledWindow" expanded="false">
                       <property name="BottomDockable">1</property>
                       <property name="LeftDockable">1</property>
                       <property name="RightDockable">1</property>
@@ -33913,7 +33913,7 @@
                       <property name="window_extra_style"></property>
                       <property name="window_name"></property>
                       <property name="window_style">wxHSCROLL|wxVSCROLL</property>
-                      <object class="wxBoxSizer" expanded="true">
+                      <object class="wxBoxSizer" expanded="false">
                         <property name="minimum_size"></property>
                         <property name="name">bSizer26</property>
                         <property name="orient">wxVERTICAL</property>
@@ -33928,26 +33928,26 @@
                             <property name="width">0</property>
                           </object>
                         </object>
-                        <object class="sizeritem" expanded="true">
+                        <object class="sizeritem" expanded="false">
                           <property name="border">5</property>
                           <property name="flag">wxEXPAND</property>
                           <property name="proportion">0</property>
-                          <object class="wxBoxSizer" expanded="true">
+                          <object class="wxBoxSizer" expanded="false">
                             <property name="minimum_size"></property>
                             <property name="name">bSizer_shipType</property>
                             <property name="orient">wxHORIZONTAL</property>
                             <property name="permission">none</property>
-                            <object class="sizeritem" expanded="true">
+                            <object class="sizeritem" expanded="false">
                               <property name="border">5</property>
                               <property name="flag">wxEXPAND</property>
                               <property name="proportion">1</property>
-                              <object class="spacer" expanded="true">
+                              <object class="spacer" expanded="false">
                                 <property name="height">0</property>
                                 <property name="permission">protected</property>
                                 <property name="width">0</property>
                               </object>
                             </object>
-                            <object class="sizeritem" expanded="true">
+                            <object class="sizeritem" expanded="false">
                               <property name="border">5</property>
                               <property name="flag">wxEXPAND</property>
                               <property name="proportion">0</property>
@@ -34171,21 +34171,21 @@
                                 <event name="OnButtonClick">OnButtonClick_DeleteSelectAisTarget</event>
                               </object>
                             </object>
-                            <object class="sizeritem" expanded="true">
+                            <object class="sizeritem" expanded="false">
                               <property name="border">5</property>
                               <property name="flag">wxEXPAND</property>
                               <property name="proportion">1</property>
-                              <object class="spacer" expanded="true">
+                              <object class="spacer" expanded="false">
                                 <property name="height">0</property>
                                 <property name="permission">protected</property>
                                 <property name="width">0</property>
                               </object>
                             </object>
-                            <object class="sizeritem" expanded="true">
+                            <object class="sizeritem" expanded="false">
                               <property name="border">5</property>
                               <property name="flag">wxEXPAND | wxALL</property>
                               <property name="proportion">0</property>
-                              <object class="wxStaticLine" expanded="true">
+                              <object class="wxStaticLine" expanded="false">
                                 <property name="BottomDockable">1</property>
                                 <property name="LeftDockable">1</property>
                                 <property name="RightDockable">1</property>
@@ -34240,11 +34240,11 @@
                                 <property name="window_style"></property>
                               </object>
                             </object>
-                            <object class="sizeritem" expanded="true">
+                            <object class="sizeritem" expanded="false">
                               <property name="border">5</property>
                               <property name="flag">wxEXPAND</property>
                               <property name="proportion">1</property>
-                              <object class="spacer" expanded="true">
+                              <object class="spacer" expanded="false">
                                 <property name="height">0</property>
                                 <property name="permission">protected</property>
                                 <property name="width">0</property>
@@ -34469,11 +34469,11 @@
                             <property name="window_style"></property>
                           </object>
                         </object>
-                        <object class="sizeritem" expanded="true">
+                        <object class="sizeritem" expanded="false">
                           <property name="border">5</property>
                           <property name="flag">wxEXPAND</property>
                           <property name="proportion">0</property>
-                          <object class="wxBoxSizer" expanded="true">
+                          <object class="wxBoxSizer" expanded="false">
                             <property name="minimum_size"></property>
                             <property name="name">bSizer511</property>
                             <property name="orient">wxHORIZONTAL</property>
@@ -34633,11 +34633,11 @@
                                 <property name="width">0</property>
                               </object>
                             </object>
-                            <object class="sizeritem" expanded="true">
+                            <object class="sizeritem" expanded="false">
                               <property name="border">5</property>
                               <property name="flag">wxEXPAND</property>
                               <property name="proportion">0</property>
-                              <object class="wxBoxSizer" expanded="true">
+                              <object class="wxBoxSizer" expanded="false">
                                 <property name="minimum_size"></property>
                                 <property name="name">bSizer53</property>
                                 <property name="orient">wxHORIZONTAL</property>

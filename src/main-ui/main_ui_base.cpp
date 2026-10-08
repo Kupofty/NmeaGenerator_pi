@@ -211,7 +211,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_panel_manual->SetSizer( bSizer3 );
 	m_panel_manual->Layout();
 	bSizer3->Fit( m_panel_manual );
-	m_notebook->AddPage( m_panel_manual, _("Manual Input"), true );
+	m_notebook->AddPage( m_panel_manual, _("Manual Input"), false );
 	m_panel_list = new wxPanel( m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer9;
 	bSizer9 = new wxBoxSizer( wxVERTICAL );
@@ -220,7 +220,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_scrolledWindow_sentenceBuilder->SetScrollRate( 5, 5 );
 	bSizer_NmeaList = new wxBoxSizer( wxVERTICAL );
 
-	sbSizer_DBx = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("DBT/S/K") ), wxHORIZONTAL );
+	sbSizer_DBx = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("DBT/S/K - Depth Below Transducer/Surface/Keel") ), wxHORIZONTAL );
 
 	wxBoxSizer* bSizer1711131;
 	bSizer1711131 = new wxBoxSizer( wxVERTICAL );
@@ -298,7 +298,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_choice_sentenceDBx->SetSelection( 0 );
 	fgSizer41131->Add( m_choice_sentenceDBx, 0, wxALL, 5 );
 
-	m_spinCtrlDouble_depthFeetDBx = new wxSpinCtrlDouble( sbSizer_DBx->GetStaticBox(), wxID_ANY, wxT("32.8"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 2000, 32.8, 10 );
+	m_spinCtrlDouble_depthFeetDBx = new wxSpinCtrlDouble( sbSizer_DBx->GetStaticBox(), wxID_ANY, wxT("32.8"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 2000, 10.000000, 10 );
 	m_spinCtrlDouble_depthFeetDBx->SetDigits( 1 );
 	fgSizer41131->Add( m_spinCtrlDouble_depthFeetDBx, 0, wxALL, 5 );
 
@@ -334,7 +334,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	bSizer_NmeaList->Add( sbSizer_DBx, 0, wxEXPAND, 5 );
 
-	sbSizer_DPT = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("DPT") ), wxHORIZONTAL );
+	sbSizer_DPT = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("DPT - Depth of Water") ), wxHORIZONTAL );
 
 	wxBoxSizer* bSizer171113;
 	bSizer171113 = new wxBoxSizer( wxVERTICAL );
@@ -417,7 +417,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	bSizer_NmeaList->Add( sbSizer_DPT, 0, wxEXPAND, 5 );
 
-	sbSizer_GGA = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("GGA") ), wxHORIZONTAL );
+	sbSizer_GGA = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("GGA - Global Positioning System Fix Data") ), wxHORIZONTAL );
 
 	wxBoxSizer* bSizer1214;
 	bSizer1214 = new wxBoxSizer( wxVERTICAL );
@@ -613,7 +613,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	bSizer_NmeaList->Add( sbSizer_GGA, 0, wxEXPAND, 5 );
 
-	sbSizer_GLL = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("GLL") ), wxHORIZONTAL );
+	sbSizer_GLL = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("GLL - Geographic Position") ), wxHORIZONTAL );
 
 	wxBoxSizer* bSizer121;
 	bSizer121 = new wxBoxSizer( wxVERTICAL );
@@ -771,7 +771,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	bSizer_NmeaList->Add( sbSizer_GLL, 0, wxEXPAND, 5 );
 
-	sbSizer_GSV = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("GSV") ), wxHORIZONTAL );
+	sbSizer_GSV = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("GSV - Satellites in View") ), wxHORIZONTAL );
 
 	wxBoxSizer* bSizer1213;
 	bSizer1213 = new wxBoxSizer( wxVERTICAL );
@@ -903,7 +903,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	bSizer_NmeaList->Add( sbSizer_GSV, 0, wxEXPAND, 5 );
 
-	sbSizer_HDG = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("HDG") ), wxHORIZONTAL );
+	sbSizer_HDG = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("HDG - Magnetic Heading and Deviation") ), wxHORIZONTAL );
 
 	wxBoxSizer* bSizer17112;
 	bSizer17112 = new wxBoxSizer( wxVERTICAL );
@@ -1012,7 +1012,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	bSizer_NmeaList->Add( sbSizer_HDG, 0, wxEXPAND, 5 );
 
-	sbSizer_HDM = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("HDM") ), wxHORIZONTAL );
+	sbSizer_HDM = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("HDM - Magnetic Heading") ), wxHORIZONTAL );
 
 	wxBoxSizer* bSizer1711;
 	bSizer1711 = new wxBoxSizer( wxVERTICAL );
@@ -1094,7 +1094,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	bSizer_NmeaList->Add( sbSizer_HDM, 0, wxEXPAND, 5 );
 
-	sbSizer_HDT = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("HDT") ), wxHORIZONTAL );
+	sbSizer_HDT = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("HDT - True Heading") ), wxHORIZONTAL );
 
 	wxBoxSizer* bSizer171;
 	bSizer171 = new wxBoxSizer( wxVERTICAL );
@@ -1188,7 +1188,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	bSizer_NmeaList->Add( sbSizer_HDT, 0, wxEXPAND, 5 );
 
-	sbSizer_MTW = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("MTW") ), wxHORIZONTAL );
+	sbSizer_MTW = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("MTW - Mean Temperature of Water") ), wxHORIZONTAL );
 
 	wxBoxSizer* bSizer17111;
 	bSizer17111 = new wxBoxSizer( wxVERTICAL );
@@ -1270,7 +1270,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	bSizer_NmeaList->Add( sbSizer_MTW, 0, wxEXPAND, 5 );
 
-	sbSizer_MWD = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("MWD") ), wxHORIZONTAL );
+	sbSizer_MWD = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("MWD - Wind Direction and Speed") ), wxHORIZONTAL );
 
 	wxBoxSizer* bSizer171112111;
 	bSizer171112111 = new wxBoxSizer( wxVERTICAL );
@@ -1397,7 +1397,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	bSizer_NmeaList->Add( sbSizer_MWD, 0, wxEXPAND, 5 );
 
-	sbSizer_MWV = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("MWV") ), wxHORIZONTAL );
+	sbSizer_MWV = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("MWV - Wind Speed and Angle") ), wxHORIZONTAL );
 
 	wxBoxSizer* bSizer17111211;
 	bSizer17111211 = new wxBoxSizer( wxVERTICAL );
@@ -1508,7 +1508,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	bSizer_NmeaList->Add( sbSizer_MWV, 0, wxEXPAND, 5 );
 
-	sbSizer_OSD = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("OSD") ), wxHORIZONTAL );
+	sbSizer_OSD = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("OSD - Own Ship Data") ), wxHORIZONTAL );
 
 	wxBoxSizer* bSizer17111311;
 	bSizer17111311 = new wxBoxSizer( wxVERTICAL );
@@ -1669,7 +1669,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	bSizer_NmeaList->Add( sbSizer_OSD, 0, wxEXPAND, 5 );
 
-	sbSizer_RMC = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("RMC") ), wxHORIZONTAL );
+	sbSizer_RMC = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("RMC - Recommended Minimum Navigation Information") ), wxHORIZONTAL );
 
 	wxBoxSizer* bSizer14;
 	bSizer14 = new wxBoxSizer( wxVERTICAL );
@@ -1871,7 +1871,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	bSizer_NmeaList->Add( sbSizer_RMC, 0, wxEXPAND, 5 );
 
-	sbSizer_ROT = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("ROT") ), wxHORIZONTAL );
+	sbSizer_ROT = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("ROT - Rate of Turn") ), wxHORIZONTAL );
 
 	wxBoxSizer* bSizer171112;
 	bSizer171112 = new wxBoxSizer( wxVERTICAL );
@@ -1956,7 +1956,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	bSizer_NmeaList->Add( sbSizer_ROT, 0, wxEXPAND, 5 );
 
-	sbSizer_RSA = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("RSA") ), wxHORIZONTAL );
+	sbSizer_RSA = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("RSA - Rudder Sensor Angle") ), wxHORIZONTAL );
 
 	wxBoxSizer* bSizer1711121;
 	bSizer1711121 = new wxBoxSizer( wxVERTICAL );
@@ -2059,7 +2059,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	bSizer_NmeaList->Add( sbSizer_RSA, 0, wxEXPAND, 5 );
 
-	sbSizer_TLL = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("TLL") ), wxHORIZONTAL );
+	sbSizer_TLL = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("TLL - Target Latitude and Longitude") ), wxHORIZONTAL );
 
 	wxBoxSizer* bSizer171111;
 	bSizer171111 = new wxBoxSizer( wxVERTICAL );
@@ -2210,7 +2210,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	bSizer_NmeaList->Add( sbSizer_TLL, 0, wxEXPAND, 5 );
 
-	sbSizer_THS = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("THS") ), wxHORIZONTAL );
+	sbSizer_THS = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("THS - True Heading Status") ), wxHORIZONTAL );
 
 	wxBoxSizer* bSizer1711122;
 	bSizer1711122 = new wxBoxSizer( wxVERTICAL );
@@ -2256,7 +2256,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	m_staticText772 = new wxStaticText( sbSizer_THS->GetStaticBox(), wxID_ANY, _("Mode"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText772->Wrap( -1 );
-	fgSizer41122->Add( m_staticText772, 0, wxALL, 5 );
+	fgSizer41122->Add( m_staticText772, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_textCtrl_talkerTHS = new wxTextCtrl( sbSizer_THS->GetStaticBox(), wxID_ANY, _("HE"), wxDefaultPosition, wxSize( 50,-1 ), 0 );
 	#ifdef __WXGTK__
@@ -2295,7 +2295,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	bSizer_NmeaList->Add( sbSizer_THS, 0, wxEXPAND, 5 );
 
-	sbSizer_VDM = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("VDM/O") ), wxHORIZONTAL );
+	sbSizer_VDM = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("VDM/O - Automatic Information System (AIS)") ), wxHORIZONTAL );
 
 	wxBoxSizer* bSizer171113122;
 	bSizer171113122 = new wxBoxSizer( wxVERTICAL );
@@ -2475,7 +2475,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	bSizer_NmeaList->Add( sbSizer_VDM, 0, wxEXPAND, 5 );
 
-	sbSizer_VDR = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("VDR") ), wxHORIZONTAL );
+	sbSizer_VDR = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("VDR - Set and Drift") ), wxHORIZONTAL );
 
 	wxBoxSizer* bSizer17111312;
 	bSizer17111312 = new wxBoxSizer( wxVERTICAL );
@@ -2587,7 +2587,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	bSizer_NmeaList->Add( sbSizer_VDR, 0, wxEXPAND, 5 );
 
-	sbSizer_VHW = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("VHW") ), wxHORIZONTAL );
+	sbSizer_VHW = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("VHW - Water Speed and Heading") ), wxHORIZONTAL );
 
 	wxBoxSizer* bSizer171113121;
 	bSizer171113121 = new wxBoxSizer( wxVERTICAL );
@@ -2714,7 +2714,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	bSizer_NmeaList->Add( sbSizer_VHW, 0, wxEXPAND, 5 );
 
-	sbSizer_VTG = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("VTG") ), wxHORIZONTAL );
+	sbSizer_VTG = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("VTG - Track Made Good and Ground Speed") ), wxHORIZONTAL );
 
 	wxBoxSizer* bSizer1212;
 	bSizer1212 = new wxBoxSizer( wxVERTICAL );
@@ -2859,7 +2859,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	bSizer_NmeaList->Add( sbSizer_VTG, 0, wxEXPAND, 5 );
 
-	sbSizer_VWR = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("VWR") ), wxHORIZONTAL );
+	sbSizer_VWR = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("VWR - Relative Wind Speed and Angle") ), wxHORIZONTAL );
 
 	wxBoxSizer* bSizer1711131211;
 	bSizer1711131211 = new wxBoxSizer( wxVERTICAL );
@@ -2988,7 +2988,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	bSizer_NmeaList->Add( sbSizer_VWR, 0, wxEXPAND, 5 );
 
-	sbSizer_WPL = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("WPL") ), wxHORIZONTAL );
+	sbSizer_WPL = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("WPL - Waypoint Location") ), wxHORIZONTAL );
 
 	wxBoxSizer* bSizer1211;
 	bSizer1211 = new wxBoxSizer( wxVERTICAL );
@@ -3118,7 +3118,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	bSizer_NmeaList->Add( sbSizer_WPL, 0, wxEXPAND, 5 );
 
-	sbSizer_XDR = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("XDR") ), wxHORIZONTAL );
+	sbSizer_XDR = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("XDR - Transducer Measurement") ), wxHORIZONTAL );
 
 	wxBoxSizer* bSizer12111;
 	bSizer12111 = new wxBoxSizer( wxVERTICAL );
@@ -3255,7 +3255,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	bSizer_NmeaList->Add( sbSizer_XDR, 0, wxEXPAND, 5 );
 
-	sbSizer_ZDA = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("ZDA") ), wxHORIZONTAL );
+	sbSizer_ZDA = new wxStaticBoxSizer( new wxStaticBox( m_scrolledWindow_sentenceBuilder, wxID_ANY, _("ZDA - Time and Date") ), wxHORIZONTAL );
 
 	wxBoxSizer* bSizer12131;
 	bSizer12131 = new wxBoxSizer( wxVERTICAL );
@@ -3438,7 +3438,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_panel_list->SetSizer( bSizer9 );
 	m_panel_list->Layout();
 	bSizer9->Fit( m_panel_list );
-	m_notebook->AddPage( m_panel_list, _("Sentence Builder"), false );
+	m_notebook->AddPage( m_panel_list, _("Sentence Builder"), true );
 	m_panel_sim = new wxPanel( m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer8;
 	bSizer8 = new wxBoxSizer( wxVERTICAL );

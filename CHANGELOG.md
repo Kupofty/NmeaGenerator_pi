@@ -5,6 +5,9 @@
 --------------------------------------------------------------------------------------------
 ## [v1.2.2] / 2026-xx-xx
 
+### Fixed
+- Installable on MacOS
+
 ### Changed
 - Simulation boat starts on last known position of OwnBoat
 - Minor UI changes

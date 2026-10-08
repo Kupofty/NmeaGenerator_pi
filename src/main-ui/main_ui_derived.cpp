@@ -389,9 +389,7 @@ void DialogMainGui::OnText_SearchSentenceBuilder(wxCommandEvent& event)
 
   for (auto& item : sbSizerListSentenceBuilder)
   {
-    bool show = showAll ||
-                item.name.Upper().StartsWith(filter);
-
+    bool show = showAll || item.name.Upper().Contains(filter);
     item.sizer->ShowItems(show);
   }
 

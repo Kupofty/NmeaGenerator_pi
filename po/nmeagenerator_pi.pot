@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-07 22:04+0200\n"
+"POT-Creation-Date: 2026-10-08 22:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -111,7 +111,7 @@ msgid "Manual Input"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:223
-msgid "DBT/S/K"
+msgid "DBT/S/K - Depth Below Transducer/Surface/Keel"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:236 src/main-ui/main_ui_base.cpp:350
@@ -185,16 +185,20 @@ msgstr ""
 msgid "F"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:337 src/main-ui/main_ui_base.cpp:396
-msgid "DPT"
+#: src/main-ui/main_ui_base.cpp:337
+msgid "DPT - Depth of Water"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:381
 msgid "Offset"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:420 src/main-ui/main_ui_base.cpp:499
-msgid "GGA"
+#: src/main-ui/main_ui_base.cpp:396
+msgid "DPT"
+msgstr ""
+
+#: src/main-ui/main_ui_base.cpp:420
+msgid "GGA - Global Positioning System Fix Data"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:466 src/main-ui/main_ui_base.cpp:678
@@ -223,6 +227,10 @@ msgstr ""
 #: src/main-ui/main_ui_base.cpp:2797 src/main-ui/main_ui_base.cpp:3057
 #: src/main-ui/main_ui_base.cpp:3330
 msgid "GP"
+msgstr ""
+
+#: src/main-ui/main_ui_base.cpp:499
+msgid "GGA"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:503 src/main-ui/main_ui_base.cpp:739
@@ -291,9 +299,8 @@ msgstr ""
 msgid "Geoid separation"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:616 src/main-ui/main_ui_base.cpp:701
-#: src/main-ui/main_ui_base.cpp:3068
-msgid "GLL"
+#: src/main-ui/main_ui_base.cpp:616
+msgid "GLL - Geographic Position"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:682 src/main-ui/main_ui_base.cpp:1454
@@ -307,6 +314,10 @@ msgstr ""
 #: src/main-ui/main_ui_base.cpp:686 src/main-ui/main_ui_base.cpp:2257
 #: src/main-ui/main_ui_base.cpp:2793
 msgid "Mode"
+msgstr ""
+
+#: src/main-ui/main_ui_base.cpp:701 src/main-ui/main_ui_base.cpp:3068
+msgid "GLL"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:750 src/main-ui/main_ui_base.cpp:756
@@ -331,8 +342,8 @@ msgstr ""
 msgid "D"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:774 src/main-ui/main_ui_base.cpp:845
-msgid "GSV"
+#: src/main-ui/main_ui_base.cpp:774
+msgid "GSV - Satellites in View"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:820
@@ -345,6 +356,10 @@ msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:830
 msgid "Satellites in view"
+msgstr ""
+
+#: src/main-ui/main_ui_base.cpp:845
+msgid "GSV"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:866
@@ -363,8 +378,8 @@ msgstr ""
 msgid "SNR"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:906 src/main-ui/main_ui_base.cpp:975
-msgid "HDG"
+#: src/main-ui/main_ui_base.cpp:906
+msgid "HDG - Magnetic Heading and Deviation"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:946 src/main-ui/main_ui_base.cpp:1055
@@ -387,11 +402,23 @@ msgstr ""
 msgid "HC"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1015 src/main-ui/main_ui_base.cpp:1073
+#: src/main-ui/main_ui_base.cpp:975
+msgid "HDG"
+msgstr ""
+
+#: src/main-ui/main_ui_base.cpp:1015
+msgid "HDM - Magnetic Heading"
+msgstr ""
+
+#: src/main-ui/main_ui_base.cpp:1073
 msgid "HDM"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1097 src/main-ui/main_ui_base.cpp:1161
+#: src/main-ui/main_ui_base.cpp:1097
+msgid "HDT - True Heading"
+msgstr ""
+
+#: src/main-ui/main_ui_base.cpp:1161
 msgid "HDT"
 msgstr ""
 
@@ -402,8 +429,8 @@ msgstr ""
 msgid "T"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1191 src/main-ui/main_ui_base.cpp:1249
-msgid "MTW"
+#: src/main-ui/main_ui_base.cpp:1191
+msgid "MTW - Mean Temperature of Water"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:1231 src/main-ui/main_ui_base.cpp:3234
@@ -415,12 +442,16 @@ msgstr ""
 msgid "WI"
 msgstr ""
 
+#: src/main-ui/main_ui_base.cpp:1249
+msgid "MTW"
+msgstr ""
+
 #: src/main-ui/main_ui_base.cpp:1257
 msgid "C"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1273 src/main-ui/main_ui_base.cpp:1352
-msgid "MWD"
+#: src/main-ui/main_ui_base.cpp:1273
+msgid "MWD - Wind Direction and Speed"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:1313 src/main-ui/main_ui_base.cpp:1320
@@ -435,12 +466,20 @@ msgstr ""
 msgid "Speed"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1400 src/main-ui/main_ui_base.cpp:1469
-msgid "MWV"
+#: src/main-ui/main_ui_base.cpp:1352
+msgid "MWD"
+msgstr ""
+
+#: src/main-ui/main_ui_base.cpp:1400
+msgid "MWV - Wind Speed and Angle"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:1440 src/main-ui/main_ui_base.cpp:2902
 msgid "Angle"
+msgstr ""
+
+#: src/main-ui/main_ui_base.cpp:1469
+msgid "MWV"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:1477 src/main-ui/main_ui_base.cpp:1602
@@ -455,8 +494,8 @@ msgstr ""
 msgid "K"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1511 src/main-ui/main_ui_base.cpp:1584
-msgid "OSD"
+#: src/main-ui/main_ui_base.cpp:1511
+msgid "OSD - Own Ship Data"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:1565
@@ -469,6 +508,10 @@ msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:1573
 msgid "RA"
+msgstr ""
+
+#: src/main-ui/main_ui_base.cpp:1584
+msgid "OSD"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:1602 src/main-ui/main_ui_base.cpp:1640
@@ -492,7 +535,11 @@ msgstr ""
 msgid "Speed unit"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1672 src/main-ui/main_ui_base.cpp:1751
+#: src/main-ui/main_ui_base.cpp:1672
+msgid "RMC - Recommended Minimum Navigation Information"
+msgstr ""
+
+#: src/main-ui/main_ui_base.cpp:1751
 msgid "RMC"
 msgstr ""
 
@@ -518,8 +565,8 @@ msgstr ""
 msgid "010126"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1874 src/main-ui/main_ui_base.cpp:1933
-msgid "ROT"
+#: src/main-ui/main_ui_base.cpp:1874
+msgid "ROT - Rate of Turn"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:1914
@@ -530,8 +577,12 @@ msgstr ""
 msgid "HE"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:1959 src/main-ui/main_ui_base.cpp:2026
-msgid "RSA"
+#: src/main-ui/main_ui_base.cpp:1933
+msgid "ROT"
+msgstr ""
+
+#: src/main-ui/main_ui_base.cpp:1959
+msgid "RSA - Rudder Sensor Angle"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:1999
@@ -547,8 +598,12 @@ msgstr ""
 msgid "II"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2062 src/main-ui/main_ui_base.cpp:2137
-msgid "TLL"
+#: src/main-ui/main_ui_base.cpp:2026
+msgid "RSA"
+msgstr ""
+
+#: src/main-ui/main_ui_base.cpp:2062
+msgid "TLL - Target Latitude and Longitude"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:2108 src/main-ui/main_ui_base.cpp:3185
@@ -557,6 +612,10 @@ msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:2126
 msgid "IP"
+msgstr ""
+
+#: src/main-ui/main_ui_base.cpp:2137
+msgid "TLL"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:2170
@@ -579,12 +638,16 @@ msgstr ""
 msgid "L"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2213 src/main-ui/main_ui_base.cpp:2272
+#: src/main-ui/main_ui_base.cpp:2213
+msgid "THS - True Heading Status"
+msgstr ""
+
+#: src/main-ui/main_ui_base.cpp:2272
 msgid "THS"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:2298
-msgid "VDM/O"
+msgid "VDM/O - Automatic Information System (AIS)"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:2344
@@ -647,16 +710,20 @@ msgstr ""
 msgid "Channel"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2478 src/main-ui/main_ui_base.cpp:2550
-msgid "VDR"
+#: src/main-ui/main_ui_base.cpp:2478
+msgid "VDR - Set and Drift"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:2532
 msgid "Current speed"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2590 src/main-ui/main_ui_base.cpp:2669
-msgid "VHW"
+#: src/main-ui/main_ui_base.cpp:2550
+msgid "VDR"
+msgstr ""
+
+#: src/main-ui/main_ui_base.cpp:2590
+msgid "VHW - Water Speed and Heading"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:2644 src/main-ui/main_ui_base.cpp:2651
@@ -667,16 +734,28 @@ msgstr ""
 msgid "VW"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2717 src/main-ui/main_ui_base.cpp:2808
+#: src/main-ui/main_ui_base.cpp:2669
+msgid "VHW"
+msgstr ""
+
+#: src/main-ui/main_ui_base.cpp:2717
+msgid "VTG - Track Made Good and Ground Speed"
+msgstr ""
+
+#: src/main-ui/main_ui_base.cpp:2808
 msgid "VTG"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:2862 src/main-ui/main_ui_base.cpp:2941
+#: src/main-ui/main_ui_base.cpp:2862
+msgid "VWR - Relative Wind Speed and Angle"
+msgstr ""
+
+#: src/main-ui/main_ui_base.cpp:2941
 msgid "VWR"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:2991
-msgid "WPL"
+msgid "WPL - Waypoint Location"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:3053
@@ -687,8 +766,8 @@ msgstr ""
 msgid "WP099"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3121 src/main-ui/main_ui_base.cpp:3204
-msgid "XDR"
+#: src/main-ui/main_ui_base.cpp:3121
+msgid "XDR - Transducer Measurement"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:3167
@@ -709,6 +788,10 @@ msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:3189
 msgid "#"
+msgstr ""
+
+#: src/main-ui/main_ui_base.cpp:3204
+msgid "XDR"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:3208
@@ -779,8 +862,8 @@ msgstr ""
 msgid "Volume"
 msgstr ""
 
-#: src/main-ui/main_ui_base.cpp:3258 src/main-ui/main_ui_base.cpp:3341
-msgid "ZDA"
+#: src/main-ui/main_ui_base.cpp:3258
+msgid "ZDA - Time and Date"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:3310
@@ -801,6 +884,10 @@ msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:3326
 msgid "Minutes offset"
+msgstr ""
+
+#: src/main-ui/main_ui_base.cpp:3341
+msgid "ZDA"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:3398
@@ -902,7 +989,7 @@ msgid "0%"
 msgstr ""
 
 #: src/main-ui/main_ui_base.cpp:3760 src/main-ui/main_ui_derived.cpp:115
-#: src/main-ui/main_ui_derived.cpp:1712
+#: src/main-ui/main_ui_derived.cpp:1723
 msgid "START"
 msgstr ""
 
@@ -1082,23 +1169,23 @@ msgstr ""
 msgid "Water"
 msgstr ""
 
-#: src/main-ui/main_ui_derived.cpp:1564
+#: src/main-ui/main_ui_derived.cpp:1575
 msgid "kts"
 msgstr ""
 
-#: src/main-ui/main_ui_derived.cpp:1707
+#: src/main-ui/main_ui_derived.cpp:1718
 msgid "STOP"
 msgstr ""
 
-#: src/main-ui/main_ui_derived.cpp:1750
+#: src/main-ui/main_ui_derived.cpp:1765
 msgid "No AIS targets available."
 msgstr ""
 
-#: src/main-ui/main_ui_derived.cpp:1751
+#: src/main-ui/main_ui_derived.cpp:1766
 msgid "AIS Error"
 msgstr ""
 
-#: src/main-ui/main_ui_derived.h:57
+#: src/main-ui/main_ui_derived.h:62
 msgid "NmeaGenerator Plugin GUI"
 msgstr ""
 

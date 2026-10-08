@@ -195,7 +195,7 @@ image::gui/sentence_builder/sentence_builder_tab.png[]
 
 Multiple sentences can be configured and transmitted automatically at the same time.
 
-Use the search box to filter sentences by their ID, and the vertical scrollbar to browse the complete list.
+Use the search box to filter sentences by their ID or description, and the vertical scrollbar to browse the complete list.
 
 For text input fields, values must follow the official NMEA format to ensure they are interpreted correctly by OpenCPN or compatible hardware and software.
 
