@@ -50,6 +50,7 @@ namespace utils
 
   wxString toNMEA_lat(double lat)
   {
+    lat = fabs(lat);
     int deg = (int)lat;
     double min = (lat - deg) * 60.0;
     return wxString::Format("%02d%07.4f", deg, min);
@@ -57,6 +58,7 @@ namespace utils
 
   wxString toNMEA_lon(double lon)
   {
+    lon = fabs(lon);
     int deg = (int)lon;
     double min = (lon - deg) * 60.0;
     return wxString::Format("%03d%07.4f", deg, min);

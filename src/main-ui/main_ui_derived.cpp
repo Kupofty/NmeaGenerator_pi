@@ -1148,11 +1148,15 @@ void DialogMainGui::OnButtonClick_CopyZDA(wxCommandEvent& event)
 wxString DialogMainGui::createFromGuiGLL()
 {
   wxString talker = m_textCtrl_talkerGLL->GetValue();
-  wxString lat    = m_textCtrl_latitudeGLL->GetValue();
+  wxString lat    = utils::toNMEA_lat(m_spinCtrlDouble_latGLL->GetValue());
   wxString latDir = m_choice_latDirGLL->GetStringSelection();
-  wxString lon    = m_textCtrl_longitudeGLL->GetValue();
+  wxString lon    = utils::toNMEA_lon(m_spinCtrlDouble_lonGLL->GetValue());
   wxString lonDir = m_choice_lonDirGLL->GetStringSelection();
-  wxString time   = m_textCtrl_timeGLL->GetValue();
+  wxString time   = wxString::Format("%02d%02d%02d",
+                      m_spinCtrl_hoursGLL->GetValue(),
+                      m_spinCtrl_minutesGLL->GetValue(),
+                      m_spinCtrl_secondsGLL->GetValue()
+                      );
   wxString status = m_choice_statusGLL->GetStringSelection();
   wxString mode   = m_choice_modeGLL->GetStringSelection();
 
@@ -1163,15 +1167,23 @@ wxString DialogMainGui::createFromGuiGLL()
 wxString DialogMainGui::createFromGuiRMC()
 {
   wxString talker    = m_textCtrl_talkerRMC->GetValue();
-  wxString time      = m_textCtrl_timeRMC->GetValue();
+  wxString time      = wxString::Format("%02d%02d%02d",
+                         m_spinCtrl_hoursRMC->GetValue(),
+                         m_spinCtrl_minutesRMC->GetValue(),
+                         m_spinCtrl_secondsRMC->GetValue()
+                         );
   wxString status    = m_choice_statusRMC->GetStringSelection();
-  wxString lat       = m_textCtrl_latitudeRMC->GetValue();
+  wxString lat       = utils::toNMEA_lat(m_spinCtrlDouble_latRMC->GetValue());
   wxString latDir    = m_choice_latDirRMC->GetStringSelection();
-  wxString lon       = m_textCtrl_longitudeRMC->GetValue();
+  wxString lon       = utils::toNMEA_lon(m_spinCtrlDouble_lonRMC->GetValue());
   wxString lonDir    = m_choice_lonDirRMC->GetStringSelection();
   wxString sog       = wxString::Format("%.1f", m_spinCtrlDouble_sogRMC->GetValue());
   wxString cog       = wxString::Format("%.1f", m_spinCtrlDouble_cogRMC->GetValue());
-  wxString date      = m_textCtrl_dateRMC->GetValue();
+  wxString date      = wxString::Format("%02d%02d%02d",
+                         m_spinCtrl_dayRMC->GetValue(),
+                         m_spinCtrl_monthRMC->GetValue(),
+                         m_spinCtrl_yearRMC->GetValue()
+                         );
   wxString magVar    = wxString::Format("%.1f",  m_spinCtrlDouble_magRMC->GetValue());
   wxString magVarDir = m_choice_magDirRMC->GetStringSelection();
 
@@ -1182,10 +1194,14 @@ wxString DialogMainGui::createFromGuiRMC()
 wxString DialogMainGui::createFromGuiGGA()
 {
   wxString talker   = m_textCtrl_talkerGGA->GetValue();
-  wxString time     = m_textCtrl_timeGGA->GetValue();
-  wxString lat      = m_textCtrl_latitudeGGA->GetValue();
+  wxString time     = wxString::Format("%02d%02d%02d",
+                       m_spinCtrl_hoursGGA->GetValue(),
+                       m_spinCtrl_minutesGGA->GetValue(),
+                       m_spinCtrl_secondsGGA->GetValue()
+                       );
+  wxString lat      = utils::toNMEA_lat(m_spinCtrlDouble_latGGA->GetValue());
   wxString latDir   = m_choice_latDirGGA->GetStringSelection();
-  wxString lon      = m_textCtrl_longitudeGGA->GetValue();
+  wxString lon      = utils::toNMEA_lon(m_spinCtrlDouble_lonGGA->GetValue());
   wxString lonDir   = m_choice_lonDirGGA->GetStringSelection();
   wxString gpsFix   = wxString::Format("%d", m_spinCtrl_gpsQualityGGA->GetValue());
   wxString sats     = wxString::Format("%d", m_spinCtrl_satellitesGGA->GetValue());
@@ -1241,12 +1257,16 @@ wxString DialogMainGui::createFromGuiTLL()
 {
   wxString talker   = m_textCtrl_talkerTLL->GetValue();
   wxString targetID = wxString::Format("%d", m_spinCtrl_idTLL->GetValue());
-  wxString lat      = m_textCtrl_latitudeTLL->GetValue();
+  wxString lat      = utils::toNMEA_lat(m_spinCtrlDouble_latTLL->GetValue());
   wxString latDir   = m_choice_latDirTLL->GetStringSelection();
-  wxString lon      = m_textCtrl_longitudeTLL->GetValue();
+  wxString lon      = utils::toNMEA_lon(m_spinCtrlDouble_lonTLL->GetValue());
   wxString lonDir   = m_choice_lonDirTLL->GetStringSelection();
   wxString name     = m_textCtrl_nameTLL->GetValue();
-  wxString time     = m_textCtrl_timeTLL->GetValue();
+  wxString time     = wxString::Format("%02d%02d%02d",
+                         m_spinCtrl_hoursTLL->GetValue(),
+                         m_spinCtrl_minutesTLL->GetValue(),
+                         m_spinCtrl_secondsTLL->GetValue()
+                       );
   wxString status   = m_choice_statusTLL->GetStringSelection();
   wxString ref      = "R";
 
@@ -1311,9 +1331,9 @@ wxString DialogMainGui::createFromGuiTHS()
 wxString DialogMainGui::createFromGuiWPL()
 {
   wxString talker = m_textCtrl_talkerWPL->GetValue();
-  wxString lat    = m_textCtrl_latitudeWPL->GetValue();
+  wxString lat    = utils::toNMEA_lat(m_spinCtrlDouble_latWPL->GetValue());
   wxString latDir = m_choice_latDirWPL->GetStringSelection();
-  wxString lon    = m_textCtrl_longitudeWPL->GetValue();
+  wxString lon    = utils::toNMEA_lon(m_spinCtrlDouble_lonWPL->GetValue());
   wxString lonDir = m_choice_lonDirWPL->GetStringSelection();
   wxString wpName = m_textCtrl_nameWPL->GetValue();
 
@@ -1499,12 +1519,16 @@ wxString DialogMainGui::createFromGuiVWR()
 wxString DialogMainGui::createFromGuiZDA()
 {
   wxString talker       = m_textCtrl_talkerZDA->GetValue();
-  wxString time         = m_textCtrl_timeZDA->GetValue();
-  wxString day          = wxString::Format("%d", m_spinCtrl_dayZDA->GetValue());
-  wxString month        = wxString::Format("%d", m_spinCtrl_monthZDA->GetValue());
+  wxString time         = wxString::Format("%02d%02d%02d",
+                            m_spinCtrl_hoursZDA->GetValue(),
+                            m_spinCtrl_minutesZDA->GetValue(),
+                            m_spinCtrl_secondsZDA->GetValue()
+                          );
+  wxString day          = wxString::Format("%02d", m_spinCtrl_dayZDA->GetValue());
+  wxString month        = wxString::Format("%02d", m_spinCtrl_monthZDA->GetValue());
   wxString year         = wxString::Format("%d", m_spinCtrl_yearZDA->GetValue());
-  wxString hourOffset   = wxString::Format("%d", m_spinCtrl_hourOffsetZDA->GetValue());
-  wxString minuteOffset = wxString::Format("%d", m_spinCtrl_minuteOffsetZDA->GetValue());
+  wxString hourOffset   = wxString::Format("%02d", m_spinCtrl_hourOffsetZDA->GetValue());
+  wxString minuteOffset = wxString::Format("%02d", m_spinCtrl_minuteOffsetZDA->GetValue());
 
   wxString zda  = nmea::createZDA(talker, time, day, month, year, hourOffset, minuteOffset);
   return zda;
@@ -1824,8 +1848,8 @@ void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
 
     wxString latDir = utils::getLatDir(shipSimu.lat);
     wxString lonDir = utils::getLonDir(shipSimu.lon);
-    wxString latStr = utils::toNMEA_lat(fabs(shipSimu.lat));
-    wxString lonStr = utils::toNMEA_lon(fabs(shipSimu.lon));
+    wxString latStr = utils::toNMEA_lat(shipSimu.lat);
+    wxString lonStr = utils::toNMEA_lon(shipSimu.lon);
 
     wxString speedStr = wxString::Format("%.1f", fabs(shipSimu.speed));
     wxString headingStr = wxString::Format("%.1f", shipSimu.heading);
@@ -1846,8 +1870,8 @@ void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
 
       wxString latDir = utils::getLatDir(ais.lat);
       wxString lonDir = utils::getLonDir(ais.lon);
-      wxString latStr = utils::toNMEA_lat(fabs(ais.lat));
-      wxString lonStr = utils::toNMEA_lon(fabs(ais.lon));
+      wxString latStr = utils::toNMEA_lat(ais.lat);
+      wxString lonStr = utils::toNMEA_lon(ais.lon);
 
       wxString aisNmea;
       switch(ais.type)

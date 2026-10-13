@@ -452,7 +452,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	bSizer631->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	wxFlexGridSizer* fgSizer34;
-	fgSizer34 = new wxFlexGridSizer( 2, 8, 0, 0 );
+	fgSizer34 = new wxFlexGridSizer( 2, 9, 0, 0 );
 	fgSizer34->SetFlexibleDirection( wxBOTH );
 	fgSizer34->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 
@@ -463,9 +463,17 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	fgSizer34->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_staticText230 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("UTC time"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText230 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("Hours"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText230->Wrap( -1 );
 	fgSizer34->Add( m_staticText230, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText2261 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("Minutes"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText2261->Wrap( -1 );
+	fgSizer34->Add( m_staticText2261, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText2272 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("Seconds"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText2272->Wrap( -1 );
+	fgSizer34->Add( m_staticText2272, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_staticText2311 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("Latitude"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText2311->Wrap( -1 );
@@ -480,10 +488,6 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 
 	fgSizer34->Add( 0, 0, 1, wxEXPAND, 5 );
-
-	m_staticText2331 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("GPX fix"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText2331->Wrap( -1 );
-	fgSizer34->Add( m_staticText2331, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_textCtrl_talkerGGA = new wxTextCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 50,-1 ), 0 );
 	#ifdef __WXGTK__
@@ -500,27 +504,18 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_staticText2341->Wrap( -1 );
 	fgSizer34->Add( m_staticText2341, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_textCtrl_timeGGA = new wxTextCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("120000"), wxDefaultPosition, wxDefaultSize, 0 );
-	#ifdef __WXGTK__
-	if ( !m_textCtrl_timeGGA->HasFlag( wxTE_MULTILINE ) )
-	{
-	m_textCtrl_timeGGA->SetMaxLength( 9 );
-	}
-	#else
-	m_textCtrl_timeGGA->SetMaxLength( 9 );
-	#endif
-	fgSizer34->Add( m_textCtrl_timeGGA, 0, wxALL, 5 );
+	m_spinCtrl_hoursGGA = new wxSpinCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxT("12"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 23, 12 );
+	fgSizer34->Add( m_spinCtrl_hoursGGA, 0, wxALL, 5 );
 
-	m_textCtrl_latitudeGGA = new wxTextCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("0000.0000000"), wxDefaultPosition, wxDefaultSize, 0 );
-	#ifdef __WXGTK__
-	if ( !m_textCtrl_latitudeGGA->HasFlag( wxTE_MULTILINE ) )
-	{
-	m_textCtrl_latitudeGGA->SetMaxLength( 12 );
-	}
-	#else
-	m_textCtrl_latitudeGGA->SetMaxLength( 12 );
-	#endif
-	fgSizer34->Add( m_textCtrl_latitudeGGA, 0, wxALL, 5 );
+	m_spinCtrl_minutesGGA = new wxSpinCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 59, 0 );
+	fgSizer34->Add( m_spinCtrl_minutesGGA, 0, wxALL, 5 );
+
+	m_spinCtrl_secondsGGA = new wxSpinCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 59, 0 );
+	fgSizer34->Add( m_spinCtrl_secondsGGA, 0, wxALL, 5 );
+
+	m_spinCtrlDouble_latGGA = new wxSpinCtrlDouble( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 90, 0, 1 );
+	m_spinCtrlDouble_latGGA->SetDigits( 5 );
+	fgSizer34->Add( m_spinCtrlDouble_latGGA, 0, wxALL, 5 );
 
 	wxString m_choice_latDirGGAChoices[] = { _("N"), _("S") };
 	int m_choice_latDirGGANChoices = sizeof( m_choice_latDirGGAChoices ) / sizeof( wxString );
@@ -528,16 +523,9 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_choice_latDirGGA->SetSelection( 0 );
 	fgSizer34->Add( m_choice_latDirGGA, 0, wxALL, 5 );
 
-	m_textCtrl_longitudeGGA = new wxTextCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("00000.0000000"), wxDefaultPosition, wxDefaultSize, 0 );
-	#ifdef __WXGTK__
-	if ( !m_textCtrl_longitudeGGA->HasFlag( wxTE_MULTILINE ) )
-	{
-	m_textCtrl_longitudeGGA->SetMaxLength( 13 );
-	}
-	#else
-	m_textCtrl_longitudeGGA->SetMaxLength( 13 );
-	#endif
-	fgSizer34->Add( m_textCtrl_longitudeGGA, 0, wxALL, 5 );
+	m_spinCtrlDouble_lonGGA = new wxSpinCtrlDouble( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 180, 0, 1 );
+	m_spinCtrlDouble_lonGGA->SetDigits( 5 );
+	fgSizer34->Add( m_spinCtrlDouble_lonGGA, 0, wxALL, 5 );
 
 	wxString m_choice_lonDirGGAChoices[] = { _("E"), _("W") };
 	int m_choice_lonDirGGANChoices = sizeof( m_choice_lonDirGGAChoices ) / sizeof( wxString );
@@ -545,16 +533,17 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_choice_lonDirGGA->SetSelection( 0 );
 	fgSizer34->Add( m_choice_lonDirGGA, 0, wxALL, 5 );
 
-	m_spinCtrl_gpsQualityGGA = new wxSpinCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxT("1"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 6, 1 );
-	fgSizer34->Add( m_spinCtrl_gpsQualityGGA, 0, wxALL, 5 );
-
 
 	bSizer631->Add( fgSizer34, 0, wxEXPAND, 5 );
 
 	wxFlexGridSizer* fgSizer33;
-	fgSizer33 = new wxFlexGridSizer( 2, 6, 0, 0 );
+	fgSizer33 = new wxFlexGridSizer( 2, 7, 0, 0 );
 	fgSizer33->SetFlexibleDirection( wxBOTH );
 	fgSizer33->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
+
+	m_staticText2331 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("GPX fix"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText2331->Wrap( -1 );
+	fgSizer33->Add( m_staticText2331, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_staticText235 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("Satellites"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText235->Wrap( -1 );
@@ -577,6 +566,9 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 
 	fgSizer33->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_spinCtrl_gpsQualityGGA = new wxSpinCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxT("1"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 6, 1 );
+	fgSizer33->Add( m_spinCtrl_gpsQualityGGA, 0, wxALL, 5 );
 
 	m_spinCtrl_satellitesGGA = new wxSpinCtrl( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxT("12"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 99, 12 );
 	fgSizer33->Add( m_spinCtrl_satellitesGGA, 0, wxALL, 5 );
@@ -648,7 +640,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	bSizer63->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	wxFlexGridSizer* fgSizer_GLL;
-	fgSizer_GLL = new wxFlexGridSizer( 2, 9, 0, 0 );
+	fgSizer_GLL = new wxFlexGridSizer( 2, 6, 0, 0 );
 	fgSizer_GLL->SetFlexibleDirection( wxBOTH );
 	fgSizer_GLL->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 
@@ -675,18 +667,6 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	fgSizer_GLL->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_staticText14 = new wxStaticText( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("UTC time"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
-	m_staticText14->Wrap( -1 );
-	fgSizer_GLL->Add( m_staticText14, 0, wxALIGN_CENTER|wxALL, 5 );
-
-	m_staticText15 = new wxStaticText( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("Status"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText15->Wrap( -1 );
-	fgSizer_GLL->Add( m_staticText15, 0, wxALIGN_CENTER|wxALL, 5 );
-
-	m_staticText18 = new wxStaticText( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("Mode"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText18->Wrap( -1 );
-	fgSizer_GLL->Add( m_staticText18, 0, wxALIGN_CENTER|wxALL, 5 );
-
 	m_textCtrl_talkerGLL = new wxTextCtrl( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 50,-1 ), 0 );
 	#ifdef __WXGTK__
 	if ( !m_textCtrl_talkerGLL->HasFlag( wxTE_MULTILINE ) )
@@ -702,16 +682,9 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_staticText5->Wrap( -1 );
 	fgSizer_GLL->Add( m_staticText5, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_textCtrl_latitudeGLL = new wxTextCtrl( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("0000.0000000"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
-	#ifdef __WXGTK__
-	if ( !m_textCtrl_latitudeGLL->HasFlag( wxTE_MULTILINE ) )
-	{
-	m_textCtrl_latitudeGLL->SetMaxLength( 12 );
-	}
-	#else
-	m_textCtrl_latitudeGLL->SetMaxLength( 12 );
-	#endif
-	fgSizer_GLL->Add( m_textCtrl_latitudeGLL, 0, wxALL, 5 );
+	m_spinCtrlDouble_latGLL = new wxSpinCtrlDouble( sbSizer_GLL->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 90, 0, 1 );
+	m_spinCtrlDouble_latGLL->SetDigits( 5 );
+	fgSizer_GLL->Add( m_spinCtrlDouble_latGLL, 0, wxALL, 5 );
 
 	wxString m_choice_latDirGLLChoices[] = { _("N"), _("S") };
 	int m_choice_latDirGLLNChoices = sizeof( m_choice_latDirGLLChoices ) / sizeof( wxString );
@@ -719,16 +692,9 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_choice_latDirGLL->SetSelection( 1 );
 	fgSizer_GLL->Add( m_choice_latDirGLL, 0, wxALL, 5 );
 
-	m_textCtrl_longitudeGLL = new wxTextCtrl( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("00000.0000000"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
-	#ifdef __WXGTK__
-	if ( !m_textCtrl_longitudeGLL->HasFlag( wxTE_MULTILINE ) )
-	{
-	m_textCtrl_longitudeGLL->SetMaxLength( 13 );
-	}
-	#else
-	m_textCtrl_longitudeGLL->SetMaxLength( 13 );
-	#endif
-	fgSizer_GLL->Add( m_textCtrl_longitudeGLL, 0, wxALL, 5 );
+	m_spinCtrlDouble_lonGLL = new wxSpinCtrlDouble( sbSizer_GLL->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 180, 0, 1 );
+	m_spinCtrlDouble_lonGLL->SetDigits( 5 );
+	fgSizer_GLL->Add( m_spinCtrlDouble_lonGLL, 0, wxALL, 5 );
 
 	wxString m_choice_lonDirGLLChoices[] = { _("E"), _("W") };
 	int m_choice_lonDirGLLNChoices = sizeof( m_choice_lonDirGLLChoices ) / sizeof( wxString );
@@ -736,31 +702,57 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_choice_lonDirGLL->SetSelection( 0 );
 	fgSizer_GLL->Add( m_choice_lonDirGLL, 0, wxALL, 5 );
 
-	m_textCtrl_timeGLL = new wxTextCtrl( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("120000"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
-	#ifdef __WXGTK__
-	if ( !m_textCtrl_timeGLL->HasFlag( wxTE_MULTILINE ) )
-	{
-	m_textCtrl_timeGLL->SetMaxLength( 9 );
-	}
-	#else
-	m_textCtrl_timeGLL->SetMaxLength( 9 );
-	#endif
-	fgSizer_GLL->Add( m_textCtrl_timeGLL, 0, wxALL, 5 );
+
+	bSizer63->Add( fgSizer_GLL, 0, wxEXPAND, 5 );
+
+	wxFlexGridSizer* fgSizer341;
+	fgSizer341 = new wxFlexGridSizer( 2, 5, 0, 0 );
+	fgSizer341->SetFlexibleDirection( wxBOTH );
+	fgSizer341->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
+
+	m_staticText14 = new wxStaticText( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("Hours"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_staticText14->Wrap( -1 );
+	fgSizer341->Add( m_staticText14, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText224 = new wxStaticText( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("Minutes"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText224->Wrap( -1 );
+	fgSizer341->Add( m_staticText224, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText2251 = new wxStaticText( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("Seconds"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText2251->Wrap( -1 );
+	fgSizer341->Add( m_staticText2251, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText15 = new wxStaticText( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("Status"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText15->Wrap( -1 );
+	fgSizer341->Add( m_staticText15, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText18 = new wxStaticText( sbSizer_GLL->GetStaticBox(), wxID_ANY, _("Mode"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText18->Wrap( -1 );
+	fgSizer341->Add( m_staticText18, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_spinCtrl_hoursGLL = new wxSpinCtrl( sbSizer_GLL->GetStaticBox(), wxID_ANY, wxT("12"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 23, 12 );
+	fgSizer341->Add( m_spinCtrl_hoursGLL, 0, wxALL, 5 );
+
+	m_spinCtrl_minutesGLL = new wxSpinCtrl( sbSizer_GLL->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 59, 0 );
+	fgSizer341->Add( m_spinCtrl_minutesGLL, 0, wxALL, 5 );
+
+	m_spinCtrl_secondsGLL = new wxSpinCtrl( sbSizer_GLL->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 59, 0 );
+	fgSizer341->Add( m_spinCtrl_secondsGLL, 0, wxALL, 5 );
 
 	wxString m_choice_statusGLLChoices[] = { _("A"), _("V") };
 	int m_choice_statusGLLNChoices = sizeof( m_choice_statusGLLChoices ) / sizeof( wxString );
 	m_choice_statusGLL = new wxChoice( sbSizer_GLL->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxSize( -1,-1 ), m_choice_statusGLLNChoices, m_choice_statusGLLChoices, 0 );
 	m_choice_statusGLL->SetSelection( 0 );
-	fgSizer_GLL->Add( m_choice_statusGLL, 0, wxALL, 5 );
+	fgSizer341->Add( m_choice_statusGLL, 0, wxALL, 5 );
 
 	wxString m_choice_modeGLLChoices[] = { _("A"), _("D"), _("E"), _("M"), _("S"), _("N") };
 	int m_choice_modeGLLNChoices = sizeof( m_choice_modeGLLChoices ) / sizeof( wxString );
 	m_choice_modeGLL = new wxChoice( sbSizer_GLL->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_modeGLLNChoices, m_choice_modeGLLChoices, 0 );
 	m_choice_modeGLL->SetSelection( 4 );
-	fgSizer_GLL->Add( m_choice_modeGLL, 0, wxALL, 5 );
+	fgSizer341->Add( m_choice_modeGLL, 0, wxALL, 5 );
 
 
-	bSizer63->Add( fgSizer_GLL, 0, wxEXPAND, 5 );
+	bSizer63->Add( fgSizer341, 0, wxEXPAND, 5 );
 
 
 	bSizer63->Add( 0, 0, 1, wxEXPAND, 5 );
@@ -1704,7 +1696,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	bSizer59->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	wxFlexGridSizer* fgSizer_RMC;
-	fgSizer_RMC = new wxFlexGridSizer( 2, 8, 0, 0 );
+	fgSizer_RMC = new wxFlexGridSizer( 2, 6, 0, 0 );
 	fgSizer_RMC->SetFlexibleDirection( wxBOTH );
 	fgSizer_RMC->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 
@@ -1715,27 +1707,21 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	fgSizer_RMC->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_staticText141 = new wxStaticText( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("UTC time"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText141 = new wxStaticText( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("Hours"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText141->Wrap( -1 );
 	fgSizer_RMC->Add( m_staticText141, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText2221 = new wxStaticText( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("Minutes"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText2221->Wrap( -1 );
+	fgSizer_RMC->Add( m_staticText2221, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText2231 = new wxStaticText( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("Seconds"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText2231->Wrap( -1 );
+	fgSizer_RMC->Add( m_staticText2231, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_staticText151 = new wxStaticText( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("Status"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText151->Wrap( -1 );
 	fgSizer_RMC->Add( m_staticText151, 0, wxALIGN_CENTER|wxALL, 5 );
-
-	m_staticText16 = new wxStaticText( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("Latitude"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText16->Wrap( -1 );
-	fgSizer_RMC->Add( m_staticText16, 0, wxALIGN_CENTER|wxALL, 5 );
-
-
-	fgSizer_RMC->Add( 0, 0, 1, wxEXPAND, 5 );
-
-	m_staticText181 = new wxStaticText( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("Longitude"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText181->Wrap( -1 );
-	fgSizer_RMC->Add( m_staticText181, 0, wxALIGN_CENTER|wxALL, 5 );
-
-
-	fgSizer_RMC->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	m_textCtrl_talkerRMC = new wxTextCtrl( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 50,-1 ), 0 );
 	#ifdef __WXGTK__
@@ -1752,16 +1738,14 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_staticText22->Wrap( -1 );
 	fgSizer_RMC->Add( m_staticText22, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_textCtrl_timeRMC = new wxTextCtrl( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("120000"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
-	#ifdef __WXGTK__
-	if ( !m_textCtrl_timeRMC->HasFlag( wxTE_MULTILINE ) )
-	{
-	m_textCtrl_timeRMC->SetMaxLength( 9 );
-	}
-	#else
-	m_textCtrl_timeRMC->SetMaxLength( 9 );
-	#endif
-	fgSizer_RMC->Add( m_textCtrl_timeRMC, 0, wxALL, 5 );
+	m_spinCtrl_hoursRMC = new wxSpinCtrl( sbSizer_RMC->GetStaticBox(), wxID_ANY, wxT("12"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 23, 12 );
+	fgSizer_RMC->Add( m_spinCtrl_hoursRMC, 0, wxALL, 5 );
+
+	m_spinCtrl_minutesRMC = new wxSpinCtrl( sbSizer_RMC->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 59, 0 );
+	fgSizer_RMC->Add( m_spinCtrl_minutesRMC, 0, wxALL, 5 );
+
+	m_spinCtrl_secondsRMC = new wxSpinCtrl( sbSizer_RMC->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 59, 0 );
+	fgSizer_RMC->Add( m_spinCtrl_secondsRMC, 0, wxALL, 5 );
 
 	wxString m_choice_statusRMCChoices[] = { _("A"), _("V") };
 	int m_choice_statusRMCNChoices = sizeof( m_choice_statusRMCChoices ) / sizeof( wxString );
@@ -1769,59 +1753,83 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_choice_statusRMC->SetSelection( 0 );
 	fgSizer_RMC->Add( m_choice_statusRMC, 0, wxALL, 5 );
 
-	m_textCtrl_latitudeRMC = new wxTextCtrl( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("0000.0000000"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
-	#ifdef __WXGTK__
-	if ( !m_textCtrl_latitudeRMC->HasFlag( wxTE_MULTILINE ) )
-	{
-	m_textCtrl_latitudeRMC->SetMaxLength( 12 );
-	}
-	#else
-	m_textCtrl_latitudeRMC->SetMaxLength( 12 );
-	#endif
-	fgSizer_RMC->Add( m_textCtrl_latitudeRMC, 0, wxALL, 5 );
+
+	bSizer59->Add( fgSizer_RMC, 0, wxEXPAND, 5 );
+
+	wxFlexGridSizer* fgSizer35;
+	fgSizer35 = new wxFlexGridSizer( 2, 6, 0, 0 );
+	fgSizer35->SetFlexibleDirection( wxBOTH );
+	fgSizer35->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
+
+	m_staticText16 = new wxStaticText( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("Latitude"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText16->Wrap( -1 );
+	fgSizer35->Add( m_staticText16, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer35->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText181 = new wxStaticText( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("Longitude"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText181->Wrap( -1 );
+	fgSizer35->Add( m_staticText181, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	fgSizer35->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_staticText201 = new wxStaticText( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("SOG"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_staticText201->Wrap( -1 );
+	fgSizer35->Add( m_staticText201, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText26 = new wxStaticText( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("COG"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_staticText26->Wrap( -1 );
+	fgSizer35->Add( m_staticText26, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_spinCtrlDouble_latRMC = new wxSpinCtrlDouble( sbSizer_RMC->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 90, 0, 1 );
+	m_spinCtrlDouble_latRMC->SetDigits( 5 );
+	fgSizer35->Add( m_spinCtrlDouble_latRMC, 0, wxALL, 5 );
 
 	wxString m_choice_latDirRMCChoices[] = { _("N"), _("S") };
 	int m_choice_latDirRMCNChoices = sizeof( m_choice_latDirRMCChoices ) / sizeof( wxString );
 	m_choice_latDirRMC = new wxChoice( sbSizer_RMC->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_latDirRMCNChoices, m_choice_latDirRMCChoices, 0 );
 	m_choice_latDirRMC->SetSelection( 0 );
-	fgSizer_RMC->Add( m_choice_latDirRMC, 0, wxALL, 5 );
+	fgSizer35->Add( m_choice_latDirRMC, 0, wxALL, 5 );
 
-	m_textCtrl_longitudeRMC = new wxTextCtrl( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("00000.0000000"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
-	#ifdef __WXGTK__
-	if ( !m_textCtrl_longitudeRMC->HasFlag( wxTE_MULTILINE ) )
-	{
-	m_textCtrl_longitudeRMC->SetMaxLength( 13 );
-	}
-	#else
-	m_textCtrl_longitudeRMC->SetMaxLength( 13 );
-	#endif
-	fgSizer_RMC->Add( m_textCtrl_longitudeRMC, 0, wxALL, 5 );
+	m_spinCtrlDouble_lonRMC = new wxSpinCtrlDouble( sbSizer_RMC->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 180, 0, 1 );
+	m_spinCtrlDouble_lonRMC->SetDigits( 5 );
+	fgSizer35->Add( m_spinCtrlDouble_lonRMC, 0, wxALL, 5 );
 
 	wxString m_choice_lonDirRMCChoices[] = { _("E"), _("W") };
 	int m_choice_lonDirRMCNChoices = sizeof( m_choice_lonDirRMCChoices ) / sizeof( wxString );
 	m_choice_lonDirRMC = new wxChoice( sbSizer_RMC->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_lonDirRMCNChoices, m_choice_lonDirRMCChoices, 0 );
 	m_choice_lonDirRMC->SetSelection( 0 );
-	fgSizer_RMC->Add( m_choice_lonDirRMC, 0, wxALL, 5 );
+	fgSizer35->Add( m_choice_lonDirRMC, 0, wxALL, 5 );
+
+	m_spinCtrlDouble_sogRMC = new wxSpinCtrlDouble( sbSizer_RMC->GetStaticBox(), wxID_ANY, wxT("6"), wxDefaultPosition, wxSize( -1,-1 ), wxSP_ARROW_KEYS, 0, 999.9, 1.000000, 1 );
+	m_spinCtrlDouble_sogRMC->SetDigits( 1 );
+	fgSizer35->Add( m_spinCtrlDouble_sogRMC, 0, wxALL, 5 );
+
+	m_spinCtrlDouble_cogRMC = new wxSpinCtrlDouble( sbSizer_RMC->GetStaticBox(), wxID_ANY, wxT("60"), wxDefaultPosition, wxSize( -1,-1 ), wxSP_ARROW_KEYS, 0, 360, 0.000000, 45 );
+	m_spinCtrlDouble_cogRMC->SetDigits( 1 );
+	fgSizer35->Add( m_spinCtrlDouble_cogRMC, 0, wxALL, 5 );
 
 
-	bSizer59->Add( fgSizer_RMC, 0, wxEXPAND, 5 );
+	bSizer59->Add( fgSizer35, 0, wxEXPAND, 5 );
 
 	wxFlexGridSizer* fgSizer32;
 	fgSizer32 = new wxFlexGridSizer( 2, 5, 0, 0 );
 	fgSizer32->SetFlexibleDirection( wxBOTH );
 	fgSizer32->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 
-	m_staticText201 = new wxStaticText( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("SOG"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
-	m_staticText201->Wrap( -1 );
-	fgSizer32->Add( m_staticText201, 0, wxALIGN_CENTER|wxALL, 5 );
-
-	m_staticText26 = new wxStaticText( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("COG"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
-	m_staticText26->Wrap( -1 );
-	fgSizer32->Add( m_staticText26, 0, wxALIGN_CENTER|wxALL, 5 );
-
-	m_staticText27 = new wxStaticText( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("Date"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_staticText27 = new wxStaticText( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("Day"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
 	m_staticText27->Wrap( -1 );
 	fgSizer32->Add( m_staticText27, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText220 = new wxStaticText( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("Month"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText220->Wrap( -1 );
+	fgSizer32->Add( m_staticText220, 0, wxALL, 5 );
+
+	m_staticText221 = new wxStaticText( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("Year"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText221->Wrap( -1 );
+	fgSizer32->Add( m_staticText221, 0, wxALL, 5 );
 
 	m_staticText28 = new wxStaticText( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("Mag var."), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
 	m_staticText28->Wrap( -1 );
@@ -1830,24 +1838,14 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	fgSizer32->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_spinCtrlDouble_sogRMC = new wxSpinCtrlDouble( sbSizer_RMC->GetStaticBox(), wxID_ANY, wxT("6"), wxDefaultPosition, wxSize( -1,-1 ), wxSP_ARROW_KEYS, 0, 999.9, 1.000000, 1 );
-	m_spinCtrlDouble_sogRMC->SetDigits( 1 );
-	fgSizer32->Add( m_spinCtrlDouble_sogRMC, 0, wxALL, 5 );
+	m_spinCtrl_dayRMC = new wxSpinCtrl( sbSizer_RMC->GetStaticBox(), wxID_ANY, wxT("1"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 31, 1 );
+	fgSizer32->Add( m_spinCtrl_dayRMC, 0, wxALL, 5 );
 
-	m_spinCtrlDouble_cogRMC = new wxSpinCtrlDouble( sbSizer_RMC->GetStaticBox(), wxID_ANY, wxT("60"), wxDefaultPosition, wxSize( -1,-1 ), wxSP_ARROW_KEYS, 0, 360, 0.000000, 45 );
-	m_spinCtrlDouble_cogRMC->SetDigits( 1 );
-	fgSizer32->Add( m_spinCtrlDouble_cogRMC, 0, wxALL, 5 );
+	m_spinCtrl_monthRMC = new wxSpinCtrl( sbSizer_RMC->GetStaticBox(), wxID_ANY, wxT("1"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 12, 1 );
+	fgSizer32->Add( m_spinCtrl_monthRMC, 0, wxALL, 5 );
 
-	m_textCtrl_dateRMC = new wxTextCtrl( sbSizer_RMC->GetStaticBox(), wxID_ANY, _("010126"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
-	#ifdef __WXGTK__
-	if ( !m_textCtrl_dateRMC->HasFlag( wxTE_MULTILINE ) )
-	{
-	m_textCtrl_dateRMC->SetMaxLength( 6 );
-	}
-	#else
-	m_textCtrl_dateRMC->SetMaxLength( 6 );
-	#endif
-	fgSizer32->Add( m_textCtrl_dateRMC, 0, wxALL, 5 );
+	m_spinCtrl_yearRMC = new wxSpinCtrl( sbSizer_RMC->GetStaticBox(), wxID_ANY, wxT("26"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 99, 26 );
+	fgSizer32->Add( m_spinCtrl_yearRMC, 0, wxALL, 5 );
 
 	m_spinCtrlDouble_magRMC = new wxSpinCtrlDouble( sbSizer_RMC->GetStaticBox(), wxID_ANY, wxT("3"), wxDefaultPosition, wxSize( -1,-1 ), wxSP_ARROW_KEYS, 0, 180, 3.000000, 1 );
 	m_spinCtrlDouble_magRMC->SetDigits( 1 );
@@ -2141,8 +2139,9 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_spinCtrl_idTLL = new wxSpinCtrl( sbSizer_TLL->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 0 );
 	fgSizer4111->Add( m_spinCtrl_idTLL, 0, wxALL, 5 );
 
-	m_textCtrl_latitudeTLL = new wxTextCtrl( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("0000.0000000"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
-	fgSizer4111->Add( m_textCtrl_latitudeTLL, 0, wxALL, 5 );
+	m_spinCtrlDouble_latTLL = new wxSpinCtrlDouble( sbSizer_TLL->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 90, 0, 1 );
+	m_spinCtrlDouble_latTLL->SetDigits( 5 );
+	fgSizer4111->Add( m_spinCtrlDouble_latTLL, 0, wxALL, 5 );
 
 	wxString m_choice_latDirTLLChoices[] = { _("N"), _("S") };
 	int m_choice_latDirTLLNChoices = sizeof( m_choice_latDirTLLChoices ) / sizeof( wxString );
@@ -2150,8 +2149,9 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_choice_latDirTLL->SetSelection( 0 );
 	fgSizer4111->Add( m_choice_latDirTLL, 0, wxALL, 5 );
 
-	m_textCtrl_longitudeTLL = new wxTextCtrl( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("00000.0000000"), wxDefaultPosition, wxSize( 95,-1 ), 0 );
-	fgSizer4111->Add( m_textCtrl_longitudeTLL, 0, wxALL, 5 );
+	m_spinCtrlDouble_lonTLL = new wxSpinCtrlDouble( sbSizer_TLL->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 180, 0, 1 );
+	m_spinCtrlDouble_lonTLL->SetDigits( 5 );
+	fgSizer4111->Add( m_spinCtrlDouble_lonTLL, 0, wxALL, 5 );
 
 	wxString m_choice_lonDirTLLChoices[] = { _("E"), _("W") };
 	int m_choice_lonDirTLLNChoices = sizeof( m_choice_lonDirTLLChoices ) / sizeof( wxString );
@@ -2163,7 +2163,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	bSizer60->Add( fgSizer4111, 0, wxEXPAND, 5 );
 
 	wxFlexGridSizer* fgSizer321;
-	fgSizer321 = new wxFlexGridSizer( 2, 4, 0, 0 );
+	fgSizer321 = new wxFlexGridSizer( 2, 6, 0, 0 );
 	fgSizer321->SetFlexibleDirection( wxBOTH );
 	fgSizer321->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 
@@ -2171,9 +2171,17 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_staticText65->Wrap( -1 );
 	fgSizer321->Add( m_staticText65, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_staticText66 = new wxStaticText( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("UTC Time"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText66 = new wxStaticText( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("Hours"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText66->Wrap( -1 );
 	fgSizer321->Add( m_staticText66, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText218 = new wxStaticText( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("Minutes"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText218->Wrap( -1 );
+	fgSizer321->Add( m_staticText218, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText219 = new wxStaticText( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("Seconds"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText219->Wrap( -1 );
+	fgSizer321->Add( m_staticText219, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_staticText67 = new wxStaticText( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("Status"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText67->Wrap( -1 );
@@ -2185,8 +2193,14 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_textCtrl_nameTLL = new wxTextCtrl( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("DUMMY"), wxDefaultPosition, wxDefaultSize, 0 );
 	fgSizer321->Add( m_textCtrl_nameTLL, 0, wxALL, 5 );
 
-	m_textCtrl_timeTLL = new wxTextCtrl( sbSizer_TLL->GetStaticBox(), wxID_ANY, _("120000"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
-	fgSizer321->Add( m_textCtrl_timeTLL, 0, wxALL, 5 );
+	m_spinCtrl_hoursTLL = new wxSpinCtrl( sbSizer_TLL->GetStaticBox(), wxID_ANY, wxT("12"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 23, 12 );
+	fgSizer321->Add( m_spinCtrl_hoursTLL, 0, wxALL, 5 );
+
+	m_spinCtrl_minutesTLL = new wxSpinCtrl( sbSizer_TLL->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 59, 0 );
+	fgSizer321->Add( m_spinCtrl_minutesTLL, 0, wxALL, 5 );
+
+	m_spinCtrl_secondsTLL = new wxSpinCtrl( sbSizer_TLL->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 59, 0 );
+	fgSizer321->Add( m_spinCtrl_secondsTLL, 0, wxALL, 5 );
 
 	wxString m_choice_statusTLLChoices[] = { _("T"), _("Q"), _("L") };
 	int m_choice_statusTLLNChoices = sizeof( m_choice_statusTLLChoices ) / sizeof( wxString );
@@ -2438,11 +2452,11 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_staticText225->Wrap( -1 );
 	fgSizer27->Add( m_staticText225, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_spinCtrlDouble_latVDM = new wxSpinCtrlDouble( sbSizer_VDM->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, -90, 90, 0, 0.01 );
+	m_spinCtrlDouble_latVDM = new wxSpinCtrlDouble( sbSizer_VDM->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, -90, 90, 0, 1 );
 	m_spinCtrlDouble_latVDM->SetDigits( 5 );
 	fgSizer27->Add( m_spinCtrlDouble_latVDM, 0, wxALL, 5 );
 
-	m_spinCtrlDouble_lonVDM = new wxSpinCtrlDouble( sbSizer_VDM->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, -180, 180, 0, 0.01 );
+	m_spinCtrlDouble_lonVDM = new wxSpinCtrlDouble( sbSizer_VDM->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, -180, 180, 0, 1 );
 	m_spinCtrlDouble_lonVDM->SetDigits( 5 );
 	fgSizer27->Add( m_spinCtrlDouble_lonVDM, 0, wxALL, 5 );
 
@@ -3069,16 +3083,9 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_staticText51->Wrap( -1 );
 	fgSizer_WPL->Add( m_staticText51, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_textCtrl_latitudeWPL = new wxTextCtrl( sbSizer_WPL->GetStaticBox(), wxID_ANY, _("0000.0000000"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
-	#ifdef __WXGTK__
-	if ( !m_textCtrl_latitudeWPL->HasFlag( wxTE_MULTILINE ) )
-	{
-	m_textCtrl_latitudeWPL->SetMaxLength( 12 );
-	}
-	#else
-	m_textCtrl_latitudeWPL->SetMaxLength( 12 );
-	#endif
-	fgSizer_WPL->Add( m_textCtrl_latitudeWPL, 0, wxALL, 5 );
+	m_spinCtrlDouble_latWPL = new wxSpinCtrlDouble( sbSizer_WPL->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 90, 0, 1 );
+	m_spinCtrlDouble_latWPL->SetDigits( 5 );
+	fgSizer_WPL->Add( m_spinCtrlDouble_latWPL, 0, wxALL, 5 );
 
 	wxString m_choice_latDirWPLChoices[] = { _("N"), _("S") };
 	int m_choice_latDirWPLNChoices = sizeof( m_choice_latDirWPLChoices ) / sizeof( wxString );
@@ -3086,16 +3093,9 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_choice_latDirWPL->SetSelection( 0 );
 	fgSizer_WPL->Add( m_choice_latDirWPL, 0, wxALL, 5 );
 
-	m_textCtrl_longitudeWPL = new wxTextCtrl( sbSizer_WPL->GetStaticBox(), wxID_ANY, _("00000.0000000"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
-	#ifdef __WXGTK__
-	if ( !m_textCtrl_longitudeWPL->HasFlag( wxTE_MULTILINE ) )
-	{
-	m_textCtrl_longitudeWPL->SetMaxLength( 13 );
-	}
-	#else
-	m_textCtrl_longitudeWPL->SetMaxLength( 13 );
-	#endif
-	fgSizer_WPL->Add( m_textCtrl_longitudeWPL, 0, wxALL, 5 );
+	m_spinCtrlDouble_lonWPL = new wxSpinCtrlDouble( sbSizer_WPL->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 180, 0, 1 );
+	m_spinCtrlDouble_lonWPL->SetDigits( 5 );
+	fgSizer_WPL->Add( m_spinCtrlDouble_lonWPL, 0, wxALL, 5 );
 
 	wxString m_choice_lonDirWPLChoices[] = { _("E"), _("W") };
 	int m_choice_lonDirWPLNChoices = sizeof( m_choice_lonDirWPLChoices ) / sizeof( wxString );
@@ -3290,7 +3290,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	bSizer67->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	wxFlexGridSizer* fgSizer_ZDA;
-	fgSizer_ZDA = new wxFlexGridSizer( 2, 8, 0, 0 );
+	fgSizer_ZDA = new wxFlexGridSizer( 2, 5, 0, 0 );
 	fgSizer_ZDA->SetFlexibleDirection( wxBOTH );
 	fgSizer_ZDA->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 
@@ -3301,31 +3301,19 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	fgSizer_ZDA->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_staticText9101 = new wxStaticText( sbSizer_ZDA->GetStaticBox(), wxID_ANY, _("UTC time"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_staticText9101 = new wxStaticText( sbSizer_ZDA->GetStaticBox(), wxID_ANY, _("Hours"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
 	m_staticText9101->Wrap( -1 );
 	m_staticText9101->SetFont( wxFont( wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, wxEmptyString ) );
 
 	fgSizer_ZDA->Add( m_staticText9101, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_staticText1381 = new wxStaticText( sbSizer_ZDA->GetStaticBox(), wxID_ANY, _("Day"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText1381->Wrap( -1 );
-	fgSizer_ZDA->Add( m_staticText1381, 0, wxALIGN_CENTER|wxALL, 5 );
+	m_staticText216 = new wxStaticText( sbSizer_ZDA->GetStaticBox(), wxID_ANY, _("Minutes"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText216->Wrap( -1 );
+	fgSizer_ZDA->Add( m_staticText216, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_staticText1131 = new wxStaticText( sbSizer_ZDA->GetStaticBox(), wxID_ANY, _("Month"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
-	m_staticText1131->Wrap( -1 );
-	fgSizer_ZDA->Add( m_staticText1131, 0, wxALIGN_CENTER|wxALL, 5 );
-
-	m_staticText13911 = new wxStaticText( sbSizer_ZDA->GetStaticBox(), wxID_ANY, _("Year"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText13911->Wrap( -1 );
-	fgSizer_ZDA->Add( m_staticText13911, 0, wxALIGN_CENTER|wxALL, 5 );
-
-	m_staticText1371 = new wxStaticText( sbSizer_ZDA->GetStaticBox(), wxID_ANY, _("Hour offset"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText1371->Wrap( -1 );
-	fgSizer_ZDA->Add( m_staticText1371, 0, wxALIGN_CENTER|wxALL, 5 );
-
-	m_staticText1441 = new wxStaticText( sbSizer_ZDA->GetStaticBox(), wxID_ANY, _("Minutes offset"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
-	m_staticText1441->Wrap( -1 );
-	fgSizer_ZDA->Add( m_staticText1441, 0, wxALIGN_CENTER|wxALL, 5 );
+	m_staticText217 = new wxStaticText( sbSizer_ZDA->GetStaticBox(), wxID_ANY, _("Seconds"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText217->Wrap( -1 );
+	fgSizer_ZDA->Add( m_staticText217, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_textCtrl_talkerZDA = new wxTextCtrl( sbSizer_ZDA->GetStaticBox(), wxID_ANY, _("GP"), wxDefaultPosition, wxSize( 50,-1 ), 0 );
 	#ifdef __WXGTK__
@@ -3342,34 +3330,60 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	m_staticText531->Wrap( -1 );
 	fgSizer_ZDA->Add( m_staticText531, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_textCtrl_timeZDA = new wxTextCtrl( sbSizer_ZDA->GetStaticBox(), wxID_ANY, _("120000"), wxDefaultPosition, wxDefaultSize, 0 );
-	#ifdef __WXGTK__
-	if ( !m_textCtrl_timeZDA->HasFlag( wxTE_MULTILINE ) )
-	{
-	m_textCtrl_timeZDA->SetMaxLength( 9 );
-	}
-	#else
-	m_textCtrl_timeZDA->SetMaxLength( 9 );
-	#endif
-	fgSizer_ZDA->Add( m_textCtrl_timeZDA, 0, wxALL, 5 );
+	m_spinCtrl_hoursZDA = new wxSpinCtrl( sbSizer_ZDA->GetStaticBox(), wxID_ANY, wxT("12"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 23, 12 );
+	fgSizer_ZDA->Add( m_spinCtrl_hoursZDA, 0, wxALL, 5 );
 
-	m_spinCtrl_dayZDA = new wxSpinCtrl( sbSizer_ZDA->GetStaticBox(), wxID_ANY, wxT("1"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 31, 1 );
-	fgSizer_ZDA->Add( m_spinCtrl_dayZDA, 0, wxALL, 5 );
+	m_spinCtrl_minutesZDA = new wxSpinCtrl( sbSizer_ZDA->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 59, 0 );
+	fgSizer_ZDA->Add( m_spinCtrl_minutesZDA, 0, wxALL, 5 );
 
-	m_spinCtrl_monthZDA = new wxSpinCtrl( sbSizer_ZDA->GetStaticBox(), wxID_ANY, wxT("1"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 12, 1 );
-	fgSizer_ZDA->Add( m_spinCtrl_monthZDA, 0, wxALL, 5 );
-
-	m_spinCtrl_yearZDA = new wxSpinCtrl( sbSizer_ZDA->GetStaticBox(), wxID_ANY, wxT("2026"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1984, 2999, 2026 );
-	fgSizer_ZDA->Add( m_spinCtrl_yearZDA, 0, wxALL, 5 );
-
-	m_spinCtrl_hourOffsetZDA = new wxSpinCtrl( sbSizer_ZDA->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, -13, 13, 0 );
-	fgSizer_ZDA->Add( m_spinCtrl_hourOffsetZDA, 0, wxALL, 5 );
-
-	m_spinCtrl_minuteOffsetZDA = new wxSpinCtrl( sbSizer_ZDA->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, -59, 59, 0 );
-	fgSizer_ZDA->Add( m_spinCtrl_minuteOffsetZDA, 0, wxALL, 5 );
+	m_spinCtrl_secondsZDA = new wxSpinCtrl( sbSizer_ZDA->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 59, 0 );
+	fgSizer_ZDA->Add( m_spinCtrl_secondsZDA, 0, wxALL, 5 );
 
 
 	bSizer67->Add( fgSizer_ZDA, 0, wxEXPAND, 5 );
+
+	wxFlexGridSizer* fgSizer_ZDA2;
+	fgSizer_ZDA2 = new wxFlexGridSizer( 2, 5, 0, 0 );
+	fgSizer_ZDA2->SetFlexibleDirection( wxBOTH );
+	fgSizer_ZDA2->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
+
+	m_staticText1381 = new wxStaticText( sbSizer_ZDA->GetStaticBox(), wxID_ANY, _("Day"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText1381->Wrap( -1 );
+	fgSizer_ZDA2->Add( m_staticText1381, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText1131 = new wxStaticText( sbSizer_ZDA->GetStaticBox(), wxID_ANY, _("Month"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_staticText1131->Wrap( -1 );
+	fgSizer_ZDA2->Add( m_staticText1131, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText13911 = new wxStaticText( sbSizer_ZDA->GetStaticBox(), wxID_ANY, _("Year"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText13911->Wrap( -1 );
+	fgSizer_ZDA2->Add( m_staticText13911, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText1371 = new wxStaticText( sbSizer_ZDA->GetStaticBox(), wxID_ANY, _("Hour offset"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText1371->Wrap( -1 );
+	fgSizer_ZDA2->Add( m_staticText1371, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_staticText1441 = new wxStaticText( sbSizer_ZDA->GetStaticBox(), wxID_ANY, _("Minutes offset"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL );
+	m_staticText1441->Wrap( -1 );
+	fgSizer_ZDA2->Add( m_staticText1441, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_spinCtrl_dayZDA = new wxSpinCtrl( sbSizer_ZDA->GetStaticBox(), wxID_ANY, wxT("1"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 31, 1 );
+	fgSizer_ZDA2->Add( m_spinCtrl_dayZDA, 0, wxALL, 5 );
+
+	m_spinCtrl_monthZDA = new wxSpinCtrl( sbSizer_ZDA->GetStaticBox(), wxID_ANY, wxT("1"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 12, 1 );
+	fgSizer_ZDA2->Add( m_spinCtrl_monthZDA, 0, wxALL, 5 );
+
+	m_spinCtrl_yearZDA = new wxSpinCtrl( sbSizer_ZDA->GetStaticBox(), wxID_ANY, wxT("2026"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1984, 2999, 2026 );
+	fgSizer_ZDA2->Add( m_spinCtrl_yearZDA, 0, wxALL, 5 );
+
+	m_spinCtrl_hourOffsetZDA = new wxSpinCtrl( sbSizer_ZDA->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, -13, 13, 0 );
+	fgSizer_ZDA2->Add( m_spinCtrl_hourOffsetZDA, 0, wxALL, 5 );
+
+	m_spinCtrl_minuteOffsetZDA = new wxSpinCtrl( sbSizer_ZDA->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, -59, 59, 0 );
+	fgSizer_ZDA2->Add( m_spinCtrl_minuteOffsetZDA, 0, wxALL, 5 );
+
+
+	bSizer67->Add( fgSizer_ZDA2, 0, wxEXPAND, 5 );
 
 
 	bSizer67->Add( 0, 0, 1, wxEXPAND, 5 );
