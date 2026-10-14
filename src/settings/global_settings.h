@@ -30,4 +30,18 @@ extern bool g_sendDataAfterWindowClose;
 
 extern int g_aisMMSI;
 
+extern bool g_simOutputGLL;
+extern bool g_simOutputGGA;
+extern bool g_simOutputRMC;
+
+extern bool g_simOutputHDT;
+extern bool g_simOutputHDM;
+extern bool g_simOutputHDG;
+extern bool g_simOutputTHS;
+
+extern bool g_simOutputRSA;
+extern bool g_simOutputROT;
+extern bool g_simOutputVTG;
+extern bool g_simOutputZDA;
+
 #endif //GLOBAL_SETTINGS_H

@@ -125,7 +125,148 @@ DialogSettingsBase::DialogSettingsBase( wxWindow* parent, wxWindowID id, const w
 	m_panel_display->SetSizer( sizerSettings );
 	m_panel_display->Layout();
 	sizerSettings->Fit( m_panel_display );
-	m_notebook1->AddPage( m_panel_display, _("Display"), true );
+	m_notebook1->AddPage( m_panel_display, _("Display"), false );
+	m_panel_simulation = new wxPanel( m_notebook1, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
+	wxBoxSizer* bSizer122;
+	bSizer122 = new wxBoxSizer( wxVERTICAL );
+
+	wxBoxSizer* bSizer_simPos;
+	bSizer_simPos = new wxBoxSizer( wxHORIZONTAL );
+
+	m_staticText31 = new wxStaticText( m_panel_simulation, wxID_ANY, _("Position:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText31->Wrap( -1 );
+	bSizer_simPos->Add( m_staticText31, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	wxBoxSizer* bSizer16;
+	bSizer16 = new wxBoxSizer( wxHORIZONTAL );
+
+
+	bSizer16->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_checkBox_simGLL = new wxCheckBox( m_panel_simulation, wxID_ANY, _("GLL"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_checkBox_simGLL->SetValue(true);
+	bSizer16->Add( m_checkBox_simGLL, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	bSizer16->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_checkBox_simGGA = new wxCheckBox( m_panel_simulation, wxID_ANY, _("GGA"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer16->Add( m_checkBox_simGGA, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	bSizer16->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_checkBox_simRMC = new wxCheckBox( m_panel_simulation, wxID_ANY, _("RMC"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer16->Add( m_checkBox_simRMC, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	bSizer16->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	bSizer_simPos->Add( bSizer16, 1, wxEXPAND, 5 );
+
+
+	bSizer122->Add( bSizer_simPos, 1, wxEXPAND, 5 );
+
+	m_staticline1 = new wxStaticLine( m_panel_simulation, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL );
+	bSizer122->Add( m_staticline1, 0, wxEXPAND | wxALL, 5 );
+
+	wxBoxSizer* bSizer_simHead;
+	bSizer_simHead = new wxBoxSizer( wxHORIZONTAL );
+
+	m_staticText4 = new wxStaticText( m_panel_simulation, wxID_ANY, _("Heading:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText4->Wrap( -1 );
+	bSizer_simHead->Add( m_staticText4, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	wxBoxSizer* bSizer17;
+	bSizer17 = new wxBoxSizer( wxHORIZONTAL );
+
+
+	bSizer17->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_checkBox_simHDT = new wxCheckBox( m_panel_simulation, wxID_ANY, _("HDT"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_checkBox_simHDT->SetValue(true);
+	bSizer17->Add( m_checkBox_simHDT, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	bSizer17->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_checkBox_simHDM = new wxCheckBox( m_panel_simulation, wxID_ANY, _("HDM"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer17->Add( m_checkBox_simHDM, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	bSizer17->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_checkBox_simHDG = new wxCheckBox( m_panel_simulation, wxID_ANY, _("HDG"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer17->Add( m_checkBox_simHDG, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	bSizer17->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_checkBox_simTHS = new wxCheckBox( m_panel_simulation, wxID_ANY, _("THS"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer17->Add( m_checkBox_simTHS, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	bSizer17->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	bSizer_simHead->Add( bSizer17, 1, wxEXPAND, 5 );
+
+
+	bSizer122->Add( bSizer_simHead, 1, wxEXPAND, 5 );
+
+	m_staticline2 = new wxStaticLine( m_panel_simulation, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL );
+	bSizer122->Add( m_staticline2, 0, wxEXPAND | wxALL, 5 );
+
+	wxBoxSizer* bSizer_simOthers;
+	bSizer_simOthers = new wxBoxSizer( wxHORIZONTAL );
+
+	m_staticText5 = new wxStaticText( m_panel_simulation, wxID_ANY, _("Others:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText5->Wrap( -1 );
+	bSizer_simOthers->Add( m_staticText5, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	wxBoxSizer* bSizer18;
+	bSizer18 = new wxBoxSizer( wxHORIZONTAL );
+
+
+	bSizer18->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_checkBox_simRSA = new wxCheckBox( m_panel_simulation, wxID_ANY, _("RSA"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_checkBox_simRSA->SetValue(true);
+	bSizer18->Add( m_checkBox_simRSA, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	bSizer18->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_checkBox_simROT = new wxCheckBox( m_panel_simulation, wxID_ANY, _("ROT"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer18->Add( m_checkBox_simROT, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	bSizer18->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_checkBox_simVTG = new wxCheckBox( m_panel_simulation, wxID_ANY, _("VTG"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer18->Add( m_checkBox_simVTG, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	bSizer18->Add( 0, 0, 1, wxEXPAND, 5 );
+
+	m_checkBox_simZDA = new wxCheckBox( m_panel_simulation, wxID_ANY, _("ZDA"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer18->Add( m_checkBox_simZDA, 0, wxALIGN_CENTER|wxALL, 5 );
+
+
+	bSizer18->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	bSizer_simOthers->Add( bSizer18, 1, wxEXPAND, 5 );
+
+
+	bSizer122->Add( bSizer_simOthers, 1, wxEXPAND, 5 );
+
+
+	m_panel_simulation->SetSizer( bSizer122 );
+	m_panel_simulation->Layout();
+	bSizer122->Fit( m_panel_simulation );
+	m_notebook1->AddPage( m_panel_simulation, _("Simulation"), true );
 	m_panel_ais = new wxPanel( m_notebook1, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer11;
 	bSizer11 = new wxBoxSizer( wxVERTICAL );

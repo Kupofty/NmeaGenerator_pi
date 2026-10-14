@@ -325,8 +325,19 @@ Toolbar icon stays highlighted when the window is closed but data is still strea
 ====
 
 '''
-=== AIS
+=== OwnShip Simulation Output
 image::settings/setting3.png[]
+
+Select which NMEA sentences from OwnShip are transmitted when the simulation is running.
+
+[NOTE]
+====
+At least one position sentence (GLL, GGA, or RMC) must be enabled.
+====
+
+'''
+=== AIS
+image::settings/setting4.png[]
 
 Customize the MMSI used for AIS simulation in the Sentence Builder tab (VDM/VDO sentences) and for the AIS target in the Simulation tab.
 Can be used to mimic a vessel or SART targets (MOB, EPIRB, etc).

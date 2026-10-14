@@ -22,6 +22,13 @@ DialogMainGui::DialogMainGui(wxWindow* parent, wxWindowID id, const wxString& ti
   m_staticText_checksum->Show(addAutoChecksum);
   m_staticText_isChecksumCorrect->Show(!addAutoChecksum);
 
+  //Update ° symbols in GUI for Windows
+  m_staticText_headingSim->SetLabel("0" + degreeSymbol);
+  m_staticText_cogSim->SetLabel("0" + degreeSymbol);
+  m_staticText_rudderAngleSim->SetLabel("0" + degreeSymbol);
+  m_staticText_latDegSim->SetLabel("00  00.0000" + degreeSymbol);
+  m_staticText_lonDegSim->SetLabel("000  00.0000" + degreeSymbol);
+
   //List for search box
   sbSizerListSentenceBuilder = {
       {sbSizer_RMC->GetStaticBox()->GetLabel(), sbSizer_RMC},
@@ -1846,19 +1853,51 @@ void DialogMainGui::OnTimer_autoSendSim(wxTimerEvent& event)
   {
     updateVessel(shipSimu, dt, m_timer_autoSendSim.GetInterval());
 
+
+    wxDateTime now = wxDateTime::UNow();
+    wxString timeStr  = now.Format("%H%M%S");
+    wxString dayStr   = now.Format("%d");
+    wxString monthStr = now.Format("%m");
+    wxString yearStr  = now.Format("%Y");
+
     wxString latDir = utils::getLatDir(shipSimu.lat);
     wxString lonDir = utils::getLonDir(shipSimu.lon);
     wxString latStr = utils::toNMEA_lat(shipSimu.lat);
     wxString lonStr = utils::toNMEA_lon(shipSimu.lon);
 
-    wxString speedStr = wxString::Format("%.1f", fabs(shipSimu.speed));
+    wxString sogKtsStr = wxString::Format("%.1f", fabs(shipSimu.speed));
+    wxString sogKphStr = wxString::Format("%.1f", fabs(shipSimu.speed * KNOT2KPH));
     wxString headingStr = wxString::Format("%.1f", shipSimu.heading);
     wxString cogStr = wxString::Format("%.1f", shipSimu.cog);
     wxString rudderStr = wxString::Format("%.1f", shipSimu.rudderAngle);
 
-    sendNmeaToOCPN(nmea::createRMC("GP", timeStr, "A", latStr, latDir, lonStr, lonDir, speedStr, cogStr, dateStr, "0", "E"));
-    sendNmeaToOCPN(nmea::createHDT("II", headingStr));
-    sendNmeaToOCPN(nmea::createRSA("II", rudderStr, "A", "0", "V"));
+    //Position outputs
+    if(g_simOutputRMC)
+      sendNmeaToOCPN(nmea::createRMC("GP", timeStr, "A", latStr, latDir, lonStr, lonDir, sogKtsStr, cogStr, dateStr, "0", "E"));
+    if(g_simOutputGLL)
+      sendNmeaToOCPN(nmea::createGLL("GP", latStr, latDir, lonStr, lonDir, timeStr, "A", "S"));
+    if(g_simOutputGGA)
+      sendNmeaToOCPN(nmea::createGGA("GP", timeStr, latStr, latDir, lonStr, lonDir, "1", "12", "0", "0", "0"));
+
+    //Heading outputs
+    if(g_simOutputHDT)
+      sendNmeaToOCPN(nmea::createHDT("HC", headingStr));
+    if(g_simOutputHDM)
+      sendNmeaToOCPN(nmea::createHDM("HC", headingStr));
+    if(g_simOutputHDG)
+      sendNmeaToOCPN(nmea::createHDG("HC", headingStr, "0", "E", "0", "E"));
+    if(g_simOutputTHS)
+      sendNmeaToOCPN(nmea::createTHS("HE", headingStr, "A"));
+
+    //Other outputs
+    if(g_simOutputRSA)
+      sendNmeaToOCPN(nmea::createRSA("II", rudderStr, "A", "0", "V"));
+    if(g_simOutputROT)
+      sendNmeaToOCPN(nmea::createROT("HE", rudderStr, "A"));
+    if(g_simOutputVTG)
+      sendNmeaToOCPN(nmea::createVTG("GP", cogStr, cogStr, sogKtsStr, sogKphStr, "A"));
+    if(g_simOutputZDA)
+      sendNmeaToOCPN(nmea::createZDA("GP", timeStr, dayStr, monthStr, yearStr, "0", "0"));
   }
 
   // ---- Update & send controlled AIS target NMEA ----

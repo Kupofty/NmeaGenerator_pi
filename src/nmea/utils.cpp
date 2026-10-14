@@ -123,5 +123,4 @@ namespace utils
 
     return payloadWithoutChecksum;
   }
-
 }

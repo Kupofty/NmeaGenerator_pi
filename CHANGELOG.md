@@ -5,13 +5,16 @@
 --------------------------------------------------------------------------------------------
 ## [v1.2.2] / 2026-xx-xx
 
+### Added
+- Configurable NMEA outputs for OwnShip simulation
+
 ### Fixed
 - Installable on MacOS
 
 ### Changed
 - Simulation boat starts on last known position of OwnBoat
+- Easier time, date and position inputs in SentenceBuilder
 - Minor UI changes
-
 
 --------------------------------------------------------------------------------------------
 ## [v1.2.1] / 2026-10-01

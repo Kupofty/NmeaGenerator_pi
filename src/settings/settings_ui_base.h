@@ -23,6 +23,7 @@
 #include <wx/icon.h>
 #include <wx/stattext.h>
 #include <wx/choice.h>
+#include <wx/statline.h>
 #include <wx/spinctrl.h>
 #include <wx/notebook.h>
 #include <wx/button.h>
@@ -47,6 +48,23 @@ class DialogSettingsBase : public wxDialog
 		wxCheckBox* m_checkBox_restoreLastTab;
 		wxCheckBox* m_checkBox_restoreWindowPos;
 		wxCheckBox* m_checkBox_restoreWindowSize;
+		wxPanel* m_panel_simulation;
+		wxStaticText* m_staticText31;
+		wxCheckBox* m_checkBox_simGLL;
+		wxCheckBox* m_checkBox_simGGA;
+		wxCheckBox* m_checkBox_simRMC;
+		wxStaticLine* m_staticline1;
+		wxStaticText* m_staticText4;
+		wxCheckBox* m_checkBox_simHDT;
+		wxCheckBox* m_checkBox_simHDM;
+		wxCheckBox* m_checkBox_simHDG;
+		wxCheckBox* m_checkBox_simTHS;
+		wxStaticLine* m_staticline2;
+		wxStaticText* m_staticText5;
+		wxCheckBox* m_checkBox_simRSA;
+		wxCheckBox* m_checkBox_simROT;
+		wxCheckBox* m_checkBox_simVTG;
+		wxCheckBox* m_checkBox_simZDA;
 		wxPanel* m_panel_ais;
 		wxStaticText* m_staticText2;
 		wxSpinCtrl* m_spinCtrl_mmsi;

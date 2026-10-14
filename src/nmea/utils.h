@@ -10,6 +10,7 @@ constexpr double DEG2RAD = M_PI / 180.0;
 constexpr double RAD2DEG = 180.0 / M_PI;
 constexpr double EARTH_RADIUS = 6371000.0; // meters
 constexpr double KNOT2METER = 0.514444;
+constexpr double KNOT2KPH = 1.852;
 
 struct GeoPos {
   double lat;

@@ -177,6 +177,19 @@ void NmeaGeneratorPlugin::LoadSettings()
     configSettings->Read("SendDataAfterWindowClose", &g_sendDataAfterWindowClose, 0);
 
     configSettings->Read("aisMMSI", &g_aisMMSI, 227000000);
+
+    configSettings->Read("SimOutputGLL", &g_simOutputGLL, 1);
+    configSettings->Read("SimOutputGGA", &g_simOutputGGA, 0);
+    configSettings->Read("SimOutputRMC", &g_simOutputRMC, 0);
+    configSettings->Read("SimOutputHDT", &g_simOutputHDT, 1);
+    configSettings->Read("SimOutputHDM", &g_simOutputHDM, 0);
+    configSettings->Read("SimOutputHDG", &g_simOutputHDG, 0);
+    configSettings->Read("SimOutputTHS", &g_simOutputTHS, 0);
+    configSettings->Read("SimOutputRSA", &g_simOutputRSA, 1);
+    configSettings->Read("SimOutputROT", &g_simOutputROT, 0);
+    configSettings->Read("SimOutputVTG", &g_simOutputVTG, 0);
+    configSettings->Read("SimOutputZDA", &g_simOutputZDA, 0);
+
   }
 }
 
@@ -216,6 +229,19 @@ void NmeaGeneratorPlugin::SaveSettings()
     configSettings->Write("SendDataAfterWindowClose", g_sendDataAfterWindowClose);
 
     configSettings->Write("aisMMSI", g_aisMMSI);
+
+    configSettings->Write("SimOutputGLL", g_simOutputGLL);
+    configSettings->Write("SimOutputGGA", g_simOutputGGA);
+    configSettings->Write("SimOutputRMC", g_simOutputRMC);
+    configSettings->Write("SimOutputHDT", g_simOutputHDT);
+    configSettings->Write("SimOutputHDM", g_simOutputHDM);
+    configSettings->Write("SimOutputHDG", g_simOutputHDG);
+    configSettings->Write("SimOutputTHS", g_simOutputTHS);
+    configSettings->Write("SimOutputRSA", g_simOutputRSA);
+    configSettings->Write("SimOutputROT", g_simOutputROT);
+    configSettings->Write("SimOutputVTG", g_simOutputVTG);
+    configSettings->Write("SimOutputZDA", g_simOutputZDA);
+
   }
 }
 
