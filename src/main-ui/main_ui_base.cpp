@@ -587,7 +587,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 
 	m_spinCtrlDouble_geoidSeparationGGA = new wxSpinCtrlDouble( sbSizer_GGA->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 100, 0, 1 );
 	m_spinCtrlDouble_geoidSeparationGGA->SetDigits( 1 );
-	fgSizer33->Add( m_spinCtrlDouble_geoidSeparationGGA, 0, wxALL, 5 );
+	fgSizer33->Add( m_spinCtrlDouble_geoidSeparationGGA, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_staticText239 = new wxStaticText( sbSizer_GGA->GetStaticBox(), wxID_ANY, _("M"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText239->Wrap( -1 );
@@ -689,7 +689,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	wxString m_choice_latDirGLLChoices[] = { _("N"), _("S") };
 	int m_choice_latDirGLLNChoices = sizeof( m_choice_latDirGLLChoices ) / sizeof( wxString );
 	m_choice_latDirGLL = new wxChoice( sbSizer_GLL->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_latDirGLLNChoices, m_choice_latDirGLLChoices, 0 );
-	m_choice_latDirGLL->SetSelection( 1 );
+	m_choice_latDirGLL->SetSelection( 0 );
 	fgSizer_GLL->Add( m_choice_latDirGLL, 0, wxALL, 5 );
 
 	m_spinCtrlDouble_lonGLL = new wxSpinCtrlDouble( sbSizer_GLL->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 180, 0, 1 );
@@ -832,20 +832,20 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	#else
 	m_textCtrl_talkerGSV->SetMaxLength( 2 );
 	#endif
-	fgSizer_GSV->Add( m_textCtrl_talkerGSV, 0, wxALL, 5 );
+	fgSizer_GSV->Add( m_textCtrl_talkerGSV, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_staticText53 = new wxStaticText( sbSizer_GSV->GetStaticBox(), wxID_ANY, _("GSV"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText53->Wrap( -1 );
 	fgSizer_GSV->Add( m_staticText53, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_spinCtrl_totalSentencesGSV = new wxSpinCtrl( sbSizer_GSV->GetStaticBox(), wxID_ANY, wxT("1"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 1, 1 );
-	fgSizer_GSV->Add( m_spinCtrl_totalSentencesGSV, 0, wxALL, 5 );
+	fgSizer_GSV->Add( m_spinCtrl_totalSentencesGSV, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_spinCtrl_sentenceIdGSV = new wxSpinCtrl( sbSizer_GSV->GetStaticBox(), wxID_ANY, wxT("1"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 1, 0 );
-	fgSizer_GSV->Add( m_spinCtrl_sentenceIdGSV, 0, wxALL, 5 );
+	fgSizer_GSV->Add( m_spinCtrl_sentenceIdGSV, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_spinCtrl_satellitesGSV = new wxSpinCtrl( sbSizer_GSV->GetStaticBox(), wxID_ANY, wxT("12"), wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 1, 99, 12 );
-	fgSizer_GSV->Add( m_spinCtrl_satellitesGSV, 0, wxALL, 5 );
+	fgSizer_GSV->Add( m_spinCtrl_satellitesGSV, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
 	bSizer57->Add( fgSizer_GSV, 0, wxEXPAND, 5 );
@@ -2469,7 +2469,7 @@ DialogMainGuiBase::DialogMainGuiBase( wxWindow* parent, wxWindowID id, const wxS
 	fgSizer27->Add( m_spinCtrlDouble_headingVDM, 0, wxALL, 5 );
 
 	m_spinCtrl_maneuverVDM = new wxSpinCtrl( sbSizer_VDM->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 2, 0 );
-	fgSizer27->Add( m_spinCtrl_maneuverVDM, 0, wxALL, 5 );
+	fgSizer27->Add( m_spinCtrl_maneuverVDM, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	wxString m_choice_channelVDMChoices[] = { _("A"), _("B") };
 	int m_choice_channelVDMNChoices = sizeof( m_choice_channelVDMChoices ) / sizeof( wxString );
