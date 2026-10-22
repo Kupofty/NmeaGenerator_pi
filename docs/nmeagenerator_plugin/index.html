@@ -86,23 +86,10 @@
 <h2 id="_manual_version"><a class="anchor" href="#_manual_version"></a>Manual Version</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This manual applies to <strong>version 1.2.2</strong>.</p>
+<p>This manual applies to <strong>version 1.3.0</strong>.</p>
 </div>
 <div class="paragraph">
 <p>See what&#8217;s changed in the <a href="https://github.com/Kupofty/NmeaGenerator_pi/blob/github-pages/CHANGELOG.md">CHANGELOG</a>.</p>
-</div>
-<div class="paragraph">
-<p>Previous versions of the manual:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://github.com/Kupofty/NmeaGenerator_pi/blob/a7bfce910393ec2c481eac64d8d4c6bc8c052b01/manual/modules/ROOT/pages/index.adoc">V1.1.0</a></p>
-</li>
-<li>
-<p><a href="https://github.com/Kupofty/NmeaGenerator_pi/blob/72cd6c2a2b64a9c0b096d0a5a5171c6c61449685/manual/modules/ROOT/pages/index.adoc">V1.0.0</a></p>
-</li>
-</ul>
 </div>
 </div>
 </div>
@@ -333,7 +320,7 @@ For more information, see the INSTALL.md file in the GitHub repository.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add to list</strong>: Adds the current sentence to the list so it can be saved, loaded, or included in automatic sending. The input field is cleared.</p>
+<p><strong>Add to list</strong>: Adds the current sentence to the list so it can be loaded again, saved, or included in automatic sending. The input field is cleared.</p>
 </li>
 <li>
 <p><strong>Send</strong>: Sends the current sentence once to OpenCPN.</p>
@@ -353,10 +340,13 @@ For more information, see the INSTALL.md file in the GitHub repository.</p>
 <div class="sect3">
 <h4 id="_automatic_send"><a class="anchor" href="#_automatic_send"></a><span class="underline"><strong>Automatic Send</strong></span></h4>
 <div class="paragraph">
-<p>Each sentence in the list has an <strong>Auto send</strong> checkbox. Only sentences with this option enabled are transmitted when the <strong>Automatic send</strong> option at the bottom of the window is enabled.</p>
+<p>Tick the <strong>Include in auto send</strong> checkbox next to the input field before pressing <strong>Add to list</strong> to mark the new entry for automatic transmission. Marked entries appear in the list with <strong>(auto)</strong> after their name.</p>
 </div>
 <div class="paragraph">
-<p>During each transmission cycle, the application iterates through the list and sends only the entries marked for automatic transmission.</p>
+<p>Only entries marked this way are transmitted when the <strong>Automatic send</strong> option at the bottom of the window is enabled. During each transmission cycle, the application iterates through the list and sends only those entries.</p>
+</div>
+<div class="paragraph">
+<p>If <strong>Include in auto send</strong> is still ticked for the sentence currently in the input field, that sentence is sent on every cycle as well.</p>
 </div>
 </div>
 <div class="sect3">
@@ -368,7 +358,7 @@ For more information, see the INSTALL.md file in the GitHub repository.</p>
 <p>When enabled, you can paste a sentence that already contains a checksum. The existing checksum is ignored and replaced with the newly calculated one, making it easy to compare the two visually.</p>
 </div>
 <div class="paragraph">
-<p>When disabled, a status indicator below the input field reports whether the checksum is: Missing / Valid / Invalid</p>
+<p>When disabled, a status indicator below the input field reports whether the checksum is: No checksum detected / Correct checksum / Incorrect checksum.</p>
 </div>
 </div>
 <div class="sect3">
@@ -382,13 +372,18 @@ For more information, see the INSTALL.md file in the GitHub repository.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Entries marked with <strong>(auto)</strong> are included in automatic transmission when <strong>Automatic send</strong> is enabled. Other entries can be loaded back into the input field for editing or sent manually.</p>
+<p>Entries marked with <strong>(auto)</strong> are included in automatic transmission when <strong>Automatic send</strong> is enabled. Any entry can be loaded back into the input field for editing or sent manually.
+Loading an entry also restores its <strong>Auto checksum</strong> setting.</p>
 </div>
 <div class="paragraph">
 <p>Individual entries can be removed, or the entire list can be cleared using the available buttons.</p>
 </div>
 <div class="paragraph">
 <p>Each list entry is named using the first five characters of the NMEA sentence, excluding the leading <code>$</code> or <code>!</code> character.</p>
+</div>
+<div class="paragraph">
+<p>The list is saved in the OpenCPN configuration and restored the next time OpenCPN starts, including each entry&#8217;s <strong>(auto)</strong> flag and <strong>Auto checksum</strong> setting.
+Restored entries do not transmit on their own: automatic sending only starts when you enable <strong>Automatic send</strong>.</p>
 </div>
 <hr>
 </div>

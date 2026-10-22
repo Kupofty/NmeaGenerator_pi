@@ -61,6 +61,9 @@ DialogMainGui::DialogMainGui(wxWindow* parent, wxWindowID id, const wxString& ti
   //Force GUI update of XDR
   wxCommandEvent dummy;
   OnChoice_UpdateCategoryXDR(dummy);
+
+  //Restore saved manual input list (settings are loaded in plugin Init(), before the GUI is created)
+  refreshManualInputChoice();
 }
 
 DialogMainGui::~DialogMainGui()
@@ -176,7 +179,7 @@ void DialogMainGui::OnButtonClick_manualSend(wxCommandEvent& event)
 void DialogMainGui::OnTimer_autoSendNmea(wxTimerEvent& event)
 {
   // Send stored manual list entries
-  for (const ManualInput& input : manualInputList)
+  for (const ManualInput& input : g_manualInputList)
   {
     if(input.autoSend)
       sendNmeaToOCPN(input.sentence);
@@ -298,6 +301,28 @@ void DialogMainGui::OnSpinCtrlDouble_AutomaticSendFreq(wxSpinDoubleEvent& event)
 
 
 //List
+wxString DialogMainGui::manualInputDisplayName(const ManualInput& input)
+{
+  // Display name: 5 characters after '$' or '!'
+  wxString displayName = input.sentence;
+  if (displayName.StartsWith("$") || displayName.StartsWith("!"))
+    displayName = displayName.Mid(1);
+  displayName = displayName.Left(5);
+
+  if (input.autoSend)
+    displayName += _(" (auto)");
+
+  return displayName;
+}
+
+//Rebuild the choice control from g_manualInputList
+void DialogMainGui::refreshManualInputChoice()
+{
+  m_choice_manualInputList->Clear();
+  for (const ManualInput& input : g_manualInputList)
+    m_choice_manualInputList->Append(manualInputDisplayName(input));
+}
+
 void DialogMainGui::OnButtonClick_AddManualList(wxCommandEvent& event)
 {
   wxString sentence = getManualInput().Trim().Trim(false);
@@ -325,18 +350,9 @@ void DialogMainGui::OnButtonClick_AddManualList(wxCommandEvent& event)
   input.sentence = sentence;
   input.autoChecksum = autoChecksum;
   input.autoSend = autoSend;
-  manualInputList.push_back(input);
+  g_manualInputList.push_back(input);
 
-  // Display name: 5 characters after '$'
-  wxString displayName = sentence;
-  if (displayName.StartsWith("$") || displayName.StartsWith("!"))
-    displayName = displayName.Mid(1);
-  displayName = displayName.Left(5);
-
-  if(autoSend)
-    displayName += _(" (auto)");
-
-  m_choice_manualInputList->Append(displayName);
+  m_choice_manualInputList->Append(manualInputDisplayName(input));
 
   // Clear editor
   m_checkBox_manualInputAutoSend->SetValue(false);
@@ -346,11 +362,11 @@ void DialogMainGui::OnButtonClick_AddManualList(wxCommandEvent& event)
 void DialogMainGui::OnButtonClick_LoadManualInputList(wxCommandEvent& event)
 {
   int sel = m_choice_manualInputList->GetSelection();
-  if (sel == wxNOT_FOUND)
+  if (sel == wxNOT_FOUND || sel >= static_cast<int>(g_manualInputList.size()))
     return;
 
   //Restore UI from selected entry
-  const ManualInput& input = manualInputList[sel];
+  const ManualInput& input = g_manualInputList[sel];
   m_checkBox_autoChecksum->SetValue(input.autoChecksum);
 
   // Remove "*XX" checksum if auto checksum is enabled
@@ -369,16 +385,16 @@ void DialogMainGui::OnButtonClick_DeleteManualInputList(wxCommandEvent& event)
 {
   int sel = m_choice_manualInputList->GetSelection();
 
-  if (sel == wxNOT_FOUND)
+  if (sel == wxNOT_FOUND || sel >= static_cast<int>(g_manualInputList.size()))
     return;
 
-  manualInputList.erase(manualInputList.begin() + sel);
+  g_manualInputList.erase(g_manualInputList.begin() + sel);
   m_choice_manualInputList->Delete(sel);
 }
 
 void DialogMainGui::OnButtonClick_DeleteAllManualList(wxCommandEvent& event)
 {
-  manualInputList.clear();
+  g_manualInputList.clear();
   m_choice_manualInputList->Clear();
 }
 
@@ -1160,10 +1176,10 @@ wxString DialogMainGui::createFromGuiGLL()
   wxString lon    = utils::toNMEA_lon(m_spinCtrlDouble_lonGLL->GetValue());
   wxString lonDir = m_choice_lonDirGLL->GetStringSelection();
   wxString time   = wxString::Format("%02d%02d%02d",
-                      m_spinCtrl_hoursGLL->GetValue(),
-                      m_spinCtrl_minutesGLL->GetValue(),
-                      m_spinCtrl_secondsGLL->GetValue()
-                      );
+                                   m_spinCtrl_hoursGLL->GetValue(),
+                                   m_spinCtrl_minutesGLL->GetValue(),
+                                   m_spinCtrl_secondsGLL->GetValue()
+                                   );
   wxString status = m_choice_statusGLL->GetStringSelection();
   wxString mode   = m_choice_modeGLL->GetStringSelection();
 
@@ -1175,10 +1191,10 @@ wxString DialogMainGui::createFromGuiRMC()
 {
   wxString talker    = m_textCtrl_talkerRMC->GetValue();
   wxString time      = wxString::Format("%02d%02d%02d",
-                         m_spinCtrl_hoursRMC->GetValue(),
-                         m_spinCtrl_minutesRMC->GetValue(),
-                         m_spinCtrl_secondsRMC->GetValue()
-                         );
+                                   m_spinCtrl_hoursRMC->GetValue(),
+                                   m_spinCtrl_minutesRMC->GetValue(),
+                                   m_spinCtrl_secondsRMC->GetValue()
+                                   );
   wxString status    = m_choice_statusRMC->GetStringSelection();
   wxString lat       = utils::toNMEA_lat(m_spinCtrlDouble_latRMC->GetValue());
   wxString latDir    = m_choice_latDirRMC->GetStringSelection();
@@ -1187,10 +1203,10 @@ wxString DialogMainGui::createFromGuiRMC()
   wxString sog       = wxString::Format("%.1f", m_spinCtrlDouble_sogRMC->GetValue());
   wxString cog       = wxString::Format("%.1f", m_spinCtrlDouble_cogRMC->GetValue());
   wxString date      = wxString::Format("%02d%02d%02d",
-                         m_spinCtrl_dayRMC->GetValue(),
-                         m_spinCtrl_monthRMC->GetValue(),
-                         m_spinCtrl_yearRMC->GetValue()
-                         );
+                                   m_spinCtrl_dayRMC->GetValue(),
+                                   m_spinCtrl_monthRMC->GetValue(),
+                                   m_spinCtrl_yearRMC->GetValue()
+                                   );
   wxString magVar    = wxString::Format("%.1f",  m_spinCtrlDouble_magRMC->GetValue());
   wxString magVarDir = m_choice_magDirRMC->GetStringSelection();
 
@@ -1202,10 +1218,10 @@ wxString DialogMainGui::createFromGuiGGA()
 {
   wxString talker   = m_textCtrl_talkerGGA->GetValue();
   wxString time     = wxString::Format("%02d%02d%02d",
-                       m_spinCtrl_hoursGGA->GetValue(),
-                       m_spinCtrl_minutesGGA->GetValue(),
-                       m_spinCtrl_secondsGGA->GetValue()
-                       );
+                                   m_spinCtrl_hoursGGA->GetValue(),
+                                   m_spinCtrl_minutesGGA->GetValue(),
+                                   m_spinCtrl_secondsGGA->GetValue()
+                                   );
   wxString lat      = utils::toNMEA_lat(m_spinCtrlDouble_latGGA->GetValue());
   wxString latDir   = m_choice_latDirGGA->GetStringSelection();
   wxString lon      = utils::toNMEA_lon(m_spinCtrlDouble_lonGGA->GetValue());
@@ -1270,10 +1286,10 @@ wxString DialogMainGui::createFromGuiTLL()
   wxString lonDir   = m_choice_lonDirTLL->GetStringSelection();
   wxString name     = m_textCtrl_nameTLL->GetValue();
   wxString time     = wxString::Format("%02d%02d%02d",
-                         m_spinCtrl_hoursTLL->GetValue(),
-                         m_spinCtrl_minutesTLL->GetValue(),
-                         m_spinCtrl_secondsTLL->GetValue()
-                       );
+                                   m_spinCtrl_hoursTLL->GetValue(),
+                                   m_spinCtrl_minutesTLL->GetValue(),
+                                   m_spinCtrl_secondsTLL->GetValue()
+                                   );
   wxString status   = m_choice_statusTLL->GetStringSelection();
   wxString ref      = "R";
 
@@ -1527,10 +1543,10 @@ wxString DialogMainGui::createFromGuiZDA()
 {
   wxString talker       = m_textCtrl_talkerZDA->GetValue();
   wxString time         = wxString::Format("%02d%02d%02d",
-                            m_spinCtrl_hoursZDA->GetValue(),
-                            m_spinCtrl_minutesZDA->GetValue(),
-                            m_spinCtrl_secondsZDA->GetValue()
-                          );
+                                   m_spinCtrl_hoursZDA->GetValue(),
+                                   m_spinCtrl_minutesZDA->GetValue(),
+                                   m_spinCtrl_secondsZDA->GetValue()
+                                   );
   wxString day          = wxString::Format("%02d", m_spinCtrl_dayZDA->GetValue());
   wxString month        = wxString::Format("%02d", m_spinCtrl_monthZDA->GetValue());
   wxString year         = wxString::Format("%d", m_spinCtrl_yearZDA->GetValue());
@@ -1985,4 +2001,3 @@ void DialogMainGui::OnButtonClick_ResetRudder(wxCommandEvent& event)
   wxString rudderStr = wxString::Format("%.0f%s", vessel->rudderAngle, degreeSymbol);
   m_staticText_rudderAngleSim->SetLabel(rudderStr);
 }
-

@@ -11,15 +11,9 @@ Plugin created by ©link:https://github.com/Kupofty[Kupofty] 2026
 //----------------------------------------------------------------------------------------------------
 == Manual Version
 
-This manual applies to **version 1.2.2**.
+This manual applies to **version 1.3.0**.
 
 See what's changed in the https://github.com/Kupofty/NmeaGenerator_pi/blob/github-pages/CHANGELOG.md[CHANGELOG].
-
-
-Previous versions of the manual:
-
-- https://github.com/Kupofty/NmeaGenerator_pi/blob/a7bfce910393ec2c481eac64d8d4c6bc8c052b01/manual/modules/ROOT/pages/index.adoc[V1.1.0]
-- https://github.com/Kupofty/NmeaGenerator_pi/blob/72cd6c2a2b64a9c0b096d0a5a5171c6c61449685/manual/modules/ROOT/pages/index.adoc[V1.0.0]
 
 
 //----------------------------------------------------------------------------------------------------
@@ -147,7 +141,7 @@ image::gui/manual_input/manual_input_tab.png[]
 
 #### [underline]#*Controls*#
 
-- **Add to list**: Adds the current sentence to the list so it can be saved, loaded, or included in automatic sending. The input field is cleared.
+- **Add to list**: Adds the current sentence to the list so it can be loaded again, saved, or included in automatic sending. The input field is cleared.
 - **Send**: Sends the current sentence once to OpenCPN.
 - **Copy**: Copies the current sentence, including the checksum if present or automatically generated, to the clipboard.
 - **Clear**: Clears the input field.
@@ -157,9 +151,11 @@ image::gui/manual_input/manual_input_tab.png[]
 
 #### [underline]#*Automatic Send*#
 
-Each sentence in the list has an **Auto send** checkbox. Only sentences with this option enabled are transmitted when the **Automatic send** option at the bottom of the window is enabled.
+Tick the **Include in auto send** checkbox next to the input field before pressing **Add to list** to mark the new entry for automatic transmission. Marked entries appear in the list with **(auto)** after their name.
 
-During each transmission cycle, the application iterates through the list and sends only the entries marked for automatic transmission.
+Only entries marked this way are transmitted when the **Automatic send** option at the bottom of the window is enabled. During each transmission cycle, the application iterates through the list and sends only those entries.
+
+If **Include in auto send** is still ticked for the sentence currently in the input field, that sentence is sent on every cycle as well.
 
 
 
@@ -169,7 +165,7 @@ The **Auto checksum** option calculates and appends the correct checksum automat
 
 When enabled, you can paste a sentence that already contains a checksum. The existing checksum is ignored and replaced with the newly calculated one, making it easy to compare the two visually.
 
-When disabled, a status indicator below the input field reports whether the checksum is: Missing / Valid / Invalid
+When disabled, a status indicator below the input field reports whether the checksum is: No checksum detected / Correct checksum / Incorrect checksum.
 
 
 
@@ -179,12 +175,15 @@ The list displays all saved NMEA sentences.
 image::gui/manual_input/manual_input_list.png[]
 
 
-Entries marked with **(auto)** are included in automatic transmission when **Automatic send** is enabled. Other entries can be loaded back into the input field for editing or sent manually.
+Entries marked with **(auto)** are included in automatic transmission when **Automatic send** is enabled. Any entry can be loaded back into the input field for editing or sent manually. 
+Loading an entry also restores its **Auto checksum** setting.
 
 Individual entries can be removed, or the entire list can be cleared using the available buttons.
 
 Each list entry is named using the first five characters of the NMEA sentence, excluding the leading `$` or `!` character.
 
+The list is saved in the OpenCPN configuration and restored the next time OpenCPN starts, including each entry's **(auto)** flag and **Auto checksum** setting. 
+Restored entries do not transmit on their own: automatic sending only starts when you enable **Automatic send**.
 
 '''
 === Sentence Builder

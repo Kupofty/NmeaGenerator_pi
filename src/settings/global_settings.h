@@ -8,6 +8,8 @@
 #include "wx/wx.h"
 #endif
 
+#include <vector>
+
 
 /////////////////////////////////////////////////////////////////////
 /// Globally accessible variables used by the plugin, dialogs etc ///
@@ -43,5 +45,16 @@ extern bool g_simOutputRSA;
 extern bool g_simOutputROT;
 extern bool g_simOutputVTG;
 extern bool g_simOutputZDA;
+
+
+//Manual input list (saved sentences of the manual input tab)
+struct ManualInput
+{
+  wxString sentence;
+  bool autoChecksum = false;
+  bool autoSend = false;
+};
+
+extern std::vector<ManualInput> g_manualInputList;
 
 #endif //GLOBAL_SETTINGS_H

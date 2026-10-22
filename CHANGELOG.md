@@ -3,10 +3,11 @@
 
 
 --------------------------------------------------------------------------------------------
-## [v1.2.2] / 2026-xx-xx
+## [v1.3.0] / 2026-xx-xx
 
 ### Added
 - Configurable NMEA outputs for OwnShip simulation
+- Manual inputs list is saved between sessions
 
 ### Fixed
 - Installable on MacOS
@@ -15,6 +16,7 @@
 - Simulation boat starts on last known position of OwnBoat
 - Easier time, date and position inputs in SentenceBuilder
 - Minor UI changes
+
 
 --------------------------------------------------------------------------------------------
 ## [v1.2.1] / 2026-10-01

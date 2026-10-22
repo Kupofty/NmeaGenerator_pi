@@ -35,3 +35,6 @@ bool g_simOutputRSA = 1;
 bool g_simOutputROT = 0;
 bool g_simOutputVTG = 0;
 bool g_simOutputZDA = 0;
+
+//Manual input list
+std::vector<ManualInput> g_manualInputList;

@@ -190,6 +190,25 @@ void NmeaGeneratorPlugin::LoadSettings()
     configSettings->Read("SimOutputVTG", &g_simOutputVTG, 0);
     configSettings->Read("SimOutputZDA", &g_simOutputZDA, 0);
 
+    //Manual input list
+    g_manualInputList.clear();
+    configSettings->SetPath("/PlugIns/NmeaGeneratorPlugin/ManualInputs");
+
+    long count = configSettings->ReadLong("Count", 0);
+    for (long i = 0; i < count; i++)
+    {
+      wxString sentence;
+      if (!configSettings->Read(wxString::Format("Sentence%ld", i), &sentence) || sentence.IsEmpty())
+        continue;
+
+      ManualInput input;
+      input.sentence = sentence;
+      configSettings->Read(wxString::Format("AutoChecksum%ld", i), &input.autoChecksum, false);
+      configSettings->Read(wxString::Format("AutoSend%ld", i), &input.autoSend, false);
+      g_manualInputList.push_back(input);
+    }
+
+    configSettings->SetPath("/PlugIns/NmeaGeneratorPlugin");
   }
 }
 
@@ -242,6 +261,19 @@ void NmeaGeneratorPlugin::SaveSettings()
     configSettings->Write("SimOutputVTG", g_simOutputVTG);
     configSettings->Write("SimOutputZDA", g_simOutputZDA);
 
+    //Manual input list (wipe old group first so deleted entries don't linger)
+    configSettings->DeleteGroup("/PlugIns/NmeaGeneratorPlugin/ManualInputs");
+    configSettings->SetPath("/PlugIns/NmeaGeneratorPlugin/ManualInputs");
+
+    configSettings->Write("Count", (long)g_manualInputList.size());
+    for (size_t i = 0; i < g_manualInputList.size(); i++)
+    {
+      configSettings->Write(wxString::Format("Sentence%zu", i), g_manualInputList[i].sentence);
+      configSettings->Write(wxString::Format("AutoChecksum%zu", i), g_manualInputList[i].autoChecksum);
+      configSettings->Write(wxString::Format("AutoSend%zu", i), g_manualInputList[i].autoSend);
+    }
+
+    configSettings->SetPath("/PlugIns/NmeaGeneratorPlugin");
   }
 }
 
@@ -270,13 +302,13 @@ void NmeaGeneratorPlugin::SetPositionFix(PlugIn_Position_Fix &pfix)
 void NmeaGeneratorPlugin::ShowPreferencesDialog(wxWindow* parent)
 {
   auto dialogSettings = std::make_unique<DialogSettings>(
-    parent,
-    wxID_ANY,
-    _("NmeaGenerator Preferences"),
-    wxDefaultPosition,
-    wxDefaultSize,
-    wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER
-  );
+      parent,
+      wxID_ANY,
+      _("NmeaGenerator Preferences"),
+      wxDefaultPosition,
+      wxDefaultSize,
+      wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER
+      );
 
   if (wxID_OK == dialogSettings->ShowModal())
     SaveSettings();

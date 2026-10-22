@@ -47,14 +47,6 @@ struct SimVessel
   wxString name = "";
 };
 
-struct ManualInput
-{
-  wxString sentence = "";
-  bool autoSend = false;
-  bool autoChecksum = false;
-};
-
-
 // Main class
 class DialogMainGui : public DialogMainGuiBase
 {
@@ -70,6 +62,7 @@ class DialogMainGui : public DialogMainGuiBase
     void clearAisTargets();
     void stopTimers();
     bool isStreamingData();
+    void refreshManualInputChoice();
 
     NmeaGeneratorPlugin* plugin = nullptr;
 
@@ -162,6 +155,7 @@ class DialogMainGui : public DialogMainGuiBase
     void copyToClipboard(wxString text);
     void sendNmeaToOCPN(wxString sentence);
     wxString getManualInput();
+    static wxString manualInputDisplayName(const ManualInput& input);
     void updateAutoSendBuildersCheckboxes(bool check);
     SimVessel* getControlledVessel();
     wxString getXdrNmeaName();
@@ -199,7 +193,6 @@ class DialogMainGui : public DialogMainGuiBase
   private:
     bool addAutoChecksum;
     std::vector<SectionItem> sbSizerListSentenceBuilder;
-    std::vector<ManualInput> manualInputList;
 
     VesselType controlledVessel = VesselType::OwnShip;
     SimVessel shipSimu;
