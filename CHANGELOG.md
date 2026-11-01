@@ -3,7 +3,7 @@
 
 
 --------------------------------------------------------------------------------------------
-## [v1.3.0] / 2026-xx-xx
+## [v1.3.0] / 2026-11-01
 
 ### Added
 - Configurable NMEA outputs for OwnShip simulation
@@ -49,7 +49,8 @@
 - Vessel simulations (Own ship & AIS target) can now run simultaneously
 - Checksum verificator in "Manual Input" tab
 - New XDR transducers in "Sentence builder" tab
-- Plugin window can be maximized/minimized & Settings window can be resized
+- Plugin window can be maximized/minimized 
+- Settings window can be resized
 - Option to keep sending data when window is closed (need to be activated in Preferences)
 - Buttons to copy to clipboard the sentence in "Manual Input" and "Sentence builder" tabs
 - Configurable timer for sending simulation data 

@@ -29,7 +29,7 @@ set(OCPN_RELEASE_REPO
 
 # ------- Plugin setup --------
 set(PKG_NAME nmeagenerator_pi)
-set(PKG_VERSION  1.2.2)
+set(PKG_VERSION  1.3.0)
 set(PKG_PRERELEASE "") # Empty, or a tag like 'beta'
 
 set(DISPLAY_NAME NmeaGenerator)    # Dialogs, installer artifacts, ...
@@ -96,12 +96,3 @@ macro(late_init)
     target_compile_definitions(${PACKAGE_NAME} PUBLIC OCPN_GHC_FILESYSTEM)
   endif ()
 endmacro ()
-
-
-# ------- Libraries --------
-
-# Add plugin libraries
-#macro(add_plugin_libraries)
-    #add_subdirectory(opencpn-libs/nmea0183)
-    #target_link_libraries(${PACKAGE_NAME} ocpn::nmea0183)
-#endmacro ()
